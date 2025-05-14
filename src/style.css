@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* 
+    Light (300): font-light
+    Regular (normal/400): font-normal
+    Medium (500): font-medium
+    SemiBold (600): font-semibold
+    Bold (700): font-bold
+    ExtraBold (800): font-extrabold
+*/
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/Open_Sans/OpenSans-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/Open_Sans/OpenSans-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/Open_Sans/OpenSans-ExtraBold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/Open_Sans/OpenSans-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/Open_Sans/OpenSans-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/Open_Sans/OpenSans-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@layer base {
+    body {
+        @apply font-['Open_Sans'] text-text-base relative;
+    }
+
+    @screen lg {
+        body::before {
+            content: '';
+            @apply absolute top-0 right-0;
+            width: 38vw;
+            height: 100vh;
+            aspect-ratio: 540/843;
+            background-image: url('./assets/images/banner-back.png');
+            background-repeat: no-repeat;
+            background-position: right top;
+            background-size: contain;
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            @apply absolute right-0;
+            width: 50vw;
+            aspect-ratio: 719/399;
+            height: 80vh;
+            top: calc(7vw);
+            background-image: url('./assets/images/banner-front.png');
+            background-repeat: no-repeat;
+            background-position: right top;
+            background-size: contain;
+            z-index: -1;
+        }
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
