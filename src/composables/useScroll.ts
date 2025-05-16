@@ -11,6 +11,7 @@ export function useScroll(
         if (!featureRef.value || !exploreRef.value) return
 
         try {
+            console.log(123)
             const featureTop = featureRef.value.getBoundingClientRect().top
             const exploreTop = exploreRef.value.getBoundingClientRect().top
             const featureDistance = Math.abs(featureTop)

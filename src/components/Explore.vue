@@ -1,24 +1,72 @@
 <script setup lang="ts">
-import { EXPLORE_ITEMS } from '@/constants/index.ts'
 import { ref } from 'vue'
+import type {CollapseModelValue} from "element-plus";
 
 const el = ref<HTMLElement | null>(null)
+const activeNames = ref(['1']);
+const handleChange = (val: CollapseModelValue) => {
 
+}
 
 defineExpose({ el })
 </script>
 <template>
     <section class="px-4 lg:px-0 relative" ref="el">
         <i id="explore" class="absolute w-0 h-0 overflow-hidden opacity-0 left-0 -top-10 lg:-top-20"></i>
-        <img class="hidden md:block absolute -top-[58%] left-0 w-full -z-10" src="@/assets/images/explore-bg.png" alt="explore background image" />
-
-        <h2 class="text-5xl font-bold text-center pt-[70px] relative before:absolute before:content-[''] before:left-1/2 before:-translate-x-1/2 before:-bottom-8 before:w-[71px] before:h-[12px] before:rounded-[17px] before:bg-red-50 before:bg-gradient-to-b before:from-[rgba(178,235,242,1)] before:to-[rgba(209,196,233,1)]">发现</h2>
-        <ul class="max-w-[840px] bg-white rounded-[48px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-[31px] md:gap-[60px] mt-[51px] md:px-[40px] pb-[50px] pt-[28px] md:py-[72px] [&>li:last-child]:md:col-span-2 [&>li:last-child]:md:justify-self-center [&>li:last-child]:md:max-w-[319px] shadow-[12px_12px_20px_rgba(0,0,0,0.1)]">
-            <li v-for="item in EXPLORE_ITEMS" :key="item.title" class="flex flex-col w-full">
-                <img :src="item.icon" :alt="item.title" class="w-[60px] mx-auto mb-[30px]" />
-                <h3 class="mb-[12px] font-semibold text-lg text-center">{{ item.title }}</h3>
-                <p class="text-base md:text-lg leading-[36px]">{{ item.desc }}</p>
-            </li>
-        </ul>
+      <div class="explore-part">
+        <div class="explore-title">
+          常见问题
+        </div>
+        <div class="demo-collapse">
+          <el-collapse v-model="activeNames" @change="handleChange">
+            <el-collapse-item title="什么是加密货币？" name="1">
+              <div style="font-size: 12px">
+                加密货币是一种基于区块链接技术的数字货币，利用密码学技术确保交易安全和控制新单位的生成。其主要的特点包括去中心化、匿名性、全球性、有限供应和高波动性。
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+          <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
+            <el-collapse-item title="ABC Pay内申请的银行卡性质是什么" name="2">
+              <div style="font-size: 12px">
+                加密货币是一种基于区块链接技术的数字货币，利用密码学技术确保交易安全和控制新单位的生成。其主要的特点包括去中心化、匿名性、全球性、有限供应和高波动性。
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+          <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
+            <el-collapse-item title="如果我的汇款交易出现问题，会发生什么情况？" name="3">
+              <div style="font-size: 12px">
+                加密货币是一种基于区块链接技术的数字货币，利用密码学技术确保交易安全和控制新单位的生成。其主要的特点包括去中心化、匿名性、全球性、有限供应和高波动性。
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+          <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
+            <el-collapse-item title="我可以追踪我的汇款交易吗？该如何追踪" name="4">
+              <div style="font-size: 12px">
+                加密货币是一种基于区块链接技术的数字货币，利用密码学技术确保交易安全和控制新单位的生成。其主要的特点包括去中心化、匿名性、全球性、有限供应和高波动性。
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+          <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
+            <el-collapse-item title="使用汇款服务汇款需要多长时间？" name="5">
+              <div style="font-size: 12px">
+                加密货币是一种基于区块链接技术的数字货币，利用密码学技术确保交易安全和控制新单位的生成。其主要的特点包括去中心化、匿名性、全球性、有限供应和高波动性。
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+        </div>
+      </div>
     </section>
 </template>
+<style scoped>
+.explore-part {
+  padding: 10px;
+
+  .explore-title {
+    font-size: 20px;
+  }
+}
+
+:deep(.el-collapse-item__header) {
+  font-size: 14px;
+}
+</style>

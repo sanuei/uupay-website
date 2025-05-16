@@ -2,16 +2,24 @@
 import { ref, computed } from 'vue'
 import {
     Header,
+    HeaderWeb,
     Banner,
     Feature,
+    FeatureWeb,
     Explore,
+    ExploreWeb,
     Reviews,
+    ReviewsWeb,
     BackToTop
 } from '@/components'
 import { useScroll } from '@/composables/useScroll'
+import { useDevice } from '@/composables/useDevice'
 
-const featureRef = ref<InstanceType<typeof Feature> | null>(null)
+const { isMobile } = useDevice()
+console.log(isMobile)
+const featureRef = ref<InstanceType<typeof FeatureWeb> | null>(null)
 const exploreRef = ref<InstanceType<typeof Explore> | null>(null)
+
 
 const { isFeature, isExplore } = useScroll(
     computed(() => featureRef.value?.el ?? null),
@@ -21,20 +29,22 @@ const { isFeature, isExplore } = useScroll(
 </script>
 <template>
     <!-- Header -->
-    <Header :is-feature="isFeature" :is-explore="isExplore" />
-    
+    <Header v-if="isMobile" :is-feature="isFeature" :is-explore="isExplore" />
+    <HeaderWeb v-else :is-feature="isFeature" :is-explore="isExplore" />
+
     <!-- Banner -->
-    <Banner />
+<!--    <Banner v-if="isMobile" />-->
 
     <!-- Feature -->
-    <Feature ref="featureRef" />
-    
+    <Feature v-if="isMobile" ref="featureRef" />
+    <FeatureWeb v-else ref="featureWebRef"/>
+
     <!-- Explore -->
-    <Explore ref="exploreRef" />
-
+    <Explore  v-if="isMobile" ref="exploreRef" />
+    <ExploreWeb v-else ref="exploreRef" />
     <!-- Reviews -->
-    <Reviews />
-
+    <Reviews  v-if="isMobile" />
+    <ReviewsWeb v-else />
     <!-- BackToTop -->
     <BackToTop />
 </template>
