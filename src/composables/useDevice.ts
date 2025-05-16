@@ -4,7 +4,6 @@ export function useDevice() {
   const isMobile = ref(false);
 
   const checkDevice = () => {
-    console.log('window.innerWidth',window.innerWidth)
     isMobile.value = window.innerWidth <= 900;
   };
 

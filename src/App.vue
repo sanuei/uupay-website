@@ -3,7 +3,6 @@ import { ref, computed } from 'vue'
 import {
     Header,
     HeaderWeb,
-    Banner,
     Feature,
     FeatureWeb,
     Explore,
@@ -16,8 +15,7 @@ import { useScroll } from '@/composables/useScroll'
 import { useDevice } from '@/composables/useDevice'
 
 const { isMobile } = useDevice()
-console.log(isMobile)
-const featureRef = ref<InstanceType<typeof FeatureWeb> | null>(null)
+const featureRef = ref<InstanceType<typeof Feature> | null>(null)
 const exploreRef = ref<InstanceType<typeof Explore> | null>(null)
 
 

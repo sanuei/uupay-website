@@ -28,7 +28,7 @@ const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 
 <!--    </header>-->
   <div class="header-part">
     <div>
-      <img src="@/assets/images/header-phone-bg.png" style="max-width: 104%; width: 104%; position: absolute; left: -4px; z-index: -1;" alt="" />
+      <img src="@/assets/images/header-phone-bg.png" style="max-width: 104%; width: 104%; height: 100%; position: absolute; left: -4px; z-index: -1;" alt="" />
     </div>
     <div class="header-head">
       <div class="name-side">
@@ -88,8 +88,8 @@ const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 
     <div class="header-img">
       <img src="@/assets/images/header-phone-bottom.png" alt="" />
     </div>
-    <div class="header-img">
-      <img src="@/assets/images/header-partner.png" alt="" />
+    <div class="header-img" style="margin-top: 0">
+      <img src="@/assets/images/header-partner.png" style="width: 100%" alt="" />
     </div>
   </div>
 </template>
