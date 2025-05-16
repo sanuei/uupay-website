@@ -47,10 +47,10 @@ const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 
         <a href="#feature" :class="['relative', isFeature && featureClass]">特征</a>
       </div>
       <div class="header-about-option">
-        问题
+        <a href="#explore" :class="['relative', isExplore && exploreClass]">问题</a>
       </div>
       <div class="header-about-option">
-        接触
+        <a href="#explore" :class="['relative', isExplore && exploreClass]">接触</a>
       </div>
     </div>
     <div class="header-big-title">
