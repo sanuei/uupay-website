@@ -8,6 +8,7 @@ defineProps<{
 
 const { y } = useScroll(window)
 const featureClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full before:bg-background-blue before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
+const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full  before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
 
 </script>
 <template>
@@ -25,7 +26,7 @@ const featureClass = 'before:absolute before:content-[""] before:w-2 before:h-2 
           <a href="#feature" :class="['relative', isFeature && featureClass]">特征</a>
         </div>
         <div class="option-type">
-          问题
+          <a href="#explore" :class="['relative', isExplore && exploreClass]">问题</a>
         </div>
         <div class="option-type">
           接触
