@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { FEATURE_ITEMS } from '@/constants'
-import exploreBgMobile from '@/assets/images/explore-bg-mobile.png'
+// import { FEATURE_ITEMS } from '@/constants'
+// import exploreBgMobile from '@/assets/images/explore-bg-mobile.png'
 
 const el = ref<HTMLElement | null>(null)
 

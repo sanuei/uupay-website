@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {EXPLORE_ITEMS} from '@/constants/index.ts'
+// import {EXPLORE_ITEMS} from '@/constants/index.ts'
 import {ref} from 'vue'
-import type {CollapseModelValue} from 'element-plus'
+// import type {CollapseModelValue} from 'element-plus'
 
 const el = ref<HTMLElement | null>(null)
 const activeNames = ref(['1']);
-const handleChange = (val: CollapseModelValue) => {
+const handleChange = () => {
 
 }
 

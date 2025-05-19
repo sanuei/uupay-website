@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { REVIEW_ITEMS, CONTACTUS, DOWNLINK } from '@/constants/index'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import ReviewCard from './ReviewCard.vue'
+// import { REVIEW_ITEMS, CONTACTUS, DOWNLINK } from '@/constants/index'
+// import { Swiper, SwiperSlide } from 'swiper/vue'
+// import ReviewCard from './ReviewCard.vue'
 import 'swiper/css'
 
 const SECTION_BG = 'review-section-bg'
-const FOOTER_BG = {
-    mobile: 'footer-mobile-bg',
-    desktop: 'footer-desktop-bg'
-}
+// const FOOTER_BG = {
+//     mobile: 'footer-mobile-bg',
+//     desktop: 'footer-desktop-bg'
+// }
 </script>
 
 <template>
