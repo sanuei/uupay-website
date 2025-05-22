@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from "vue-i18n";
 // import type {CollapseModelValue} from "element-plus";
 
 const el = ref<HTMLElement | null>(null)
@@ -9,47 +10,73 @@ const handleChange = () => {
 }
 
 defineExpose({ el })
+const { t } = useI18n()
 </script>
 <template>
     <section class="px-4 lg:px-0 relative" ref="el">
         <i id="explore" class="absolute w-0 h-0 overflow-hidden opacity-0 left-0 -top-10 lg:-top-20"></i>
       <div class="explore-part">
         <div class="explore-title">
-          常见问题
+          {{ t('explore.headTitle') }}
         </div>
         <div class="demo-collapse">
           <el-collapse v-model="activeNames" @change="handleChange">
-            <el-collapse-item title="什么是加密货币？" name="1">
+            <el-collapse-item name="1">
+              <template #title>
+                <div style="max-width: 100%; white-space: normal; word-break: break-word; padding-right: 20px; line-height: 1.4;">
+                  {{ t('explore.title1') }}
+                </div>
+              </template>
               <div style="font-size: 12px">
-                加密货币是一种基于区块链接技术的数字货币，利用密码学技术确保交易安全和控制新单位的生成。其主要的特点包括去中心化、匿名性、全球性、有限供应和高波动性。
+                {{ t('explore.content1') }}
               </div>
             </el-collapse-item>
           </el-collapse>
           <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
-            <el-collapse-item title="ABC Pay内申请的银行卡性质是什么" name="2">
+            <el-collapse-item name="2">
+              <template #title>
+                <div style="max-width: 100%; white-space: normal; word-break: break-word; padding-right: 20px; line-height: 1.4;">
+                  {{ t('explore.title2') }}
+                </div>
+              </template>
               <div style="font-size: 12px">
-                加密货币是一种基于区块链接技术的数字货币，利用密码学技术确保交易安全和控制新单位的生成。其主要的特点包括去中心化、匿名性、全球性、有限供应和高波动性。
+                {{ t('explore.content2') }}
               </div>
             </el-collapse-item>
           </el-collapse>
           <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
-            <el-collapse-item title="如果我的汇款交易出现问题，会发生什么情况？" name="3">
+            <el-collapse-item name="3">
+              <template #title>
+                <div style="max-width: 100%; white-space: normal; word-break: break-word; padding-right: 20px; line-height: 1.4;">
+                  {{ t('explore.title3') }}
+                </div>
+              </template>
               <div style="font-size: 12px">
-                加密货币是一种基于区块链接技术的数字货币，利用密码学技术确保交易安全和控制新单位的生成。其主要的特点包括去中心化、匿名性、全球性、有限供应和高波动性。
+                {{ t('explore.content3') }}
               </div>
             </el-collapse-item>
           </el-collapse>
           <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
-            <el-collapse-item title="我可以追踪我的汇款交易吗？该如何追踪" name="4">
+            <el-collapse-item name="4">
+              <template #title>
+                <div style="max-width: 100%; white-space: normal; word-break: break-word; padding-right: 20px; line-height: 1.4;">
+                  {{ t('explore.title4') }}
+                </div>
+              </template>
               <div style="font-size: 12px">
-                加密货币是一种基于区块链接技术的数字货币，利用密码学技术确保交易安全和控制新单位的生成。其主要的特点包括去中心化、匿名性、全球性、有限供应和高波动性。
+                {{ t('explore.content4') }}
               </div>
             </el-collapse-item>
           </el-collapse>
           <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
-            <el-collapse-item title="使用汇款服务汇款需要多长时间？" name="5">
+            <el-collapse-item name="5">
+              <template #title>
+                <div style="max-width: 100%; white-space: normal; word-break: break-word; padding-right: 20px; line-height: 1.4;">
+                  {{ t('explore.title5') }}
+                </div>
+              </template>
               <div style="font-size: 12px">
-                加密货币是一种基于区块链接技术的数字货币，利用密码学技术确保交易安全和控制新单位的生成。其主要的特点包括去中心化、匿名性、全球性、有限供应和高波动性。
+                {{ t('explore.content5') }}
               </div>
             </el-collapse-item>
           </el-collapse>
@@ -68,5 +95,11 @@ defineExpose({ el })
 
 :deep(.el-collapse-item__header) {
   font-size: 14px;
+}
+
+.el-collapse-item__header {
+  max-width: 300px; /* 限制最大宽度 */
+  white-space: normal; /* 允许换行 */
+  word-break: break-word; /* 允许单词换行 */
 }
 </style>

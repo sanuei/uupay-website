@@ -3,12 +3,14 @@
 // import { Swiper, SwiperSlide } from 'swiper/vue'
 // import ReviewCard from './ReviewCard.vue'
 import 'swiper/css'
+import { useI18n } from "vue-i18n";
 
 const SECTION_BG = 'review-section-bg'
 // const FOOTER_BG = {
 //     mobile: 'footer-mobile-bg',
 //     desktop: 'footer-desktop-bg'
 // }
+const { t } = useI18n()
 </script>
 
 <template>
@@ -17,17 +19,17 @@ const SECTION_BG = 'review-section-bg'
         <div class="review-part-header">
           <div class="review-part-header-logo">
             <img src="@/assets/images/header-icon-logo-web.png" alt="" />
-            <span class="title-name">ABC万能卡</span>
+            <span class="title-name">{{ t('review.name') }}</span>
           </div>
           <div class="review-part-header-button">
-            开始使用
+            {{ t('review.startBtn') }}
           </div>
         </div>
         <div class="review-part-header-content" style="margin-top: 10px">
-          通过ABCPay开始您的加密货币支付之旅
+          {{ t('review.title1') }}
         </div>
         <div class="review-part-header-content" style="border-bottom: 1px solid #979797; padding-bottom: 10px">
-          快捷、无缝、安全
+          {{ t('review.title2') }}
         </div>
         <div class="review-bottom">
           <div class="review-icon">
@@ -41,56 +43,56 @@ const SECTION_BG = 'review-section-bg'
           <div class="review-support">
             <div class="review-support-content">
               <div class="review-support-row-head">
-                支持
+                {{ t('review.support') }}
               </div>
               <div class="review-support-row">
-                常见问题解答
+                {{ t('review.fq') }}
               </div>
               <div class="review-support-row">
-                下载应用程序
+                {{ t('review.downloadApp')}}
               </div>
               <div class="review-support-row">
-                同意条款和条件
+                {{ t('review.term')}}
               </div>
             </div>
             <div class="review-support-content">
               <div class="review-support-row-head">
-                帮助
+                {{ t('review.help')}}
               </div>
               <div class="review-support-row">
-                FAQs
+                {{ t('review.faqs')}}
               </div>
               <div class="review-support-row">
-                联系我们
+                {{ t('review.contact')}}
               </div>
             </div>
             <div class="review-support-content">
               <div class="review-support-row-head">
-                关于我们
+                {{ t('review.about')}}
               </div>
               <div class="review-support-row">
-                我们的使命
+                {{ t('review.mission')}}
               </div>
               <div class="review-support-row">
-                领导团队
+                {{ t('review.lead')}}
               </div>
               <div class="review-support-row">
-                合规和安全
+                {{ t('review.safe')}}
               </div>
               <div class="review-support-row">
-                合作伙伴
+                {{ t('review.partner')}}
               </div>
               <div class="review-support-row">
-                加入我们
+                {{ t('review.join')}}
               </div>
               <div class="review-support-row">
-                联盟计划
+                {{ t('review.plan')}}
               </div>
             </div>
           </div>
         </div>
         <div class="review-part-header-condition">
-            服务协议 ｜ 隐私政策 ｜ 可接受使用政策
+          {{ t('review.otherTerm')}}
         </div>
         <div class="review-part-header-copyright">
           Copyright © ABC Pay 2025 All Rights Reserved

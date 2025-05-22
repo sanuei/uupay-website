@@ -1,5 +1,7 @@
 <script setup lang="ts">
 // import { useScroll } from '@vueuse/core'
+import { DOWNLINK, CONTACTUS } from '@/constants/index'
+import {ref} from "vue";
 
 defineProps<{
   isFeature: boolean
@@ -9,6 +11,13 @@ defineProps<{
 // const { y } = useScroll(window)
 const featureClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full before:bg-background-blue before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
 const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full  before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
+
+const selectedLanguage = ref('zh-cn');
+const languageList = [
+  { label: '简体中文', value: 'zh-cn' },
+  { label: '繁体中文', value: 'zh-zh' },
+  { label: '英文', value: 'en' },
+]
 
 </script>
 <template>
@@ -32,7 +41,13 @@ const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 
           接触
         </div>
         <div class="option-type">
-          简体中文
+<!--          简体中文-->
+          <select id="language-select" v-model="selectedLanguage">
+            <option v-for="lang in languageList" :key="lang.value" :value="lang.value">
+              <img src="@/assets/images/icon-language.png" alt="" />
+              {{ lang.label }}
+            </option>
+          </select>
         </div>
 <!--        <div class="option-download-type">-->
 <!--          下载-->
@@ -52,10 +67,10 @@ const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 
         </div>
         <div class="content-left-side-content-use">
           <div class="content-left-side-content-start">
-            开始使用
+            <a :href="DOWNLINK">开始使用</a>
           </div>
           <div class="content-left-side-content-getCard">
-            立即获取您的卡
+            <a :href="CONTACTUS">立即获取您的卡</a>
           </div>
         </div>
         <div class="download-content">
@@ -110,6 +125,13 @@ const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 
         margin: 0 20px;
         color: #fff;
         font-size: 14px;
+
+        select {
+          background: transparent;
+          padding: 6px 12px;
+          border-radius: 15px;
+          border: 1px solid #fff;
+        }
       }
 
       .option-download-type {
