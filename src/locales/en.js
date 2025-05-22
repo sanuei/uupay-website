@@ -13,9 +13,10 @@ export default {
     title1: 'Simple, transparent,',
     title2: 'and affordable global transactions',
     title3: 'Regulated by the Securities Commission',
+    title4: 'Say goodbye to long waits and high fees. Our convenient platform allows you to send money to family and friends, pay bills, and shop anywhere in the world. Trust us to handle your transfers safely and efficiently.',
     startBtn: 'Get Started',
     getCardBtn: 'Get Your Card Now',
-    downloadBtn: 'Download'
+    downloadBtn: 'Download',
   },
   feature: {
     title1: 'Our Features',
@@ -44,6 +45,7 @@ export default {
     content11: 'Fast, seamless, and secure: Convert cryptocurrency into everyday purchases with ABC Pay.',
     content12: 'Rest assured, your data and transactions are protected with the same level of security.',
     content13: 'Multiple Payment Methods',
+    downloadTitle: 'Download the app, open an account, and get started.',
   },
   explore: {
     headTitle: 'Frequently Asked Questions',
@@ -78,5 +80,9 @@ export default {
     join: 'Join Us',
     plan: 'Program',
     otherTerm: 'Terms of Service ｜ Privacy Policy ｜ Acceptable Use Policy',
+    startNotice: 'Start your cryptocurrency payment journey with ABC Pay — fast, seamless, and secure.',
+    rightServe: 'All rights reserved.',
+    condition: 'Terms and Conditions',
+    policy: 'Privacy Policy',
   }
 }

@@ -13,9 +13,11 @@ export default {
     title1: '简单，透明，',
     title2: '实惠的全球交易',
     title3: '受证劵委员会监管',
+    title4: '告别漫长的等待和高昂的费用。我们便捷的平台让您可以汇款给亲朋好友、支付账单，并在世界任何地方购物。相信我们安全高效地处理您的转账。',
     startBtn: '开始使用',
     getCardBtn: '立即获取您的卡',
-    downloadBtn: '下载'
+    downloadBtn: '下载',
+    downloadTitle: '下载应用程式，开设账户并开始使用',
   },
   feature: {
     title1: '我们的特色',
@@ -78,5 +80,9 @@ export default {
     join: '加入我们',
     plan: '联盟计划',
     otherTerm: '服务协议 ｜ 隐私政策 ｜ 可接受使用政策',
+    startNotice: '通过ABC Pay开始您的加密货币支付之旅/快捷、无缝、安全。',
+    rightServe: '版权所有。',
+    condition: '条款及条件',
+    policy: '隐私政策',
   }
 }

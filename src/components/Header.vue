@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import { useScroll } from '@vueuse/core'
 
-import {computed, ref, watchEffect} from "vue";
+import { computed, ref, watchEffect } from "vue";
 import { useI18n } from 'vue-i18n'
 
 defineProps<{
@@ -66,7 +66,7 @@ const changeLanguage = (lang: any) => {
         <span class="title-name">{{ t('header.name') }}</span>
       </div>
       <div class="header-language">
-        <el-dropdown>
+        <el-dropdown trigger="click">
           <span class="el-dropdown-link">
             <img src="@/assets/images/icon-language.png" style="margin-right: 5px" alt="" />
             {{ selectedLanguage.label }}

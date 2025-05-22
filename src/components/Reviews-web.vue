@@ -3,12 +3,14 @@
 // import { Swiper, SwiperSlide } from 'swiper/vue'
 // import ReviewCard from './ReviewCard.vue'
 import 'swiper/css'
+import {useI18n} from "vue-i18n";
 
 // const SECTION_BG = 'review-section-bg'
 // const FOOTER_BG = {
 //   mobile: 'footer-mobile-bg',
 //   desktop: 'footer-desktop-bg'
 // }
+const { t } = useI18n()
 </script>
 
 <template>
@@ -16,12 +18,12 @@ import 'swiper/css'
     <div class="review-header">
       <div class="review-header-name">
         <img src="@/assets/images/header-icon-logo-web.png" style="width: 30px; height: 30px; display: flex; align-items: center" alt="" />
-        <span class="title-name">ABC万能卡</span>
+        <span class="title-name">{{ t('review.name') }}</span>
       </div>
       <div class="review-header-intro">
-        通过ABC Pay开始您的加密货币支付之旅/快捷、无缝、安全。
+        {{ t('review.startNotice') }}
         <div class="start-use">
-          开始使用
+          {{ t('review.startBtn') }}
         </div>
       </div>
     </div>
@@ -37,64 +39,64 @@ import 'swiper/css'
       <div class="review-support">
         <div class="review-support-content">
           <div class="review-support-row-head">
-            支持
+            {{ t('review.support') }}
           </div>
           <div class="review-support-row">
-            常见问题解答
+            {{ t('review.fq') }}
           </div>
           <div class="review-support-row">
-            下载应用程序
+            {{ t('review.downloadApp')}}
           </div>
           <div class="review-support-row">
-            同意条款和条件
+            {{ t('review.term')}}
           </div>
         </div>
         <div class="review-support-content">
           <div class="review-support-row-head">
-            帮助
+            {{ t('review.help')}}
           </div>
           <div class="review-support-row">
-            FAQs
+            {{ t('review.faqs')}}
           </div>
           <div class="review-support-row">
-            联系我们
+            {{ t('review.contact')}}
           </div>
         </div>
         <div class="review-support-content">
           <div class="review-support-row-head">
-            关于我们
+            {{ t('review.about')}}
           </div>
           <div class="review-support-row">
-            我们的使命
+            {{ t('review.mission')}}
           </div>
           <div class="review-support-row">
-            领导团队
+            {{ t('review.lead')}}
           </div>
           <div class="review-support-row">
-            合规和安全
+            {{ t('review.safe')}}
           </div>
           <div class="review-support-row">
-            合作伙伴
+            {{ t('review.partner')}}
           </div>
           <div class="review-support-row">
-            加入我们
+            {{ t('review.join')}}
           </div>
           <div class="review-support-row">
-            联盟计划
+            {{ t('review.plan')}}
           </div>
         </div>
       </div>
     </div>
     <div class="review-bottom-copyright">
       <div class="review-bottom-copyright-title">
-        © 2025 ABCPay 版权所有。
+        © 2025 ABCPay {{ t('review.rightServe')}}
       </div>
       <div class="review-bottom-copyright-condition">
         <div class="review-bottom-copyright-condition-title">
-          条款及条件
+          {{ t('review.condition')}}
         </div>
         <div class="review-bottom-copyright-condition-title">
-          隐私政策
+          {{ t('review.policy')}}
         </div>
       </div>
     </div>
@@ -136,7 +138,7 @@ import 'swiper/css'
       .start-use {
         margin-left: 20px;
         background: #1573FF;
-        padding: 10px 20px;
+        padding: 10px 15px;
         border-radius: 15px;
       }
     }

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 // import { useScroll } from '@vueuse/core'
 import { DOWNLINK, CONTACTUS } from '@/constants/index'
-import {ref} from "vue";
+import { computed, ref, watchEffect } from "vue";
+import { useI18n } from 'vue-i18n'
 
 defineProps<{
   isFeature: boolean
@@ -12,12 +13,30 @@ defineProps<{
 const featureClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full before:bg-background-blue before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
 const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full  before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
 
-const selectedLanguage = ref('zh-cn');
-const languageList = [
-  { label: '简体中文', value: 'zh-cn' },
-  { label: '繁体中文', value: 'zh-zh' },
-  { label: '英文', value: 'en' },
-]
+const { locale, t } = useI18n()
+const selectedLanguage = ref({ label: '', value: 'zh' });
+const languageList = computed(() => [
+  { label: t('language.zh'), value: 'zh' },
+  // { label: '繁体中文', value: 'zh-tw' },
+  { label: t('language.en'), value: 'en' },
+])
+
+watchEffect(() => {
+  const current = languageList.value.find(item => item.value === selectedLanguage.value.value);
+  if (current) {
+    selectedLanguage.value.label = current.label;
+  }
+});
+
+const switchLanguage = (lang: string) => {
+  locale.value = lang
+  localStorage.setItem('language', lang)
+};
+
+const changeLanguage = (lang: any) => {
+  switchLanguage(lang.value);
+  selectedLanguage.value = lang;
+};
 
 </script>
 <template>
@@ -25,52 +44,58 @@ const languageList = [
     <div class="header-container">
       <div class="name-side">
         <img src="@/assets/images/header-icon-logo-web.png" alt="" />
-        <span class="title-name">ABC万能卡</span>
+        <span class="title-name">{{ t('header.name') }}</span>
       </div>
       <div class="option-side">
         <div class="option-type">
-          关于我们
+          {{ t('header.about') }}
         </div>
         <div class="option-type">
-          <a href="#feature" :class="['relative', isFeature && featureClass]">特征</a>
+          <a href="#feature" :class="['relative', isFeature && featureClass]">{{ t('header.feature') }}</a>
         </div>
         <div class="option-type">
-          <a href="#explore" :class="['relative', isExplore && exploreClass]">问题</a>
+          <a href="#explore" :class="['relative', isExplore && exploreClass]">{{ t('header.qa') }}</a>
         </div>
         <div class="option-type">
-          接触
+          {{ t('header.contact') }}
         </div>
-        <div class="option-type">
-<!--          简体中文-->
-          <select id="language-select" v-model="selectedLanguage">
-            <option v-for="lang in languageList" :key="lang.value" :value="lang.value">
-              <img src="@/assets/images/icon-language.png" alt="" />
-              {{ lang.label }}
-            </option>
-          </select>
+        <div class="option-type-language">
+          <el-dropdown trigger="click">
+          <span class="el-dropdown-link">
+            <img src="@/assets/images/icon-language.png" style="margin-right: 5px" alt="" />
+            {{ selectedLanguage.label }}
+            <el-icon class="el-icon--right">
+              <arrow-down/>
+            </el-icon>
+          </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <template v-for="item in languageList">
+                  <el-dropdown-item @click="changeLanguage(item)">{{ item.label }}</el-dropdown-item>
+                </template>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
         </div>
-<!--        <div class="option-download-type">-->
-<!--          下载-->
-<!--        </div>-->
       </div>
     </div>
     <div class="content">
       <div class="content-left-side">
         <div class="content-left-side-title">
-          简单、透明、实惠的全球交易
+          {{ t('header.title1') }} {{ t('header.title2') }}
         </div>
         <div class="content-left-side-content">
-          告别漫长的等待和高昂的费用。我们便捷的平台让您可以汇款给亲朋好友、支付账单，并在世界任何地方购物。相信我们安全高效地处理您的转账。
+          {{ t('header.title4') }}
         </div>
         <div class="content-left-side-short-content">
-          受证劵委员会监管
+          {{ t('header.title3') }}
         </div>
         <div class="content-left-side-content-use">
           <div class="content-left-side-content-start">
-            <a :href="DOWNLINK">开始使用</a>
+            <a :href="DOWNLINK">{{ t('header.startBtn') }}</a>
           </div>
           <div class="content-left-side-content-getCard">
-            <a :href="CONTACTUS">立即获取您的卡</a>
+            <a :href="CONTACTUS">{{ t('header.getCardBtn') }}</a>
           </div>
         </div>
         <div class="download-content">
@@ -107,6 +132,7 @@ const languageList = [
     .name-side {
       display: flex;
       align-content: center;
+      flex: 1;
 
       .title-name {
         display: flex;
@@ -125,22 +151,24 @@ const languageList = [
         margin: 0 20px;
         color: #fff;
         font-size: 14px;
-
-        select {
-          background: transparent;
-          padding: 6px 12px;
-          border-radius: 15px;
-          border: 1px solid #fff;
-        }
       }
 
-      .option-download-type {
-        background: #1573FF;
-        border: 1px solid #fff;
-        font-size: 14px;
-        padding: 5px 15px;
-        border-radius: 25px;
+      .option-type-language {
+        margin: 0 20px;
         color: #fff;
+        font-size: 14px;
+        border: 1px solid #fff;
+        padding: 10px 20px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+
+        .el-dropdown-link {
+          color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
   }
