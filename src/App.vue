@@ -24,6 +24,8 @@ const { isFeature, isExplore } = useScroll(
     computed(() => exploreRef.value?.el ?? null),
 )
 
+console.log('isMobile',isMobile.value)
+
 </script>
 <template>
     <!-- Header -->

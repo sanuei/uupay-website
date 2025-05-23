@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import { useScroll } from '@vueuse/core'
 
-import { computed, ref, watchEffect } from "vue";
+import { computed, ref } from "vue";
 import { useI18n } from 'vue-i18n'
 
 defineProps<{
@@ -16,29 +16,27 @@ const { locale, t } = useI18n()
 const featureClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
 const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full  before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
 
-const selectedLanguage = ref({ label: '', value: 'zh' });
+const selectedLanguage = ref(localStorage.getItem('language') || 'zh')
+
 const languageList = computed(() => [
   { label: t('language.zh'), value: 'zh' },
-  // { label: '繁体中文', value: 'zh-tw' },
+  { label: t('language.zhTW'), value: 'zhTw' },
   { label: t('language.en'), value: 'en' },
 ])
 
-watchEffect(() => {
-  const current = languageList.value.find(item => item.value === selectedLanguage.value.value);
-  if (current) {
-    selectedLanguage.value.label = current.label;
-  }
-});
+const currentLanguageLabel = computed(() => {
+  return languageList.value.find(item => item.value === selectedLanguage.value)?.label || ''
+})
 
 const switchLanguage = (lang: string) => {
   locale.value = lang
   localStorage.setItem('language', lang)
-};
+}
 
 const changeLanguage = (lang: any) => {
-  switchLanguage(lang.value);
-  selectedLanguage.value = lang;
-};
+  switchLanguage(lang.value)
+  selectedLanguage.value = lang.value
+}
 </script>
 <template>
   <!--    <header class="h-[70px] lg:h-[103px] z-50 transition-all sticky top-0" :class="[y >= 10 && 'bg-white']">-->
@@ -69,7 +67,7 @@ const changeLanguage = (lang: any) => {
         <el-dropdown trigger="click">
           <span class="el-dropdown-link">
             <img src="@/assets/images/icon-language.png" style="margin-right: 5px" alt="" />
-            {{ selectedLanguage.label }}
+            {{ currentLanguageLabel }}
             <el-icon class="el-icon--right">
               <arrow-down/>
             </el-icon>
