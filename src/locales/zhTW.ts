@@ -1,7 +1,7 @@
 export default {
   language: {
     zh: '簡體中文',
-    zhTW: '繁體中文',
+    zhtw: '繁體中文',
     en: '英文'
   },
   header: {

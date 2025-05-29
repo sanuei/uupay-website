@@ -1,7 +1,7 @@
 export default {
   language: {
     zh: 'Simplified Chinese',
-    zhTW: 'Traditional Chinese',
+    zhtw: 'Traditional Chinese',
     en: 'English'
   },
   header: {

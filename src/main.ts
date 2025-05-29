@@ -6,6 +6,8 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import 'element-plus/dist/index.css';
 import i18n from './i18n'
 
+console.log('当前语言:', i18n.global.locale.value)
+
 const app = createApp(App);
 app.use(ElementPlus);
 app.use(i18n);

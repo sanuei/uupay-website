@@ -19,7 +19,7 @@ const selectedLanguage = ref(localStorage.getItem('language') || 'zh')
 
 const languageList = computed(() => [
   { label: t('language.zh'), value: 'zh' },
-  { label: t('language.zhTW'), value: 'zhTw' },
+  { label: t('language.zhtw'), value: 'zhtw' },
   { label: t('language.en'), value: 'en' },
 ])
 
