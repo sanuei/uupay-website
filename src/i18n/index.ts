@@ -1,20 +1,23 @@
 import { createI18n } from 'vue-i18n'
-import en from '../locales/en'
-import zh from '../locales/zh'
-import zhtw from '../locales/zhtw.ts'
+import en from './locales/en.ts'
+import zh from './locales/zh.ts'
+import zhtw from './locales/zhtw.ts'
 
 const savedLang = (localStorage.getItem('language') || 'zh').toLowerCase()
 
+const messages: { [key: string]: any } = {
+  en,
+  zh,
+  zhtw
+}
+
 const i18n = createI18n({
-  legacy: false, // 使用 Composition API
+  legacy: false,
+  globalInjection: true,
   locale: savedLang,
   fallbackLocale: 'zh',
-  globalInjection: true,
-  messages: {
-    en,
-    zh,
-    zhtw
-  }
+  messages,
+  fullInstall: true,
 })
 
 export default i18n

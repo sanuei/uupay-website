@@ -1,4 +1,4 @@
-export default {
+const zhtw = {
   language: {
     zh: '簡體中文',
     zhtw: '繁體中文',
@@ -46,6 +46,7 @@ export default {
     content11: '快速、無縫、安全：使用ABC Pay 將加密貨幣轉化為日常購買',
     content12: '請放心，您的數據和交易受到相同級別的安全保護',
     content13: '多種付款方式',
+    downloadTitle: '下載應用程式，開設賬戶並開始使用',
   },
   explore: {
     headTitle: '常見問題',
@@ -86,3 +87,5 @@ export default {
     policy: '隱私政策',
   }
 }
+
+export default zhtw

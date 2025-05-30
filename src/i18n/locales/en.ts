@@ -1,4 +1,4 @@
-export default {
+const en = {
   language: {
     zh: 'Simplified Chinese',
     zhtw: 'Traditional Chinese',
@@ -17,6 +17,7 @@ export default {
     startBtn: 'Get Started',
     getCardBtn: 'Get Your Card Now',
     downloadBtn: 'Download',
+    downloadTitle: 'Download the app, open an account, and get started.',
   },
   feature: {
     title1: 'Our Features',
@@ -86,3 +87,5 @@ export default {
     policy: 'Privacy Policy',
   }
 }
+
+export default en

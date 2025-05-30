@@ -13,7 +13,7 @@ defineProps<{
 const featureClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full before:bg-background-blue before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
 const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full  before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
 
-const { locale, t } = useI18n()
+const { t, locale } = useI18n()
 
 const selectedLanguage = ref(localStorage.getItem('language') || 'zh')
 
