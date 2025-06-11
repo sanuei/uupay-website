@@ -4,6 +4,7 @@
 // import ReviewCard from './ReviewCard.vue'
 import 'swiper/css'
 import {useI18n} from "vue-i18n";
+import { DOWNLINK } from "@/constants";
 
 // const SECTION_BG = 'review-section-bg'
 // const FOOTER_BG = {
@@ -23,7 +24,7 @@ const { t } = useI18n()
       <div class="review-header-intro">
         {{ t('review.startNotice') }}
         <div class="start-use">
-          {{ t('review.startBtn') }}
+          <a :href="DOWNLINK">{{ t('review.startBtn') }}</a>
         </div>
       </div>
     </div>
@@ -45,7 +46,7 @@ const { t } = useI18n()
             {{ t('review.fq') }}
           </div>
           <div class="review-support-row">
-            {{ t('review.downloadApp')}}
+            <a :href="DOWNLINK">{{ t('review.downloadApp') }}</a>
           </div>
           <div class="review-support-row">
             {{ t('review.term')}}

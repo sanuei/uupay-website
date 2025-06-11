@@ -2,7 +2,8 @@
 // import { useScroll } from '@vueuse/core'
 
 import { computed, ref } from "vue";
-import { useI18n } from 'vue-i18n'
+import { useI18n } from 'vue-i18n';
+import { DOWNLINK } from "@/constants";
 
 defineProps<{
   isFeature: boolean
@@ -109,7 +110,7 @@ const changeLanguage = (lang: any) => {
     </div>
     <div class="header-button">
       <div class="header-button-start">
-        {{ t('header.startBtn') }}
+        <a :href="DOWNLINK">{{ t('header.startBtn') }}</a>
       </div>
       <div class="header-button-get">
         {{ t('header.getCardBtn') }}
@@ -125,7 +126,7 @@ const changeLanguage = (lang: any) => {
     </div>
     <div class="header-download-btn">
       <div>
-        {{ t('header.downloadBtn') }}
+        <a :href="DOWNLINK">{{ t('header.downloadBtn') }}</a>
       </div>
     </div>
     <div class="header-img">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import { useScroll } from '@vueuse/core'
-import { DOWNLINK, CONTACTUS } from '@/constants/index'
 import { computed, ref } from "vue";
+import { DOWNLINK } from '@/constants/index'
 import { useI18n } from 'vue-i18n'
 
 defineProps<{
@@ -89,11 +89,11 @@ const changeLanguage = (lang: any) => {
           {{ t('header.title3') }}
         </div>
         <div class="content-left-side-content-use">
-          <div class="content-left-side-content-start">
+          <div class="content-left-side-content-start" >
             <a :href="DOWNLINK">{{ t('header.startBtn') }}</a>
           </div>
           <div class="content-left-side-content-getCard">
-            <a :href="CONTACTUS">{{ t('header.getCardBtn') }}</a>
+            {{ t('header.getCardBtn') }}
           </div>
         </div>
         <div class="download-content">
