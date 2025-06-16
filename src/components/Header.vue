@@ -113,15 +113,15 @@ const changeLanguage = (lang: any) => {
         <a :href="DOWNLINK">{{ t('header.startBtn') }}</a>
       </div>
       <div class="header-button-get">
-        {{ t('header.getCardBtn') }}
+        <a :href="DOWNLINK">{{ t('header.getCardBtn') }}</a>
       </div>
     </div>
     <div class="header-download-img">
       <div class="download-ios">
-        <img src="@/assets/images/download-ios.png" alt=""/>
+        <a :href="DOWNLINK"><img src="@/assets/images/download-ios.png" alt=""/></a>
       </div>
       <div class="download-android">
-        <img src="@/assets/images/download-android.png" alt=""/>
+        <a :href="DOWNLINK"><img src="@/assets/images/download-android.png" alt=""/></a>
       </div>
     </div>
     <div class="header-download-btn">

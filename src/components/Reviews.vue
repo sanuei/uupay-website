@@ -35,10 +35,10 @@ const { t } = useI18n()
         <div class="review-bottom">
           <div class="review-icon">
             <div class="download-ios">
-              <img src="@/assets/images/download-ios.png" alt="" />
+              <a :href="DOWNLINK"><img src="@/assets/images/download-ios.png" alt="" /></a>
             </div>
             <div class="download-android">
-              <img src="@/assets/images/download-android.png" alt="" />
+              <a :href="DOWNLINK"><img src="@/assets/images/download-android.png" alt="" /></a>
             </div>
           </div>
           <div class="review-support">
