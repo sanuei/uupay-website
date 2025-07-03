@@ -90,7 +90,7 @@ const { t } = useI18n()
     </div>
     <div class="review-bottom-copyright">
       <div class="review-bottom-copyright-title">
-        © 2025 ABCPay {{ t('review.rightServe')}}
+        © 2025 UUPAY {{ t('review.rightServe')}}
       </div>
       <div class="review-bottom-copyright-condition">
         <div class="review-bottom-copyright-condition-title">

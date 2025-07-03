@@ -96,7 +96,7 @@ const { t } = useI18n()
           {{ t('review.otherTerm')}}
         </div>
         <div class="review-part-header-copyright">
-          Copyright © ABC Pay 2025 All Rights Reserved
+          Copyright © UUPAY 2025 All Rights Reserved
         </div>
       </div>
     </section>
