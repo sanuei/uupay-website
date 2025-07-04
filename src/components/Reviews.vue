@@ -12,6 +12,23 @@ const SECTION_BG = 'review-section-bg'
 //     desktop: 'footer-desktop-bg'
 // }
 const { t } = useI18n()
+
+const copyInvitationCode = () => {
+  const url = new URL(window.location.href)
+  const invitationCode = url.searchParams.get('invitationCode')
+
+  if (invitationCode) {
+    navigator.clipboard.writeText(url.href)
+      .then(() => {
+        console.log('包含邀请码的链接已复制:', url.href)
+      })
+      .catch(err => {
+        console.error('复制失败:', err)
+      })
+  } else {
+    console.log('没有邀请码，不执行复制')
+  }
+}
 </script>
 
 <template>
@@ -23,7 +40,7 @@ const { t } = useI18n()
             <span class="title-name">{{ t('review.name') }}</span>
           </div>
           <div class="review-part-header-button">
-            <a :href="DOWNLINK">{{ t('header.startBtn') }}</a>
+            <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.startBtn') }}</a>
           </div>
         </div>
         <div class="review-part-header-content" style="margin-top: 10px">
@@ -35,10 +52,10 @@ const { t } = useI18n()
         <div class="review-bottom">
           <div class="review-icon">
             <div class="download-ios">
-              <a :href="DOWNLINK"><img src="@/assets/images/download-ios.png" alt="" /></a>
+              <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-ios.png" alt="" /></a>
             </div>
             <div class="download-android">
-              <a :href="DOWNLINK"><img src="@/assets/images/download-android.png" alt="" /></a>
+              <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-android.png" alt="" /></a>
             </div>
           </div>
           <div class="review-support">
@@ -50,7 +67,7 @@ const { t } = useI18n()
                 {{ t('review.fq') }}
               </div>
               <div class="review-support-row">
-                <a :href="DOWNLINK">{{ t('review.downloadApp') }}</a>
+                <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('review.downloadApp') }}</a>
               </div>
               <div class="review-support-row">
                 {{ t('review.term')}}

@@ -9,6 +9,23 @@ defineProps<{
   isExplore: boolean
 }>()
 
+const copyInvitationCode = () => {
+  const url = new URL(window.location.href)
+  const invitationCode = url.searchParams.get('invitationCode')
+console.log('invitationCode',invitationCode)
+  if (invitationCode) {
+    navigator.clipboard.writeText(url.href)
+      .then(() => {
+        console.log('包含邀请码的链接已复制:', url.href)
+      })
+      .catch(err => {
+        console.error('复制失败:', err)
+      })
+  } else {
+    console.log('没有邀请码，不执行复制')
+  }
+}
+
 // const { y } = useScroll(window)
 const featureClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full before:bg-background-blue before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
 const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full  before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
@@ -90,18 +107,18 @@ const changeLanguage = (lang: any) => {
         </div>
         <div class="content-left-side-content-use">
           <div class="content-left-side-content-start" >
-            <a :href="DOWNLINK">{{ t('header.startBtn') }}</a>
+            <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.startBtn') }}</a>
           </div>
           <div class="content-left-side-content-getCard">
-            <a :href="DOWNLINK">{{ t('header.getCardBtn') }}</a>
+            <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.getCardBtn') }}</a>
           </div>
         </div>
         <div class="download-content">
           <div class="download-ios">
-            <a :href="DOWNLINK"><img src="@/assets/images/download-ios.png" alt="" /></a>
+            <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-ios.png" alt="" /></a>
           </div>
           <div class="download-android">
-            <a :href="DOWNLINK"><img src="@/assets/images/download-android.png" alt="" /></a>
+            <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-android.png" alt="" /></a>
           </div>
         </div>
       </div>

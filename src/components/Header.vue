@@ -38,6 +38,23 @@ const changeLanguage = (lang: any) => {
   switchLanguage(lang.value)
   selectedLanguage.value = lang.value
 }
+
+const copyInvitationCode = () => {
+  const url = new URL(window.location.href)
+  const invitationCode = url.searchParams.get('invitationCode')
+
+  if (invitationCode) {
+    navigator.clipboard.writeText(url.href)
+      .then(() => {
+        console.log('包含邀请码的链接已复制:', url.href)
+      })
+      .catch(err => {
+        console.error('复制失败:', err)
+      })
+  } else {
+    console.log('没有邀请码，不执行复制')
+  }
+}
 </script>
 <template>
   <!--    <header class="h-[70px] lg:h-[103px] z-50 transition-all sticky top-0" :class="[y >= 10 && 'bg-white']">-->
@@ -110,23 +127,23 @@ const changeLanguage = (lang: any) => {
     </div>
     <div class="header-button">
       <div class="header-button-start">
-        <a :href="DOWNLINK">{{ t('header.startBtn') }}</a>
+        <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.startBtn') }}</a>
       </div>
       <div class="header-button-get">
-        <a :href="DOWNLINK">{{ t('header.getCardBtn') }}</a>
+        <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.getCardBtn') }}</a>
       </div>
     </div>
     <div class="header-download-img">
       <div class="download-ios">
-        <a :href="DOWNLINK"><img src="@/assets/images/download-ios.png" alt=""/></a>
+        <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-ios.png" alt=""/></a>
       </div>
       <div class="download-android">
-        <a :href="DOWNLINK"><img src="@/assets/images/download-android.png" alt=""/></a>
+        <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-android.png" alt=""/></a>
       </div>
     </div>
     <div class="header-download-btn">
       <div>
-        <a :href="DOWNLINK">{{ t('header.downloadBtn') }}</a>
+        <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.downloadBtn') }}</a>
       </div>
     </div>
     <div class="header-img">
