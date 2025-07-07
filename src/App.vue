@@ -38,7 +38,7 @@ const { isFeature, isExplore } = useScroll(
 
     <!-- Explore -->
     <Explore  v-if="isMobile" ref="exploreRef" />
-    <ExploreWeb v-else ref="exploreRef" />
+<!--    <ExploreWeb v-else ref="exploreRef" />-->
     <!-- Reviews -->
     <Reviews  v-if="isMobile" />
     <ReviewsWeb v-else />

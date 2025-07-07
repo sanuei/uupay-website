@@ -32,32 +32,21 @@ const copyInvitationCode = () => {
 </script>
 
 <template>
-    <section :class="['overflow-x-hidden mt-10 md:mt-[117px] relative', SECTION_BG]">
+    <section :class="['overflow-x-hidden md:mt-[117px] relative', SECTION_BG]">
       <div class="review-part">
         <div class="review-part-header">
           <div class="review-part-header-logo">
-            <img src="@/assets/images/header-icon-logo-web.png" alt="" />
+            <img src="@/assets/images/header-icon-logo-web-dark.png" style="width: 32px; height: 32px;" alt="" />
             <span class="title-name">{{ t('review.name') }}</span>
           </div>
-          <div class="review-part-header-button">
-            <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.startBtn') }}</a>
-          </div>
         </div>
-        <div class="review-part-header-content" style="margin-top: 10px">
-          {{ t('review.title1') }}
+        <div style="color: #596780; font-size: 12px; margin-top: 10px;">
+          {{ t('feature.content12') }}
         </div>
-        <div class="review-part-header-content" style="border-bottom: 1px solid #979797; padding-bottom: 10px">
-          {{ t('review.title2') }}
+        <div style="color: #596780; font-size: 12px;">
+          {{ t('feature.content13') }}
         </div>
         <div class="review-bottom">
-          <div class="review-icon">
-            <div class="download-ios">
-              <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-ios.png" alt="" /></a>
-            </div>
-            <div class="download-android">
-              <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-android.png" alt="" /></a>
-            </div>
-          </div>
           <div class="review-support">
             <div class="review-support-content">
               <div class="review-support-row-head">
@@ -120,7 +109,7 @@ const copyInvitationCode = () => {
 </template>
 <style scoped>
 .review-part {
-  background: #2D2D2D;
+  background: #fff;
   padding: 10px 20px;
 
   .review-part-header {
@@ -132,8 +121,9 @@ const copyInvitationCode = () => {
       align-items: center;
 
       .title-name {
-        font-size: 20px;
-        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        color: #000;
         margin-left: 10px;
       }
     }
@@ -141,7 +131,7 @@ const copyInvitationCode = () => {
     .review-part-header-button {
       font-size: 10px;
       background: #1573FF;
-      color: #fff;
+      color: #000;
       display: flex;
       align-items: center;
       padding: 10px 20px;
@@ -151,7 +141,7 @@ const copyInvitationCode = () => {
 
   .review-part-header-content {
     font-size: 8px;
-    color: #fff;
+    color: #000;
   }
 
   .review-bottom {
@@ -171,35 +161,39 @@ const copyInvitationCode = () => {
     }
 
     .review-support {
-      display: flex;
+      display: contents;
 
       .review-support-content {
         margin-right: 25px;
+
         .review-support-row-head {
-          color: #fff;
-          font-size: 10px;
+          color: #1A202C;
+          font-size: 12px;
           margin-top: 10px;
+          font-weight: 600;
         }
 
         .review-support-row {
-          color: #fff;
-          font-size: 10px;
+          color: #596780;
+          font-size: 12px;
           margin-top: 10px;
         }
       }
     }
   }
   .review-part-header-condition {
+    border-top: 1px solid #979797;
     font-size: 10px;
-    color: #fff;
+    color: #000;
     display: flex;
     justify-content: center;
     margin-top: 15px;
+    padding-top: 20px;
   }
 
   .review-part-header-copyright {
     font-size: 10px;
-    color: #fff;
+    color: #000;
     display: flex;
     justify-content: center;
     margin-top: 15px;

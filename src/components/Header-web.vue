@@ -12,7 +12,7 @@ defineProps<{
 const copyInvitationCode = () => {
   const url = new URL(window.location.href)
   const invitationCode = url.searchParams.get('invitationCode')
-console.log('invitationCode',invitationCode)
+
   if (invitationCode) {
     navigator.clipboard.writeText(url.href)
       .then(() => {
@@ -58,26 +58,31 @@ const changeLanguage = (lang: any) => {
   <div class="header-part">
     <div class="header-container">
       <div class="name-side">
-        <img src="@/assets/images/header-icon-logo-web.png" alt="" />
+        <img src="@/assets/images/header-icon-logo-web.png" style="width: 32px; height: 32px;" alt="" />
         <span class="title-name">{{ t('header.name') }}</span>
       </div>
       <div class="option-side">
         <div class="option-type">
-          {{ t('header.about') }}
+          {{ t('header.product') }}
         </div>
         <div class="option-type">
-          <a href="#feature" :class="['relative', isFeature && featureClass]">{{ t('header.feature') }}</a>
+          {{ t('header.profit') }}
+        </div>
+        <div class="option-type">
+          {{ t('header.progress') }}
         </div>
         <div class="option-type">
           <a href="#explore" :class="['relative', isExplore && exploreClass]">{{ t('header.qa') }}</a>
         </div>
         <div class="option-type">
-          {{ t('header.contact') }}
+          {{ t('header.about') }}
         </div>
+      </div>
+      <div class="language-side">
         <div class="option-type-language">
           <el-dropdown trigger="click">
           <span class="el-dropdown-link">
-            <img src="@/assets/images/icon-language.png" style="margin-right: 5px" alt="" />
+            <img src="@/assets/images/icon-language.png" style="width: 16px; height: 16px; margin-right: 5px" alt="" />
             {{ currentLanguageLabel }}
             <el-icon class="el-icon--right">
               <arrow-down/>
@@ -95,12 +100,12 @@ const changeLanguage = (lang: any) => {
       </div>
     </div>
     <div class="content">
-      <div class="content-left-side">
+      <div class="content-center-side">
         <div class="content-left-side-title">
-          {{ t('header.title1') }} {{ t('header.title2') }}
+          {{ t('header.title1') }}
         </div>
         <div class="content-left-side-content">
-          {{ t('header.title4') }}
+          {{ t('header.title2') }}
         </div>
         <div class="content-left-side-short-content">
           {{ t('header.title3') }}
@@ -122,8 +127,16 @@ const changeLanguage = (lang: any) => {
           </div>
         </div>
       </div>
-      <div class="content-right-side">
-        <img src="@/assets/images/banner-right-bg.png" alt="" />
+<!--      <div class="content-right-side">-->
+<!--        <img src="@/assets/images/banner-right-bg.png" alt="" />-->
+<!--      </div>-->
+    </div>
+    <div class="image-side">
+      <div style="position: absolute; left: 0; margin-top: 240px; margin-left: 50px">
+        <img src="@/assets/images/icon-card.png" style="width: 343px; height: 218px" alt="" />
+      </div>
+      <div style="position: absolute; margin-top: -260px; right: 0">
+        <img src="@/assets/images/icon-take-phone.png" style="width: 695px; height: 739px" alt="" />
       </div>
     </div>
   </div>
@@ -134,27 +147,27 @@ const changeLanguage = (lang: any) => {
 
 <style scoped>
 .header-part {
-  background-image: url('@/assets/images/banner-background.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #000;
+  height: 1120px;
 
   .header-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 60px;
-    background: #DBDBDB14;
+    background: #000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 
     .name-side {
       display: flex;
       align-content: center;
-      flex: 1;
 
       .title-name {
         display: flex;
         align-items: center;
         color: #fff;
         margin-left: 10px;
-        font-size: 24px;
+        font-size: 16px;
       }
     }
 
@@ -167,19 +180,24 @@ const changeLanguage = (lang: any) => {
         color: #fff;
         font-size: 14px;
       }
+    }
+
+    .language-side {
+      display: flex;
+      align-items: center;
 
       .option-type-language {
         margin: 0 20px;
         color: #fff;
         font-size: 14px;
-        border: 1px solid #fff;
+        background-color: #EEEADF;
         padding: 10px 20px;
         border-radius: 50px;
         display: flex;
         align-items: center;
 
         .el-dropdown-link {
-          color: #fff;
+          color: #000;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -193,9 +211,10 @@ const changeLanguage = (lang: any) => {
     justify-content: space-between;
     margin-top: 100px;
 
-    .content-left-side {
+    .content-center-side {
       flex: 1;
       margin: 20px 30px 20px 60px;
+      text-align: center;
 
       .content-left-side-title {
         color: #fff;
@@ -205,38 +224,40 @@ const changeLanguage = (lang: any) => {
 
       .content-left-side-content {
         color: #fff;
-        font-size: 18px;
-        margin-bottom: 40px;
+        font-size: 24px;
       }
 
       .content-left-side-short-content {
         color: #fff;
+        font-size: 24px;
         margin-bottom: 40px;
       }
 
       .content-left-side-content-use {
         display: flex;
-        margin-bottom: 50px;
+        justify-content: center;
+        margin-bottom: 100px;
 
         .content-left-side-content-start {
-          background: #0052B4;
-          color: #fff;
+          background: #EEEADF;
+          color: #000;
           font-size: 20px;
-          padding: 10px 20px;
-          border-radius: 15px;
+          padding: 10px 50px;
+          border-radius: 25px;
         }
 
         .content-left-side-content-getCard {
-          border: 1px solid #fff;
+          background-color: #4C4C4C;
           color: #fff;
-          padding: 10px 20px;
-          border-radius: 15px;
+          padding: 10px 50px;
+          border-radius: 25px;
           margin-left: 25px;
         }
       }
 
       .download-content {
         display: flex;
+        justify-content: center;
 
         .download-ios {
           margin-right: 25px;
@@ -250,6 +271,11 @@ const changeLanguage = (lang: any) => {
       justify-content: center;
       align-items: center;
     }
+  }
+
+  .image-side {
+    display: flex;
+    justify-content: space-between;
   }
 }
 

@@ -57,38 +57,16 @@ const copyInvitationCode = () => {
 }
 </script>
 <template>
-  <!--    <header class="h-[70px] lg:h-[103px] z-50 transition-all sticky top-0" :class="[y >= 10 && 'bg-white']">-->
-  <!--        <ul class="flex items-center max-w-[1280px] px-[23px] mx-auto h-full">-->
-  <!--            <li class="flex items-center">-->
-  <!--                <img class="w-[38px] lg:w-[53px]" src="@/assets/images/header-icon.svg" alt="header icon" />-->
-  <!--                <span class="ml-[9px] font-bold text-2xl lg:text-[30px]">有得聊</span>-->
-  <!--            </li>-->
-  <!--            <li class="ml-[23px] lg:ml-[62px] text-base lg:text-xl font-semibold text-text-blue">-->
-  <!--                <a href="#feature" :class="['relative', isFeature && featureClass]">特征</a>-->
-  <!--            </li>-->
-  <!--            <li class="ml-[23px] lg:ml-[60px] text-base lg:text-xl font-semibold text-text-blue">-->
-  <!--                <a href="#explore" :class="['relative', isExplore && exploreClass]">发现</a>-->
-  <!--            </li>-->
-  <!--        </ul>-->
-  <!--    </header>-->
   <div class="header-part">
-    <div>
-      <img src="@/assets/images/header-phone-bg.png"
-           style="max-width: 104%; width: 104%; height: 100%; position: absolute; left: -4px; z-index: -1;" alt=""/>
-    </div>
     <div class="header-head">
       <div class="name-side">
-        <img src="@/assets/images/header-icon-logo-web.png" alt=""/>
+        <img src="@/assets/images/header-icon-logo-web.png" style="width: 32px; height: 32px;" alt=""/>
         <span class="title-name">{{ t('header.name') }}</span>
       </div>
       <div class="header-language">
         <el-dropdown trigger="click">
           <span class="el-dropdown-link">
-            <img src="@/assets/images/icon-language.png" style="margin-right: 5px" alt="" />
-            {{ currentLanguageLabel }}
-            <el-icon class="el-icon--right">
-              <arrow-down/>
-            </el-icon>
+            <img src="@/assets/images/icon-language.png" style="width: 24px; height: 24px;" alt="" />
           </span>
           <template #dropdown>
             <el-dropdown-menu>
@@ -102,28 +80,31 @@ const copyInvitationCode = () => {
     </div>
     <div class="header-about">
       <div class="header-about-option">
-        {{ t('header.about') }}
+        {{ t('header.product') }}
       </div>
       <div class="header-about-option">
-        <a href="#feature" :class="['relative', isFeature && featureClass]">{{ t('header.feature') }}</a>
+        <a href="#feature" :class="['relative', isFeature && featureClass]">{{ t('header.profit') }}</a>
+      </div>
+      <div class="header-about-option">
+        <a href="#explore" :class="['relative', isExplore && exploreClass]">{{ t('header.progress') }}</a>
       </div>
       <div class="header-about-option">
         <a href="#explore" :class="['relative', isExplore && exploreClass]">{{ t('header.qa') }}</a>
       </div>
       <div class="header-about-option">
-        <a href="#explore" :class="['relative', isExplore && exploreClass]">{{ t('header.contact') }}</a>
+        {{ t('header.about') }}
       </div>
     </div>
     <div class="header-big-title">
       <div class="header-big-title-text">
         {{ t('header.title1') }}
       </div>
-      <div class="header-big-title-text">
+      <div style="color: #fff; font-size: 12px; margin-top: 20px;">
         {{ t('header.title2') }}
       </div>
-    </div>
-    <div class="header-small-title">
-      {{ t('header.title3') }}
+      <div style="color: #fff; font-size: 12px;">
+        {{ t('header.title3') }}
+      </div>
     </div>
     <div class="header-button">
       <div class="header-button-start">
@@ -141,13 +122,13 @@ const copyInvitationCode = () => {
         <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-android.png" alt=""/></a>
       </div>
     </div>
-    <div class="header-download-btn">
-      <div>
-        <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.downloadBtn') }}</a>
-      </div>
-    </div>
+<!--    <div class="header-download-btn">-->
+<!--      <div>-->
+<!--        <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.downloadBtn') }}</a>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="header-img">
-      <img src="@/assets/images/header-phone-bottom.png" alt=""/>
+      <img src="@/assets/images/icon-take-phone.png" alt=""/>
     </div>
     <div class="header-img" style="margin-top: 0">
       <img src="@/assets/images/header-partner.png" style="width: 100%" alt=""/>
@@ -156,6 +137,8 @@ const copyInvitationCode = () => {
 </template>
 <style scoped>
 .header-part {
+  background-color: #000;
+
   .header-head {
     display: flex;
     justify-content: space-between;
@@ -168,17 +151,19 @@ const copyInvitationCode = () => {
       .title-name {
         color: #fff;
         margin-left: 10px;
-        font-size: 20px;
+        font-weight: 700;
+        font-size: 16px;
       }
     }
 
     .header-language {
+      background-color: #EEEADF;
       color: #fff;
       font-size: 14px;
       display: flex;
       align-items: center;
       border: 1px solid #fff;
-      padding: 10px 20px;
+      padding: 5px;
       border-radius: 50px;
 
       .el-dropdown-link {
@@ -207,6 +192,7 @@ const copyInvitationCode = () => {
     .header-big-title-text {
       color: #fff;
       font-size: 32px;
+      font-weight: 600;
     }
   }
 
@@ -225,11 +211,12 @@ const copyInvitationCode = () => {
       flex: 1;
       display: flex;
       justify-content: center;
-      color: #fff;
-      background: #0052B4;
+      color: #000;
+      background: #EEEADF;
       margin: 0 10px;
       padding: 10px 0;
       border-radius: 15px;
+      font-weight: 500;
     }
 
     .header-button-get {
@@ -237,10 +224,11 @@ const copyInvitationCode = () => {
       display: flex;
       justify-content: center;
       color: #fff;
-      border: 1px solid #fff;
+      background-color: #4C4C4C;
       margin: 0 10px;
       padding: 10px 0;
       border-radius: 15px;
+      font-weight: 500;
     }
   }
 
@@ -251,15 +239,15 @@ const copyInvitationCode = () => {
 
     .download-ios {
       img {
-        width: 90px;
-        height: 26px;
+        width: 100px;
+        height: 29px;
       }
     }
 
     .download-android {
       img {
-        width: 90px;
-        height: 26px;
+        width: 100px;
+        height: 29px;
         margin-left: 10px;
       }
     }

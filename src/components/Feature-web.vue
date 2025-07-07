@@ -1,11 +1,33 @@
 <script setup lang="ts">
 import {ref} from 'vue'
 import {useI18n} from "vue-i18n";
+import {DOWNLINK} from "@/constants";
 
 const el = ref<HTMLElement | null>(null)
 
 defineExpose({el})
 const { t } = useI18n()
+
+const selected = ref<'virtual' | 'physical'>('virtual')
+
+const activeCard = selected
+
+const copyInvitationCode = () => {
+  const url = new URL(window.location.href)
+  const invitationCode = url.searchParams.get('invitationCode')
+
+  if (invitationCode) {
+    navigator.clipboard.writeText(url.href)
+      .then(() => {
+        console.log('包含邀请码的链接已复制:', url.href)
+      })
+      .catch(err => {
+        console.error('复制失败:', err)
+      })
+  } else {
+    console.log('没有邀请码，不执行复制')
+  }
+}
 </script>
 <template>
   <section class="relative" ref="el">
@@ -16,22 +38,33 @@ const { t } = useI18n()
           {{ t('feature.title1') }}
         </div>
         <div class="feature-header-content">
-          {{ t('feature.content1') }}
+          <div style="font-size: 40px; font-weight: 700">
+            {{ t('feature.content1') }}
+          </div>
+          <div style="font-size: 20px; color: #596780">
+            {{ t('feature.content5') }}
+          </div>
         </div>
         <div class="feature-header-short-content">
-          {{ t('feature.content2') }}
+
         </div>
       </div>
       <div class="feature-function">
         <div class="feature-function-intro">
+          <div class="feature-part-function-img">
+            <img src="@/assets/images/transfer-background.png" alt="" />
+          </div>
           <div class="feature-function-intro-title">
-            {{ t('feature.title12') }}
+            {{ t('feature.title2') }}
           </div>
           <div class="feature-function-intro-content">
-            {{ t('feature.content3') }}
+            {{ t('feature.content2') }}
           </div>
         </div>
         <div class="feature-function-intro">
+          <div class="feature-part-function-img">
+            <img src="@/assets/images/transferDetail-background.png" alt="" />
+          </div>
           <div class="feature-function-intro-title">
             {{ t('feature.title3') }}
           </div>
@@ -40,132 +73,124 @@ const { t } = useI18n()
           </div>
         </div>
         <div class="feature-function-intro">
+          <div class="feature-part-function-img">
+            <img src="@/assets/images/card-payment-background.png" alt="" />
+          </div>
           <div class="feature-function-intro-title">
             {{ t('feature.title4') }}
           </div>
           <div class="feature-function-intro-content">
-            {{ t('feature.content5') }}
+            {{ t('feature.content7') }}
           </div>
         </div>
       </div>
     </div>
-    <div class="feature-medium-part">
-      <div class="feature-medium-part-title">
-        {{ t('feature.title5') }}
-      </div>
+    <div class="feature-medium-part" style="background-color: #000; padding: 100px 50px;">
       <div class="feature-medium-part-content">
         <div class="feature-medium-part-bg">
-          <img src="@/assets/images/feature-medium-bg.png" alt=""/>
-        </div>
-        <div class="feature-medium-part-medium-bg">
-          <img src="@/assets/images/row-line.png" alt=""/>
+          <img src="@/assets/images/event-background.png" style="width: 239px;" alt=""/>
         </div>
         <div class="feature-medium-part-intro">
           <div class="feature-medium-part-intro-column">
-            <div class="feature-medium-part-intro-column-img">
-              <img src="@/assets/images/exchange.png" alt=""/>
-            </div>
-            <div class="feature-medium-part-intro-column-title">
+            <div class="feature-medium-part-intro-column-title" style="font-weight: 600">
               {{ t('feature.title6') }}
             </div>
             <div class="feature-medium-part-intro-column-content">
-              {{ t('feature.content6') }}
+              {{ t('feature.title5') }}
+            </div>
+            <div class="feature-medium-part-intro-column-content-other">
+              {{ t('feature.content3') }}
             </div>
           </div>
-
-          <div class="feature-medium-part-intro-column">
-            <div class="feature-medium-part-intro-column-img">
-              <img src="@/assets/images/security.png" alt=""/>
+          <div class="feature-medium-part-intro-column-step">
+            <div class="feature-medium-part-intro-column-step-progress">
+              <div>
+                <img src="@/assets/images/icon-one.png" style="width: 48px;" alt="" />
+              </div>
+              <div class="text">
+                {{ t('feature.content4') }}
+              </div>
             </div>
-            <div class="feature-medium-part-intro-column-title">
-              {{ t('feature.title7') }}
+            <div class="feature-medium-part-medium-bg">
+              <img src="@/assets/images/row-line.png" alt=""/>
             </div>
-            <div class="feature-medium-part-intro-column-content">
-              {{ t('feature.content7') }}
+            <div class="feature-medium-part-intro-column-step-progress">
+              <div>
+                <img src="@/assets/images/icon-two.png" style="width: 48px;" alt="" />
+              </div>
+              <div class="text">
+                {{ t('feature.content8') }}
+              </div>
             </div>
-          </div>
-
-          <div class="feature-medium-part-intro-column">
-            <div class="feature-medium-part-intro-column-img">
-              <img src="@/assets/images/24-support.png" alt=""/>
+            <div class="feature-medium-part-medium-bg">
+              <img src="@/assets/images/row-line-other.png" alt=""/>
             </div>
-            <div class="feature-medium-part-intro-column-title">
-              {{ t('feature.title8') }}
-            </div>
-            <div class="feature-medium-part-intro-column-content">
-              {{ t('feature.content8') }}
-            </div>
-          </div>
-
-          <div class="feature-medium-part-intro-column">
-            <div class="feature-medium-part-intro-column-img">
-              <img src="@/assets/images/moneys.png" alt=""/>
-            </div>
-            <div class="feature-medium-part-intro-column-title">
-              {{ t('feature.title9') }}
-            </div>
-            <div class="feature-medium-part-intro-column-content">
-              {{ t('feature.content9') }}
+            <div class="feature-medium-part-intro-column-step-progress">
+              <div>
+                <img src="@/assets/images/icon-three.png" style="width: 48px;" alt="" />
+              </div>
+              <div class="text">
+                {{ t('feature.content6') }}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="feature-medium-part" style="margin-top: 200px">
+    <div class="feature-medium-part" style="padding: 100px 60px;">
       <div class="feature-medium-part-content">
-        <div class="feature-medium-part-bg">
-          <img src="@/assets/images/feature-medium-bg-second.png" alt=""/>
+        <div>
+          <div style="color: #0052B4; font-size: 20px; font-weight: 600;">
+            {{ t('feature.title7') }}
+          </div>
+          <div style="color: #0D121F; font-size: 40px; font-weight: 700; margin-top: 20px;">
+            {{ t('feature.title8') }}
+          </div>
+          <div class="toggle-wrapper">
+            <div
+              :class="['toggle-btn', selected === 'virtual' ? 'active' : '']"
+              @click="selected = 'virtual'"
+            >
+              {{ t('feature.virtualCard') }}
+            </div>
+            <div
+              :class="['toggle-btn', selected === 'physical' ? 'active' : '']"
+              @click="selected = 'physical'"
+            >
+              {{ t('feature.physicalCard') }}
+            </div>
+          </div>
+          <div style="color: #0D121F; font-size: 24px; font-weight: 700; margin: 40px 0;">
+            {{ t('feature.title9') }}
+          </div>
+          <div style="color: #0D121F; font-size: 18px; font-weight: 500; display: flex">
+            <img src="@/assets/images/icon-tick.png" style="width: 24px; height: 24px; margin-right: 10px;" alt="" />
+            {{ t('feature.title10') }}
+          </div>
+          <div style="color: #0D121F; font-size: 18px; font-weight: 500; display: flex; margin: 20px 0;">
+            <img src="@/assets/images/icon-tick.png" style="width: 24px; height: 24px; margin-right: 10px;" alt="" />
+            {{ t('feature.title7') }}
+          </div>
+          <div style="color: #0D121F; font-size: 18px; font-weight: 500; display: flex; margin: 20px 0;">
+            <img src="@/assets/images/icon-tick.png" style="width: 24px; height: 24px; margin-right: 10px;" alt="" />
+            {{ t('feature.title11') }}
+          </div>
         </div>
-        <div class="feature-medium-part-medium-bg">
-          <img src="@/assets/images/row-line.png" alt=""/>
-        </div>
-        <div class="feature-medium-part-intro">
-          <div class="feature-medium-part-intro-column">
-            <div class="feature-medium-part-intro-column-img">
-              <img src="@/assets/images/moneys.png" alt=""/>
+        <div class="feature-medium-part-content-img">
+          <div class="card-container">
+            <div
+              class="card card-virtual"
+              :class="{ active: activeCard === 'virtual' }"
+            >
+              <img src="@/assets/images/virtual-card.png" alt=""/>
             </div>
-            <div class="feature-medium-part-intro-column-title">
-              {{ t('feature.title10') }}
-            </div>
-            <div class="feature-medium-part-intro-column-content">
-              {{ t('feature.content10') }}
-            </div>
-          </div>
 
-          <div class="feature-medium-part-intro-column">
-            <div class="feature-medium-part-intro-column-img">
-              <img src="@/assets/images/security.png" alt=""/>
-            </div>
-            <div class="feature-medium-part-intro-column-title">
-              {{ t('feature.title11') }}
-            </div>
-            <div class="feature-medium-part-intro-column-content">
-              {{ t('feature.content11') }}
-            </div>
-          </div>
-
-          <div class="feature-medium-part-intro-column">
-            <div class="feature-medium-part-intro-column-img">
-              <img src="@/assets/images/security.png" alt=""/>
-            </div>
-            <div class="feature-medium-part-intro-column-title">
-              {{ t('feature.title12') }}
-            </div>
-            <div class="feature-medium-part-intro-column-content">
-              {{ t('feature.content12') }}
-            </div>
-          </div>
-
-          <div class="feature-medium-part-intro-column">
-            <div class="feature-medium-part-intro-column-img">
-              <img src="@/assets/images/moneys.png" alt=""/>
-            </div>
-            <div class="feature-medium-part-intro-column-title">
-              {{ t('feature.title13') }}
-            </div>
-            <div class="feature-medium-part-intro-column-content">
-              {{ t('feature.content13') }}
+            <div
+              class="card card-physical"
+              :class="{ active: activeCard === 'physical' }"
+            >
+              <img src="@/assets/images/physical-card.png" alt=""/>
             </div>
           </div>
         </div>
@@ -174,19 +199,28 @@ const { t } = useI18n()
 
     <div class="download-part">
       <div class="download-part-bg">
-        <div class="download-part-image">
-          <img src="@/assets/images/downlaod-banner-bg.png" alt=""/>
-        </div>
         <div class="download-part-title">
-          {{ t('feature.downloadTitle') }}
+          <div class="title">
+            {{ t('header.downloadBtn') }}
+          </div>
+          <div style="font-size: 40px; font-weight: 600; color: #fff; margin: 50px 0;">
+            {{ t('feature.content9') }}
+          </div>
+          <div style="color: #fff; font-size: 20px; display: flex; align-items: center;">
+            <div>
+              {{ t('feature.content10') }}
+            </div>
+            <div style="color: #000; background-color: #fff; padding: 10px 50px; border-radius: 25px; margin-left: 20px; font-size: 16px; font-weight: 600;">
+              <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('feature.content11') }}</a>
+            </div>
+          </div>
+          <div style="display: flex; margin-top: 50px;">
+            <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-ios.png" alt=""/></a>
+            <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-android.png" alt="" style="margin-left: 30px;"/></a>
+          </div>
         </div>
-        <div class="download-content">
-          <div class="download-ios">
-            <img src="@/assets/images/download-ios.png" alt=""/>
-          </div>
-          <div class="download-android">
-            <img src="@/assets/images/download-android.png" alt=""/>
-          </div>
+        <div>
+          <img src="@/assets/images/icon-take-phone.png" style="width: 495px; height: 539px" alt="" />
         </div>
       </div>
     </div>
@@ -194,65 +228,68 @@ const { t } = useI18n()
 </template>
 <style scoped>
 .feature-part {
-  background-image: url('@/assets/images/feature-map.png');
-  background-repeat: no-repeat;
-  background-size: cover;
   padding: 60px 0;
 
   .feature-header {
-    margin: 60px 20px;
+    padding: 0 60px;
 
     .feature-header-title {
-      font-size: 40px;
-      margin: 30px 40px 10px 60px;
+      font-size: 20px;
+      margin-bottom: 10px;
     }
 
     .feature-header-content {
-      width: 60%;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
       font-size: 24px;
-      margin: 30px 40px 30px 60px;
+
+      div {
+        flex: 1;
+        text-align: left;
+      }
+
+      div:last-child {
+        text-align: left;
+      }
     }
 
     .feature-header-short-content {
       font-size: 24px;
-      margin: 30px 40px 30px 60px;
+      margin-top: 50px;
     }
   }
 
   .feature-function {
     display: flex;
     justify-content: space-between;
-    margin: 0 30px;
+    padding: 0 60px;
 
     .feature-function-intro {
       background: #FFFFFF66;
-      margin: 0 30px;
       border: 1px solid #FFFFFF66;
       padding: 10px 15px;
 
       .feature-function-intro-title {
-        font-size: 36px;
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 20px;
       }
 
       .feature-function-intro-content {
         font-size: 16px;
-        margin: 30px 0;
+        margin-top: 30px;
+        color: #596780;
       }
     }
   }
 }
 
 .feature-medium-part {
-  margin: 20px 70px;
-
-  .feature-medium-part-title {
-    font-size: 40px;
-    margin-bottom: 50px;
-  }
 
   .feature-medium-part-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
     .feature-medium-part-bg {
       width: 100%;
@@ -261,7 +298,9 @@ const { t } = useI18n()
     }
 
     .feature-medium-part-medium-bg {
-      width: 20%;
+      margin-left: 23px;
+      height: 25px;
+      width: 2px;
     }
 
     .feature-medium-part-intro {
@@ -278,25 +317,102 @@ const { t } = useI18n()
         }
 
         .feature-medium-part-intro-column-title {
+          color: #D9D9D9;
           font-weight: 500;
           font-size: 20px;
           margin-bottom: 10px;
         }
 
         .feature-medium-part-intro-column-content {
-          margin-bottom: 10px;
+          color: #fff;
+          font-size: 40px;
+          font-weight: 700;
+        }
+
+        .feature-medium-part-intro-column-content-other {
+          color: #90A3BF;
           font-size: 20px;
+          margin-top: 20px;
+        }
+      }
+
+      .feature-medium-part-intro-column-step {
+        padding: 0 40px;
+
+        .feature-medium-part-intro-column-step-progress {
+          display: flex;
+          align-items: center;
+
+          .text {
+            margin-left: 20px;
+            color: #fff;
+            font-weight:500;
+            font-size: 20px;
+          }
         }
       }
     }
   }
+
+  .feature-medium-part-content-img {
+
+    .card-container {
+      position: relative;
+      width: 302px;
+      height: 442px;
+      perspective: 1000px;
+      align-items: center;
+      display: flex;
+    }
+
+    .card {
+      position: absolute;
+      transition: all 0.5s ease;
+      transform: rotate(-5deg) translateY(20px);
+      z-index: 1;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card.active {
+      z-index: 2;
+      transform: rotate(0deg) translateY(0);
+    }
+  }
+
+  .toggle-wrapper {
+    display: flex;
+    background-color: #f4f6f9;
+    border-radius: 30px;
+    padding: 4px;
+    width: fit-content;
+  }
+
+  .toggle-btn {
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    color: #a4b0be;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .toggle-btn.active {
+    background-color: #0057d9; /* 蓝色 */
+    color: white;
+  }
 }
 
 .download-part {
-  height: 500px;
+  background-color: #000;
 
   .download-part-bg {
-    width: 100%;
+    display: flex;
+    justify-content: space-around;
 
     .download-part-image {
       width: 100%;
@@ -306,24 +422,11 @@ const { t } = useI18n()
     }
 
     .download-part-title {
-      position: relative;
-      color: #fff;
-      font-size: 48px;
-      display: flex;
-      justify-content: center;
-      margin: 20px 40px;
-      top: 100px;
-    }
-
-    .download-content {
-      z-index: 100;
-      display: flex;
-      position: relative;
-      justify-content: center;
-      top: 200px;
-
-      .download-ios {
-        margin-right: 25px;
+      padding: 50px;
+      .title {
+        color: #fff;
+        font-size: 32px;
+        font-weight: 600;
       }
     }
   }

@@ -33,25 +33,29 @@ const copyInvitationCode = () => {
 
 <template>
   <div class="reviews-part">
-    <div class="review-header">
-      <div class="review-header-name">
-        <img src="@/assets/images/header-icon-logo-web.png" style="width: 30px; height: 30px; display: flex; align-items: center" alt="" />
-        <span class="title-name">{{ t('review.name') }}</span>
-      </div>
-      <div class="review-header-intro">
-        {{ t('review.startNotice') }}
-        <div class="start-use">
-          <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('review.startBtn') }}</a>
-        </div>
-      </div>
-    </div>
+<!--    <div class="review-header">-->
+<!--      <div class="review-header-name">-->
+<!--        <img src="@/assets/images/header-icon-logo-web.png" style="width: 30px; height: 30px; display: flex; align-items: center" alt="" />-->
+<!--        <span class="title-name">{{ t('review.name') }}</span>-->
+<!--      </div>-->
+<!--      <div class="review-header-intro">-->
+<!--        {{ t('review.startNotice') }}-->
+<!--        <div class="start-use">-->
+<!--          <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('review.startBtn') }}</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="review-bottom">
       <div class="review-icon">
-        <div class="download-ios">
-          <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-ios.png" alt="" /></a>
+        <div style="display: flex; align-items: center;">
+          <img src="@/assets/images/header-icon-logo-web-dark.png" style="width: 32px; height: 32px;" alt="" />
+          <span style="font-size: 16px; font-weight: 700;">{{ t('header.name') }}</span>
         </div>
-        <div class="download-android">
-          <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-android.png" alt="" /></a>
+        <div style="margin-top: 100px; color: #596780; font-size: 18px;">
+          {{ t('feature.content12') }}
+        </div>
+        <div style="color: #596780; font-size: 18px;">
+          {{ t('feature.content13') }}
         </div>
       </div>
       <div class="review-support">
@@ -107,22 +111,25 @@ const copyInvitationCode = () => {
     </div>
     <div class="review-bottom-copyright">
       <div class="review-bottom-copyright-title">
-        © 2025 UUPAY {{ t('review.rightServe')}}
+        {{ t('review.policy')}}
+        <span style="margin: 0 20px;">
+          |
+        </span>
+        {{ t('review.condition')}}
+        <span style="margin: 0 20px;">
+          |
+        </span>
+        {{ t('review.policy')}}
       </div>
       <div class="review-bottom-copyright-condition">
-        <div class="review-bottom-copyright-condition-title">
-          {{ t('review.condition')}}
-        </div>
-        <div class="review-bottom-copyright-condition-title">
-          {{ t('review.policy')}}
-        </div>
+        © UUPay 2025
       </div>
     </div>
   </div>
 </template>
 <style scoped>
 .reviews-part {
-  background: #2D2D2D;
+  background: #fff;
   padding: 20px 200px;
 
   .review-header {
@@ -180,33 +187,37 @@ const copyInvitationCode = () => {
         margin-right: 200px;
 
         .review-support-row-head {
-          color: #fff;
+          color: #1A202C;
+          font-weight: 600;
+          font-size: 20px;
         }
 
         .review-support-row {
           margin-top: 30px;
-          color: #fff;
+          color: #596780;
+          font-size: 16px;
         }
       }
     }
   }
 
   .review-bottom-copyright {
+    border-top: 1px solid #CEBEFE;
     display: flex;
     justify-content: space-between;
+    padding-top: 30px;
     margin: 100px 0 50px 0;
 
     .review-bottom-copyright-title {
-      color: #fff;
+      color: #000;
+      font-size: 18px;
+      font-weight: 600;
     }
 
     .review-bottom-copyright-condition {
-      display: flex;
-
-      .review-bottom-copyright-condition-title {
-        color: #fff;
-        margin: 0 60px;
-      }
+      color: #596780;
+      font-weight: 500;
+      font-size: 16px;
     }
   }
 }
