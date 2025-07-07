@@ -25,9 +25,9 @@ const languageList = computed(() => [
   { label: t('language.en'), value: 'en' },
 ])
 
-const currentLanguageLabel = computed(() => {
-  return languageList.value.find(item => item.value === selectedLanguage.value)?.label || ''
-})
+// const currentLanguageLabel = computed(() => {
+//   return languageList.value.find(item => item.value === selectedLanguage.value)?.label || ''
+// })
 
 const switchLanguage = (lang: string) => {
   locale.value = lang

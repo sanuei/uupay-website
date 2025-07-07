@@ -5,10 +5,6 @@ import {DOWNLINK} from "@/constants";
 // import type {CollapseModelValue} from "element-plus";
 
 const el = ref<HTMLElement | null>(null)
-const activeNames = ref(['1']);
-const handleChange = () => {
-
-}
 
 defineExpose({ el })
 const { t } = useI18n()
