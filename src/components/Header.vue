@@ -39,14 +39,24 @@ const changeLanguage = (lang: any) => {
   selectedLanguage.value = lang.value
 }
 
-const copyInvitationCode = () => {
+const getInvitationCode = (): string | null => {
   const url = new URL(window.location.href)
-  const invitationCode = url.searchParams.get('invitationCode')
+  const codeFromQuery = url.searchParams.get('invitationCode')
+  if (codeFromQuery) return codeFromQuery
+
+  const hash = window.location.hash // 例如 "#/register?invitationCode=E2A5XX"
+  const hashQuery = hash.includes('?') ? hash.split('?')[1] : ''
+  const paramsInHash = new URLSearchParams(hashQuery)
+  return paramsInHash.get('invitationCode')
+}
+
+const copyInvitationCode = () => {
+  const invitationCode = getInvitationCode()
 
   if (invitationCode) {
-    navigator.clipboard.writeText(url.href)
+    navigator.clipboard.writeText(window.location.href)
       .then(() => {
-        console.log('包含邀请码的链接已复制:', url.href)
+        console.log('包含邀请码的链接已复制:', window.location.href)
       })
       .catch(err => {
         console.error('复制失败:', err)
