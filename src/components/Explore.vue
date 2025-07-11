@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import {computed, ref} from 'vue'
 import { useI18n } from "vue-i18n";
 import {DOWNLINK} from "@/constants";
+import headerImgZh from '@/assets/images/icon-take-phone-zh.png'
+import headerImgEn from '@/assets/images/icon-take-phone-en.png'
+import headerImgTc from '@/assets/images/icon-take-phone-tc.png'
 // import type {CollapseModelValue} from "element-plus";
 
 const el = ref<HTMLElement | null>(null)
 
 defineExpose({ el })
-const { t } = useI18n()
+const { locale, t } = useI18n()
 
 const getInvitationCode = (): string | null => {
   const url = new URL(window.location.href)
@@ -35,6 +38,12 @@ const copyInvitationCode = () => {
     console.log('没有邀请码，不执行复制')
   }
 }
+
+const headerImage = computed(() => {
+  if (locale.value === 'zh') return headerImgZh
+  if (locale.value === 'zhtw') return headerImgTc
+  return headerImgEn
+})
 </script>
 <template>
     <section class="lg:px-0 relative" ref="el">
@@ -59,7 +68,7 @@ const copyInvitationCode = () => {
           <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-android.png" alt="" /></a>
         </div>
         <div style="margin-top: 30px; display: flex; justify-content: center;">
-          <img src="@/assets/images/phone-hand.png" style="width: 70%;" alt="" />
+          <img :src="headerImage" style="width: 70%;" alt="" />
         </div>
       </div>
     </section>

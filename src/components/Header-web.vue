@@ -1,26 +1,17 @@
 <script setup lang="ts">
 // import { useScroll } from '@vueuse/core'
-import { computed, ref, onMounted } from "vue";
+import { computed, ref } from "vue";
 import { DOWNLINK } from '@/constants/index'
 import { useI18n } from 'vue-i18n'
+import headerImgZh from '@/assets/images/icon-take-phone-zh.png'
+import headerImgEn from '@/assets/images/icon-take-phone-en.png'
+import headerImgTc from '@/assets/images/icon-take-phone-tc.png'
 
 defineProps<{
   isFeature: boolean
   isExplore: boolean
 }>()
 
-onMounted(() => {
-  // 等待页面挂载后再使用
-  // if (window.scBotHandler) {
-  //   window.scBotHandler.expand() // 展开机器人
-  //   // window.scBotHandler.expand({ message: 'Hello, world!' }) // 带消息展开
-  //   // window.scBotHandler.collapse() // 折叠
-  //   // window.scBotHandler.enable() // 显示按钮
-  //   // window.scBotHandler.disable() // 隐藏按钮
-  // } else {
-  //   console.warn('scBotHandler 尚未加载完成')
-  // }
-})
 
 const getInvitationCode = (): string | null => {
   const url = new URL(window.location.href)
@@ -84,6 +75,12 @@ const openCustomerService = () => {
     console.warn('客服系统尚未加载')
   }
 }
+
+const headerImage = computed(() => {
+  if (locale.value === 'zh') return headerImgZh
+  if (locale.value === 'zhtw') return headerImgTc
+  return headerImgEn
+})
 </script>
 <template>
   <div class="header-part">
@@ -167,7 +164,7 @@ const openCustomerService = () => {
         <img src="@/assets/images/icon-card.png" style="width: 343px; height: 218px" alt="" />
       </div>
       <div style="position: absolute; margin-top: -260px; right: 0">
-        <img src="@/assets/images/icon-take-phone.png" style="width: 695px; height: 739px" alt="" />
+        <img :src="headerImage" style="width: 695px; height: 739px" alt="" />
       </div>
     </div>
   </div>

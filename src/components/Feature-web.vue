@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import {ref} from 'vue'
+import {computed, ref} from 'vue'
 import {useI18n} from "vue-i18n";
 import {DOWNLINK} from "@/constants";
+import headerImgZh from '@/assets/images/icon-take-phone-zh.png'
+import headerImgEn from '@/assets/images/icon-take-phone-en.png'
+import headerImgTc from '@/assets/images/icon-take-phone-tc.png'
 
 const el = ref<HTMLElement | null>(null)
 
 defineExpose({el})
-const { t } = useI18n()
+const { locale, t } = useI18n()
 
 const selected = ref<'virtual' | 'physical'>('virtual')
 
@@ -38,6 +41,12 @@ const copyInvitationCode = () => {
     console.log('没有邀请码，不执行复制')
   }
 }
+
+const headerImage = computed(() => {
+  if (locale.value === 'zh') return headerImgZh
+  if (locale.value === 'zhtw') return headerImgTc
+  return headerImgEn
+})
 </script>
 <template>
   <section class="relative" ref="el">
@@ -230,7 +239,7 @@ const copyInvitationCode = () => {
           </div>
         </div>
         <div>
-          <img src="@/assets/images/icon-take-phone.png" style="width: 495px; height: 539px" alt="" />
+          <img :src="headerImage" style="width: 495px; height: 539px" alt="" />
         </div>
       </div>
     </div>
