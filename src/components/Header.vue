@@ -14,15 +14,15 @@ defineProps<{
 
 onMounted(() => {
   // 等待页面挂载后再使用
-  if (window.scBotHandler) {
-    window.scBotHandler.expand() // 展开机器人
-    // window.scBotHandler.expand({ message: 'Hello, world!' }) // 带消息展开
-    // window.scBotHandler.collapse() // 折叠
-    // window.scBotHandler.enable() // 显示按钮
-    // window.scBotHandler.disable() // 隐藏按钮
-  } else {
-    console.warn('scBotHandler 尚未加载完成')
-  }
+  // if (window.scBotHandler) {
+  //   window.scBotHandler.expand() // 展开机器人
+  //   // window.scBotHandler.expand({ message: 'Hello, world!' }) // 带消息展开
+  //   // window.scBotHandler.collapse() // 折叠
+  //   // window.scBotHandler.enable() // 显示按钮
+  //   // window.scBotHandler.disable() // 隐藏按钮
+  // } else {
+  //   console.warn('scBotHandler 尚未加载完成')
+  // }
 })
 
 const { locale, t } = useI18n()
