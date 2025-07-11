@@ -15,7 +15,7 @@ const en = {
     title3: 'Manage all your business expenses with our super-fast app',
     title4: 'Our platform helps your business manage expenses. Here are some reasons why you should use our platform to manage your business finances.',
     startBtn: 'Get Started',
-    getCardBtn: 'Get Your Card Now',
+    getCardBtn: 'Customer Service',
     downloadBtn: 'Download',
     downloadTitle: 'Download the app, open an account, and get started.',
     product: 'product',

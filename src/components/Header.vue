@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import { useScroll } from '@vueuse/core'
 
-import { computed, ref } from "vue";
+import {computed, onMounted, ref} from "vue";
 import { useI18n } from 'vue-i18n';
 import { DOWNLINK } from "@/constants";
 
@@ -12,10 +12,23 @@ defineProps<{
 
 // const { y } = useScroll(window)
 
+onMounted(() => {
+  // 等待页面挂载后再使用
+  if (window.scBotHandler) {
+    window.scBotHandler.expand() // 展开机器人
+    // window.scBotHandler.expand({ message: 'Hello, world!' }) // 带消息展开
+    // window.scBotHandler.collapse() // 折叠
+    // window.scBotHandler.enable() // 显示按钮
+    // window.scBotHandler.disable() // 隐藏按钮
+  } else {
+    console.warn('scBotHandler 尚未加载完成')
+  }
+})
+
 const { locale, t } = useI18n()
 
 const featureClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
-const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full  before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
+const exploreClass = 'before:absolute before:content-[""] before:w-2 before:h-2 before:rounded-full before:left-1/2 before:-translate-x-1/2 before:-bottom-[10px]'
 
 const selectedLanguage = ref(localStorage.getItem('language') || 'zh')
 
@@ -63,6 +76,14 @@ const copyInvitationCode = () => {
       })
   } else {
     console.log('没有邀请码，不执行复制')
+  }
+}
+
+const openCustomerService = () => {
+  if (window.scBotHandler && typeof window.scBotHandler.expand === 'function') {
+    window.scBotHandler.expand()
+  } else {
+    console.warn('客服系统尚未加载')
   }
 }
 </script>
@@ -121,7 +142,7 @@ const copyInvitationCode = () => {
         <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.startBtn') }}</a>
       </div>
       <div class="header-button-get">
-        <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.getCardBtn') }}</a>
+        <div @click="openCustomerService">{{ t('header.getCardBtn') }}</div>
       </div>
     </div>
     <div class="header-download-img">

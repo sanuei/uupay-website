@@ -15,7 +15,7 @@ const zh = {
     title3: '使用我们的超快应用管理您的所有业务支出。',
     title4: '我们的平台可帮助您的企业管理费用。以下是您应该使用我们的平台管理企业财​​务的一些原因。',
     startBtn: '开始使用',
-    getCardBtn: '立即获取您的卡',
+    getCardBtn: '联系客服',
     downloadBtn: '下载',
     downloadTitle: '下载应用程式，开设账户并开始使用',
     product: '产品',

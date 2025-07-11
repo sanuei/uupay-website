@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import { useScroll } from '@vueuse/core'
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { DOWNLINK } from '@/constants/index'
 import { useI18n } from 'vue-i18n'
 
@@ -8,6 +8,19 @@ defineProps<{
   isFeature: boolean
   isExplore: boolean
 }>()
+
+onMounted(() => {
+  // 等待页面挂载后再使用
+  if (window.scBotHandler) {
+    window.scBotHandler.expand() // 展开机器人
+    // window.scBotHandler.expand({ message: 'Hello, world!' }) // 带消息展开
+    // window.scBotHandler.collapse() // 折叠
+    // window.scBotHandler.enable() // 显示按钮
+    // window.scBotHandler.disable() // 隐藏按钮
+  } else {
+    console.warn('scBotHandler 尚未加载完成')
+  }
+})
 
 const getInvitationCode = (): string | null => {
   const url = new URL(window.location.href)
@@ -62,6 +75,14 @@ const switchLanguage = (lang: string) => {
 const changeLanguage = (lang: any) => {
   switchLanguage(lang.value)
   selectedLanguage.value = lang.value
+}
+
+const openCustomerService = () => {
+  if (window.scBotHandler && typeof window.scBotHandler.expand === 'function') {
+    window.scBotHandler.expand()
+  } else {
+    console.warn('客服系统尚未加载')
+  }
 }
 </script>
 <template>
@@ -125,7 +146,7 @@ const changeLanguage = (lang: any) => {
             <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.startBtn') }}</a>
           </div>
           <div class="content-left-side-content-getCard">
-            <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('header.getCardBtn') }}</a>
+            <div @click="openCustomerService">{{ t('header.getCardBtn') }}</div>
           </div>
         </div>
         <div class="download-content">

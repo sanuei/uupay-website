@@ -15,7 +15,7 @@ const zhtw = {
     title3: '使用我們的超快應用管理您的所有業務支出',
     title4: '我們的平颱可幫助您的企業管理費用。以下是您應該使用我們的平颱管理企業財​​務的一些原因。',
     startBtn: '開始使用',
-    getCardBtn: '立即獲取您的卡',
+    getCardBtn: '聯繫客服',
     downloadBtn: '下載',
     downloadTitle: '下載應用程式，開設賬戶並開始使用',
     product: '産品',
