@@ -2,9 +2,9 @@
 import {computed, ref} from 'vue'
 import {useI18n} from "vue-i18n";
 import {DOWNLINK} from "@/constants";
-import headerImgZh from '@/assets/images/icon-take-phone-zh.png'
-import headerImgEn from '@/assets/images/icon-take-phone-en.png'
-import headerImgTc from '@/assets/images/icon-take-phone-tc.png'
+import headerImgZh from '@/assets/images/icon-take-phone-web-zh.png'
+import headerImgEn from '@/assets/images/icon-take-phone-web-en.png'
+import headerImgTc from '@/assets/images/icon-take-phone-web-tc.png'
 
 const el = ref<HTMLElement | null>(null)
 
@@ -431,7 +431,7 @@ const headerImage = computed(() => {
 
   .download-part-bg {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 
     .download-part-image {
       width: 100%;

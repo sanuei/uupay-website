@@ -3,9 +3,9 @@
 import { computed, ref } from "vue";
 import { DOWNLINK } from '@/constants/index'
 import { useI18n } from 'vue-i18n'
-import headerImgZh from '@/assets/images/icon-take-phone-zh.png'
-import headerImgEn from '@/assets/images/icon-take-phone-en.png'
-import headerImgTc from '@/assets/images/icon-take-phone-tc.png'
+import headerImgZh from '@/assets/images/icon-take-phone-web-zh.png'
+import headerImgEn from '@/assets/images/icon-take-phone-web-en.png'
+import headerImgTc from '@/assets/images/icon-take-phone-web-tc.png'
 
 defineProps<{
   isFeature: boolean
@@ -163,8 +163,8 @@ const headerImage = computed(() => {
       <div style="position: absolute; left: 0; margin-top: 240px; margin-left: 50px">
         <img src="@/assets/images/icon-card.png" style="width: 343px; height: 218px" alt="" />
       </div>
-      <div style="position: absolute; margin-top: -260px; right: 0">
-        <img :src="headerImage" style="width: 695px; height: 739px" alt="" />
+      <div style="position: absolute; margin-top: -60px; right: 0">
+        <img :src="headerImage" style="max-width: 495px; max-height: 539px" alt="" />
       </div>
     </div>
   </div>
@@ -304,6 +304,7 @@ const headerImage = computed(() => {
   .image-side {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
 
