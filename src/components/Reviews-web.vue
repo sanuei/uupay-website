@@ -183,6 +183,7 @@ const copyInvitationCode = () => {
     margin: 50px 0 0 0;
     display: flex;
     justify-content: space-between;
+    gap: 80px;
 
     .review-icon {
       .download-ios {

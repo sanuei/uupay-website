@@ -239,7 +239,7 @@ const headerImage = computed(() => {
           </div>
         </div>
         <div>
-          <img :src="headerImage" style="width: 495px; height: 539px" alt="" />
+          <img :src="headerImage" style="height: 539px" alt="" />
         </div>
       </div>
     </div>
