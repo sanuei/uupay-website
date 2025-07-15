@@ -297,7 +297,7 @@ const headerImage = computed(() => {
 
       .feature-function-intro-content {
         font-size: 16px;
-        margin-top: 30px;
+        margin-top: 10px;
         color: #596780;
       }
     }

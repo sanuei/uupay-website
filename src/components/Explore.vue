@@ -2,9 +2,9 @@
 import {computed, ref} from 'vue'
 import { useI18n } from "vue-i18n";
 import {DOWNLINK} from "@/constants";
-import headerImgZh from '@/assets/images/icon-take-phone-zh.png'
-import headerImgEn from '@/assets/images/icon-take-phone-en.png'
-import headerImgTc from '@/assets/images/icon-take-phone-tc.png'
+import headerImgZh from '@/assets/images/icon-take-phone-bottom-zh.png'
+import headerImgEn from '@/assets/images/icon-take-phone-bottom-en.png'
+import headerImgTc from '@/assets/images/icon-take-phone-bottom-tc.png'
 // import type {CollapseModelValue} from "element-plus";
 
 const el = ref<HTMLElement | null>(null)
