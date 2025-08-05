@@ -28,6 +28,32 @@ const languageList = computed(() => [
   { label: t('language.en'), value: 'en' },
 ])
 
+// const card = ref(null)
+// let halfW = 0
+// let halfH = 0
+//
+// const updateTransform = (x, y) => {
+//   const rx = x < halfW ? -(1 - (x / halfW)) : (1 - (halfW / x)) * 2
+//   const ry = y < halfH ? (1 - (y / halfH)) : -(1 - (halfH / y)) * 2
+//   const base = `rotateY(${rx * 5}deg) rotateX(${ry * 5}deg)`
+//   card.value.style.transform = base + ` translate(${-(rx)}%, ${ry}%)`
+// }
+//
+// onMounted(() => {
+//   halfW = window.innerWidth / 2
+//   halfH = window.innerHeight / 2
+//
+//   document.body.addEventListener('mousemove', (e) => {
+//     updateTransform(e.clientX, e.clientY)
+//   })
+//
+//   document.body.addEventListener('touchmove', (e) => {
+//     if (e.touches && e.touches[0]) {
+//       updateTransform(e.touches[0].clientX, e.touches[0].clientY)
+//     }
+//   })
+// })
+
 const headerImage = computed(() => {
   if (locale.value === 'zh') return headerImgZh
   if (locale.value === 'zhtw') return headerImgTc
@@ -122,16 +148,19 @@ const openCustomerService = () => {
         {{ t('header.about') }}
       </div>
     </div>
-    <div class="header-big-title">
-      <div class="header-big-title-text">
-        {{ t('header.title1') }}
-      </div>
-      <div style="color: #fff; font-size: 12px; margin-top: 20px;">
-        {{ t('header.title2') }}
-      </div>
-      <div style="color: #fff; font-size: 12px;">
-        {{ t('header.title3') }}
-      </div>
+<!--    <div class="header-big-title">-->
+<!--      <div class="header-big-title-text">-->
+<!--        {{ t('header.title1') }}-->
+<!--      </div>-->
+<!--      <div style="color: #fff; font-size: 12px; margin-top: 20px;">-->
+<!--        {{ t('header.title2') }}-->
+<!--      </div>-->
+<!--      <div style="color: #fff; font-size: 12px;">-->
+<!--        {{ t('header.title3') }}-->
+<!--      </div>-->
+<!--    </div>-->
+    <div class="wrapper">
+      <div ref="card" class="card"></div>
     </div>
     <div class="header-button">
       <div class="header-button-start">
@@ -302,5 +331,21 @@ const openCustomerService = () => {
     display: flex;
     justify-content: center;
   }
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  background: url('https://www.kitjenson.com/images/layer1.png') no-repeat center/cover;
+  transform-style: preserve-3d;
+  transition: transform 0.1s linear;
+  margin: auto;
 }
 </style>

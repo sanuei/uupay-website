@@ -5,98 +5,197 @@ import {useI18n} from "vue-i18n";
 // import type {CollapseModelValue} from 'element-plus'
 
 const el = ref<HTMLElement | null>(null)
-const activeNames = ref(['1']);
-const handleChange = () => {
-
-}
-
 defineExpose({el})
 const { t } = useI18n()
 </script>
 <template>
   <section class="px-4 lg:px-0 relative" ref="el">
-    <i id="explore" class="absolute w-0 h-0 overflow-hidden opacity-0 left-0 -top-10 lg:-top-20"></i>
+    <i id="explore" class="absolute w-0 h-0 overflow-hidden opacity-0 left-0 -top-10 lg:-top"></i>
     <div class="explore-part">
-      <div class="explore-title">
-        {{ t('explore.headTitle') }}
+      <div class="explore-head-title">
+        {{ t('header.aboutUs') }}
       </div>
-      <div class="demo-collapse">
-        <el-collapse v-model="activeNames" @change="handleChange">
-          <el-collapse-item name="1">
-            <template #title>
-              <div style="max-width: 100%; white-space: normal; word-break: break-word; padding-right: 20px; line-height: 1.4;">
-                {{ t('explore.title1') }}
+      <div class="explore-head-content">
+        {{ t('explore.headContent') }}
+      </div>
+      <div class="explore-body">
+        <div class="explore-content">
+          <div class="explore-content-title">
+            {{ t('explore.functionTitle1') }}
+          </div>
+        </div>
+        <div class="explore-card">
+          <div class="each-card">
+            <div class="each-card-content">
+              <div class="card-image">
+                <img src="@/assets/images/icon-explore1.png" style="width: 120px; height: 80px;" alt=""/>
               </div>
-            </template>
-            <div style="font-size: 20px">
-              {{ t('explore.content1') }}
-            </div>
-          </el-collapse-item>
-        </el-collapse>
-        <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
-          <el-collapse-item name="2">
-            <template #title>
-              <div style="max-width: 100%; white-space: normal; word-break: break-word; padding-right: 20px; line-height: 1.4;">
-                {{ t('explore.title2') }}
+              <div class="card-text">
+                {{ t('explore.security') }}
               </div>
-            </template>
-            <div style="font-size: 20px">
-              {{ t('explore.content2') }}
             </div>
-          </el-collapse-item>
-        </el-collapse>
-        <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
-          <el-collapse-item name="3">
-            <template #title>
-              <div style="max-width: 100%; white-space: normal; word-break: break-word; padding-right: 20px; line-height: 1.4;">
-                {{ t('explore.title3') }}
+          </div>
+          <div class="each-card" style="margin: 0 24px;">
+            <div class="each-card-content">
+              <div class="card-image">
+                <img src="@/assets/images/icon-explore2.png" style="width: 120px; height: 80px;" alt=""/>
               </div>
-            </template>
-            <div style="font-size: 20px">
-              {{ t('explore.content3') }}
-            </div>
-          </el-collapse-item>
-        </el-collapse>
-        <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
-          <el-collapse-item name="4">
-            <template #title>
-              <div style="max-width: 100%; white-space: normal; word-break: break-word; padding-right: 20px; line-height: 1.4;">
-                {{ t('explore.title4') }}
+              <div class="card-text">
+                {{ t('explore.risk') }}
               </div>
-            </template>
-
-            <div style="font-size: 20px">
-              {{ t('explore.content4') }}
             </div>
-          </el-collapse-item>
-        </el-collapse>
-        <el-collapse style="margin-top: 20px;" v-model="activeNames" @change="handleChange">
-          <el-collapse-item name="5">
-            <template #title>
-              <div style="max-width: 100%; white-space: normal; word-break: break-word; padding-right: 20px; line-height: 1.4;">
-                {{ t('explore.title5') }}
+          </div>
+          <div class="each-card">
+            <div class="each-card-content">
+              <div class="card-image">
+                <img src="@/assets/images/icon-explore3.png" style="width: 120px; height: 80px;" alt=""/>
               </div>
-            </template>
-            <div style="font-size: 20px">
-              {{ t('explore.content5') }}
+              <div class="card-text">
+                {{ t('explore.verify') }}
+              </div>
             </div>
-          </el-collapse-item>
-        </el-collapse>
+          </div>
+        </div>
+        <div class="explore-content">
+          <div class="explore-content-title">
+            {{ t('explore.functionTitle2') }}
+          </div>
+        </div>
+        <div class="explore-mission-content">
+          {{ t('explore.mission') }}
+        </div>
+        <div class="explore-ppl-image">
+          <img src="@/assets/images/explore-ppl.png" style="width: 100%; height: 100%;" alt=""/>
+        </div>
+      </div>
+    </div>
+    <div class="explore-body-bottom">
+      <div class="bottom-content">
+        <div class="bottom-img">
+          <img src="@/assets/images/icon-arrow.png" style="width: 51.5px; height: 46px;" alt=""/>
+        </div>
+        <div class="bottom-content-text">
+          {{ t('explore.transaction') }}
+        </div>
       </div>
     </div>
   </section>
 </template>
 <style scoped>
 .explore-part {
+  width: 100%;
+  padding: 100px 300px 0 300px;
+  background-color: #1A1A1A;
+  background-image: url('@/assets/images/explore-background.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
-  .explore-title {
-    font-size: 40px;
-    margin: 0 60px;
-  }
+.explore-head-title {
+  color: #fff;
+  font-size: 44px;
+  font-weight: 600;
+}
 
-  .demo-collapse {
-    padding: 20px 60px;
-  }
+.explore-head-content {
+  color: #ACACAC;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.explore-body {
+  position: relative;
+  padding-bottom: 140px;
+}
+
+.explore-content {
+  display: flex;
+}
+
+.explore-content-title {
+  margin-top: 50px;
+  background-color: #47C68F;
+  color: #1A1A1A;
+  border-radius: 35px;
+  font-size: 34px;
+  font-weight: 600;
+  padding: 9.5px 30px;
+}
+
+.explore-card {
+  display: flex;
+  margin-top: 30px;
+}
+
+.each-card {
+  flex: 1;
+  border-radius: 40px;
+  border: 4px solid transparent;
+  background-image:
+      linear-gradient(#3B3B3B96, #3B3B3B96),
+      linear-gradient(to bottom left, #595959, #3E3E3E, #262626);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  height: auto;
+}
+
+.each-card-content {
+  padding: 24px 115px 30px 115px;
+}
+
+.card-image {
+  display: flex;
+  justify-content: center;
+}
+
+.card-text {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+  margin-top: 24px;
+}
+
+.explore-mission-content {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 30px;
+  width: 60%;
+}
+
+.explore-ppl-image {
+  position: absolute;
+  top: 81px;
+  right: -250px;
+  max-width: 517px;
+}
+
+.explore-body-bottom {
+  position: relative;
+  z-index: 10;
+  background-color: #1A1A1A;
+}
+
+.bottom-content {
+  background-color: #47C68F;
+  padding: 40px 300px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  display: flex;
+}
+
+.bottom-img {
+  display: flex;
+  align-items: center;
+}
+
+.bottom-content-text {
+  display: flex;
+  margin-left: 10px;
+  font-size: 44px;
+  font-weight: 600;
 }
 
 :deep(.el-collapse-item__header) {

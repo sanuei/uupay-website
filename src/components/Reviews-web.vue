@@ -4,7 +4,6 @@
 // import ReviewCard from './ReviewCard.vue'
 import 'swiper/css'
 import {useI18n} from "vue-i18n";
-import { DOWNLINK } from "@/constants";
 
 // const SECTION_BG = 'review-section-bg'
 // const FOOTER_BG = {
@@ -12,224 +11,164 @@ import { DOWNLINK } from "@/constants";
 //   desktop: 'footer-desktop-bg'
 // }
 const { t } = useI18n()
-
-const getInvitationCode = (): string | null => {
-  const url = new URL(window.location.href)
-  const codeFromQuery = url.searchParams.get('invitationCode')
-  if (codeFromQuery) return codeFromQuery
-
-  const hash = window.location.hash // 例如 "#/register?invitationCode=E2A5XX"
-  const hashQuery = hash.includes('?') ? hash.split('?')[1] : ''
-  const paramsInHash = new URLSearchParams(hashQuery)
-  return paramsInHash.get('invitationCode')
-}
-
-const copyInvitationCode = () => {
-  const invitationCode = getInvitationCode()
-
-  if (invitationCode) {
-    navigator.clipboard.writeText(window.location.href)
-      .then(() => {
-        console.log('包含邀请码的链接已复制:', window.location.href)
-      })
-      .catch(err => {
-        console.error('复制失败:', err)
-      })
-  } else {
-    console.log('没有邀请码，不执行复制')
-  }
-}
 </script>
 
 <template>
   <div class="reviews-part">
-<!--    <div class="review-header">-->
-<!--      <div class="review-header-name">-->
-<!--        <img src="@/assets/images/header-icon-logo-web.png" style="width: 30px; height: 30px; display: flex; align-items: center" alt="" />-->
-<!--        <span class="title-name">{{ t('review.name') }}</span>-->
-<!--      </div>-->
-<!--      <div class="review-header-intro">-->
-<!--        {{ t('review.startNotice') }}-->
-<!--        <div class="start-use">-->
-<!--          <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('review.startBtn') }}</a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-    <div class="review-bottom">
-      <div class="review-icon">
-        <div style="display: flex; align-items: center;">
-          <img src="@/assets/images/header-icon-logo-web-dark.png" style="width: 32px; height: 32px;" alt="" />
-          <span style="font-size: 16px; font-weight: 700;">{{ t('header.name') }}</span>
-        </div>
-        <div style="margin-top: 100px; color: #596780; font-size: 18px;">
-          {{ t('feature.content12') }}
-        </div>
-        <div style="color: #596780; font-size: 18px;">
-          {{ t('feature.content13') }}
+    <div class="reviews-part-header">
+      <div class="reviews-part-header-left">
+        <div>
+          <div class="reviews-part-header-left-title">
+            {{ t('review.leftContent1') }}
+          </div>
+          <div class="reviews-part-header-left-title">
+            {{ t('review.leftContent2') }}
+          </div>
         </div>
       </div>
-      <div class="review-support">
-        <div class="review-support-content">
-          <div class="review-support-row-head">
-            {{ t('review.support') }}
+      <div class="reviews-part-header-right">
+        <div class="review-part-col">
+          <div class="review-part-col-title">
+            {{ t('review.rightTitle1') }}
           </div>
-          <div class="review-support-row">
-            {{ t('review.fq') }}
+          <div class="review-part-col-content">
+            {{ t('review.rightContent1') }}
           </div>
-          <div class="review-support-row">
-            <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('review.downloadApp') }}</a>
+          <div class="review-part-col-content">
+            {{ t('review.rightContent2') }}
           </div>
-          <div class="review-support-row">
-            {{ t('review.term')}}
-          </div>
-        </div>
-        <div class="review-support-content">
-          <div class="review-support-row-head">
-            {{ t('review.help')}}
-          </div>
-          <div class="review-support-row">
-            {{ t('review.faqs')}}
-          </div>
-          <div class="review-support-row">
-            {{ t('review.contact')}}
+          <div class="review-part-col-content">
+            {{ t('review.rightContent3') }}
           </div>
         </div>
-        <div class="review-support-content">
-          <div class="review-support-row-head">
-            {{ t('review.about')}}
+        <div class="review-part-col">
+          <div class="review-part-col-title">
+            {{ t('review.rightTitle2') }}
           </div>
-          <div class="review-support-row">
-            {{ t('review.mission')}}
+          <div class="review-part-col-content">
+            {{ t('review.rightContent4') }}
           </div>
-          <div class="review-support-row">
-            {{ t('review.lead')}}
+          <div class="review-part-col-content">
+            {{ t('review.rightContent5') }}
           </div>
-          <div class="review-support-row">
-            {{ t('review.safe')}}
+        </div>
+        <div class="review-part-col">
+          <div class="review-part-col-title">
+            {{ t('review.rightTitle3') }}
           </div>
-          <div class="review-support-row">
-            {{ t('review.partner')}}
+          <div class="review-part-col-content">
+            {{ t('review.rightContent6') }}
           </div>
-          <div class="review-support-row">
-            {{ t('review.join')}}
+          <div class="review-part-col-content">
+            {{ t('review.rightContent7') }}
           </div>
-          <div class="review-support-row">
-            {{ t('review.plan')}}
+          <div class="review-part-col-content">
+            {{ t('review.rightContent8') }}
+          </div>
+        </div>
+        <div class="review-part-col">
+          <div class="review-part-col-title">
+            {{ t('review.rightTitle4') }}
+          </div>
+          <div class="review-part-col-content">
+            {{ t('review.rightContent9') }}
+          </div>
+          <div class="review-part-col-content">
+            {{ t('review.rightContent10') }}
+          </div>
+          <div class="review-part-col-content">
+            {{ t('review.rightContent11') }}
+          </div>
+          <div class="review-part-col-content">
+            {{ t('review.rightContent12') }}
+          </div>
+          <div class="review-part-col-content">
+            {{ t('review.rightContent13') }}
           </div>
         </div>
       </div>
     </div>
-    <div class="review-bottom-copyright">
-      <div class="review-bottom-copyright-title">
-        {{ t('review.policy')}}
-        <span style="margin: 0 20px;">
+    <div class="review-policy">
+      <div class="policy-left">
+        {{ t('review.policy') }}
+        <span class="line">
           |
         </span>
-        {{ t('review.condition')}}
-        <span style="margin: 0 20px;">
+        {{ t('review.condition') }}
+        <span class="line">
           |
         </span>
-        {{ t('review.policy')}}
+        {{ t('review.cookie') }}
       </div>
-      <div class="review-bottom-copyright-condition">
-        © UUPay 2025
+      <div class="policy-right">
+        {{ t('review.time') }}
       </div>
     </div>
   </div>
 </template>
 <style scoped>
 .reviews-part {
-  background: #fff;
-  padding: 20px 200px;
+  background-color: #1A1A1A;
+  padding: 120px;
+}
 
-  .review-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    border-bottom: 1px solid #979797;
-    padding: 20px 0 50px 0;
+.reviews-part-header {
+  display: flex;
+  width: 100%;
+}
 
-    .review-header-name {
-      display: flex;
-      align-items: center;
-      flex: 1;
+.reviews-part-header-left {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
 
-      .title-name{
-        color: #fff;
-        display: flex;
-        align-items: center;
-        margin-left: 10px;
-      }
-    }
+.reviews-part-header-left-title {
+  color: #ACACAC;
+  font-size: 18px;
+}
 
-    .review-header-intro {
-      width: 100%;
-      color: #fff;
-      flex: 1;
-      display: flex;
-      justify-content: end;
-      align-items: center;
+.reviews-part-header-right {
+  width: 70%;
+  display: flex;
+}
 
-      .start-use {
-        margin-left: 20px;
-        background: #1573FF;
-        padding: 10px 15px;
-        border-radius: 15px;
-      }
-    }
-  }
+.review-part-col {
+  flex: 1;
+}
 
-  .review-bottom {
-    margin: 50px 0 0 0;
-    display: flex;
-    justify-content: space-between;
-    gap: 80px;
+.review-part-col-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
 
-    .review-icon {
-      .download-ios {
-        margin-bottom: 30px;
-      }
-    }
+.review-part-col-content {
+  color: #ACACAC;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
 
-    .review-support {
-      display: flex;
+.review-policy {
+  margin-top: 138px;
+  display: flex;
+  justify-content: space-between;
+}
 
-      .review-support-content {
-        margin-right: 200px;
+.policy-left {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
 
-        .review-support-row-head {
-          color: #1A202C;
-          font-weight: 600;
-          font-size: 20px;
-        }
+.line {
+  margin: 0 32px;
+}
 
-        .review-support-row {
-          margin-top: 30px;
-          color: #596780;
-          font-size: 16px;
-        }
-      }
-    }
-  }
-
-  .review-bottom-copyright {
-    border-top: 1px solid #CEBEFE;
-    display: flex;
-    justify-content: space-between;
-    padding-top: 30px;
-    margin: 100px 0 50px 0;
-
-    .review-bottom-copyright-title {
-      color: #000;
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .review-bottom-copyright-condition {
-      color: #596780;
-      font-weight: 500;
-      font-size: 16px;
-    }
-  }
+.policy-right {
+  color: #ACACAC;
+  font-size: 16px;
+  font-weight: 500;
 }
 </style>

@@ -8,6 +8,8 @@ import HeaderWeb from './Header-web.vue'
 import FeatureWeb from './Feature-web.vue'
 import ExploreWeb from './Explore-web.vue'
 import ReviewsWeb from './Reviews-web.vue'
+import BannerWeb from './Banner-web.vue'
+import ContactUsWeb from './ContactUsWeb.vue'
 
 export {
   Header,
@@ -19,5 +21,7 @@ export {
   HeaderWeb,
   FeatureWeb,
   ExploreWeb,
-  ReviewsWeb
+  ReviewsWeb,
+  BannerWeb,
+  ContactUsWeb
 }
