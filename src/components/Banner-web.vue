@@ -9,7 +9,7 @@ const getInvitationCode = (): string | null => {
   const codeFromQuery = url.searchParams.get('invitationCode')
   if (codeFromQuery) return codeFromQuery
 
-  const hash = window.location.hash // 例如 "#/register?invitationCode=E2A5XX"
+  const hash = window.location.hash
   const hashQuery = hash.includes('?') ? hash.split('?')[1] : ''
   const paramsInHash = new URLSearchParams(hashQuery)
   return paramsInHash.get('invitationCode')

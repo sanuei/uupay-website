@@ -7,12 +7,11 @@ import {
     FeatureWeb,
     Explore,
     ExploreWeb,
-    Reviews,
     ReviewsWeb,
-    BackToTop,
     BannerWeb,
     Banner,
     ContactUsWeb,
+    ContactUs,
 } from '@/components'
 import { useScroll } from '@/composables/useScroll'
 import { useDevice } from '@/composables/useDevice'
@@ -44,10 +43,12 @@ const { isFeature, isExplore, isContact } = useScroll(
     <Explore  v-if="isMobile" ref="exploreRef" />
     <ExploreWeb v-else ref="exploreRef" />
 
-    <ContactUsWeb v-if="!isMobile" ref="contactRef" />
+
+    <ContactUs v-if="isMobile" />
+    <ContactUsWeb v-else ref="contactRef" />
     <!-- Reviews -->
-    <Reviews  v-if="isMobile" />
-    <ReviewsWeb v-else />
+<!--    <Reviews  v-if="isMobile" />-->
+    <ReviewsWeb v-if="!isMobile" />
     <!-- BackToTop -->
-    <BackToTop />
+<!--    <BackToTop />-->
 </template>

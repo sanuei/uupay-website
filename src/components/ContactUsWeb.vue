@@ -108,10 +108,12 @@ const {t} = useI18n()
 }
 
 .contact-description-col {
+  width: 100%;
   display: flex;
 }
 
 .contact-info-title {
+  width: 40%;
   color: #fff;
   font-weight: 500;
   font-size: 28px;
@@ -120,7 +122,7 @@ const {t} = useI18n()
 }
 
 .contact-info-content {
-  margin-left: 20px;
+  width: 60%;
   color: #ACACAC;
   font-size: 24px;
   display: flex;

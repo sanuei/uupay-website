@@ -10,6 +10,7 @@ import ExploreWeb from './Explore-web.vue'
 import ReviewsWeb from './Reviews-web.vue'
 import BannerWeb from './Banner-web.vue'
 import ContactUsWeb from './ContactUsWeb.vue'
+import ContactUs from './ContactUs.vue'
 
 export {
   Header,
@@ -23,5 +24,6 @@ export {
   ExploreWeb,
   ReviewsWeb,
   BannerWeb,
-  ContactUsWeb
+  ContactUsWeb,
+  ContactUs
 }

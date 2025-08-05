@@ -274,6 +274,7 @@ const { t } = useI18n()
   display: flex;
   font-size: 24px;
   color: #ACACAC;
+  margin-left: 10px;
 }
 
 .card-img {

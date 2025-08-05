@@ -1,110 +1,170 @@
 <script setup lang="ts">
-import {computed, ref} from 'vue'
+import { ref } from 'vue'
 import { useI18n } from "vue-i18n";
-import {DOWNLINK} from "@/constants";
-import headerImgZh from '@/assets/images/icon-take-phone-bottom-zh.png'
-import headerImgEn from '@/assets/images/icon-take-phone-bottom-en.png'
-import headerImgTc from '@/assets/images/icon-take-phone-bottom-tc.png'
 // import type {CollapseModelValue} from "element-plus";
 
 const el = ref<HTMLElement | null>(null)
 
 defineExpose({ el })
-const { locale, t } = useI18n()
+const { t } = useI18n()
 
-const getInvitationCode = (): string | null => {
-  const url = new URL(window.location.href)
-  const codeFromQuery = url.searchParams.get('invitationCode')
-  if (codeFromQuery) return codeFromQuery
-
-  const hash = window.location.hash // 例如 "#/register?invitationCode=E2A5XX"
-  const hashQuery = hash.includes('?') ? hash.split('?')[1] : ''
-  const paramsInHash = new URLSearchParams(hashQuery)
-  return paramsInHash.get('invitationCode')
-}
-
-const copyInvitationCode = () => {
-  const invitationCode = getInvitationCode()
-
-  if (invitationCode) {
-    navigator.clipboard.writeText(window.location.href)
-      .then(() => {
-        console.log('包含邀请码的链接已复制:', window.location.href)
-      })
-      .catch(err => {
-        console.error('复制失败:', err)
-      })
-  } else {
-    console.log('没有邀请码，不执行复制')
-  }
-}
-
-const headerImage = computed(() => {
-  if (locale.value === 'zh') return headerImgZh
-  if (locale.value === 'zhtw') return headerImgTc
-  return headerImgEn
-})
 </script>
 <template>
     <section class="lg:px-0 relative" ref="el">
         <i id="explore" class="absolute w-0 h-0 overflow-hidden opacity-0 left-0 -top-10 lg:-top-20"></i>
       <div class="explore-part">
-        <div style="color: #fff; font-size: 20px; font-weight: 600;">
-          {{ t('header.downloadBtn')}}
+        <div class="header-title">
+          {{ t('header.aboutUs') }}
         </div>
-        <div style="color: #fff; font-size: 16px; font-weight: 600; margin-top: 15px;">
-          {{ t('feature.content9')}}
+        <div class="header-small-title">
+          {{ t('explore.headContent') }}
         </div>
-        <div style="display: flex; align-items: center; margin-top: 15px;">
-          <div style="color: #fff; font-size: 14px;">
-            {{ t('feature.content10')}}
-          </div>
-          <div style="color: #000; background-color: #fff; padding: 10px 50px; border-radius: 25px; margin-left: 20px; font-size: 12px; font-weight: 600;">
-            <a :href="DOWNLINK" @click="copyInvitationCode">{{ t('feature.content11') }}</a>
+        <div class="green-title">
+          <div>
+            {{ t('explore.functionTitle1') }}
           </div>
         </div>
-        <div class="download-wrapper">
-          <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-ios.png" alt="" /></a>
-          <a :href="DOWNLINK" @click="copyInvitationCode"><img src="@/assets/images/download-android.png" alt="" /></a>
+        <div class="card-row">
+          <div class="card-content">
+            <div class="card-content-style">
+              <div class="card-content-icon">
+                <img src="@/assets/images/icon-explore1.png" style="width: 42px; height: 28px;" alt=""/>
+              </div>
+              <div class="card-content-text">
+                {{ t('explore.security') }}
+              </div>
+            </div>
+          </div>
+          <div class="card-content" style="margin: 0 22px;">
+            <div class="card-content-style">
+              <div class="card-content-icon">
+                <img src="@/assets/images/icon-explore2.png" style="width: 42px; height: 28px;" alt=""/>
+              </div>
+              <div class="card-content-text">
+                {{ t('explore.risk') }}
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-content-style">
+              <div class="card-content-icon">
+                <img src="@/assets/images/icon-explore3.png" style="width: 42px; height: 28px;" alt=""/>
+              </div>
+              <div class="card-content-text">
+                {{ t('explore.verify') }}
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="margin-top: 30px; display: flex; justify-content: center;">
-          <img :src="headerImage" style="width: 70%;" alt="" />
+        <div class="green-title" style="margin-top: 20px;">
+          <div>
+            {{ t('explore.functionTitle2') }}
+          </div>
+        </div>
+        <div class="header-small-title">
+          {{ t('explore.mission') }}
+        </div>
+        <div class="bottom-content">
+          <div class="bottom-content-img">
+            <img src="@/assets/images/icon-arrow.png" style="width: 17.17px; height: 15.33px;" alt=""/>
+          </div>
+          <div class="bottom-content-text">
+            {{ t('explore.transaction') }}
+          </div>
         </div>
       </div>
     </section>
 </template>
 <style scoped>
 .explore-part {
-  background: #000;
-  padding: 20px 20px 0 20px;
+  background-color: #1A1A1A;
+}
 
-  .download-wrapper {
-    display: flex;
-    justify-content: center; /* 可选，水平居中 */
-    align-items: center;
-    gap: 30px; /* 两图之间间隔 */
-    flex-wrap: nowrap; /* 强制在一排，不换行 */
-    overflow-x: auto; /* 如果内容过宽允许横向滚动 */
-    max-width: 100%;
-    margin-top: 50px;
-  }
+.header-title {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 0 16px 0 16px;
+}
 
-  .download-wrapper img {
-    height: auto;
-  }
+.header-small-title {
+  padding: 0 16px 0 16px;
+  color: #ACACAC;
+  font-size: 12px;
+  margin-top: 10px;
+}
 
-  .explore-title {
-    font-size: 20px;
+.green-title {
+  display: flex;
+  color: #1A1A1A;
+  margin-top: 10px;
+  padding: 0 16px 0 16px;
+
+  div {
+    padding: 3px 9px;
+    background-color: #47C68F;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 12px;
   }
 }
 
-:deep(.el-collapse-item__header) {
-  font-size: 14px;
+.card-row {
+  margin-top: 10px;
+  display: flex;
+  padding: 0 16px 0 16px;
 }
 
-.el-collapse-item__header {
-  max-width: 300px; /* 限制最大宽度 */
-  white-space: normal; /* 允许换行 */
-  word-break: break-word; /* 允许单词换行 */
+.card-content {
+  flex: 1;
+  border-radius: 20px;
+  border: 1.4px solid transparent;
+  background-image:
+      linear-gradient(#3B3B3B96, #3B3B3B96),
+      linear-gradient(to bottom left, #595959, #3E3E3E, #262626);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  height: auto;
+}
+
+.card-content-style {
+  padding: 8.4px 14px;
+}
+
+.card-content-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.card-content-text {
+  color: #fff;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.bottom-content {
+  background-color: #47C68F;
+  display: flex;
+  padding: 8px 24px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-top: 20px;
+}
+
+.bottom-content-img {
+  display: flex;
+  align-items: center;
+}
+
+.bottom-content-text {
+  color: #1A1A1A;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin-left: 6px;
 }
 </style>

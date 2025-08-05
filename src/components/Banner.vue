@@ -1,74 +1,149 @@
 <script setup lang="ts">
 import { DOWNLINK } from '@/constants'
+import { useI18n } from 'vue-i18n';
 
+const { locale, t } = useI18n()
+
+const getInvitationCode = (): string | null => {
+  const url = new URL(window.location.href)
+  const codeFromQuery = url.searchParams.get('invitationCode')
+  if (codeFromQuery) return codeFromQuery
+
+  const hash = window.location.hash
+  const hashQuery = hash.includes('?') ? hash.split('?')[1] : ''
+  const paramsInHash = new URLSearchParams(hashQuery)
+  return paramsInHash.get('invitationCode')
+}
+
+const copyInvitationCode = () => {
+  const invitationCode = getInvitationCode()
+
+  if (invitationCode) {
+    navigator.clipboard.writeText(window.location.href)
+        .then(() => {
+          console.log('包含邀请码的链接已复制:', window.location.href)
+        })
+        .catch(err => {
+          console.error('复制失败:', err)
+        })
+  } else {
+    console.log('没有邀请码，不执行复制')
+  }
+}
+
+const openCustomerService = () => {
+  if (window.scBotHandler && typeof window.scBotHandler.expand === 'function') {
+    window.scBotHandler.expand()
+  } else {
+    console.warn('客服系统尚未加载')
+  }
+}
 </script>
 <template>
-    <section class="relative px-4 lg:px-0">
-        <img class="absolute top-0 right-0 w-[46vw] lg:hidden" src="@/assets/images/banner-mobile.png" alt="banner image">
-        <div class="max-w-[1280px] mx-auto px-[23px] lg:mb-[10vw] 2xl:mb-[15vw]">
-            <div class="pt-6 md:pt-10 lg:pt-[81px] w-full adaptive-container">
-                <h2 class="text-[32px] adaptive-title font-bold mb-6 leading-[43px] lg:leading-[65px] text-center lg:text-left">
-                    <span class="text-text-blue">有得聊</span>
-                    <span>
-                        - 极致沟通体验，畅享无界社交！
-                    </span>
-                </h2>
-                <p class="text-text-grey adaptive-description font-semibold leading-[48px] hidden lg:block">
-                    有得聊是一款集高效、安全与极速体验于一体的全能通讯软件，包体小于80MB，功能却强大到超乎想象！无论是日常私聊、远程会议，还是群组互动、语音视频通话，我们都能为你带来无缝、流畅的沟通体验，助你随时随地轻松连接世界！
-                </p>
+    <section class="relative lg:px-0">
+      <div class="banner-part">
+        <img src="@/assets/images/banner-background.png" class="banner-bg" alt=""/>
+        <div class="left-side">
+          <div class="header-title">
+            {{ t('header.appName') }}
+          </div>
+          <div class="header-second-title" :style="locale === 'en' ? { fontSize: '30px' } : {}">
+            {{ t('banner.content') }}
+          </div>
+          <div class="header-small-title">
+            {{ t('banner.sContent') }}
+          </div>
+          <div class="button-container">
+            <a :href="DOWNLINK" @click="copyInvitationCode" class="start-btn">
+              {{ t('banner.startBtn') }}
+            </a>
+            <div @click="openCustomerService" class="cs-btn">
+              {{ t('banner.csBtn') }}
             </div>
+          </div>
+          <div class="download-btn">
+            <a :href="DOWNLINK" @click="copyInvitationCode" style="margin-right: 8.72px">
+              <img src="@/assets/images/download-ios.png" alt=""/>
+            </a>
+            <a :href="DOWNLINK" @click="copyInvitationCode">
+              <img src="@/assets/images/download-android.png" alt=""/>
+            </a>
+          </div>
         </div>
-        <div class="lg:hidden">
-            <div class="flex flex-col lg:flex-row justify-between items-center mb-12 lg:mb-[81px]">
-                <div class="relative w-full md:w-[60%] lg:w-[42%] mb-0 lg:mb-[40px] lg:mt-0">
-                    <img src="@/assets/images/feature-set1-back.png" alt="back" class="w-full" />
-                    <img src="@/assets/images/feature-set1-front.png" alt="front" class="absolute top-0 left-1/2 -translate-x-1/2 w-[63%] 2xl:w-[410px]" />
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center lg:mt-6">
-            <a class="bg-background-blue text-white mr-[13.5px] w-[128px] lg:w-[176px] h-[52px] flex justify-center items-center rounded-[8px] text-xl lg:text-[32px] leading-[24px]" :href="DOWNLINK">立即下载</a>
-        </div>
+      </div>
     </section>
 </template>
 <style scoped>
-@media (min-width: 1024px) and (max-width: 1220px) {
-    .adaptive-container {
-        max-width: clamp(470px, calc(470px + (570 - 470) * ((100vw - 1024px) / (1220 - 1024))), 570px);
-    }
-
-    .adaptive-title {
-        font-size: clamp(32px, calc(32px + (48 - 32) * ((100vw - 1024px) / (1220 - 1024))), 48px);
-    }
-
-    .adaptive-description {
-        font-size: clamp(16px, calc(16px + (24 - 16) * ((100vw - 1024px) / (1220 - 1024))), 24px);
-    }
+.banner-part {
+  display: flex;
+  position: relative;
+  top: 50px;
+  width: 100%;
+  height: 278px;
+  margin-bottom: 50px;
+}
+.banner-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
 }
 
-@media (max-width: 1023px) {
-    .adaptive-container {
-        max-width: 100%;
-    }
-
-    .adaptive-title {
-        font-size: 32px;
-    }
-    .adaptive-description {
-        font-size: 16px;
-    }
+.left-side {
+  position: relative;
+  z-index: 2;
+  padding: 40px 26px;
 }
 
-@media (min-width: 1221px) {
-    .adaptive-container {
-        max-width: 570px;
-    }
+.header-title {
+  color: #47C68F;
+  font-weight: 600;
+  font-size: 22px;
+}
 
-    .adaptive-title {
-        font-size: 48px;
-    }
-    .adaptive-description {
-        font-size: 24px;
-    }
+.header-second-title {
+  color: #fff;
+  font-weight: 600;
+  font-size: 36px;
+}
+
+.header-small-title {
+  color: #ACACAC;
+  font-size: 12px;
+}
+
+.button-container {
+  margin-top: 14.35px;
+  display: flex;
+}
+
+.start-btn {
+  background-color: #FFFFFF;
+  padding: 7.5px 19.5px;
+  border-radius: 8px;
+  color: #1A1A1A;
+  font-size: 8px;
+}
+
+.cs-btn {
+  margin-left: 12px;
+  background-color: #47C68F;
+  padding: 7.5px 19.5px;
+  border-radius: 8px;
+  color: #1A1A1A;
+  font-size: 8px;
+}
+
+.download-btn {
+  display: flex;
+  margin-top: 26.38px;
+
+  img {
+    width: 57.05px;
+    height: 16.37px;
+  }
 }
 </style>
