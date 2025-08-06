@@ -28,7 +28,7 @@ const { t } = useI18n()
           <div class="each-card">
             <div class="each-card-content">
               <div class="card-image">
-                <img src="@/assets/images/icon-explore1.png" style="width: 120px; height: 80px;" alt=""/>
+                <img src="@/assets/images/icon-explore1.png" style="object-fit: contain" alt=""/>
               </div>
               <div class="card-text">
                 {{ t('explore.security') }}
@@ -38,7 +38,7 @@ const { t } = useI18n()
           <div class="each-card" style="margin: 0 24px;">
             <div class="each-card-content">
               <div class="card-image">
-                <img src="@/assets/images/icon-explore2.png" style="width: 120px; height: 80px;" alt=""/>
+                <img src="@/assets/images/icon-explore2.png" style="object-fit: contain" alt=""/>
               </div>
               <div class="card-text">
                 {{ t('explore.risk') }}
@@ -48,7 +48,7 @@ const { t } = useI18n()
           <div class="each-card">
             <div class="each-card-content">
               <div class="card-image">
-                <img src="@/assets/images/icon-explore3.png" style="width: 120px; height: 80px;" alt=""/>
+                <img src="@/assets/images/icon-explore3.png" style="object-fit: contain" alt=""/>
               </div>
               <div class="card-text">
                 {{ t('explore.verify') }}
@@ -141,7 +141,7 @@ const { t } = useI18n()
 }
 
 .each-card-content {
-  padding: 24px 115px 30px 115px;
+  padding: 20px 100px;
 }
 
 .card-image {
@@ -155,6 +155,7 @@ const { t } = useI18n()
   font-size: 24px;
   color: #fff;
   margin-top: 24px;
+  text-align: center;
 }
 
 .explore-mission-content {
@@ -167,7 +168,7 @@ const { t } = useI18n()
 
 .explore-ppl-image {
   position: absolute;
-  top: 81px;
+  top: 95px;
   right: -250px;
   max-width: 517px;
 }

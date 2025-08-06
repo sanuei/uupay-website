@@ -20,8 +20,10 @@ const { t } = useI18n()
       </div>
       <div class="content-details">
         <div class="card-content">
-          <div class="card-title">
-            {{ t('feature.cardTitle') }}
+          <div class="card-content-style">
+            <div class="card-title">
+              {{ t('feature.cardTitle') }}
+            </div>
           </div>
           <div class="function">
             <div class="function-content">
@@ -236,9 +238,11 @@ const { t } = useI18n()
   height: auto;
 }
 
+.card-content-style {
+  display: flex;
+}
+
 .card-title {
-  width: 100%;
-  max-width: 523px;
   margin-top: 39px;
   margin-left: -40px;
   background: #47C68F;
