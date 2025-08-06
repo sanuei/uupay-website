@@ -84,7 +84,7 @@ const changeLanguage = (lang: any) => {
   <div class="header-part">
     <div class="header-container">
       <div class="name-side">
-        <img src="@/assets/images/header-icon-logo-web.png" style="width: 40px; height: 40px;" alt=""/>
+        <img src="@/assets/images/logo.png" style="width: 40px; height: 40px;" alt=""/>
         <span class="title-name">{{ t('header.appName') }}</span>
       </div>
       <div class="option-side">
