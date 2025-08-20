@@ -91,16 +91,24 @@ const {t} = useI18n()
 }
 
 .contact-col {
+  width: 100%;
+  height: 100%;
   display: flex;
   margin-top: 50px;
+  position: relative;
 }
 
 .contact-img {
-  width: 60%;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .contact-description {
-  width: 40%;
+  height: 100%;
+  position: absolute;
+  right: -50px;
   background-color: #1A1A1A;
   padding: 90px;
   border-radius: 40px;
@@ -127,5 +135,24 @@ const {t} = useI18n()
   font-size: 24px;
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 1440px) {
+  :deep(.contact-info-title) {
+    width: 40%;
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  :deep(.contact-info-content) {
+    width: 60%;
+    color: #ACACAC;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
 }
 </style>
