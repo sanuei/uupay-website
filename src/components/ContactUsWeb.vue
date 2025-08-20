@@ -150,7 +150,7 @@ const {t} = useI18n()
   :deep(.contact-info-content) {
     width: 60%;
     color: #ACACAC;
-    font-size: 20px;
+    font-size: 16px;
     display: flex;
     align-items: center;
   }
