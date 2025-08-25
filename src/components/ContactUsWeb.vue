@@ -6,6 +6,14 @@ const el = ref<HTMLElement | null>(null)
 
 defineExpose({el})
 const {t} = useI18n()
+
+const openCustomerService = () => {
+  if (window.scBotHandler && typeof window.scBotHandler.expand === 'function') {
+    window.scBotHandler.expand()
+  } else {
+    console.warn('客服系统尚未加载')
+  }
+}
 </script>
 
 <template>
@@ -21,44 +29,20 @@ const {t} = useI18n()
             <img src="@/assets/images/contact-background.png" style="width: 100%; height: 100%;" alt=""/>
           </div>
           <div class="contact-description">
-            <div class="contact-description-col">
-              <div class="contact-info-title">
-                {{ t('contact.phone') }}:
-              </div>
-              <div class="contact-info-content">
-                012-123456
-              </div>
-            </div>
-            <div class="contact-description-col" style="margin-top: 10px;">
-              <div class="contact-info-title">
-                {{ t('contact.postcode') }}:
-              </div>
-              <div class="contact-info-content">
-                5000
-              </div>
-            </div>
-            <div class="contact-description-col" style="margin-top: 10px;">
-              <div class="contact-info-title">
-                {{ t('contact.email') }}:
-              </div>
-              <div class="contact-info-content">
-                dgeywi@gvuw.com
-              </div>
-            </div>
-            <div class="contact-description-col" style="margin-top: 10px;">
-              <div class="contact-info-title">
-                {{ t('contact.address') }}:
-              </div>
-              <div class="contact-info-content">
-                Malaysia
-              </div>
-            </div>
             <div class="contact-description-col" style="margin-top: 10px;">
               <div class="contact-info-title">
                 {{ t('contact.website') }}:
               </div>
               <div class="contact-info-content">
-                www.ctvybu.com
+                uupay.com
+              </div>
+            </div>
+            <div class="cs-btn" @click="openCustomerService">
+              <div class="cs-content">
+                <img src="@/assets/images/cs-btn.png" alt=""/>
+                <span>
+                  {{ t('banner.csBtn')}}
+                </span>
               </div>
             </div>
           </div>
@@ -76,13 +60,16 @@ const {t} = useI18n()
 }
 
 .contact-part {
+  width: 100%;
+  height: 100%;
   background-color: #47C68F;
   border-radius: 100px;
   padding: 100px 300px;
 }
 
 .contact-content {
-
+  width: 100%;
+  height: 100%;
 }
 
 .contact-title {
@@ -99,29 +86,28 @@ const {t} = useI18n()
 }
 
 .contact-img {
-  width: 80%;
-  height: 100%;
+  flex: 1;
+  height: auto;
   display: flex;
   align-items: center;
 }
 
 .contact-description {
-  height: 100%;
-  position: absolute;
-  right: -50px;
+ flex: 1;
   background-color: #1A1A1A;
-  padding: 90px;
   border-radius: 40px;
   margin-left: -35px;
+  justify-content: center;
+  align-content: center;
 }
 
 .contact-description-col {
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 .contact-info-title {
-  width: 40%;
   color: #fff;
   font-weight: 500;
   font-size: 28px;
@@ -130,16 +116,44 @@ const {t} = useI18n()
 }
 
 .contact-info-content {
-  width: 60%;
+  margin-left: 20px;
   color: #ACACAC;
   font-size: 24px;
   display: flex;
   align-items: center;
 }
 
+.cs-btn {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  padding-top: 10px;
+}
+
+.cs-content {
+  display: flex;
+  align-items: center;
+  background-color: #47C68F;
+  border-radius: 14px;
+  padding: 15px 20px;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  span {
+    display: flex;
+    align-content: center;
+    color: #fff;
+    font-weight: 500;
+    font-size: 28px;
+    margin-left: 10px;
+  }
+}
+
 @media screen and (max-width: 1440px) {
   :deep(.contact-info-title) {
-    width: 40%;
     color: #fff;
     font-weight: 500;
     font-size: 20px;
@@ -148,11 +162,25 @@ const {t} = useI18n()
   }
 
   :deep(.contact-info-content) {
-    width: 60%;
+    margin-left: 20px;
     color: #ACACAC;
     font-size: 16px;
     display: flex;
     align-items: center;
+  }
+
+  :deep(.cs-content span) {
+    display: flex;
+    align-content: center;
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+
+  :deep(.cs-content img) {
+    width: 32px;
+    height: 32px;
   }
 }
 </style>

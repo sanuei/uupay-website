@@ -6,6 +6,14 @@ const el = ref<HTMLElement | null>(null)
 
 defineExpose({el})
 const {t} = useI18n()
+
+const openCustomerService = () => {
+  if (window.scBotHandler && typeof window.scBotHandler.expand === 'function') {
+    window.scBotHandler.expand()
+  } else {
+    console.warn('客服系统尚未加载')
+  }
+}
 </script>
 
 <template>
@@ -22,42 +30,18 @@ const {t} = useI18n()
         <div class="contact-info-detail">
           <div class="contact-info-detail-style">
             <div class="contact-info-detail-title">
-              {{ t('contact.phone') }} :
-            </div>
-            <div class="contact-info-detail-content">
-              012-123456
-            </div>
-          </div>
-          <div class="contact-info-detail-style">
-            <div class="contact-info-detail-title">
-              {{ t('contact.postcode') }} :
-            </div>
-            <div class="contact-info-detail-content">
-              47100
-            </div>
-          </div>
-          <div class="contact-info-detail-style">
-            <div class="contact-info-detail-title">
-              {{ t('contact.email') }} :
-            </div>
-            <div class="contact-info-detail-content">
-              dgeywi@gvuw.com
-            </div>
-          </div>
-          <div class="contact-info-detail-style">
-            <div class="contact-info-detail-title">
-              {{ t('contact.address') }} :
-            </div>
-            <div class="contact-info-detail-content">
-              Malaysia
-            </div>
-          </div>
-          <div class="contact-info-detail-style">
-            <div class="contact-info-detail-title">
               {{ t('contact.website') }} :
             </div>
             <div class="contact-info-detail-content">
-              www.ctvybu.com
+              uupay.com
+            </div>
+          </div>
+          <div class="cs-btn" @click="openCustomerService">
+            <div class="cs-content">
+              <img src="@/assets/images/cs-btn.png" style="width: 22px; height: 22px;" alt=""/>
+              <span>
+                {{ t('banner.csBtn')}}
+              </span>
             </div>
           </div>
         </div>
@@ -104,10 +88,10 @@ const {t} = useI18n()
 .contact-info-detail-style {
   display: flex;
   margin-top: 10px;
+  justify-content: center;
 }
 
 .contact-info-detail-title {
-  width: 35%;
   color: #FFF;
   font-weight: 500;
   font-size: 18px;
@@ -121,5 +105,27 @@ const {t} = useI18n()
   align-items: center;
   text-align: left;
   margin-left: 15px;
+}
+
+.cs-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 29px;
+  margin-bottom: 110px;
+}
+
+.cs-content {
+  display: flex;
+  align-items: center;
+  background-color: #47C68F;
+  border-radius: 7px;
+  padding: 12px 40px;
+
+  span {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px;
+  }
 }
 </style>

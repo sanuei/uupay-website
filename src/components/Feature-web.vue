@@ -282,6 +282,7 @@ const { t } = useI18n()
 }
 
 .card-img {
+  flex: 1;
   max-width: 330px;
   flex-shrink: 0;
   display: flex;
@@ -345,7 +346,7 @@ const { t } = useI18n()
       linear-gradient(to bottom left, #595959, #3E3E3E, #262626);
   background-origin: border-box;
   background-clip: content-box, border-box;
-  width: 100%;
+  flex: 1;
 }
 
 .each-col {
@@ -360,6 +361,7 @@ const { t } = useI18n()
 }
 
 .each-image {
+
   background-color: #47C68F;
   border-radius: 15px;
   padding: 15px;

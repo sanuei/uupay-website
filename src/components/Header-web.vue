@@ -148,7 +148,7 @@ const changeLanguage = (lang: any) => {
     .name-side {
       display: flex;
       align-content: center;
-      width: 20%;
+      flex: 1;
 
       .title-name {
         display: flex;
@@ -161,7 +161,7 @@ const changeLanguage = (lang: any) => {
     }
 
     .option-side {
-      width: 60%;
+      flex: 1;
       display: flex;
       align-items: center;
 
@@ -178,7 +178,7 @@ const changeLanguage = (lang: any) => {
     .language-side {
       display: flex;
       align-items: center;
-      width: 20%;
+      flex: 1;
       justify-content: end;
 
       .option-type-language {
