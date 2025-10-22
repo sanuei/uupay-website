@@ -37,6 +37,8 @@ export const DOWNLINK = import.meta.env.VITE_DOWNLOAD
 
 export const CONTACTUS = import.meta.env.VITE_CONTACTUS
 
+export const APPNAME = import.meta.env.VITE_NAME
+
 export const FEATURE_ITEMS: FeatureItem[] = [
     {
         images: {

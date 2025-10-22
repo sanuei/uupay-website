@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DOWNLINK } from '@/constants'
+import {APPNAME, DOWNLINK} from '@/constants'
 import { useI18n } from 'vue-i18n';
 
 const { locale, t } = useI18n()
@@ -38,6 +38,13 @@ const openCustomerService = () => {
     console.warn('客服系统尚未加载')
   }
 }
+
+const openDeeplInk = () => {
+  const url = window.location.href
+  const afterJump = url.split('#/jump/')[1] || ''
+  const deeplink = `${APPNAME}://${afterJump}`
+  window.location.href = deeplink
+}
 </script>
 <template>
     <section class="relative lg:px-0">
@@ -54,9 +61,9 @@ const openCustomerService = () => {
             {{ t('banner.sContent') }}
           </div>
           <div class="button-container">
-            <a :href="DOWNLINK" @click="copyInvitationCode" class="start-btn">
+            <div @click="openDeeplInk" class="start-btn">
               {{ t('banner.startBtn') }}
-            </a>
+            </div>
             <div @click="openCustomerService" class="cs-btn">
               {{ t('banner.csBtn') }}
             </div>
