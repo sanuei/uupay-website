@@ -5,14 +5,22 @@ import {APPNAME, DOWNLINK} from '@/constants/index'
 const {t} = useI18n()
 
 const getInvitationCode = (): string | null => {
-  const url = new URL(window.location.href)
-  const codeFromQuery = url.searchParams.get('invitationCode')
-  if (codeFromQuery) return codeFromQuery
+  const queryCode = new URLSearchParams(window.location.search).get('invitationCode')
+  if (queryCode) {
+    return queryCode
+  }
 
   const hash = window.location.hash
-  const hashQuery = hash.includes('?') ? hash.split('?')[1] : ''
-  const paramsInHash = new URLSearchParams(hashQuery)
-  return paramsInHash.get('invitationCode')
+  const hashQueryIndex = hash.indexOf('?')
+  if (hashQueryIndex !== -1) {
+    const hashQuery = hash.substring(hashQueryIndex + 1)
+    const hashCode = new URLSearchParams(hashQuery).get('invitationCode')
+    if (hashCode) {
+      return hashCode
+    }
+  }
+
+  return null
 }
 
 const copyInvitationCode = () => {
