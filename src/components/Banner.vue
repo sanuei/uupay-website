@@ -6,37 +6,50 @@ const { locale, t } = useI18n()
 
 const getInvitationCode = (): string | null => {
   const queryCode = new URLSearchParams(window.location.search).get('invitationCode')
-  if (queryCode) {
-    return queryCode
-  }
+  if (queryCode) return queryCode
 
   const hash = window.location.hash
   const hashQueryIndex = hash.indexOf('?')
   if (hashQueryIndex !== -1) {
     const hashQuery = hash.substring(hashQueryIndex + 1)
     const hashCode = new URLSearchParams(hashQuery).get('invitationCode')
-    if (hashCode) {
-      return hashCode
-    }
+    if (hashCode) return hashCode
   }
 
   return null
 }
 
-const copyInvitationCode = () => {
-  const invitationCode = getInvitationCode()
+const fallbackCopy = (text: string): boolean => {
+  const input = document.createElement('input')
+  input.value = text
+  document.body.appendChild(input)
+  input.select()
+  const result = document.execCommand('copy')
+  document.body.removeChild(input)
+  return result
+}
 
-  if (invitationCode) {
-    navigator.clipboard.writeText(window.location.href)
-        .then(() => {
-          console.log('包含邀请码的链接已复制:', window.location.href)
-        })
-        .catch(err => {
-          console.error('复制失败:', err)
-        })
-  } else {
-    console.log('没有邀请码，不执行复制')
+const copyInvitationCode = async () => {
+  const invitationCode = getInvitationCode()
+  if (!invitationCode) {
+    return
   }
+
+  const textToCopy = window.location.href
+
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(textToCopy)
+      return
+    } catch (err) {
+      console.warn('Clipboard API 失败，准备使用 fallback:', err)
+    }
+  }
+
+  const fallbackSuccess = fallbackCopy(textToCopy)
+  fallbackSuccess
+      ? console.log('已复制（fallback 方法）：', textToCopy)
+      : console.error('fallback 复制仍失败')
 }
 
 const openCustomerService = () => {
@@ -47,11 +60,42 @@ const openCustomerService = () => {
   }
 }
 
-const openDeeplInk = () => {
+const openDeepLink = () => {
+  copyInvitationCode()
   const url = window.location.href
-  const afterJump = url.split('#/jump/')[1] || ''
+  let afterJump = ""
+
+  const jumpIndex = url.indexOf("jump/")
+  if (jumpIndex !== -1) {
+    afterJump = url.substring(jumpIndex + 5)
+  }
+
+  if (!afterJump) {
+    console.warn("未发现 jump，直接下载 App")
+    window.location.href = DOWNLINK
+    return
+  }
+
   const deeplink = `${APPNAME}://${afterJump}`
+  let hasOpened = false
+
+  const onHide = () => {
+    hasOpened = true
+    clearTimeout(timer)
+    document.removeEventListener("visibilitychange", onHide)
+    window.removeEventListener("blur", onHide)
+  }
+
+  document.addEventListener("visibilitychange", onHide)
+  window.addEventListener("blur", onHide)
+
   window.location.href = deeplink
+
+  const timer = setTimeout(() => {
+    if (!hasOpened) {
+      window.location.href = DOWNLINK
+    }
+  }, 1000)
 }
 </script>
 <template>
@@ -69,7 +113,7 @@ const openDeeplInk = () => {
             {{ t('banner.sContent') }}
           </div>
           <div class="button-container">
-            <div @click="openDeeplInk" class="start-btn">
+            <div @click="openDeepLink" class="start-btn">
               {{ t('banner.startBtn') }}
             </div>
             <div @click="openCustomerService" class="cs-btn">

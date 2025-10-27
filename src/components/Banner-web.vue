@@ -1,42 +1,55 @@
 <script setup lang="ts">
 import {useI18n} from 'vue-i18n'
-import {APPNAME, DOWNLINK} from '@/constants/index'
+import {DOWNLINK} from '@/constants/index'
 
 const {t} = useI18n()
 
 const getInvitationCode = (): string | null => {
   const queryCode = new URLSearchParams(window.location.search).get('invitationCode')
-  if (queryCode) {
-    return queryCode
-  }
+  if (queryCode) return queryCode
 
   const hash = window.location.hash
   const hashQueryIndex = hash.indexOf('?')
   if (hashQueryIndex !== -1) {
     const hashQuery = hash.substring(hashQueryIndex + 1)
     const hashCode = new URLSearchParams(hashQuery).get('invitationCode')
-    if (hashCode) {
-      return hashCode
-    }
+    if (hashCode) return hashCode
   }
 
   return null
 }
 
-const copyInvitationCode = () => {
-  const invitationCode = getInvitationCode()
+const fallbackCopy = (text: string): boolean => {
+  const input = document.createElement('input')
+  input.value = text
+  document.body.appendChild(input)
+  input.select()
+  const result = document.execCommand('copy')
+  document.body.removeChild(input)
+  return result
+}
 
-  if (invitationCode) {
-    navigator.clipboard.writeText(window.location.href)
-        .then(() => {
-          console.log('包含邀请码的链接已复制:', window.location.href)
-        })
-        .catch(err => {
-          console.error('复制失败:', err)
-        })
-  } else {
-    console.log('没有邀请码，不执行复制')
+const copyInvitationCode = async () => {
+  const invitationCode = getInvitationCode()
+  if (!invitationCode) {
+    return
   }
+
+  const textToCopy = window.location.href
+
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(textToCopy)
+      return
+    } catch (err) {
+      console.warn('Clipboard API 失败，准备使用 fallback:', err)
+    }
+  }
+
+  const fallbackSuccess = fallbackCopy(textToCopy)
+  fallbackSuccess
+      ? console.log('已复制（fallback 方法）：', textToCopy)
+      : console.error('fallback 复制仍失败')
 }
 
 const openCustomerService = () => {
@@ -45,13 +58,6 @@ const openCustomerService = () => {
   } else {
     console.warn('客服系统尚未加载')
   }
-}
-
-const openDeeplInk = () => {
-  const url = window.location.href
-  const afterJump = url.split('#/jump/')[1] || ''
-  const deeplink = `${APPNAME}://${afterJump}`
-  window.location.href = deeplink
 }
 </script>
 <template>
@@ -69,9 +75,9 @@ const openDeeplInk = () => {
           {{ t('banner.sContent') }}
         </div>
         <div class="button-container">
-          <div @click="openDeeplInk" class="start-btn">
+          <a :href="DOWNLINK" class="start-btn">
             {{ t('banner.startBtn') }}
-          </div>
+          </a>
           <div @click="openCustomerService" class="cs-btn">
             {{ t('banner.csBtn') }}
           </div>
