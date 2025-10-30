@@ -72,8 +72,17 @@ const openDeepLink = () => {
   }
 
   if (!afterJump) {
-    console.warn("未发现 jump，直接下载 App")
-    window.location.href = DOWNLINK
+    console.warn("未发现 jump，根据系统跳转")
+
+    const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)
+
+    if (isIOS) {
+      // 跳 App Store
+      window.location.href = 'https://apps.apple.com/app/id6749419646'
+    } else {
+      // 跳下载链接
+      window.location.href = DOWNLINK
+    }
     return
   }
 
@@ -94,7 +103,12 @@ const openDeepLink = () => {
 
   const timer = setTimeout(() => {
     if (!hasOpened) {
-      window.location.href = DOWNLINK
+      const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)
+      if (isIOS) {
+        window.location.href = 'https://apps.apple.com/app/id6749419646'
+      } else {
+        window.location.href = DOWNLINK
+      }
     }
   }, 1000)
 }
@@ -202,7 +216,7 @@ onBeforeUnmount(() => {
   padding: 7.5px 19.5px;
   border-radius: 8px;
   color: #1A1A1A;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .cs-btn {
@@ -211,7 +225,7 @@ onBeforeUnmount(() => {
   padding: 7.5px 19.5px;
   border-radius: 8px;
   color: #1A1A1A;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .download-btn {
@@ -219,8 +233,7 @@ onBeforeUnmount(() => {
   margin-top: 26.38px;
 
   img {
-    width: 57.05px;
-    height: 16.37px;
+    width: 120px;
   }
 }
 </style>

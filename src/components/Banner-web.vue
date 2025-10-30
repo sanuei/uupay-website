@@ -66,6 +66,19 @@ const goToAppStore = () => {
   window.location.href = 'https://apps.apple.com/app/id6749419646'
 }
 
+const goDownloadLink = () => {
+  const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)
+
+  if (isIOS) {
+    // 跳 App Store
+    window.location.href = 'https://apps.apple.com/app/id6749419646'
+  } else {
+    // 跳下载链接
+    window.location.href = DOWNLINK
+  }
+  return
+}
+
 const handleClick = () => {
   copyInvitationCode()
   window.removeEventListener('click', handleClick) // 只触发一次
@@ -78,6 +91,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('click', handleClick)
 })
+
 </script>
 <template>
   <section class="banner-section">
@@ -94,9 +108,9 @@ onBeforeUnmount(() => {
           {{ t('banner.sContent') }}
         </div>
         <div class="button-container">
-          <a :href="DOWNLINK" class="start-btn">
+          <div @click="goDownloadLink" class="start-btn">
             {{ t('banner.startBtn') }}
-          </a>
+          </div>
           <div @click="openCustomerService" class="cs-btn">
             {{ t('banner.csBtn') }}
           </div>
