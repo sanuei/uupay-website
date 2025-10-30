@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {useI18n} from 'vue-i18n'
 import {DOWNLINK} from '@/constants/index'
+import {onBeforeUnmount, onMounted} from "vue";
 
 const {t} = useI18n()
 
@@ -59,6 +60,24 @@ const openCustomerService = () => {
     console.warn('客服系统尚未加载')
   }
 }
+
+const goToAppStore = () => {
+  copyInvitationCode()
+  window.location.href = 'https://apps.apple.com/app/id6749419646'
+}
+
+const handleClick = () => {
+  copyInvitationCode()
+  window.removeEventListener('click', handleClick) // 只触发一次
+}
+
+onMounted(() => {
+  window.addEventListener('click', handleClick)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('click', handleClick)
+})
 </script>
 <template>
   <section class="banner-section">
@@ -83,9 +102,9 @@ const openCustomerService = () => {
           </div>
         </div>
         <div class="download-btn">
-          <a :href="DOWNLINK" @click="copyInvitationCode" style="margin-right: 25.51px">
+          <div @click="goToAppStore" style="margin-right: 25.51px">
             <img src="@/assets/images/download-ios-web.png" alt=""/>
-          </a>
+          </div>
           <a :href="DOWNLINK" @click="copyInvitationCode">
             <img src="@/assets/images/download-android-web.png" alt=""/>
           </a>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {APPNAME, DOWNLINK} from '@/constants'
 import { useI18n } from 'vue-i18n';
+import {onBeforeUnmount, onMounted} from "vue";
 
 const { locale, t } = useI18n()
 
@@ -97,6 +98,23 @@ const openDeepLink = () => {
     }
   }, 1000)
 }
+
+const goToAppStore = () => {
+  window.location.href = 'https://apps.apple.com/app/id6749419646';
+}
+
+const handleClick = () => {
+  copyInvitationCode()
+  window.removeEventListener('click', handleClick) // 只触发一次
+}
+
+onMounted(() => {
+  window.addEventListener('click', handleClick)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('click', handleClick)
+})
 </script>
 <template>
     <section class="relative lg:px-0">
@@ -121,10 +139,10 @@ const openDeepLink = () => {
             </div>
           </div>
           <div class="download-btn">
-            <a :href="DOWNLINK" @click="copyInvitationCode" style="margin-right: 8.72px">
+            <div @click="goToAppStore" style="margin-right: 8.72px">
               <img src="@/assets/images/download-ios.png" alt=""/>
-            </a>
-            <a :href="DOWNLINK" @click="copyInvitationCode">
+            </div>
+            <a :href="DOWNLINK">
               <img src="@/assets/images/download-android.png" alt=""/>
             </a>
           </div>
