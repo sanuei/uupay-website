@@ -1,57 +1,9 @@
 <script setup lang="ts">
 import {APPNAME, DOWNLINK} from '@/constants'
 import { useI18n } from 'vue-i18n';
-import {onBeforeUnmount, onMounted} from "vue";
+import { onMounted } from "vue";
 
 const { locale, t } = useI18n()
-
-const getInvitationCode = (): string | null => {
-  const queryCode = new URLSearchParams(window.location.search).get('invitationCode')
-  if (queryCode) return queryCode
-
-  const hash = window.location.hash
-  const hashQueryIndex = hash.indexOf('?')
-  if (hashQueryIndex !== -1) {
-    const hashQuery = hash.substring(hashQueryIndex + 1)
-    const hashCode = new URLSearchParams(hashQuery).get('invitationCode')
-    if (hashCode) return hashCode
-  }
-
-  return null
-}
-
-const fallbackCopy = (text: string): boolean => {
-  const input = document.createElement('input')
-  input.value = text
-  document.body.appendChild(input)
-  input.select()
-  const result = document.execCommand('copy')
-  document.body.removeChild(input)
-  return result
-}
-
-const copyInvitationCode = async () => {
-  const invitationCode = getInvitationCode()
-  if (!invitationCode) {
-    return
-  }
-
-  const textToCopy = window.location.href
-
-  if (navigator.clipboard && window.isSecureContext) {
-    try {
-      await navigator.clipboard.writeText(textToCopy)
-      return
-    } catch (err) {
-      console.warn('Clipboard API 失败，准备使用 fallback:', err)
-    }
-  }
-
-  const fallbackSuccess = fallbackCopy(textToCopy)
-  fallbackSuccess
-      ? console.log('已复制（fallback 方法）：', textToCopy)
-      : console.error('fallback 复制仍失败')
-}
 
 const openCustomerService = () => {
   if (window.scBotHandler && typeof window.scBotHandler.expand === 'function') {
@@ -62,7 +14,6 @@ const openCustomerService = () => {
 }
 
 const openDeepLink = () => {
-  copyInvitationCode()
   const url = window.location.href
   let afterJump = ""
 
@@ -78,7 +29,7 @@ const openDeepLink = () => {
 
     if (isIOS) {
       // 跳 App Store
-      window.location.href = 'https://apps.apple.com/app/id6749419646'
+      goToAppStore()
     } else {
       // 跳下载链接
       window.location.href = DOWNLINK
@@ -105,7 +56,7 @@ const openDeepLink = () => {
     if (!hasOpened) {
       const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)
       if (isIOS) {
-        window.location.href = 'https://apps.apple.com/app/id6749419646'
+        goToAppStore()
       } else {
         window.location.href = DOWNLINK
       }
@@ -117,17 +68,37 @@ const goToAppStore = () => {
   window.location.href = 'https://apps.apple.com/app/id6749419646';
 }
 
-const handleClick = () => {
-  copyInvitationCode()
-  window.removeEventListener('click', handleClick) // 只触发一次
+const checkAndRedirectToApp = () => {
+  const queryCode = new URLSearchParams(window.location.search).get('invitationCode')
+  if (queryCode) {
+    window.location.href = `uupay://register?invitationCode=${queryCode}`
+    return
+  }
+
+  const hash = window.location.hash
+  const hashQueryIndex = hash.indexOf('?')
+  if (hashQueryIndex !== -1) {
+    const hashQuery = hash.substring(hashQueryIndex + 1)
+    const hashCode = new URLSearchParams(hashQuery).get('invitationCode')
+    if (hashCode) {
+      window.location.href = `${APPNAME}://register?invitationCode=${hashCode}`
+      return
+    }
+  }
+
+  const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)
+
+  if (isIOS) {
+    // 跳 App Store
+    goToAppStore()
+  } else {
+    // 跳下载链接
+    window.location.href = DOWNLINK
+  }
 }
 
 onMounted(() => {
-  window.addEventListener('click', handleClick)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('click', handleClick)
+  checkAndRedirectToApp()
 })
 </script>
 <template>
