@@ -15,82 +15,74 @@ const openCustomerService = () => {
 
 const openDeepLink = () => {
   const url = window.location.href
-  let afterJump = ""
 
-  const jumpIndex = url.indexOf("jump/")
+  let deeplink = ''
+
+  const jumpIndex = url.indexOf('jump/')
   if (jumpIndex !== -1) {
-    afterJump = url.substring(jumpIndex + 5)
+    const afterJump = url.substring(jumpIndex + 5)
+    if (afterJump) {
+      deeplink = `${APPNAME}://${afterJump}`
+    }
   }
 
-  if (!afterJump) {
-    console.warn("未发现 jump，根据系统跳转")
-
-    const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)
-
-    if (isIOS) {
-      // 跳 App Store
-      goToAppStore()
+  if (!deeplink) {
+    const queryCode = new URLSearchParams(window.location.search).get('invitationCode')
+    if (queryCode) {
+      deeplink = `${APPNAME}://register?invitationCode=${queryCode}`
     } else {
-      // 跳下载链接
-      window.location.href = DOWNLINK
+      const hash = window.location.hash || ''
+      const hashQueryIndex = hash.indexOf('?')
+      if (hashQueryIndex !== -1) {
+        const hashQuery = hash.substring(hashQueryIndex + 1)
+        const hashCode = new URLSearchParams(hashQuery).get('invitationCode')
+        if (hashCode) {
+          deeplink = `${APPNAME}://register?invitationCode=${hashCode}`
+        }
+      }
     }
+  }
+
+  if (!deeplink) {
+    console.log('没有 jump 或 invitationCode，保持在当前页')
     return
   }
 
-  const deeplink = `${APPNAME}://${afterJump}`
   let hasOpened = false
+  let timer = 0
 
   const onHide = () => {
     hasOpened = true
     clearTimeout(timer)
-    document.removeEventListener("visibilitychange", onHide)
-    window.removeEventListener("blur", onHide)
+    document.removeEventListener('visibilitychange', onHide)
+    window.removeEventListener('blur', onHide)
   }
 
-  document.addEventListener("visibilitychange", onHide)
-  window.addEventListener("blur", onHide)
+  document.addEventListener('visibilitychange', onHide)
+  window.addEventListener('blur', onHide)
 
-  window.location.href = deeplink
+  try {
+    window.location.href = deeplink
+  } catch (e) {
+    console.warn('尝试直接赋 href 唤起失败（浏览器限制）', e)
+  }
 
-  const timer = setTimeout(() => {
+  timer = setTimeout(() => {
     if (!hasOpened) {
-      const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)
-      if (isIOS) {
-        goToAppStore()
-      } else {
-        window.location.href = DOWNLINK
-      }
+      document.removeEventListener('visibilitychange', onHide)
+      window.removeEventListener('blur', onHide)
+
+      goToAppStore()
     }
   }, 1000)
 }
 
 const goToAppStore = () => {
-  window.location.href = 'https://apps.apple.com/app/id6749419646';
-}
-
-const checkAndRedirectToApp = () => {
-  const queryCode = new URLSearchParams(window.location.search).get('invitationCode')
-  if (queryCode) {
-    window.location.href = `uupay://register?invitationCode=${queryCode}`
-    return
-  }
-
-  const hash = window.location.hash
-  const hashQueryIndex = hash.indexOf('?')
-  if (hashQueryIndex !== -1) {
-    const hashQuery = hash.substring(hashQueryIndex + 1)
-    const hashCode = new URLSearchParams(hashQuery).get('invitationCode')
-    if (hashCode) {
-      window.location.href = `${APPNAME}://register?invitationCode=${hashCode}`
-      return
-    }
-  }
-
   const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)
 
   if (isIOS) {
     // 跳 App Store
-    goToAppStore()
+    window.location.href = 'https://apps.apple.com/app/id6749419646';
   } else {
     // 跳下载链接
     window.location.href = DOWNLINK
@@ -98,7 +90,7 @@ const checkAndRedirectToApp = () => {
 }
 
 onMounted(() => {
-  checkAndRedirectToApp()
+  openDeepLink()
 })
 </script>
 <template>
@@ -116,7 +108,7 @@ onMounted(() => {
             {{ t('banner.sContent') }}
           </div>
           <div class="button-container">
-            <div @click="openDeepLink" class="start-btn">
+            <div @click="goToAppStore" class="start-btn">
               {{ t('banner.startBtn') }}
             </div>
             <div @click="openCustomerService" class="cs-btn">
@@ -127,9 +119,9 @@ onMounted(() => {
             <div @click="goToAppStore" style="margin-right: 8.72px">
               <img src="@/assets/images/download-ios.png" alt=""/>
             </div>
-            <a :href="DOWNLINK">
+            <div @click="goToAppStore">
               <img src="@/assets/images/download-android.png" alt=""/>
-            </a>
+            </div>
           </div>
         </div>
       </div>
