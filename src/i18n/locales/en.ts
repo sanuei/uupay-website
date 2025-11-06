@@ -15,7 +15,7 @@ const en = {
   solution: 'Solution',
   introduce: 'Easy collection, secure trade — simpler, smarter, safer payments',
   contactCs: 'Contact Support',
-  state: 'Countries & Regions',
+  state: 'Countries&Regions',
   seconds: 'Seconds',
   experience: 'Settlement Speed',
   system: 'System Uptime',
