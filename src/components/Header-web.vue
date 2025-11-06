@@ -183,7 +183,7 @@ const openCustomerService = () => {
               <span>{{t('start')}}</span>
               <div class="button-glow"></div>
             </button>
-            <button @click="openCustomerService" class="secondary-button" style="padding: 15px 55px">
+            <button @click="openCustomerService" class="secondary-button" style="padding: 15px 56px">
               <span>{{t('contactCs')}}</span>
             </button>
           </div>
