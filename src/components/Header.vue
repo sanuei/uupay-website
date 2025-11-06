@@ -46,14 +46,6 @@ const goToAppStore = () => {
   }
 }
 
-const iosDownload = () => {
-  window.location.href = 'https://apps.apple.com/app/id6749419646'
-}
-
-const androidDownload = () => {
-  window.location.href = DOWNLINK
-}
-
 const getInvitationCode = (): string | null => {
   const queryCode = new URLSearchParams(window.location.search).get('invitationCode')
   if (queryCode) return queryCode
