@@ -614,8 +614,8 @@ onMounted(() => {
             <div class="footer-column">
               <h4>{{t('contactType')}}</h4>
               <ul>
-                <li><a href="https://uupay.com">uupay.com</a></li>
-                <li><a href="mailto:hello@uupay.com">hello@uupay.com</a></li>
+                <li><a href="https://uupay.cc">uupay.cc</a></li>
+                <li><a href="mailto:uupay9999@gmail.com">uupay9999@gmail.com</a></li>
               </ul>
             </div>
           </div>
