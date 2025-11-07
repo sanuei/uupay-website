@@ -61,7 +61,7 @@ const en = {
   multiFactorPurpose: 'Layered protection, worry-free account',
   cardManage: 'Card Management',
   cardManagePurpose: 'Freeze, unfreeze, set limits anytime',
-  freeTrade: 'Free Transactions',
+  freeTrade: 'Empowering every transaction with freedom',
   freeTradePurpose: 'Breaking barriers of currency & region',
   freeMoney: 'Seamless money flow',
   ready: 'Ready to Start?',
