@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, onMounted, ref} from "vue";
+import {computed, onBeforeUnmount, onMounted, ref} from "vue";
 import {useI18n} from 'vue-i18n'
 import {
   ArrowRight,
@@ -168,7 +168,18 @@ const openDeepLink = () => {
 
 onMounted(() => {
   openDeepLink()
-})
+  const el = document.getElementById('copy-layer');
+  if (el) {
+    el.addEventListener('click', copyInvitationCode);
+  }
+});
+
+onBeforeUnmount(() => {
+  const el = document.getElementById('copy-layer');
+  if (el) {
+    el.removeEventListener('click', copyInvitationCode);
+  }
+});
 </script>
 <template>
   <div class="app-root">

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, ref} from "vue";
+import {computed, onBeforeUnmount, onMounted, ref} from "vue";
 import {useI18n} from 'vue-i18n'
 import {
   ArrowRight,
@@ -22,6 +22,20 @@ const languageList = computed(() => [
   { label: t('language.zhtw'), value: 'zhtw' },
   { label: t('language.en'), value: 'en' },
 ])
+
+onMounted(() => {
+  const el = document.getElementById('copy-layer');
+  if (el) {
+    el.addEventListener('click', copyInvitationCode);
+  }
+});
+
+onBeforeUnmount(() => {
+  const el = document.getElementById('copy-layer');
+  if (el) {
+    el.removeEventListener('click', copyInvitationCode);
+  }
+});
 
 const switchLanguage = (lang: string) => {
   locale.value = lang
