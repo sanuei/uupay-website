@@ -125,7 +125,7 @@ const openCustomerService = () => {
 }
 </script>
 <template>
-  <div class="app-root">
+  <div class="app-root" id="copy-layer">
     <!-- 鼠标光标效果 -->
     <div class="cursor-glow"></div>
 
