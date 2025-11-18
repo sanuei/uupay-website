@@ -213,7 +213,7 @@ const openCustomerService = () => {
 
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-number" data-target="200">10</div>
+              <div class="stat-number" data-target="200">137</div>
               <div class="stat-label">{{t('state')}}</div>
             </div>
             <div class="stat-item">
