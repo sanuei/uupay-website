@@ -10,7 +10,7 @@ const en = {
   contact: 'Contact',
   start: 'Get Started',
   newSolution: 'Next-Gen Payment Solution',
-  oneStop: 'One-Stop',
+  oneStop: 'Crypto Payment',
   digitalPay: ' Digital Payment',
   solution: 'Solution',
   introduce: 'Easy collection, secure trade — simpler, smarter, safer payments',
@@ -84,7 +84,27 @@ const en = {
   privacy: 'Privacy',
   terms: 'Terms',
   cookie: 'Cookie',
-  download: 'Download'
+  download: 'Download',
+  teamWork: 'Trust & Collaboration',
+  comeFrom: 'Our team comes from',
+  our: 'Our core team members come from leading global fintech companies and exchanges',
+  faq: 'Frequently Asked Questions',
+  quickAnswer: 'Quickly find the answers to your questions',
+  question1: 'What payment methods does UUPAY support?',
+  answer1: 'UUPAY supports a wide range of mainstream payment methods, including credit cards, debit cards, digital wallets, cryptocurrencies, and local payment options across different regions. We continuously expand our payment channels to offer users more choices.',
+  question2: 'How does UUPAY ensure transaction security?',
+  answer2: 'UUPAY follows PCI DSS–certified security standards, and all transaction data is protected through end-to-end encryption. We also deploy an AI-powered real-time risk control system that monitors abnormal transactions 24/7 to ensure the security of every payment.',
+  question3: 'What is the difference between a virtual card and a physical card?',
+  answer3: 'A virtual card is a digital payment card that can be generated instantly and used for online payments and subscription services. A physical card is a tangible card that supports both online and offline spending and will be mailed to your address. Both types can be linked to your UUPAY wallet and configured with flexible spending limits.',
+  announcementCenter: 'Announcement Center',
+  announceTitle: 'Stay updated with UUPAY’s latest news, product updates, and important notifications',
+  all: 'All Announcements',
+  renew: 'Product Updates',
+  newFunction: 'New Features',
+  maintenance: 'System Maintenance',
+  safetyAnnounce: 'Security Announcement',
+  noAnnounce: 'No announcements available',
+  readAll: 'Read Full Article'
 }
 
 export default en

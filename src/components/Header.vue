@@ -4,12 +4,12 @@ import {useI18n} from 'vue-i18n'
 import {
   ArrowRight,
   BrainCircuit,
-  ChartColumn,
+  ChartColumn, Check, ChevronDown,
   CodeXml,
-  CreditCard,
-  Fingerprint,
-  Globe, Lock, MessageCircle, Settings,
-  ShieldCheck, Smartphone, Sparkles, Star, Wallet, Zap
+  CreditCard, Facebook,
+  Fingerprint, Github,
+  Globe, Instagram, Linkedin, Lock, MessageCircle, Settings,
+  ShieldCheck, Smartphone, Sparkles, Star, Twitter, Wallet, Youtube, Zap
 } from "lucide-vue-next";
 import {APPNAME, DOWNLINK} from "@/constants";
 
@@ -180,6 +180,431 @@ onBeforeUnmount(() => {
     el.removeEventListener('click', copyInvitationCode);
   }
 });
+
+// ===========================
+//    初始化粒子动画（封装）
+// ===========================
+function initParticleCanvas() {
+  const canvas = document.getElementById('particles') as HTMLCanvasElement | null;
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  // ⭐ 关键：永远不为 null 的 canvas & ctx
+  const canvasEl: HTMLCanvasElement = canvas;
+  const ctxEl: CanvasRenderingContext2D = ctx;
+
+  canvasEl.width = window.innerWidth;
+  canvasEl.height = window.innerHeight;
+
+  const particles: Particle[] = [];
+  const particleCount = 100;
+
+  class Particle {
+    x!: number;
+    y!: number;
+    size!: number;
+    speedX!: number;
+    speedY!: number;
+    opacity!: number;
+
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * canvasEl.width;
+      this.y = Math.random() * canvasEl.height;
+      this.size = Math.random() * 2 + 0.5;
+      this.speedX = Math.random() * 0.5 - 0.25;
+      this.speedY = Math.random() * 0.5 - 0.25;
+      this.opacity = Math.random() * 0.5 + 0.2;
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      if (this.x > canvasEl.width) this.x = 0;
+      if (this.x < 0) this.x = canvasEl.width;
+      if (this.y > canvasEl.height) this.y = 0;
+      if (this.y < 0) this.y = canvasEl.height;
+    }
+
+    draw() {
+      ctxEl.fillStyle = `rgba(71, 198, 143, ${this.opacity})`;
+      ctxEl.beginPath();
+      ctxEl.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctxEl.fill();
+    }
+  }
+
+  function initParticles() {
+    particles.length = 0;
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function connectParticles() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < 150) {
+          ctxEl.strokeStyle = `rgba(71, 198, 143, ${0.15 * (1 - distance / 150)})`;
+          ctxEl.lineWidth = 0.5;
+          ctxEl.beginPath();
+          ctxEl.moveTo(particles[i].x, particles[i].y);
+          ctxEl.lineTo(particles[j].x, particles[j].y);
+          ctxEl.stroke();
+        }
+      }
+    }
+  }
+
+  function animateParticles() {
+    ctxEl.clearRect(0, 0, canvasEl.width, canvasEl.height);
+
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+
+    connectParticles();
+    requestAnimationFrame(animateParticles);
+  }
+
+  initParticles();
+  animateParticles();
+
+  window.addEventListener('resize', () => {
+    canvasEl.width = window.innerWidth;
+    canvasEl.height = window.innerHeight;
+    initParticles();
+  });
+}
+
+// ===========================
+//       页面加载后启动
+// ===========================
+window.addEventListener('DOMContentLoaded', () => {
+  initParticleCanvas();
+});
+
+// ==================== 平滑滚动 ====================
+onMounted(() => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const href = (anchor as HTMLAnchorElement).getAttribute('href');
+      if (!href) return;
+
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+
+// ==================== 导航滚动效果 & 高亮 ====================
+onMounted(() => {
+  const navbar = document.querySelector<HTMLElement>('.navbar');
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-links a');
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+
+  const scrollHandler = () => {
+    const currentScroll = window.pageYOffset;
+
+    // navbar scrolled 状态切换
+    if (navbar) {
+      navbar.classList.toggle('scrolled', currentScroll > 50);
+    }
+
+    // 高亮当前 section 的 nav link
+    const scrollY = currentScroll;
+    sections.forEach(section => {
+      const sectionHeight = section.clientHeight;
+      const sectionTop = section.offsetTop - 100; // HTMLElement 上可用
+      const sectionId = section.getAttribute('id');
+
+      if (sectionId && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          // 将 active 的设置改为 toggle，一次性处理 true/false
+          link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
+        });
+      }
+    });
+  };
+
+  // 绑定事件
+  window.addEventListener('scroll', scrollHandler);
+  window.addEventListener('load', scrollHandler);
+
+  // 立即执行一次，确保初始状态正确（可选）
+  scrollHandler();
+
+  // 卸载时清理
+  onBeforeUnmount(() => {
+    window.removeEventListener('scroll', scrollHandler);
+    window.removeEventListener('load', scrollHandler);
+  });
+});
+
+// ==================== Tilt 3D效果 ====================
+onMounted(() => {
+  const tiltElements = document.querySelectorAll<HTMLElement>('[data-tilt]');
+  const cleanup: (() => void)[] = [];
+
+  tiltElements.forEach(el => {
+    const mouseMove = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+    };
+    const mouseLeave = () => {
+      el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+    };
+    el.addEventListener('mousemove', mouseMove);
+    el.addEventListener('mouseleave', mouseLeave);
+    cleanup.push(() => { el.removeEventListener('mousemove', mouseMove); el.removeEventListener('mouseleave', mouseLeave); });
+  });
+
+  onBeforeUnmount(() => cleanup.forEach(fn => fn()));
+});
+
+// ==================== 滚动动画（卡片淡入） ====================
+onMounted(() => {
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target as HTMLElement; // <— 关键！
+      if (entry.isIntersecting) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+
+  document.querySelectorAll<HTMLElement>('.feature-card, .product-card, .security-item')
+      .forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(50px)';
+        el.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
+        scrollObserver.observe(el);
+      });
+});
+
+const initFloatingCardEffect = () => {
+  const floatingCard = document.querySelector<HTMLDivElement>('.floating-card');
+
+  if (!floatingCard) return;
+
+  // 鼠标进入：暂停自动动画
+  floatingCard.addEventListener('mouseenter', () => {
+    floatingCard.style.animationPlayState = 'paused';
+  });
+
+  // 鼠标移动：跟随倾斜效果
+  floatingCard.addEventListener('mousemove', (e) => {
+    const rect = floatingCard.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+
+    floatingCard.style.transform =
+        `translateY(-20px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+  });
+
+  // 鼠标离开：恢复原位置 + 继续自动动画
+  floatingCard.addEventListener('mouseleave', () => {
+    floatingCard.style.animationPlayState = 'running';
+    floatingCard.style.transition = 'transform 0.5s ease-out';
+    floatingCard.style.transform = '';
+
+    setTimeout(() => {
+      floatingCard.style.transition = '';
+    }, 500);
+  });
+};
+
+onMounted(() => {
+  initFloatingCardEffect();
+});
+
+function initCardEffects() {
+  const cards = document.querySelectorAll<HTMLElement>('.feature-card, .product-card');
+
+  cards.forEach((card: HTMLElement) => {
+
+    card.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // 更新 CSS variables
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+
+      // 优先选择 card-gradient-bg，其次 product-glow
+      const glow = card.querySelector<HTMLElement>('.card-gradient-bg')
+          || card.querySelector<HTMLElement>('.product-glow');
+
+      if (glow) {
+        glow.style.background = `
+          radial-gradient(circle 300px at ${x}px ${y}px,
+          rgba(99, 102, 241, 0.15),
+          transparent)
+        `;
+      }
+    });
+
+    card.addEventListener('mouseleave', () => {
+      const glow = card.querySelector<HTMLElement>('.card-gradient-bg')
+          || card.querySelector<HTMLElement>('.product-glow');
+
+      if (glow) {
+        glow.style.transition = 'background 0.4s ease-out';
+        glow.style.background = 'transparent';
+
+        setTimeout(() => {
+          glow.style.transition = '';
+        }, 400);
+      }
+    });
+  });
+}
+
+// 你补上的这段没问题
+window.addEventListener('DOMContentLoaded', () => {
+  initCardEffects();
+});
+
+// =========================
+//   统计数字动画初始化函数
+// =========================
+function initStatNumberAnimation() {
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+  };
+
+  const numberAnimationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target as HTMLElement; // ✅ 类型断言
+      if (entry.isIntersecting && !el.classList.contains('animated')) {
+        const target = el.dataset.target ? parseInt(el.dataset.target) : null;
+        const statItem = el.closest('.stat-item');
+
+        if (target !== null) {
+          animateNumberFadeIn(el, target, 1500);
+        } else {
+          animateNumberFadeIn(el, null, 1500);
+        }
+
+        el.classList.add('animated');
+
+        if (statItem) {
+          statItem.classList.add('animated');
+        }
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll<HTMLElement>('.stat-number').forEach(el => {
+    numberAnimationObserver.observe(el);
+  });
+}
+
+// =========================
+//   单个数字淡入动画
+// =========================
+function animateNumberFadeIn(
+    element: HTMLElement,
+    targetNumber: number | null,
+    duration: number
+) {
+  element.style.opacity = '0';
+  element.style.transform = 'translateY(20px)';
+
+  let startTimestamp: number | null = null;
+
+  const step = (timestamp: number) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+    // 淡入动画
+    element.style.opacity = progress.toString();
+    element.style.transform = `translateY(${20 * (1 - progress)}px)`;
+
+    // 数字变化（如果有 targetNumber）
+    if (targetNumber !== null) {
+      const startValue = Math.floor(targetNumber * 0.8);
+      const current = Math.floor(progress * (targetNumber - startValue) + startValue);
+      element.textContent = current + '+';
+    }
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      // 最终值
+      element.style.opacity = '1';
+      element.style.transform = 'translateY(0)';
+      if (targetNumber !== null) {
+        element.textContent = targetNumber + '+';
+      }
+    }
+  };
+
+  requestAnimationFrame(step);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  initStatNumberAnimation();
+});
+
+// ===============================
+// FAQ 开关逻辑（封装）
+// ===============================
+function initFAQToggle() {
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    item.addEventListener('click', () => {
+      console.log('点击FAQ项');
+
+      // 关闭其他 FAQ
+      faqItems.forEach(other => {
+        if (other !== item) {
+          other.classList.remove('active');
+        }
+      });
+
+      // 切换当前项
+      item.classList.toggle('active');
+
+      console.log('FAQ状态:', item.classList.contains('active') ? '打开' : '关闭');
+    });
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  initFAQToggle();
+});
 </script>
 <template>
   <div class="app-root" id="copy-layer">
@@ -208,22 +633,21 @@ onBeforeUnmount(() => {
             <li><a href="#contact">{{t('contact')}}</a></li>
           </ul>
 
-          <div style="display: flex; justify-content: center;align-items: center;align-content: center">
-            <button @click="goToAppStore" class="cta-button">{{t('start')}}</button>
-            <div class="header-language">
-              <el-dropdown trigger="click">
-                <span class="el-dropdown-link">
-                  <img src="@/assets/images/icon-language-phone.png" style="width: 20px; height: 20px;" alt=""/>
-                </span>
-                <template #dropdown>
-                  <el-dropdown-menu>
-                    <template v-for="item in languageList">
-                      <el-dropdown-item @click="changeLanguage(item)">{{ item.label }}</el-dropdown-item>
-                    </template>
-                  </el-dropdown-menu>
+          <div class="nav-right">
+            <div class="language-selector">
+              <button class="language-btn language-icon-btn">
+                <Globe />
+              </button>
+              <div class="language-dropdown">
+                <template v-for="item in languageList">
+                  <div @click="changeLanguage(item)" :class="['lang-option', selectedLanguage === item.value ? 'active' : '']">
+                    <span>{{ item.label }}</span>
+                    <div v-if="selectedLanguage === item.value" class="check-icon"><Check /></div>
+                  </div>
                 </template>
-              </el-dropdown>
+              </div>
             </div>
+            <button class="cta-button" @click="goToAppStore">{{t('start')}}</button>
           </div>
         </div>
       </div>
@@ -240,7 +664,7 @@ onBeforeUnmount(() => {
 
           <h1 class="hero-title">
             <span class="word-animation">
-              <span class="gradient-text">{{t('oneStop')}}</span>{{t('digitalPay')}}
+              <span class="gradient-text">{{t('oneStop')}}</span>
             </span>
             <br />
             <span class="word-animation" style="animation-delay: 0.1s;">{{t('solution')}}</span>
@@ -248,22 +672,33 @@ onBeforeUnmount(() => {
 
           <p class="hero-subtitle">{{t('introduce')}}</p>
 
-          <div class="hero-buttons">
-            <button @click="goToAppStore" class="primary-button">
-              <span>{{t('start')}}</span>
-              <div class="button-glow"></div>
-            </button>
-            <button @click="openCustomerService" class="secondary-button">
-              <span>{{t('contactCs')}}</span>
-            </button>
-            <button @click="goToAppStore" class="secondary-button">
-              <span>{{t('download')}}</span>
-            </button>
+<!--          <div class="hero-buttons">-->
+<!--            <button @click="goToAppStore" class="primary-button">-->
+<!--              <span>{{t('start')}}</span>-->
+<!--              <div class="button-glow"></div>-->
+<!--            </button>-->
+<!--            <button @click="openCustomerService" class="secondary-button">-->
+<!--              <span>{{t('contactCs')}}</span>-->
+<!--            </button>-->
+<!--            <button @click="goToAppStore" class="secondary-button">-->
+<!--              <span>{{t('download')}}</span>-->
+<!--            </button>-->
+<!--          </div>-->
+
+          <div class="download-buttons">
+            <div @click="goToAppStore" class="download-btn">
+              <img src="@/assets/images/app-store.png" alt="Download on App Store">
+              <span class="download-text">App Store</span>
+            </div>
+            <div @click="goToAppStore" class="download-btn">
+              <img src="@/assets/images/google-play.png" alt="Get it on Google Play">
+              <span class="download-text">Google Play</span>
+            </div>
           </div>
 
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-number" data-target="200">10</div>
+              <div class="stat-number" data-target="10">10</div>
               <div class="stat-label">{{t('state')}}</div>
             </div>
             <div class="stat-item">
@@ -279,17 +714,9 @@ onBeforeUnmount(() => {
 
         <!-- visual -->
         <div class="hero-visual">
-          <div class="floating-card card-3d">
+          <div class="floating-card card-3d card-image">
             <div class="card-shine"></div>
-            <div class="card-content">
-              <div class="card-chip"></div>
-              <div class="card-logo">UUPay</div>
-              <div class="card-number">**** **** **** 8888</div>
-              <div class="card-info">
-                <span>VALID THRU</span>
-                <span class="card-date">12/28</span>
-              </div>
-            </div>
+            <img src="@/assets/images/uupay-card.png" alt="UUPAY Card" class="card-img">
           </div>
 
           <div class="floating-elements">
@@ -441,10 +868,6 @@ onBeforeUnmount(() => {
           </div>
 
           <div class="product-card highlight" data-tilt>
-            <div class="highlight-badge">
-              <Star class="badge-icon-small" />
-              <span>{{t('recommend')}}</span>
-            </div>
             <div class="product-glow"></div>
             <div class="product-number">02</div>
             <div class="product-header">
@@ -454,6 +877,10 @@ onBeforeUnmount(() => {
                 </div>
               </div>
               <h3>{{t('visualCard')}}</h3>
+              <div class="highlight-badge">
+                <Star class="badge-icon-small" />
+                <span>{{t('recommend')}}</span>
+              </div>
             </div>
             <ul class="product-features">
               <li>{{t('visualCardOne')}}</li>
@@ -572,6 +999,84 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
+    <!-- 我们的团队来自 -->
+    <section class="partners-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">{{t('teamWork')}}</span>
+          <h2 class="section-title">{{t('comeFrom')}}</h2>
+          <p class="section-description">
+            {{t('our')}}
+          </p>
+        </div>
+
+        <div class="partners-scroll">
+          <div class="partners-track">
+            <div class="partner-logo">Binance</div>
+            <div class="partner-logo">Coinbase</div>
+            <div class="partner-logo">Kraken</div>
+            <div class="partner-logo">OKX</div>
+            <div class="partner-logo">Huobi</div>
+            <div class="partner-logo">Bitfinex</div>
+            <div class="partner-logo">KuCoin</div>
+            <div class="partner-logo">Gate.io</div>
+            <!-- 重复一组用于无缝滚动 -->
+            <div class="partner-logo">Binance</div>
+            <div class="partner-logo">Coinbase</div>
+            <div class="partner-logo">Kraken</div>
+            <div class="partner-logo">OKX</div>
+            <div class="partner-logo">Huobi</div>
+            <div class="partner-logo">Bitfinex</div>
+            <div class="partner-logo">KuCoin</div>
+            <div class="partner-logo">Gate.io</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">FAQ</span>
+          <h2 class="section-title">{{t('faq')}}</h2>
+          <p class="section-description">{{t('quickAnswer')}}</p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>{{t('question1')}}</span>
+              <div class="faq-icon"><ChevronDown /></div>
+            </div>
+            <div class="faq-answer">
+              <p>{{t('answer1')}}</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>{{t('question2')}}</span>
+              <div class="faq-icon"><ChevronDown /></div>
+            </div>
+            <div class="faq-answer">
+              <p>{{t('answer2')}}</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>{{t('question3')}}</span>
+              <div class="faq-icon"><ChevronDown /></div>
+            </div>
+            <div class="faq-answer">
+              <p>{{t('answer3')}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 联系我们 -->
     <section id="contact" class="contact-section">
       <div class="container">
@@ -638,10 +1143,39 @@ onBeforeUnmount(() => {
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <div class="footer-legal">
-            <a href="#">{{t('privacy')}}</a><span>|</span><a href="#">{{t('terms')}}</a><span>|</span><a href="#">{{t('cookie')}}</a>
+          <div class="footer-left">
+            <div class="footer-legal">
+              <a href="#" data-i18n="footer.privacy">{{t('privacy')}}</a>
+              <span>|</span>
+              <a href="#" data-i18n="footer.terms">{{t('terms')}}</a>
+              <span>|</span>
+              <a href="#" data-i18n="footer.cookies">{{t('cookie')}}</a>
+            </div>
+            <div class="footer-copyright" data-i18n="footer.copyright">
+              © UUPAY 2025
+            </div>
           </div>
-          <div class="footer-copyright">© UUPay 2025</div>
+
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+              <Twitter />
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <Facebook />
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+              <Linkedin />
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <Instagram />
+            </a>
+            <a href="#" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+              <Github />
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+              <Youtube />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
@@ -649,9 +1183,13 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.header-language {
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: -1; /* 放在背景 */
 }
 </style>

@@ -1,7 +1,7 @@
 const zh = {
   language: {
     zh: '简体中文',
-    zhtw: '繁体中文',
+    zhtw: '繁體中文',
     en: 'English'
   },
   about: '关于我们',
@@ -10,7 +10,7 @@ const zh = {
   contact: '联系我们',
   start: '开始使用',
   newSolution: '新一代支付解决方案',
-  oneStop: '一站式',
+  oneStop: '数字货币支付',
   digitalPay: '数字支付',
   solution: '解决方案',
   introduce: '助你轻松收款 安心交易 让支付更简单、更智能、更可信',
@@ -43,7 +43,7 @@ const zh = {
   learnMore: '了解更多',
   recommend: '推荐',
   visualCard: '虚拟卡即开即用',
-  visualCardOne: '支持在线支付、订阅服务、跨境消费',
+  visualCardOne: '在线支付、订阅服务、跨境消费',
   visualCardTwo: '快速生成，支持 Visa / Mastercard',
   visualCardThree: '灵活设置限额，安全可控',
   phyCard: '实体卡，全球通用',
@@ -84,7 +84,27 @@ const zh = {
   privacy: '隐私政策',
   terms: '条款及条件',
   cookie: 'Cookie 政策',
-  download: '立即下载'
+  download: '立即下载',
+  teamWork: '信任与合作',
+  comeFrom: '我们的团队来自',
+  our: '我们的核心团队成员来自全球顶级金融科技公司和交易所',
+  faq: '常见问题',
+  quickAnswer: '快速找到您关心的问题答案',
+  question1: 'UUPAY 支持哪些支付方式？',
+  answer1: 'UUPAY 支持多种主流支付方式，包括信用卡、借记卡、数字钱包、加密货币以及各地区的本地支付方式。我们持续扩展支付渠道，为用户提供更多选择。',
+  question2: '如何确保交易安全？',
+  answer2: 'UUPAY 采用 PCI DSS 认证的安全标准，所有交易数据都经过端到端加密处理。我们还部署了 AI 驱动的实时风控系统，24/7 监控异常交易，确保每一笔支付的安全性。',
+  question3: '虚拟卡和实体卡有什么区别？',
+  answer3: '虚拟卡是数字化的支付卡，可以立即生成并用于在线支付、订阅服务等场景。实体卡是物理卡片，支持线上线下消费，需要邮寄到您的地址。两者都可以绑定 UUPAY 钱包，灵活设置限额。',
+  announcementCenter: '公告中心',
+  announceTitle: '了解 UUPAY 的最新动态、产品更新和重要通知',
+  all: '全部公告',
+  renew: '产品更新',
+  newFunction: '新功能',
+  maintenance: '系统维护',
+  safetyAnnounce: '安全公告',
+  noAnnounce: '暂无公告',
+  readAll: '阅读全文'
 }
 
 export default zh;
