@@ -824,7 +824,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-number">10</div> <!--要数字跳动就加data-target="10" -->
+              <div class="stat-number" data-target="137">137</div> <!--要数字跳动就加data-target="10" -->
               <div class="stat-label">{{t('state')}}</div>
             </div>
             <div class="stat-item">
