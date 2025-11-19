@@ -1118,7 +1118,7 @@ window.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="footer-column">
-              <h4>公司</h4>
+              <h4>{{t('company')}}</h4>
               <ul>
                 <li><a href="#about">{{t('about')}}</a></li>
                 <li><a href="#">{{t('team')}}</a></li>
