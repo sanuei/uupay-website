@@ -104,7 +104,12 @@ const zh = {
   maintenance: '系统维护',
   safetyAnnounce: '安全公告',
   noAnnounce: '暂无公告',
-  readAll: '阅读全文'
+  readAll: '阅读全文',
+  allAnnouncement: '全部公告',
+  productRenew: '产品更新',
+  newFeature: '新功能',
+  systemUpdate: '系统维护',
+  safetyAnnouncement: '安全公告'
 }
 
 export default zh;

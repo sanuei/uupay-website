@@ -104,7 +104,12 @@ const en = {
   maintenance: 'System Maintenance',
   safetyAnnounce: 'Security Announcement',
   noAnnounce: 'No announcements available',
-  readAll: 'Read Full Article'
+  readAll: 'Read Full Article',
+  allAnnouncement: 'All Announcements',
+  productRenew: 'Product Updates',
+  newFeature: 'New Features',
+  systemUpdate: 'System Maintenance',
+  safetyAnnouncement: 'Security Announcement'
 }
 
 export default en

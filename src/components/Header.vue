@@ -4,18 +4,26 @@ import {useI18n} from 'vue-i18n'
 import {
   ArrowRight,
   BrainCircuit,
-  ChartColumn, Check, ChevronDown,
+  ChartColumn,
   CodeXml,
-  CreditCard, Facebook,
-  Fingerprint, Github,
-  Globe, Instagram, Linkedin, Lock, MessageCircle, Settings,
-  ShieldCheck, Smartphone, Sparkles, Star, Twitter, Wallet, Youtube, Zap
+  CreditCard,
+  Fingerprint,
+  Globe, Lock, MessageCircle, Settings,
+  ShieldCheck, Smartphone, Sparkles, Star, Wallet, Zap,
+  Check, ChevronDown, Twitter, Facebook, Linkedin, Instagram, Github, Youtube, RefreshCw, Newspaper,
+  Calendar, User, Inbox, ArrowLeft
 } from "lucide-vue-next";
 import {APPNAME, DOWNLINK} from "@/constants";
 
 const { locale, t } = useI18n()
 
 const selectedLanguage = ref(localStorage.getItem('language') || 'zh')
+
+const currentSection = ref('other')
+
+const isContent = ref(false)
+
+const announcementContent = ref<any>([])
 
 const languageList = computed(() => [
   { label: t('language.zh'), value: 'zh' },
@@ -605,6 +613,137 @@ function initFAQToggle() {
 window.addEventListener('DOMContentLoaded', () => {
   initFAQToggle();
 });
+
+// function showSection(section: string) {
+//   currentSection.value = section
+// }
+
+interface Announcement {
+  id: string
+  category: string
+  title: string
+  date: string
+  excerpt: string
+  author: string
+  file: string
+}
+
+// 公告数据配置（内嵌备用数据）
+const announcementsData = ref<Announcement[]>([]);
+const currentCategory = ref('all');
+
+// 备用公告数据（当fetch失败时使用）
+const fallbackAnnouncementsData = [
+  {
+    "id": "welcome-to-uupay-2025",
+    "title": "欢迎使用 UUPAY 数字支付平台",
+    "excerpt": "感谢您选择 UUPAY！我们致力于为全球用户提供安全、快捷的数字支付解决方案。本文将介绍 UUPAY 的核心功能和使用指南。",
+    "category": "news",
+    "date": "2025-01-15",
+    "author": "UUPAY 团队",
+    "file": "welcome-to-uupay-2025.md"
+  },
+  {
+    "id": "new-virtual-card-feature",
+    "title": "全新虚拟卡功能上线",
+    "excerpt": "我们很高兴地宣布，UUPAY 虚拟卡功能正式上线！用户现在可以即时创建虚拟卡，用于在线支付和订阅服务。",
+    "category": "feature",
+    "date": "2025-01-10",
+    "author": "产品团队",
+    "file": "new-virtual-card-feature.md"
+  },
+  {
+    "id": "security-update-202501",
+    "title": "重要安全更新通知",
+    "excerpt": "为了保护您的账户安全，我们将在 2025 年 1 月 20 日进行系统安全升级。本次更新将增强多重身份验证机制。",
+    "category": "security",
+    "date": "2025-01-08",
+    "author": "安全团队",
+    "file": "security-update-202501.md"
+  },
+  {
+    "id": "multi-currency-support",
+    "title": "多币种结算功能升级",
+    "excerpt": "UUPAY 现在支持 50+ 种法定货币和主流加密货币的自动换汇功能，让您的跨境支付更加便捷。",
+    "category": "update",
+    "date": "2025-01-05",
+    "author": "技术团队",
+    "file": "multi-currency-support.md"
+  },
+  {
+    "id": "scheduled-maintenance-jan-2025",
+    "title": "系统维护通知 - 2025年1月",
+    "excerpt": "为了提供更好的服务，我们将在 2025 年 1 月 25 日凌晨 2:00-4:00 (UTC+8) 进行系统维护，期间部分功能可能暂时不可用。",
+    "category": "maintenance",
+    "date": "2025-01-03",
+    "author": "运维团队",
+    "file": "scheduled-maintenance-jan-2025.md"
+  }
+];
+
+// 加载公告数据
+async function loadAnnouncements() {
+  try {
+    const res = await fetch('/announcements/announcements.json');
+    if (!res.ok) throw new Error('Load failed');
+    announcementsData.value = await res.json();
+  } catch (error) {
+    console.error('❌ 加载公告数据失败:', error);
+    console.log('⚠️ 使用备用数据...');
+    announcementsData.value = fallbackAnnouncementsData;
+  }
+}
+
+// 筛选标签点击事件
+const filteredAnnouncements = computed(() => {
+  if (currentCategory.value === 'all') return announcementsData.value;
+  return announcementsData.value.filter(a => a.category === currentCategory.value);
+});
+
+const categories = computed(() => [
+  { value: 'all', label: t('allAnnouncement') },
+  { value: 'update', label: t('productRenew') },
+  { value: 'feature', label: t('newFeature') },
+  { value: 'maintenance', label: t('systemUpdate') },
+  { value: 'security', label: t('safetyAnnouncement') },
+]);
+
+// 获取分类图标
+const iconMap: Record<string, any> = {
+  update: RefreshCw,
+  feature: Sparkles,
+  maintenance: Settings,
+  security: ShieldCheck,
+  news: Newspaper,
+}
+
+const getCategoryIcon = (cat: string) => {
+  return iconMap[cat] || iconMap.default
+}
+
+// 获取分类名称
+function getCategoryName(category: string) {
+  const names: Record<string, string> = {
+    update: '产品更新',
+    feature: '新功能',
+    maintenance: '系统维护',
+    security: '安全公告',
+    news: '新闻动态',
+  };
+  return names[category] || '公告';
+}
+
+// 查看公告详情
+function viewAnnouncement(data: any) {
+  console.log('📰 查看公告:', data);
+  isContent.value = true
+  announcementContent.value = data
+}
+
+// 页面加载完成后加载公告
+document.addEventListener('DOMContentLoaded', () => {
+  loadAnnouncements();
+});
 </script>
 <template>
   <div class="app-root" id="copy-layer">
@@ -654,7 +793,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </nav>
 
     <!-- hero -->
-    <section class="hero">
+    <section class="hero" v-show="currentSection === 'other'">
       <div class="container hero-inner">
         <div class="hero-content">
           <div class="hero-badge">
@@ -737,7 +876,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     <!-- 以下省略：你原始 HTML 中的 about / features / security / mission / contact / footer
          我已在 template 中保留相应结构 —— 你可以按需继续添加细节 -->
-    <section id="about" class="about-section">
+    <section id="about" class="about-section" v-show="currentSection === 'other'">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">{{t('aboutPay')}}</span>
@@ -836,7 +975,7 @@ window.addEventListener('DOMContentLoaded', () => {
       </div>
     </section>
 
-    <section id="features" class="products-section">
+    <section id="features" class="products-section" v-show="currentSection === 'other'">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">{{t('completeFin')}}</span>
@@ -921,7 +1060,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </section>
 
     <!-- 安全保障 -->
-    <section id="security" class="security-section">
+    <section id="security" class="security-section" v-show="currentSection === 'other'">
       <div class="container">
         <div class="security-content">
           <div class="security-text">
@@ -987,7 +1126,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </section>
 
     <!-- 使命愿景 -->
-    <section class="mission-section">
+    <section class="mission-section" v-show="currentSection === 'other'">
       <div class="container">
         <div class="mission-content">
           <h2 class="mission-title">{{t('freeTrade')}}</h2>
@@ -1000,7 +1139,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </section>
 
     <!-- 我们的团队来自 -->
-    <section class="partners-section">
+    <section class="partners-section" v-show="currentSection === 'other'">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">{{t('teamWork')}}</span>
@@ -1035,7 +1174,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </section>
 
     <!-- 常见问题 -->
-    <section class="faq-section" id="faq">
+    <section class="faq-section" id="faq" v-show="currentSection === 'other'">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">FAQ</span>
@@ -1078,7 +1217,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </section>
 
     <!-- 联系我们 -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section" v-show="currentSection === 'other'">
       <div class="container">
         <div class="contact-content">
           <div class="contact-cta">
@@ -1118,7 +1257,7 @@ window.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="footer-column">
-              <h4>{{t('company')}}</h4>
+              <h4>{{t('company')}}d</h4>
               <ul>
                 <li><a href="#about">{{t('about')}}</a></li>
                 <li><a href="#">{{t('team')}}</a></li>
@@ -1134,6 +1273,104 @@ window.addEventListener('DOMContentLoaded', () => {
                 <li><a href="mailto:uupay9999@gmail.com">uupay9999@gmail.com</a></li>
               </ul>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="announcement" class="announcements-hero" v-show="currentSection === 'announcement' && !isContent">
+      <div class="container">
+        <h1>📢 {{t('announcementCenter')}}</h1>
+        <p>{{t('announceTitle')}}</p>
+      </div>
+    </section>
+
+    <section class="announcements-container" v-show="currentSection === 'announcement' && !isContent">
+      <div class="container">
+        <!-- 分类筛选 -->
+        <div class="filter-tabs">
+          <button
+              v-for="cat in categories"
+              :key="cat.value"
+              :class="['filter-tab', { active: currentCategory === cat.value }]"
+              @click="currentCategory = cat.value"
+          >
+            {{ cat.label }}
+          </button>
+        </div>
+
+        <!-- 公告卡片网格 -->
+        <div class="announcements-grid" id="announcements-grid">
+          <div class="announcement-card" v-for="a in filteredAnnouncements" data-id="${announcement.id}" @click="viewAnnouncement(a)">
+            <div class="announcement-meta">
+                <span class="announcement-category">
+                  <component :is="getCategoryIcon(a.category)" style="width: 14px; height: 14px;" />
+                  {{ getCategoryName(a.category) }}
+                </span>
+              <span class="announcement-date">
+                  <Calendar />
+                  {{ a.date}}
+                </span>
+            </div>
+
+            <h3 class="announcement-title">{{a.title}}</h3>
+            <p class="announcement-excerpt">{{a.excerpt}}</p>
+
+            <div class="announcement-footer">
+                <span class="announcement-author">
+                  <User />
+                  {{a.author}}
+                </span>
+              <span class="read-more">
+                  {{t('readAll')}}
+                  <ArrowRight />
+                </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 无公告提示 -->
+        <div class="no-announcements" id="no-announcements" style="display: none;">
+          <Inbox />
+          <p>{{t('noAnnounce')}}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="announcement-detail-hero" v-show="currentSection === 'announcement' && isContent">
+      <div class="container">
+        <div class="back-button" @click="isContent = false">
+          <ArrowLeft />
+          返回公告中心
+        </div>
+
+        <div class="announcement-detail-header" id="announcement-header">
+          <div class="announcement-detail-meta">
+                    <span class="announcement-detail-category">
+                        <component :is="getCategoryIcon(announcementContent.category)" style="width: 14px; height: 14px;" />
+                        {{getCategoryName(announcementContent.category)}}
+                    </span>
+            <span class="announcement-detail-date">
+                        <Calendar />
+                        {{announcementContent.date}}
+                    </span>
+            <span class="announcement-detail-author">
+                        <User />
+                        {{announcementContent.author}}
+                    </span>
+          </div>
+          <h1 class="announcement-detail-title">{{announcementContent.title}}</h1>
+          <p class="announcement-detail-excerpt">{{announcementContent.excerpt}}</p>
+        </div>
+
+        <div class="announcement-detail-content" id="announcement-content">
+          <!--          <div class="loading-spinner">-->
+          <!--            <div class="spinner"></div>-->
+          <!--            <p style="margin-top: 1rem;">加载中...</p>-->
+          <!--          </div>-->
+          <div class="markdown-content">
+            <h1 class="announcement-detail-title">{{announcementContent.title}}</h1>
+            <p class="announcement-detail-excerpt">{{announcementContent.excerpt}}</p>
           </div>
         </div>
       </div>

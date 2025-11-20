@@ -104,7 +104,12 @@ const zhtw = {
     maintenance: '系統維護',
     safetyAnnounce: '安全公告',
     noAnnounce: '暫無公告',
-    readAll: '閱讀全文'
+    readAll: '閱讀全文',
+    allAnnouncement: '全部公告',
+    productRenew: '產品更新',
+    newFeature: '新功能',
+    systemUpdate: '系統維護',
+    safetyAnnouncement: '安全公告'
 }
 
 export default zhtw
