@@ -109,7 +109,8 @@ const zh = {
   productRenew: '产品更新',
   newFeature: '新功能',
   systemUpdate: '系统维护',
-  safetyAnnouncement: '安全公告'
+  safetyAnnouncement: '安全公告',
+  goBackAnnounce: '返回公告中心'
 }
 
 export default zh;

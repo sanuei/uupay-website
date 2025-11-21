@@ -109,7 +109,8 @@ const en = {
   productRenew: 'Product Updates',
   newFeature: 'New Features',
   systemUpdate: 'System Maintenance',
-  safetyAnnouncement: 'Security Announcement'
+  safetyAnnouncement: 'Security Announcement',
+  goBackAnnounce: 'Back to Announcement Center'
 }
 
 export default en

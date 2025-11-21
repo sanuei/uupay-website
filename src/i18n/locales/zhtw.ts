@@ -109,7 +109,8 @@ const zhtw = {
     productRenew: '產品更新',
     newFeature: '新功能',
     systemUpdate: '系統維護',
-    safetyAnnouncement: '安全公告'
+    safetyAnnouncement: '安全公告',
+    goBackAnnounce: '返回公告中心'
 }
 
 export default zhtw

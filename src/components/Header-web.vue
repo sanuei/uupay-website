@@ -1276,7 +1276,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="container">
         <div class="back-button" @click="isContent = false">
           <ArrowLeft />
-          返回公告中心
+          {{t('goBackAnnounce')}}
         </div>
 
         <div class="announcement-detail-header" id="announcement-header">

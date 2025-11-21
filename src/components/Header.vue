@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, onBeforeUnmount, onMounted, ref} from "vue";
+import {computed, onBeforeUnmount, onMounted, ref, nextTick} from "vue";
 import {useI18n} from 'vue-i18n'
 import {
   ArrowRight,
@@ -593,8 +593,6 @@ function initFAQToggle() {
 
   faqItems.forEach(item => {
     item.addEventListener('click', () => {
-      console.log('点击FAQ项');
-
       // 关闭其他 FAQ
       faqItems.forEach(other => {
         if (other !== item) {
@@ -614,9 +612,18 @@ window.addEventListener('DOMContentLoaded', () => {
   initFAQToggle();
 });
 
-// function showSection(section: string) {
-//   currentSection.value = section
-// }
+function showSection(section: string) {
+  currentSection.value = section === 'hero' ? 'other' : section;
+
+  nextTick(() => {
+    if (section === 'announcement') {
+      window.location.hash = '#announcement'
+    }
+    if (section === 'hero') {
+      window.location.hash = '#hero'
+    }
+  })
+}
 
 interface Announcement {
   id: string
@@ -735,7 +742,6 @@ function getCategoryName(category: string) {
 
 // 查看公告详情
 function viewAnnouncement(data: any) {
-  console.log('📰 查看公告:', data);
   isContent.value = true
   announcementContent.value = data
 }
@@ -760,7 +766,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <nav class="navbar">
       <div class="container">
         <div class="nav-content">
-          <div class="logo">
+          <div @click="showSection('hero')" class="logo">
             <img src="@/assets/images/logo.png" alt="UUPay Logo" />
             <span>UUPay</span>
           </div>
@@ -793,7 +799,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </nav>
 
     <!-- hero -->
-    <section class="hero" v-show="currentSection === 'other'">
+    <section class="hero" id="hero" v-show="currentSection === 'other'">
       <div class="container hero-inner">
         <div class="hero-content">
           <div class="hero-badge">
@@ -1257,12 +1263,13 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="footer-column">
-              <h4>{{t('company')}}d</h4>
+              <h4>{{t('company')}}</h4>
               <ul>
                 <li><a href="#about">{{t('about')}}</a></li>
                 <li><a href="#">{{t('team')}}</a></li>
                 <li><a href="#">{{t('partner')}}</a></li>
                 <li><a href="#">{{t('joinUs')}}</a></li>
+                <li><a @click.prevent="showSection('announcement')">{{t('announcementCenter')}}</a></li>
               </ul>
             </div>
 
@@ -1341,7 +1348,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="container">
         <div class="back-button" @click="isContent = false">
           <ArrowLeft />
-          返回公告中心
+          {{t('goBackAnnounce')}}
         </div>
 
         <div class="announcement-detail-header" id="announcement-header">
