@@ -1,31 +1,30 @@
 <script setup lang="ts">
-import {
-  Header,
-  HeaderWeb,
-} from '@/components'
+import { Header, HeaderWeb } from '@/components'
 import { useDevice } from '@/composables/useDevice'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 const { isMobile } = useDevice()
+const router = useRouter()
+const { locale } = useI18n()
 
+const switchLanguage = (lang: any) => {
+  const route = router.currentRoute.value
+  const currentLang = route.params.lang as string
+  const fullPath = route.fullPath
+  const newFullPath = fullPath.replace('/' + currentLang, '/' + lang.value)
+
+  router.push(newFullPath)
+  locale.value = lang.value === 'zh-tw' ? 'zhtw' : lang.value
+  localStorage.setItem('language', lang.value)
+}
 </script>
+
 <template>
-  <Header v-if="isMobile" />
-  <HeaderWeb v-else />
+  <component
+      :is="isMobile ? Header : HeaderWeb"
+      @switchLanguage="switchLanguage"
+      :currentLanguage="locale"
+  />
+  <router-view />
 </template>
-<style scoped>
-.header-language {
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.download-btn {
-  display: flex;
-  margin: 50px 0;
-
-  img {
-    width: 177.75px;
-    height: 52.67px;
-  }
-}
-</style>

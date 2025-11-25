@@ -27,7 +27,7 @@ const zh = {
   paymentExp: '秒级到账体验',
   paymentExpPurpose: '快速结算，让现金流更高效',
   globalSupport: '全球化支持',
-  globalSupportPurpose: '多币种结算，覆盖200多个国家和地区',
+  globalSupportPurpose: '多币种结算，覆盖137多个国家和地区',
   friendlyDev: '开发者友好',
   friendlyDevPurpose: 'API集成简单，适配各种平台和语言',
   businessSecurity: '企业级安全保障',
@@ -110,7 +110,8 @@ const zh = {
   newFeature: '新功能',
   systemUpdate: '系统维护',
   safetyAnnouncement: '安全公告',
-  goBackAnnounce: '返回公告中心'
+  goBackAnnounce: '返回公告中心',
+  blogTitle: '部落格'
 }
 
 export default zh;

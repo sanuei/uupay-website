@@ -27,7 +27,7 @@ const en = {
   paymentExp: 'Instant Settlement',
   paymentExpPurpose: 'Fast payout for better cash flow',
   globalSupport: 'Global Reach',
-  globalSupportPurpose: '200+ countries, multi-currency',
+  globalSupportPurpose: '137 countries, multi-currency',
   friendlyDev: 'Dev Friendly',
   friendlyDevPurpose: 'Simple API, easy integration',
   businessSecurity: 'Enterprise Security',
@@ -110,7 +110,8 @@ const en = {
   newFeature: 'New Features',
   systemUpdate: 'System Maintenance',
   safetyAnnouncement: 'Security Announcement',
-  goBackAnnounce: 'Back to Announcement Center'
+  goBackAnnounce: 'Back to Announcement Center',
+  blogTitle: 'Blog'
 }
 
 export default en

@@ -15,7 +15,12 @@ import {
 } from "lucide-vue-next";
 import {APPNAME, DOWNLINK} from "@/constants";
 
-const { locale, t } = useI18n()
+const props = defineProps<{
+  onSwitchLanguage: (lang: string) => void
+  currentLanguage: string
+}>()
+
+const { t } = useI18n()
 
 const selectedLanguage = ref(localStorage.getItem('language') || 'zh')
 
@@ -26,18 +31,13 @@ const isContent = ref(false)
 const announcementContent = ref<any>([])
 
 const languageList = computed(() => [
-  { label: t('language.zh'), value: 'zh' },
-  { label: t('language.zhtw'), value: 'zhtw' },
+  { label: t('language.zh'), value: 'zh-cn' },
+  { label: t('language.zhtw'), value: 'zh-tw' },
   { label: t('language.en'), value: 'en' },
 ])
 
-const switchLanguage = (lang: string) => {
-  locale.value = lang
-  localStorage.setItem('language', lang)
-}
-
 const changeLanguage = (lang: any) => {
-  switchLanguage(lang.value)
+  props.onSwitchLanguage(lang)
   selectedLanguage.value = lang.value
 }
 
@@ -175,7 +175,6 @@ const openDeepLink = () => {
 }
 
 onMounted(() => {
-  openDeepLink()
   const el = document.getElementById('copy-layer');
   if (el) {
     el.addEventListener('click', copyInvitationCode);
@@ -301,6 +300,7 @@ function initParticleCanvas() {
 // ===========================
 window.addEventListener('DOMContentLoaded', () => {
   initParticleCanvas();
+  openDeepLink()
 });
 
 // ==================== 平滑滚动 ====================

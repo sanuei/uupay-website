@@ -15,9 +15,9 @@ import {
 } from "lucide-vue-next";
 import { DOWNLINK } from "@/constants";
 
-const { locale, t } = useI18n()
+const { t } = useI18n()
 
-const selectedLanguage = ref(localStorage.getItem('language') || 'zh')
+const selectedLanguage = ref(localStorage.getItem('language') || 'zh-cn')
 
 const currentSection = ref('other')
 
@@ -26,10 +26,15 @@ const isContent = ref(false)
 const announcementContent = ref<any>([])
 
 const languageList = computed(() => [
-  { label: t('language.zh'), value: 'zh' },
-  { label: t('language.zhtw'), value: 'zhtw' },
+  { label: t('language.zh'), value: 'zh-cn' },
+  { label: t('language.zhtw'), value: 'zh-tw' },
   { label: t('language.en'), value: 'en' },
 ])
+
+const props = defineProps<{
+  onSwitchLanguage: (lang: string) => void
+  currentLanguage: string
+}>()
 
 onMounted(() => {
   const el = document.getElementById('copy-layer');
@@ -45,13 +50,8 @@ onBeforeUnmount(() => {
   }
 });
 
-const switchLanguage = (lang: string) => {
-  locale.value = lang
-  localStorage.setItem('language', lang)
-}
-
 const changeLanguage = (lang: any) => {
-  switchLanguage(lang.value)
+  props.onSwitchLanguage(lang)
   selectedLanguage.value = lang.value
 }
 

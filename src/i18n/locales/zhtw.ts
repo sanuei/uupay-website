@@ -27,7 +27,7 @@ const zhtw = {
     paymentExp: '即時入帳體驗',
     paymentExpPurpose: '快速結算，提升資金效率',
     globalSupport: '全球化支援',
-    globalSupportPurpose: '多幣別結算，覆蓋200多個國家與地區',
+    globalSupportPurpose: '多幣別結算，覆蓋137多個國家與地區',
     friendlyDev: '開發者友善',
     friendlyDevPurpose: 'API整合簡單，支援多平台與語言',
     businessSecurity: '企業級安全防護',
@@ -110,7 +110,8 @@ const zhtw = {
     newFeature: '新功能',
     systemUpdate: '系統維護',
     safetyAnnouncement: '安全公告',
-    goBackAnnounce: '返回公告中心'
+    goBackAnnounce: '返回公告中心',
+    blogTitle: '博客'
 }
 
 export default zhtw
