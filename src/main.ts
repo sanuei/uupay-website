@@ -6,7 +6,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import 'element-plus/dist/index.css';
 import i18n from './i18n'
 import router from './router/index'
-import { createHead } from '@vueuse/head'
+import { createHead } from '@unhead/vue/client'
 
 const head = createHead()
 

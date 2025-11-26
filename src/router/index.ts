@@ -1,31 +1,24 @@
-// src/router.ts
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import { h, defineComponent } from 'vue'
-import { Header, HeaderWeb } from '@/components'
-import { useDevice } from '@/composables/useDevice'
-import i18n from '@/i18n'
-import BlogList from '@/components/BlogList.vue'
-import BlogDetail from '@/components/BlogDetail.vue'
 
-const HeaderWrapper = defineComponent({
-    setup() {
-        const { isMobile } = useDevice()
-        return () => h(isMobile.value ? Header : HeaderWeb)
-    }
-})
+import i18n from '@/i18n'
+import Home from '@/views/Home.vue'
+import BlogList from '@/views/BlogList.vue'
+import BlogDetail from '@/views/BlogDetail.vue'
 
 const routes: RouteRecordRaw[] = [
     {
         path: '/:lang(en|zh-cn|zh-tw)',
-        component: { template: '<router-view />' },
         children: [
-            { path: '', name: 'Home', component: HeaderWrapper },
+            { path: '', name: 'Home', component: Home },
             { path: 'blog', name: 'BlogList', component: BlogList },
-            { path: 'blog/:slug', name: 'BlogDetail', component: BlogDetail, props: true }
+            { path: 'blog/:id', name: 'BlogDetail', component: BlogDetail }
         ]
     },
-    { path: '/:pathMatch(.*)*', redirect: '/zh-cn' }
+    {
+        path: '/:pathMatch(.*)*',
+        redirect: '/zh-cn'
+    }
 ]
 
 const router = createRouter({
@@ -46,7 +39,6 @@ router.beforeEach((to, _from, next) => {
         return next('/zh-cn')
     }
 
-    // 切换 i18n 语言
     i18n.global.locale.value = langMap[lang]
     next()
 })

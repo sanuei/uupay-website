@@ -133,116 +133,102 @@ const openCustomerService = () => {
 // ===========================
 //    初始化粒子动画（封装）
 // ===========================
-function initParticleCanvas() {
-  const canvas = document.getElementById('particles') as HTMLCanvasElement | null;
-  if (!canvas) return;
+let canvasEl: HTMLCanvasElement
+let ctxEl: CanvasRenderingContext2D
+let particles: Particle[] = []
+let animationFrameId: number
 
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
+class Particle {
+  x!: number
+  y!: number
+  size!: number
+  speedX!: number
+  speedY!: number
+  opacity!: number
 
-  // ⭐ 关键：永远不为 null 的 canvas & ctx
-  const canvasEl: HTMLCanvasElement = canvas;
-  const ctxEl: CanvasRenderingContext2D = ctx;
+  constructor() { this.reset() }
 
-  canvasEl.width = window.innerWidth;
-  canvasEl.height = window.innerHeight;
-
-  const particles: Particle[] = [];
-  const particleCount = 100;
-
-  class Particle {
-    x!: number;
-    y!: number;
-    size!: number;
-    speedX!: number;
-    speedY!: number;
-    opacity!: number;
-
-    constructor() {
-      this.reset();
-    }
-
-    reset() {
-      this.x = Math.random() * canvasEl.width;
-      this.y = Math.random() * canvasEl.height;
-      this.size = Math.random() * 2 + 0.5;
-      this.speedX = Math.random() * 0.5 - 0.25;
-      this.speedY = Math.random() * 0.5 - 0.25;
-      this.opacity = Math.random() * 0.5 + 0.2;
-    }
-
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-
-      if (this.x > canvasEl.width) this.x = 0;
-      if (this.x < 0) this.x = canvasEl.width;
-      if (this.y > canvasEl.height) this.y = 0;
-      if (this.y < 0) this.y = canvasEl.height;
-    }
-
-    draw() {
-      ctxEl.fillStyle = `rgba(71, 198, 143, ${this.opacity})`;
-      ctxEl.beginPath();
-      ctxEl.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctxEl.fill();
-    }
+  reset() {
+    this.x = Math.random() * window.innerWidth
+    this.y = Math.random() * window.innerHeight
+    this.size = Math.random() * 2 + 0.5
+    this.speedX = Math.random() * 0.5 - 0.25
+    this.speedY = Math.random() * 0.5 - 0.25
+    this.opacity = Math.random() * 0.5 + 0.2
   }
 
-  function initParticles() {
-    particles.length = 0;
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
+  update() {
+    this.x += this.speedX
+    this.y += this.speedY
+
+    if (this.x > window.innerWidth) this.x = 0
+    if (this.x < 0) this.x = window.innerWidth
+    if (this.y > window.innerHeight) this.y = 0
+    if (this.y < 0) this.y = window.innerHeight
   }
 
-  function connectParticles() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+  draw() {
+    ctxEl.fillStyle = `rgba(71, 198, 143, ${this.opacity})`
+    ctxEl.beginPath()
+    ctxEl.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+    ctxEl.fill()
+  }
+}
 
-        if (distance < 150) {
-          ctxEl.strokeStyle = `rgba(71, 198, 143, ${0.15 * (1 - distance / 150)})`;
-          ctxEl.lineWidth = 0.5;
-          ctxEl.beginPath();
-          ctxEl.moveTo(particles[i].x, particles[i].y);
-          ctxEl.lineTo(particles[j].x, particles[j].y);
-          ctxEl.stroke();
-        }
+function initParticles(count = 100) {
+  particles = []
+  for (let i = 0; i < count; i++) {
+    particles.push(new Particle())
+  }
+}
+
+function connectParticles() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x
+      const dy = particles[i].y - particles[j].y
+      const distance = Math.sqrt(dx * dx + dy * dy)
+      if (distance < 150) {
+        ctxEl.strokeStyle = `rgba(71, 198, 143, ${0.15 * (1 - distance / 150)})`
+        ctxEl.lineWidth = 0.5
+        ctxEl.beginPath()
+        ctxEl.moveTo(particles[i].x, particles[i].y)
+        ctxEl.lineTo(particles[j].x, particles[j].y)
+        ctxEl.stroke()
       }
     }
   }
-
-  function animateParticles() {
-    ctxEl.clearRect(0, 0, canvasEl.width, canvasEl.height);
-
-    particles.forEach(p => {
-      p.update();
-      p.draw();
-    });
-
-    connectParticles();
-    requestAnimationFrame(animateParticles);
-  }
-
-  initParticles();
-  animateParticles();
-
-  window.addEventListener('resize', () => {
-    canvasEl.width = window.innerWidth;
-    canvasEl.height = window.innerHeight;
-    initParticles();
-  });
 }
 
-// ===========================
-//       页面加载后启动
-// ===========================
-window.addEventListener('DOMContentLoaded', () => {
-  initParticleCanvas();
-});
+function animate() {
+  ctxEl.clearRect(0, 0, canvasEl.width, canvasEl.height)
+  particles.forEach(p => { p.update(); p.draw() })
+  connectParticles()
+  animationFrameId = requestAnimationFrame(animate)
+}
+
+onMounted(() => {
+  canvasEl = document.getElementById('particles') as HTMLCanvasElement
+  ctxEl = canvasEl.getContext('2d') as CanvasRenderingContext2D
+  canvasEl.width = window.innerWidth
+  canvasEl.height = window.innerHeight
+
+  initParticles()
+  animate()
+
+  window.addEventListener('resize', onResize)
+})
+
+onBeforeUnmount(() => {
+  cancelAnimationFrame(animationFrameId)
+  window.removeEventListener('resize', onResize)
+})
+
+function onResize() {
+  canvasEl.width = window.innerWidth
+  canvasEl.height = window.innerHeight
+  initParticles()
+}
 
 // ==================== 平滑滚动 ====================
 onMounted(() => {
@@ -270,35 +256,29 @@ onMounted(() => {
   const scrollHandler = () => {
     const currentScroll = window.pageYOffset;
 
-    // navbar scrolled 状态切换
     if (navbar) {
       navbar.classList.toggle('scrolled', currentScroll > 50);
     }
 
-    // 高亮当前 section 的 nav link
     const scrollY = currentScroll;
     sections.forEach(section => {
       const sectionHeight = section.clientHeight;
-      const sectionTop = section.offsetTop - 100; // HTMLElement 上可用
+      const sectionTop = section.offsetTop - 100;
       const sectionId = section.getAttribute('id');
 
       if (sectionId && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
         navLinks.forEach(link => {
-          // 将 active 的设置改为 toggle，一次性处理 true/false
           link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
         });
       }
     });
   };
 
-  // 绑定事件
   window.addEventListener('scroll', scrollHandler);
   window.addEventListener('load', scrollHandler);
 
-  // 立即执行一次，确保初始状态正确（可选）
   scrollHandler();
 
-  // 卸载时清理
   onBeforeUnmount(() => {
     window.removeEventListener('scroll', scrollHandler);
     window.removeEventListener('load', scrollHandler);
@@ -358,12 +338,10 @@ const initFloatingCardEffect = () => {
 
   if (!floatingCard) return;
 
-  // 鼠标进入：暂停自动动画
   floatingCard.addEventListener('mouseenter', () => {
     floatingCard.style.animationPlayState = 'paused';
   });
 
-  // 鼠标移动：跟随倾斜效果
   floatingCard.addEventListener('mousemove', (e) => {
     const rect = floatingCard.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -379,7 +357,6 @@ const initFloatingCardEffect = () => {
         `translateY(-20px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
   });
 
-  // 鼠标离开：恢复原位置 + 继续自动动画
   floatingCard.addEventListener('mouseleave', () => {
     floatingCard.style.animationPlayState = 'running';
     floatingCard.style.transition = 'transform 0.5s ease-out';
@@ -398,21 +375,20 @@ onMounted(() => {
 function initCardEffects() {
   const cards = document.querySelectorAll<HTMLElement>('.feature-card, .product-card');
 
-  cards.forEach((card: HTMLElement) => {
+  const mouseMoveHandlers: ((e: MouseEvent) => void)[] = [];
+  const mouseLeaveHandlers: (() => void)[] = [];
 
-    card.addEventListener('mousemove', (e: MouseEvent) => {
+  cards.forEach((card) => {
+    const handleMouseMove = (e: MouseEvent) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      // 更新 CSS variables
       card.style.setProperty('--mouse-x', `${x}px`);
       card.style.setProperty('--mouse-y', `${y}px`);
 
-      // 优先选择 card-gradient-bg，其次 product-glow
       const glow = card.querySelector<HTMLElement>('.card-gradient-bg')
           || card.querySelector<HTMLElement>('.product-glow');
-
       if (glow) {
         glow.style.background = `
           radial-gradient(circle 300px at ${x}px ${y}px,
@@ -420,27 +396,41 @@ function initCardEffects() {
           transparent)
         `;
       }
-    });
+    };
 
-    card.addEventListener('mouseleave', () => {
+    const handleMouseLeave = () => {
       const glow = card.querySelector<HTMLElement>('.card-gradient-bg')
           || card.querySelector<HTMLElement>('.product-glow');
-
       if (glow) {
         glow.style.transition = 'background 0.4s ease-out';
         glow.style.background = 'transparent';
-
-        setTimeout(() => {
-          glow.style.transition = '';
-        }, 400);
+        setTimeout(() => glow.style.transition = '', 400);
       }
-    });
+    };
+
+    card.addEventListener('mousemove', handleMouseMove);
+    card.addEventListener('mouseleave', handleMouseLeave);
+
+    mouseMoveHandlers.push(handleMouseMove);
+    mouseLeaveHandlers.push(handleMouseLeave);
   });
+
+  return () => {
+    cards.forEach((card, index) => {
+      card.removeEventListener('mousemove', mouseMoveHandlers[index]);
+      card.removeEventListener('mouseleave', mouseLeaveHandlers[index]);
+    });
+  }
 }
 
-// 你补上的这段没问题
-window.addEventListener('DOMContentLoaded', () => {
-  initCardEffects();
+let cleanup: (() => void) | null = null;
+
+onMounted(() => {
+  cleanup = initCardEffects();
+});
+
+onBeforeUnmount(() => {
+  cleanup?.();
 });
 
 // =========================
@@ -454,7 +444,7 @@ function initStatNumberAnimation() {
 
   const numberAnimationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      const el = entry.target as HTMLElement; // ✅ 类型断言
+      const el = entry.target as HTMLElement;
       if (entry.isIntersecting && !el.classList.contains('animated')) {
         const target = el.dataset.target ? parseInt(el.dataset.target) : null;
         const statItem = el.closest('.stat-item');
@@ -496,11 +486,9 @@ function animateNumberFadeIn(
     if (!startTimestamp) startTimestamp = timestamp;
     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
 
-    // 淡入动画
     element.style.opacity = progress.toString();
     element.style.transform = `translateY(${20 * (1 - progress)}px)`;
 
-    // 数字变化（如果有 targetNumber）
     if (targetNumber !== null) {
       const startValue = Math.floor(targetNumber * 0.8);
       const current = Math.floor(progress * (targetNumber - startValue) + startValue);
@@ -510,7 +498,6 @@ function animateNumberFadeIn(
     if (progress < 1) {
       requestAnimationFrame(step);
     } else {
-      // 最终值
       element.style.opacity = '1';
       element.style.transform = 'translateY(0)';
       if (targetNumber !== null) {
@@ -522,37 +509,37 @@ function animateNumberFadeIn(
   requestAnimationFrame(step);
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+onMounted(() => {
   initStatNumberAnimation();
 });
 
 // ===============================
 // FAQ 开关逻辑（封装）
 // ===============================
-function initFAQToggle() {
-  const faqItems = document.querySelectorAll('.faq-item');
+let faqItems: NodeListOf<HTMLElement> | null = null;
+
+const handleClick = (item: HTMLElement) => {
+  faqItems?.forEach(other => {
+    if (other !== item) {
+      other.classList.remove('active');
+    }
+  });
+
+  item.classList.toggle('active');
+};
+
+onMounted(() => {
+  faqItems = document.querySelectorAll<HTMLElement>('.faq-item');
 
   faqItems.forEach(item => {
-    item.addEventListener('click', () => {
-      console.log('点击FAQ项');
-
-      // 关闭其他 FAQ
-      faqItems.forEach(other => {
-        if (other !== item) {
-          other.classList.remove('active');
-        }
-      });
-
-      // 切换当前项
-      item.classList.toggle('active');
-
-      console.log('FAQ状态:', item.classList.contains('active') ? '打开' : '关闭');
-    });
+    item.addEventListener('click', () => handleClick(item));
   });
-}
+});
 
-window.addEventListener('DOMContentLoaded', () => {
-  initFAQToggle();
+onBeforeUnmount(() => {
+  faqItems?.forEach(item => {
+    item.removeEventListener('click', () => handleClick(item));
+  });
 });
 
 function showSection(section: string) {
@@ -569,11 +556,9 @@ interface Announcement {
   file: string
 }
 
-// 公告数据配置（内嵌备用数据）
 const announcementsData = ref<Announcement[]>([]);
 const currentCategory = ref('all');
 
-// 备用公告数据（当fetch失败时使用）
 const fallbackAnnouncementsData = [
   {
     "id": "welcome-to-uupay-2025",
@@ -622,7 +607,6 @@ const fallbackAnnouncementsData = [
   }
 ];
 
-// 加载公告数据
 async function loadAnnouncements() {
   try {
     const res = await fetch('/announcements/announcements.json');
@@ -635,7 +619,6 @@ async function loadAnnouncements() {
   }
 }
 
-// 筛选标签点击事件
 const filteredAnnouncements = computed(() => {
   if (currentCategory.value === 'all') return announcementsData.value;
   return announcementsData.value.filter(a => a.category === currentCategory.value);
@@ -649,7 +632,6 @@ const categories = computed(() => [
   { value: 'security', label: t('safetyAnnouncement') },
 ]);
 
-// 获取分类图标
 const iconMap: Record<string, any> = {
   update: RefreshCw,
   feature: Sparkles,
@@ -662,7 +644,6 @@ const getCategoryIcon = (cat: string) => {
   return iconMap[cat] || iconMap.default
 }
 
-// 获取分类名称
 function getCategoryName(category: string) {
   const names: Record<string, string> = {
     update: '产品更新',
@@ -674,15 +655,13 @@ function getCategoryName(category: string) {
   return names[category] || '公告';
 }
 
-// 查看公告详情
 function viewAnnouncement(data: any) {
   console.log('📰 查看公告:', data);
   isContent.value = true
   announcementContent.value = data
 }
 
-// 页面加载完成后加载公告
-document.addEventListener('DOMContentLoaded', () => {
+onMounted(() => {
   loadAnnouncements();
 });
 </script>
@@ -707,7 +686,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </a>
 
           <ul class="nav-links">
-            <li><a href="#about" @click.prevent="showSection('other')">{{t('about')}}</a></li><!-- 有announcement加@click.prevent="showSection('other')" -->
+            <li><a href="#about" @click.prevent="showSection('other')">{{t('about')}}</a></li>
             <li><a href="#features" @click.prevent="showSection('other')">{{t('product')}}</a></li>
             <li><a href="#security" @click.prevent="showSection('other')">{{t('security')}}</a></li>
             <li><a href="#contact" @click.prevent="showSection('other')">{{t('contact')}}</a></li>
@@ -1355,6 +1334,13 @@ document.addEventListener('DOMContentLoaded', () => {
 </template>
 
 <style scoped>
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 #particles {
   position: fixed;
   top: 0;

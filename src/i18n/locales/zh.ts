@@ -111,7 +111,11 @@ const zh = {
   systemUpdate: '系统维护',
   safetyAnnouncement: '安全公告',
   goBackAnnounce: '返回公告中心',
-  blogTitle: '部落格'
+  blogTitle: '部落格',
+  metaTitle: 'UUPAY U卡 - 加密货币卡USDT虚拟信用卡安全申请 | 全球Visa支付',
+  metaDescription: 'UUPAY U卡是您的加密货币支付首选，支持USDT/USDC快速充值，Visa/Mastercard全球通用。3分钟开卡，低至0.5%手续费，安全合规东南亚跨境消费。立即下载APP，开启数字货币卡新体验！',
+  metaH1: '加密货币支付解决方案 - UUPAY U卡',
+  metaKeywords: 'U卡, 加密货币卡, USDT卡, 数字货币卡, U卡申请, U卡充值, U卡提现, USDT虚拟信用卡, 加密货币Visa卡, 万事达U卡'
 }
 
 export default zh;
