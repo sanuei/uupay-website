@@ -5,8 +5,8 @@ const BASE_URL = "https://www.uupay.cc";
 const languages = ["zh-cn", "en", "zh-tw"];
 const pages = ["/"]; // 首页等静态页面
 
-// 🔹 自动扫描博客文章目录
-const blogDir = path.resolve("src/blog"); // 根据你实际存放文章的目录改
+// 自动扫描博客文章目录
+const blogDir = path.resolve("src/blog");
 let posts = [];
 
 if (fs.existsSync(blogDir)) {
@@ -17,7 +17,7 @@ if (fs.existsSync(blogDir)) {
         .map((f) => `/blog/${f.replace(/\.(md|vue)$/, "")}`);
 }
 
-// 🔹 生成 sitemap.xml
+// 生成 sitemap.xml
 function buildSitemap() {
     let xml = '';
     xml += `<?xml version="1.0" encoding="UTF-8"?>\n`;
@@ -45,7 +45,7 @@ function buildSitemap() {
     return xml;
 }
 
-// 🔹 生成 robots.txt
+// 生成 robots.txt
 function buildRobots() {
     return `User-agent: *
 Disallow:

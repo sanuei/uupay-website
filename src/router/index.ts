@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
 import i18n from '@/i18n'
@@ -11,8 +11,8 @@ const routes: RouteRecordRaw[] = [
         path: '/:lang(en|zh-cn|zh-tw)',
         children: [
             { path: '', name: 'Home', component: Home },
-            { path: 'blog', name: 'BlogList', component: BlogList },
-            { path: 'blog/:id', name: 'BlogDetail', component: BlogDetail }
+            { path: '/:lang(en|zh-cn|zh-tw)/blog', name: 'BlogList', component: BlogList },
+            { path: '/:lang(en|zh-cn|zh-tw)/blog/:id', name: 'BlogDetail', component: BlogDetail }
         ]
     },
     {
@@ -22,7 +22,7 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes
 })
 

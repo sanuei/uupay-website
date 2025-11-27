@@ -7,7 +7,7 @@ export default defineConfig({
   base: '/',
   plugins: [
     vue({
-      include: [/\.vue$/] // 支持 .md 当作 Vue 组件
+      include: [/\.vue$/]
     }),
   ],
   resolve: {
