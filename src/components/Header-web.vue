@@ -680,7 +680,7 @@ onMounted(() => {
     <nav class="navbar">
       <div class="container">
         <div class="nav-content">
-          <a href="index.html" class="logo">
+          <a href="/" class="logo">
             <img src="@/assets/images/logo.png" alt="UUPAY Logo">
             <span>UUPAY</span>
           </a>
