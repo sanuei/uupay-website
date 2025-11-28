@@ -16,7 +16,7 @@ const routes: RouteRecordRaw[] = [
             { path: 'blog', name: 'BlogList', component: BlogList },
             { path: 'blog/:id', name: 'BlogDetail', component: BlogDetail },
             { path: 'register', name: 'Register', component: Home },
-            { path: 'jump/otc/advertise', name: 'Advertise', component: Home }
+            { path: 'jump/:catchAll(.*)', name: 'Jump', component: Home }
         ]
     },
     {
