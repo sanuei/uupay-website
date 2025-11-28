@@ -6,18 +6,28 @@ import Home from '@/views/Home.vue'
 import BlogList from '@/views/BlogList.vue'
 import BlogDetail from '@/views/BlogDetail.vue'
 
+const supportedLangs = ['zh-cn', 'en', 'zh-tw']
+
 const routes: RouteRecordRaw[] = [
     {
         path: '/:lang(en|zh-cn|zh-tw)',
         children: [
             { path: '', name: 'Home', component: Home },
             { path: 'blog', name: 'BlogList', component: BlogList },
-            { path: 'blog/:id', name: 'BlogDetail', component: BlogDetail }
+            { path: 'blog/:id', name: 'BlogDetail', component: BlogDetail },
+            { path: 'register', name: 'Register', component: Home },
+            { path: 'jump/otc/advertise', name: 'Advertise', component: Home }
         ]
     },
     {
         path: '/:pathMatch(.*)*',
-        redirect: '/zh-cn'
+        redirect: (to) => {
+            const firstSegment = to.path.split('/')[1]
+            if (supportedLangs.includes(firstSegment)) {
+                return to.fullPath
+            }
+            return { path: '/zh-cn' + to.path, query: to.query }
+        }
     }
 ]
 
@@ -26,20 +36,17 @@ const router = createRouter({
     routes
 })
 
-// 路由守卫：切换 i18n 语言
 const langMap: Record<string, string> = {
     'zh-cn': 'zh-cn',
     'en': 'en',
-    'zh-tw': 'zhtw' // i18n 使用 zhtw
+    'zh-tw': 'zhtw'
 }
 
 router.beforeEach((to, _from, next) => {
     const lang = to.params.lang as string
-    if (!['zh-cn', 'en', 'zh-tw'].includes(lang)) {
-        return next('/zh-cn')
+    if (lang && langMap[lang]) {
+        i18n.global.locale.value = langMap[lang]
     }
-
-    i18n.global.locale.value = langMap[lang]
     next()
 })
 
