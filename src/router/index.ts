@@ -11,8 +11,8 @@ const routes: RouteRecordRaw[] = [
         path: '/:lang(en|zh-cn|zh-tw)',
         children: [
             { path: '', name: 'Home', component: Home },
-            { path: '/:lang(en|zh-cn|zh-tw)/blog', name: 'BlogList', component: BlogList },
-            { path: '/:lang(en|zh-cn|zh-tw)/blog/:id', name: 'BlogDetail', component: BlogDetail }
+            { path: 'blog', name: 'BlogList', component: BlogList },
+            { path: 'blog/:id', name: 'BlogDetail', component: BlogDetail }
         ]
     },
     {
