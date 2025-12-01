@@ -10,9 +10,9 @@ const en = {
   contact: 'Contact',
   start: 'Get Started',
   newSolution: 'Next-Gen Payment Solution',
-  oneStop: 'Crypto Payment',
+  oneStop: 'Making payments simple',
   digitalPay: ' Digital Payment',
-  solution: 'Solution',
+  solution: 'Connecting you to the world',
   introduce: 'Easy collection, secure trade — simpler, smarter, safer payments',
   contactCs: 'Contact Support',
   state: 'Countries&Regions',
@@ -112,10 +112,10 @@ const en = {
   safetyAnnouncement: 'Security Announcement',
   goBackAnnounce: 'Back to Announcement Center',
   blogTitle: 'Blog',
-  metaTitle: 'UUPAY Crypto Card - USDT Virtual Debit Card | Secure Global Visa Payments',
-  metaDescription: 'UUPAY delivers secure cryptocurrency cards with USDT/USDC deposits for instant Visa/Mastercard use worldwide. Activate in 3 minutes, enjoy 0.5% low fees, and seamless Southeast Asia cross-border spending. Download the app now to apply for your virtual crypto card!',
-  metaH1: 'Cryptocurrency Payment Solutions - UUPAY Crypto Card',
-  metaKeywords: 'crypto card, cryptocurrency card, USDT card, virtual crypto card, crypto visa card, USDT debit card'
+  metaTitle: 'UUPAY Bitcoin Card - USDT Virtual Debit Card | Secure Global Visa Payments',
+  metaDescription: 'UUPAY delivers secure bitcoin cards with USDT/USDC deposits for instant Visa/Mastercard use worldwide. Activate in 3 minutes, enjoy 0.5% low fees, and seamless Southeast Asia cross-border spending. Download the app now to apply for your virtual bitcoin card!',
+  metaH1: 'Bitcoin Payment Solutions - UUPAY Bitcoin Card',
+  metaKeywords: 'bitcoin card, bitcoin card, USDT card, virtual bitcoin card, bitcoin visa card, USDT debit card'
 }
 
 export default en
