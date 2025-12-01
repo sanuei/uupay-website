@@ -3,6 +3,7 @@ import { useHead } from "@unhead/vue"
 import { useI18n } from "vue-i18n"
 import { computed } from "vue"
 import { useRoute } from "vue-router"
+import { useDevice } from '@/composables/useDevice'
 
 // 解析 md / json 文件
 const mdModules = import.meta.glob('@/blog/*.md', { eager: true, as: 'raw' })
@@ -10,6 +11,7 @@ const jsonModules = import.meta.glob('@/blog/*.json', { eager: true, as: 'json' 
 
 const { locale, t } = useI18n()
 const route = useRoute()
+const { isMobile } = useDevice()
 
 useHead(() => ({
   title: t('metaTitle'),
@@ -55,14 +57,46 @@ const langPrefix = computed(() => `/${route.params.lang || 'zh-cn'}`)
 </script>
 
 <template>
-  <div>
-    <h1>博客列表</h1>
-    <ul>
-      <li v-for="article in articles" :key="article.id">
+  <div class="blog-container" :style="{padding: isMobile ? '9rem 25px' : '10rem 20rem 25rem 20rem'}">
+    <div class="title">博客列表</div>
+    <ul class="blog-list">
+      <li class="list-item" v-for="article in articles" :key="article.id">
         <router-link :to="`${langPrefix}/blog/${article.id}`">
-          {{ article.title }} - {{ article.summary }}
+          <span class="item-title">{{ article.title }}</span> - <span class="item-content">{{ article.summary }}</span>
         </router-link>
       </li>
     </ul>
   </div>
 </template>
+
+<style scoped>
+.blog-container {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  .title {
+    font-size: 28px;
+  }
+
+  .blog-list {
+    padding: 10px 0;
+
+    .list-item {
+      padding: 5px 10px;
+      margin-bottom: 20px;
+      border: 1px solid #fff;
+      border-radius: 8px;
+
+      .item-title {
+        font-size: 20px;
+      }
+
+      .item-content {
+        font-size: 18px;
+        color: #ccc;
+      }
+    }
+  }
+}
+</style>

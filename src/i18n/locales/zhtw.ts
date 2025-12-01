@@ -115,7 +115,8 @@ const zhtw = {
     metaTitle: 'UUPAY U卡 - 加密貨幣卡USDT虛擬信用卡申請 | Visa全球支付低費率',
     metaDescription: 'UUPAY U卡提供安全便捷的加密貨幣支付，支持USDT/USDC儲值，Visa/Mastercard國際通用。3分鐘開卡，手續費低至0.5%，合規支援東南亞跨境消費。立即下載APP，註冊您的USDT虛擬信用卡，探索數位貨幣新世界！',
     metaH1: '加密貨幣支付解決方案 - UUPAY U卡',
-    metaKeywords: 'U卡, 加密貨幣卡, USDT卡, 數位貨幣卡, U卡申請, U卡註冊, U卡儲值, U卡提現, USDT虛擬信用卡推薦, USDT卡手續費'
+    metaKeywords: 'U卡, 加密貨幣卡, USDT卡, 數位貨幣卡, U卡申請, U卡註冊, U卡儲值, U卡提現, USDT虛擬信用卡推薦, USDT卡手續費',
+    backBlogList: '返回部落格列表'
 }
 
 export default zhtw

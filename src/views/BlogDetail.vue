@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { marked } from 'marked'
-import {useI18n} from "vue-i18n";
+import { useI18n } from "vue-i18n";
+import { ArrowLeft } from "lucide-vue-next";
+import { useDevice } from '@/composables/useDevice'
 
 const route = useRoute()
+const router = useRouter()
 const content = ref()
 const { locale, t } = useI18n()
+const { isMobile } = useDevice()
 
 onMounted(async () => {
   const id = route.params.id as string
@@ -46,19 +50,26 @@ useHead(() => ({
     lang: locale.value,
   }
 }))
+
+function goBack() {
+  router.back()
+}
 </script>
 
 <template>
-  <div class="blog-detail">
+  <div class="blog-detail" :style="{padding: isMobile ? '9rem 25px' : '10rem 20rem'}">
+    <div class="back-button" @click="goBack">
+      <ArrowLeft />
+      {{t('backBlogList')}}
+    </div>
     <article v-html="content" />
   </div>
 </template>
 
 <style scoped>
 .blog-detail {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  position: relative;
+  overflow: hidden;
 }
 
 .blog-detail h1,

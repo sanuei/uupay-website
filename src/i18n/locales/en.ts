@@ -115,7 +115,8 @@ const en = {
   metaTitle: 'UUPAY Bitcoin Card - USDT Virtual Debit Card | Secure Global Visa Payments',
   metaDescription: 'UUPAY delivers secure bitcoin cards with USDT/USDC deposits for instant Visa/Mastercard use worldwide. Activate in 3 minutes, enjoy 0.5% low fees, and seamless Southeast Asia cross-border spending. Download the app now to apply for your virtual bitcoin card!',
   metaH1: 'Bitcoin Payment Solutions - UUPAY Bitcoin Card',
-  metaKeywords: 'bitcoin card, bitcoin card, USDT card, virtual bitcoin card, bitcoin visa card, USDT debit card'
+  metaKeywords: 'bitcoin card, bitcoin card, USDT card, virtual bitcoin card, bitcoin visa card, USDT debit card',
+  backBlogList: 'Back to Blog List'
 }
 
 export default en

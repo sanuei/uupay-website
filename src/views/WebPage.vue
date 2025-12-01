@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import { useDevice } from '@/composables/useDevice'
+import { WebContent1, WebContent2, WebContent3, WebContent4, WebContent5, WebContent6 } from '@/components'
 import { useHead } from "@unhead/vue";
 import { useI18n } from "vue-i18n";
-import webPage from '@/views/WebPage.vue'
-import phonePage from '@/views/PhonePage.vue'
-
-const { isMobile } = useDevice()
 
 const { locale, t } = useI18n()
-
 
 useHead(() => ({
   title: t('metaTitle'),
@@ -29,7 +24,19 @@ useHead(() => ({
 </script>
 
 <template>
-  <component
-      :is="isMobile ? phonePage : webPage"
-  />
+    <WebContent1 />
+
+    <WebContent2 />
+
+    <WebContent3 />
+
+    <WebContent4 />
+
+    <WebContent5 />
+
+    <WebContent6 />
 </template>
+
+<style scoped>
+
+</style>

@@ -5,14 +5,25 @@ import i18n from '@/i18n'
 import Home from '@/views/Home.vue'
 import BlogList from '@/views/BlogList.vue'
 import BlogDetail from '@/views/BlogDetail.vue'
+import WebAnnouncement from '@/views/WebAnnouncement.vue'
+import WebAnnouncementDetail from '@/views/WebAnnouncementDetail.vue'
 
 const supportedLangs = ['zh-cn', 'en', 'zh-tw']
+const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 
 const routes: RouteRecordRaw[] = [
     {
         path: '/:lang(en|zh-cn|zh-tw)',
+        component: () => {
+            return isMobile
+                ? import('@/views/PhoneLayout.vue')
+                : import('@/views/WebLayout.vue')
+        },
         children: [
             { path: '', name: 'Home', component: Home },
+            { path: 'web', name: 'WebPage', component: () => import('@/views/DeviceWrapper.vue') },
+            { path: 'announcement', name: 'Announcement', component: WebAnnouncement },
+            { path: 'announcement/:id', name: 'AnnouncementDetail', component: WebAnnouncementDetail },
             { path: 'blog', name: 'BlogList', component: BlogList },
             { path: 'blog/:id', name: 'BlogDetail', component: BlogDetail },
             { path: 'register', name: 'Register', component: Home },
