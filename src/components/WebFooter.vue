@@ -1,8 +1,15 @@
 <script setup lang="ts">
-import {Facebook, Github, Instagram, Linkedin, Twitter, Youtube} from "lucide-vue-next";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {useI18n} from "vue-i18n";
+import {computed} from "vue";
 
-const { t } = useI18n()
+const { locale, t } = useI18n()
+
+const twitterUrl = computed(() =>
+      locale.value === 'en'
+        ? 'https://x.com/UUPAY_Official'
+        : 'https://x.com/uupaycard'
+);
 </script>
 
 <template>
@@ -23,23 +30,20 @@ const { t } = useI18n()
         </div>
 
         <div class="footer-social">
-          <a href="#" class="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-            <Twitter />
+          <a :href="twitterUrl" class="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+            <font-awesome-icon :icon="['fab', 'x-twitter']" style="font-size: 24px;" />
           </a>
-          <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-            <Facebook />
+          <a href="https://www.instagram.com/uupay_official" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <font-awesome-icon :icon="['fab', 'instagram']" style="font-size: 24px;" />
           </a>
-          <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-            <Linkedin />
+          <a href="https://www.youtube.com/@UUPAY-Official" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <font-awesome-icon :icon="['fab', 'youtube']" style="font-size: 24px;" />
           </a>
-          <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-            <Instagram />
+          <a href="https://t.me/UUPAY_Telegram" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <font-awesome-icon :icon="['fab', 'telegram']" style="font-size: 24px;" />
           </a>
-          <a href="#" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-            <Github />
-          </a>
-          <a href="#" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-            <Youtube />
+          <a href="https://discord.com/invite/76jMjerPMy" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <font-awesome-icon :icon="['fab', 'discord']" style="font-size: 24px;" />
           </a>
         </div>
       </div>
