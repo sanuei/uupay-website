@@ -1,25 +1,24 @@
 import fs from "fs";
 import path from "path";
 
-const MAIN_URL = "https://www.uupay.cc";
-const BOT_URL = "https://bot.uupay.cc";
-
+const BASE_URL = "https://www.uupay.cc";
 const languages = ["zh-cn", "en", "zh-tw"];
-const pages = ["/"];
+const pages = ["/"]; // 首页等静态页面
 
-// ===== 自动扫描博客文章 =====
+// 自动扫描博客文章目录
 const blogDir = path.resolve("src/blog");
 let posts = [];
 
 if (fs.existsSync(blogDir)) {
     const files = fs.readdirSync(blogDir);
+    // 假设每个文件名即文章 slug
     posts = files
         .filter((f) => f.endsWith(".md") || f.endsWith(".vue"))
         .map((f) => `/blog/${f.replace(/\.(md|vue)$/, "")}`);
 }
 
-// ===== 生成 sitemap =====
-function buildSitemap(baseUrl) {
+// 生成 sitemap.xml
+function buildSitemap() {
     let xml = '';
     xml += `<?xml version="1.0" encoding="UTF-8"?>\n`;
     xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n`;
@@ -30,10 +29,11 @@ function buildSitemap(baseUrl) {
     allPages.forEach((page) => {
         languages.forEach((lang) => {
             xml += `  <url>\n`;
-            xml += `    <loc>${baseUrl}/${lang}${page}</loc>\n`;
+            xml += `    <loc>${BASE_URL}/${lang}${page}</loc>\n`;
 
+            // 多语言 alternate 标签
             languages.forEach((altLang) => {
-                xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${baseUrl}/${altLang}${page}" />\n`;
+                xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${BASE_URL}/${altLang}${page}" />\n`;
             });
 
             xml += `    <changefreq>daily</changefreq>\n`;
@@ -45,36 +45,21 @@ function buildSitemap(baseUrl) {
     return xml;
 }
 
-// ===== 主站 robots.txt =====
-function buildMainRobots() {
+// 生成 robots.txt
+function buildRobots() {
     return `User-agent: *
-Allow: /
+Disallow:
 
-Sitemap: ${MAIN_URL}/sitemap.xml
+Sitemap: ${BASE_URL}/sitemap.xml
 `;
 }
 
-// ===== bot 子域的 robots.txt =====
-function buildBotRobots() {
-    return `User-agent: *
-Allow: /auth/sign-in
-
-Sitemap: ${BOT_URL}/sitemap.xml
-`;
-}
-
-// ===== 输出 =====
+// 输出路径
 const publicDir = path.resolve("public");
+if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir);
 
-// 主站文件输出
-fs.writeFileSync(path.join(publicDir, "sitemap.xml"), buildSitemap(MAIN_URL));
-fs.writeFileSync(path.join(publicDir, "robots.txt"), buildMainRobots());
+fs.writeFileSync(path.join(publicDir, "sitemap.xml"), buildSitemap());
+fs.writeFileSync(path.join(publicDir, "robots.txt"), buildRobots());
 
-// bot 子域输出文件夹
-const botDir = path.join(publicDir, "bot");
-if (!fs.existsSync(botDir)) fs.mkdirSync(botDir);
-
-fs.writeFileSync(path.join(botDir, "sitemap.xml"), buildSitemap(BOT_URL));
-fs.writeFileSync(path.join(botDir, "robots.txt"), buildBotRobots());
-
-console.log("✅ 主站 & bot 子域 sitemap / robots 生成完毕");
+console.log("✅ sitemap.xml & robots.txt 已生成在 public/ 目录");
+console.log("📄 文章列表:", posts);
