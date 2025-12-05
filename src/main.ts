@@ -11,6 +11,7 @@ import { createPinia } from 'pinia'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faXTwitter, faYoutube, faTelegram, faInstagram, faDiscord } from '@fortawesome/free-brands-svg-icons'
+import './style.css'
 
 library.add(faXTwitter, faYoutube, faTelegram, faInstagram, faDiscord)
 

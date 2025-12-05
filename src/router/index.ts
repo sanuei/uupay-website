@@ -7,6 +7,7 @@ import BlogList from '@/views/BlogList.vue'
 import BlogDetail from '@/views/BlogDetail.vue'
 import WebAnnouncement from '@/views/WebAnnouncement.vue'
 import WebAnnouncementDetail from '@/views/WebAnnouncementDetail.vue'
+import InvitePage from '@/views/InvitePage.vue'
 
 const supportedLangs = ['zh-cn', 'en', 'zh-tw']
 const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
@@ -27,7 +28,8 @@ const routes: RouteRecordRaw[] = [
             { path: 'blog', name: 'BlogList', component: BlogList },
             { path: 'blog/:id', name: 'BlogDetail', component: BlogDetail },
             { path: 'register', name: 'Register', component: Home },
-            { path: 'jump/:catchAll(.*)', name: 'Jump', component: Home }
+            { path: 'jump/:catchAll(.*)', name: 'Jump', component: Home },
+            { path: 'invitePage', name: 'InvitePage', component: InvitePage },
         ]
     },
     {

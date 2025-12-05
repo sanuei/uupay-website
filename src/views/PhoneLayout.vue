@@ -415,11 +415,11 @@ onBeforeUnmount(() => {
     <canvas id="particles"></canvas>
     <div class="grid-background"></div>
 
-    <PhoneHeader :currentLanguage="locale" @onSwitchLanguage="switchLanguage"/>
+<!--    <PhoneHeader :currentLanguage="locale" @onSwitchLanguage="switchLanguage"/>-->
 
     <router-view />
 
-    <PhoneFooter />
+<!--    <PhoneFooter />-->
   </div>
 </template>
 
