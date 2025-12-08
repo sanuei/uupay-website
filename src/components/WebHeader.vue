@@ -99,7 +99,7 @@ const goToAnnouncement = async() => {
   const route = router.currentRoute.value;
 
   await router.push({
-    path: `/${locale.value}/Announcement`,
+    path: `/${locale.value}/announcements`,
     hash: route.hash,
     query: route.query
   });
@@ -125,6 +125,18 @@ const goSection = async (sectionId: string) => {
   const el = document.querySelector(`#${sectionId}`);
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
+
+const goToAboutUs = async() => {
+  const route = router.currentRoute.value;
+
+  await router.push({
+    path: `/${locale.value}/about-us`,
+    hash: route.hash,
+    query: route.query
+  });
+  const el = document.querySelector('#about-us');
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
 </script>
 
 <template>
@@ -137,7 +149,7 @@ const goSection = async (sectionId: string) => {
         </a>
 
         <ul class="nav-links">
-          <li><a data-section="about" @click.prevent="goSection('about')">{{t('about')}}</a></li>
+          <li><a data-section="about-us" @click="goToAboutUs">{{t('about')}}</a></li>
           <li><a data-section="features" @click.prevent="goSection('features')">{{t('product')}}</a></li>
           <li><a data-section="security" @click.prevent="goSection('security')">{{t('security')}}</a></li>
           <li><a data-section="contact" @click.prevent="goSection('contact')">{{t('contact')}}</a></li>

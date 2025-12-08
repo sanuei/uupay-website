@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import {useRoute, useRouter} from 'vue-router'
-import {nextTick, onBeforeUnmount, onMounted, watch} from "vue";
-import { PhoneHeader, PhoneFooter } from '@/components'
-
-const { locale } = useI18n()
-
-const router = useRouter()
+import {computed, nextTick, onBeforeUnmount, onMounted, watch} from "vue";
+import {PhoneFooter, PhoneHeader} from "@/components";
+import {useI18n} from "vue-i18n";
 
 const route = useRoute();
+const router = useRouter()
+const { locale } = useI18n()
 
 const switchLanguage = (lang: string) => {
   const route = router.currentRoute.value
@@ -407,19 +405,22 @@ onMounted(() => {
 onBeforeUnmount(() => {
   cleanup?.();
 });
+
+const showLayout = computed(() => {
+  return !route.path.startsWith(`/${route.params.lang}/blog`)
+})
 </script>
 
 <template>
-  <div class="app-root" id="copy-layer">
+  <div v-if="showLayout" class="app-root" id="copy-layer">
     <div class="cursor-glow"></div>
     <canvas id="particles"></canvas>
     <div class="grid-background"></div>
-
-<!--    <PhoneHeader :currentLanguage="locale" @onSwitchLanguage="switchLanguage"/>-->
+    <PhoneHeader :currentLanguage="locale" @onSwitchLanguage="switchLanguage"/>
 
     <router-view />
 
-<!--    <PhoneFooter />-->
+    <PhoneFooter />
   </div>
 </template>
 

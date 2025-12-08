@@ -1,6 +1,3 @@
-import Header from './Header.vue'
-import HeaderWeb from './Header-web.vue'
-
 import WebHeader from './WebHeader.vue'
 import WebContent1 from './WebContent1.vue'
 import WebContent2 from './WebContent2.vue'
@@ -14,9 +11,6 @@ import PhoneHeader from "./PhoneHeader.vue";
 import PhoneFooter from "./PhoneFooter.vue";
 
 export {
-  Header,
-  HeaderWeb,
-
   WebHeader,
   WebContent1,
   WebContent2,

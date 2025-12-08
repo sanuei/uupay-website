@@ -3,11 +3,29 @@ import {ArrowLeft, Calendar, Newspaper, RefreshCw, Settings, ShieldCheck, Sparkl
 import {useI18n} from "vue-i18n";
 import { useAnnouncementStore } from '@/stores/announcement'
 import { useRouter } from 'vue-router'
+import {useHead} from "@unhead/vue";
 
 const router = useRouter()
-const { t } = useI18n()
+const { locale, t } = useI18n()
 const announcementStore = useAnnouncementStore()
 const announcementData = announcementStore.current
+
+useHead(() => ({
+  title: t('aboutUs.metaTitle'),
+  meta: [
+    {
+      name: 'description',
+      content: t('aboutUs.description'),
+    },
+    {
+      name: 'keywords',
+      content: t('aboutUs.keywords'),
+    },
+  ],
+  htmlAttrs: {
+    lang: locale.value,
+  }
+}))
 
 function getCategoryName(category: any) {
   const names: Record<string, string> = {

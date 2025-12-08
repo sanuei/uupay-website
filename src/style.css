@@ -2934,6 +2934,131 @@ body {
     z-index: 10;
 }
 
+.about-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 2rem 5rem 2rem;
+    position: relative;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+}
+
+.about-header-title {
+    font-size: 42px;
+    font-weight: 900;
+    color: #47C68F;
+    text-align: center;
+}
+
+.about-header-subTitle {
+    font-size: 26px;
+    text-align: center;
+    margin-top: 0.5rem;
+    color: #fff;
+}
+
+.about-content {
+    padding-top: 10rem;
+}
+
+.about-title1 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    color: #47C68F;
+    margin-bottom: 0.5rem;
+}
+
+.about-subTitle1 {
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.about-advantages {
+    font-size: 28px;
+    font-weight: 800;
+    color: #47C68F;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.about-advantages-list {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.advantage-item {
+    background: transparent;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #47C68F;
+    text-align: center;
+    width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.advantage-item:hover {
+    transform: translateY(-5px);
+}
+
+.advantage-icon {
+    font-size: 18px;
+    color: #fff;
+}
+
+.about-vision {
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.about-footer {
+    font-size: 22px;
+    text-align: center;
+    margin-top: 6rem;
+    color: #fff;
+}
+
+/* 响应式 */
+@media screen and (max-width: 768px) {
+    .about-hero {
+        padding: 6rem 1.5rem 3rem 1.5rem;
+    }
+
+    .about-header-title {
+        font-size: 32px;
+    }
+
+    .about-header-subTitle {
+        font-size: 20px;
+    }
+
+    .about-title1 {
+        font-size: 28px;
+    }
+
+    .about-subTitle1,
+    .about-vision,
+    .about-footer {
+        font-size: 18px;
+    }
+
+    .about-advantages-list {
+        gap: 1rem;
+    }
+
+    .advantage-item {
+        width: 100%;
+    }
+}
+
 /* Markdown 内容样式 */
 .markdown-content {
     color: var(--text-primary);
@@ -3099,6 +3224,15 @@ body {
 
     .markdown-content h2 {
         font-size: 1.5rem;
+    }
+
+    .about-hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10rem 2rem 5rem 2rem;
+        position: relative;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        color: #333;
     }
 }
 

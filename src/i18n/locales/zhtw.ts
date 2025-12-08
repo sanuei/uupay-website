@@ -116,7 +116,32 @@ const zhtw = {
     metaDescription: 'UUPAY U卡提供安全便捷的加密貨幣支付，支持USDT/USDC儲值，Visa/Mastercard國際通用。3分鐘開卡，手續費低至0.5%，合規支援東南亞跨境消費。立即下載APP，註冊您的USDT虛擬信用卡，探索數位貨幣新世界！',
     metaH1: '加密貨幣支付解決方案 - UUPAY U卡',
     metaKeywords: 'U卡, 加密貨幣卡, USDT卡, 數位貨幣卡, U卡申請, U卡註冊, U卡儲值, U卡提現, USDT虛擬信用卡推薦, USDT卡手續費',
-    backBlogList: '返回部落格列表'
+    backBlogList: '返回部落格列表',
+    aboutUs: {
+      title: '讓支付回歸簡單，讓世界觸手可達',
+      subTitle: 'UUPAY 是一家專注於跨境支付解決方案的金融科技公司，致力於為全球用戶提供安全、便捷、高效的數字支付服務。',
+      mission: '我們的使命',
+      missionSub: '在全球化日益深入的今天，跨境支付不應該成為連接世界的障礙。UUPAY 相信，支付本該簡單、透明、無界限。我們通過創新的技術和完善的服務體系，打破地域限制，讓每一位用戶都能輕鬆享受全球化帶來的便利。',
+      services: '我們的服務',
+      servicesSub: 'UUPAY 提供專業的虛擬卡服務，支持全球主流平台的在線支付。無論是訂閱海外服務、在線購物，還是跨境商務往來，UUPAY 都能為您提供穩定可靠的支付通道。',
+      advantageTitle: '我們的優勢',
+      advantageList1: '極速到賬：充值實時到賬，支付即時響應',
+      advantageList2: '全球通用：支持主流國際平台和商戶',
+      advantageList3: '透明費率：明碼標價，無隱藏費用',
+      advantageList4: '安全合規：嚴格遵循國際金融監管標準，保障資金安全',
+      visionTitle: '我们的愿景',
+      visionSub: 'UUPAY 不仅仅是一个支付工具，更是连接全球的桥梁。我们希望通过技术创新，消除支付壁垒，让每个人都能自由地探索世界、享受全球化服务，真正实现"世界触手可达"的美好愿景。',
+      footer: 'UUPAY - 您值得信赖的全球支付伙伴！',
+      metaTitle: 'UUPAY - 讓支付回歸簡單',
+      description: 'UUPAY是專業的加密貨幣虛擬卡平台，提供USDT卡、比特幣卡等跨境支付解決方案。讓支付回歸簡單，讓世界觸手可達。支持全球主流平台，安全快捷，透明費率。',
+      keywords: 'USDT虛擬卡, 加密貨幣卡, 虛擬信用卡, U卡, 跨境支付, 比特幣卡, 數字貨幣支付, USDT支付, 虛擬Visa卡, 加密貨幣借記卡, 海外支付, 跨境電商支付, ChatGPT付款, Netflix付款, 穩定幣支付, Web3支付'
+    },
+    announcements: {
+      metaTitle: 'UUPAY公告中心 - USDT虛擬卡最新動態 | 平台更新通知',
+      description: 'UUPAY官方公告中心，實時發佈USDT虛擬卡、加密貨幣支付最新動態、系統更新、功能上線、維護通知等重要訊息。第一時間了解平台動態，保障您的支付體驗。',
+      keywords: 'UUPAY公告, USDT虛擬卡公告, 加密貨幣卡更新, 平台公告, 系統維護通知, 新功能上線, 虛擬卡新聞, U卡最新消息, 跨境支付動態, 數字貨幣卡公告, 產品更新日誌, 服務通知',
+      h1Title: 'UUPAY 公告中心 - 平台最新動態'
+    }
 }
 
 export default zhtw

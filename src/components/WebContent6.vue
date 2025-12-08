@@ -78,11 +78,23 @@ const goToAnnouncement = async() => {
   const route = router.currentRoute.value;
 
   await router.push({
-    path: `/${locale.value}/Announcement`,
+    path: `/${locale.value}/announcements`,
     hash: route.hash,
     query: route.query
   });
   const el = document.querySelector('#announcement');
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+const goToAboutUs = async() => {
+  const route = router.currentRoute.value;
+
+  await router.push({
+    path: `/${locale.value}/about-us`,
+    hash: route.hash,
+    query: route.query
+  });
+  const el = document.querySelector('#about-us');
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 </script>
@@ -130,7 +142,7 @@ const goToAnnouncement = async() => {
           <div class="footer-column">
             <h4>{{t('company')}}</h4>
             <ul>
-              <li><a href="#about">{{t('about')}}</a></li>
+              <li><a data-section="about-us" @click="goToAboutUs">{{t('about')}}</a></li>
               <li><a href="#">{{t('team')}}</a></li>
               <li><a href="#">{{t('partner')}}</a></li>
               <li><a href="#">{{t('joinUs')}}</a></li>

@@ -14,30 +14,26 @@ const { isMobile } = useDevice()
 
 const { locale, t } = useI18n()
 
-const invitationCode = computed(() => {
-  const full = route.fullPath // <-- 用 fullPath 最安全
-  let code = ''
-
-  // 1. 先取 ?invitationCode=xxx
-  const urlQueryIndex = full.indexOf('?')
-  if (urlQueryIndex !== -1) {
-    const query = full.substring(urlQueryIndex + 1)
-    code = new URLSearchParams(query).get('invitationCode') || ''
+function getQueryParam(full: string, key: string): string {
+  let value = ''
+  const queryIndex = full.indexOf('?')
+  if (queryIndex !== -1) {
+    const query = full.substring(queryIndex + 1)
+    value = new URLSearchParams(query).get(key) || ''
   }
-
-  // 2. 再取 hash 里的 ?invitationCode=xxx
   const hashIndex = full.indexOf('#')
-  if (!code && hashIndex !== -1) {
+  if (!value && hashIndex !== -1) {
     const hash = full.substring(hashIndex + 1)
     const hashQueryIndex = hash.indexOf('?')
     if (hashQueryIndex !== -1) {
       const hashQuery = hash.substring(hashQueryIndex + 1)
-      code = new URLSearchParams(hashQuery).get('invitationCode') || ''
+      value = new URLSearchParams(hashQuery).get(key) || ''
     }
   }
+  return value
+}
 
-  return code
-})
+const invitationCode = computed(() => getQueryParam(route.fullPath, 'invitationCode'))
 
 useHead(() => ({
   title: t('metaTitle'),

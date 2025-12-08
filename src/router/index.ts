@@ -8,6 +8,7 @@ import BlogDetail from '@/views/BlogDetail.vue'
 import WebAnnouncement from '@/views/WebAnnouncement.vue'
 import WebAnnouncementDetail from '@/views/WebAnnouncementDetail.vue'
 import InvitePage from '@/views/InvitePage.vue'
+import AboutUs from '@/views/AboutUs.vue'
 
 const supportedLangs = ['zh-cn', 'en', 'zh-tw']
 const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
@@ -23,13 +24,14 @@ const routes: RouteRecordRaw[] = [
         children: [
             { path: '', name: 'Home', component: Home },
             { path: 'web', name: 'WebPage', component: () => import('@/views/DeviceWrapper.vue') },
-            { path: 'announcement', name: 'Announcement', component: WebAnnouncement },
-            { path: 'announcement/:id', name: 'AnnouncementDetail', component: WebAnnouncementDetail },
+            { path: 'announcements', name: 'Announcement', component: WebAnnouncement },
+            { path: 'announcements/:id', name: 'AnnouncementDetail', component: WebAnnouncementDetail },
             { path: 'blog', name: 'BlogList', component: BlogList },
             { path: 'blog/:id', name: 'BlogDetail', component: BlogDetail },
             { path: 'register', name: 'Register', component: Home },
             { path: 'jump/:catchAll(.*)', name: 'Jump', component: Home },
             { path: 'invitePage', name: 'InvitePage', component: InvitePage },
+            { path: 'about-us', name: 'AboutUs', component: AboutUs },
         ]
     },
     {

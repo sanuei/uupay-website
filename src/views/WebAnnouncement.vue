@@ -22,15 +22,15 @@ const router = useRouter();
 const announcementStore = useAnnouncementStore()
 
 useHead(() => ({
-  title: t('metaTitle'),
+  title: t('announcements.metaTitle'),
   meta: [
     {
       name: 'description',
-      content: t('metaDescription'),
+      content: t('announcements.description'),
     },
     {
       name: 'keywords',
-      content: t('metaKeywords'),
+      content: t('announcements.keywords'),
     },
   ],
   htmlAttrs: {
@@ -164,7 +164,7 @@ onMounted(() => {
 <template>
   <section id="announcement" class="announcements-hero">
     <div class="container">
-      <h1>📢 {{t('announcementCenter')}}</h1>
+      <h1>{{t('announcements.h1Title')}}</h1>
       <p>{{t('announceTitle')}}</p>
     </div>
   </section>
