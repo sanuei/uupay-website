@@ -409,18 +409,39 @@ onBeforeUnmount(() => {
 const showLayout = computed(() => {
   return !route.path.startsWith(`/${route.params.lang}/blog`)
 })
+
+function getQueryParam(full: string, key: string): string {
+  let value = ''
+  const queryIndex = full.indexOf('?')
+  if (queryIndex !== -1) {
+    const query = full.substring(queryIndex + 1)
+    value = new URLSearchParams(query).get(key) || ''
+  }
+  const hashIndex = full.indexOf('#')
+  if (!value && hashIndex !== -1) {
+    const hash = full.substring(hashIndex + 1)
+    const hashQueryIndex = hash.indexOf('?')
+    if (hashQueryIndex !== -1) {
+      const hashQuery = hash.substring(hashQueryIndex + 1)
+      value = new URLSearchParams(hashQuery).get(key) || ''
+    }
+  }
+  return value
+}
+
+const invitationCode = computed(() => getQueryParam(route.fullPath, 'invitationCode'))
 </script>
 
 <template>
-  <div v-if="showLayout" class="app-root" id="copy-layer">
+  <div  class="app-root" id="copy-layer">
     <div class="cursor-glow"></div>
     <canvas id="particles"></canvas>
     <div class="grid-background"></div>
-    <PhoneHeader :currentLanguage="locale" @onSwitchLanguage="switchLanguage"/>
+    <PhoneHeader v-if="!invitationCode" :currentLanguage="locale" @onSwitchLanguage="switchLanguage"/>
 
     <router-view />
 
-    <PhoneFooter />
+    <PhoneFooter v-if="!invitationCode" />
   </div>
 </template>
 
