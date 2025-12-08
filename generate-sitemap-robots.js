@@ -1,21 +1,17 @@
 import fs from "fs";
 import path from "path";
 
-const BASE_URL = "https://www.uupay.cc";
+const BASE_URL = "https://uupay.cc";
 const languages = ["zh-cn", "en", "zh-tw"];
 const pages = ["/"]; // 首页等静态页面
 
-// 自动扫描博客文章目录
-const blogDir = path.resolve("src/blog");
-let posts = [];
-
-if (fs.existsSync(blogDir)) {
-    const files = fs.readdirSync(blogDir);
-    // 假设每个文件名即文章 slug
-    posts = files
-        .filter((f) => f.endsWith(".md") || f.endsWith(".vue"))
-        .map((f) => `/blog/${f.replace(/\.(md|vue)$/, "")}`);
-}
+// 手动维护第三方博客 URL（去掉域名，保留路径）
+const externalPosts = [
+    "/zh-cn/blog",
+    "/en/blog",
+    "/zh-tw/blog",
+    // 如果有更多博客 URL，可以继续添加
+];
 
 // 生成 sitemap.xml
 function buildSitemap() {
@@ -24,16 +20,23 @@ function buildSitemap() {
     xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n`;
     xml += `        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n`;
 
-    const allPages = pages.concat(posts);
+    const allPages = pages.concat(externalPosts);
 
     allPages.forEach((page) => {
+        // 检查 URL 是否已经包含语言前缀
+        const hasLangPrefix = /^\/(zh-cn|en|zh-tw)\//.test(page);
+
         languages.forEach((lang) => {
+            const loc = hasLangPrefix ? `${BASE_URL}${page}` : `${BASE_URL}/${lang}${page}`;
             xml += `  <url>\n`;
-            xml += `    <loc>${BASE_URL}/${lang}${page}</loc>\n`;
+            xml += `    <loc>${loc}</loc>\n`;
 
             // 多语言 alternate 标签
             languages.forEach((altLang) => {
-                xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${BASE_URL}/${altLang}${page}" />\n`;
+                const altLoc = hasLangPrefix
+                    ? `${BASE_URL}${page.replace(/^\/(zh-cn|en|zh-tw)\//, `/${altLang}/`)}`
+                    : `${BASE_URL}/${altLang}${page}`;
+                xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${altLoc}" />\n`;
             });
 
             xml += `    <changefreq>daily</changefreq>\n`;
@@ -62,4 +65,4 @@ fs.writeFileSync(path.join(publicDir, "sitemap.xml"), buildSitemap());
 fs.writeFileSync(path.join(publicDir, "robots.txt"), buildRobots());
 
 console.log("✅ sitemap.xml & robots.txt 已生成在 public/ 目录");
-console.log("📄 文章列表:", posts);
+console.log("📄 文章列表:", externalPosts);
