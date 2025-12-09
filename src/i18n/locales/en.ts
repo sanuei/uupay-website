@@ -141,6 +141,36 @@ const en = {
     description: 'Official UUPAY announcement center. Stay updated with the latest news on USDT virtual cards, crypto payment updates, system maintenance, new features, and important platform notifications.',
     keywords: 'UUPAY announcements, USDT card updates, crypto card news, platform announcements, system maintenance, new features, virtual card news, U card updates, crypto payment news, service notifications, product updates, release notes',
     h1Title: 'UUPAY Announcements - Latest Platform Updates'
+  },
+  invite: {
+    title: 'Simplify Payments',
+    title2: 'Reach the World',
+    subtitle: 'Get a free UUPAY Crypto Card. Global access, zero barriers.',
+    subtitle2: 'Open a seamless global spending experience',
+    benefit: 'Limited Offer',
+    openCard: 'Free Card',
+    email: 'Email Address',
+    verifyCode: 'Verification Code',
+    verifyHolder: 'Enter 6-digit code',
+    inviteCode: 'Referral Code',
+    copyCode: 'Copy Code',
+    inviteBenefit: 'Use referral code for extra rewards',
+    copyInviteCode: 'Invite code copied',
+    register: 'Sign Up Now',
+    userNum: 'Join over 100,000 users',
+    step2: '2 Steps to Start',
+    download: 'Download App',
+    assetTool: 'Secure & easy crypto management',
+    doneCreate: 'Complete KYC',
+    fees: '0 Annual Fee · Instant Approval',
+    openAcc: 'Get Card',
+    lowFees: 'Low Fees',
+    eachConsume: 'Save more on\nevery transaction',
+    globalUse: 'Global Use',
+    seamless: 'Works with\nAlipay & WeChat',
+    login: 'Login',
+    trustText: 'Trusted by 50M+ Merchants Worldwide',
+    send: 'Send'
   }
 }
 

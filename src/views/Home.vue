@@ -5,10 +5,12 @@ import { useI18n } from "vue-i18n";
 import webPage from '@/views/WebPage.vue'
 import phonePage from '@/views/PhonePage.vue'
 import InvitePage from '@/views/InvitePage.vue'
-import { useRoute } from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 import { computed } from "vue";
 
 const route = useRoute()
+
+const router = useRouter()
 
 const { isMobile } = useDevice()
 
@@ -51,10 +53,21 @@ useHead(() => ({
     lang: locale.value,
   }
 }))
+
+const switchLanguage = (lang: string) => {
+  const route = router.currentRoute.value
+  const currentLang = route.params.lang as string
+  const fullPath = route.fullPath
+  const newFullPath = fullPath.replace('/' + currentLang, '/' + lang)
+
+  router.push(newFullPath)
+  locale.value = lang === 'zh-tw' ? 'zhtw' : lang
+  localStorage.setItem('language', lang)
+}
 </script>
 
 <template>
-  <InvitePage v-if="isMobile && invitationCode" />
+  <InvitePage v-if="isMobile && invitationCode" :currentLanguage="locale" @onSwitchLanguage="switchLanguage" />
 
   <!-- 否则正常显示手机 或 web layout -->
   <component

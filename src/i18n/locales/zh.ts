@@ -141,6 +141,36 @@ const zh = {
     description: 'UUPAY官方公告中心，实时发布USDT虚拟卡、加密货币支付最新动态、系统更新、功能上线、维护通知等重要信息。第一时间了解平台动态，保障您的支付体验。',
     keywords: 'UUPAY公告, USDT虚拟卡公告, 加密货币卡更新, 平台公告, 系统维护通知, 新功能上线, 虚拟卡新闻, U卡最新消息, 跨境支付动态, 数字货币卡公告, 产品更新日志, 服务通知',
     h1Title: 'UUPAY 公告中心 - 平台最新动态'
+  },
+  invite: {
+    title: '让支付回归简单',
+    title2: '让世界触手可达',
+    subtitle: '注册免费领取 UUPAY 加密卡',
+    subtitle2: '开启全球无障碍消费新体验',
+    benefit: '限时福利',
+    openCard: '免费开卡',
+    email: '邮箱地址',
+    verifyCode: '验证码',
+    verifyHolder: '输入6位验证码',
+    inviteCode: '邀请码',
+    copyCode: '复制邀请码',
+    inviteBenefit: '使用邀请码可获得额外奖励',
+    copyInviteCode: '邀请码已复制',
+    register: '立即注册',
+    userNum: '已有 100,000+ 用户加入',
+    step2: '简单 2 步，开启加密支付',
+    download: '下载 UUPAY App',
+    assetTool: '安全、便捷的加密资产管理工具',
+    doneCreate: '完成 KYC 开卡',
+    fees: '0 年费 · 0 月费 · 极速审核',
+    openAcc: '去开卡',
+    lowFees: '低费率',
+    eachConsume: '每一笔消费\n都为您精打细算',
+    globalUse: '全球通用',
+    seamless: '无缝绑定\n支付宝 / 微信支付',
+    login: '登录',
+    trustText: '全球 5000万+ 商户随时随地消费',
+    send: '发送'
   }
 }
 

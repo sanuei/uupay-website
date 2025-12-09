@@ -406,9 +406,9 @@ onBeforeUnmount(() => {
   cleanup?.();
 });
 
-const showLayout = computed(() => {
-  return !route.path.startsWith(`/${route.params.lang}/blog`)
-})
+// const showLayout = computed(() => {
+//   return !route.path.startsWith(`/${route.params.lang}/blog`)
+// })
 
 function getQueryParam(full: string, key: string): string {
   let value = ''
