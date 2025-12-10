@@ -39,6 +39,8 @@ export const CONTACTUS = import.meta.env.VITE_CONTACTUS
 
 export const APPNAME = import.meta.env.VITE_NAME
 
+export const API_URL = import.meta.env.VITE_URL
+
 export const FEATURE_ITEMS: FeatureItem[] = [
     {
         images: {

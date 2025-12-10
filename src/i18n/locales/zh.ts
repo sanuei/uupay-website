@@ -170,7 +170,13 @@ const zh = {
     seamless: '无缝绑定\n支付宝 / 微信支付',
     login: '登录',
     trustText: '全球 5000万+ 商户随时随地消费',
-    send: '发送'
+    send: '发送',
+    passwordHolder: '输入密码',
+    confirmPasswordHolder: '再次输入密码',
+    password: '密码',
+    confirmPassword: '确认密码',
+    registerSuccess: '注册成功!',
+    confirm: '确认'
   }
 }
 

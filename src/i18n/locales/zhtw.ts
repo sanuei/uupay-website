@@ -170,7 +170,13 @@ const zhtw = {
     seamless: '無縫綁定\n支付寶 / 微信支付',
     login: '登入',
     trustText: '全球 5000萬+ 商戶隨時隨地消費',
-    send: '發送'
+    send: '發送',
+    passwordHolder: '輸入密碼',
+    confirmPasswordHolder: '再次輸入密碼',
+    password: '密碼',
+    confirmPassword: '確認密碼',
+    registerSuccess: '註冊成功！',
+    confirm: '確認',
   }
 }
 

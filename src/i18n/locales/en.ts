@@ -170,7 +170,13 @@ const en = {
     seamless: 'Works with\nAlipay & WeChat',
     login: 'Login',
     trustText: 'Trusted by 50M+ Merchants Worldwide',
-    send: 'Send'
+    send: 'Send',
+    passwordHolder: 'Enter password',
+    confirmPasswordHolder: 'Enter password again',
+    password: 'Password',
+    confirmPassword: 'Confirm Password',
+    registerSuccess: 'Registration Successful!',
+    confirm: 'Confirm',
   }
 }
 

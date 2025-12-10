@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import {APPNAME, DOWNLINK} from "@/constants";
+import {APPNAME, DOWNLINK, API_URL} from "@/constants";
 import {computed, nextTick, onMounted, ref, watch} from "vue";
 import {useI18n} from "vue-i18n";
+import { getCaptchaTypeBasedOnOS } from '@/components/verification/utils/CaptchaUtils';
+import Verify from '@/components/verification/Verify.vue';
 
 const { t } = useI18n()
 
@@ -90,10 +92,15 @@ function scrollToRegistration() {
 
 const email = ref('')
 const code = ref('')
+const password = ref('')
+const confirmPassword = ref('')
 const referralCode = ref('')
 const isEmailValid = ref(false)
 
 const codeSection = ref<HTMLElement | null>(null)
+const passwordSection = ref<HTMLElement | null>(null)
+const confirmPasswordSection = ref<HTMLElement | null>(null)
+const showSuccessPopup = ref(false);
 
 // 邮箱校验
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -117,6 +124,28 @@ watch(email, (val) => {
         codeSection.value.style.transform = 'translateY(0)'
       }, 10)
     }
+    if (passwordSection.value) {
+      passwordSection.value.classList.remove('hidden')
+      passwordSection.value.style.opacity = '0'
+      passwordSection.value.style.transform = 'translateY(-10px)'
+      setTimeout(() => {
+        if (!passwordSection.value) return
+        passwordSection.value.style.transition = 'all 0.3s ease-out'
+        passwordSection.value.style.opacity = '1'
+        passwordSection.value.style.transform = 'translateY(0)'
+      }, 10)
+    }
+    if (confirmPasswordSection.value) {
+      confirmPasswordSection.value.classList.remove('hidden')
+      confirmPasswordSection.value.style.opacity = '0'
+      confirmPasswordSection.value.style.transform = 'translateY(-10px)'
+      setTimeout(() => {
+        if (!confirmPasswordSection.value) return
+        confirmPasswordSection.value.style.transition = 'all 0.3s ease-out'
+        confirmPasswordSection.value.style.opacity = '1'
+        confirmPasswordSection.value.style.transform = 'translateY(0)'
+      }, 10)
+    }
   } else {
     // 隐藏验证码区域
     if (!codeSection.value.classList.contains('hidden')) {
@@ -126,35 +155,45 @@ watch(email, (val) => {
         codeSection.value?.classList.add('hidden')
       }, 300)
     }
+    if (!passwordSection.value) {
+      passwordSection.value!.style.opacity = '0'
+      passwordSection.value!.style.transform = 'translateY(-10px)'
+      setTimeout(() => {
+        passwordSection.value?.classList.add('hidden')
+      }, 300)
+    }
+    if (!confirmPasswordSection.value) {
+      confirmPasswordSection.value!.style.opacity = '0'
+      confirmPasswordSection.value!.style.transform = 'translateY(-10px)'
+      setTimeout(() => {
+        confirmPasswordSection.value?.classList.add('hidden')
+      }, 300)
+    }
   }
 })
 
 
 // 验证码系统
-let generatedCode = '';
 const countdown = ref(0)
 let countdownTimer: number | null = null;
 const buttonText = ref(t('invite.send'))
+const verifyRef = ref<any>(null);
+const showPassword = ref(false)
+const showConfirmPassword = ref(false)
 
 function sendVerificationCode() {
-  const sendCodeBtn = document.getElementById('sendCodeBtn') as HTMLButtonElement | null;
-
   // 验证邮箱格式
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!email.value || !emailRegex.test(email.value)) {
-    showMessage('请输入有效的邮箱地址', 'error');
+    showMessage('请输入有效的邮箱地址', 'error', 'emailMessage');
     return;
   }
+  verifyRef.value?.show();
+  // sendVerificationCodeFunction()
 
-  generatedCode = Math.floor(100000 + Math.random() * 900000).toString();
-  console.log('验证码已生成（模拟）：', generatedCode);
-
-  showMessage(`验证码已发送到 ${email.value}（模拟发送：${generatedCode}）`, 'success');
-
-  countdown.value = 60;
-  if (sendCodeBtn) sendCodeBtn.disabled = true;
-
-  updateCountdown()
+  // generatedCode = Math.floor(100000 + Math.random() * 900000).toString();
+  // console.log('验证码已生成（模拟）：', generatedCode);
+  //
 }
 
 function updateCountdown() {
@@ -173,8 +212,8 @@ function updateCountdown() {
   }
 }
 
-function showMessage(text: any, type: any) {
-  const codeMessage = document.getElementById('codeMessage') as HTMLParagraphElement | null;
+function showMessage(text: any, type: any, column: any) {
+  const codeMessage = document.getElementById(column) as HTMLParagraphElement | null;
   if (!codeMessage) return;
   codeMessage.textContent = text;
   codeMessage.className = `text-xs mt-2 ${type === 'error' ? 'text-red-400' : 'text-brand-400'}`;
@@ -188,26 +227,27 @@ function showMessage(text: any, type: any) {
 // 表单提交处理器
 function handleSubmit() {
   if (!email.value) {
-    showMessage('请输入邮箱地址', 'error')
+    showMessage('请输入邮箱地址', 'error', 'emailMessage')
     return
   }
   if (!code.value) {
-    showMessage('请输入验证码', 'error')
+    showMessage('请输入验证码', 'error', 'codeMessage')
     return
   }
-  if (code.value === generatedCode) {
-    showMessage('✓ 验证成功！正在注册...', 'success')
-    setTimeout(() => {
-      alert('注册成功！欢迎加入 UUPAY！')
-      email.value = ''
-      code.value = ''
-      generatedCode = ''
-      countdown.value = 0
-      openApp()
-    }, 1500)
 
-  } else {
-    showMessage('验证码错误，请重新输入', 'error')
+  if (!password.value) {
+    showMessage('请输入密码', 'error', 'passwordMessage')
+    return
+  }
+
+  if (!confirmPassword.value) {
+    showMessage('请再次输入密码', 'error', 'confirmPasswordMessage')
+    return
+  }
+
+  if (password.value !== confirmPassword.value) {
+    showMessage('两次输入的密码不一致', 'error', 'confirmPasswordMessage')
+    return
   }
 }
 
@@ -307,6 +347,101 @@ onMounted(() => {
     referralCode.value = code
   }
 })
+
+// const sendVerificationCodeFunction = async () => {
+//   try {
+//     const response = await fetch(`${API_URL}`, {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify({ email: email.value, type: 'register', language: 'zh-CN' })
+//     })
+//
+//     const data = await response.json().catch(() => ({}))
+//
+//     return {
+//       ok: response.ok,
+//       status: response.status,
+//       data
+//     }
+//   } catch (err) {
+//     console.error('API Error:', err)
+//     return {
+//       ok: false,
+//       status: 0,
+//       data: null,
+//       error: err
+//     }
+//   }
+// }
+
+const onVerifySuccess = (res: any) => {
+  const sendCodeBtn = document.getElementById('sendCodeBtn') as HTMLButtonElement | null;
+  const param = {
+    account: email.value,
+    type: 'email',
+    code: res.captchaVerification,
+  };
+
+  fetch(`${API_URL}/register/sendCode`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(param),
+  })
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.code === 200) {
+          showMessage(`验证码已发送到 ${email.value}`, 'success', 'codeMessage');
+
+          countdown.value = 60;
+          if (sendCodeBtn) sendCodeBtn.disabled = true;
+
+          updateCountdown()
+        } else {
+          console.log('error',res)
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+};
+
+const goRegister = async () => {
+  const params = {
+    account: email.value,
+    code: code.value,
+    type: 'email',
+    loginPassword: password.value,
+    invitationCode: referralCode.value,
+  };
+
+  try {
+    const response = await fetch(`${API_URL}/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(params),
+    });
+    const result = await response.json();
+
+    if (result.code === 200) {
+      showSuccessPopup.value = true;
+      email.value = ''
+      code.value = ''
+      password.value = ''
+      confirmPassword.value = ''
+    } else {
+      console.log('注册失败')
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const handlePopupConfirm = () => {
+  showSuccessPopup.value = false;
+  openApp();
+};
 </script>
 
 <template>
@@ -418,6 +553,7 @@ onMounted(() => {
                       <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     </div>
                   </div>
+                  <p id="emailMessage" class="hidden text-xs mt-2"></p>
                 </div>
 
                 <!-- 验证码输入框（初始隐藏） -->
@@ -444,6 +580,85 @@ onMounted(() => {
                     </button>
                   </div>
                   <p id="codeMessage" class="hidden text-xs mt-2"></p>
+                </div>
+
+                <div ref="passwordSection" class="hidden">
+                  <label class="block text-xs text-slate-400 mb-2 font-medium">{{ t('invite.password') }}</label>
+
+                  <div class="relative">
+                    <input
+                        :type="showPassword ? 'text' : 'password'"
+                        name="password"
+                        id="passwordInput"
+                        :placeholder="t('invite.passwordHolder')"
+                        v-model="password"
+                        maxlength="6"
+                        class="w-full bg-slate-800 border border-slate-700 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
+                        required
+                    />
+
+                    <!-- 眼睛图标 -->
+                    <span
+                        class="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-slate-400"
+                        @click="showPassword = !showPassword"
+                    >
+                    <!-- 显示密码 icon -->
+                    <svg v-if="!showPassword" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+
+                      <!-- 隐藏密码 icon（带斜杠） -->
+                      <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a10.058 10.058 0 012.364-3.504m1.518-1.518A9.965 9.965 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.963 9.963 0 01-4.098 4.764M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M3 3l18 18"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <p id="passwordMessage" class="hidden text-xs mt-2"></p>
+                </div>
+
+                <!-- 确认密码 -->
+                <div ref="confirmPasswordSection" class="hidden">
+                  <label class="block text-xs text-slate-400 mb-2 font-medium">{{ t('invite.confirmPassword') }}</label>
+
+                  <div class="relative">
+                    <input
+                        :type="showConfirmPassword ? 'text' : 'password'"
+                        name="confirmPassword"
+                        id="confirmPasswordInput"
+                        :placeholder="t('invite.confirmPasswordHolder')"
+                        v-model="confirmPassword"
+                        maxlength="6"
+                        class="w-full bg-slate-800 border border-slate-700 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
+                        required
+                    />
+
+                    <!-- 眼睛 icon  -->
+                    <span
+                        class="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-slate-400"
+                        @click="showConfirmPassword = !showConfirmPassword"
+                    >
+                      <svg v-if="!showConfirmPassword" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                      </svg>
+
+                      <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a10.058 10.058 0 012.364-3.504m1.518-1.518A9.965 9.965 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.963 9.963 0 01-4.098 4.764M15 12a3 3 0 11-6 0 3 3 0 116 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M3 3l18 18"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <p id="confirmPasswordMessage" class="hidden text-xs mt-2"></p>
                 </div>
 
                 <!-- 邀请码（可折叠） -->
@@ -512,7 +727,7 @@ onMounted(() => {
 
                 <!-- 提交按钮 -->
                 <button
-                    type="submit"
+                    @click="goRegister"
                     class="w-full bg-gradient-to-r from-brand-500 to-brand-400 text-white font-bold py-3.5 rounded-xl hover:from-brand-600 hover:to-brand-500 transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 flex items-center justify-center gap-2 group"
                 >
                   <span>{{ t('invite.register') }}</span>
@@ -645,6 +860,18 @@ onMounted(() => {
       </div>
     </div>
   </div>
+  <div v-if="showSuccessPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="bg-white p-6 rounded-xl shadow-lg w-80 text-center">
+      <p class="mb-4 text-black" >{{ t('invite.registerSuccess') }}</p>
+      <button
+          @click="handlePopupConfirm"
+          class="w-full bg-gradient-to-r from-brand-500 to-brand-400 text-white font-bold py-3.5 rounded-xl hover:from-brand-600 hover:to-brand-500 transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 flex items-center justify-center gap-2 group"
+      >
+        {{ t('invite.confirm') }}
+      </button>
+    </div>
+  </div>
+  <Verify ref="verifyRef" @success="onVerifySuccess" mode="pop" :captchaType="getCaptchaTypeBasedOnOS()"></Verify>
 </template>
 
 <style scoped>

@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build && npm run generate-sitemap-robots",
+    "dev": "vite --mode staging",
+    "build": "vue-tsc -b && vite build --mode production && npm run generate-sitemap-robots",
     "preview": "vite preview",
     "generate-sitemap-robots": "node generate-sitemap-robots.js"
   },
@@ -18,9 +18,11 @@
     "@unhead/vue": "^2.0.19",
     "@vueuse/components": "^12.5.0",
     "@vueuse/core": "^12.5.0",
+    "crypto-js": "^4.2.0",
     "element-plus": "^2.9.10",
     "lucide-vue-next": "^0.552.0",
     "marked": "^17.0.1",
+    "mobile-detect": "^1.4.5",
     "pinia": "^3.0.4",
     "vant": "^4.9.19",
     "vue": "^3.5.13",
