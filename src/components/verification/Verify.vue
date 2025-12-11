@@ -2,7 +2,7 @@
   <div :class="mode == 'pop' ? 'mask' : ''" v-show="showBox">
     <div :class="mode == 'pop' ? 'verifybox' : ''" :style="{ 'max-width': parseInt(imgSize.width) + 30 + 'px' }">
       <div class="verifybox-top" v-if="mode == 'pop'">
-        请完成安全验证
+        {{ t('invite.verifyInform') }}
         <span class="verifybox-close" @click="closeBox">
           <i class="iconfont icon-close"></i>
         </span>
@@ -34,12 +34,15 @@
  * @description 分发验证码使用
  * */
 import VerifySlide from './Verify/VerifySlide.vue';
+import VerifyPoints from './Verify/VerifyPoints.vue';
 import { computed, ref, watch, toRefs, watchEffect } from 'vue';
+import {useI18n} from "vue-i18n";
 
 export default {
   name: 'Vue2Verify',
   components: {
     VerifySlide,
+    VerifyPoints,
   },
   props: {
     captchaType: {
@@ -83,6 +86,7 @@ export default {
     const clickShow = ref(false);
     const verifyType = ref(undefined);
     const componentType = ref(undefined);
+    const { t } = useI18n()
 
     const instance = ref({});
 
@@ -119,6 +123,10 @@ export default {
           verifyType.value = '2';
           componentType.value = 'VerifySlide';
           break;
+        case 'clickWord':
+          verifyType.value = '';
+          componentType.value = 'VerifyPoints';
+          break;
       }
     });
 
@@ -130,6 +138,7 @@ export default {
       showBox,
       closeBox,
       show,
+      t,
     };
   },
 };

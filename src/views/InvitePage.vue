@@ -15,6 +15,19 @@ const emit = defineEmits<{
   (e: 'onSwitchLanguage', lang: string): void
 }>()
 
+onMounted(() => {
+  let lang = ''
+  if(selectedLanguage.value === 'zh-cn'){
+    lang = '简体中文'
+  } else if(selectedLanguage.value === 'zhtw'){
+    lang = '繁體中文'
+  } else {
+    lang = 'English'
+  }
+  let newLang = {label: lang, value: selectedLanguage.value}
+  setLanguage(newLang)
+});
+
 const selectedLanguage = ref(props.currentLanguage)
 
 const languageList = computed(() => [
@@ -99,6 +112,7 @@ const isEmailValid = ref(false)
 const codeSection = ref<HTMLElement | null>(null)
 const passwordSection = ref<HTMLElement | null>(null)
 const showSuccessPopup = ref(false);
+const showErrorMsg = ref('');
 
 // 邮箱校验
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -178,7 +192,7 @@ function sendVerificationCode() {
 
 function updateCountdown() {
   if (countdown.value > 0) {
-    buttonText.value = `${countdown.value}秒`;
+    buttonText.value = `${countdown.value}${t('invite.second')}`;
     countdown.value--;
     countdownTimer = setTimeout(updateCountdown, 1000);
   } else {
@@ -221,7 +235,7 @@ function handleSubmit() {
   }
 
   if (/^\S{8,20}$/.test(password.value)) {
-    console.log("密码合法")
+
   } else {
     showMessage(t('invite.passwordError'), 'error', 'passwordMessage')
     return
@@ -408,7 +422,13 @@ const goRegister = async () => {
       code.value = ''
       password.value = ''
     } if (result.code === 500) {
-      showMessage(t('invite.codeError'), 'error', 'codeMessage')
+      if(result.msg === '无效邀请码') {
+        showErrorMsg.value = result.msg
+        showSuccessPopup.value = true;
+      } else {
+        showMessage(t('invite.codeError'), 'error', 'codeMessage')
+      }
+
     } else {
       console.log('注册失败')
     }
@@ -419,6 +439,9 @@ const goRegister = async () => {
 
 const handlePopupConfirm = () => {
   showSuccessPopup.value = false;
+  if(showErrorMsg.value){
+    return
+  }
   openApp();
 };
 </script>
@@ -801,7 +824,9 @@ const handlePopupConfirm = () => {
   </div>
   <div v-if="showSuccessPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
     <div class="bg-white p-6 rounded-xl shadow-lg w-80 text-center">
-      <p class="mb-4 text-black" >{{ t('invite.registerSuccess') }}</p>
+      <p class="mb-4 text-black" >
+        {{ showErrorMsg ? showErrorMsg :  t('invite.registerSuccess') }}
+      </p>
       <button
           @click="handlePopupConfirm"
           class="w-full bg-gradient-to-r from-brand-500 to-brand-400 text-white font-bold py-3.5 rounded-xl hover:from-brand-600 hover:to-brand-500 transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 flex items-center justify-center gap-2 group"

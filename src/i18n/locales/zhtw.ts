@@ -185,7 +185,15 @@ const zhtw = {
     passwordInsert: '請輸入密碼',
     confirmPasswordInsert: '請再次輸入密碼',
     passwordNoSame: '兩次輸入的密碼不一致',
-    codeSend: '驗證碼已發送至'
+    codeSend: '驗證碼已發送至',
+    verifyInform: '請完成安全驗證',
+    second: '秒',
+    verifySuccess: '驗證成功',
+    verifyFailure: '驗證失敗',
+    networkError: '網絡錯誤，請稍後重試',
+    touchWord: '請依序點擊',
+    getCodeFailure: '獲取驗證碼失敗',
+    scrollRight: '向右滑動完成驗證',
   }
 }
 

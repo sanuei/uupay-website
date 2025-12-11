@@ -65,6 +65,7 @@ import { aesEncrypt } from './../utils/ase';
 import { resetSize } from './../utils/util';
 import { computed, onMounted, reactive, ref, watch, nextTick, toRefs, getCurrentInstance } from 'vue';
 import { API_URL } from "@/constants";
+import {useI18n} from "vue-i18n";
 
 export default {
   name: 'VerifySlide',
@@ -87,7 +88,7 @@ export default {
     },
     explain: {
       type: String,
-      default: '向右滑动完成验证',
+      default: t('invite.scrollRight'),
     },
     imgSize: {
       type: Object,
@@ -152,6 +153,8 @@ export default {
         transitionLeft = ref(''),
         transitionWidth = ref(''),
         startLeft = ref(0);
+
+    const { t } = useI18n()
 
     const barArea = computed(() => {
       return proxy.$el.querySelector('.verify-bar-area');
@@ -281,7 +284,6 @@ export default {
           })
               .then((res) => res.json())
               .then((resp) => {
-                console.log('resp', resp);
                 if (resp.repCode === '0000') {
                   moveBlockBackgroundColor.value = '#5cb85c';
                   leftBarBorderColor.value = '#5cb85c';
@@ -290,7 +292,7 @@ export default {
                   showRefresh.value = false;
                   isEnd.value = true;
                   passFlag.value = true;
-                  tipWords.value = `${((endMovetime.value - startMoveTime.value) / 1000).toFixed(2)}s验证成功`;
+                  tipWords.value = `${((endMovetime.value - startMoveTime.value) / 1000).toFixed(2)}s${t('invite.verifySuccess')} `;
 
                   if (mode.value === 'pop') {
                     setTimeout(() => {
@@ -314,7 +316,7 @@ export default {
                   iconColor.value = '#fff';
                   iconClass.value = 'icon-close';
                   passFlag.value = false;
-                  tipWords.value = '验证失败';
+                  tipWords.value = t('invite.verifyFailure');
                   setTimeout(() => {
                     refresh();
                     tipWords.value = '';
@@ -324,7 +326,7 @@ export default {
               })
               .catch((err) => {
                 console.error(err);
-                tipWords.value = '网络错误，请稍后重试';
+                tipWords.value = t('invite.networkError');
               });
         }
 
@@ -377,12 +379,12 @@ export default {
               backToken.value = resp.repData.token;
               secretKey.value = resp.repData.secretKey;
             } else {
-              tipWords.value = resp.repMsg || '获取验证码失败';
+              tipWords.value = resp.repMsg || t('invite.getCodeFailure');
             }
           })
           .catch((err) => {
             console.error(err);
-            tipWords.value = '网络错误，请稍后重试';
+            tipWords.value = t('invite.networkError');
           });
     }
 
@@ -416,6 +418,7 @@ export default {
       barArea,
       refresh,
       start,
+      t
     };
   },
 };

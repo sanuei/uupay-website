@@ -185,7 +185,15 @@ const en = {
     passwordInsert: 'Please enter your password',
     confirmPasswordInsert: 'Please re-enter your password',
     passwordNoSame: 'The two passwords do not match',
-    codeSend: 'The verification code has been sent to'
+    codeSend: 'The verification code has been sent to',
+    verifyInform: 'Please complete the security verification',
+    second: 's',
+    verifySuccess: 'Verification successful',
+    verifyFailure: 'Verification failed',
+    networkError: 'Network error, please try again later',
+    touchWord: 'Please click in order',
+    getCodeFailure: 'Failed to get verification code',
+    scrollRight: 'Slide right to verify',
   }
 }
 

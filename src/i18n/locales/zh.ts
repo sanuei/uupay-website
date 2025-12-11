@@ -185,7 +185,15 @@ const zh = {
     passwordInsert: '请输入密码',
     confirmPasswordInsert: '请再次输入密码',
     passwordNoSame: '两次输入的密码不一致',
-    codeSend: '验证码已发送到'
+    codeSend: '验证码已发送到',
+    verifyInform: '请完成安全验证',
+    second: '秒',
+    verifySuccess: '验证成功',
+    verifyFailure: '验证失败',
+    networkError: '网络错误，请稍后重试',
+    touchWord: '请依次点击',
+    getCodeFailure: '获取验证码失败',
+    scrollRight: '向右滑动完成验证'
   }
 }
 
