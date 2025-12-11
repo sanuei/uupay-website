@@ -88,7 +88,7 @@ export default {
     },
     explain: {
       type: String,
-      default: t('invite.scrollRight'),
+      default: '向右滑动完成验证',
     },
     imgSize: {
       type: Object,
@@ -121,6 +121,7 @@ export default {
   setup(props, context) {
     const { mode, captchaType, vSpace, imgSize, barSize, type, blockSize, explain } = toRefs(props);
     const { proxy } = getCurrentInstance();
+    const { t } = useI18n()
     let secretKey = ref(''), //后端返回的ase加密秘钥
         passFlag = ref(''), //是否通过的标识
         backImgBase = ref(''), //验证码背景图片
@@ -153,8 +154,6 @@ export default {
         transitionLeft = ref(''),
         transitionWidth = ref(''),
         startLeft = ref(0);
-
-    const { t } = useI18n()
 
     const barArea = computed(() => {
       return proxy.$el.querySelector('.verify-bar-area');
