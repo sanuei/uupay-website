@@ -110,6 +110,8 @@ watch(email, (val) => {
   isEmailValid.value = emailRegex.test(val)
 
   if (!codeSection.value) return
+  if (!passwordSection.value) return
+  if (!confirmPasswordSection.value) return
 
   if (isEmailValid.value) {
     // 显示验证码区域，淡入 + 上滑动画
@@ -124,7 +126,7 @@ watch(email, (val) => {
         codeSection.value.style.transform = 'translateY(0)'
       }, 10)
     }
-    if (passwordSection.value) {
+    if (passwordSection.value.classList.contains('hidden')) {
       passwordSection.value.classList.remove('hidden')
       passwordSection.value.style.opacity = '0'
       passwordSection.value.style.transform = 'translateY(-10px)'
@@ -135,7 +137,7 @@ watch(email, (val) => {
         passwordSection.value.style.transform = 'translateY(0)'
       }, 10)
     }
-    if (confirmPasswordSection.value) {
+    if (confirmPasswordSection.value.classList.contains('hidden')) {
       confirmPasswordSection.value.classList.remove('hidden')
       confirmPasswordSection.value.style.opacity = '0'
       confirmPasswordSection.value.style.transform = 'translateY(-10px)'
@@ -155,16 +157,16 @@ watch(email, (val) => {
         codeSection.value?.classList.add('hidden')
       }, 300)
     }
-    if (!passwordSection.value) {
-      passwordSection.value!.style.opacity = '0'
-      passwordSection.value!.style.transform = 'translateY(-10px)'
+    if (!passwordSection.value.classList.contains('hidden')) {
+      passwordSection.value.style.opacity = '0'
+      passwordSection.value.style.transform = 'translateY(-10px)'
       setTimeout(() => {
         passwordSection.value?.classList.add('hidden')
       }, 300)
     }
-    if (!confirmPasswordSection.value) {
-      confirmPasswordSection.value!.style.opacity = '0'
-      confirmPasswordSection.value!.style.transform = 'translateY(-10px)'
+    if (!confirmPasswordSection.value.classList.contains('hidden')) {
+      confirmPasswordSection.value.style.opacity = '0'
+      confirmPasswordSection.value.style.transform = 'translateY(-10px)'
       setTimeout(() => {
         confirmPasswordSection.value?.classList.add('hidden')
       }, 300)
@@ -227,28 +229,37 @@ function showMessage(text: any, type: any, column: any) {
 // 表单提交处理器
 function handleSubmit() {
   if (!email.value) {
-    showMessage('请输入邮箱地址', 'error', 'emailMessage')
+    showMessage(t('invite.emailInsert'), 'error', 'emailMessage')
     return
   }
   if (!code.value) {
-    showMessage('请输入验证码', 'error', 'codeMessage')
+    showMessage(t('invite.codeInsert'), 'error', 'codeMessage')
     return
   }
 
   if (!password.value) {
-    showMessage('请输入密码', 'error', 'passwordMessage')
+    showMessage(t('invite.passwordInsert'), 'error', 'passwordMessage')
+    return
+  }
+
+  if (/^\S{8,20}$/.test(password.value)) {
+    console.log("密码合法")
+  } else {
+    showMessage(t('invite.passwordError'), 'error', 'passwordMessage')
     return
   }
 
   if (!confirmPassword.value) {
-    showMessage('请再次输入密码', 'error', 'confirmPasswordMessage')
+    showMessage(t('invite.confirmPasswordInsert'), 'error', 'confirmPasswordMessage')
     return
   }
 
   if (password.value !== confirmPassword.value) {
-    showMessage('两次输入的密码不一致', 'error', 'confirmPasswordMessage')
+    showMessage(t('invite.passwordNoSame'), 'error', 'confirmPasswordMessage')
     return
   }
+
+  goRegister()
 }
 
 const openApp = () => {
@@ -299,7 +310,7 @@ const goToAppStore = () => {
 const showReferral = ref(false)
 const referralSection = ref<HTMLElement | null>(null)
 const referralArrow = ref<SVGSVGElement | null>(null)
-const referralCopyToast = ref<HTMLElement | null>(null)
+const showToast = ref(false)
 
 const toggleReferralCode = async () => {
   showReferral.value = !showReferral.value
@@ -314,7 +325,7 @@ const toggleReferralCode = async () => {
     setTimeout(() => {
       if (!referralSection.value) return
       referralSection.value.style.transition = 'max-height 0.3s ease-out'
-      referralSection.value.style.maxHeight = referralSection.value.scrollHeight + 'px'
+      referralSection.value.style.maxHeight = '100px'
     }, 10)
   } else {
     referralSection.value.style.maxHeight = '0px'
@@ -330,11 +341,8 @@ const copyReferralCode = async () => {
   if (!input) return
   await navigator.clipboard.writeText(input.value)
 
-  if (!referralCopyToast.value) return
-  referralCopyToast.value.classList.remove('hidden')
-  setTimeout(() => {
-    referralCopyToast.value?.classList.add('hidden')
-  }, 1500)
+  showToast.value = true
+  setTimeout(() => showToast.value = false, 1500)
 }
 
 const getInvitationCode = (): string | null => {
@@ -392,12 +400,14 @@ const onVerifySuccess = (res: any) => {
       .then((response) => response.json())
       .then((res) => {
         if (res.code === 200) {
-          showMessage(`验证码已发送到 ${email.value}`, 'success', 'codeMessage');
+          showMessage(`${t('invite.codeSend')} ${email.value}`, 'success', 'codeMessage');
 
           countdown.value = 60;
           if (sendCodeBtn) sendCodeBtn.disabled = true;
 
           updateCountdown()
+        } else if(res.code === 500){
+          showMessage(t('invite.emailError'), 'error', 'emailMessage')
         } else {
           console.log('error',res)
         }
@@ -430,6 +440,8 @@ const goRegister = async () => {
       code.value = ''
       password.value = ''
       confirmPassword.value = ''
+    } if (result.code === 500) {
+      showMessage(t('invite.codeError'), 'error', 'codeMessage')
     } else {
       console.log('注册失败')
     }
@@ -592,7 +604,6 @@ const handlePopupConfirm = () => {
                         id="passwordInput"
                         :placeholder="t('invite.passwordHolder')"
                         v-model="password"
-                        maxlength="6"
                         class="w-full bg-slate-800 border border-slate-700 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
                         required
                     />
@@ -633,7 +644,6 @@ const handlePopupConfirm = () => {
                         id="confirmPasswordInput"
                         :placeholder="t('invite.confirmPasswordHolder')"
                         v-model="confirmPassword"
-                        maxlength="6"
                         class="w-full bg-slate-800 border border-slate-700 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
                         required
                     />
@@ -685,7 +695,6 @@ const handlePopupConfirm = () => {
                   <div
                       ref="referralSection"
                       class="hidden overflow-hidden mt-2"
-                      style="max-height: 0"
                   >
                     <div class="pt-2 space-y-2">
                       <div class="relative">
@@ -693,6 +702,7 @@ const handlePopupConfirm = () => {
                             type="text"
                             id="referralInput"
                             v-model="referralCode"
+                            readonly
                             class="w-full bg-slate-800/50 border border-slate-700 text-slate-400 rounded-xl px-4 py-3 text-sm pr-12 cursor-not-allowed"
                         />
                         <button
@@ -713,8 +723,8 @@ const handlePopupConfirm = () => {
                       </div>
                       <p class="text-[10px] text-slate-500">{{ t('invite.inviteBenefit') }}</p>
                       <div
-                          ref="referralCopyToast"
-                          class="hidden text-brand-400 text-xs flex items-center gap-1"
+                          v-show="showToast"
+                          class="text-brand-400 text-xs flex items-center gap-1"
                       >
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -727,7 +737,7 @@ const handlePopupConfirm = () => {
 
                 <!-- 提交按钮 -->
                 <button
-                    @click="goRegister"
+                    type="submit"
                     class="w-full bg-gradient-to-r from-brand-500 to-brand-400 text-white font-bold py-3.5 rounded-xl hover:from-brand-600 hover:to-brand-500 transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 flex items-center justify-center gap-2 group"
                 >
                   <span>{{ t('invite.register') }}</span>

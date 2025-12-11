@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import {useRoute, useRouter} from 'vue-router'
-import {nextTick, onBeforeUnmount, onMounted, watch} from "vue";
-import { WebHeader, WebFooter } from '@/components'
+import {computed, nextTick, onBeforeUnmount, onMounted, watch} from "vue";
+import {WebHeader, WebFooter, PhoneHeader} from '@/components'
 
 const { locale } = useI18n()
 
@@ -407,6 +407,27 @@ onMounted(() => {
 onBeforeUnmount(() => {
   cleanup?.();
 });
+
+function getQueryParam(full: string, key: string): string {
+  let value = ''
+  const queryIndex = full.indexOf('?')
+  if (queryIndex !== -1) {
+    const query = full.substring(queryIndex + 1)
+    value = new URLSearchParams(query).get(key) || ''
+  }
+  const hashIndex = full.indexOf('#')
+  if (!value && hashIndex !== -1) {
+    const hash = full.substring(hashIndex + 1)
+    const hashQueryIndex = hash.indexOf('?')
+    if (hashQueryIndex !== -1) {
+      const hashQuery = hash.substring(hashQueryIndex + 1)
+      value = new URLSearchParams(hashQuery).get(key) || ''
+    }
+  }
+  return value
+}
+
+const invitationCode = computed(() => getQueryParam(route.fullPath, 'invitationCode'))
 </script>
 
 <template>
@@ -415,11 +436,11 @@ onBeforeUnmount(() => {
     <canvas id="particles"></canvas>
     <div class="grid-background"></div>
 
-    <WebHeader :currentLanguage="locale" @onSwitchLanguage="switchLanguage"/>
+    <WebHeader v-if="!invitationCode" :currentLanguage="locale" @onSwitchLanguage="switchLanguage"/>
 
     <router-view />
 
-    <WebFooter />
+    <WebFooter v-if="!invitationCode" />
   </div>
 </template>
 

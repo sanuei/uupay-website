@@ -67,7 +67,7 @@ const switchLanguage = (lang: string) => {
 </script>
 
 <template>
-  <InvitePage v-if="isMobile && invitationCode" :currentLanguage="locale" @onSwitchLanguage="switchLanguage" />
+  <InvitePage v-if="invitationCode" :currentLanguage="locale" @onSwitchLanguage="switchLanguage" />
 
   <!-- 否则正常显示手机 或 web layout -->
   <component

@@ -177,6 +177,15 @@ const en = {
     confirmPassword: 'Confirm Password',
     registerSuccess: 'Registration Successful!',
     confirm: 'Confirm',
+    passwordError: 'Please enter an 8–20 character password',
+    codeError: 'Incorrect verification code',
+    emailError: 'Email is already registered',
+    emailInsert: 'Please enter your email address',
+    codeInsert: 'Please enter the verification code',
+    passwordInsert: 'Please enter your password',
+    confirmPasswordInsert: 'Please re-enter your password',
+    passwordNoSame: 'The two passwords do not match',
+    codeSend: 'The verification code has been sent to'
   }
 }
 

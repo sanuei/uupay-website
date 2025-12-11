@@ -177,6 +177,15 @@ const zhtw = {
     confirmPassword: '確認密碼',
     registerSuccess: '註冊成功！',
     confirm: '確認',
+    passwordError: '請輸入 8–20 位密碼',
+    codeError: '驗證碼錯誤',
+    emailError: '信箱已被註冊',
+    emailInsert: '請輸入信箱地址',
+    codeInsert: '請輸入驗證碼',
+    passwordInsert: '請輸入密碼',
+    confirmPasswordInsert: '請再次輸入密碼',
+    passwordNoSame: '兩次輸入的密碼不一致',
+    codeSend: '驗證碼已發送至'
   }
 }
 

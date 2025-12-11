@@ -176,7 +176,16 @@ const zh = {
     password: '密码',
     confirmPassword: '确认密码',
     registerSuccess: '注册成功!',
-    confirm: '确认'
+    confirm: '确认',
+    passwordError: '请输入8-20位密码',
+    codeError: '验证码错误',
+    emailError: '邮箱已注册',
+    emailInsert: '请输入邮箱地址',
+    codeInsert: '请输入验证码',
+    passwordInsert: '请输入密码',
+    confirmPasswordInsert: '请再次输入密码',
+    passwordNoSame: '两次输入的密码不一致',
+    codeSend: '验证码已发送到'
   }
 }
 
