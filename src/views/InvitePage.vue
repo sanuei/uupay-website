@@ -93,13 +93,11 @@ function scrollToRegistration() {
 const email = ref('')
 const code = ref('')
 const password = ref('')
-const confirmPassword = ref('')
 const referralCode = ref('')
 const isEmailValid = ref(false)
 
 const codeSection = ref<HTMLElement | null>(null)
 const passwordSection = ref<HTMLElement | null>(null)
-const confirmPasswordSection = ref<HTMLElement | null>(null)
 const showSuccessPopup = ref(false);
 
 // 邮箱校验
@@ -111,7 +109,6 @@ watch(email, (val) => {
 
   if (!codeSection.value) return
   if (!passwordSection.value) return
-  if (!confirmPasswordSection.value) return
 
   if (isEmailValid.value) {
     // 显示验证码区域，淡入 + 上滑动画
@@ -137,17 +134,6 @@ watch(email, (val) => {
         passwordSection.value.style.transform = 'translateY(0)'
       }, 10)
     }
-    if (confirmPasswordSection.value.classList.contains('hidden')) {
-      confirmPasswordSection.value.classList.remove('hidden')
-      confirmPasswordSection.value.style.opacity = '0'
-      confirmPasswordSection.value.style.transform = 'translateY(-10px)'
-      setTimeout(() => {
-        if (!confirmPasswordSection.value) return
-        confirmPasswordSection.value.style.transition = 'all 0.3s ease-out'
-        confirmPasswordSection.value.style.opacity = '1'
-        confirmPasswordSection.value.style.transform = 'translateY(0)'
-      }, 10)
-    }
   } else {
     // 隐藏验证码区域
     if (!codeSection.value.classList.contains('hidden')) {
@@ -164,13 +150,6 @@ watch(email, (val) => {
         passwordSection.value?.classList.add('hidden')
       }, 300)
     }
-    if (!confirmPasswordSection.value.classList.contains('hidden')) {
-      confirmPasswordSection.value.style.opacity = '0'
-      confirmPasswordSection.value.style.transform = 'translateY(-10px)'
-      setTimeout(() => {
-        confirmPasswordSection.value?.classList.add('hidden')
-      }, 300)
-    }
   }
 })
 
@@ -181,7 +160,6 @@ let countdownTimer: number | null = null;
 const buttonText = ref(t('invite.send'))
 const verifyRef = ref<any>(null);
 const showPassword = ref(false)
-const showConfirmPassword = ref(false)
 
 function sendVerificationCode() {
   // 验证邮箱格式
@@ -246,16 +224,6 @@ function handleSubmit() {
     console.log("密码合法")
   } else {
     showMessage(t('invite.passwordError'), 'error', 'passwordMessage')
-    return
-  }
-
-  if (!confirmPassword.value) {
-    showMessage(t('invite.confirmPasswordInsert'), 'error', 'confirmPasswordMessage')
-    return
-  }
-
-  if (password.value !== confirmPassword.value) {
-    showMessage(t('invite.passwordNoSame'), 'error', 'confirmPasswordMessage')
     return
   }
 
@@ -439,7 +407,6 @@ const goRegister = async () => {
       email.value = ''
       code.value = ''
       password.value = ''
-      confirmPassword.value = ''
     } if (result.code === 500) {
       showMessage(t('invite.codeError'), 'error', 'codeMessage')
     } else {
@@ -631,44 +598,6 @@ const handlePopupConfirm = () => {
                     </span>
                   </div>
                   <p id="passwordMessage" class="hidden text-xs mt-2"></p>
-                </div>
-
-                <!-- 确认密码 -->
-                <div ref="confirmPasswordSection" class="hidden">
-                  <label class="block text-xs text-slate-400 mb-2 font-medium">{{ t('invite.confirmPassword') }}</label>
-
-                  <div class="relative">
-                    <input
-                        :type="showConfirmPassword ? 'text' : 'password'"
-                        name="confirmPassword"
-                        id="confirmPasswordInput"
-                        :placeholder="t('invite.confirmPasswordHolder')"
-                        v-model="confirmPassword"
-                        class="w-full bg-slate-800 border border-slate-700 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
-                        required
-                    />
-
-                    <!-- 眼睛 icon  -->
-                    <span
-                        class="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-slate-400"
-                        @click="showConfirmPassword = !showConfirmPassword"
-                    >
-                      <svg v-if="!showConfirmPassword" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                      </svg>
-
-                      <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a10.058 10.058 0 012.364-3.504m1.518-1.518A9.965 9.965 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.963 9.963 0 01-4.098 4.764M15 12a3 3 0 11-6 0 3 3 0 116 0z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M3 3l18 18"/>
-                      </svg>
-                    </span>
-                  </div>
-                  <p id="confirmPasswordMessage" class="hidden text-xs mt-2"></p>
                 </div>
 
                 <!-- 邀请码（可折叠） -->

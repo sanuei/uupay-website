@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 import {useRoute, useRouter} from 'vue-router'
 import {computed, nextTick, onBeforeUnmount, onMounted, watch} from "vue";
-import {WebHeader, WebFooter, PhoneHeader} from '@/components'
+import {WebHeader, WebFooter} from '@/components'
 
 const { locale } = useI18n()
 
