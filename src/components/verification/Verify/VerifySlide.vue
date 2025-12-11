@@ -210,9 +210,16 @@ export default {
         return false;
       };
     });
+
+    let scrollTopBeforeDrag = 0
     //鼠标按下
     function start(e) {
       e = e || window.event;
+      scrollTopBeforeDrag = window.scrollY;
+      window.addEventListener('scroll', lockScroll);
+
+      // 禁止页面触摸滚动 (只在 iOS 会有效)
+      document.body.addEventListener('touchmove', preventScroll, { passive: false });
       if (!e.touches) {
         //兼容PC端
         var x = e.clientX;
@@ -259,6 +266,10 @@ export default {
 
     //鼠标松开
     function end() {
+      window.removeEventListener('scroll', lockScroll);
+
+      // 恢复页面滚动
+      document.body.removeEventListener('touchmove', preventScroll);
       endMovetime.value = +new Date();
       if (status.value && isEnd.value == false) {
         var moveLeftDistance = parseInt((moveBlockLeft.value || '').replace('px', ''));
@@ -332,6 +343,14 @@ export default {
         checkCaptcha(moveLeftDistance); // ✅ 这里调用
         status.value = false;
       }
+    }
+
+    function preventScroll(e) {
+      e.preventDefault();
+    }
+
+    function lockScroll() {
+      window.scrollTo(0, scrollTopBeforeDrag);
     }
 
     const refresh = () => {
