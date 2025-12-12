@@ -510,11 +510,11 @@ const handlePopupConfirm = () => {
           <!-- 卡片背后的环境光晕 -->
           <div class="absolute inset-6 bg-gradient-to-r from-brand-400 to-blue-500 rounded-[30px] blur-[40px] opacity-20 transition-opacity duration-500 group-hover:opacity-40 animate-pulse"></div>
           <!-- 卡片图片 -->
-          <img src="@/assets/images/uupay-card.png" alt="UUPAY Card" class="relative w-full h-full object-contain drop-shadow-2xl rounded-2xl animate-float-card z-10 transform transition-transform duration-500 group-hover:scale-[1.02]">
+          <img src="@/assets/images/uupay-card.webp" alt="UUPAY Card" class="relative w-full h-full object-contain drop-shadow-2xl rounded-2xl animate-float-card z-10 transform transition-transform duration-500 group-hover:scale-[1.02]">
 
           <!-- 悬浮装饰元素 -->
           <div class="absolute -right-2 top-10 bg-white/90 backdrop-blur-md p-2.5 rounded-2xl shadow-xl shadow-slate-200/50 z-20 animate-bounce border border-white" style="animation-duration: 3s;">
-            <img src="@/assets/images/visa.png" class="h-4 w-auto opacity-90">
+            <img src="@/assets/images/visa.webp" width="24" height="24" class="opacity-90" alt="" />
           </div>
         </div>
 
@@ -709,7 +709,9 @@ const handlePopupConfirm = () => {
       <section class="py-10">
         <p class="text-center text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-6">{{ t('invite.trustText') }}</p>
         <div class="flex justify-center items-center space-x-8 opacity-60 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
-          <img src="@/assets/images/visa.png" alt="Visa" class="h-6 w-auto object-contain brightness-0 opacity-50 group-hover:brightness-100 group-hover:opacity-100 transition-all">
+          <div style="width: 24px; height: 24px;">
+            <img src="@/assets/images/visa.webp" alt="Visa" class="object-contain brightness-0 opacity-50 group-hover:brightness-100 group-hover:opacity-100 transition-all">
+          </div>
           <span class="font-bold text-xl text-slate-300 italic">Netflix</span>
           <span class="font-bold text-xl text-slate-300">Spotify</span>
           <span class="font-bold text-xl text-slate-300">Amazon</span>
@@ -731,7 +733,7 @@ const handlePopupConfirm = () => {
 
           <div class="mt-2 flex flex-col items-center relative z-10">
             <div class="w-16 h-16 bg-gradient-to-br from-brand-50 to-white rounded-2xl flex items-center justify-center mb-4 shadow-inner border border-brand-50/50">
-              <img src="@/assets/images/logo.png" class="w-8 h-8 opacity-90">
+              <img src="@/assets/images/logo.png" class="w-8 h-8 opacity-90" alt="" />
             </div>
             <h3 class="text-lg font-bold text-slate-900 mb-1">{{ t('invite.download') }}</h3>
             <p class="text-slate-500 text-xs mb-6">{{ t('invite.assetTool') }}</p>
@@ -765,7 +767,7 @@ const handlePopupConfirm = () => {
 
               <div class="flex items-center justify-between mb-8 relative z-10">
                 <span class="text-xs font-medium tracking-wider text-slate-300">UUPAY Virtual</span>
-                <img src="@/assets/images/visa.png" class="h-4 opacity-90 bg-white/10 backdrop-blur-sm rounded px-1.5 py-0.5">
+                <img src="@/assets/images/visa.webp" width="24" height="24" class="opacity-90 bg-white/10 backdrop-blur-sm rounded px-1.5 py-0.5" alt=""/>
               </div>
               <div class="text-lg font-mono tracking-[0.15em] mb-2 text-shadow-sm">**** **** **** 8888</div>
               <div class="flex justify-between items-end relative z-10">

@@ -142,7 +142,7 @@ onMounted(() => {
       <div class="hero-visual">
         <div class="floating-card card-3d card-image">
           <div class="card-shine"></div>
-          <img src="@/assets/images/uupay-card.png" alt="UUPAY Card" class="card-img">
+          <img src="@/assets/images/uupay-card.webp" alt="UUPAY Card" class="card-img">
         </div>
 
         <div class="floating-elements">
