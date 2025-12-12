@@ -102,8 +102,10 @@ onMounted(() => {
   canvasEl.width = window.innerWidth
   canvasEl.height = window.innerHeight
 
-  initParticles()
-  animate()
+  if(!invitationCode.value){
+    initParticles()
+    animate()
+  }
 
   window.addEventListener('resize', onResize)
 })
