@@ -2,13 +2,14 @@
 import {ArrowLeft, Calendar, Newspaper, RefreshCw, Settings, ShieldCheck, Sparkles, User} from "lucide-vue-next";
 import {useI18n} from "vue-i18n";
 import { useAnnouncementStore } from '@/stores/announcement'
-import { useRouter } from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 import {useHead} from "@unhead/vue";
+import {computed, onMounted, watch} from "vue";
 
 const router = useRouter()
+const route = useRoute()
 const { locale, t } = useI18n()
 const announcementStore = useAnnouncementStore()
-const announcementData = announcementStore.current
 
 useHead(() => ({
   title: t('aboutUs.metaTitle'),
@@ -26,6 +27,26 @@ useHead(() => ({
     lang: locale.value,
   }
 }))
+
+const announcementData = computed(() => announcementStore.current)
+
+async function loadDetail() {
+  const id = route.params.id as string
+  if (!id) return
+
+  await announcementStore.loadById(id)
+
+  if (!announcementStore.current) {
+    router.replace(`/${route.params.lang}/announcement`)
+  }
+}
+
+onMounted(loadDetail)
+
+watch(
+    () => route.params.id,
+    () => loadDetail()
+)
 
 function getCategoryName(category: any) {
   const names: Record<string, string> = {
@@ -51,7 +72,11 @@ const getCategoryIcon = (cat: any) => {
 }
 
 function goBack() {
-  router.back()
+  router.push({
+    path: `/${locale.value}/announcements`,
+    hash: route.hash,
+    query: route.query
+  });
 }
 </script>
 

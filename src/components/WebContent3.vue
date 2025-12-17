@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ArrowRight, CreditCard, Smartphone, Star, Wallet} from "lucide-vue-next";
+import {CreditCard, Smartphone, Star, Wallet} from "lucide-vue-next"; // ArrowRight暂时隐藏
 import {useI18n} from "vue-i18n";
 
 const { t } = useI18n()
@@ -30,10 +30,10 @@ const { t } = useI18n()
             <li>{{t('funcWalletTwo')}}</li>
             <li>{{t('funcWalletThree')}}</li>
           </ul>
-          <button class="product-btn">
-            <span>{{t('learnMore')}}</span>
-            <ArrowRight class="btn-icon" />
-          </button>
+<!--          <button class="product-btn">-->
+<!--            <span>{{t('learnMore')}}</span>-->
+<!--            <ArrowRight class="btn-icon" />-->
+<!--          </button>-->
           <div class="product-overlay"></div>
         </div>
 
@@ -57,10 +57,10 @@ const { t } = useI18n()
             <li>{{t('visualCardTwo')}}</li>
             <li>{{t('visualCardThree')}}</li>
           </ul>
-          <button class="product-btn">
-            <span>{{t('learnMore')}}</span>
-            <ArrowRight class="btn-icon" />
-          </button>
+<!--          <button class="product-btn">-->
+<!--            <span>{{t('learnMore')}}</span>-->
+<!--            <ArrowRight class="btn-icon" />-->
+<!--          </button>-->
           <div class="product-overlay"></div>
         </div>
 
@@ -80,10 +80,10 @@ const { t } = useI18n()
             <li>{{t('phyCardTwo')}}</li>
             <li>{{t('phyCardThree')}}</li>
           </ul>
-          <button class="product-btn">
-            <span>{{t('learnMore')}}</span>
-            <ArrowRight class="btn-icon" />
-          </button>
+<!--          <button class="product-btn">-->
+<!--            <span>{{t('learnMore')}}</span>-->
+<!--            <ArrowRight class="btn-icon" />-->
+<!--          </button>-->
           <div class="product-overlay"></div>
         </div>
       </div>
