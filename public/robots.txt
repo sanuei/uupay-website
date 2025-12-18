@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://uupay.cc/sitemap.xml

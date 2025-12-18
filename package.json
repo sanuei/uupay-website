@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --mode staging",
-    "build": "vue-tsc -b && vite build --mode production && npm run generate-sitemap-robots",
-    "build:test": "vue-tsc -b && vite build --mode staging && npm run generate-sitemap-robots",
+    "build": "vue-tsc -b && vite build --mode production",
+    "build:test": "vue-tsc -b && vite build --mode staging",
     "preview": "vite preview",
     "generate-sitemap-robots": "node generate-sitemap-robots.js"
   },
