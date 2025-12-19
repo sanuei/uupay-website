@@ -177,7 +177,7 @@ function animateNumberFadeIn(
     if (targetNumber !== null) {
       const startValue = Math.floor(targetNumber * 0.8);
       const current = Math.floor(progress * (targetNumber - startValue) + startValue);
-      element.textContent = current + '+';
+      element.textContent = current + ''; // 显示'+'
     }
 
     if (progress < 1) {
@@ -186,7 +186,7 @@ function animateNumberFadeIn(
       element.style.opacity = '1';
       element.style.transform = 'translateY(0)';
       if (targetNumber !== null) {
-        element.textContent = targetNumber + '+';
+        element.textContent = targetNumber + '';// 显示'+'
       }
     }
   };

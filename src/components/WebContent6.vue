@@ -97,6 +97,18 @@ const goToAboutUs = async() => {
   const el = document.querySelector('#about-us');
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
+
+const goToPartner = async() => {
+  const route = router.currentRoute.value;
+
+  await router.push({
+    path: `/${locale.value}/partner`,
+    hash: route.hash,
+    query: route.query
+  });
+  const el = document.querySelector('#partner');
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
 </script>
 
 <template>
@@ -132,10 +144,11 @@ const goToAboutUs = async() => {
           <div class="footer-column">
             <h4>{{t('support')}}</h4>
             <ul>
+              <li><a data-section="announcement" @click="goToAnnouncement">{{t('announcementCenter')}}</a></li>
               <li><a href="#">{{t('helpCenter')}}</a></li>
               <li><a href="#">{{t('apiDoc')}}</a></li>
               <li><a href="#">{{t('devState')}}</a></li>
-              <li><a href="#">{{t('statusCheck')}}</a></li>
+<!--              <li><a href="#">{{t('statusCheck')}}</a></li>-->
             </ul>
           </div>
 
@@ -144,9 +157,8 @@ const goToAboutUs = async() => {
             <ul>
               <li><a data-section="about-us" @click="goToAboutUs">{{t('about')}}</a></li>
               <li><a href="#">{{t('team')}}</a></li>
-              <li><a href="#">{{t('partner')}}</a></li>
+              <li><a data-section="partner" @click="goToPartner">{{t('partner')}}</a></li>
               <li><a href="#">{{t('joinUs')}}</a></li>
-              <li><a data-section="announcement" @click="goToAnnouncement">{{t('announcementCenter')}}</a></li>
             </ul>
           </div>
 

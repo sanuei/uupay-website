@@ -9,6 +9,7 @@ import WebAnnouncement from '@/views/WebAnnouncement.vue'
 import WebAnnouncementDetail from '@/views/WebAnnouncementDetail.vue'
 import InvitePage from '@/views/InvitePage.vue'
 import AboutUs from '@/views/AboutUs.vue'
+import PartnerPage from '@/views/PartnerPage.vue'
 
 const supportedLangs = ['zh-cn', 'en', 'zh-tw']
 const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
@@ -32,6 +33,7 @@ const routes: RouteRecordRaw[] = [
             { path: 'jump/:catchAll(.*)', name: 'Jump', component: Home },
             { path: 'invitePage', name: 'InvitePage', component: InvitePage },
             { path: 'about-us', name: 'AboutUs', component: AboutUs },
+            { path: 'partner', name: 'PartnerPage', component: PartnerPage },
         ]
     },
     {

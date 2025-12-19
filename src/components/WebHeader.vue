@@ -137,6 +137,18 @@ const goToAboutUs = async() => {
   const el = document.querySelector('#about-us');
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
+
+const goToPartner = async() => {
+  const route = router.currentRoute.value;
+
+  await router.push({
+    path: `/${locale.value}/partner`,
+    hash: route.hash,
+    query: route.query
+  });
+  const el = document.querySelector('#partner');
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
 </script>
 
 <template>
@@ -153,6 +165,7 @@ const goToAboutUs = async() => {
           <li><a data-section="features" @click.prevent="goSection('features')">{{t('product')}}</a></li>
           <li><a data-section="security" @click.prevent="goSection('security')">{{t('security')}}</a></li>
           <li><a data-section="contact" @click.prevent="goSection('contact')">{{t('contact')}}</a></li>
+          <li><a data-section="partner" @click="goToPartner">{{t('partnerPage.partnerHead')}}</a></li>
           <li><a data-section="announcement" @click="goToAnnouncement">{{t('announcementCenter')}}</a></li>
         </ul>
 
