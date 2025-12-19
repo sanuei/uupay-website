@@ -1,88 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://uupay.cc/zh-cn/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/en/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/zh-tw/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/zh-cn/blog</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/blog" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/blog" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/zh-cn/blog</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/blog" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/blog" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/zh-cn/blog</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/blog" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/blog" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/en/blog</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/blog" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/blog" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/en/blog</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/blog" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/blog" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/en/blog</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/blog" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/blog" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/zh-tw/blog</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/blog" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/blog" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/zh-tw/blog</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/blog" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/blog" />
-    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://uupay.cc/zh-tw/blog</loc>
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://uupay.cc/zh-cn/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://uupay.cc/en/blog" />
-    <xhtml:link rel="alternate" hreflang="zh-tw" href="https://uupay.cc/zh-tw/blog" />
-    <changefreq>daily</changefreq>
   </url>
+
+  <!--英文文章-->
+  <url>
+    <loc>https://uupay.cc/en/blog/usdt-debit-card-picks-for-easy-crypto-payments/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/top-digital-payment-platforms-for-bitcoin-visa-card/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/how-bitcoin-debit-card-works-spend-crypto-instantly-anywhere/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/virtual-crypto-visa-pros-cons-security-fees-spending-limits/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/easy-ways-to-get-a-crypto-virtual-debit-card-online/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/how-to-get-a-crypto-card-comparison-features-guide/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/uupay-crypto-card-features-pros-cons-comparison-review/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/thailand-crypto-card-choices-for-seamless-spending/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/best-crypto-mastercard-prepaid-cards-features-comparison-2025/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/crypto-visa-prepaid-card-options-malaysia-fees-features/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/crypto-card-for-ads-payment-tiktok-usdt-mastercard/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/how-to-use-web3-debit-card-for-everyday-spending-guide/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/bitcoin-card-philippines-comparison-best-daily-use-options/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/best-crypto-visa-taiwan-banks-financial-products-list/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/crypto-corporate-card-benefits-risks-for-modern-businesses/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/how-to-use-low-fee-crypto-card-pay-marketplace-fees-ph/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/best-ways-to-use-crypto-travel-card-google-play/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/en/blog/benefits-risks-global-crypto-card-everyday-users/</loc>
+  </url>
+
+  <!--简体中文-->
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/u-card-vs-mainstream-bank-card-alipay-binding/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/applepay-u-card-recommendation-u-card-binding-applepay-review/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/wan-shi-da-u-ka-vs-traditional-bank-card-pros-cons-analysis/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/bitcoin-debit-card-book-overseas-hotels-from-vietnam/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/guide-overseas-students-crypto-multi-currency-card-amazon/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/web3-card-guide-for-unbanked-advertiser-payment/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/usdtt-visa-card-pay-overseas-utility-bills-in-vietnam/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/benefits-crypto-debit-card-shopee-malaysia-checkout/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/bitcoin-payment-advantages-risks-analysis-truth/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/u-card-usdt-payment-guide-daily-spending-tips/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-cn/blog/jiamihuobika-shenqing-liucheng-shiyong-jiqiao-guide/</loc>
+  </url>
+
+  <!--繁体中文-->
+  <url>
+    <loc>https://uupay.cc/zh-tw/blog/u-card-series-credit-card-review-pros-cons-experience/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-tw/blog/taiwan-crypto-payment-card-comparison-rewards-fees/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-tw/blog/digital-currency-card-limit-restrictions-benefits-taiwan/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-tw/blog/register-u-card-required-documents-taiwan-mobile-id-easycard/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-tw/blog/crypto-debit-card-vs-credit-card-difference-analysis-tw/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-tw/blog/taiwan-mastercard-crypto-card-application-step-guide/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/zh-tw/blog/usdtvisa-card-overseas-freelancer-cross-border-purchase-guide/</loc>
+  </url>
+
 </urlset>

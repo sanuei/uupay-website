@@ -1,4 +1,8 @@
 User-agent: *
+Allow: /
 Disallow:
 
 Sitemap: https://uupay.cc/sitemap.xml
+Sitemap: https://uupay.cc/zh-cn/blog/sitemap.xml
+Sitemap: https://uupay.cc/zh-tw/blog/sitemap.xml
+Sitemap: https://uupay.cc/en/blog/sitemap.xml
