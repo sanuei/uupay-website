@@ -90,6 +90,23 @@ function animateNumberFadeIn(
 onMounted(() => {
   initStatNumberAnimation();
 });
+
+onMounted(() => {
+  const animatedWords = document.querySelectorAll<HTMLElement>('.word-animation, .hero-subtitle, .download-buttons, .hero-stats')
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate')
+      } else {
+        // 如果希望离开视口后重新进入时重新播放
+        entry.target.classList.remove('animate')
+      }
+    })
+  }, { threshold: 0.5 })
+
+  animatedWords.forEach(el => observer.observe(el))
+})
 </script>
 
 <template>

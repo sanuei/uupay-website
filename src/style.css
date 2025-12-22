@@ -693,7 +693,14 @@ body {
 
 .word-animation {
     display: inline-block;
-    animation: fadeInUp 0.8s ease backwards;
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.word-animation.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 @keyframes fadeInUp {
@@ -733,6 +740,13 @@ body {
     position: relative;
     display: inline-block;
     font-weight: 900;
+    /* 先不动画 */
+    animation: none;
+    filter: drop-shadow(0 0 20px rgba(71, 198, 143, 0.4));
+}
+
+/* 后续通过 JS 或 IntersectionObserver 启动动画 */
+.gradient-text.animate {
     animation: gradientFlow 4s ease-in-out infinite;
     filter: drop-shadow(0 0 20px rgba(71, 198, 143, 0.4));
 }
@@ -777,22 +791,36 @@ body {
 }
 
 .hero-subtitle {
+    opacity: 0;
     font-size: 1.375rem;
     color: var(--text-secondary);
     margin-bottom: 3.5rem;
     max-width: 650px;
     line-height: 1.8;
-    animation: fadeInUp 0.8s ease 0.2s backwards;
     font-weight: 400;
     letter-spacing: -0.01em;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+}
+
+.hero-subtitle.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 /* 下载按钮 */
 .download-buttons {
+    opacity: 0;
     display: flex;
     gap: 1.5rem;
     margin-bottom: 6rem;
-    animation: fadeInUp 0.8s ease 0.3s backwards;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+}
+
+.download-buttons.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 .download-btn {
@@ -967,9 +995,16 @@ body {
 
 /* 统计数据 */
 .hero-stats {
+    opacity: 0;
     display: flex;
     gap: 5rem;
-    animation: fadeInUp 0.8s ease 0.4s backwards;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+}
+
+.hero-stats.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 .stat-item {

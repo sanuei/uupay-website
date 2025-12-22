@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {useRoute, useRouter} from 'vue-router'
-import {computed, nextTick, onBeforeUnmount, onMounted, watch} from "vue";
+import {computed, nextTick, onBeforeUnmount, onMounted, ref, watch} from "vue";
 import {PhoneFooter, PhoneHeader} from "@/components";
 import {useI18n} from "vue-i18n";
 
@@ -115,10 +115,36 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', onResize)
 })
 
+const sectionsData = ref<{ id: string, top: number, height: number }[]>([]);
+
+function cacheSections() {
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+  sectionsData.value = Array.from(sections).map(section => ({
+    id: section.id,
+    top: section.offsetTop - 120,
+    height: section.clientHeight
+  }));
+}
+
+onMounted(() => {
+  cacheSections();
+  window.addEventListener('resize', cacheSections);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', cacheSections);
+});
+
+let resizeTimeout: number | null = null;
+
 function onResize() {
-  canvasEl.width = window.innerWidth
-  canvasEl.height = window.innerHeight
-  initParticles()
+  if (resizeTimeout) clearTimeout(resizeTimeout);
+  resizeTimeout = window.setTimeout(() => {
+    canvasEl.width = window.innerWidth;
+    canvasEl.height = window.innerHeight;
+    // 保留已有粒子
+    // initParticles()
+  }, 200);
 }
 
 function initStatNumberAnimation() {
