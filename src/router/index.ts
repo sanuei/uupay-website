@@ -11,12 +11,12 @@ import InvitePage from '@/views/InvitePage.vue'
 import AboutUs from '@/views/AboutUs.vue'
 import PartnerPage from '@/views/PartnerPage.vue'
 
-const supportedLangs = ['zh-cn', 'en', 'zh-tw']
+const supportedLangs = ['zh-cn', 'en', 'zh-tw', 'th']
 const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 
 const routes: RouteRecordRaw[] = [
     {
-        path: '/:lang(en|zh-cn|zh-tw)',
+        path: '/:lang(en|zh-cn|zh-tw|th)',
         component: () => {
             return isMobile
                 ? import('@/views/PhoneLayout.vue')
@@ -56,7 +56,8 @@ const router = createRouter({
 const langMap: Record<string, string> = {
     'zh-cn': 'zh-cn',
     'en': 'en',
-    'zh-tw': 'zhtw'
+    'zh-tw': 'zhtw',
+    'th': 'th'
 }
 
 router.beforeEach((to, _from, next) => {

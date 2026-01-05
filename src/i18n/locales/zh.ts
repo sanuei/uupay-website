@@ -2,7 +2,8 @@ const zh = {
   language: {
     zh: '简体中文',
     zhtw: '繁體中文',
-    en: 'English'
+    en: 'English',
+    th: 'ไทย'
   },
   about: '关于我们',
   product: '产品功能',

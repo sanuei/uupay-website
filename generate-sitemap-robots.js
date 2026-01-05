@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 const BASE_URL = "https://uupay.cc";
-const languages = ["zh-cn", "en", "zh-tw"];
+const languages = ["zh-cn", "en", "zh-tw", "th"];
 const pages = ["/"]; // 首页等静态页面
 
 // 手动维护第三方博客 URL（去掉域名，保留路径）
@@ -10,6 +10,7 @@ const externalPosts = [
     "/zh-cn/blog",
     "/en/blog",
     "/zh-tw/blog",
+    "/th/blog",
     // 如果有更多博客 URL，可以继续添加
 ];
 
@@ -24,7 +25,7 @@ function buildSitemap() {
 
     allPages.forEach((page) => {
         // 检查 URL 是否已经包含语言前缀
-        const hasLangPrefix = /^\/(zh-cn|en|zh-tw)\//.test(page);
+        const hasLangPrefix = /^\/(zh-cn|en|zh-tw|th)\//.test(page);
 
         languages.forEach((lang) => {
             const loc = hasLangPrefix ? `${BASE_URL}${page}` : `${BASE_URL}/${lang}${page}`;
@@ -34,7 +35,7 @@ function buildSitemap() {
             // 多语言 alternate 标签
             languages.forEach((altLang) => {
                 const altLoc = hasLangPrefix
-                    ? `${BASE_URL}${page.replace(/^\/(zh-cn|en|zh-tw)\//, `/${altLang}/`)}`
+                    ? `${BASE_URL}${page.replace(/^\/(zh-cn|en|zh-tw|th)\//, `/${altLang}/`)}`
                     : `${BASE_URL}/${altLang}${page}`;
                 xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${altLoc}" />\n`;
             });

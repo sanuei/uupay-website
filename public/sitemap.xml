@@ -14,6 +14,9 @@
     <loc>https://uupay.cc/zh-tw/</loc>
   </url>
   <url>
+    <loc>https://uupay.cc/th/</loc>
+  </url>
+  <url>
     <loc>https://uupay.cc/zh-cn/blog</loc>
   </url>
   <url>
@@ -39,6 +42,15 @@
   </url>
   <url>
     <loc>https://uupay.cc/zh-tw/blog</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog</loc>
   </url>
 
   <!--英文文章-->
@@ -187,5 +199,54 @@
   </url>
   <url>
     <loc>https://uupay.cc/zh-tw/blog/taiwan-crypto-deposit-methods-comparison-security-convenience/</loc>
+  </url>
+  <!--泰文文章-->
+  <url>
+    <loc>https://uupay.cc/th/blog/u-card-series-credit-card-review-pros-cons-experience/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/taiwan-crypto-payment-card-comparison-rewards-fees/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/digital-currency-card-limit-restrictions-benefits-taiwan/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/register-u-card-required-documents-taiwan-mobile-id-easycard/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/crypto-debit-card-vs-credit-card-difference-analysis-tw/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/taiwan-mastercard-crypto-card-application-step-guide/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/usdtvisa-card-overseas-freelancer-cross-border-purchase-guide/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/taiwan-crypto-card-apply-platform-guide-and-recommendation/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/taiwan-crypto-credit-card-rewards-fees-comparison/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/bitcoin-credit-card-user-review-taiwan-benefits-fees-safety/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/crypto-card-company-future-trends-financial-system-impact-tw/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/crypto-payment-card-pros-cons-best-user-groups-tw/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/crypto-debit-card-intro-operation-flow-taiwan/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/taiwan-crypto-credit-card-options-comparison-2024/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/crypto-card-vs-credit-card-pros-cons-comparison-tw/</loc>
+  </url>
+  <url>
+    <loc>https://uupay.cc/th/blog/taiwan-crypto-deposit-methods-comparison-security-convenience/</loc>
   </url>
 </urlset>

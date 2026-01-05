@@ -21,6 +21,8 @@ onMounted(() => {
     lang = '简体中文'
   } else if(selectedLanguage.value === 'zhtw'){
     lang = '繁體中文'
+  } else if(selectedLanguage.value === 'th'){
+    lang = 'ไทย'
   } else {
     lang = 'English'
   }
@@ -34,6 +36,7 @@ const languageList = computed(() => [
   { label: t('language.zh'), value: 'zh-cn' },
   { label: t('language.zhtw'), value: 'zh-tw' },
   { label: t('language.en'), value: 'en' },
+  { label: t('language.th'), value: 'th' },
 ])
 
 // 语言菜单功能函数

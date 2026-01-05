@@ -22,6 +22,7 @@ const languageList = computed(() => [
   { label: t('language.zh'), value: 'zh-cn' },
   { label: t('language.zhtw'), value: 'zh-tw' },
   { label: t('language.en'), value: 'en' },
+  { label: t('language.th'), value: 'th' },
 ])
 
 const changeLanguage = (lang: any) => {
