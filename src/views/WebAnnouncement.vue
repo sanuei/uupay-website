@@ -156,5 +156,170 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.announcements-hero {
+    padding: 12rem 0 6rem;
+    text-align: center;
+    position: relative;
+}
 
+.announcements-hero h1 {
+    font-size: var(--font-size-hero);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.announcements-hero p {
+    font-size: var(--font-size-body-lg);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.announcements-container {
+    padding: 4rem 0;
+    position: relative;
+    z-index: 10;
+}
+
+.announcements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.announcement-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.announcement-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 60px rgba(71, 198, 143, 0.15);
+}
+
+.announcement-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: var(--font-size-small);
+    color: var(--text-tertiary);
+}
+
+.announcement-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    background: rgba(71, 198, 143, 0.1);
+    border: 1px solid rgba(71, 198, 143, 0.3);
+    border-radius: 6px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+}
+
+.announcement-date {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.announcement-title {
+    font-size: var(--font-size-h2);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.announcement-excerpt {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.announcement-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    z-index: 1;
+}
+
+.announcement-author {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-tertiary);
+    font-size: var(--font-size-small);
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: var(--font-size-small);
+    transition: all 0.3s ease;
+}
+
+.announcement-card:hover .read-more {
+    gap: 0.75rem;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.filter-tab {
+    padding: 0.75rem 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-tab:hover,
+.filter-tab.active {
+    background: rgba(71, 198, 143, 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.no-announcements {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-tertiary);
+}
+
+@media (max-width: 768px) {
+    .announcements-hero h1 { font-size: 2.5rem; }
+    .announcements-grid { grid-template-columns: 1fr; }
+}
 </style>

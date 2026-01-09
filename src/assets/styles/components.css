@@ -1,0 +1,144 @@
+/* ========== 全局字体工具类 ========== */
+.typo-hero {
+    font-size: var(--font-size-hero);
+    font-weight: 800;
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.02em;
+}
+
+.typo-h1 {
+    font-size: var(--font-size-h1);
+    font-weight: 700;
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.01em;
+}
+
+.typo-h2 {
+    font-size: var(--font-size-h2);
+    font-weight: 700;
+    line-height: var(--line-height-tight);
+}
+
+.typo-h3 {
+    font-size: var(--font-size-h3);
+    font-weight: 600;
+    line-height: var(--line-height-normal);
+}
+
+.typo-body {
+    font-size: var(--font-size-body);
+    font-weight: 400;
+    line-height: var(--line-height-relaxed);
+}
+
+.typo-body-lg {
+    font-size: var(--font-size-body-lg);
+    font-weight: 400;
+    line-height: var(--line-height-relaxed);
+}
+
+.typo-small {
+    font-size: var(--font-size-small);
+    font-weight: 400;
+    line-height: var(--line-height-normal);
+}
+
+.typo-xs {
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    line-height: var(--line-height-normal);
+}
+
+/* ========== 通用UI组件 ========== */
+.cta-button {
+    background: var(--gradient-1);
+    color: #000000;
+    border: none;
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: var(--font-size-body);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 20px rgba(71, 198, 143, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(71, 198, 143, 0.35);
+}
+
+.cta-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.cta-button:hover::after {
+    transform: translateX(100%);
+}
+
+/* ========== 全局 Section 标题样式 ========== */
+.section-header {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.section-tag {
+    display: inline-block;
+    color: var(--primary-color);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding: 0 2.5rem;
+}
+
+.section-tag::before,
+.section-tag::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 1px;
+    background: var(--gradient-1);
+}
+
+.section-tag::before {
+    left: 0;
+}
+
+.section-tag::after {
+    right: 0;
+}
+
+.section-title {
+    font-size: var(--font-size-h1);
+    font-weight: 800;
+    margin-bottom: 2rem;
+    letter-spacing: -0.04em;
+    background: linear-gradient(to right, #ffffff, #c0c0c0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: var(--line-height-tight);
+}
+
+.section-description {
+    font-size: var(--font-size-body-lg);
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: var(--line-height-relaxed);
+    font-weight: 400;
+}

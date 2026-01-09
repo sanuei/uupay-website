@@ -25,7 +25,7 @@ const twitterUrl = computed(() =>
             <a href="#" data-i18n="footer.cookies">{{t('cookie')}}</a>
           </div>
           <div class="footer-copyright" data-i18n="footer.copyright">
-            © UUPAY 2025
+            © UUPAY 2026
           </div>
         </div>
 
@@ -52,5 +52,101 @@ const twitterUrl = computed(() =>
 </template>
 
 <style scoped>
+.footer {
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+}
 
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    color: var(--text-tertiary);
+    font-size: var(--font-size-small);
+    font-weight: 500;
+}
+
+.footer-legal a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: var(--text-primary);
+}
+
+.footer-copyright {
+    color: var(--text-tertiary);
+    font-size: var(--font-size-small);
+    font-weight: 600;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.social-link {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(71, 198, 143, 0.05);
+    border: 1px solid rgba(71, 198, 143, 0.15);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: rgba(71, 198, 143, 0.15);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.social-link svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 3rem 0;
+    }
+    .footer-content {
+        flex-direction: column;
+        gap: 2.5rem;
+        text-align: center;
+    }
+    .footer-left {
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .footer-legal {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
+    }
+    .footer-social {
+        justify-content: center;
+    }
+}
 </style>

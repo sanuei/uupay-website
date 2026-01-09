@@ -2,10 +2,8 @@
 import {ArrowRight, MessageCircle} from "lucide-vue-next";
 import {DOWNLINK} from "@/constants";
 import {useI18n} from "vue-i18n";
-import {useRouter} from "vue-router";
 
-const { locale, t } = useI18n()
-const router = useRouter()
+const { t } = useI18n()
 
 const goToAppStore = () => {
   copyInvitationCode()
@@ -74,41 +72,7 @@ const openCustomerService = () => {
   }
 }
 
-const goToAnnouncement = async() => {
-  const route = router.currentRoute.value;
 
-  await router.push({
-    path: `/${locale.value}/announcements`,
-    hash: route.hash,
-    query: route.query
-  });
-  const el = document.querySelector('#announcement');
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-}
-
-const goToAboutUs = async() => {
-  const route = router.currentRoute.value;
-
-  await router.push({
-    path: `/${locale.value}/about-us`,
-    hash: route.hash,
-    query: route.query
-  });
-  const el = document.querySelector('#about-us');
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-}
-
-const goToPartner = async() => {
-  const route = router.currentRoute.value;
-
-  await router.push({
-    path: `/${locale.value}/partner`,
-    hash: route.hash,
-    query: route.query
-  });
-  const el = document.querySelector('#partner');
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-}
 </script>
 
 <template>
@@ -130,51 +94,87 @@ const goToPartner = async() => {
           </div>
         </div>
 
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4>{{t('productSecond')}}</h4>
-            <ul>
-              <li><a href="#features">{{t('pay')}}</a></li>
-              <li><a href="#features">{{t('card')}}</a></li>
-              <li><a href="#features">{{t('wallet')}}</a></li>
-              <li><a href="#features">{{t('transfer')}}</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-column">
-            <h4>{{t('support')}}</h4>
-            <ul>
-              <li><a data-section="announcement" @click="goToAnnouncement">{{t('announcementCenter')}}</a></li>
-              <li><a href="#">{{t('helpCenter')}}</a></li>
-              <li><a href="#">{{t('apiDoc')}}</a></li>
-              <li><a href="#">{{t('devState')}}</a></li>
-<!--              <li><a href="#">{{t('statusCheck')}}</a></li>-->
-            </ul>
-          </div>
-
-          <div class="footer-column">
-            <h4>{{t('company')}}</h4>
-            <ul>
-              <li><a data-section="about-us" @click="goToAboutUs">{{t('about')}}</a></li>
-              <li><a href="#">{{t('team')}}</a></li>
-              <li><a data-section="partner" @click="goToPartner">{{t('partner')}}</a></li>
-              <li><a href="#">{{t('joinUs')}}</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-column">
-            <h4>{{t('contactType')}}</h4>
-            <ul>
-              <li><a href="https://uupay.cc">uupay.cc</a></li>
-              <li><a href="mailto:uupay9999@gmail.com">uupay9999@gmail.com</a></li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
+.contact-section {
+    padding: 8rem 0 6rem;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.contact-cta {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-cta h2 {
+    font-size: var(--font-size-h1);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+    line-height: var(--line-height-tight);
+}
+
+.contact-cta>p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-body-lg);
+    margin-bottom: 3rem;
+    line-height: var(--line-height-relaxed);
+    font-weight: 400;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-primary-btn,
+.contact-secondary-btn {
+    padding: 1.25rem 3rem;
+    border-radius: 14px;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-primary-btn {
+    background: var(--primary-color);
+    color: #000000;
+    border: none;
+}
+
+.contact-primary-btn:hover {
+    background: var(--primary-light);
+    transform: translateY(-3px);
+}
+
+.contact-secondary-btn {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-light);
+}
+
+.contact-secondary-btn:hover {
+    border-color: var(--primary-color);
+    background: rgba(71, 198, 143, 0.05);
+    transform: translateY(-3px);
+}
+
+/* .footer-links styles removed, now handled by WebSitemap.vue */
 
 </style>

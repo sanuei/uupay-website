@@ -5,6 +5,7 @@ import WebContent3 from './WebContent3.vue'
 import WebContent4 from './WebContent4.vue'
 import WebContent5 from './WebContent5.vue'
 import WebContent6 from './WebContent6.vue'
+import WebSitemap from './WebSitemap.vue'
 import WebFooter from './WebFooter.vue'
 
 import PhoneHeader from "./PhoneHeader.vue";
@@ -18,6 +19,7 @@ export {
   WebContent4,
   WebContent5,
   WebContent6,
+  WebSitemap,
   WebFooter,
 
   PhoneHeader,
