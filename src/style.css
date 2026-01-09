@@ -60,6 +60,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Noto Sans Thai';
+    src: url('@/assets/fonts/Open_Sans/NotoSansThai-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 /*@layer base {*/
 /*    body {*/
 /*        @apply font-['Open_Sans'] text-text-base relative;*/
@@ -132,6 +140,10 @@ html {
 
     --border-color: #222222;
     --border-light: #333333;
+}
+
+html.lang-th body {
+    font-family: 'Noto Sans Thai', system-ui, sans-serif;
 }
 
 body {
