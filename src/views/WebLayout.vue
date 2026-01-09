@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 import {useRoute, useRouter} from 'vue-router'
 import {computed, nextTick, onBeforeUnmount, onMounted, watch} from "vue";
-import {WebHeader, WebFooter} from '@/components'
+import {WebHeader, WebFooter, WebSitemap} from '@/components'
 
 const { locale } = useI18n()
 
@@ -440,6 +440,7 @@ const invitationCode = computed(() => getQueryParam(route.fullPath, 'invitationC
 
     <router-view />
 
+    <WebSitemap v-if="!invitationCode" />
     <WebFooter v-if="!invitationCode" />
   </div>
 </template>
@@ -453,12 +454,12 @@ canvas {
 }
 
 #particles {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: block;
   z-index: -1;
 }
 </style>

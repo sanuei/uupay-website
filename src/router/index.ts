@@ -10,6 +10,7 @@ import WebAnnouncementDetail from '@/views/WebAnnouncementDetail.vue'
 import InvitePage from '@/views/InvitePage.vue'
 import AboutUs from '@/views/AboutUs.vue'
 import PartnerPage from '@/views/PartnerPage.vue'
+import PromotionPage from '@/views/PromotionPage.vue'
 
 const supportedLangs = ['zh-cn', 'en', 'zh-tw', 'th']
 const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
@@ -34,6 +35,7 @@ const routes: RouteRecordRaw[] = [
             { path: 'invitePage', name: 'InvitePage', component: InvitePage },
             { path: 'about-us', name: 'AboutUs', component: AboutUs },
             { path: 'partner', name: 'PartnerPage', component: PartnerPage },
+            { path: 'promotion', name: 'PromotionPage', component: PromotionPage },
         ]
     },
     {

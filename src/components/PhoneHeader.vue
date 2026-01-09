@@ -191,6 +191,18 @@ const goSection = async (sectionId: string) => {
   const el = document.querySelector(`#${sectionId}`);
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
+
+const goToPromotion = async() => {
+  const route = router.currentRoute.value;
+
+  await router.push({
+    path: `/${locale.value}/promotion`,
+    hash: route.hash,
+    query: route.query
+  });
+  const el = document.querySelector('#promotion');
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
 </script>
 
 <template>
@@ -203,6 +215,7 @@ const goSection = async (sectionId: string) => {
         </a>
 
         <ul class="nav-links">
+          <li class="nav-promo-highlight"><a data-section="promotion" @click="goToPromotion">🔥 {{t('promotion.navTitle')}}</a></li>
           <li><a data-section="about" @click.prevent="goSection('about')">{{t('about')}}</a></li>
           <li><a data-section="features" @click.prevent="goSection('features')">{{t('product')}}</a></li>
           <li><a data-section="security" @click.prevent="goSection('security')">{{t('security')}}</a></li>

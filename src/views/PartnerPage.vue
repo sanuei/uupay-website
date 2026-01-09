@@ -3,11 +3,9 @@ import { useHead } from "@unhead/vue";
 import { useI18n } from "vue-i18n";
 import { TrendingUp, Users, Zap, Crown, Gift, Headphones, Newspaper, FilePen, Share2, Coins, ArrowRight, ChevronDown } from "lucide-vue-next";
 import { onBeforeUnmount, onMounted } from "vue";
-import { useRouter } from "vue-router";
 import { PARTNER_URL } from "@/constants";
 
 const { locale, t } = useI18n()
-const router = useRouter()
 
 useHead(() => ({
   title: t('metaTitle'),
@@ -55,29 +53,7 @@ onBeforeUnmount(() => {
   });
 });
 
-const goToAboutUs = async() => {
-  const route = router.currentRoute.value;
 
-  await router.push({
-    path: `/${locale.value}/about-us`,
-    hash: route.hash,
-    query: route.query
-  });
-  const el = document.querySelector('#about-us');
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-}
-
-const goToAnnouncement = async() => {
-  const route = router.currentRoute.value;
-
-  await router.push({
-    path: `/${locale.value}/announcements`,
-    hash: route.hash,
-    query: route.query
-  });
-  const el = document.querySelector('#announcement');
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-}
 
 function initStatNumberAnimation() {
   const observerOptions = {
@@ -344,7 +320,7 @@ onBeforeUnmount(() => {
         </div>
         <div class="partner-stat-card" data-tilt>
           <div class="stat-number-wrapper">
-            <div class="stat-number" style="min-width: 0" data-target="10000">10000</div>
+            <div class="stat-number" style="min-width: 0" data-target="100000">100000</div>
             <div class="stat-suffix">USDT+</div>
           </div>
           <div class="p-stat-label">{{ t('partnerPage.content2') }}</div>
@@ -358,7 +334,7 @@ onBeforeUnmount(() => {
         </div>
         <div class="partner-stat-card" data-tilt>
           <div class="stat-number-wrapper">
-            <div class="stat-number" style="font-size: 2rem; text-align: center">{{ t('partnerPage.content4') }}</div>
+            <div class="stat-number" style="text-align: center">{{ t('partnerPage.content4') }}</div>
           </div>
           <div class="p-stat-label">{{ t('partnerPage.content5') }}</div>
         </div>
@@ -383,8 +359,8 @@ onBeforeUnmount(() => {
               <Crown />
             </div>
           </div>
-          <h3 style="font-size: 1.25rem;">{{ t('partnerPage.bestSupport') }}</h3>
-          <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #888;">{{ t('partnerPage.benefitContent') }}</p>
+          <h3 class="typo-h3">{{ t('partnerPage.bestSupport') }}</h3>
+          <p class="typo-small" style="margin-top: 0.5rem; color: #888;">{{ t('partnerPage.benefitContent') }}</p>
         </div>
 
         <div class="feature-card" data-tilt>
@@ -393,8 +369,8 @@ onBeforeUnmount(() => {
               <Gift />
             </div>
           </div>
-          <h3 style="font-size: 1.25rem;">{{ t('partnerPage.offlineEvent') }}</h3>
-          <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #888;">{{ t('partnerPage.privateEvent') }}</p>
+          <h3 class="typo-h3">{{ t('partnerPage.offlineEvent') }}</h3>
+          <p class="typo-small" style="margin-top: 0.5rem; color: #888;">{{ t('partnerPage.privateEvent') }}</p>
         </div>
 
         <div class="feature-card" data-tilt>
@@ -403,8 +379,8 @@ onBeforeUnmount(() => {
               <Headphones />
             </div>
           </div>
-          <h3 style="font-size: 1.25rem;">{{ t('partnerPage.supportSource') }}</h3>
-          <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #888;">{{ t('partnerPage.alwaysOnline') }}</p>
+          <h3 class="typo-h3">{{ t('partnerPage.supportSource') }}</h3>
+          <p class="typo-small" style="margin-top: 0.5rem; color: #888;">{{ t('partnerPage.alwaysOnline') }}</p>
         </div>
 
         <div class="feature-card" data-tilt>
@@ -413,8 +389,8 @@ onBeforeUnmount(() => {
               <Newspaper />
             </div>
           </div>
-          <h3 style="font-size: 1.25rem;">{{ t('partnerPage.hotSell') }}</h3>
-          <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #888;">{{ t('partnerPage.analyzeReport') }}</p>
+          <h3 class="typo-h3">{{ t('partnerPage.hotSell') }}</h3>
+          <p class="typo-small" style="margin-top: 0.5rem; color: #888;">{{ t('partnerPage.analyzeReport') }}</p>
         </div>
       </div>
     </div>
@@ -439,7 +415,7 @@ onBeforeUnmount(() => {
               <div class="user-role">{{ t('partnerPage.socialCreator1') }}</div>
             </div>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+          <p class="typo-body" style="color: var(--text-secondary);">
             {{ t('partnerPage.socialContent1') }}
           </p>
         </div>
@@ -451,7 +427,7 @@ onBeforeUnmount(() => {
               <div class="user-role">{{ t('partnerPage.socialCreator2') }}</div>
             </div>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+          <p class="typo-body" style="color: var(--text-secondary);">
             {{ t('partnerPage.socialContent2') }}
           </p>
         </div>
@@ -463,7 +439,7 @@ onBeforeUnmount(() => {
               <div class="user-role">{{ t('partnerPage.socialCreator3') }}</div>
             </div>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+          <p class="typo-body" style="color: var(--text-secondary);">
             {{ t('partnerPage.socialContent3') }}
           </p>
         </div>
@@ -476,10 +452,10 @@ onBeforeUnmount(() => {
     <div class="container">
       <div class="why-choose-layout">
         <div>
-          <h2 class="section-title" style="text-align: left; font-size: 3rem; margin-bottom: 2rem;">{{ t('partnerPage.whyChoose') }}</h2>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">{{ t('partnerPage.whyChoose') }}</h2>
           <ul class="product-features">
-            <li style="font-size: 1.25rem; margin-bottom: 1.5rem;">{{ t('partnerPage.global') }}</li>
-            <li style="font-size: 1.25rem;">{{ t('partnerPage.ranking') }}</li>
+            <li class="typo-h3" style="margin-bottom: 1.5rem;">{{ t('partnerPage.global') }}</li>
+            <li class="typo-h3">{{ t('partnerPage.ranking') }}</li>
           </ul>
         </div>
 
@@ -679,51 +655,6 @@ onBeforeUnmount(() => {
     </div>
   </section>
 
-  <!-- 页脚 -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-links">
-        <div class="footer-column">
-          <h4>{{t('productSecond')}}</h4>
-          <ul>
-            <li><a href="#features">{{t('pay')}}</a></li>
-            <li><a href="#features">{{t('card')}}</a></li>
-            <li><a href="#features">{{t('wallet')}}</a></li>
-            <li><a href="#features">{{t('transfer')}}</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h4>{{t('support')}}</h4>
-          <ul>
-            <li><a data-section="announcement" @click="goToAnnouncement">{{t('announcementCenter')}}</a></li>
-            <li><a href="#">{{t('helpCenter')}}</a></li>
-            <li><a href="#">{{t('apiDoc')}}</a></li>
-            <li><a href="#">{{t('devState')}}</a></li>
-<!--            <li><a href="#">{{t('statusCheck')}}</a></li>-->
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h4>{{t('company')}}</h4>
-          <ul>
-            <li><a data-section="about-us" @click="goToAboutUs">{{t('about')}}</a></li>
-            <li><a href="#">{{t('team')}}</a></li>
-            <li><a href="#">{{t('partner')}}</a></li>
-            <li><a href="#">{{t('joinUs')}}</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h4>{{t('contactType')}}</h4>
-          <ul>
-            <li><a href="https://uupay.cc">uupay.cc</a></li>
-            <li><a href="mailto:uupay9999@gmail.com">uupay9999@gmail.com</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
 </template>
 
 <style scoped>
@@ -755,10 +686,10 @@ onBeforeUnmount(() => {
 }
 
 .section-title {
-  font-size: 3.25rem;
+  font-size: var(--font-size-h1);
   font-weight: 900;
   letter-spacing: -0.04em;
-  line-height: 1.15;
+  line-height: var(--line-height-tight);
   margin-bottom: 1.25rem;
   background: linear-gradient(90deg, #ffffff 0%, #cfcfcf 45%, #ffffff 100%);
   -webkit-background-clip: text;
@@ -768,8 +699,8 @@ onBeforeUnmount(() => {
 
 .section-description {
   color: var(--text-secondary);
-  font-size: 1.1rem;
-  line-height: 1.75;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
 }
 
 .partner-hero-partner {
@@ -950,7 +881,7 @@ onBeforeUnmount(() => {
 }
 
 .annotation-value {
-  font-size: 1.5rem;
+  font-size: var(--font-size-h2);
   font-weight: 800;
   background: linear-gradient(135deg, #fff 0%, #a5f3d1 100%);
   -webkit-background-clip: text;
@@ -1007,7 +938,7 @@ onBeforeUnmount(() => {
   border: 1px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.03);
   color: rgba(255,255,255,0.78);
-  font-size: 0.9375rem;
+  font-size: var(--font-size-body);
   line-height: 1;
   backdrop-filter: blur(12px);
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
@@ -1024,7 +955,7 @@ onBeforeUnmount(() => {
 }
 
 .hero-partner-title-large {
-  font-size: 4.5rem;
+  font-size: var(--font-size-hero);
   line-height: 1.15;
   margin-bottom: 2rem;
   letter-spacing: -0.02em;
@@ -1041,7 +972,7 @@ onBeforeUnmount(() => {
 }
 
 .hero-partner-subtitle {
-  font-size: 1.25rem;
+  font-size: var(--font-size-body-lg);
   color: var(--text-secondary);
   max-width: 100%;
   margin: 0 0 2rem 0;
@@ -1066,8 +997,8 @@ onBeforeUnmount(() => {
 }
 
 .partner-stat-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
-  border: 1px solid rgba(71, 198, 143, 0.15);
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%); /* Increased opacity */
+  border: 1px solid rgba(71, 198, 143, 0.25);
   border-radius: 24px;
   padding: 2rem 1.5rem;
   text-align: center;
@@ -1094,7 +1025,7 @@ onBeforeUnmount(() => {
 }
 
 .partner-stat-card .stat-number {
-  font-size: 2.5rem;
+  font-size: var(--font-size-h1);
   font-weight: 800;
   background: linear-gradient(135deg, #fff 30%, #a5f3d1 100%);
   -webkit-background-clip: text;
@@ -1104,14 +1035,14 @@ onBeforeUnmount(() => {
 }
 
 .stat-suffix {
-  font-size: 1.5rem;
+  font-size: var(--font-size-h2);
   font-weight: 700;
   color: var(--primary-color);
 }
 
 .p-stat-label {
   color: #888;
-  font-size: 0.95rem;
+  font-size: var(--font-size-body);
   font-weight: 500;
   letter-spacing: 0.01em;
 }
@@ -1136,8 +1067,8 @@ onBeforeUnmount(() => {
 
 .benefits-grid .feature-card {
   padding: 2.5rem 2rem;
-  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
-  border: 1px solid rgba(71, 198, 143, 0.15);
+  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); /* Increased opacity */
+  border: 1px solid rgba(71, 198, 143, 0.2);
   box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
   background: var(--secondary-bg)
 }
@@ -1178,7 +1109,7 @@ onBeforeUnmount(() => {
 }
 
 .feature-card h3 {
-  font-size: 1.25rem;
+  font-size: var(--font-size-h3);
   margin-bottom: 0.5rem;
   font-weight: 700;
   position: relative;
@@ -1189,10 +1120,10 @@ onBeforeUnmount(() => {
 
 .feature-card p {
   color: var(--text-secondary);
-  line-height: 1.8;
+  line-height: var(--line-height-relaxed);
   position: relative;
   z-index: 2;
-  font-size: 0.9rem;
+  font-size: var(--font-size-small);
   font-weight: 400;
   margin-top: 0.5rem;
   color: #888;
@@ -1212,10 +1143,10 @@ onBeforeUnmount(() => {
 }
 
 .community-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); /* Increased opacity */
   border-radius: 24px;
   padding: 2.5rem;
-  border: 1px solid rgba(71, 198, 143, 0.15);
+  border: 1px solid rgba(71, 198, 143, 0.2);
   transition: all 0.3s ease;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
   background: var(--secondary-bg)
@@ -1244,7 +1175,7 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: var(--font-size-h3);
   font-weight: bold;
   color: #000;
 }
@@ -1258,7 +1189,7 @@ onBeforeUnmount(() => {
 }
 
 .user-name {
-  font-size: 1.1rem;
+  font-size: var(--font-size-body-lg);
   font-weight: 800;
   margin: 0;
   line-height: 1.2;
@@ -1268,7 +1199,7 @@ onBeforeUnmount(() => {
 .user-role {
   margin-top: 0.25rem;
   color: rgba(255,255,255,0.6);
-  font-size: 0.9rem;
+  font-size: var(--font-size-small);
   line-height: 1.2;
 }
 
@@ -1279,14 +1210,14 @@ onBeforeUnmount(() => {
 }
 
 .community-title {
-  font-size: 3rem;
+  font-size: var(--font-size-h1);
   font-weight: 800;
   margin-bottom: 1.5rem;
-  line-height: 1.2;
+  line-height: var(--line-height-tight);
 }
 
 .community-desc {
-  font-size: 1.1rem;
+  font-size: var(--font-size-body);
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -1311,8 +1242,8 @@ onBeforeUnmount(() => {
   padding: 1rem 0;
   padding-left: 2rem;
   position: relative;
-  line-height: 1.75;
-  font-size: 1.25rem;
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-h3);
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
   font-weight: 400;
@@ -1328,8 +1259,8 @@ onBeforeUnmount(() => {
 }
 
 .chart-container {
-  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
-  border: 1px solid rgba(71, 198, 143, 0.15);
+  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); /* Increased opacity */
+  border: 1px solid rgba(71, 198, 143, 0.2);
   border-radius: 24px;
   padding: 2.5rem 3rem 2rem;
   position: relative;
@@ -1492,7 +1423,7 @@ onBeforeUnmount(() => {
 
 .badge-label {
   display: block;
-  font-size: 0.85rem;
+  font-size: var(--font-size-xs);
   margin-bottom: 0.5rem;
   opacity: 0.9;
   font-weight: 600;
@@ -1502,9 +1433,9 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: baseline;
   gap: 0.2rem;
-  font-size: 1.5rem;
+  font-size: var(--font-size-h3);
   font-weight: 800;
-  line-height: 1;
+  line-height: var(--line-height-tight);
 }
 
 .currency {
@@ -1512,13 +1443,13 @@ onBeforeUnmount(() => {
 }
 
 .income-number {
-  font-size: 1.75rem;
+  font-size: var(--font-size-h2);
   font-weight: 900;
   letter-spacing: -0.02em;
 }
 
 .currency-unit {
-  font-size: 1.1rem;
+  font-size: var(--font-size-body);
   font-weight: 600;
   opacity: 0.9;
 }
@@ -1536,7 +1467,7 @@ onBeforeUnmount(() => {
 .chart-footer-note {
   align-self: flex-end;
   margin-top: 0.5rem;
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   color: var(--text-tertiary);
   opacity: 0.7;
   font-style: italic;
@@ -1613,7 +1544,7 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   margin: 0 auto 2rem;
-  font-size: 2rem;
+  font-size: var(--font-size-h2);
   color: var(--primary-color);
   box-shadow: 0 0 30px rgba(71, 198, 143, 0.1);
   transition: all 0.3s ease;
@@ -1643,16 +1574,16 @@ onBeforeUnmount(() => {
 }
 
 .contact-cta h2 {
-  font-size: 3.5rem;
+  font-size: var(--font-size-h1);
   font-weight: 900;
   margin-bottom: 1.5rem;
   letter-spacing: -0.03em;
-  line-height: 1.2;
+  line-height: var(--line-height-tight);
 }
 
 .contact-cta > p {
   color: var(--text-secondary);
-  font-size: 1.25rem;
+  font-size: var(--font-size-body-lg);
   margin-bottom: 3rem;
   line-height: 1.8;
   font-weight: 400;
@@ -1665,6 +1596,83 @@ onBeforeUnmount(() => {
   flex-wrap: wrap;
 }
 
+.primary-button {
+  background: var(--gradient-1);
+  color: #000;
+  padding: 1.25rem 3rem;
+  border-radius: 18px;
+  font-size: var(--font-size-body-lg);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 30px rgba(71, 198, 143, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.primary-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(71, 198, 143, 0.4);
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: 0.5s;
+  animation: btn-glow 3s infinite;
+}
+
+@keyframes btn-glow {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+
+.contact-primary-btn {
+  background: var(--primary-color);
+  color: #000;
+  padding: 1.25rem 3.5rem;
+  border-radius: 16px;
+  font-size: var(--font-size-body-lg);
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 25px rgba(71, 198, 143, 0.25);
+}
+
+.contact-primary-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(71, 198, 143, 0.35);
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5;
+}
+
 /* FAQ */
 .faq-section {
   padding: 10rem 0;
@@ -1675,7 +1683,7 @@ onBeforeUnmount(() => {
 }
 
 .faq-section .section-title {
-  font-size: 2.75rem;
+  font-size: var(--font-size-h1);
   margin-bottom: 0;
 }
 
@@ -1713,7 +1721,7 @@ onBeforeUnmount(() => {
   align-items: center;
   padding: 2rem 2.5rem;
   color: var(--text-primary);
-  font-size: 1.25rem;
+  font-size: var(--font-size-h3);
   font-weight: 600;
   user-select: none;
   background: var(--secondary-bg)
@@ -1751,7 +1759,7 @@ onBeforeUnmount(() => {
 
 .faq-answer p {
   color: var(--text-secondary);
-  font-size: 1.0625rem;
+  font-size: var(--font-size-body);
   line-height: 1.8;
   margin: 0;
 }
@@ -1761,9 +1769,7 @@ onBeforeUnmount(() => {
   .hero-partner-layout {
     gap: 4rem;
   }
-  .hero-partner-title-large {
-    font-size: 3.5rem;
-  }
+
   .hero-partner-visual-right {
     height: 500px;
     min-height: 450px;
@@ -1778,7 +1784,7 @@ onBeforeUnmount(() => {
     padding: 0.875rem 1rem;
   }
   .annotation-value {
-    font-size: 1.35rem;
+    font-size: var(--font-size-h3);
   }
   .partner-stats-grid, .benefits-grid {
     gap: 1rem;
@@ -1836,7 +1842,7 @@ onBeforeUnmount(() => {
     width: 36px;
     height: 36px;
   }
-  .annotation-icon i {
+  .annotation-icon svg {
     width: 20px;
     height: 20px;
   }
@@ -1898,13 +1904,9 @@ onBeforeUnmount(() => {
     padding-top: 8rem;
   }
 
-  .hero-partner-title-large {
-    font-size: 2.5rem;
-  }
 
-  .hero-partner-subtitle {
-    font-size: 1.1rem;
-  }
+
+
 
   .hero-partner-visual-right {
     height: 350px;
@@ -1938,11 +1940,11 @@ onBeforeUnmount(() => {
   }
 
   .annotation-value {
-    font-size: 1.15rem;
+    font-size: var(--font-size-body-lg);
   }
 
   .annotation-label {
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
   }
 
   .annotation-icon {
@@ -1950,14 +1952,12 @@ onBeforeUnmount(() => {
     height: 32px;
   }
 
-  .annotation-icon i {
+  .annotation-icon svg {
     width: 18px;
     height: 18px;
   }
 
-  .section-title {
-    font-size: 2.25rem;
-  }
+
 
   .hero-partner-pills {
     gap: 0.5rem;
@@ -1965,7 +1965,7 @@ onBeforeUnmount(() => {
   }
 
   .hero-partner-pill {
-    font-size: 0.9rem;
+    font-size: var(--font-size-small);
     padding: 0.5rem 0.8rem;
   }
 
@@ -2024,7 +2024,15 @@ onBeforeUnmount(() => {
 
   .chart-footer-note {
     margin-top: 0.25rem;
-    font-size: 0.7rem;
+    font-size: var(--font-size-xs);
+  }
+  .primary-button,
+  .contact-primary-btn {
+    padding: 1rem 2rem;
+    width: 100%;
+    justify-content: center;
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
 </style>
