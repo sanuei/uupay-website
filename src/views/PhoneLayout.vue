@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {useRoute, useRouter} from 'vue-router'
 import {computed, nextTick, onBeforeUnmount, onMounted, ref, watch} from "vue";
-import {PhoneFooter, PhoneHeader} from "@/components";
+import {PhoneFooter, PhoneHeader, WebSitemap} from "@/components";
 import {useI18n} from "vue-i18n";
 
 const route = useRoute();
@@ -469,6 +469,7 @@ const invitationCode = computed(() => getQueryParam(route.fullPath, 'invitationC
 
     <router-view />
 
+    <WebSitemap v-if="!invitationCode" />
     <PhoneFooter v-if="!invitationCode" />
   </div>
 </template>

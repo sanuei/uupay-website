@@ -126,27 +126,4 @@ const twitterUrl = computed(() =>
     height: 20px;
     stroke-width: 2;
 }
-
-@media (max-width: 768px) {
-    .footer {
-        padding: 3rem 0;
-    }
-    .footer-content {
-        flex-direction: column;
-        gap: 2.5rem;
-        text-align: center;
-    }
-    .footer-left {
-        align-items: center;
-        gap: 1.5rem;
-    }
-    .footer-legal {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem 1.5rem;
-    }
-    .footer-social {
-        justify-content: center;
-    }
-}
 </style>

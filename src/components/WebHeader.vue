@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Check, Globe, Menu, X } from "lucide-vue-next";
+import { Check, Globe } from "lucide-vue-next";
 import {computed, onMounted, ref} from "vue";
 import { useI18n } from "vue-i18n";
 import { DOWNLINK } from "@/constants";
@@ -17,18 +17,6 @@ const emit = defineEmits<{
 
 const { locale, t } = useI18n()
 const selectedLanguage = ref(props.currentLanguage)
-const isMobileMenuOpen = ref(false)
-
-const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value
-  // Prevent body scroll when menu is open
-  document.body.style.overflow = isMobileMenuOpen.value ? 'hidden' : ''
-}
-
-const closeMobileMenu = () => {
-  isMobileMenuOpen.value = false
-  document.body.style.overflow = ''
-}
 
 const languageList = computed(() => [
   { label: t('language.zh'), value: 'zh-cn' },
@@ -111,7 +99,6 @@ onMounted(() => {
 
 
 const goSection = async (sectionId: string) => {
-  closeMobileMenu()
   const route = router.currentRoute.value;
 
   if (route.name === 'Home' || route.name === 'WebPage') {
@@ -131,7 +118,6 @@ const goSection = async (sectionId: string) => {
 };
 
 const goToAboutUs = async() => {
-  closeMobileMenu()
   const route = router.currentRoute.value;
 
   await router.push({
@@ -144,7 +130,6 @@ const goToAboutUs = async() => {
 }
 
 const goToPartner = async() => {
-  closeMobileMenu()
   const route = router.currentRoute.value;
 
   await router.push({
@@ -157,7 +142,6 @@ const goToPartner = async() => {
 }
 
 const goToPromotion = async() => {
-  closeMobileMenu()
   const route = router.currentRoute.value;
 
   await router.push({
@@ -213,35 +197,9 @@ const goToPromotion = async() => {
             </div>
           </div>
           <button class="cta-button" @click="goToAppStore">{{t('start')}}</button>
-          
-          <!-- Mobile Menu Button -->
-          <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Toggle menu">
-            <Menu v-if="!isMobileMenuOpen" />
-            <X v-else />
-          </button>
         </div>
       </div>
     </div>
-    
-    <!-- Mobile Menu Overlay -->
-    <Teleport to="body">
-      <div v-show="isMobileMenuOpen" class="mobile-menu-overlay" @click.self="closeMobileMenu">
-        <div class="mobile-menu-content">
-          <button class="mobile-close-btn" @click="closeMobileMenu">
-            <X />
-          </button>
-          
-          <ul class="mobile-nav-links">
-            <li><a @click="goSection('features')">{{t('product')}}</a></li>
-            <li><a @click="goSection('security')">{{t('security')}}</a></li>
-            <li class="mobile-featured"><a @click="goToPromotion">{{t('promotion.navTitle')}}</a></li>
-            <li><a @click="goToPartner">{{t('partnerPage.partnerHead')}}</a></li>
-            <li><a @click="goToAboutUs">{{t('about')}}</a></li>
-          </ul>
-          <button class="mobile-cta-button" @click="goToAppStore">{{t('start')}}</button>
-        </div>
-      </div>
-    </Teleport>
   </nav>
 </template>
 
@@ -437,165 +395,10 @@ const goToPromotion = async() => {
   box-shadow: 0 0 8px #47C68F;
   animation: pulse 2s infinite;
 }
-
-/* Mobile Menu Button */
-.mobile-menu-btn {
-  display: none;
-  background: transparent;
-  border: none;
-  color: #fff;
-  padding: 0.5rem;
-  cursor: pointer;
-  z-index: 1001; /* Keep this high if needed for non-open state */
-}
-
-.mobile-menu-btn svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* Mobile Menu Overlay - Teleported */
-.mobile-menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.98);
-  z-index: 99999; /* Max Z-Index */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(20px);
-}
-
-.mobile-menu-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 2rem;
-}
-
-.mobile-close-btn {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  background: transparent;
-  border: none;
-  color: #fff;
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.mobile-close-btn svg {
-  width: 32px;
-  height: 32px;
-}
-
-.mobile-nav-links {
-  list-style: none;
-  padding: 0;
-  text-align: center;
-  width: 100%;
-}
-
-.mobile-nav-links li {
-  margin-bottom: 2rem;
-  opacity: 0;
-  animation: slideUp 0.5s ease forwards;
-}
-
-/* Stagger animation */
-.mobile-nav-links li:nth-child(1) { animation-delay: 0.1s; }
-.mobile-nav-links li:nth-child(2) { animation-delay: 0.2s; }
-.mobile-nav-links li:nth-child(3) { animation-delay: 0.3s; }
-.mobile-nav-links li:nth-child(4) { animation-delay: 0.4s; }
-.mobile-nav-links li:nth-child(5) { animation-delay: 0.5s; }
-
-.mobile-nav-links a {
-  font-size: var(--font-size-h1);
-  font-weight: 700;
-  color: #fff;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  display: inline-block;
-}
-
-.mobile-nav-links a:hover {
-  color: var(--primary-color);
-  transform: scale(1.1);
-}
-
-.mobile-featured a {
-  color: var(--primary-color) !important;
-}
-
-.mobile-cta-button {
-  margin-top: 3rem;
-  padding: 1rem 4rem;
-  background: var(--primary-color);
-  color: #000;
-  font-weight: 700;
-  font-size: 1.25rem;
-  border-radius: 100px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  opacity: 0;
-  animation: slideUp 0.5s ease 0.6s forwards;
-}
-
-.mobile-cta-button:hover {
-  background: #5ed9a0;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(71, 198, 143, 0.3);
-}
-
 @keyframes pulse {
   0% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.5); opacity: 0.5; }
   100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Mobile Responsive */
-@media (max-width: 1024px) {
-  .nav-links {
-    display: none;
-  }
-  
-  .nav-right .cta-button {
-    display: none;
-  }
-  
-  .mobile-menu-btn {
-    display: block;
-  }
-  
-  .container {
-    padding: 0 1rem;
-  }
-  
-  .nav-right {
-    gap: 0.75rem;
-  }
-  
-  .navbar {
-    padding: 0.75rem 0;
-  }
-  
-  .logo img {
-    height: 28px;
-  }
-  
-  .logo span {
-    font-size: var(--font-size-h2);
-  }
 }
 
 </style>

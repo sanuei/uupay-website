@@ -13,16 +13,15 @@ import PartnerPage from '@/views/PartnerPage.vue'
 import PromotionPage from '@/views/PromotionPage.vue'
 
 const supportedLangs = ['zh-cn', 'en', 'zh-tw', 'th']
-const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+// 根据 UA 检测设备类型，移动端使用 PhoneLayout，桌面端使用 WebLayout
+const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
 
 const routes: RouteRecordRaw[] = [
     {
         path: '/:lang(en|zh-cn|zh-tw|th)',
-        component: () => {
-            return isMobile
-                ? import('@/views/PhoneLayout.vue')
-                : import('@/views/WebLayout.vue')
-        },
+        component: () => isMobile
+            ? import('@/views/PhoneLayout.vue')
+            : import('@/views/WebLayout.vue'),
         children: [
             { path: '', name: 'Home', component: Home },
             { path: 'web', name: 'WebPage', component: () => import('@/views/DeviceWrapper.vue') },

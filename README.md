@@ -37,8 +37,8 @@ src/
 │       └── animations.css    # 动画样式
 │
 ├── components/               # 可复用组件
-│   ├── WebHeader.vue         # 桌面端导航栏
-│   ├── WebFooter.vue         # 桌面端页脚
+│   ├── WebHeader.vue         # 导航栏（含响应式移动端适配）
+│   ├── WebFooter.vue         # 页脚
 │   ├── WebSitemap.vue        # 网站地图（页脚链接）
 │   ├── WebContent1.vue       # 首页 Hero 区域
 │   ├── WebContent2.vue       # 首页"关于 UUPAY"卡片
@@ -46,8 +46,8 @@ src/
 │   ├── WebContent4.vue       # 首页"全球覆盖"区域
 │   ├── WebContent5.vue       # 首页"安全保障"区域
 │   ├── WebContent6.vue       # 首页 CTA 区域
-│   ├── PhoneHeader.vue       # 移动端导航栏
-│   ├── PhoneFooter.vue       # 移动端页脚
+│   ├── PhoneHeader.vue       # 移动端导航栏（Logo + 语言 + 汉堡菜单）
+│   ├── PhoneFooter.vue       # 移动端页脚（居中堆叠布局）
 │   ├── promotion/            # 活动页面专用组件
 │   │   ├── PromoCountdown.vue    # 倒计时组件
 │   │   ├── PromoBenefitCard.vue  # 福利卡片组件
@@ -56,7 +56,7 @@ src/
 │
 ├── views/                    # 页面视图
 │   ├── DeviceWrapper.vue     # 设备检测包装器
-│   ├── WebLayout.vue         # 桌面端布局（含导航栏 + 页脚）
+│   ├── WebLayout.vue         # 统一布局（含响应式设计）
 │   ├── PhoneLayout.vue       # 移动端布局
 │   ├── Home.vue              # 首页逻辑
 │   ├── WebPage.vue           # 桌面端首页
@@ -102,24 +102,28 @@ src/
 
 #### 1. 响应式设计策略
 
-项目采用 **双布局架构**，分别为桌面端和移动端提供独立的布局组件：
+项目采用 **双布局架构**，根据 User-Agent 检测设备类型，加载不同的布局组件：
 
+**架构图**：
 ```
-DeviceWrapper.vue
-├── WebLayout.vue  (桌面端: > 768px)
-│   ├── WebHeader.vue
+路由层 (router/index.ts)
+├── 桌面端 UA → WebLayout.vue
+│   ├── WebHeader.vue     (完整导航菜单 + 语言选择器 + CTA)
 │   ├── <router-view />
 │   ├── WebSitemap.vue
 │   └── WebFooter.vue
 │
-└── PhoneLayout.vue (移动端: ≤ 768px)
-    ├── PhoneHeader.vue
+└── 移动端 UA → PhoneLayout.vue
+    ├── PhoneHeader.vue   (Logo + 语言选择器 + 汉堡菜单)
     ├── <router-view />
-    └── PhoneFooter.vue
+    └── PhoneFooter.vue   (简洁居中布局)
 ```
 
-- **DeviceWrapper.vue**: 根据屏幕宽度动态切换布局。
-- **WebLayout.vue / PhoneLayout.vue**: 包含导航栏、页脚和主内容区域。
+**组件职责**：
+- **WebHeader**：桌面端导航栏，显示完整菜单链接、语言选择器和"开始使用"按钮
+- **PhoneHeader**：移动端导航栏，只显示 Logo、语言选择器和汉堡菜单按钮（CTA 按钮在菜单弹出层内）
+- **WebFooter**：桌面端页脚，横向布局
+- **PhoneFooter**：移动端页脚，居中堆叠布局
 
 #### 2. 国际化 (i18n) 架构
 
@@ -222,20 +226,4 @@ npm run build
 ```bash
 npm run preview
 ```
-
----
-
-## 贡献指南
-
-1. Fork 本仓库
-2. 创建功能分支 (`git checkout -b feature/new-feature`)
-3. 提交更改 (`git commit -m 'Add new feature'`)
-4. 推送分支 (`git push origin feature/new-feature`)
-5. 创建 Pull Request
-
----
-
-## 许可证
-
-MIT License
 

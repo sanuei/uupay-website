@@ -25,7 +25,7 @@ const twitterUrl = computed(() =>
             <a href="#" data-i18n="footer.cookies">{{t('cookie')}}</a>
           </div>
           <div class="footer-copyright" data-i18n="footer.copyright">
-            © UUPAY 2025
+            © UUPAY 2026
           </div>
         </div>
 
@@ -52,5 +52,83 @@ const twitterUrl = computed(() =>
 </template>
 
 <style scoped>
+.footer {
+  background: rgba(0, 0, 0, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 0;
+}
 
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.footer-legal a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+  color: var(--primary-color, #47C68F);
+}
+
+.footer-legal span {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.footer-copyright {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: rgba(71, 198, 143, 0.1);
+  border-color: rgba(71, 198, 143, 0.3);
+  color: var(--primary-color, #47C68F);
+  transform: translateY(-2px);
+}
 </style>
