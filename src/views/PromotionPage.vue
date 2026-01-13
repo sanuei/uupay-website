@@ -6,7 +6,7 @@ import WebContent6 from "@/components/WebContent6.vue";
 
 const { locale, t } = useI18n()
 
-const PROMO_URL = 'https://uupay.cc/zh-cn/register?invitationCode=VJAIIG'
+const PROMO_URL = 'https://uupay.com/zh-cn/register?invitationCode=VJAIIG'
 
 useHead(() => ({
   title: t('promotion.metaTitle'),
@@ -35,21 +35,21 @@ const goToPromo = () => {
           <span class="pulse-dot"></span>
           {{ t('promotion.badge') }}
         </div>
-        
+
         <h1 class="hero-title">
           {{ t('promotion.titleLine1') }}<br />
           <span class="text-gradient">{{ t('promotion.titleLine2') }}</span>
         </h1>
-        
+
         <p class="hero-subtitle">
           {{ t('promotion.subtitle') }}
         </p>
-        
+
         <!-- Small Explanatory Text -->
         <p class="hero-small-text">
           {{ t('promotion.heroNote') }}
         </p>
-        
+
         <div class="hero-benefits-row">
           <div class="benefit-pill highlight">
             <div class="pill-icon-wrapper"><Check class="pill-icon" /></div>
@@ -73,7 +73,7 @@ const goToPromo = () => {
         </a>
       </div>
     </div>
-    
+
     <!-- Abstract Background Elements -->
     <div class="hero-bg-glow"></div>
   </section>
@@ -83,7 +83,7 @@ const goToPromo = () => {
     <div class="container">
       <p class="section-eyebrow">{{ t('promotion.pricingEyebrow') }}</p>
       <h2 class="section-title">{{ t('promotion.pricingTitle') }}</h2>
-      
+
       <div class="pricing-grid">
         <!-- Card 1: Free Card (Now Featured) -->
         <div class="pricing-card featured">
@@ -160,7 +160,7 @@ const goToPromo = () => {
     <div class="container">
       <p class="section-eyebrow">{{ t('promotion.whyEyebrow') }}</p>
       <h2 class="section-title">{{ t('promotion.whyTitle') }}</h2>
-      
+
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">
@@ -767,11 +767,11 @@ const goToPromo = () => {
   .hero-title {
     font-size: 3.5rem;
   }
-  
+
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
 
 }
 
@@ -783,7 +783,7 @@ const goToPromo = () => {
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .pricing-grid {
     grid-template-columns: 1fr;
     max-width: 400px;

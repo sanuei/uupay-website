@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const BASE_URL = "https://uupay.cc";
+const BASE_URL = "https://uupay.com";
 const languages = ["zh-cn", "en", "zh-tw", "th"];
 const pages = ["/"]; // 首页等静态页面
 

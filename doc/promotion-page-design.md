@@ -8,7 +8,7 @@
 - ✨ 充值免手续费（原价 1%）
 
 **活动时间**: [待定]  
-**CTA 跳转链接**: `https://uupay.cc/zh-cn/register?invitationCode=VJAIIG`
+**CTA 跳转链接**: `https://uupay.com/zh-cn/register?invitationCode=VJAIIG`
 
 ---
 

@@ -95,7 +95,7 @@ const goSection = async (sectionId: string) => {
         <div class="footer-column">
           <h4>{{t('contactType')}}</h4>
           <ul>
-            <li><a href="https://uupay.cc" target="_blank">uupay.cc</a></li>
+            <li><a href="https://uupay.com" target="_blank">uupay.com</a></li>
             <li><a href="mailto:uupay9999@gmail.com">uupay9999@gmail.com</a></li>
           </ul>
         </div>
@@ -155,9 +155,9 @@ const goSection = async (sectionId: string) => {
     .footer-sitemap-wrapper {
         padding: 4rem 0 2rem;
     }
-    .footer-sitemap { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 2.5rem 1.5rem; 
+    .footer-sitemap {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem 1.5rem;
     }
 }
 
