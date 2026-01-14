@@ -5,7 +5,7 @@ import {useI18n} from "vue-i18n";
 import { getCaptchaTypeBasedOnOS } from '@/components/verification/utils/CaptchaUtils';
 import Verify from '@/components/verification/Verify.vue';
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const props = defineProps<{
   currentLanguage: string
@@ -501,7 +501,7 @@ const handlePopupConfirm = () => {
 
         <h1 class="text-4xl leading-[1.1] font-extrabold text-slate-900 tracking-tight mb-5">
           <span class="block text-slate-800">{{ t('invite.title') }}</span>
-          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400 mt-1">{{ t('invite.title2') }}</span>
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400 mt-1" :style="{ paddingTop: locale === 'th' ? '15px' : '0' }">{{ t('invite.title2') }}</span>
         </h1>
 
         <p class="text-slate-500 text-[13px] leading-relaxed mb-10 px-6 max-w-xs mx-auto" >
