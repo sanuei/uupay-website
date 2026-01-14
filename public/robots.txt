@@ -6,4 +6,3 @@ Sitemap: https://uupay.com/sitemap.xml
 Sitemap: https://uupay.com/zh-cn/blog/sitemap.xml
 Sitemap: https://uupay.com/zh-tw/blog/sitemap.xml
 Sitemap: https://uupay.com/en/blog/sitemap.xml
-Sitemap: https://uupay.com/th/blog/sitemap.xml
