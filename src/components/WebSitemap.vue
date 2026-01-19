@@ -95,8 +95,20 @@ const goSection = async (sectionId: string) => {
         <div class="footer-column">
           <h4>{{t('contactType')}}</h4>
           <ul>
-            <li><a href="https://uupay.com" target="_blank">uupay.com</a></li>
-            <li><a href="mailto:uupay9999@gmail.com">uupay9999@gmail.com</a></li>
+<!--            <li><a href="https://uupay.com" target="_blank">uupay.com</a></li>-->
+<!--            <li><a href="mailto:uupay9999@gmail.com">uupay9999@gmail.com</a></li>-->
+            <li>
+              {{t('marketCollabo')}}:
+              <a href="mailto:official@uupay.com" target="_blank">official@uupay.com</a>
+            </li>
+            <li>
+              {{t('agentRecruit')}}:
+              <a href="mailto:partner@uupay.com" target="_blank">partner@uupay.com</a>
+            </li>
+            <li>
+              {{t('customerSupport')}}:
+              <a href="mailto:customerservice@uupay.com" target="_blank">customerservice@uupay.com</a>
+            </li>
           </ul>
         </div>
       </div>

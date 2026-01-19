@@ -141,7 +141,7 @@ const zh = {
     footer: 'UUPAY - 您值得信赖的全球支付伙伴！',
     metaTitle: 'UUPAY - 让支付回归简单',
     description: 'UUPAY是专业的加密货币虚拟卡平台，提供USDT卡、比特币卡等跨境支付解决方案。让支付回归简单，让世界触手可达。支持全球主流平台，安全快捷，透明费率。',
-    keywords: 'USDT虚拟卡, 加密货币卡, 虚拟信用卡, U卡, 跨境支付, 比特币卡, 数字货币支付, USDT支付, 虚拟Visa卡, 加密货币借记卡, 海外支付, 跨境电商支付, ChatGPT付款, Netflix付款, 稳定币支付, Web3支付'
+    keywords: 'USDT虚拟卡, 加密货币卡, 虚拟信用卡, U卡, 跨境支付, 比特币卡, 数字货币支付, USDT支付, 虚拟Visa卡, 加密货币借记卡, 海外支付, 跨境电商支付, ChatGPT付款, Netflix付款, 稳定币支付, Web3支付',
   },
   announcements: {
     metaTitle: 'UUPAY公告中心 - USDT虚拟卡最新动态 | 平台更新通知',
@@ -329,7 +329,10 @@ const zh = {
     why3Desc: '支持全球主流电商、订阅服务消费',
     why4Title: '专属客服',
     why4Desc: '24/7 在线客服，随时解答您的疑问'
-  }
+  },
+  marketCollabo: '市场合作',
+  agentRecruit: '代理招聘',
+  customerSupport: '客户支持'
 }
 
 export default zh;

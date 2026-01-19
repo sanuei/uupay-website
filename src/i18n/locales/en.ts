@@ -141,7 +141,7 @@ const en = {
     footer: 'UUPAY your trusted partner in global payments！',
     metaTitle: 'UUPAY - Simplifying Payments',
     description: 'UUPAY is a professional crypto virtual card platform offering USDT cards and Bitcoin cards for global cross-border payments. Simplifying payments, connecting the world. Fast, secure, and transparent.',
-    keywords: 'USDT card, crypto debit card, bitcoin card, U card, cross-border payment, Bitcoin card, cryptocurrency payment, USDT card, virtual Visa card, crypto card, stablecoin card, Web3 payment, international payment, digital currency card, crypto spending card, blockchain payment'
+    keywords: 'USDT card, crypto debit card, bitcoin card, U card, cross-border payment, Bitcoin card, cryptocurrency payment, USDT card, virtual Visa card, crypto card, stablecoin card, Web3 payment, international payment, digital currency card, crypto spending card, blockchain payment',
   },
   announcements: {
     metaTitle: 'UUPAY Announcements - Latest Updates | USDT Virtual Card News',
@@ -329,7 +329,10 @@ const en = {
     why3Desc: 'Supports consumption on major global e-commerce and subscription services',
     why4Title: 'Dedicated Support',
     why4Desc: '24/7 online customer service to answer your questions at any time'
-  }
+  },
+  marketCollabo: 'Market Collaboration',
+  agentRecruit: 'Agent Recruitment',
+  customerSupport: 'Customer Support'
 }
 
 export default en
