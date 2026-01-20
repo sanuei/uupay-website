@@ -174,7 +174,7 @@ const zh = {
     lowFees: '低费率',
     eachConsume: '每一笔消费\n都为您精打细算',
     globalUse: '全球通用',
-    seamless: '无缝绑定\n支付宝 / 微信支付',
+    seamless: '无缝绑定\nApplePay / GooglePay',
     login: '登录',
     trustText: '全球 5000万+ 商户随时随地消费',
     send: '发送',

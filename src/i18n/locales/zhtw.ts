@@ -174,7 +174,7 @@ const zhtw = {
     lowFees: '低手續費',
     eachConsume: '每一筆消費\n都為您精打細算',
     globalUse: '全球通用',
-    seamless: '無縫綁定\n支付寶 / 微信支付',
+    seamless: '無縫綁定\nApplePay / GooglePay',
     login: '登入',
     trustText: '全球 5000萬+ 商戶隨時隨地消費',
     send: '發送',

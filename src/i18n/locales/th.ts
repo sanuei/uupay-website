@@ -174,7 +174,7 @@ const th = {
         lowFees: 'ค่าธรรมเนียมต่ำ',
         eachConsume: 'ทุกการใช้จ่าย\nคุ้มค่าและประหยัด',
         globalUse: 'ใช้งานได้ทั่วโลก',
-        seamless: 'เชื่อมต่ออย่างไร้รอยต่อ\nAlipay / WeChat Pay',
+        seamless: 'เชื่อมต่ออย่างไร้รอยต่อ\nApplePay / GooglePay',
         login: 'เข้าสู่ระบบ',
         trustText: 'ร้านค้ากว่า 50 ล้านแห่งทั่วโลกพร้อมให้คุณใช้จ่ายได้ทุกที่',
         send: 'ส่ง',

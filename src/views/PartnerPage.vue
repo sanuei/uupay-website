@@ -320,7 +320,7 @@ onBeforeUnmount(() => {
         </div>
         <div class="partner-stat-card" data-tilt>
           <div class="stat-number-wrapper">
-            <div class="stat-number" style="min-width: 0" data-target="100000">100000</div>
+            <div class="stat-number" data-target="100000">100000</div>
             <div class="stat-suffix">USDT+</div>
           </div>
           <div class="p-stat-label">{{ t('partnerPage.content2') }}</div>

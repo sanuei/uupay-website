@@ -174,7 +174,7 @@ const en = {
     lowFees: 'Low Fees',
     eachConsume: 'Save more on\nevery transaction',
     globalUse: 'Global Use',
-    seamless: 'Works with\nAlipay & WeChat',
+    seamless: 'Works with\nApplePay / GooglePay',
     login: 'Login',
     trustText: 'Trusted by 50M+ Merchants Worldwide',
     send: 'Send',
