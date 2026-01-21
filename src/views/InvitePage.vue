@@ -5,45 +5,89 @@ import {useI18n} from "vue-i18n";
 import { getCaptchaTypeBasedOnOS } from '@/components/verification/utils/CaptchaUtils';
 import Verify from '@/components/verification/Verify.vue';
 import { MetaPixel } from "@/utils/metaPixel.ts";
+import { TiktokPixel } from "@/utils/tiktokPixel.ts";
 import { useRoute } from "vue-router";
 
 const { t, locale } = useI18n()
 const route = useRoute()
-const pixelId = route.query.fb_dynamic_pixel as string | undefined
+const adType = route.query.adType as string
+const adId = route.query.adId as string
 
 onMounted(() => {
-  if (pixelId) {
-    loadMetaPixel(pixelId)
+  if (!adType || !adId) return
+
+  switch (adType) {
+    case 'FB':
+      loadMetaPixel(adId)
+      break
+    case 'TK':
+      loadTikTokPixel(adId)
+      break
+    default:
+      console.warn('Unsupported adType:', adType)
   }
 })
 
 const loadMetaPixel = (pixelId: string) => {
   if (!pixelId) return
-  if (typeof window.fbq === 'function') return
 
-  const w = window
+  if (typeof (window as any).fbq === 'function') return
+
+  const w = window as any
   const d = document
 
+  // 初始化 fbq
   w.fbq = function (...args: any[]) {
-    ;(w.fbq as any).callMethod
-        ? (w.fbq as any).callMethod.apply(w.fbq, args)
-        : (w.fbq as any).queue.push(args)
-  } as any
-
-  ;(w.fbq as any).queue = []
-  ;(w.fbq as any).loaded = true
-  ;(w.fbq as any).version = '2.0'
+    w.fbq.callMethod
+        ? w.fbq.callMethod.apply(w.fbq, args)
+        : w.fbq.queue.push(args)
+  }
+  w._fbq = w._fbq || w.fbq
+  w.fbq.push = w.fbq
+  w.fbq.loaded = true
+  w.fbq.version = '2.0'
+  w.fbq.queue = []
 
   const script = d.createElement('script')
   script.async = true
   script.src = 'https://connect.facebook.net/en_US/fbevents.js'
-
   const firstScript = d.getElementsByTagName('script')[0]
   firstScript?.parentNode?.insertBefore(script, firstScript)
 
-  const fbq = w.fbq as (...args: any[]) => void
-  fbq('init', pixelId)
-  fbq('track','PageView')
+  // 调用 fbq
+  w.fbq('init', pixelId)
+  w.fbq('track', 'PageView')
+}
+
+
+const loadTikTokPixel = (pixelId: string) => {
+  if (!pixelId) return
+  if (typeof window.ttq !== 'undefined') return
+
+  window.TiktokAnalyticsObject = 'ttq'
+  const ttq = (window as any).ttq = (window as any).ttq || []
+  ttq.methods = [
+    'page','track','identify','instances','debug','on','off',
+    'once','ready','alias','group','enableCookie','disableCookie'
+  ]
+  ttq.setAndDefer = function(t: any, e: string) {
+    t[e] = function() {
+      t.push([e].concat([].slice.call(arguments)))
+    }
+  }
+  for (let i = 0; i < ttq.methods.length; i++) {
+    ttq.setAndDefer(ttq, ttq.methods[i])
+  }
+  ttq.load = function(e: string) {
+    const s = document.createElement('script')
+    s.async = true
+    s.src = `https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=${e}&lib=ttq`
+    const x = document.getElementsByTagName('script')[0]
+    x.parentNode!.insertBefore(s, x)
+  }
+
+  ttq.load(pixelId)
+  ttq.page()
 }
 
 const props = defineProps<{
@@ -342,7 +386,12 @@ const openApp = () => {
 
 const goToAppStore = () => {
   const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)
-  MetaPixel.download()
+  if(adType === 'FB'){
+    MetaPixel.download()
+  } else if(adType === 'TK') {
+    TiktokPixel.download()
+  }
+
 
   setTimeout(() => {
     if (isIOS) {
@@ -486,7 +535,11 @@ const goRegister = async () => {
     const result = await response.json();
 
     if (result.code === 200) {
-      MetaPixel.registration()
+      if(adType === 'FB'){
+        MetaPixel.registration()
+      } else if(adType === 'TK') {
+        TiktokPixel.registration()
+      }
       showSuccessPopup.value = true;
       email.value = ''
       code.value = ''
