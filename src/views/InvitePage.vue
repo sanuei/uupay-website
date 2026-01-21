@@ -4,8 +4,47 @@ import {computed, nextTick, onMounted, ref, watch} from "vue";
 import {useI18n} from "vue-i18n";
 import { getCaptchaTypeBasedOnOS } from '@/components/verification/utils/CaptchaUtils';
 import Verify from '@/components/verification/Verify.vue';
+import { MetaPixel } from "@/utils/metaPixel.ts";
+import { useRoute } from "vue-router";
 
 const { t, locale } = useI18n()
+const route = useRoute()
+const pixelId = route.query.fb_dynamic_pixel as string | undefined
+
+onMounted(() => {
+  if (pixelId) {
+    loadMetaPixel(pixelId)
+  }
+})
+
+const loadMetaPixel = (pixelId: string) => {
+  if (!pixelId) return
+  if (typeof window.fbq === 'function') return
+
+  const w = window
+  const d = document
+
+  w.fbq = function (...args: any[]) {
+    ;(w.fbq as any).callMethod
+        ? (w.fbq as any).callMethod.apply(w.fbq, args)
+        : (w.fbq as any).queue.push(args)
+  } as any
+
+  ;(w.fbq as any).queue = []
+  ;(w.fbq as any).loaded = true
+  ;(w.fbq as any).version = '2.0'
+
+  const script = d.createElement('script')
+  script.async = true
+  script.src = 'https://connect.facebook.net/en_US/fbevents.js'
+
+  const firstScript = d.getElementsByTagName('script')[0]
+  firstScript?.parentNode?.insertBefore(script, firstScript)
+
+  const fbq = w.fbq as (...args: any[]) => void
+  fbq('init', pixelId)
+  fbq('track','PageView')
+}
 
 const props = defineProps<{
   currentLanguage: string
@@ -23,6 +62,22 @@ onMounted(() => {
     lang = '繁體中文'
   } else if(selectedLanguage.value === 'th'){
     lang = 'ไทย'
+  } else if(selectedLanguage.value === 'pt'){
+    lang = 'Português'
+  } else if(selectedLanguage.value === 'es'){
+    lang = 'Español'
+  } else if(selectedLanguage.value === 'tr'){
+    lang = 'Türkçe'
+  } else if(selectedLanguage.value === 'fr'){
+    lang = 'Français'
+  } else if(selectedLanguage.value === 'ja'){
+    lang = '日本語'
+  } else if(selectedLanguage.value === 'ko'){
+    lang = '한국어'
+  } else if(selectedLanguage.value === 'de'){
+    lang = 'Deutsch'
+  } else if(selectedLanguage.value === 'ar'){
+    lang = 'العربية'
   } else {
     lang = 'English'
   }
@@ -37,6 +92,14 @@ const languageList = computed(() => [
   { label: t('language.zhtw'), value: 'zh-tw' },
   { label: t('language.en'), value: 'en' },
   { label: t('language.th'), value: 'th' },
+  { label: t('language.pt'), value: 'pt' },
+  { label: t('language.es'), value: 'es' },
+  { label: t('language.tr'), value: 'tr' },
+  { label: t('language.fr'), value: 'fr' },
+  { label: t('language.ja'), value: 'ja' },
+  { label: t('language.ko'), value: 'ko' },
+  { label: t('language.de'), value: 'de' },
+  { label: t('language.ar'), value: 'ar' },
 ])
 
 // 语言菜单功能函数
@@ -279,16 +342,19 @@ const openApp = () => {
 
 const goToAppStore = () => {
   const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)
+  MetaPixel.download()
 
-  if (isIOS) {
-    window.location.href = 'https://apps.apple.com/app/id6749419646'
-  } else {
-    setTimeout(() => {
-      alert('注册成功')
+  setTimeout(() => {
+    if (isIOS) {
+      window.location.href = 'https://apps.apple.com/app/id6749419646'
+    } else {
+      setTimeout(() => {
+        alert('注册成功')
 
-    }, 1500)
-    window.location.href = DOWNLINK
-  }
+      }, 1500)
+      window.location.href = DOWNLINK
+    }
+  }, 200)
 }
 
 
@@ -420,11 +486,12 @@ const goRegister = async () => {
     const result = await response.json();
 
     if (result.code === 200) {
+      MetaPixel.registration()
       showSuccessPopup.value = true;
       email.value = ''
       code.value = ''
       password.value = ''
-    } if (result.code === 500) {
+    } else if (result.code === 500) {
       if(result.msg === '无效邀请码') {
         showErrorMsg.value = result.msg
         showSuccessPopup.value = true;

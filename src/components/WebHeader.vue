@@ -23,6 +23,14 @@ const languageList = computed(() => [
   { label: t('language.zhtw'), value: 'zh-tw' },
   { label: t('language.en'), value: 'en' },
   { label: t('language.th'), value: 'th' },
+  { label: t('language.pt'), value: 'pt' },
+  { label: t('language.es'), value: 'es' },
+  { label: t('language.tr'), value: 'tr' },
+  { label: t('language.fr'), value: 'fr' },
+  { label: t('language.ja'), value: 'ja' },
+  { label: t('language.ko'), value: 'ko' },
+  { label: t('language.de'), value: 'de' },
+  { label: t('language.ar'), value: 'ar' },
 ])
 
 const changeLanguage = (lang: any) => {
@@ -176,7 +184,7 @@ const goToPromotion = async() => {
                {{t('promotion.navTitle')}}
              </a>
           </li>
-          
+
           <!-- Pages -->
           <li><a data-section="partner" @click="goToPartner">{{t('partnerPage.partnerHead')}}</a></li>
           <li><a data-section="about-us" @click="goToAboutUs">{{t('about')}}</a></li>

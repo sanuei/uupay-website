@@ -34,6 +34,14 @@ const languageList = computed(() => [
   { label: t('language.zhtw'), value: 'zh-tw' },
   { label: t('language.en'), value: 'en' },
   { label: t('language.th'), value: 'th' },
+  { label: t('language.pt'), value: 'pt' },
+  { label: t('language.es'), value: 'es' },
+  { label: t('language.tr'), value: 'tr' },
+  { label: t('language.fr'), value: 'fr' },
+  { label: t('language.ja'), value: 'ja' },
+  { label: t('language.ko'), value: 'ko' },
+  { label: t('language.de'), value: 'de' },
+  { label: t('language.ar'), value: 'ar' },
 ])
 
 const changeLanguage = (lang: any) => {
@@ -238,7 +246,7 @@ const goToPromotion = async () => {
               </template>
             </div>
           </div>
-          
+
           <!-- 汉堡菜单按钮 -->
           <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Toggle menu">
             <Menu v-if="!isMobileMenuOpen" />
@@ -247,7 +255,7 @@ const goToPromotion = async () => {
         </div>
       </div>
     </div>
-    
+
     <!-- 移动端菜单弹出层 -->
     <Teleport to="body">
       <div v-show="isMobileMenuOpen" class="mobile-menu-overlay" @click.self="closeMobileMenu">
@@ -255,7 +263,7 @@ const goToPromotion = async () => {
           <button class="mobile-close-btn" @click="closeMobileMenu">
             <X />
           </button>
-          
+
           <ul class="mobile-nav-links">
             <li><a @click="goSection('features')">{{t('product')}}</a></li>
             <li><a @click="goSection('security')">{{t('security')}}</a></li>

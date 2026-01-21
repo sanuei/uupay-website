@@ -12,13 +12,13 @@ import AboutUs from '@/views/AboutUs.vue'
 import PartnerPage from '@/views/PartnerPage.vue'
 import PromotionPage from '@/views/PromotionPage.vue'
 
-const supportedLangs = ['zh-cn', 'en', 'zh-tw', 'th']
+const supportedLangs = ['zh-cn', 'en', 'zh-tw', 'th', 'pt', 'es', 'tr', 'fr', 'ja', 'ko', 'de', 'ar']
 // 根据 UA 检测设备类型，移动端使用 PhoneLayout，桌面端使用 WebLayout
 const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
 
 const routes: RouteRecordRaw[] = [
     {
-        path: '/:lang(en|zh-cn|zh-tw|th)',
+        path: '/:lang(en|zh-cn|zh-tw|th|pt|es|tr|fr|ja|ko|de|ar)',
         component: () => isMobile
             ? import('@/views/PhoneLayout.vue')
             : import('@/views/WebLayout.vue'),
@@ -58,7 +58,15 @@ const langMap: Record<string, string> = {
     'zh-cn': 'zh-cn',
     'en': 'en',
     'zh-tw': 'zhtw',
-    'th': 'th'
+    'th': 'th',
+    'pt': 'pt',
+    'es': 'es',
+    'tr': 'tr',
+    'fr': 'fr',
+    'ja': 'ja',
+    'ko': 'ko',
+    'de': 'de',
+    'ar': 'ar',
 }
 
 router.beforeEach((to, _from, next) => {

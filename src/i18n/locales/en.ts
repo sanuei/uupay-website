@@ -3,7 +3,15 @@ const en = {
     zh: '简体中文',
     zhtw: '繁體中文',
     en: 'English',
-    th: 'ไทย'
+    th: 'ไทย',
+    pt: 'Português',
+    es: 'Español',
+    tr: 'Türkçe',
+    fr: 'Français',
+    ja: '日本語',
+    ko: '한국어',
+    de: 'Deutsch',
+    ar: 'العربية'
   },
   about: 'About',
   product: 'Products',
