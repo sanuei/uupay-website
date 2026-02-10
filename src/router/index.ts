@@ -11,12 +11,41 @@ import InvitePage from '@/views/InvitePage.vue'
 import AboutUs from '@/views/AboutUs.vue'
 import PartnerPage from '@/views/PartnerPage.vue'
 import PromotionPage from '@/views/PromotionPage.vue'
+import { LANGUAGES } from '@/config/languages'
+import type { RouteLocationNormalized } from 'vue-router'
 
-const supportedLangs = ['zh-cn', 'en', 'zh-tw', 'th', 'pt', 'es', 'tr', 'fr', 'ja', 'ko', 'de', 'ar']
+export const catchAllRedirect = (to: RouteLocationNormalized, systemLang: string) => {
+    let langCode = systemLang
+
+    const matchedLang = Object.values(LANGUAGES).find(lang =>
+        lang.range.some(r => r.toLowerCase() === systemLang.toLowerCase())
+    )
+
+    if (matchedLang) {
+        langCode = matchedLang.key.toLowerCase()
+    } else {
+        langCode = systemLang.slice(0,2).toLowerCase()
+    }
+
+    if (langCode === 'zh') {
+        if (systemLang.toLowerCase().includes('tw') || systemLang.toLowerCase().includes('hk')) {
+            langCode = 'zh-tw'
+        } else {
+            langCode = 'zh-cn'
+        }
+    }
+
+    const firstSegment = to.path.split('/')[1].toLowerCase()
+    if (supportedLangs.includes(firstSegment)) {
+        return to.fullPath
+    }
+
+    return { path: '/' + langCode + to.path, query: to.query }
+}
+
+const supportedLangs =  Object.values(LANGUAGES).map(lang => lang.key.toLowerCase())
 // 根据 UA 检测设备类型，移动端使用 PhoneLayout，桌面端使用 WebLayout
 const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
-const systemLang = navigator.language
-const localLang = localStorage.getItem('language')
 
 const routes: RouteRecordRaw[] = [
     {
@@ -41,25 +70,7 @@ const routes: RouteRecordRaw[] = [
     },
     {
         path: '/:pathMatch(.*)*',
-        redirect: (to) => {
-            let langCode = systemLang.toLowerCase();
-            if(localLang){
-                langCode = localLang
-            } else {
-                if(langCode === 'zh'){
-                    langCode = 'zh-cn'
-                } else if (langCode === 'zh-tw'){
-                    langCode = 'zh-tw'
-                } else {
-                    langCode = systemLang.slice(0,2).toLowerCase();
-                }
-            }
-            const firstSegment = to.path.split('/')[1]
-            if (supportedLangs.includes(firstSegment)) {
-                return to.fullPath
-            }
-            return { path: '/' + langCode + to.path, query: to.query }
-        }
+        redirect: (to) => catchAllRedirect(to as RouteLocationNormalized, navigator.language)
     }
 ]
 
@@ -71,7 +82,7 @@ const router = createRouter({
 const langMap: Record<string, string> = {
     'zh-cn': 'zh-cn',
     'en': 'en',
-    'zh-tw': 'zhtw',
+    'zh-tw': 'zh-tw',
     'th': 'th',
     'pt': 'pt',
     'es': 'es',

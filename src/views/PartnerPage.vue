@@ -4,6 +4,11 @@ import { useI18n } from "vue-i18n";
 import { TrendingUp, Users, Zap, Crown, Gift, Headphones, Newspaper, FilePen, Share2, Coins, ArrowRight, ChevronDown } from "lucide-vue-next";
 import { onBeforeUnmount, onMounted } from "vue";
 import { PARTNER_URL } from "@/constants";
+import { useRoute } from 'vue-router'
+import { useHreflang } from '@/utils/useHreflang'
+
+const route = useRoute()
+useHreflang(route)
 
 const { locale, t } = useI18n()
 

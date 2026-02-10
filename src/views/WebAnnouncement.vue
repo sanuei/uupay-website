@@ -15,11 +15,13 @@ import {useI18n} from "vue-i18n";
 import {useHead} from "@unhead/vue";
 import {useRoute, useRouter} from "vue-router";
 import { useAnnouncementStore } from '@/stores/announcement'
+import { useHreflang } from '@/utils/useHreflang'
 
 const { locale, t } = useI18n()
 const route = useRoute();
 const router = useRouter();
 const announcementStore = useAnnouncementStore()
+useHreflang(route)
 
 useHead(() => ({
   title: t('announcements.metaTitle'),

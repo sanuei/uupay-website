@@ -3,6 +3,11 @@ import { useHead } from "@unhead/vue";
 import { useI18n } from "vue-i18n";
 import { CreditCard, Percent, ArrowRight, Check, Zap, Shield, Users } from "lucide-vue-next";
 import WebContent6 from "@/components/WebContent6.vue";
+import { useRoute } from 'vue-router'
+import { useHreflang } from '@/utils/useHreflang'
+
+const route = useRoute()
+useHreflang(route)
 
 const { locale, t } = useI18n()
 

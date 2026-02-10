@@ -4,6 +4,11 @@ import {computed} from "vue";
 import {useHead} from "@unhead/vue";
 import { Target, Lightbulb, Shield, Globe, Users, Zap } from "lucide-vue-next";
 import WebContent6 from "@/components/WebContent6.vue";
+import { useRoute } from 'vue-router'
+import { useHreflang } from '@/utils/useHreflang'
+
+const route = useRoute()
+useHreflang(route)
 
 const { locale, t } = useI18n()
 
@@ -38,7 +43,7 @@ const handleMouseMove = (e: MouseEvent, cardClass: string) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
   });
@@ -83,7 +88,7 @@ const handleMouseMove = (e: MouseEvent, cardClass: string) => {
             </div>
             <div class="card-border"></div>
           </div>
-          
+
           <!-- Vision Card -->
           <div class="hover-card vision-card">
             <div class="card-content">
@@ -106,11 +111,11 @@ const handleMouseMove = (e: MouseEvent, cardClass: string) => {
           <h2 class="section-title">{{ t('aboutUs.advantageTitle') }}</h2>
           <p class="section-desc">{{ t('aboutUs.servicesSub') }}</p>
         </div>
-        
+
         <div class="advantages-grid">
-          <div 
+          <div
             class="advantage-card"
-            v-for="(item, index) in advantagesListContent" 
+            v-for="(item, index) in advantagesListContent"
             :key="index"
           >
             <div class="advantage-icon-wrapper">
@@ -168,7 +173,7 @@ const handleMouseMove = (e: MouseEvent, cardClass: string) => {
 .grid-overlay {
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     linear-gradient(rgba(71, 198, 143, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(71, 198, 143, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -291,8 +296,8 @@ const handleMouseMove = (e: MouseEvent, cardClass: string) => {
   right: 0;
   bottom: 0;
   background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y), 
-    rgba(255, 255, 255, 0.06), 
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.06),
     transparent 40%
   );
   opacity: 0;

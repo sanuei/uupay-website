@@ -4,6 +4,7 @@ import { useI18n } from "vue-i18n"
 import { computed } from "vue"
 import { useRoute } from "vue-router"
 import { useDevice } from '@/composables/useDevice'
+import { useHreflang } from '@/utils/useHreflang'
 
 // 解析 md / json 文件
 const mdModules = import.meta.glob('@/blog/*.md', { eager: true, as: 'raw' })
@@ -12,6 +13,8 @@ const jsonModules = import.meta.glob('@/blog/*.json', { eager: true, as: 'json' 
 const { locale, t } = useI18n()
 const route = useRoute()
 const { isMobile } = useDevice()
+
+useHreflang(route)
 
 useHead(() => ({
   title: t('metaTitle'),

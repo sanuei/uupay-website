@@ -7,9 +7,10 @@ import phonePage from '@/views/PhonePage.vue'
 import InvitePage from '@/views/InvitePage.vue'
 import {useRoute, useRouter} from 'vue-router'
 import { computed } from "vue";
+import { useHreflang } from '@/utils/useHreflang'
 
 const route = useRoute()
-
+useHreflang(route)
 const router = useRouter()
 
 const { isMobile } = useDevice()

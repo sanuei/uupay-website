@@ -19,6 +19,7 @@
     "@unhead/vue": "^2.0.19",
     "@vueuse/components": "^12.5.0",
     "@vueuse/core": "^12.5.0",
+    "@vueuse/head": "^2.0.0",
     "crypto-js": "^4.2.0",
     "lucide-vue-next": "^0.552.0",
     "marked": "^17.0.1",

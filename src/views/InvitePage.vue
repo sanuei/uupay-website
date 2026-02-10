@@ -7,11 +7,14 @@ import Verify from '@/components/verification/Verify.vue';
 import { MetaPixel } from "@/utils/metaPixel.ts";
 import { TiktokPixel } from "@/utils/tiktokPixel.ts";
 import { useRoute } from "vue-router";
+import { useHreflang } from '@/utils/useHreflang'
 
 const { t, locale } = useI18n()
 const route = useRoute()
 const adType = route.query.adType as string
 const adId = route.query.adId as string
+
+useHreflang(route)
 
 onMounted(() => {
   if (!adType || !adId) return
