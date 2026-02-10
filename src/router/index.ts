@@ -15,6 +15,8 @@ import PromotionPage from '@/views/PromotionPage.vue'
 const supportedLangs = ['zh-cn', 'en', 'zh-tw', 'th', 'pt', 'es', 'tr', 'fr', 'ja', 'ko', 'de', 'ar']
 // 根据 UA 检测设备类型，移动端使用 PhoneLayout，桌面端使用 WebLayout
 const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+const systemLang = navigator.language
+const localLang = localStorage.getItem('language')
 
 const routes: RouteRecordRaw[] = [
     {
@@ -40,11 +42,23 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/:pathMatch(.*)*',
         redirect: (to) => {
+            let langCode = systemLang.toLowerCase();
+            if(localLang){
+                langCode = localLang
+            } else {
+                if(langCode === 'zh'){
+                    langCode = 'zh-cn'
+                } else if (langCode === 'zh-tw'){
+                    langCode = 'zh-tw'
+                } else {
+                    langCode = systemLang.slice(0,2).toLowerCase();
+                }
+            }
             const firstSegment = to.path.split('/')[1]
             if (supportedLangs.includes(firstSegment)) {
                 return to.fullPath
             }
-            return { path: '/zh-cn' + to.path, query: to.query }
+            return { path: '/' + langCode + to.path, query: to.query }
         }
     }
 ]
