@@ -125,10 +125,10 @@ const de = {
     safetyAnnouncement: 'Sicherheitsmitteilungen',
     goBackAnnounce: 'Zurück zum Ankündigungszentrum',
     blogTitle: 'Blog',
-    metaTitle: 'UUPAY UCard - Sichere USDT virtuelle Krypto-Karte | Globales Visa-Zahlung',
-    metaDescription: 'UUPAY UCard ist Ihre Wahl für Krypto-Zahlungen, unterstützt schnelle USDT/USDC-Aufladung, Visa/Mastercard global. 3 Minuten Aktivierung, Gebühren ab 0,5 %, sicher und compliant. App jetzt herunterladen und erleben!',
+    metaTitle: 'UUPAY Bitcoin Karte – USDT Kryptowährungskarte | Globale Visa-Zahlungen',
+    metaDescription: 'UUPAY bietet eine sichere Kryptowährungskarte mit Unterstützung für USDT und USDC. Weltweit nutzbar mit Visa und Mastercard. Keine Ausstellungsgebühr,keine Aufladegebühr und keine Jahresgebühr – ideal für internationale Zahlungen.',
     metaH1: 'Krypto-Zahlungslösung - UUPAY UCard',
-    metaKeywords: 'UCard, Krypto-Karte, USDT-Karte, Digitale Karte, UCard-Antrag, UCard-Aufladung, UCard-Auszahlung, USDT virtuelle Karte, Krypto-Visa-Karte, Mastercard UCard',
+    metaKeywords: 'UUPAY,Bitcoin Karte,USDT Karte',
     backBlogList: 'Zur Blogliste zurück',
     aboutUs: {
         title: 'Zahlungen vereinfachen, die Welt greifbar machen',

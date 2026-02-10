@@ -125,10 +125,10 @@ const fr = {
     safetyAnnouncement: 'Annonce de sécurité',
     goBackAnnounce: 'Retour au centre des annonces',
     blogTitle: 'Blog',
-    metaTitle: 'UUPAY UCard - Carte Crypto USDT virtuelle sécurisée | Paiement Visa mondial',
-    metaDescription: 'UUPAY UCard est votre choix pour les paiements crypto, supporte rechargement rapide USDT/USDC, Visa/Mastercard global. Activation en 3 min, frais dès 0,5%, sécurisé et conforme. Téléchargez l’app et découvrez !',
+    metaTitle: 'UUPAY Carte Crypto – Carte USDT Virtuelle | Paiements Visa Mondiaux',
+    metaDescription: 'UUPAY propose une carte crypto sécurisée prenant en charge USDT et USDC. Utilisable via Visa et Mastercard dans le monde entier. Aucun frais d’émission,aucun frais de recharge et aucun frais annuel.',
     metaH1: 'Solution de paiement crypto - UUPAY UCard',
-    metaKeywords: 'UCard, carte crypto, USDT Card, carte digitale, demande UCard, recharge UCard, retrait UCard, USDT Virtual Card, Visa crypto, Mastercard UCard',
+    metaKeywords: 'UUPAY,carte crypto,carte USDT',
     backBlogList: 'Retour à la liste des blogs',
     aboutUs: {
         title: 'Rendre les paiements simples, rendre le monde accessible',

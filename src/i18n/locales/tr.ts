@@ -125,10 +125,10 @@ const tr = {
     safetyAnnouncement: 'Güvenlik Duyuruları',
     goBackAnnounce: 'Duyuru Merkezine Dön',
     blogTitle: 'Blog',
-    metaTitle: 'UUPAY UCard - Güvenli USDT Sanal Kripto Kart | Global Visa Ödeme',
-    metaDescription: 'UUPAY UCard, kripto para ödemeleriniz için ideal. Hızlı USDT/USDC yükleme, Visa/Mastercard global destek. 3 dakikada aktivasyon, %0,5 işlem ücreti, güvenli ve uyumlu. Uygulamayı indirip deneyin!',
+    metaTitle: 'UUPAY Kripto Kart – USDT Sanal Kart | Küresel Visa Ödemeleri',
+    metaDescription: 'UUPAY kripto kart,USDT ve USDC ile güvenli ödeme imkânı sunar. Visa ve Mastercard ile dünya çapında kullanılabilir. Kart ücreti yok,yükleme ücreti yok,yıllık ücret yok. Uluslararası ödemeler için idealdir.',
     metaH1: 'Kripto Ödeme Çözümü - UUPAY UCard',
-    metaKeywords: 'UCard, Kripto Kart, USDT Kart, Dijital Kart, UCard Başvuru, UCard Yükleme, UCard Çekim, USDT Sanal Kart, Kripto Visa Kart, Mastercard UCard',
+    metaKeywords: 'UUPAY,kripto kart,USDT kart',
     backBlogList: 'Blog listesine dön',
     aboutUs: {
         title: 'Ödemeleri basitleştirin, dünyayı erişilebilir kılın',

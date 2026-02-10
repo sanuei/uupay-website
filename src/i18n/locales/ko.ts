@@ -125,10 +125,10 @@ const ko = {
     safetyAnnouncement: '보안 공지',
     goBackAnnounce: '공지 센터로 돌아가기',
     blogTitle: '블로그',
-    metaTitle: 'UUPAY UCard - 안전한 USDT 가상 암호화폐 카드 | 글로벌 Visa 결제',
-    metaDescription: 'UUPAY UCard는 암호화폐 결제에 최적입니다. USDT/USDC 빠른 충전, Visa/Mastercard 글로벌 지원. 3분 발급, 수수료 0.5%~, 안전 및 규정 준수. 앱 다운로드 후 체험!',
+    metaTitle: 'UUPAY 코인 카드 – USDT 가상 크립토 카드 | 글로벌 Visa 결제',
+    metaDescription: 'UUPAY는 USDT 및 USDC를 지원하는 안전한 코인 카드를 제공합니다. Visa/Mastercard 전 세계 사용 가능하며,발급 수수료 0원,충전 수수료 0원,연회비 0원으로 해외 결제에 적합합니다.',
     metaH1: '암호화폐 결제 솔루션 - UUPAY UCard',
-    metaKeywords: 'UCard, 암호화폐 카드, USDT 카드, 디지털 카드, UCard 신청, UCard 충전, UCard 출금, USDT 가상 카드, 암호화 Visa 카드, Mastercard UCard',
+    metaKeywords: 'UUPAY,코인 카드,USDT 카드',
     backBlogList: '블로그 목록으로 돌아가기',
     aboutUs: {
         title: '결제를 단순화하고 세상을 손안에',

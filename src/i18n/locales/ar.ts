@@ -125,10 +125,10 @@ const ar = {
     safetyAnnouncement: 'إشعارات الأمان',
     goBackAnnounce: 'العودة إلى مركز الإعلانات',
     blogTitle: 'المدونة',
-    metaTitle: 'UUPAY UCard - بطاقة USDT افتراضية آمنة للعملات المشفرة | الدفع عبر Visa عالميًا',
-    metaDescription: 'UUPAY UCard هي خيارك للدفع بالعملات المشفرة، تدعم إعادة شحن سريعة USDT/USDC، Visa/Mastercard عالميًا. تفعيل خلال 3 دقائق، رسوم منخفضة 0.5٪، آمنة ومتوافقة. حمل التطبيق وابدأ التجربة!',
+    metaTitle: 'UUPAY بطاقة كريبتو – بطاقة USDT افتراضية | مدفوعات Visa عالمية',
+    metaDescription: 'توفر UUPAY بطاقة كريبتو آمنة تدعم USDT وUSDC مع إمكانية الدفع عبر Visa وMastercard عالميًا. بدون رسوم إصدار، بدون رسوم شحن، وبدون رسوم سنوية. حل موثوق للمدفوعات الدولية.',
     metaH1: 'حلول الدفع بالعملات المشفرة - UUPAY UCard',
-    metaKeywords: 'UCard, بطاقة العملات المشفرة, بطاقة USDT, بطاقة رقمية, طلب UCard, شحن UCard, سحب UCard, بطاقة USDT افتراضية, بطاقة Visa للعملات المشفرة, Mastercard UCard',
+    metaKeywords: 'UUPAY,بطاقة كريبتو,بطاقة USDT',
     backBlogList: 'العودة لقائمة المدونات',
     aboutUs: {
         title: 'اجعل الدفع بسيطًا، واجعل العالم في متناول يديك',

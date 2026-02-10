@@ -125,10 +125,10 @@ const ja = {
     safetyAnnouncement: '安全通知',
     goBackAnnounce: 'お知らせセンターに戻る',
     blogTitle: 'ブログ',
-    metaTitle: 'UUPAY UCard - 安全なUSDT仮想暗号カード | 世界Visa対応',
-    metaDescription: 'UUPAY UCardは暗号通貨決済に最適。USDT/USDCの高速チャージ、Visa/Mastercard対応。3分で発行、手数料0.5％〜、安全・コンプライアンス対応。アプリをダウンロードして体験！',
+    metaTitle: 'UUPAY 仮想通貨カード – USDT対応バーチャルカード | Visaグローバル決済',
+    metaDescription: 'UUPAYはUSDTおよびUSDCに対応した安全な仮想通貨カードを提供します。Visa/Mastercardで世界中で利用可能。発行手数料0円、チャージ手数料0円、年会費0円で、海外決済にも最適です。',
     metaH1: '暗号通貨決済ソリューション - UUPAY UCard',
-    metaKeywords: 'UCard, 暗号通貨カード, USDTカード, デジタルカード, UCard申請, UCardチャージ, UCard出金, USDT仮想カード, 暗号Visaカード, Mastercard UCard',
+    metaKeywords: 'UUPAY,仮想通貨カード,クリプトカード,クレジットカード,USDTカード',
     backBlogList: 'ブログ一覧に戻る',
     aboutUs: {
         title: '支払いをシンプルに、世界を手の届く場所に',
