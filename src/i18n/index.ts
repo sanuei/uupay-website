@@ -14,19 +14,19 @@ import ar from './locales/ar.ts'
 
 const savedLang = (localStorage.getItem('language') || 'zh').toLowerCase()
 
-const messages: { [key: string]: any } = {
-  en,
-  zh,
-  zhtw,
-  th,
-  pt,
-  es,
-  tr,
-  fr,
-  ja,
-  ko,
-  de,
-  ar
+const messages = {
+  'en': en,
+  'zh-cn': zh,
+  'zh-tw': zhtw,
+  'th': th,
+  'pt': pt,
+  'es': es,
+  'tr': tr,
+  'fr': fr,
+  'ja': ja,
+  'ko': ko,
+  'de': de,
+  'ar': ar,
 }
 
 const i18n = createI18n({

@@ -62,7 +62,7 @@ const switchLanguage = (lang: string) => {
   const newFullPath = fullPath.replace('/' + currentLang, '/' + lang)
 
   router.push(newFullPath)
-  locale.value = lang === 'zh-tw' ? 'zhtw' : lang
+  locale.value = lang
   localStorage.setItem('language', lang)
 }
 </script>

@@ -15,35 +15,39 @@ import { LANGUAGES } from '@/config/languages'
 import type { RouteLocationNormalized } from 'vue-router'
 
 export const catchAllRedirect = (to: RouteLocationNormalized, systemLang: string) => {
-    let langCode = systemLang
+    const supportedLangs = Object.values(LANGUAGES).map(lang => lang.key.toLowerCase());
+
+    let langCode = 'zh-cn';
 
     const matchedLang = Object.values(LANGUAGES).find(lang =>
         lang.range.some(r => r.toLowerCase() === systemLang.toLowerCase())
-    )
+    );
 
     if (matchedLang) {
-        langCode = matchedLang.key.toLowerCase()
+        langCode = matchedLang.key.toLowerCase();
     } else {
-        langCode = systemLang.slice(0,2).toLowerCase()
+        const shortLang = systemLang.slice(0, 2).toLowerCase();
+        if (supportedLangs.includes(shortLang)) {
+            langCode = shortLang;
+        }
     }
 
     if (langCode === 'zh') {
         if (systemLang.toLowerCase().includes('tw') || systemLang.toLowerCase().includes('hk')) {
-            langCode = 'zh-tw'
+            langCode = 'zh-tw';
         } else {
-            langCode = 'zh-cn'
+            langCode = 'zh-cn';
         }
     }
 
-    const firstSegment = to.path.split('/')[1].toLowerCase()
-    if (supportedLangs.includes(firstSegment)) {
-        return to.fullPath
+    const firstSegment = to.path.split('/')[1]?.toLowerCase();
+    if (firstSegment && supportedLangs.includes(firstSegment)) {
+        return to.fullPath;
     }
 
-    return { path: '/' + langCode + to.path, query: to.query }
-}
+    return { path: `/${langCode}${to.path}`, query: to.query };
+};
 
-const supportedLangs =  Object.values(LANGUAGES).map(lang => lang.key.toLowerCase())
 // 根据 UA 检测设备类型，移动端使用 PhoneLayout，桌面端使用 WebLayout
 const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
 
@@ -97,7 +101,7 @@ const langMap: Record<string, string> = {
 router.beforeEach((to, _from, next) => {
     const lang = to.params.lang as string
     if (lang && langMap[lang]) {
-        i18n.global.locale.value = langMap[lang]
+        (i18n.global.locale as any).value = langMap[lang]
     }
     next()
 })

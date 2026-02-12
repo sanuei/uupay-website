@@ -25,7 +25,7 @@ export function useHreflang(route: RouteLocationNormalizedLoaded) {
     links.push({
         rel: 'alternate',
         hreflang: 'x-default',
-        href: 'https://uupay.com/zh-cn'
+        href: 'https://uupay.com/'
     })
 
     useHead({ link: links })
