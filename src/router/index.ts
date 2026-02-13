@@ -44,7 +44,6 @@ export const catchAllRedirect = (to: RouteLocationNormalized, systemLang: string
     if (firstSegment && supportedLangs.includes(firstSegment)) {
         return to.fullPath;
     }
-
     return { path: `/${langCode}${to.path}`, query: to.query };
 };
 
@@ -100,6 +99,10 @@ const langMap: Record<string, string> = {
 
 router.beforeEach((to, _from, next) => {
     const lang = to.params.lang as string
+    if (to.path !== '/' && to.path.endsWith('/')) {
+        const newPath = to.path.slice(0, -1)
+        return next({ path: newPath, query: to.query, hash: to.hash })
+    }
     if (lang && langMap[lang]) {
         (i18n.global.locale as any).value = langMap[lang]
     }
