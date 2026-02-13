@@ -17,7 +17,7 @@ import type { RouteLocationNormalized } from 'vue-router'
 export const catchAllRedirect = (to: RouteLocationNormalized, systemLang: string) => {
     const supportedLangs = Object.values(LANGUAGES).map(lang => lang.key.toLowerCase());
 
-    let langCode = 'zh-cn';
+    let langCode = 'en';
 
     const matchedLang = Object.values(LANGUAGES).find(lang =>
         lang.range.some(r => r.toLowerCase() === systemLang.toLowerCase())
