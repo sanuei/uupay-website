@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import {computed, watch} from 'vue'
+import { computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
+import { BASE_URL } from "@/constants";
 
 const { locale } = useI18n()
 const route = useRoute()
@@ -18,15 +19,21 @@ watch(
     { immediate: true }
 )
 
-const canonicalUrl = computed(() => `${window.location.origin}${route.fullPath}`)
+const canonical = computed(() => {
+  const origin = BASE_URL || 'https://uupay.com'
+  return `${origin}${route.path}`
+})
 
-// 顶层调用 useHead，并绑定响应式对象
+const canonicalForRoot = computed(() => {
+  if (route.path === '/' || route.path === '') {
+    return 'https://uupay.com'
+  }
+  return canonical.value
+})
+
 useHead({
   link: [
-    {
-      rel: 'canonical',
-      href: canonicalUrl
-    }
+    { rel: 'canonical', href: canonicalForRoot }
   ]
 })
 </script>
