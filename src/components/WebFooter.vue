@@ -2,8 +2,16 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {useI18n} from "vue-i18n";
 import {computed} from "vue";
+import {useRoute, useRouter} from 'vue-router';
 
 const { locale, t } = useI18n()
+const route = useRoute()
+const router = useRouter()
+
+const goToDoc = (slug: string) => {
+  const lang = route.params.lang || 'en';
+  router.push({ name: 'DocsPage', params: { lang, slug } });
+}
 
 const twitterUrl = computed(() =>
       locale.value === 'en'
@@ -18,11 +26,9 @@ const twitterUrl = computed(() =>
       <div class="footer-content">
         <div class="footer-left">
           <div class="footer-legal">
-            <a href="#" data-i18n="footer.privacy">{{t('privacy')}}</a>
+            <a href="#" @click.prevent="goToDoc('privacy')" data-i18n="footer.privacy">{{t('privacy')}}</a>
             <span>|</span>
-            <a href="#" data-i18n="footer.terms">{{t('terms')}}</a>
-            <span>|</span>
-            <a href="#" data-i18n="footer.cookies">{{t('cookie')}}</a>
+            <a href="#" @click.prevent="goToDoc('terms')" data-i18n="footer.terms">{{t('terms')}}</a>
           </div>
           <div class="footer-copyright" data-i18n="footer.copyright">
             © UUPAY 2026

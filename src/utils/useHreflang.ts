@@ -1,7 +1,7 @@
-import { useHead } from '@vueuse/head'
+import { useHead } from '@unhead/vue'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
-const langs = ['ar','de','en','es','fr','ja','ko','pt','th','tr','zh-cn','zh-tw']
+const langs = ['ar', 'de', 'en', 'es', 'fr', 'ja', 'ko', 'pt', 'th', 'tr', 'zh-cn', 'zh-tw']
 
 const pathMap: Record<string, string> = {
     '/zh-cn': '',

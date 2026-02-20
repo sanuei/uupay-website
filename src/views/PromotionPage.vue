@@ -59,8 +59,13 @@ const goToPromo = () => {
           <div class="benefit-pill highlight">
             <div class="pill-icon-wrapper"><Check class="pill-icon" /></div>
             <div class="pill-text">
-              <span class="pill-label">{{ t('promotion.freeCardTitle') }}</span>
-              <span class="pill-value">0 USDT</span>
+              <div class="dual-label">
+                <span class="pill-label">{{ t('promotion.freeCardTitle') }}</span>
+                <span class="pill-value">1 USDT</span>
+              </div>
+              <div class="bonus-tag">
+                {{ t('promotion.freeCardSubtitle') }}
+              </div>
             </div>
           </div>
           <div class="benefit-pill highlight">
@@ -100,7 +105,7 @@ const goToPromo = () => {
           <div class="card-price">
             <span class="price-old">10 USDT</span>
             <span class="price-current">
-              <span class="price-num">0</span>
+              <span class="price-num">1</span>
               <span class="price-unit">USDT</span>
             </span>
           </div>
@@ -375,6 +380,23 @@ const goToPromo = () => {
   font-size: 1.25rem;
   font-weight: 800;
   color: #fff;
+}
+
+.dual-label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.bonus-tag {
+  margin-top: 4px;
+  background: rgba(71, 198, 143, 0.15);
+  color: var(--primary-color);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid rgba(71, 198, 143, 0.3);
 }
 
 .highlight .pill-value {

@@ -76,7 +76,7 @@ const goSection = async (sectionId: string) => {
           <h4>{{t('support')}}</h4>
           <ul>
             <li><a data-section="announcement" @click="goToAnnouncement">{{t('announcementCenter')}}</a></li>
-            <li><span class="footer-link-disabled">{{t('helpCenter')}}</span></li>
+            <li><a href="https://help.uupay.com/zh-CN/" target="_blank">{{t('helpCenter')}}</a></li>
             <li><span class="footer-link-disabled">{{t('apiDoc')}}</span></li>
             <li><span class="footer-link-disabled">{{t('devState')}}</span></li>
           </ul>

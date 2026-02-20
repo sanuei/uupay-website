@@ -11,6 +11,7 @@ import InvitePage from '@/views/InvitePage.vue'
 import AboutUs from '@/views/AboutUs.vue'
 import PartnerPage from '@/views/PartnerPage.vue'
 import PromotionPage from '@/views/PromotionPage.vue'
+import DocsPage from '@/views/DocsPage.vue'
 import { LANGUAGES } from '@/config/languages'
 import type { RouteLocationNormalized } from 'vue-router'
 
@@ -69,6 +70,7 @@ const routes: RouteRecordRaw[] = [
             { path: 'about-us', name: 'AboutUs', component: AboutUs },
             { path: 'partner', name: 'PartnerPage', component: PartnerPage },
             { path: 'promotion', name: 'PromotionPage', component: PromotionPage },
+            { path: 'docs/:slug', name: 'DocsPage', component: DocsPage },
         ]
     },
     {

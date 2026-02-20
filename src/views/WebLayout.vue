@@ -428,6 +428,7 @@ function getQueryParam(full: string, key: string): string {
 }
 
 const invitationCode = computed(() => getQueryParam(route.fullPath, 'invitationCode'))
+const isDocsPage = computed(() => route.name === 'DocsPage')
 </script>
 
 <template>
@@ -436,12 +437,12 @@ const invitationCode = computed(() => getQueryParam(route.fullPath, 'invitationC
     <canvas id="particles"></canvas>
     <div class="grid-background"></div>
 
-    <WebHeader v-if="!invitationCode" :currentLanguage="locale" @onSwitchLanguage="switchLanguage"/>
+    <WebHeader v-if="!invitationCode && !isDocsPage" :currentLanguage="locale" @onSwitchLanguage="switchLanguage"/>
 
     <router-view />
 
-    <WebSitemap v-if="!invitationCode" />
-    <WebFooter v-if="!invitationCode" />
+    <WebSitemap v-if="!invitationCode && !isDocsPage" />
+    <WebFooter v-if="!invitationCode && !isDocsPage" />
   </div>
 </template>
 
