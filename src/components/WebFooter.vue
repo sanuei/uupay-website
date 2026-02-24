@@ -33,6 +33,10 @@ const twitterUrl = computed(() =>
           <div class="footer-copyright" data-i18n="footer.copyright">
             © UUPAY 2026
           </div>
+          <div class="footer-company" style="color: var(--text-tertiary); font-size: 12px; margin-top: 8px; line-height: 1.5;">
+            Company: UUpay Limited <br/>
+            Address: 49/F., ENTERPRISE SQUARETHREE, 39 WANG CHIU ROAD, KOWLOON BAY, Hong Kong
+          </div>
         </div>
 
         <div class="footer-social">
