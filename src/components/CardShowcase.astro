@@ -21,20 +21,23 @@ const t = useTranslations(lang as any);
       </div>
 
       <div class="card-pin-stage scroll-reveal">
-        <!-- 黑卡(主卡, 居中, 大) - 放前面 -->
-        <div class="card-3d black parallax-element" style="--parallax-rate: 0.15;">
-          <img src="/images/card-black.png" alt="UUPAY Black Physical Card" />
+        <!-- 卡组 -->
+        <div class="card-3d-group">
+          <!-- 黑卡(主卡, 居中, 大) - 放前面 -->
+          <div class="card-3d black parallax-element" style="--parallax-rate: 0.15;">
+            <img src="/images/card-black.png" alt="UUPAY Black Physical Card" />
+          </div>
+
+          <!-- 金卡(副卡, 叠在黑卡右上角, 小, 倾斜) - 放后面 -->
+          <div class="card-3d virtual parallax-element" style="--parallax-rate: 0.25;">
+            <img src="/images/card-virtual.png" alt="UUPAY Gold Card" />
+          </div>
+
+          <!-- 卡间连线(在归位后显示) -->
+          <div class="card-connector" aria-hidden="true"></div>
         </div>
 
-        <!-- 金卡(副卡, 右上, 小, 倾斜) - 放后面 -->
-        <div class="card-3d virtual parallax-element" style="--parallax-rate: 0.25;">
-          <img src="/images/card-virtual.png" alt="UUPAY Gold Card" />
-        </div>
-
-        <!-- 卡间连线(在归位后显示) -->
-        <div class="card-connector" aria-hidden="true"></div>
-
-        <!-- 浮动标签(归位后浮现) -->
+        <!-- 浮动标签(在卡组下方独立行, 不再 absolute 压卡) -->
         <div class="card-labels">
           <div class="card-label" data-card="black">
             <span class="label-num">01</span>

@@ -829,11 +829,21 @@
 .card-pin-stage {
   position: relative;
   width: 100%;
-  height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);  /* 卡组和标签之间的间距 */
+  perspective: 1400px;
+}
+
+/* 卡组 - 包含两卡 + 连线, relative 定位让 absolute 卡相对它算 */
+.card-3d-group {
+  position: relative;
+  width: 100%;
+  height: 320px;  /* 给卡组固定高度容纳错位 */
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 1400px;
 }
 
 /* 3D 卡片 - 基础 */
@@ -862,6 +872,7 @@
 
 /* 黑卡(主卡) - 居中略左, 大, 轻微左旋 - 放前面 */
 .card-3d.black {
+  position: absolute;
   top: 50%;
   left: 50%;
   width: 420px;       /* 主卡大 */
@@ -874,6 +885,7 @@
 
 /* 金卡(副卡) - 叠在黑卡右上角, 小, 倾斜 - 放后面 */
 .card-3d.virtual {
+  position: absolute;
   top: 50%;
   left: 50%;
   width: 320px;       /* 副卡小 */
@@ -898,18 +910,15 @@
   transition: opacity 0.4s var(--ease-out);
 }
 
-/* 浮动标签 - 居中, 黑卡左 / 金卡右 */
+/* 浮动标签 - 在卡组下方独立行, 不再 absolute 压卡 */
 .card-labels {
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-8);
-  pointer-events: none;
+  gap: var(--space-7);
   z-index: 4;
+  /* 视觉上让两个标签跟两卡对齐 - 黑卡标签偏左, 金卡标签偏右 */
 }
 
 .card-label {
@@ -921,15 +930,16 @@
   transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
 }
 
+/* 黑卡标签 - 偏左对齐黑卡 */
 .card-label[data-card="black"] {
-  /* 黑卡在屏幕中心略左 (-180px), 标签往左靠 */
-  transform: translateX(-90px) translateY(12px);
+  margin-right: auto;   /* 推左 */
+  margin-left: 0;
 }
 
 .card-label[data-card="virtual"] {
   transition-delay: 0.05s;
-  /* 金卡在屏幕中心略右 (+60px), 标签往右靠 */
-  transform: translateX(60px) translateY(12px);
+  margin-left: auto;    /* 推右 */
+  margin-right: 0;
 }
 
 /* JS 加 .is-pinned 时显示 + 动画完成 */
@@ -939,14 +949,7 @@
 
 .card-pin.is-pinned .card-label {
   opacity: 1;
-}
-
-.card-pin.is-pinned .card-label[data-card="black"] {
-  transform: translateX(-90px) translateY(0);
-}
-
-.card-pin.is-pinned .card-label[data-card="virtual"] {
-  transform: translateX(60px) translateY(0);
+  transform: translateY(0);
 }
 
 .label-num {
@@ -966,7 +969,7 @@
   white-space: nowrap;
 }
 
-/* 移动端: 取消 pinning, 直接 stack */
+/* 移动端: 取消 pinning, 取消 absolute 卡片, 直接 stack */
 @media (max-width: 968px) {
   .card-pin {
     min-height: auto;
@@ -977,18 +980,24 @@
     top: auto;
     height: auto;
   }
-  .card-pin-stage {
-    height: 400px;
+  .card-3d-group {
+    height: auto;
+    flex-direction: column;
+    gap: var(--space-4);
   }
-  .card-3d.black,
-  .card-3d.virtual {
-    left: 50%;
+  .card-3d {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none !important;
   }
   .card-3d.black {
-    transform: translate(-100%, -50%) rotateY(-8deg) rotateX(5deg);
+    width: 90%;
+    max-width: 360px;
   }
   .card-3d.virtual {
-    transform: translate(80px, -50%) rotateY(15deg) rotateX(5deg);
+    width: 70%;
+    max-width: 280px;
   }
   .card-connector {
     opacity: 0.5;
@@ -996,6 +1005,14 @@
   .card-label {
     opacity: 1;
     transform: none;
+  }
+  .card-labels {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .card-label[data-card="black"],
+  .card-label[data-card="virtual"] {
+    margin: 0;
   }
 }
 
