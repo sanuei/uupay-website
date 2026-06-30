@@ -7,7 +7,10 @@
     "getStarted": "Empezar",
     "cards": "Tarjetas",
     "promotions": "Promociones",
-    "announcements": "Anuncios"
+    "announcements": "Anuncios",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "download": "Descargar"
   },
   "hero": {
     "title_part1": "Tus activos digitales,",

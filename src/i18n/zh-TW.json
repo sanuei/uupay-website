@@ -7,7 +7,10 @@
     "getStarted": "開始使用",
     "cards": "卡片",
     "promotions": "活動",
-    "announcements": "公告"
+    "announcements": "公告",
+    "login": "登入",
+    "register": "註冊",
+    "download": "下載"
   },
   "hero": {
     "title_part1": "您的數字資產，",

@@ -7,7 +7,10 @@
     "getStarted": "Mulakan",
     "cards": "Kad",
     "promotions": "Promosi",
-    "announcements": "Berita"
+    "announcements": "Berita",
+    "login": "Log masuk",
+    "register": "Daftar",
+    "download": "Muat turun"
   },
   "hero": {
     "title_part1": "Aset Digital Anda,",

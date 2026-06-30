@@ -7,7 +7,10 @@
     "getStarted": "Get Started",
     "cards": "Cards",
     "promotions": "Promotions",
-    "announcements": "News"
+    "announcements": "News",
+    "login": "Log in",
+    "register": "Sign up",
+    "download": "Download"
   },
   "hero": {
     "title_part1": "Your Digital Assets,",

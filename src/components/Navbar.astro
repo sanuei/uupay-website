@@ -71,6 +71,19 @@ const langEnName: Record<string, string> = {
     </ul>
 
     <div class="nav-actions">
+      <!-- 登入 (text link) -->
+      <a href="https://uupay.com/login" class="nav-action-link">{t('nav.login')}</a>
+
+      <!-- 註冊 (主 CTA, 亮绿实底) -->
+      <a href="https://uupay.com/register" class="btn btn-primary nav-action-cta">{t('nav.register')}</a>
+
+      <!-- 下载图标 (ghost button) -->
+      <button class="nav-action-icon" aria-label={t('nav.download')}>
+        <svg class="nav-action-svg" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 3V13M10 13L6 9M10 13L14 9M3 16H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
       <!-- 语言切换器 (Linear / Kraken 风格: globe + 2字代码 + chevron) -->
       <div class="lang-selector">
         <button class="lang-trigger" aria-label="Select language" aria-haspopup="true">
@@ -106,10 +119,6 @@ const langEnName: Record<string, string> = {
           ))}
         </div>
       </div>
-
-      <a href="https://uupay.com/register" class="btn btn-primary">
-        {t('nav.getStarted')}
-      </a>
     </div>
   </div>
 </header>

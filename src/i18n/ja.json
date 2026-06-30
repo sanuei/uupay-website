@@ -7,7 +7,10 @@
     "getStarted": "今すぐ開始",
     "cards": "カード",
     "promotions": "キャンペーン",
-    "announcements": "お知らせ"
+    "announcements": "お知らせ",
+    "login": "ログイン",
+    "register": "登録",
+    "download": "ダウンロード"
   },
   "hero": {
     "title_part1": "デジタル資産を、",

@@ -7,7 +7,10 @@
     "getStarted": "시작하기",
     "cards": "카드",
     "promotions": "프로모션",
-    "announcements": "공지"
+    "announcements": "공지",
+    "login": "로그인",
+    "register": "가입",
+    "download": "다운로드"
   },
   "hero": {
     "title_part1": "귀하의 디지털 자산,",

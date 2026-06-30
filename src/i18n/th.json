@@ -7,7 +7,10 @@
     "getStarted": "เริ่มต้นใช้งาน",
     "cards": "การ์ด",
     "promotions": "โปรโมชั่น",
-    "announcements": "ประกาศ"
+    "announcements": "ประกาศ",
+    "login": "เข้าสู่ระบบ",
+    "register": "สมัคร",
+    "download": "ดาวน์โหลด"
   },
   "hero": {
     "title_part1": "สินทรัพย์ดิจิทัลของคุณ",
