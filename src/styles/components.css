@@ -910,15 +910,15 @@
   transition: opacity 0.4s var(--ease-out);
 }
 
-/* 浮动标签 - 在卡组下方独立行, 不再 absolute 压卡 */
+/* 浮动标签 - 在卡组下方独立行, 黑卡左 / 金卡右 */
 .card-labels {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-7);
+  justify-content: space-between;  /* 两端对齐 */
+  width: 100%;
+  max-width: 720px;  /* 跟卡组宽度大致对齐 */
   z-index: 4;
-  /* 视觉上让两个标签跟两卡对齐 - 黑卡标签偏左, 金卡标签偏右 */
 }
 
 .card-label {
@@ -928,18 +928,6 @@
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
-}
-
-/* 黑卡标签 - 偏左对齐黑卡 */
-.card-label[data-card="black"] {
-  margin-right: auto;   /* 推左 */
-  margin-left: 0;
-}
-
-.card-label[data-card="virtual"] {
-  transition-delay: 0.05s;
-  margin-left: auto;    /* 推右 */
-  margin-right: 0;
 }
 
 /* JS 加 .is-pinned 时显示 + 动画完成 */
