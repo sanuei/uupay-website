@@ -1,0 +1,54 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+const base = lang === 'en' ? '' : `/${lang}`;
+---
+
+<section class="partner-preview">
+  <div class="container">
+    <div class="partner-box scroll-reveal">
+      <div class="partner-stats">
+        <div class="partner-stat">
+          <div class="num">500+</div>
+          <div class="label">{lang === 'zh-CN' || lang === 'zh-TW' ? 'UUPAY 合伙人' : 'UUPAY Partners'}</div>
+        </div>
+        <div class="partner-stat">
+          <div class="num">$100K+</div>
+          <div class="label">{lang === 'zh-CN' || lang === 'zh-TW' ? '累计佣金发放' : 'Rewards Disbursed'}</div>
+        </div>
+        <div class="partner-stat">
+          <div class="num">$2,000+</div>
+          <div class="label">{lang === 'zh-CN' || lang === 'zh-TW' ? '合伙人月均收入' : 'Avg. Monthly Income'}</div>
+        </div>
+        <div class="partner-stat">
+          <div class="num">24/7</div>
+          <div class="label">{lang === 'zh-CN' || lang === 'zh-TW' ? '实时结算' : 'Real-time Settlement'}</div>
+        </div>
+      </div>
+
+      <div class="partner-info">
+        <span class="eyebrow" style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px;">
+          <span style="width: 24px; height: 1px; background: var(--brand);"></span>
+          PARTNER
+        </span>
+        <h2>推介 <span class="kw">UUPAY</span> 赚取 <span class="kw">50%</span> 佣金</h2>
+        <p>{t('partners.subtitle')}</p>
+        <div class="partner-actions">
+          <a href={`${base}/partners`} class="btn btn-primary btn-large">
+            {t('partners.apply')}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href={`${base}/partners#how`} class="btn btn-secondary">
+            {t('partners.earn')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

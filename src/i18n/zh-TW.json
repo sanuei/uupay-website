@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "products": "產品功能",
+    "security": "安全保障",
+    "partners": "合夥人",
+    "about": "關於我們",
+    "getStarted": "開始使用",
+    "cards": "卡片",
+    "promotions": "活動",
+    "announcements": "公告"
+  },
+  "hero": {
+    "title_part1": "您的數字資產，",
+    "title_part2": "現在可以做更多。",
+    "title_html": "你的<span class=\"kw\">數位資產</span>,<br>現在可以做<span class=\"kw\">更多</span>。",
+    "eyebrow_text": "新一代加密金融基礎設施",
+    "subtitle": "新一代數字支付解決方案。支持 Visa & Mastercard 虛擬卡與實體卡、全球 eSIM 以及合规法幣提現。",
+    "cta_start": "立即開始",
+    "cta_download": "下載 App"
+  },
+  "features": {
+    "title": "釋放加密貨幣的真正力量",
+    "subtitle": "全球消費與數字資產管理所需的一切，盡在一個 App 掌握。",
+    "card1_title": "加密貨幣卡",
+    "card1_desc": "支持 Visa 與 Mastercard，在全球數千萬家商戶即刷即付，即開即用。",
+    "card2_title": "全球 eSIM",
+    "card2_desc": "覆蓋全球 137+ 國家和地區，支持加密貨幣支付並即時激活，落地即聯網。",
+    "card3_title": "大額出金",
+    "card3_desc": "持牌銀行直連，合規出金，大額資金無憂，享受極速安全出金體驗。",
+    "card4_title": "聊天即轉賬",
+    "card4_desc": "像聊天一樣發送資金，支持紅包、禮品和用戶間免手續費的同名劃轉。"
+  },
+  "cardShowcase": {
+    "title": "選擇專屬您的卡片",
+    "subtitle": "實體卡或虛擬卡，Visa 或 Mastercard。雙卡組織，滿足您的多樣消費需求。",
+    "virtual_title": "靈活便捷的虛擬卡",
+    "virtual_desc": "1分鐘極速開卡，即刻綁定，完美支持各類海淘消費和全球主流 SaaS 服務訂閱。",
+    "physical_title": "尊貴啞光黑實體卡",
+    "physical_desc": "高級啞光黑色實體卡。在全球支持 Visa 的 ATM 和 POS 機消費，尊享無境外交易費優惠。"
+  },
+  "stats": {
+    "countries": "覆蓋國家與地區",
+    "partners": "全球合作伙伴",
+    "rewards": "已發放佣金總額"
+  },
+  "esim": {
+    "title": "使用 eSIM 連接世界",
+    "subtitle": "免實體卡，免漫遊費。落地即刻聯網，隨時暢享高速網絡。",
+    "desc1": "支持全球 137+ 國家和地區網絡連接。",
+    "desc2": "支持 USDT 支付，掃碼秒級激活啟用。",
+    "desc3": "專為數字遊民量身打造的多樣流量套餐。"
+  },
+  "partners": {
+    "title": "UUPAY 推介合夥人計劃",
+    "subtitle": "推薦好友開卡消費，即可獲得最高 50% 比例的返傭獎勵。",
+    "earn": "開始賺取佣金",
+    "apply": "申請加入合夥人"
+  },
+  "promotions": {
+    "title": "限時特惠活動",
+    "subtitle": "專為早期用戶準備的專屬福利。",
+    "promo1_title": "1 USDT 開虛擬卡",
+    "promo1_desc": "活動期間僅需 1 USDT 即可開卡，開卡即送 1 USDT 消費金。",
+    "promo2_title": "充值手續費全免",
+    "promo2_desc": "活動期間所有充值與劃轉通道尊享 0 手續費優惠。"
+  },
+  "download": {
+    "title": "下載 UUPAY App",
+    "subtitle": "掃描下方二維碼或前往應用商店下載官方 App 體驗。",
+    "ios": "App Store 下載",
+    "android": "Google Play 下載",
+    "apk": "Android APK 下載"
+  },
+  "footer": {
+    "desc": "讓支付回歸簡單，讓世界觸手可達。新一代加密金融卡服務平台。",
+    "company": "公司",
+    "legal": "法律政策",
+    "support": "客戶支持",
+    "rights": "版權所有。"
+  }
+}

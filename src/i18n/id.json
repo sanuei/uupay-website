@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "products": "Fitur Produk",
+    "security": "Keamanan",
+    "partners": "Kemitraan",
+    "about": "Tentang Kami",
+    "getStarted": "Mulai",
+    "cards": "Kartu",
+    "promotions": "Promosi",
+    "announcements": "Pengumuman"
+  },
+  "hero": {
+    "title_part1": "Aset Digital Anda,",
+    "title_part2": "Kini Bisa Melakukan Lebih Banyak Hal.",
+    "title_html": "Aset <span class=\"kw\">digital</span> Anda,<br>sekarang bisa melakukan <span class=\"kw\">lebih banyak</span>.",
+    "eyebrow_text": "Infrastruktur Keuangan Kripto Generasi Baru",
+    "subtitle": "Platform pembayaran kripto generasi masa depan. Kartu virtual Visa & Mastercard, eSIM global, dan penarikan fiat yang lancar.",
+    "cta_start": "Mulai Sekarang",
+    "cta_download": "Unduh Aplikasi"
+  },
+  "features": {
+    "title": "Bebaskan Kekuatan Sejati Kripto",
+    "subtitle": "Semua yang Anda butuhkan untuk belanja global dan pengelolaan aset digital dalam satu aplikasi.",
+    "card1_title": "Kartu Kripto",
+    "card1_desc": "Mendukung Visa & Mastercard. Belanjakan kripto Anda secara global di jutaan merchant. Penerbitan kartu instan.",
+    "card2_title": "eSIM Global",
+    "card2_desc": "Koneksi di 137+ negara. Beli dengan kripto, aktifkan instan tanpa kartu SIM fisik.",
+    "card3_title": "Penarikan Fiat Besar",
+    "card3_desc": "Koneksi bank berlisensi langsung. Konversi kripto ke fiat volume besar yang aman dan patuh hukum.",
+    "card4_title": "Obrolan & Kirim Uang",
+    "card4_desc": "Kirim uang semudah mengirim pesan. Angpao, hadiah, dan transfer P2P tanpa biaya."
+  },
+  "cardShowcase": {
+    "title": "Pilih Kartu Anda",
+    "subtitle": "Kartu fisik atau kartu virtual, Visa atau Mastercard. Memenuhi berbagai kebutuhan belanja Anda.",
+    "virtual_title": "Kartu Virtual yang Fleksibel dan Nyaman",
+    "virtual_desc": "Penerbitan kartu instan dalam 1 menit, langsung tautkan, dukungan luar biasa untuk belanja online global dan langganan SaaS.",
+    "physical_title": "Kartu Fisik Hitam Doff Premium",
+    "physical_desc": "Kartu Visa fisik premium. Tarik tunai di ATM dan bayar di POS di seluruh dunia tanpa biaya transaksi internasional."
+  },
+  "stats": {
+    "countries": "Negara dan Wilayah yang Didukung",
+    "partners": "Mitra Global",
+    "rewards": "Total Komisi yang Dibayarkan"
+  },
+  "esim": {
+    "title": "Hubungkan Dunia dengan eSIM",
+    "subtitle": "Tanpa kartu fisik, tanpa biaya roaming. Hubungkan internet berkecepatan tinggi begitu Anda mendarat.",
+    "desc1": "Mendukung koneksi jaringan di 137+ negara dan wilayah di seluruh dunia.",
+    "desc2": "Mendukung pembayaran dengan USDT, pindai kode QR untuk aktifkan instan.",
+    "desc3": "Berbagai paket data yang dirancang khusus untuk Digital Nomad."
+  },
+  "partners": {
+    "title": "Program Kemitraan Referensi UUPAY",
+    "subtitle": "Rujuk teman untuk membuka kartu dan berbelanja untuk menerima hadiah komisi hingga 50%.",
+    "earn": "Mulai Menghasilkan Komisi",
+    "apply": "Ajukan Bergabung dengan Mitra"
+  },
+  "promotions": {
+    "title": "Penawaran Batas Waktu",
+    "subtitle": "Hadiah eksklusif untuk pengguna awal.",
+    "promo1_title": "Buka Kartu Virtual hanya 1 USDT",
+    "promo1_desc": "Selama periode kampanye, buka kartu hanya dengan 1 USDT dan terima hadiah belanja 1 USDT instan.",
+    "promo2_title": "Gratis Biaya Isi Ulang",
+    "promo2_desc": "Gratis 100% biaya transaksi deposit dan isi ulang selama periode promosi."
+  },
+  "download": {
+    "title": "Unduh Aplikasi UUPAY",
+    "subtitle": "Pindai kode QR di bawah ini atau kunjungi toko aplikasi resmi untuk mengunduh dan mulai merasakan.",
+    "ios": "Unduh di App Store",
+    "android": "Unduh di Google Play",
+    "apk": "Unduh APK Android"
+  },
+  "footer": {
+    "desc": "Sederhanakan pembayaran, dekatkan dunia. Platform kartu keuangan kripto generasi masa depan.",
+    "company": "Perusahaan",
+    "legal": "Kebijakan Hukum",
+    "support": "Dukungan",
+    "rights": "All rights reserved."
+  }
+}

@@ -1,0 +1,102 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+
+// 5 段内容: 每段一个标题 + 描述 + 对应截图
+const slides = [
+  {
+    key: 'home',
+    title_zh: '资产总览',
+    title_en: 'Assets Dashboard',
+    desc_zh: '预估总资产、钱包与卡片资产拆分、USDT 余额、快捷入口一屏掌控。',
+    desc_en: 'Estimated total assets, wallet & card split, USDT balance, and quick actions on one screen.',
+    img: '/images/app_home.png'
+  },
+  {
+    key: 'card',
+    title_zh: 'U 卡管理',
+    title_en: 'U-Card Control',
+    desc_zh: 'CVV 查看、充值、锁定、消费限额,所有操作 3 秒完成,实体虚拟卡同管。',
+    desc_en: 'CVV reveal, top-up, freeze, and spending limits — all in 3 seconds, virtual and physical cards.',
+    img: '/images/app_card.png'
+  },
+  {
+    key: 'chat',
+    title_zh: '聊天即转账',
+    title_en: 'Chat & Pay',
+    desc_zh: '像聊天一样发送资金,红包、礼品、同名划转,0 手续费即时到账。',
+    desc_en: 'Send money as easily as a message. Red packets, gifts, and zero-fee P2P transfers.',
+    img: '/images/app_chat.png'
+  },
+  {
+    key: 'activity',
+    title_zh: '返佣奖励',
+    title_en: 'Earn 50% Comm.',
+    desc_zh: '推荐并赚取最多 50% 佣金,实时结算,数据公开透明。',
+    desc_en: 'Refer and earn up to 50% commission, real-time settlement, fully transparent data.',
+    img: '/images/app_activity.png'
+  },
+  {
+    key: 'profile',
+    title_zh: '安全设置',
+    title_en: 'Security & eSIM',
+    desc_zh: '账户安全、系统设置、eSIM 一键购买,128-bit 加密守护每一笔交易。',
+    desc_en: 'Account security, system settings, one-tap eSIM purchase — 128-bit encryption on every tx.',
+    img: '/images/app_profile.png'
+  }
+];
+
+const isZh = lang === 'zh-CN' || lang === 'zh-TW';
+---
+
+<section class="app-sticky" id="app-sticky-section">
+  <div class="app-sticky-header section-header">
+    <span class="eyebrow">APP</span>
+    <h2>体验 <span class="kw">UUPAY App</span></h2>
+    <p>
+      {isZh
+        ? '5 个核心功能,一屏掌握。滚动浏览,看完整张卡片如何改变你的加密消费体验。'
+        : '5 core features, one screen. Scroll to see how a single app changes your crypto spending.'}
+    </p>
+  </div>
+
+  <!-- 主体:左侧 5 段文字 + 右侧 sticky 大图 -->
+  <div class="app-sticky-stage">
+    <div class="app-sticky-text">
+      {slides.map((slide, i) => (
+        <div class={`app-sticky-slide ${i === 0 ? 'is-active' : ''}`} data-slide-idx={i}>
+          <div class="slide-eyebrow">0{i + 1} / 0{slides.length}</div>
+          <h3 class="slide-title">
+            {isZh ? <span class="kw">{slide.title_zh}</span> : <span class="kw">{slide.title_en}</span>}
+          </h3>
+          <p class="slide-desc">
+            {isZh ? slide.desc_zh : slide.desc_en}
+          </p>
+          <div class="slide-line"></div>
+        </div>
+      ))}
+    </div>
+
+    <div class="app-sticky-phone">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          {slides.map((slide, i) => (
+            <img
+              src={slide.img}
+              alt={isZh ? slide.title_zh : slide.title_en}
+              class={`slide-img ${i === 0 ? 'is-active' : ''}`}
+              data-img-idx={i}
+            />
+          ))}
+        </div>
+      </div>
+      <div class="phone-glow" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "products": "Ciri Produk",
+    "security": "Keselamatan",
+    "partners": "Rakan Kongsi",
+    "about": "Tentang Kami",
+    "getStarted": "Mulakan",
+    "cards": "Kad",
+    "promotions": "Promosi",
+    "announcements": "Berita"
+  },
+  "hero": {
+    "title_part1": "Aset Digital Anda,",
+    "title_part2": "Kini Boleh Melakukan Lebih Banyak Lagi.",
+    "title_html": "Aset <span class=\"kw\">digital</span> anda,<br>kini boleh melakukan <span class=\"kw\">lebih banyak</span>.",
+    "eyebrow_text": "Infrastruktur Kewangan Kripto Generasi Baharu",
+    "subtitle": "Platform pembayaran kripto generasi akan datang. Kad maya Visa & Mastercard, eSIM global, dan pengeluaran fiat yang lancar.",
+    "cta_start": "Mula Sekarang",
+    "cta_download": "Muat Turun App"
+  },
+  "features": {
+    "title": "Bebaskan Kuasa Sebenar Kripto",
+    "subtitle": "Semua yang anda perlukan untuk perbelanjaan global dan pengurusan aset digital dalam satu aplikasi.",
+    "card1_title": "Kad Kripto",
+    "card1_desc": "Menyokong Visa & Mastercard. Belanjakan kripto anda secara global di jutaan pedagang. Pengeluaran kad segera.",
+    "card2_title": "eSIM Global",
+    "card2_desc": "Sambungan di 137+ negara. Beli dengan kripto dan aktifkan serta-merta tanpa kad SIM fizikal.",
+    "card3_title": "Pengeluaran Fiat Besar",
+    "card3_desc": "Sambungan bank terus berlesen. Penukaran kripto kepada fiat jumlah besar yang selamat dan patuh undang-undang.",
+    "card4_title": "Sembang & Bayar",
+    "card4_desc": "Hantar wang semudah menghantar mesej. Sampul merah, hadiah, dan pemindahan P2P tanpa yuran."
+  },
+  "cardShowcase": {
+    "title": "Pilih Kad Anda",
+    "subtitle": "Kad fizikal atau kad maya, Visa atau Mastercard. Memenuhi pelbagai keperluan perbelanjaan anda.",
+    "virtual_title": "Kad Maya Fleksibel dan Selesa",
+    "virtual_desc": "Pengeluaran kad segera dalam 1 minit, pautkan terus, sokongan hebat untuk beli-belah dalam talian global dan langganan SaaS.",
+    "physical_title": "Kad Fizikal Hitam Pusam Premium",
+    "physical_desc": "Kad Visa fizikal premium. Keluarkan tunai di ATM dan bayar di POS di seluruh dunia tanpa yuran transaksi antarabangsa."
+  },
+  "stats": {
+    "countries": "Negara dan Wilayah Disokong",
+    "partners": "Rakan Kongsi Global",
+    "rewards": "Jumlah Komisen Dibayar"
+  },
+  "esim": {
+    "title": "Hubungkan Dunia dengan eSIM",
+    "subtitle": "Tiada kad fizikal, tiada yuran perayauan. Sambungkan internet berkelajuan tinggi sebaik sahaja anda mendarat.",
+    "desc1": "Sokongan sambungan rangkaian di 137+ negara dan wilayah di seluruh dunia.",
+    "desc2": "Sokongan pembayaran dengan USDT, imbas kod QR untuk aktifkan serta-merta.",
+    "desc3": "Pelbagai pakej data yang direka khas untuk Digital Nomad."
+  },
+  "partners": {
+    "title": "Program Rakan Kongsi Rujukan UUPAY",
+    "subtitle": "Rujuk rakan untuk membuka kad dan berbelanja untuk menerima ganjaran komisen sehingga 50%.",
+    "earn": "Mula Menjana Komisen",
+    "apply": "Mohon Menyertai Rakan Kongsi"
+  },
+  "promotions": {
+    "title": "Tawaran Had Masa",
+    "subtitle": "Ganjaran eksklusif untuk pengguna terawal.",
+    "promo1_title": "Buka Kad Maya hanya 1 USDT",
+    "promo1_desc": "Dalam tempoh kempen, buka kad dengan hanya 1 USDT dan terima ganjaran perbelanjaan 1 USDT serta-merta.",
+    "promo2_title": "Percuma Yuran Tambah Nilai",
+    "promo2_desc": "Percuma 100% yuran transaksi deposit dan tambah nilai sepanjang tempoh promosi."
+  },
+  "download": {
+    "title": "Muat Turun Aplikasi UUPAY",
+    "subtitle": "Imbas kod QR di bawah atau lawati stor aplikasi rasmi untuk memuat turun dan mula mengalami.",
+    "ios": "Muat turun di App Store",
+    "android": "Muat turun di Google Play",
+    "apk": "Muat turun APK Android"
+  },
+  "footer": {
+    "desc": "Permudah pembayaran, dekatkan dunia. Platform kad kewangan kripto generasi akan datang.",
+    "company": "Syarikat",
+    "legal": "Dasar Undang-undang",
+    "support": "Sokongan",
+    "rights": "All rights reserved."
+  }
+}

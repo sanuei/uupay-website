@@ -1,0 +1,29 @@
+# 依赖
+node_modules/
+
+# Build 输出
+dist/
+.astro/
+
+# 环境
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# 日志
+*.log
+npm-debug.log*
+
+# Wrangler
+.wrangler/
+.dev.vars
+
+# 测试
+coverage/

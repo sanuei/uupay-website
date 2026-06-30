@@ -1,0 +1,42 @@
+---
+import Layout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allAnnouncements = await getCollection('announcements');
+  return allAnnouncements.map(post => ({
+    params: { slug: post.id },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const lang = 'ko';
+---
+
+<Layout title={`${post.data.title} | UUPAY`} lang={lang}>
+  <Header lang={lang} />
+  
+  <main class="article-container container animate-in" style="padding-top: 120px; min-height: 70vh;">
+    <a href={`/${lang === 'en' ? '' : lang + '/'}announcements`} class="back-link">← Back to Announcements</a>
+    
+    <article class="docs-content prose" style="max-width: 800px; margin: 40px auto 0;">
+      <header class="docs-header" style="margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1)">
+        <div class="meta" style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px; font-size: 14px; color: var(--text-secondary)">
+          <span class="tag" style="background: rgba(57, 255, 20, 0.1); color: var(--brand-primary); padding: 4px 12px; border-radius: var(--radius-pill);">{post.data.type}</span>
+          <span class="date">{post.data.date.toISOString().split('T')[0]}</span>
+        </div>
+        <h1 style="font-size: 40px; line-height: 1.2;">{post.data.title}</h1>
+      </header>
+      
+      <div class="markdown-body">
+        <Content />
+      </div>
+    </article>
+  </main>
+  
+  <Footer lang={lang} />
+</Layout>

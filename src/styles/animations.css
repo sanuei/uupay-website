@@ -1,0 +1,172 @@
+/* =====================================================
+   UUPAY Animations v2
+   修复:
+   1. animation-timeline Safari fallback (用 CSS 变量 + JS)
+   2. JS 直接改 style 覆盖 CSS transition 的 bug (用 data-attribute + CSS attr 配合)
+   ===================================================== */
+
+/* ===== 滚动入场 (Scroll-triggered) ===== */
+.scroll-reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.js .scroll-reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.js .reveal-left:not(.is-visible) {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.js .reveal-right:not(.is-visible) {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.js .reveal-scale:not(.is-visible) {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ===== Stagger delays (5 元素以内) ===== */
+.stagger-item:nth-child(1) { transition-delay: 0ms; }
+.stagger-item:nth-child(2) { transition-delay: 100ms; }
+.stagger-item:nth-child(3) { transition-delay: 200ms; }
+.stagger-item:nth-child(4) { transition-delay: 300ms; }
+.stagger-item:nth-child(5) { transition-delay: 400ms; }
+
+/* ===== 阅读进度条 (顶部 1px 亮绿) =====
+   现代浏览器用 scroll-driven,旧浏览器用 JS 改 --progress 变量 */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--brand);
+  transform-origin: left center;
+  transform: scaleX(var(--progress, 0));
+  z-index: var(--z-modal);
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* 现代浏览器 (Chrome 115+, Firefox 110+) 用原生 scroll timeline 覆盖 */
+@supports (animation-timeline: scroll()) {
+  .reading-progress {
+    animation: grow-progress linear;
+    animation-timeline: scroll();
+    transform: scaleX(1);
+  }
+}
+
+@keyframes grow-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ===== 视差 (Parallax) - 元素自身 transform,不冲突 hover ===== */
+.parallax-element {
+  will-change: transform;
+  transform: translate3d(0, calc(var(--scroll-y, 0px) * var(--parallax-rate, 0)), 0);
+  transition: transform 0.05s linear;
+}
+
+/* ===== Pulse 徽章 (限时 HOT) ===== */
+@keyframes pulse-brand {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+
+.pulse {
+  animation: pulse-brand 1.6s var(--ease-in-out) infinite;
+  transform-origin: center;
+}
+
+/* ===== 立方体旋转 (Hero 装饰) ===== */
+@keyframes rotate-cube {
+  0%   { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(0deg); }
+}
+
+.cube-rotate {
+  animation: rotate-cube 18s linear infinite;
+  transform-style: preserve-3d;
+}
+
+/* ===== 浮动 (缓慢上下) ===== */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+.float-y {
+  animation: float-y 4s var(--ease-in-out) infinite;
+}
+
+/* ===== Conic gradient 边框走马灯 (feature 卡 hover) ===== */
+@keyframes conic-spin {
+  to { --angle: 360deg; }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* 移动端禁用重型动画 */
+@media (max-width: 768px) {
+  .parallax-element {
+    transform: none !important;
+  }
+  .cube-rotate {
+    animation: none;
+  }
+}

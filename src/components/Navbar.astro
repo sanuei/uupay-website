@@ -1,0 +1,115 @@
+---
+import { languages, useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof languages;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const base = lang === 'en' ? '' : `/${lang}`;
+
+// 当前语言显示: EN / 中 / 日 / Esp / عر
+const langShort: Record<string, string> = {
+  en: 'EN',
+  'zh-CN': '中',
+  'zh-TW': '繁',
+  ja: '日',
+  ko: '한',
+  vi: 'VN',
+  th: 'TH',
+  ms: 'MY',
+  id: 'ID',
+  es: 'ES',
+  ar: 'عر'
+};
+
+// 国旗 emoji 暂时保留,但只用在小下拉里
+const flag: Record<string, string> = {
+  en: '🇺🇸',
+  'zh-CN': '🇨🇳',
+  'zh-TW': '🇭🇰',
+  ja: '🇯🇵',
+  ko: '🇰🇷',
+  vi: '🇻🇳',
+  th: '🇹🇭',
+  ms: '🇲🇾',
+  id: '🇮🇩',
+  es: '🇪🇸',
+  ar: '🇸🇦'
+};
+
+// 语言英文名(用于下拉副标)
+const langEnName: Record<string, string> = {
+  en: 'English',
+  'zh-CN': 'Simplified Chinese',
+  'zh-TW': 'Traditional Chinese',
+  ja: 'Japanese',
+  ko: 'Korean',
+  vi: 'Vietnamese',
+  th: 'Thai',
+  ms: 'Malay',
+  id: 'Indonesian',
+  es: 'Spanish',
+  ar: 'Arabic'
+};
+---
+
+<header class="navbar">
+  <div class="container">
+    <a href={`${base}/`} class="nav-logo">
+      <img src="/images/logo.png" alt="UUPAY" class="nav-logo-img" />
+      <span class="nav-logo-text">UUPAY</span>
+    </a>
+
+    <ul class="nav-menu">
+      <li><a href="#products" class="nav-link">{t('nav.products')}</a></li>
+      <li><a href="#cards" class="nav-link">{t('nav.cards')}</a></li>
+      <li><a href={`${base}/partners`} class="nav-link">{t('nav.partners')}</a></li>
+      <li><a href={`${base}/promotions`} class="nav-link">{t('nav.promotions')}</a></li>
+      <li><a href={`${base}/announcements`} class="nav-link">{t('nav.announcements')}</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <!-- 语言切换器 (Linear / Kraken 风格: globe + 2字代码 + chevron) -->
+      <div class="lang-selector">
+        <button class="lang-trigger" aria-label="Select language" aria-haspopup="true">
+          <svg class="lang-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M2.5 10H17.5M10 2.5C11.5 4.5 12.5 7 12.5 10C12.5 13 11.5 15.5 10 17.5M10 2.5C8.5 4.5 7.5 7 7.5 10C7.5 13 8.5 15.5 10 17.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <span class="lang-code">{langShort[lang] || 'EN'}</span>
+          <svg class="lang-chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-dropdown" role="menu" aria-label="Languages">
+          <div class="lang-dropdown-header">Language</div>
+          {Object.entries(languages).map(([code, name]) => (
+            <a
+              href={code === 'en' ? '/' : `/${code}/`}
+              class={`lang-option ${code === lang ? 'active' : ''}`}
+              role="menuitem"
+              data-lang={code}
+            >
+              <span class="lang-flag">{flag[code]}</span>
+              <span class="lang-name">
+                <span class="lang-name-native">{name}</span>
+                <span class="lang-name-en">{langEnName[code]}</span>
+              </span>
+              {code === lang && (
+                <svg class="lang-check" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8L6.5 11.5L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              )}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <a href="https://uupay.com/register" class="btn btn-primary">
+        {t('nav.getStarted')}
+      </a>
+    </div>
+  </div>
+</header>

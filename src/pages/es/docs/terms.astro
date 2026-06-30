@@ -1,0 +1,10 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import { Content } from '../../../content/terms.md';
+
+const lang = 'es';
+---
+
+<DocsLayout frontmatter={{ title: 'Terms & Conditions' }} lang={lang}>
+  <Content />
+</DocsLayout>

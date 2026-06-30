@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "products": "서비스 기능",
+    "security": "보안 지원",
+    "partners": "파트너",
+    "about": "회사 소개",
+    "getStarted": "시작하기",
+    "cards": "카드",
+    "promotions": "프로모션",
+    "announcements": "공지"
+  },
+  "hero": {
+    "title_part1": "귀하의 디지털 자산,",
+    "title_part2": "이제 더 많은 것을 할 수 있습니다.",
+    "title_html": "당신의 <span class=\"kw\">디지털 자산</span>,<br>이제 <span class=\"kw\">더 많은 것</span>을 할 수 있습니다.",
+    "eyebrow_text": "차세대 암호 금융 인프라",
+    "subtitle": "차세대 암호화폐 결제 플랫폼. Visa 및 Mastercard 가상 카드, 글로벌 eSIM, 원활한 법정화폐 인출 지원.",
+    "cta_start": "지금 시작하기",
+    "cta_download": "앱 다운로드"
+  },
+  "features": {
+    "title": "암호화폐의 진정한 힘을 발휘하다",
+    "subtitle": "글로벌 소비와 디지털 자산 관리에 필요한 모든 것을 하나의 앱에서 경험하세요.",
+    "card1_title": "암호화폐 카드",
+    "card1_desc": "Visa 및 Mastercard 지원. 전 세계 수천만 가맹점에서 즉시 암호화폐 결제 사용 가능.",
+    "card2_title": "글로벌 eSIM",
+    "card2_desc": "전 세계 137개국 이상 커버. 암호화폐로 결제하고 즉시 활성화하여 도착 즉시 연결.",
+    "card3_title": "대액 인출",
+    "card3_desc": "라이선스 은행 직접 연동으로 안전하고 법규를 준수하는 대용량 암호화폐-법정화폐 변환.",
+    "card4_title": "채팅 송금",
+    "card4_desc": "메시지 보내듯 간편하게 송금. 홍바오(붉은 봉투), 선물 및 수수료 없는 P2P 전송 지원."
+  },
+  "cardShowcase": {
+    "title": "귀하만의 카드 선택",
+    "subtitle": "실물 카드 또는 가상 카드, Visa 또는 Mastercard. 다양한 필요를 충족합니다.",
+    "virtual_title": "유연하고 편리한 가상 카드",
+    "virtual_desc": "1분 내 즉시 발급. 온라인 쇼핑 및 글로벌 SaaS 구독에 이상적입니다.",
+    "physical_title": "프리미엄 매트 블랙 실물 카드",
+    "physical_desc": "고급 매트 블랙 Visa 카드. 전 세계 ATM 및 POS에서 해외 거래 수수료 없이 사용하세요."
+  },
+  "stats": {
+    "countries": "지원 국가 및 지역",
+    "partners": "글로벌 파트너",
+    "rewards": "누적 수수료 지급액"
+  },
+  "esim": {
+    "title": "eSIM으로 세계를 연결하다",
+    "subtitle": "실물 카드 없이, 로밍 요금 없이. 도착 즉시 초고속 인터넷을 즐겨보세요.",
+    "desc1": "전 세계 137개국 이상의 네트워크 지원.",
+    "desc2": "USDT 결제 가능, QR 코드 스캔으로 즉시 활성화.",
+    "desc3": "디지털 노마드를 위한 맞춤형 다양한 데이터 요금제."
+  },
+  "partners": {
+    "title": "UUPAY 추천 파트너 프로그램",
+    "subtitle": "친구에게 카드를 추천하여 개설하고 사용하면 최대 50%의 보상을 받을 수 있습니다.",
+    "earn": "수수료 수익 시작",
+    "apply": "파트너 신청하기"
+  },
+  "promotions": {
+    "title": "기간 한정 캠페인",
+    "subtitle": "초기 가입 고객만을 위한 특별한 혜택.",
+    "promo1_title": "1 USDT 가상 카드 발급",
+    "promo1_desc": "이벤트 기간 동안 단 1 USDT로 카드를 발급하고, 1 USDT 소비금을 즉시 증정.",
+    "promo2_title": "충전 수수료 완전 면제",
+    "promo2_desc": "이벤트 기간 내 모든 충전 및 이체 채널에 대해 수수료 0% 혜택 적용."
+  },
+  "download": {
+    "title": "UUPAY 앱 다운로드",
+    "subtitle": "아래 QR 코드를 스캔하거나 공식 앱 스토어에서 다운로드하여 시작해보세요.",
+    "ios": "App Store 다운로드",
+    "android": "Google Play 다운로드",
+    "apk": "Android APK 다운로드"
+  },
+  "footer": {
+    "desc": "결제를 간단하게, 세상을 더 가깝게. 차세대 암호화폐 결제 금융 카드 플랫폼.",
+    "company": "회사",
+    "legal": "법률 정책",
+    "support": "고객 지원",
+    "rights": "All rights reserved."
+  }
+}

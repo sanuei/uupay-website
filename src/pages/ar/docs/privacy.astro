@@ -1,0 +1,10 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import { Content } from '../../../content/privacy.md';
+
+const lang = 'ar';
+---
+
+<DocsLayout frontmatter={{ title: 'Privacy Policy' }} lang={lang}>
+  <Content />
+</DocsLayout>

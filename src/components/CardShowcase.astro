@@ -1,0 +1,51 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+---
+
+<!-- Pinning 容器: 2 屏高,内部 sticky 钉住 1 屏 -->
+<section id="cards" class="card-pin" data-card-pin-target>
+  <!-- Sticky 内部: 钉在视口里 1 屏 -->
+  <div class="card-pin-sticky">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">U-CARD</span>
+        <h2>选择专属<span class="kw">你的卡片</span></h2>
+        <p>{t('cardShowcase.subtitle')}</p>
+      </div>
+
+      <div class="card-pin-stage scroll-reveal">
+        <!-- 黑卡(主卡, 居中, 大) - 放前面 -->
+        <div class="card-3d black parallax-element" style="--parallax-rate: 0.15;">
+          <img src="/images/card-black.png" alt="UUPAY Black Physical Card" />
+        </div>
+
+        <!-- 金卡(副卡, 右上, 小, 倾斜) - 放后面 -->
+        <div class="card-3d virtual parallax-element" style="--parallax-rate: 0.25;">
+          <img src="/images/card-virtual.png" alt="UUPAY Gold Card" />
+        </div>
+
+        <!-- 卡间连线(在归位后显示) -->
+        <div class="card-connector" aria-hidden="true"></div>
+
+        <!-- 浮动标签(归位后浮现) -->
+        <div class="card-labels">
+          <div class="card-label" data-card="black">
+            <span class="label-num">01</span>
+            <span class="label-text">{t('cardShowcase.physical_title')}</span>
+          </div>
+          <div class="card-label" data-card="virtual">
+            <span class="label-num">02</span>
+            <span class="label-text">{t('cardShowcase.virtual_title')}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

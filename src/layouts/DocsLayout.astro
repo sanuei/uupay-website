@@ -1,0 +1,268 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+    lastUpdated?: string;
+  };
+  lang: string;
+}
+
+const { frontmatter, lang } = Astro.props;
+---
+
+<BaseLayout title={`${frontmatter.title} | UUPAY`} description={frontmatter.description} lang={lang}>
+  <Navbar lang={lang as any} />
+  
+  <main class="docs-container">
+    <!-- Column 1: Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-sticky">
+        <h3 class="sidebar-title">Document Center</h3>
+        <nav class="sidebar-nav">
+          <a href={lang === 'en' ? '/docs/privacy' : `/${lang}/docs/privacy`} class={Astro.url.pathname.includes('/privacy') ? 'active' : ''}>
+            Privacy Policy
+          </a>
+          <a href={lang === 'en' ? '/docs/terms' : `/${lang}/docs/terms`} class={Astro.url.pathname.includes('/terms') ? 'active' : ''}>
+            Terms & Conditions
+          </a>
+        </nav>
+      </div>
+    </aside>
+    
+    <!-- Column 2: Document Content -->
+    <article class="docs-content prose scroll-reveal animate-in">
+      <header class="docs-header">
+        <h1>{frontmatter.title}</h1>
+        {frontmatter.lastUpdated && <p class="last-updated">Last Updated: {frontmatter.lastUpdated}</p>}
+      </header>
+      
+      <div class="markdown-body">
+        <slot />
+      </div>
+    </article>
+
+    <!-- Column 3: Table of Contents -->
+    <aside class="toc-sidebar">
+      <div class="sidebar-sticky">
+        <h3 class="sidebar-title">On This Page</h3>
+        <ul id="toc-list" class="toc-list">
+          <!-- Dynamically populated via JS -->
+        </ul>
+      </div>
+    </aside>
+  </main>
+  
+  <Footer lang={lang} />
+</BaseLayout>
+
+<style>
+  .docs-container {
+    max-width: 1400px;
+    margin: 120px auto 60px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 240px 1fr 240px;
+    gap: 48px;
+    min-height: calc(100vh - 300px);
+  }
+  
+  .sidebar-sticky {
+    position: sticky;
+    top: 100px;
+  }
+  
+  .sidebar-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .sidebar-nav a {
+    display: block;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 14px;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+  }
+  
+  .sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+  }
+  
+  .sidebar-nav a.active {
+    background: rgba(57, 255, 20, 0.08);
+    color: var(--brand-primary);
+    border-left-color: var(--brand-primary);
+    font-weight: 600;
+  }
+  
+  .docs-content {
+    max-width: 760px;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  
+  .docs-header {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .docs-header h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+    font-weight: 800;
+  }
+  
+  .last-updated {
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+  
+  /* Markdown Specific overrides */
+  .markdown-body :global(h2) {
+    font-size: 22px;
+    margin: 48px 0 20px;
+    color: var(--text-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 8px;
+    scroll-margin-top: 100px;
+  }
+  
+  .markdown-body :global(h3) {
+    font-size: 18px;
+    margin: 32px 0 16px;
+    color: var(--text-primary);
+    scroll-margin-top: 100px;
+  }
+  
+  .markdown-body :global(p) {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+  }
+
+  .markdown-body :global(ul) {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+
+  .markdown-body :global(li) {
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+  }
+
+  /* Table of Contents Column */
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .toc-list :global(li) {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .toc-list :global(a) {
+    color: var(--text-secondary);
+    transition: color 0.2s;
+    display: block;
+    padding: 2px 0;
+  }
+
+  .toc-list :global(a:hover) {
+    color: var(--text-primary);
+  }
+
+  .toc-list :global(.toc-h3) {
+    padding-left: 12px;
+    font-size: 12px;
+  }
+
+  .toc-list :global(.active-toc) {
+    color: var(--brand-primary) !important;
+    font-weight: 600;
+  }
+  
+  @media (max-width: 1200px) {
+    .docs-container {
+      grid-template-columns: 200px 1fr;
+    }
+    .toc-sidebar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .docs-container {
+      grid-template-columns: 1fr;
+      margin-top: 100px;
+    }
+    .sidebar {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+  }
+</style>
+
+<script>
+  // Dynamic Table of Contents (TOC) Builder
+  document.addEventListener('DOMContentLoaded', () => {
+    const markdownBody = document.querySelector('.markdown-body');
+    const tocList = document.getElementById('toc-list');
+    
+    if (markdownBody && tocList) {
+      // Find all H2 and H3 tags
+      const headings = markdownBody.querySelectorAll('h2, h3');
+      const observers: IntersectionObserver[] = [];
+
+      headings.forEach((heading, idx) => {
+        // Create clean ID if not exists
+        const id = heading.id || heading.textContent?.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-') || `heading-${idx}`;
+        heading.id = id;
+
+        // Create TOC list item
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `#${id}`;
+        a.textContent = heading.textContent;
+        if (heading.tagName.toLowerCase() === 'h3') {
+          a.classList.add('toc-h3');
+        }
+        li.appendChild(a);
+        tocList.appendChild(li);
+
+        // Highlight Active Heading on Scroll
+        const tocObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              document.querySelectorAll('#toc-list a').forEach(el => el.classList.remove('active-toc'));
+              a.classList.add('active-toc');
+            }
+          });
+        }, { rootMargin: '-100px 0px -70% 0px' });
+
+        tocObserver.observe(heading);
+      });
+    }
+  });
+</script>

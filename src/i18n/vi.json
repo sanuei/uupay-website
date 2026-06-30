@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "products": "Tính năng sản phẩm",
+    "security": "Bảo mật",
+    "partners": "Đối tác",
+    "about": "Giới thiệu",
+    "getStarted": "Bắt đầu ngay",
+    "cards": "Thẻ",
+    "promotions": "Khuyến mãi",
+    "announcements": "Thông báo"
+  },
+  "hero": {
+    "title_part1": "Tài sản kỹ thuật số của bạn,",
+    "title_part2": "Giờ đây có thể làm nhiều hơn thế.",
+    "title_html": "Tài sản <span class=\"kw\">kỹ thuật số</span> của bạn,<br>bây giờ có thể làm <span class=\"kw\">nhiều hơn</span>.",
+    "eyebrow_text": "Cơ sở hạ tầng tài chính tiền điện tử thế hệ mới",
+    "subtitle": "Nền tảng thanh toán tiền điện tử thế hệ mới. Thẻ ảo Visa & Mastercard, eSIM toàn cầu và rút tiền fiat liền mạch.",
+    "cta_start": "Bắt đầu ngay",
+    "cta_download": "Tải App"
+  },
+  "features": {
+    "title": "Giải phóng sức mạnh thực sự của Crypto",
+    "subtitle": "Mọi thứ bạn cần cho chi tiêu toàn cầu và quản lý tài sản kỹ thuật số chỉ trong một ứng dụng.",
+    "card1_title": "Thẻ Crypto",
+    "card1_desc": "Hỗ trợ Visa & Mastercard. Chi tiêu crypto toàn cầu tại hàng triệu điểm chấp nhận thẻ. Phát hành ngay lập tức.",
+    "card2_title": "eSIM toàn cầu",
+    "card2_desc": "Kết nối tại 137+ quốc gia. Mua bằng crypto, kích hoạt ngay không cần SIM vật lý.",
+    "card3_title": "Rút tiền Fiat lớn",
+    "card3_desc": "Kết nối trực tiếp ngân hàng được cấp phép. Chuyển đổi crypto sang fiat khối lượng lớn an toàn và tuân thủ pháp luật.",
+    "card4_title": "Trò chuyện & Chuyển tiền",
+    "card4_desc": "Gửi tiền dễ dàng như gửi tin nhắn. Lì xì, quà tặng và chuyển khoản P2P không mất phí."
+  },
+  "cardShowcase": {
+    "title": "Chọn thẻ của riêng bạn",
+    "subtitle": "Thẻ vật lý hoặc thẻ ảo, Visa hoặc Mastercard. Đáp ứng đa dạng nhu cầu tiêu dùng của bạn.",
+    "virtual_title": "Thẻ ảo linh hoạt và tiện lợi",
+    "virtual_desc": "Phát hành thẻ nhanh chóng trong 1 phút, liên kết tức thì, hỗ trợ tuyệt vời cho mua sắm trực tuyến toàn cầu và đăng ký SaaS.",
+    "physical_title": "Thẻ vật lý đen mờ sang trọng",
+    "physical_desc": "Thẻ Visa vật lý cao cấp. Rút tiền tại ATM và thanh toán POS trên toàn cầu mà không mất phí giao dịch quốc tế."
+  },
+  "stats": {
+    "countries": "Quốc gia và khu vực được hỗ trợ",
+    "partners": "Đối tác toàn cầu",
+    "rewards": "Tổng hoa hồng đã chi trả"
+  },
+  "esim": {
+    "title": "Kết nối thế giới với eSIM",
+    "subtitle": "Không cần thẻ vật lý, không phí chuyển vùng. Kết nối internet tốc độ cao ngay khi đáp máy bay.",
+    "desc1": "Hỗ trợ kết nối mạng tại 137+ quốc gia và vùng lãnh thổ.",
+    "desc2": "Hỗ trợ thanh toán bằng USDT, quét mã QR kích hoạt trong vài giây.",
+    "desc3": "Các gói cước đa dạng được thiết kế riêng cho các Digital Nomad."
+  },
+  "partners": {
+    "title": "Chương trình đối tác giới thiệu UUPAY",
+    "subtitle": "Giới thiệu bạn bè mở thẻ và chi tiêu để nhận phần thưởng hoa hồng lên tới 50%.",
+    "earn": "Bắt đầu kiếm hoa hồng",
+    "apply": "Đăng ký tham gia đối tác"
+  },
+  "promotions": {
+    "title": "Chương trình ưu đãi có hạn",
+    "subtitle": "Phần thưởng độc quyền dành cho những người dùng đầu tiên.",
+    "promo1_title": "Mở thẻ ảo chỉ với 1 USDT",
+    "promo1_desc": "Trong thời gian diễn ra hoạt động, chỉ cần 1 USDT để mở thẻ và nhận ngay 1 USDT tiêu dùng.",
+    "promo2_title": "Miễn phí nạp tiền",
+    "promo2_desc": "Miễn phí 100% phí giao dịch nạp tiền và chuyển tiền trong suốt thời gian khuyến mãi."
+  },
+  "download": {
+    "title": "Tải ứng dụng UUPAY",
+    "subtitle": "Quét mã QR dưới đây hoặc truy cập cửa hàng ứng dụng chính thức để tải và trải nghiệm ngay.",
+    "ios": "Tải trên App Store",
+    "android": "Tải trên Google Play",
+    "apk": "Tải APK cho Android"
+  },
+  "footer": {
+    "desc": "Thanh toán đơn giản hơn, thế giới gần hơn. Nền tảng thẻ tài chính tiền điện tử thế hệ mới.",
+    "company": "Công ty",
+    "legal": "Chính sách pháp lý",
+    "support": "Hỗ trợ",
+    "rights": "All rights reserved."
+  }
+}

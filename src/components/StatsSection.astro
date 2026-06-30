@@ -1,0 +1,55 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+---
+
+<!-- Pinning 容器: 3 屏高,内部 sticky 钉 1 屏 -->
+<section class="stats-pin" id="stats-pin-target">
+  <div class="stats-pin-sticky">
+    <div class="container">
+      <div class="stats-pin-header">
+        <span class="eyebrow">BY THE NUMBERS</span>
+        <h2>用<span class="kw">数据</span>说话</h2>
+      </div>
+
+      <div class="stats-pin-grid">
+        <div class="stats-pin-item" data-stats-idx="0" data-target="137" data-suffix="+">
+          <div class="num-wrap">
+            <span class="num countup-val">0</span>
+            <span class="suffix">+</span>
+          </div>
+          <div class="divider"></div>
+          <div class="label">{t('stats.countries')}</div>
+        </div>
+
+        <div class="stats-pin-item" data-stats-idx="1" data-target="500" data-suffix="+">
+          <div class="num-wrap">
+            <span class="num countup-val">0</span>
+            <span class="suffix">+</span>
+          </div>
+          <div class="divider"></div>
+          <div class="label">{t('stats.partners')}</div>
+        </div>
+
+        <div class="stats-pin-item" data-stats-idx="2" data-target="100000" data-suffix="+">
+          <div class="num-wrap">
+            <span class="num countup-val">0</span>
+            <span class="suffix">+</span>
+          </div>
+          <div class="divider"></div>
+          <div class="label">{t('stats.rewards')}</div>
+        </div>
+      </div>
+
+      <div class="stats-progress">
+        <div class="stats-progress-bar" id="stats-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "products": "サービス",
+    "security": "セキュリティ",
+    "partners": "パートナー",
+    "about": "会社概要",
+    "getStarted": "今すぐ開始",
+    "cards": "カード",
+    "promotions": "キャンペーン",
+    "announcements": "お知らせ"
+  },
+  "hero": {
+    "title_part1": "デジタル資産を、",
+    "title_part2": "もっと自由に使えるように。",
+    "title_html": "あなたの<span class=\"kw\">デジタル資産</span>が、<br>今、<span class=\"kw\">もっと</span>できる。",
+    "eyebrow_text": "次世代暗号金融インフラ",
+    "subtitle": "次世代の暗号資産決済プラットフォーム。Visa＆Mastercard仮想カード、グローバルeSIM、シームレスな法定通貨への出金をサポート。",
+    "cta_start": "今すぐ開始",
+    "cta_download": "アプリをダウンロード"
+  },
+  "features": {
+    "title": "暗号資産の真の力を解き放つ",
+    "subtitle": "世界中での支払いとデジタル資産の管理に必要なすべてが、1つのアプリに集約されています。",
+    "card1_title": "暗号資産カード",
+    "card1_desc": "VisaとMastercardをサポート。世界中の何千万もの加盟店で即座に決済が可能です。",
+    "card2_title": "グローバルeSIM",
+    "card2_desc": "世界137カ国以上をカバー。暗号資産で購入し、すぐにアクティベートしてネットに接続。",
+    "card3_title": "大口出金サービス",
+    "card3_desc": "ライセンス銀行との直接連携により、安心・安全に大口の暗号資産から法定通貨への換金を実現。",
+    "card4_title": "チャット送金",
+    "card4_desc": "メッセージを送るように簡単に送金。お年玉、ギフト、手数料無料のP2P送金をサポート。"
+  },
+  "cardShowcase": {
+    "title": "あなただけのカードを選択",
+    "subtitle": "リアルカードか仮想カード、VisaかMastercard。ニーズに合わせてお選びいただけます。",
+    "virtual_title": "柔軟で便利な仮想カード",
+    "virtual_desc": "1分で即時発行。オンラインショッピングやグローバルSaaSサブスクリプションに最適です。",
+    "physical_title": "プレミアムマットブラック実体カード",
+    "physical_desc": "高級感のあるマットブラックVisaカード。世界中のATMやPOS端末での取引で海外手数料が無料に。"
+  },
+  "stats": {
+    "countries": "カバー国・地域",
+    "partners": "グローバルパートナー",
+    "rewards": "累計報酬支払額"
+  },
+  "esim": {
+    "title": "eSIMで世界とつながる",
+    "subtitle": "物理カード不要、ローミング料金不要。到着後すぐに高速インターネットをご利用いただけます。",
+    "desc1": "世界137カ国・地域のネットワーク接続に対応。",
+    "desc2": "USDTでの支払いに対応、QRコードスキャンで即座にアクティベート。",
+    "desc3": "デジタルノマドに最適な多様なデータプラン。"
+  },
+  "partners": {
+    "title": "UUPAYパートナープログラム",
+    "subtitle": "友人を紹介してカードを開設・利用してもらうことで、最大50%の報酬を獲得できます。",
+    "earn": "報酬獲得を開始",
+    "apply": "パートナー登録申請"
+  },
+  "promotions": {
+    "title": "期間限定キャンペーン",
+    "subtitle": "早期ユーザー向けの特別な限定特典。",
+    "promo1_title": "1 USDTで仮想カード発行",
+    "promo1_desc": "キャンペーン期間中、わずか1 USDTでカード発行、さらに1 USDTの消費クレジットを即時プレゼント。",
+    "promo2_title": "チャージ手数料無料",
+    "promo2_desc": "期間中、すべてのチャージおよび送金チャンネルで手数料が無料になります。"
+  },
+  "download": {
+    "title": "UUPAYアプリのダウンロード",
+    "subtitle": "以下のQRコードをスキャンするか、公式アプリストアからダウンロードして体験してください。",
+    "ios": "App Storeでダウンロード",
+    "android": "Google Playでダウンロード",
+    "apk": "Android APKダウンロード"
+  },
+  "footer": {
+    "desc": "決済をシンプルに、世界をもっと身近に。次世代の暗号資産金融カードプラットフォーム。",
+    "company": "会社",
+    "legal": "法的ポリシー",
+    "support": "サポート",
+    "rights": "All rights reserved."
+  }
+}

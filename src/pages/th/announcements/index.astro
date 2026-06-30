@@ -1,0 +1,35 @@
+---
+import Layout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const allAnnouncements = await getCollection('announcements');
+const sortedAnnouncements = allAnnouncements.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const lang = 'th';
+---
+
+<Layout title="Announcements | UUPAY" lang={lang}>
+  <Header lang={lang} />
+  
+  <main class="announcements-container container animate-in" style="padding-top: 120px; min-height: 70vh;">
+    <header class="section-header text-center">
+      <h1 style="font-size: 48px; color: var(--brand-primary); margin-bottom: 16px;">Announcements</h1>
+      <p style="color: var(--text-secondary);">Stay updated with the latest news, security updates, and features from UUPAY.</p>
+    </header>
+    
+    <div class="list-wrapper" style="display: flex; flex-direction: column; gap: 24px;">
+      {sortedAnnouncements.map((post) => (
+        <a href={`/${lang === 'en' ? '' : lang + '/'}announcements/${post.id}`} class="announcement-card">
+          <div class="meta" style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px; font-size: 14px;">
+            <span class="tag" style="background: rgba(57, 255, 20, 0.1); color: var(--brand-primary); padding: 4px 12px; border-radius: var(--radius-pill); font-weight: 500;">{post.data.type}</span>
+            <span class="date">{post.data.date.toISOString().split('T')[0]}</span>
+          </div>
+          <h2>{post.data.title}</h2>
+        </a>
+      ))}
+    </div>
+  </main>
+  
+  <Footer lang={lang} />
+</Layout>

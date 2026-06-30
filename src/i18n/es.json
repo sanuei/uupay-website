@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "products": "Funciones",
+    "security": "Seguridad",
+    "partners": "Socios",
+    "about": "Nosotros",
+    "getStarted": "Empezar",
+    "cards": "Tarjetas",
+    "promotions": "Promociones",
+    "announcements": "Anuncios"
+  },
+  "hero": {
+    "title_part1": "Tus activos digitales,",
+    "title_part2": "Ahora pueden hacer más.",
+    "title_html": "Tus <span class=\"kw\">activos digitales</span>,<br>ahora pueden hacer <span class=\"kw\">más</span>.",
+    "eyebrow_text": "Infraestructura Financiera Cripto de Nueva Generación",
+    "subtitle": "La plataforma de pago criptográfico de próxima generación. Tarjetas virtuales Visa y Mastercard, eSIM global y retiros de fiat sin problemas.",
+    "cta_start": "Empezar ahora",
+    "cta_download": "Descargar App"
+  },
+  "features": {
+    "title": "Libera el verdadero poder de las criptomonedas",
+    "subtitle": "Todo lo que necesitas para gastar globalmente y gestionar activos digitales en una sola aplicación.",
+    "card1_title": "Tarjetas Crypto",
+    "card1_desc": "Soporte para Visa y Mastercard. Gasta tus criptomonedas globalmente en millones de comercios. Emisión instantánea.",
+    "card2_title": "eSIM Global",
+    "card2_desc": "Conexión en más de 137 países. Compra con criptomonedas y activa al instante sin tarjetas SIM físicas.",
+    "card3_title": "Retiros de Fiat Grandes",
+    "card3_desc": "Conexión directa con bancos autorizados. Conversión segura y conforme de criptomonedas a fiat de gran volumen.",
+    "card4_title": "Chat y Transferencia",
+    "card4_desc": "Envía dinero tan fácil como enviar un mensaje. Sobres rojos, regalos y transferencias P2P sin comisiones."
+  },
+  "cardShowcase": {
+    "title": "Elige tu tarjeta",
+    "subtitle": "Física o virtual, Visa o Mastercard. Cubriendo tus diversas necesidades de gasto.",
+    "virtual_title": "Tarjeta virtual flexible y conveniente",
+    "virtual_desc": "Emisión instantánea en 1 minuto, vinculación inmediata, soporte excelente para compras internacionales en línea y suscripciones SaaS.",
+    "physical_title": "Tarjeta física negra mate premium",
+    "physical_desc": "Tarjeta Visa física de primera calidad. Retira efectivo en cajeros automáticos y paga en terminales POS en todo el mundo sin comisiones por transacciones internacionales."
+  },
+  "stats": {
+    "countries": "Países y regiones cubiertos",
+    "partners": "Socios globales",
+    "rewards": "Total de comisiones pagadas"
+  },
+  "esim": {
+    "title": "Conéctate al mundo con eSIM",
+    "subtitle": "Sin tarjeta física, sin cargos de roaming. Conéctate a internet de alta velocidad tan pronto como aterrices.",
+    "desc1": "Soporte de conexión de red en más de 137 países y regiones de todo el mundo.",
+    "desc2": "Soporte de pago con USDT, escanea el código QR para activar al instante.",
+    "desc3": "Múltiples paquetes de datos diseñados especialmente para nómadas digitales."
+  },
+  "partners": {
+    "title": "Programa de socios de recomendación de UUPAY",
+    "subtitle": "Recomienda a amigos para abrir tarjetas y gastar para recibir recompensas de comisión de hasta el 50%.",
+    "earn": "Comenzar a ganar comisiones",
+    "apply": "Solicitar unirse a socios"
+  },
+  "promotions": {
+    "title": "Ofertas por tiempo limitado",
+    "subtitle": "Recompensas exclusivas para los primeros usuarios.",
+    "promo1_title": "Abre tarjeta virtual por solo 1 USDT",
+    "promo1_desc": "Durante el periodo de la campaña, abre la tarjeta con solo 1 USDT y recibe una recompensa de consumo de 1 USDT al instante.",
+    "promo2_title": "Tarifas de recarga gratuitas",
+    "promo2_desc": "100% gratis de comisión de transacciones de depósito y recarga durante todo el periodo promocional."
+  },
+  "download": {
+    "title": "Descargar la aplicación UUPAY",
+    "subtitle": "Escanea el código QR a continuación o visita la tienda de aplicaciones oficial para descargarla y comenzar a experimentar.",
+    "ios": "Descargar en App Store",
+    "android": "Descargar en Google Play",
+    "apk": "Descargar APK para Android"
+  },
+  "footer": {
+    "desc": "Simplifica los pagos, acerca el mundo. La plataforma de tarjeta financiera criptográfica de próxima generación.",
+    "company": "Empresa",
+    "legal": "Políticas legales",
+    "support": "Soporte",
+    "rights": "All rights reserved."
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "products": "Products",
+    "security": "Security",
+    "partners": "Partners",
+    "about": "About Us",
+    "getStarted": "Get Started",
+    "cards": "Cards",
+    "promotions": "Promotions",
+    "announcements": "News"
+  },
+  "hero": {
+    "title_part1": "Your Digital Assets,",
+    "title_part2": "Now Can Do More.",
+    "title_html": "Your <span class=\"kw\">digital assets</span>,<br>now can do <span class=\"kw\">more</span>.",
+    "eyebrow_text": "Next-Gen Crypto Finance",
+    "subtitle": "The next-generation crypto payment platform. Visa & Mastercard virtual cards, global eSIM, and seamless fiat on/off ramps.",
+    "cta_start": "Get Started Now",
+    "cta_download": "Download App"
+  },
+  "features": {
+    "title": "Unleash the Power of Crypto",
+    "subtitle": "Everything you need for global spending and digital asset management in one app.",
+    "card1_title": "Crypto Cards",
+    "card1_desc": "Visa & Mastercard supported. Spend your crypto globally at millions of merchants. Instant issuance.",
+    "card2_title": "Global eSIM",
+    "card2_desc": "Stay connected in 137+ countries. Purchase with crypto, activate instantly without physical SIMs.",
+    "card3_title": "Fiat Withdrawals",
+    "card3_desc": "Direct bank transfers with licensed partners. Secure and compliant large-volume crypto-to-fiat conversions.",
+    "card4_title": "Chat & Pay",
+    "card4_desc": "Send money as easily as sending a message. Red packets, gifts, and zero-fee P2P transfers."
+  },
+  "cardShowcase": {
+    "title": "Choose Your Cards",
+    "subtitle": "Physical or virtual. Visa or Mastercard. We have you covered.",
+    "virtual_title": "Flexible Virtual Card",
+    "virtual_desc": "1-minute instant issuance, ready for online shopping and global SaaS subscriptions.",
+    "physical_title": "Matte Black Physical Card",
+    "physical_desc": "Premium physical Visa card. Zero international transaction fees at ATMs and POS terminal transactions globally."
+  },
+  "stats": {
+    "countries": "Countries Covered",
+    "partners": "Global Partners",
+    "rewards": "Rewards Disbursed"
+  },
+  "esim": {
+    "title": "Global Connectivity with eSIM",
+    "subtitle": "No physical cards, no roaming fees. Stay connected wherever you land.",
+    "desc1": "Supported in 137+ countries and regions.",
+    "desc2": "Pay with USDT and activate instantly via QR code.",
+    "desc3": "Flexible data packages tailored for digital nomads."
+  },
+  "partners": {
+    "title": "UUPAY Partner Program",
+    "subtitle": "Share the platform and earn up to 50% commission for every referral.",
+    "earn": "Earn Commissions",
+    "apply": "Apply to Join"
+  },
+  "promotions": {
+    "title": "Limited-Time Offers",
+    "subtitle": "Exclusive rewards for early adopters.",
+    "promo1_title": "1 USDT Virtual Card",
+    "promo1_desc": "Get a virtual card for only 1 USDT and receive 1 USDT cashback instantly.",
+    "promo2_title": "Zero Top-up Fees",
+    "promo2_desc": "Enjoy zero deposit and top-up transaction fees during the promotional period."
+  },
+  "download": {
+    "title": "Download UUPAY App",
+    "subtitle": "Scan the QR code or choose your store to download the app and begin.",
+    "ios": "App Store",
+    "android": "Google Play",
+    "apk": "Android APK"
+  },
+  "footer": {
+    "desc": "Your Digital Assets Can Do More. The next-generation crypto payment platform.",
+    "company": "Company",
+    "legal": "Legal",
+    "support": "Support",
+    "rights": "All rights reserved."
+  }
+}

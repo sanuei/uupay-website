@@ -1,0 +1,54 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+---
+
+<section class="esim">
+  <div class="container">
+    <div class="esim-card scroll-reveal">
+      <div class="esim-info">
+        <span class="eyebrow" style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px;">
+          <span style="width: 24px; height: 1px; background: var(--brand);"></span>
+          eSIM
+        </span>
+        <h2>
+          {lang === 'zh-CN' || lang === 'zh-TW' ? '使用 eSIM ' : 'Global Connectivity with '}
+          <span class="kw">{lang === 'zh-CN' || lang === 'zh-TW' ? '连接世界' : 'eSIM'}</span>
+        </h2>
+        <p>{t('esim.subtitle')}</p>
+        <ul class="esim-features">
+          <li><span class="check">✓</span><span>{t('esim.desc1')}</span></li>
+          <li><span class="check">✓</span><span>{t('esim.desc2')}</span></li>
+          <li><span class="check">✓</span><span>{t('esim.desc3')}</span></li>
+        </ul>
+      </div>
+
+      <div class="esim-visual">
+        <svg class="esim-globe" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Globe grid -->
+          <circle cx="160" cy="160" r="140" stroke="#B8E351" stroke-width="1.5" opacity="0.6"/>
+          <ellipse cx="160" cy="160" rx="140" ry="50" stroke="#B8E351" stroke-width="1" opacity="0.4"/>
+          <ellipse cx="160" cy="160" rx="140" ry="90" stroke="#B8E351" stroke-width="1" opacity="0.4"/>
+          <ellipse cx="160" cy="160" rx="50" ry="140" stroke="#B8E351" stroke-width="1" opacity="0.4"/>
+          <ellipse cx="160" cy="160" rx="90" ry="140" stroke="#B8E351" stroke-width="1" opacity="0.4"/>
+          <ellipse cx="160" cy="160" rx="120" ry="140" stroke="#B8E351" stroke-width="1" opacity="0.3"/>
+          <!-- Orbit dots -->
+          <circle cx="20" cy="160" r="4" fill="#B8E351"/>
+          <circle cx="300" cy="160" r="4" fill="#B8E351"/>
+          <circle cx="160" cy="20" r="4" fill="#B8E351"/>
+          <circle cx="160" cy="300" r="4" fill="#B8E351"/>
+          <circle cx="60" cy="60" r="3" fill="#B8E351" opacity="0.7"/>
+          <circle cx="260" cy="260" r="3" fill="#B8E351" opacity="0.7"/>
+          <circle cx="260" cy="60" r="3" fill="#B8E351" opacity="0.7"/>
+          <circle cx="60" cy="260" r="3" fill="#B8E351" opacity="0.7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
