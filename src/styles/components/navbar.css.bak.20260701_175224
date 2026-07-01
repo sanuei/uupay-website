@@ -21,8 +21,6 @@
   align-items: center;
   justify-content: flex-start;
   height: 100%;
-  padding-top: 4px;
-  padding-bottom: 4px;
   gap: var(--space-7);  /* logo 与菜单之间的间距 */
 }
 
