@@ -1,0 +1,72 @@
+/* ========================================
+   PARTNER Section
+   ======================================== */
+.partner-preview {
+  padding: var(--space-10) 0;
+  background: var(--bg-deep);
+}
+
+.partner-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-sub);
+  border-radius: var(--r-xl);
+  padding: var(--space-8);
+}
+
+.partner-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+
+.partner-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--border-sub);
+}
+
+.partner-stat .num {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--brand);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.partner-stat .label {
+  font-size: var(--fs-body-sm);
+  color: var(--text-sec);
+  font-weight: 500;
+}
+
+.partner-info h2 {
+  font-size: var(--fs-h1);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-4);
+}
+
+.partner-info p {
+  font-size: var(--fs-body-lg);
+  color: var(--text-sec);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.partner-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+
+@media (max-width: 968px) {
+  .partner-box { grid-template-columns: 1fr; padding: var(--space-6); }
+}

@@ -1,0 +1,355 @@
+/* ========================================
+   Navbar v3 - BingX 风格 (紧凑, 多元素右侧)
+   高度 56px, 登入/注册/下载/地球 4 元素
+   ======================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-h);  /* 56px, 跟 BingX 一致 */
+  background: rgba(5, 6, 7, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border-sub);
+  z-index: var(--z-nav);
+  transition: background 0.3s var(--ease-out);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--space-5);
+}
+
+/* Logo: icon + 文字 (比例协调: icon 24px / 文字 20px / gap 8px) */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.04em;
+  color: var(--text-pri);
+  transition: opacity 0.2s var(--ease-out);
+  flex-shrink: 0;
+}
+
+.nav-logo:hover {
+  opacity: 0.85;
+}
+
+.nav-logo-img {
+  height: 24px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-pri);
+  line-height: 1;
+  margin-top: 2px;  /* 视觉对齐 - icon 中心略低 */
+}
+
+/* Old 占位 - 保留 fallback (万一 logo 图加载失败) */
+.nav-logo-mark {
+  display: none;  /* 隐藏,不再用 */
+}
+
+.nav-menu {
+  display: flex;
+  gap: var(--space-5);  /* 紧凑, 从 32px 改 24px */
+  list-style: none;
+  flex: 1;
+  justify-content: center;  /* 菜单居中 */
+}
+
+.nav-link {
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-sec);
+  padding: 8px 0;
+  transition: color 0.2s var(--ease-out);
+  white-space: nowrap;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--brand);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.nav-link:hover {
+  color: var(--text-pri);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* 右侧 actions - 紧凑排列 */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);  /* 14px 紧凑 */
+  flex-shrink: 0;
+}
+
+/* 登入 - text link (透明) */
+.nav-action-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sec);
+  padding: 6px 10px;
+  border-radius: var(--r-pill);
+  transition: color 0.2s var(--ease-out);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-action-link:hover {
+  color: var(--text-pri);
+}
+
+/* 註冊 - 主 CTA, 亮绿实底 */
+.nav-action-cta {
+  /* override .btn 默认 padding (更紧凑) */
+  padding: 7px 16px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  border-radius: var(--r-pill) !important;
+  white-space: nowrap;
+}
+
+/* 下载图标 (ghost button) */
+.nav-action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--r-circle);
+  color: var(--text-sec);
+  cursor: pointer;
+  transition: color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+}
+
+.nav-action-icon:hover {
+  color: var(--text-pri);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-action-svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ========================================
+   Language Switcher v2 (Linear + Kraken hybrid)
+   ======================================== */
+.lang-selector {
+  position: relative;
+}
+
+/* Trigger: globe + 2字代码 + chevron */
+.lang-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 10px 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sec);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-sub);
+  background: transparent;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lang-trigger:hover {
+  color: var(--text-pri);
+  border-color: var(--brand);
+  background: rgba(184, 227, 81, 0.04);
+}
+
+.lang-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.lang-code {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: inherit;
+  min-width: 16px;
+  text-align: center;
+}
+
+.lang-chevron {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: transform 0.2s var(--ease-out);
+}
+
+.lang-selector:hover .lang-chevron,
+.lang-selector:focus-within .lang-chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Dropdown: 大面板,240px 宽 */
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 240px;
+  max-height: 480px;
+  overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-sub);
+  border-radius: var(--r-md);
+  padding: 6px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.18s var(--ease-out), transform 0.18s var(--ease-out), visibility 0.18s;
+  z-index: var(--z-modal);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-mute) transparent;
+}
+
+.lang-dropdown::-webkit-scrollbar { width: 6px; }
+.lang-dropdown::-webkit-scrollbar-thumb { background: var(--text-mute); border-radius: 3px; }
+.lang-dropdown::-webkit-scrollbar-track { background: transparent; }
+
+.lang-selector:hover .lang-dropdown,
+.lang-selector:focus-within .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-dropdown-header {
+  padding: 8px 16px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+/* 单个语言项: 国旗 + native 名 + 英文副标 + 当前态 check */
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--text-sec);
+  transition: background 0.15s, color 0.15s;
+  position: relative;
+  text-decoration: none;
+}
+
+.lang-option::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 25%;
+  bottom: 25%;
+  width: 2px;
+  background: var(--brand);
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.lang-option:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-pri);
+}
+
+.lang-option.active {
+  color: var(--brand);
+  font-weight: 700;
+  background: rgba(184, 227, 81, 0.04);
+}
+
+.lang-option.active::before {
+  opacity: 1;
+}
+
+.lang-flag {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.lang-name {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 2px;
+  min-width: 0;
+}
+
+.lang-name-native {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lang-name-en {
+  font-size: 11px;
+  color: var(--text-mute);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lang-check {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--brand);
+}
+
+
+@media (max-width: 968px) {
+  .nav-menu { display: none; }
+  .nav-action-link { display: none; }  /* 移动端隐藏 "登入" 文字 link */
+  /* 保留: 註冊 CTA + 下载图标 + 语言切换器 */
+}

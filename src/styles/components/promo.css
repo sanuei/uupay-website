@@ -1,0 +1,94 @@
+/* ========================================
+   PROMO Section
+   ======================================== */
+.promos {
+  padding: var(--space-10) 0;
+  background: var(--bg-base);
+}
+
+.promos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-7);
+}
+
+.promo-card {
+  position: relative;
+  padding: var(--space-7) var(--space-6);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-out);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.promo-card:hover {
+  transform: translateY(-4px);
+}
+
+.promo-card.solid {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.promo-card.outline {
+  background: var(--bg-card);
+  border: 1px solid var(--border-sub);
+}
+
+.promo-card.outline:hover {
+  border-color: var(--brand);
+}
+
+.promo-badge {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  border-radius: var(--r-pill);
+  background: var(--brand-ink);
+  color: var(--brand);
+}
+
+.promo-card.solid .promo-badge {
+  background: var(--brand-ink);
+  color: var(--brand);
+}
+
+.promo-card.outline .promo-badge {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.promo-card .promo-num {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-3);
+  opacity: 0.7;
+}
+
+.promo-card h3 {
+  font-size: var(--fs-h3);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: var(--space-3);
+}
+
+.promo-card p {
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+
+@media (max-width: 968px) {
+  .promos-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,143 @@
+/* ========================================
+   FEATURES Section - 2x2 混搭卡
+   ======================================== */
+.features {
+  padding: var(--space-10) 0;
+  background: var(--bg-deep);
+  position: relative;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+
+.feature-card {
+  position: relative;
+  padding: var(--space-7) var(--space-6);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-out);
+  cursor: pointer;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+}
+
+/* 亮绿实底卡 */
+.feature-card.solid {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.feature-card.solid h3,
+.feature-card.solid p {
+  color: var(--brand-ink);
+}
+
+.feature-card.solid .feature-icon {
+  color: var(--brand-ink);
+}
+
+.feature-card.solid:hover {
+  background: var(--brand-hi);
+}
+
+/* 暗色细描边卡 */
+.feature-card.outline {
+  background: var(--bg-card);
+  border: 1px solid var(--border-sub);
+  color: var(--text-pri);
+}
+
+.feature-card.outline:hover {
+  border-color: var(--brand);
+}
+
+/* 走马灯边框 (conic-gradient) */
+.feature-card.outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent 0deg,
+    var(--brand) 60deg,
+    transparent 120deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+  pointer-events: none;
+  animation: conic-spin 4s linear paused;
+}
+
+.feature-card.outline:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-5);
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.5;
+}
+
+.feature-card h3 {
+  font-size: var(--fs-h3);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: var(--space-3);
+}
+
+.feature-card p {
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.feature-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--space-5);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.feature-card.solid .feature-arrow {
+  color: var(--brand-ink);
+}
+
+.feature-card.outline .feature-arrow {
+  color: var(--brand);
+}
+
+
+@media (max-width: 968px) {
+  .features-grid { grid-template-columns: 1fr; }
+}

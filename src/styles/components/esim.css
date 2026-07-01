@@ -1,0 +1,96 @@
+/* ========================================
+   eSIM Section
+   ======================================== */
+.esim {
+  padding: var(--space-10) 0;
+  background: var(--bg-base);
+}
+
+.esim-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-sub);
+  border-radius: var(--r-xl);
+  padding: var(--space-8);
+  position: relative;
+  overflow: hidden;
+}
+
+.esim-card::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(184, 227, 81, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.esim-info h2 {
+  font-size: var(--fs-h1);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-4);
+}
+
+.esim-info p {
+  font-size: var(--fs-body-lg);
+  color: var(--text-sec);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.esim-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  list-style: none;
+}
+
+.esim-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--fs-body);
+  color: var(--text-pri);
+}
+
+.esim-features li .check {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--brand);
+  color: var(--brand-ink);
+  border-radius: var(--r-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  margin-top: 2px;
+}
+
+.esim-visual {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.esim-globe {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  opacity: 0.85;
+}
+
+
+@media (max-width: 968px) {
+  .esim-card { grid-template-columns: 1fr; padding: var(--space-6); }
+}

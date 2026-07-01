@@ -1,0 +1,205 @@
+/* ========================================
+   APP SHOWCASE v2 - Sticky Scrolling (苹果官网风格)
+   左侧 5 段文字 sticky + 右侧 1 张大图 sticky
+   ======================================== */
+.app-sticky {
+  padding: var(--space-10) 0 var(--space-9);
+  background: var(--bg-deep);
+  position: relative;
+}
+
+.app-sticky-header {
+  text-align: center;
+  margin-bottom: var(--space-7);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-sticky-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-9);
+  max-width: var(--container-w);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+  align-items: start;
+}
+
+/* 左侧 5 段文字 — 每段 1 屏高, 滚动到视口中心时高亮 */
+.app-sticky-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.app-sticky-slide {
+  min-height: 70vh;
+  padding: 0 0 var(--space-9) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0.25;
+  transform: translateX(-12px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.app-sticky-slide.is-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: var(--space-3);
+}
+
+.slide-title {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-pri);
+  margin-bottom: var(--space-4);
+}
+
+.slide-desc {
+  font-size: var(--fs-body-lg);
+  color: var(--text-sec);
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.slide-line {
+  width: 48px;
+  height: 2px;
+  background: var(--brand);
+  margin-top: var(--space-5);
+  transition: width 0.5s var(--ease-out);
+}
+
+.app-sticky-slide.is-active .slide-line {
+  width: 96px;
+}
+
+/* 右侧大图 — sticky 在视口内 */
+.app-sticky-phone {
+  position: sticky;
+  top: calc(var(--nav-h) + 40px);
+  height: calc(100vh - var(--nav-h) - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 注意: 不能用 transform: translateZ(0) — 会破坏 sticky! */
+  will-change: transform;
+}
+
+.phone-frame {
+  position: relative;
+  width: 320px;
+  height: 640px;
+  background: #1a1a1a;
+  border-radius: 48px;
+  padding: 10px;
+  border: 2px solid #2a2a2a;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  z-index: 2;
+}
+
+.phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 24px;
+  background: #050505;
+  border-radius: 14px;
+  z-index: 10;
+}
+
+.phone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 38px;
+  overflow: hidden;
+  background: #000;
+}
+
+.slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.slide-img.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* iPhone 后面一圈柔光 — 跟 hero 立方体呼应 */
+.phone-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 700px;
+  background: radial-gradient(ellipse, rgba(184, 227, 81, 0.15) 0%, transparent 65%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 移动端 fallback: 改为 stack 布局 + 取消 sticky */
+@media (max-width: 968px) {
+  .app-sticky-stage {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .app-sticky-phone {
+    position: relative;
+    top: auto;
+    height: 600px;
+    order: -1;  /* 手机图放上面 */
+  }
+  .app-sticky-slide {
+    min-height: auto;
+    padding: var(--space-5) 0;
+  }
+  .slide-title {
+    font-size: 32px;
+  }
+}
+
+/* Reduced motion 跳过所有 transition */
+@media (prefers-reduced-motion: reduce) {
+  .app-sticky-slide,
+  .slide-line,
+  .slide-img {
+    transition: none !important;
+  }
+  .app-sticky-slide {
+    opacity: 1;
+    transform: none;
+  }
+  .slide-img {
+    opacity: 0;
+  }
+  .slide-img.is-active {
+    opacity: 1;
+  }
+}
+

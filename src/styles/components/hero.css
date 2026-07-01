@@ -1,0 +1,164 @@
+/* ========================================
+   HERO v2 - 视频背景 + 几何装饰点缀 + 文字左下角
+   ======================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: calc(var(--nav-h) + 40px) 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+
+/* 视频背景层 */
+.hero-video-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%) scale(1.15);
+  /* 视频色调微调 - 降饱和降亮度, 让品牌绿更突出 */
+  filter: saturate(0.75) brightness(0.65) contrast(1.05);
+}
+
+/* 双层遮罩: 顶到底黑色渐变 + 中心径向增强 (给居中文字阅读) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    /* 中心径向: 居中文字区加深 */
+    radial-gradient(ellipse 60% 50% at 50% 55%, rgba(5, 6, 7, 0.6) 0%, rgba(5, 6, 7, 0.2) 50%, transparent 80%),
+    /* 顶到底: 衔接 navbar (顶部) + 下一屏 (底部) */
+    linear-gradient(180deg, rgba(5, 6, 7, 0.7) 0%, rgba(5, 6, 7, 0.1) 25%, rgba(5, 6, 7, 0.1) 75%, rgba(5, 6, 7, 0.85) 100%);
+}
+
+/* 中心内容 - 左下角对齐 (跟 Apple/Stripe 视频 hero 主流做法) */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 5px 12px;
+  margin-bottom: var(--space-4);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+  background: rgba(184, 227, 81, 0.08);
+  border: 1px solid rgba(184, 227, 81, 0.3);
+  border-radius: var(--r-pill);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero-eyebrow .dot {
+  width: 5px;
+  height: 5px;
+  background: var(--brand);
+  border-radius: var(--r-circle);
+  animation: pulse-brand 1.6s var(--ease-in-out) infinite;
+}
+/* 中心内容 - 居中 (跟 Apple/Stripe 视频 hero 主流做法, 文字居中) */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.hero-title {
+  /* Hero 标题 (回到 display 字号级别, 但更克制) */
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--text-pri);
+  margin-bottom: var(--space-5);
+  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.hero-subtitle {
+  font-size: 15px;
+  color: var(--text-sec);
+  line-height: 1.55;
+  max-width: 540px;
+  margin: 0 auto var(--space-6);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* 居中 */
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* CTA 字号 (居中主视觉) */
+.hero-actions .btn {
+  padding: 14px 28px;
+  font-size: 15px;
+}
+
+/* 滚动提示器 - 右下角 (跟 Apple hero 主流做法) */
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  right: var(--space-7);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-mute);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero-scroll .line {
+  position: relative;
+  width: 1px;
+  height: 48px;
+  background: var(--border-sub);
+  overflow: hidden;
+}
+
+.hero-scroll .dot {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 5px;
+  height: 5px;
+  background: var(--brand);
+  border-radius: var(--r-circle);
+  animation: float-y 2s var(--ease-in-out) infinite;
+}
+
+
+@media (max-width: 600px) {
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn { width: 100%; max-width: 280px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video { display: none; }
+}

@@ -1,0 +1,191 @@
+/* ========================================
+   STATS v2 - Pinning 滚动钉住 + 数字 countUp
+   父容器 3 屏高,内部 sticky 钉 1 屏,3 段滚动各 countUp 一个数字
+   ======================================== */
+.stats-pin {
+  position: relative;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-sub);
+  border-bottom: 1px solid var(--border-sub);
+  /* 关键: 3 屏高, 每屏一个数字段 */
+  min-height: 300vh;
+}
+
+.stats-pin-sticky {
+  position: sticky;
+  top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* 水平居中 (修复 sticky 内 flex 容器子元素不居中 bug) */
+  /* 注意: 不能用 transform: translateZ(0) — 会破坏 sticky 行为! */
+  /* 用 will-change 提示浏览器创建独立 compositing layer */
+  will-change: transform;
+  z-index: 2;
+}
+
+.stats-pin-sticky .container {
+  width: 100%;
+  max-width: var(--container-w);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.stats-pin-header {
+  text-align: center;
+  margin-bottom: var(--space-9);
+}
+
+.stats-pin-header .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: var(--space-3);
+}
+
+.stats-pin-header h2 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.stats-pin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.stats-pin-item {
+  text-align: center;
+  position: relative;
+  padding: var(--space-5) var(--space-4);
+  opacity: 0.3;
+  transform: scale(0.95);
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.stats-pin-item.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.stats-pin-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: calc(var(--space-7) / -2);
+  top: 25%;
+  bottom: 25%;
+  width: 1px;
+  background: var(--brand);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.num-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: var(--space-3);
+}
+
+.stats-pin-item .num {
+  font-size: clamp(56px, 7.5vw, 96px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--brand);
+  font-variant-numeric: tabular-nums;
+}
+
+.stats-pin-item .suffix {
+  font-size: clamp(24px, 3.5vw, 48px);
+  font-weight: 900;
+  color: var(--brand);
+  line-height: 1;
+}
+
+.stats-pin-item .divider {
+  width: 48px;
+  height: 2px;
+  background: var(--brand);
+  margin: var(--space-4) auto;
+  transition: width 0.5s var(--ease-out);
+}
+
+.stats-pin-item.is-active .divider {
+  width: 96px;
+}
+
+.stats-pin-item .label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-pri);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* 底部进度条 */
+.stats-progress {
+  max-width: 480px;
+  margin: var(--space-7) auto 0;
+  height: 2px;
+  background: var(--border-sub);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.stats-progress-bar {
+  height: 100%;
+  background: var(--brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.1s linear;
+}
+
+/* 移动端取消 pinning, 直接显示 3 个数字 */
+@media (max-width: 968px) {
+  .stats-pin {
+    min-height: auto;
+    padding: var(--space-9) 0;
+  }
+  .stats-pin-sticky {
+    position: relative;
+    top: auto;
+    height: auto;
+  }
+  .stats-pin-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .stats-pin-item {
+    opacity: 1;
+    transform: none;
+  }
+  .stats-pin-item:not(:last-child)::after {
+    display: none;
+  }
+  .stats-pin-item .divider {
+    width: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-pin-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .stats-pin-item .divider {
+    width: 96px;
+    transition: none !important;
+  }
+}
+
