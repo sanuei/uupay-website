@@ -58,6 +58,9 @@ const isRtl = lang === 'ar';
 
     <!-- 主交互逻辑 (滚动入场 + countUp + 视差 + 立方体旋转 + 截图轮播) -->
     <script>
+      // 减少动态效果: 关掉所有 JS 驱动的滚动联动(视差 / pinning),只留 CSS 已处理的淡入
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       // ============================================
       // 1. Scroll-triggered 入场 (使用 data-anim 而非 class 列表,性能更好)
       // ============================================
@@ -65,34 +68,11 @@ const isRtl = lang === 'ar';
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-
-            // 数字 countUp
-            if (entry.target.classList.contains('stats-item')) {
-              const counter = entry.target.querySelector('.num[data-target]') as HTMLElement | null;
-              if (counter && !counter.dataset.counted) {
-                counter.dataset.counted = '1';
-                const target = parseFloat(counter.dataset.target || '0');
-                const suffix = counter.dataset.suffix || '';
-                const duration = 1600;
-                const start = performance.now();
-
-                const tick = (now: number) => {
-                  const t = Math.min((now - start) / duration, 1);
-                  // ease-out cubic
-                  const eased = 1 - Math.pow(1 - t, 3);
-                  const current = Math.floor(target * eased);
-                  counter.textContent = current.toLocaleString() + suffix;
-                  if (t < 1) requestAnimationFrame(tick);
-                  else counter.textContent = target.toLocaleString() + suffix;
-                };
-                requestAnimationFrame(tick);
-              }
-            }
           }
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
 
-      document.querySelectorAll('.scroll-reveal, .reveal-left, .reveal-right, .reveal-scale, .stats-item').forEach((el) => {
+      document.querySelectorAll('.scroll-reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => {
         animObserver.observe(el);
       });
 
@@ -119,20 +99,25 @@ const isRtl = lang === 'ar';
       // ============================================
       // 3. 视差 (Parallax) - 通过 CSS 变量,不直接覆盖 transform
       // ============================================
-      let ticking = false;
-      const onScroll = () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            const y = window.scrollY;
-            document.documentElement.style.setProperty('--scroll-y', `${y}px`);
-            ticking = false;
-          });
-          ticking = true;
-        }
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
+      if (!prefersReducedMotion) {
+        let ticking = false;
+        const onScroll = () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const y = window.scrollY;
+              document.documentElement.style.setProperty('--scroll-y', `${y}px`);
+              ticking = false;
+            });
+            ticking = true;
+          }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
 
       // (Hero 立方体已删除 - 不再需要 mousemove tilt)
+
+      // 实际导航栏高度 (跟 --nav-h 保持同步, 避免硬编码漂移)
+      const navH = document.querySelector<HTMLElement>('.navbar')?.offsetHeight || 56;
 
       // ============================================
       // 5. CARD Pinning - 黑卡主卡(左偏) + 金卡副卡(右倾) 滚动联动
@@ -141,11 +126,17 @@ const isRtl = lang === 'ar';
       const cardBlack = document.querySelector<HTMLElement>('.card-3d.black');
       const cardVirtual = document.querySelector<HTMLElement>('.card-3d.virtual');
 
-      if (cardPin && cardBlack && cardVirtual) {
+      if (cardPin && cardBlack && cardVirtual && prefersReducedMotion) {
+        // 减少动态效果: 直接展示归位后的静态终态, 不做滚动联动
+        cardBlack.style.setProperty('--translate-x', '-280px');
+        cardBlack.style.setProperty('--rotate-y', '0deg');
+        cardVirtual.style.setProperty('--translate-x', '-40px');
+        cardVirtual.style.setProperty('--rotate-y', '0deg');
+        cardPin.classList.add('is-pinned');
+      } else if (cardPin && cardBlack && cardVirtual) {
         const onCardScroll = () => {
           const rect = cardPin.getBoundingClientRect();
           const vh = window.innerHeight;
-          const navH = 72;
           const totalScroll = cardPin.offsetHeight - vh;  // 可滚动距离
           // 计算进度 0~1, 从卡片父容器顶部进入视口到完全离开
           const scrolled = -rect.top + navH;
@@ -216,10 +207,20 @@ const isRtl = lang === 'ar';
           return Math.floor(n).toString();
         };
 
+        if (prefersReducedMotion) {
+          // 减少动态效果: 直接显示最终数值, 不做滚动联动 countUp
+          if (statsProgressBar) statsProgressBar.style.transform = 'scaleX(1)';
+          statsItems.forEach((item, i) => {
+            const counter = item.querySelector('.countup-val');
+            const { target, suffix } = statsTargets[i];
+            if (counter) counter.textContent = formatNumber(target) + suffix;
+            item.classList.add('is-active');
+          });
+        }
+
         const onStatsScroll = () => {
           const rect = statsPin.getBoundingClientRect();
           const vh = window.innerHeight;
-          const navH = 72;
           const totalScroll = statsPin.offsetHeight - vh;
           const scrolled = -rect.top + navH;
           const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
@@ -262,18 +263,20 @@ const isRtl = lang === 'ar';
           });
         };
 
-        let statsTicking = false;
-        const statsScrollHandler = () => {
-          if (!statsTicking) {
-            requestAnimationFrame(() => {
-              onStatsScroll();
-              statsTicking = false;
-            });
-            statsTicking = true;
-          }
-        };
-        window.addEventListener('scroll', statsScrollHandler, { passive: true });
-        onStatsScroll();  // 初始化
+        if (!prefersReducedMotion) {
+          let statsTicking = false;
+          const statsScrollHandler = () => {
+            if (!statsTicking) {
+              requestAnimationFrame(() => {
+                onStatsScroll();
+                statsTicking = false;
+              });
+              statsTicking = true;
+            }
+          };
+          window.addEventListener('scroll', statsScrollHandler, { passive: true });
+          onStatsScroll();  // 初始化
+        }
       }
 
       // ============================================

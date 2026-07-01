@@ -74,6 +74,18 @@
     "android": "Tải trên Google Play",
     "apk": "Tải APK cho Android"
   },
+  "faq": {
+    "title": "Câu hỏi thường gặp",
+    "viewMore": "Xem tất cả câu hỏi",
+    "q1": "UUPAY cung cấp những dịch vụ nào?",
+    "a1": "UUPAY là nền tảng thanh toán tiền điện tử cung cấp thẻ ảo và thẻ vật lý Visa & Mastercard, gói dữ liệu eSIM toàn cầu, rút tiền pháp định hợp quy và chuyển tiền điện tử tức thì như nhắn tin — tất cả trong một ứng dụng.",
+    "q2": "Làm thế nào để mở thẻ ảo UUPAY?",
+    "a2": "Đăng ký, hoàn tất xác minh KYC nhanh chóng và phát hành thẻ ảo chỉ trong khoảng 1 phút. Thẻ sẵn sàng sử dụng ngay cho mua sắm trực tuyến và đăng ký dịch vụ SaaS toàn cầu.",
+    "q3": "Tôi có thể nạp tiền bằng những loại tiền điện tử nào?",
+    "a3": "UUPAY hỗ trợ USDT và các stablecoin, tiền điện tử phổ biến khác để nạp thẻ, mua eSIM và chuyển tiền. Tiền nạp thường được xác nhận trong vài phút.",
+    "q4": "UUPAY có an toàn và đáng tin cậy không?",
+    "a4": "UUPAY sử dụng mã hóa cấp ngân hàng, hệ thống kiểm soát rủi ro nhiều lớp và hợp tác với các đối tác tài chính được cấp phép để xử lý thanh toán pháp định. Tiền và dữ liệu KYC của người dùng được bảo vệ theo các tiêu chuẩn bảo mật nghiêm ngặt."
+  },
   "footer": {
     "desc": "Thanh toán đơn giản hơn, thế giới gần hơn. Nền tảng thẻ tài chính tiền điện tử thế hệ mới.",
     "company": "Công ty",

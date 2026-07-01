@@ -74,6 +74,18 @@
     "android": "Descargar en Google Play",
     "apk": "Descargar APK para Android"
   },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "viewMore": "Ver todas las preguntas",
+    "q1": "¿Qué servicios ofrece UUPAY?",
+    "a1": "UUPAY es una plataforma de pagos cripto que ofrece tarjetas virtuales y físicas Visa & Mastercard, planes de datos eSIM globales, retiros en moneda fiduciaria conformes a la normativa y transferencias cripto instantáneas al estilo chat, todo en una sola app.",
+    "q2": "¿Cómo abro una tarjeta virtual de UUPAY?",
+    "a2": "Regístrate, completa una verificación KYC rápida y recibe tu tarjeta virtual en aproximadamente 1 minuto. Estará lista de inmediato para compras en línea y suscripciones SaaS globales.",
+    "q3": "¿Con qué criptomonedas puedo recargar?",
+    "a3": "UUPAY admite USDT y otras stablecoins y criptomonedas principales para recargar tarjetas, comprar eSIM y realizar transferencias. Los depósitos suelen confirmarse en pocos minutos.",
+    "q4": "¿Es UUPAY segura y confiable?",
+    "a4": "UUPAY utiliza cifrado de nivel bancario, controles de riesgo de múltiples capas y trabaja con socios financieros autorizados para la liquidación en moneda fiduciaria. Los fondos de los usuarios y los datos KYC están protegidos bajo estrictos estándares de seguridad."
+  },
   "footer": {
     "desc": "Simplifica los pagos, acerca el mundo. La plataforma de tarjeta financiera criptográfica de próxima generación.",
     "company": "Empresa",

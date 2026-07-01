@@ -74,6 +74,18 @@
     "android": "Muat turun di Google Play",
     "apk": "Muat turun APK Android"
   },
+  "faq": {
+    "title": "Soalan Lazim",
+    "viewMore": "Lihat Semua Soalan",
+    "q1": "Apakah perkhidmatan yang ditawarkan oleh UUPAY?",
+    "a1": "UUPAY ialah platform pembayaran kripto yang menawarkan kad maya dan fizikal Visa & Mastercard, pelan data eSIM global, pengeluaran fiat yang mematuhi peraturan, serta pemindahan kripto segera seperti bersembang — semuanya dalam satu aplikasi.",
+    "q2": "Bagaimana saya membuka kad maya UUPAY?",
+    "a2": "Daftar, lengkapkan pengesahan KYC dengan pantas, dan kad maya akan dikeluarkan dalam masa kira-kira 1 minit. Kad terus boleh digunakan untuk membeli-belah dalam talian dan langganan SaaS global.",
+    "q3": "Mata wang kripto apakah yang boleh saya gunakan untuk tambah nilai?",
+    "a3": "UUPAY menyokong USDT dan stablecoin serta mata wang kripto utama lain untuk tambah nilai kad, pembelian eSIM dan pemindahan. Deposit biasanya disahkan dalam beberapa minit.",
+    "q4": "Adakah UUPAY selamat dan boleh dipercayai?",
+    "a4": "UUPAY menggunakan penyulitan gred bank, kawalan risiko berbilang lapisan, dan bekerjasama dengan rakan kongsi kewangan berlesen untuk penyelesaian fiat. Dana pengguna dan data KYC dilindungi mengikut piawaian keselamatan yang ketat."
+  },
   "footer": {
     "desc": "Permudah pembayaran, dekatkan dunia. Platform kad kewangan kripto generasi akan datang.",
     "company": "Syarikat",

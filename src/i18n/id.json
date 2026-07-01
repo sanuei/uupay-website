@@ -74,6 +74,18 @@
     "android": "Unduh di Google Play",
     "apk": "Unduh APK Android"
   },
+  "faq": {
+    "title": "Pertanyaan Umum",
+    "viewMore": "Lihat Semua Pertanyaan",
+    "q1": "Layanan apa saja yang ditawarkan UUPAY?",
+    "a1": "UUPAY adalah platform pembayaran kripto yang menyediakan kartu virtual dan fisik Visa & Mastercard, paket data eSIM global, penarikan fiat yang sesuai regulasi, serta transfer kripto instan selayaknya chatting — semua dalam satu aplikasi.",
+    "q2": "Bagaimana cara membuka kartu virtual UUPAY?",
+    "a2": "Daftar, selesaikan verifikasi KYC dengan cepat, dan kartu virtual akan diterbitkan dalam waktu sekitar 1 menit. Kartu langsung siap digunakan untuk belanja online dan berlangganan layanan SaaS global.",
+    "q3": "Mata uang kripto apa saja yang bisa digunakan untuk top-up?",
+    "a3": "UUPAY mendukung USDT dan stablecoin serta mata uang kripto utama lainnya untuk top-up kartu, pembelian eSIM, dan transfer. Deposit biasanya dikonfirmasi dalam hitungan menit.",
+    "q4": "Apakah UUPAY aman dan dapat dipercaya?",
+    "a4": "UUPAY menggunakan enkripsi tingkat perbankan, kontrol risiko berlapis, dan bekerja sama dengan mitra keuangan berlisensi untuk penyelesaian fiat. Dana pengguna dan data KYC dilindungi sesuai standar keamanan yang ketat."
+  },
   "footer": {
     "desc": "Sederhanakan pembayaran, dekatkan dunia. Platform kartu keuangan kripto generasi masa depan.",
     "company": "Perusahaan",
