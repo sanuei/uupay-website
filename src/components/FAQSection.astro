@@ -1,0 +1,66 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+const base = lang === 'en' ? '' : `/${lang}`;
+
+const items = [
+  { q: t('faq.q1'), a: t('faq.a1') },
+  { q: t('faq.q2'), a: t('faq.a2') },
+  { q: t('faq.q3'), a: t('faq.a3') },
+  { q: t('faq.q4'), a: t('faq.a4') },
+];
+---
+
+<section class="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-intro">
+        <h2>{t('faq.title')}</h2>
+        <a href={`${base}/announcements`} class="faq-view-more">
+          {t('faq.viewMore')}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+
+      <div class="faq-list">
+        {items.map((item, i) => (
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="faq-q-text">{item.q}</span>
+              <span class="faq-toggle" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>{item.a}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item?.classList.contains('is-open');
+      document.querySelectorAll('.faq-item.is-open').forEach((open) => {
+        if (open !== item) {
+          open.classList.remove('is-open');
+          open.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      item?.classList.toggle('is-open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+</script>

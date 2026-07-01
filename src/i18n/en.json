@@ -74,6 +74,18 @@
     "android": "Google Play",
     "apk": "Android APK"
   },
+  "faq": {
+    "title": "FAQ",
+    "viewMore": "View All FAQs",
+    "q1": "What services does UUPAY offer?",
+    "a1": "UUPAY is a crypto payment platform offering Visa & Mastercard virtual and physical cards, global eSIM data plans, compliant fiat withdrawals, and instant chat-style crypto transfers — all in one app.",
+    "q2": "How do I open a UUPAY virtual card?",
+    "a2": "Sign up, complete quick KYC verification, and issue a virtual card in about 1 minute. It's ready for online shopping and global SaaS subscriptions immediately.",
+    "q3": "Which cryptocurrencies can I top up with?",
+    "a3": "UUPAY supports USDT and other major stablecoins and cryptocurrencies for card top-ups, eSIM purchases, and transfers. Deposits are typically confirmed within minutes.",
+    "q4": "Is UUPAY safe and trustworthy?",
+    "a4": "UUPAY uses bank-grade encryption, multi-layer risk controls, and works with licensed financial partners for fiat settlement. User funds and KYC data are protected under strict security standards."
+  },
   "footer": {
     "desc": "Your Digital Assets Can Do More. The next-generation crypto payment platform.",
     "company": "Company",
