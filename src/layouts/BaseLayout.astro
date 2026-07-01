@@ -71,6 +71,9 @@ const isRtl = lang === 'ar';
     <script>
       // 减少动态效果: 关掉所有 JS 驱动的滚动联动(视差 / pinning),只留 CSS 已处理的淡入
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // 移动端(≤968px)没有 sticky/pinning 的视觉空间, 桌面专属的滚动联动不该在移动端空跑
+      const isDesktop = window.matchMedia('(min-width: 969px)').matches;
+      const enableScrollFx = isDesktop && !prefersReducedMotion;
 
       // ============================================
       // 1. Scroll-triggered 入场 (使用 data-anim 而非 class 列表,性能更好)
@@ -137,8 +140,9 @@ const isRtl = lang === 'ar';
       const cardBlack = document.querySelector<HTMLElement>('.card-3d.black');
       const cardVirtual = document.querySelector<HTMLElement>('.card-3d.virtual');
 
-      if (cardPin && cardBlack && cardVirtual && prefersReducedMotion) {
-        // 减少动态效果: 直接展示归位后的静态终态, 不做滚动联动
+      if (cardPin && cardBlack && cardVirtual && !enableScrollFx) {
+        // 移动端 / 减少动态效果: 直接展示归位后的静态终态, 不做滚动联动(移动端 CSS 已经把
+        // transform 强制 none, 这里只是不让 JS 空跑 + 保证连线/标签走 CSS 的常显规则)
         cardBlack.style.setProperty('--translate-x', '-280px');
         cardBlack.style.setProperty('--rotate-y', '0deg');
         cardVirtual.style.setProperty('--translate-x', '-40px');
@@ -293,7 +297,9 @@ const isRtl = lang === 'ar';
       const stickySlides = document.querySelectorAll<HTMLElement>('.app-sticky-slide');
       const stickyImgs = document.querySelectorAll<HTMLElement>('.slide-img');
 
-      if (stickySlides.length > 0) {
+      // 移动端手机图不再 sticky, 也就没有"划到哪段文字换哪张图"的配对关系了 ——
+      // 不绑定 observer, 直接固定显示第一张图; 文字是否常亮交给 CSS(见 app-showcase.css)
+      if (isDesktop && stickySlides.length > 0) {
         const stickyObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting && entry.intersectionRatio > 0.4) {

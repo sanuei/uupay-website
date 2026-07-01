@@ -178,6 +178,10 @@
   .app-sticky-slide {
     min-height: auto;
     padding: var(--space-5) 0;
+    /* 手机图不再 sticky, 没法跟"划到哪段文字换哪张图"配对了 —— 移动端文字全部常亮,
+       不再依赖 is-active(那是给桌面居中触发用的) */
+    opacity: 1;
+    transform: none;
   }
   .slide-title {
     font-size: 32px;
