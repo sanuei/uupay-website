@@ -24,15 +24,10 @@
   gap: var(--space-5);
 }
 
-/* Logo: icon + 文字 (比例协调: icon 24px / 文字 20px / gap 8px) */
+/* Logo: 单张 wordmark 图 */
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 800;
-  font-size: 20px;
-  letter-spacing: -0.04em;
-  color: var(--text-pri);
   transition: opacity 0.2s var(--ease-out);
   flex-shrink: 0;
 }
@@ -42,24 +37,10 @@
 }
 
 .nav-logo-img {
-  height: 24px;
+  height: 26px;
   width: auto;
   display: block;
   flex-shrink: 0;
-}
-
-.nav-logo-text {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--text-pri);
-  line-height: 1;
-  margin-top: 2px;  /* 视觉对齐 - icon 中心略低 */
-}
-
-/* Old 占位 - 保留 fallback (万一 logo 图加载失败) */
-.nav-logo-mark {
-  display: none;  /* 隐藏,不再用 */
 }
 
 .nav-menu {
