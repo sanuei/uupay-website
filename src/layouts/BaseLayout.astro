@@ -152,20 +152,17 @@ const isRtl = lang === 'ar';
           // 计算进度 0~1, 从卡片父容器顶部进入视口到完全离开
           const scrolled = -rect.top + navH;
           const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
+          // ease-out, 让飞入动画贯穿整个滚动区间(不再有前半段动/后半段不动的死区)
+          const eased = 1 - Math.pow(1 - progress, 3);
 
-          // 阶段 1 (0 → 0.5): 两卡从两侧飞入, 旋转 ±15deg
-          // 阶段 2 (0.5 → 1): 两卡归位到主卡 -280px / 副卡 -40px
-          const phase1 = Math.min(progress / 0.5, 1);  // 0~1
-          const phase2 = Math.max((progress - 0.5) / 0.5, 0);  // 0~1
+          // 黑卡(主): 从 -400px 飞到 -280px 归位
+          const blackX = -400 + (120 * eased);
+          // 金卡(副): 从 -140px 飞到 -40px 归位
+          const virtualX = -140 + (100 * eased);
 
-          // 黑卡(主): 从 -360px 飞到 -280px 归位
-          const blackX = -360 + (80 * phase1);
-          // 金卡(副): 从 -100px 飞到 -40px 归位
-          const virtualX = -100 + (60 * phase1);
-
-          // 旋转: 0° → ±15° → 0°(归位时不旋转)
-          const blackAngle = phase1 < 0.5 ? -15 : -15 * (1 - phase2);
-          const virtualAngle = phase1 < 0.5 ? 15 : 15 * (1 - phase2);
+          // 旋转: ±24° → 0°(归位时不旋转), 贯穿整个滚动区间
+          const blackAngle = -24 * (1 - eased);
+          const virtualAngle = 24 * (1 - eased);
 
           cardBlack.style.setProperty('--translate-x', `${blackX}px`);
           cardBlack.style.setProperty('--rotate-y', `${blackAngle}deg`);
@@ -173,8 +170,8 @@ const isRtl = lang === 'ar';
           cardVirtual.style.setProperty('--translate-x', `${virtualX}px`);
           cardVirtual.style.setProperty('--rotate-y', `${virtualAngle}deg`);
 
-          // 进入 pinning 时显示连线 + 标签
-          if (progress > 0.4) {
+          // 快归位时才显示连线 + 标签, 作为收尾的"揭晓"时刻
+          if (progress > 0.7) {
             cardPin.classList.add('is-pinned');
           } else {
             cardPin.classList.remove('is-pinned');

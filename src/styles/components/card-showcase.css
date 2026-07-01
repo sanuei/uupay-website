@@ -52,7 +52,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-5);  /* 卡组和标签之间的间距 */
-  perspective: 1400px;
+  perspective: 1000px;
 }
 
 /* 卡组 - 包含两卡 + 连线, relative 定位让 absolute 卡相对它算 */
@@ -78,7 +78,8 @@
   --rotate-y: 0deg;
   --rotate-x: 8deg;
   --translate-x: 0px;
-  transform: translateX(var(--translate-x)) rotateY(var(--rotate-y)) rotateX(var(--rotate-x));
+  /* translate(-50%, -50%) 让 top:50%/left:50% 真正居中, 再叠加 JS 驱动的位移 */
+  transform: translate(calc(-50% + var(--translate-x)), -50%) rotateY(var(--rotate-y)) rotateX(var(--rotate-x));
   transition: transform 0.05s linear;
 }
 

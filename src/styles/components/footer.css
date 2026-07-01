@@ -104,15 +104,12 @@
 .footer-giant-logo {
   margin-top: var(--space-8);
   text-align: center;
-  font-size: clamp(72px, 16vw, 220px);
+  font-size: clamp(72px, 17vw, 240px);
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: transparent;
-  background: linear-gradient(180deg, rgba(184, 227, 81, 0.16) 0%, rgba(184, 227, 81, 0.02) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-stroke: 1px rgba(184, 227, 81, 0.12);
+  /* 纯中性低透明度水印, 不用品牌绿(低透明度叠在近黑底上会发浑) */
+  color: rgba(255, 255, 255, 0.07);
   white-space: nowrap;
   overflow: hidden;
   user-select: none;

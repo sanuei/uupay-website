@@ -15,12 +15,12 @@
 
 .feature-card {
   position: relative;
-  padding: var(--space-7) var(--space-6);
+  padding: var(--space-6);
   border-radius: var(--r-lg);
   overflow: hidden;
   transition: transform 0.3s var(--ease-out);
   cursor: pointer;
-  min-height: 280px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -89,9 +89,9 @@
 }
 
 .feature-icon {
-  width: 56px;
-  height: 56px;
-  margin-bottom: var(--space-5);
+  width: 44px;
+  height: 44px;
+  margin-bottom: var(--space-4);
   color: var(--brand);
   display: flex;
   align-items: center;
@@ -105,7 +105,7 @@
 }
 
 .feature-card h3 {
-  font-size: var(--fs-h3);
+  font-size: var(--fs-h4);
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -122,7 +122,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;

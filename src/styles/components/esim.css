@@ -90,6 +90,42 @@
   opacity: 0.85;
 }
 
+/* 缓慢自转的经纬网格, 呼应前后模块的滚动动感 */
+.globe-grid {
+  transform-origin: 160px 160px;
+  animation: globe-spin 40s linear infinite;
+}
+
+@keyframes globe-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 轨道点错开呼吸闪烁 */
+.orbit-dot {
+  animation: orbit-pulse 3s var(--ease-in-out) infinite;
+}
+
+.orbit-dot:nth-child(1) { animation-delay: 0s; }
+.orbit-dot:nth-child(2) { animation-delay: 0.4s; }
+.orbit-dot:nth-child(3) { animation-delay: 0.8s; }
+.orbit-dot:nth-child(4) { animation-delay: 1.2s; }
+.orbit-dot:nth-child(5) { animation-delay: 1.6s; }
+.orbit-dot:nth-child(6) { animation-delay: 2s; }
+.orbit-dot:nth-child(7) { animation-delay: 2.4s; }
+.orbit-dot:nth-child(8) { animation-delay: 2.8s; }
+
+@keyframes orbit-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .globe-grid,
+  .orbit-dot {
+    animation: none;
+  }
+}
+
 
 @media (max-width: 968px) {
   .esim-card { grid-template-columns: 1fr; padding: var(--space-6); }
