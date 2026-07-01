@@ -1,3 +1,7 @@
+## Deployment
+
+After every code change is finished (and verified working), commit and push to `origin main` right away — do not wait to be asked. Cloudflare Pages is connected to this GitHub repo and auto-builds/deploys on push to `main`, so pushing *is* the deploy step. Use `./push.sh "commit message"` from the `uupay-website/` directory, or `git add` + `git commit` + `git push origin main` directly.
+
 ## Development
 
 When starting the dev server, use background mode:

@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n/ui';
+import { siVisa, siMastercard, siTether, siBitcoin, siEthereum, siBnbchain, siBinance } from 'simple-icons';
 
 interface Props {
   lang: string;
@@ -8,6 +9,8 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
 const base = lang === 'en' ? '' : `/${lang}`;
+
+const brandLogos = [siVisa, siMastercard, siTether, siBitcoin, siEthereum, siBnbchain, siBinance];
 ---
 
 <section id="download" class="download">
@@ -67,3 +70,18 @@ const base = lang === 'en' ? '' : `/${lang}`;
     </div>
   </div>
 </section>
+
+<div class="brand-marquee">
+  <div class="marquee-track">
+    {Array.from({ length: 2 }).map(() => (
+      <>
+        {brandLogos.map((brand) => (
+          <span class="marquee-item">
+            <svg class="marquee-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d={brand.path}></path></svg>
+            <span class="marquee-label">{brand.title}</span>
+          </span>
+        ))}
+      </>
+    ))}
+  </div>
+</div>
