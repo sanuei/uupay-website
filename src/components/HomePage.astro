@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from './Navbar.astro';
+import HeroSection from './HeroSection.astro';
+import FeatureCards from './FeatureCards.astro';
+import CardShowcase from './CardShowcase.astro';
+import StatsSection from './StatsSection.astro';
+import ESIMSection from './eSIMSection.astro';
+import AppShowcase from './AppShowcase.astro';
+import PartnerPreview from './PartnerPreview.astro';
+import PromoSection from './PromoSection.astro';
+import DownloadSection from './DownloadSection.astro';
+import FAQSection from './FAQSection.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+---
+
+<BaseLayout lang={lang}>
+  <Navbar lang={lang} />
+  <HeroSection lang={lang} />
+  <FeatureCards lang={lang} />
+  <CardShowcase lang={lang} />
+  <StatsSection lang={lang} />
+  <ESIMSection lang={lang} />
+  <AppShowcase lang={lang} />
+  <PartnerPreview lang={lang} />
+  <PromoSection lang={lang} />
+  <DownloadSection lang={lang} />
+  <FAQSection lang={lang} />
+  <Footer lang={lang} />
+</BaseLayout>
