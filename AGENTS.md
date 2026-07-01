@@ -1,6 +1,13 @@
 ## Deployment
 
-After every code change is finished (and verified working), commit and push to `origin main` right away — do not wait to be asked. Cloudflare Pages is connected to this GitHub repo and auto-builds/deploys on push to `main`, so pushing *is* the deploy step. Use `./push.sh "commit message"` from the `uupay-website/` directory, or `git add` + `git commit` + `git push origin main` directly.
+After every code change is finished (and verified working), commit + push AND deploy right away — do not wait to be asked. These are two separate steps here:
+
+1. **Git**: `./push.sh "commit message"` (or `git add` + `git commit` + `git push origin main`) — keeps GitHub in sync, but does **not** trigger a deploy.
+2. **Deploy**: the Cloudflare Pages project `uupay-website` is *not* Git-connected (confirmed via `wrangler pages project list` — Git Provider: No), so pushing alone does nothing. Actually ship the change with:
+   ```
+   npm run build
+   wrangler pages deploy dist --project-name uupay-website --branch main --commit-dirty=true
+   ```
 
 ## Development
 
