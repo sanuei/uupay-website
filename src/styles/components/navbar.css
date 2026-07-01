@@ -37,7 +37,7 @@
 }
 
 .nav-logo-img {
-  height: 26px;
+  height: 28px;
   width: auto;
   display: block;
   flex-shrink: 0;
@@ -53,10 +53,12 @@
 
 .nav-link {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
   font-size: 14px;
   font-weight: 500;
   color: var(--text-sec);
-  padding: 8px 0;
   transition: color 0.2s var(--ease-out);
   white-space: nowrap;
 }
@@ -93,10 +95,13 @@
 
 /* 登入 - text link (透明) */
 .nav-action-link {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
   font-size: 13px;
   font-weight: 600;
   color: var(--text-sec);
-  padding: 6px 10px;
+  padding: 0 12px;
   border-radius: var(--r-pill);
   transition: color 0.2s var(--ease-out);
   text-decoration: none;
@@ -109,8 +114,10 @@
 
 /* 註冊 - 主 CTA, 亮绿实底 */
 .nav-action-cta {
-  /* override .btn 默认 padding (更紧凑) */
-  padding: 7px 16px !important;
+  /* override .btn 默认 padding (更紧凑), 用固定 height 而不是靠 padding 撑高度,
+     跟登入/下载/语言切换对齐到同一条基准线上 */
+  height: 36px !important;
+  padding: 0 18px !important;
   font-size: 13px !important;
   font-weight: 700 !important;
   border-radius: var(--r-pill) !important;
@@ -122,8 +129,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   padding: 0;
   background: transparent;
   border: 0;
@@ -155,7 +162,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  height: 38px;
+  height: 36px;
   padding: 0 10px 0 12px;
   font-size: 13px;
   font-weight: 600;
