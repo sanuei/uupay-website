@@ -66,21 +66,26 @@
   justify-content: center;
 }
 
-/* 3D 卡片 - 基础 */
+/* 3D 卡片 - 基础
+   注意: 卡片 PNG 本身已烘焙真实卡片比例的圆角(四角透明),
+   所以这里不再叠加 border-radius(会把 PNG 的圆角再切一刀 → 显得过圆廉价)。
+   drop-shadow 会自动跟随 PNG 的 alpha 形状, 阴影贴合真实圆角。 */
 .card-3d {
   position: absolute;
   width: 360px;
-  height: 224px;
-  border-radius: var(--r-lg);
+  /* 用 aspect-ratio 锁定 PNG 原始比例(1280:807≈1.586), height 自动;
+     这样任何断点下 object-fit 都不会裁掉 PNG 烘焙的圆角 */
+  aspect-ratio: 1280 / 807;
   transform-style: preserve-3d;
-  will-change: transform;
+  will-change: transform, opacity;
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
-  /* CSS 变量由 JS 设置, 控制旋转 + 位移 */
+  /* CSS 变量由 JS 设置, 控制旋转 + 位移 + 缩放 */
   --rotate-y: 0deg;
   --rotate-x: 8deg;
   --translate-x: 0px;
-  /* translate(-50%, -50%) 让 top:50%/left:50% 真正居中, 再叠加 JS 驱动的位移 */
-  transform: translate(calc(-50% + var(--translate-x)), -50%) rotateY(var(--rotate-y)) rotateX(var(--rotate-x));
+  --scale: 1;
+  /* translate(-50%, -50%) 让 top:50%/left:50% 真正居中, 再叠加 JS 驱动的位移/旋转/缩放 */
+  transform: translate(calc(-50% + var(--translate-x)), -50%) rotateY(var(--rotate-y)) rotateX(var(--rotate-x)) scale(var(--scale));
   transition: transform 0.05s linear;
 }
 
@@ -88,7 +93,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--r-lg);
 }
 
 /* 黑卡(主卡) - 居中略左, 大, 轻微左旋 - 放前面 */
@@ -96,12 +100,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 420px;       /* 主卡大 */
-  height: 260px;
+  width: 420px;       /* 主卡大 (height 由 aspect-ratio 自动算) */
   z-index: 3;          /* 主卡在上 */
   --translate-x: -280px;  /* 偏左 (卡宽 420, 让两卡整体在屏幕中心) */
-  --rotate-y: -8deg;    /* 轻微左旋 */
-  --rotate-x: 5deg;
+  --rotate-y: -14deg;   /* 归位角度(带角度更立体) */
+  --rotate-x: 6deg;
 }
 
 /* 金卡(副卡) - 叠在黑卡右上角, 小, 倾斜 - 放后面 */
@@ -109,12 +112,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 320px;       /* 副卡小 */
-  height: 200px;
+  width: 320px;       /* 副卡小 (height 由 aspect-ratio 自动算) */
   z-index: 2;          /* 副卡在下 */
   --translate-x: -40px;   /* 偏左 (与黑卡叠加, 整体居中) */
-  --rotate-y: 15deg;   /* 右倾 */
-  --rotate-x: 5deg;
+  --rotate-y: 18deg;   /* 右倾归位角度 */
+  --rotate-x: 6deg;
 }
 
 /* 卡间连线 */

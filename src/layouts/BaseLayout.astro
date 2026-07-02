@@ -109,11 +109,51 @@ const ogImage = `${siteUrl}/images/logo-wordmark.png`;
 
     <!-- 主交互逻辑 (滚动入场 + countUp + 视差 + 立方体旋转 + 截图轮播) -->
     <script>
+      import Lenis from 'lenis';
+
       // 减少动态效果: 关掉所有 JS 驱动的滚动联动(视差 / pinning),只留 CSS 已处理的淡入
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       // 移动端(≤968px)没有 sticky/pinning 的视觉空间, 桌面专属的滚动联动不该在移动端空跑
       const isDesktop = window.matchMedia('(min-width: 969px)').matches;
       const enableScrollFx = isDesktop && !prefersReducedMotion;
+
+      // ============================================
+      // 0. Lenis 惯性滚动 (Apple/Linear 风格的"有重量感"平滑滚动)
+      //    - 只在非 reduced-motion 下启用; 触屏保持原生手感(smoothWheel 只作用于滚轮/触控板)
+      //    - Lenis 驱动的是"真实" scrollTop, 所以 position:sticky / IntersectionObserver /
+      //      window.scrollY 读取(视差/pin 联动)全部照常工作, 无需改动
+      // ============================================
+      let lenis: any = null;
+      if (!prefersReducedMotion) {
+        lenis = new Lenis({
+          duration: 1.1,
+          // expo-out: 滚一下有初速度, 尾段缓慢收住(惯性感)
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          touchMultiplier: 1.6,
+        });
+
+        const raf = (time: number) => {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        };
+        requestAnimationFrame(raf);
+
+        // 站内锚点(#products / #cards 等)交给 Lenis 平滑跳转, 带 navbar 高度偏移
+        const navEl = document.querySelector<HTMLElement>('.navbar');
+        const anchorOffset = -(navEl?.offsetHeight || 64) - 8;
+        document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((a) => {
+          const href = a.getAttribute('href');
+          if (!href || href.length < 2) return;
+          a.addEventListener('click', (e) => {
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              lenis.scrollTo(target, { offset: anchorOffset });
+            }
+          });
+        });
+      }
 
       // ============================================
       // 1. Scroll-triggered 入场 (使用 data-anim 而非 class 列表,性能更好)
@@ -180,15 +220,34 @@ const ogImage = `${siteUrl}/images/logo-wordmark.png`;
       const cardBlack = document.querySelector<HTMLElement>('.card-3d.black');
       const cardVirtual = document.querySelector<HTMLElement>('.card-3d.virtual');
 
+      // 归位(终态)姿态: 两卡呈"角度错落"的组合, 而不是拍平 —— 平放显得廉价, 带角度才有立体高级感
+      const REST = {
+        black:   { x: -280, ry: -14, rx: 6 },
+        virtual: { x: -40,  ry: 18,  rx: 6 },
+      };
+      // 起手(飞入前)姿态: 两卡从更远、更小、带更大角度和景深处飞入
+      const START = {
+        black:   { x: -470, ry: -34, rx: 14, scale: 0.86 },
+        virtual: { x: 110,  ry: 44,  rx: 14, scale: 0.80 },
+      };
+
+      const applyCardPose = (el: HTMLElement, x: number, ry: number, rx: number, scale: number, opacity: number) => {
+        el.style.setProperty('--translate-x', `${x}px`);
+        el.style.setProperty('--rotate-y', `${ry}deg`);
+        el.style.setProperty('--rotate-x', `${rx}deg`);
+        el.style.setProperty('--scale', `${scale}`);
+        el.style.opacity = `${opacity}`;
+      };
+
       if (cardPin && cardBlack && cardVirtual && !enableScrollFx) {
-        // 移动端 / 减少动态效果: 直接展示归位后的静态终态, 不做滚动联动(移动端 CSS 已经把
-        // transform 强制 none, 这里只是不让 JS 空跑 + 保证连线/标签走 CSS 的常显规则)
-        cardBlack.style.setProperty('--translate-x', '-280px');
-        cardBlack.style.setProperty('--rotate-y', '0deg');
-        cardVirtual.style.setProperty('--translate-x', '-40px');
-        cardVirtual.style.setProperty('--rotate-y', '0deg');
+        // 移动端 / 减少动态效果: 直接展示归位后的角度组合终态, 不做滚动联动
+        // (移动端 CSS 已把 transform 强制 none, 这里主要服务 reduced-motion 桌面用户)
+        applyCardPose(cardBlack, REST.black.x, REST.black.ry, REST.black.rx, 1, 1);
+        applyCardPose(cardVirtual, REST.virtual.x, REST.virtual.ry, REST.virtual.rx, 1, 1);
         cardPin.classList.add('is-pinned');
       } else if (cardPin && cardBlack && cardVirtual) {
+        const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
         const onCardScroll = () => {
           const rect = cardPin.getBoundingClientRect();
           const vh = window.innerHeight;
@@ -196,23 +255,29 @@ const ogImage = `${siteUrl}/images/logo-wordmark.png`;
           // 计算进度 0~1, 从卡片父容器顶部进入视口到完全离开
           const scrolled = -rect.top + navH;
           const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
-          // ease-out, 让飞入动画贯穿整个滚动区间(不再有前半段动/后半段不动的死区)
-          const eased = 1 - Math.pow(1 - progress, 3);
 
-          // 黑卡(主): 从 -400px 飞到 -280px 归位
-          const blackX = -400 + (120 * eased);
-          // 金卡(副): 从 -140px 飞到 -40px 归位
-          const virtualX = -140 + (100 * eased);
+          // 两卡用略微不同的缓动曲线 → 飞入时有"错落组装"的生命感, 而非齐步走
+          const easedB = 1 - Math.pow(1 - progress, 3);    // 主卡: 更强的收尾
+          const easedV = 1 - Math.pow(1 - progress, 2.2);  // 副卡: 稍快到位
+          // 前 40% 行程内淡入(飞入过程中逐渐显形, 不是一开始就全亮)
+          const opacity = Math.min(1, progress / 0.4);
 
-          // 旋转: ±24° → 0°(归位时不旋转), 贯穿整个滚动区间
-          const blackAngle = -24 * (1 - eased);
-          const virtualAngle = 24 * (1 - eased);
-
-          cardBlack.style.setProperty('--translate-x', `${blackX}px`);
-          cardBlack.style.setProperty('--rotate-y', `${blackAngle}deg`);
-
-          cardVirtual.style.setProperty('--translate-x', `${virtualX}px`);
-          cardVirtual.style.setProperty('--rotate-y', `${virtualAngle}deg`);
+          applyCardPose(
+            cardBlack,
+            lerp(START.black.x, REST.black.x, easedB),
+            lerp(START.black.ry, REST.black.ry, easedB),
+            lerp(START.black.rx, REST.black.rx, easedB),
+            lerp(START.black.scale, 1, easedB),
+            opacity,
+          );
+          applyCardPose(
+            cardVirtual,
+            lerp(START.virtual.x, REST.virtual.x, easedV),
+            lerp(START.virtual.ry, REST.virtual.ry, easedV),
+            lerp(START.virtual.rx, REST.virtual.rx, easedV),
+            lerp(START.virtual.scale, 1, easedV),
+            opacity,
+          );
 
           // 快归位时才显示连线 + 标签, 作为收尾的"揭晓"时刻
           if (progress > 0.7) {

@@ -100,11 +100,25 @@ html {
   font-family: var(--font-sans);
   background-color: var(--bg-deep);
   color: var(--text-pri);
+  /* 平滑滚动交给 Lenis(惯性滚动)接管; 无 JS / reduced-motion 时回退到原生 smooth */
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   /* 注意: 不要给 html 设 overflow: hidden, 会破坏所有 position: sticky */
+}
+
+/* ===== Lenis 惯性滚动 (官方推荐基础样式) =====
+   Lenis 初始化后会给 <html> 自动加 .lenis / .lenis-smooth 类。
+   .lenis-smooth 时必须关掉原生 scroll-behavior, 否则两套平滑逻辑打架。 */
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
