@@ -14,7 +14,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
   <div class="container">
     <div class="section-header scroll-reveal">
       <span class="eyebrow">FEATURES</span>
-      <h2>释放<span class="kw">加密货币</span>的真正力量</h2>
+      <h2 set:html={t('features.title_html')} />
       <p>{t('features.subtitle')}</p>
     </div>
 
@@ -35,7 +35,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
           <p>{t('features.card1_desc')}</p>
         </div>
         <span class="feature-arrow">
-          {lang === 'zh-CN' || lang === 'zh-TW' ? '了解 U 卡' : 'Explore U-Card'}
+          {t('features.card1_cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
       </div>
@@ -56,7 +56,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
           <p>{t('features.card2_desc')}</p>
         </div>
         <span class="feature-arrow">
-          {lang === 'zh-CN' || lang === 'zh-TW' ? '了解 eSIM' : 'Explore eSIM'}
+          {t('features.card2_cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
       </div>
@@ -74,7 +74,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
           <p>{t('features.card3_desc')}</p>
         </div>
         <span class="feature-arrow">
-          {lang === 'zh-CN' || lang === 'zh-TW' ? '了解出金' : 'Explore Withdrawals'}
+          {t('features.card3_cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
       </div>
@@ -94,7 +94,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
           <p>{t('features.card4_desc')}</p>
         </div>
         <span class="feature-arrow">
-          {lang === 'zh-CN' || lang === 'zh-TW' ? '了解聊天转账' : 'Explore Chat & Pay'}
+          {t('features.card4_cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
       </div>

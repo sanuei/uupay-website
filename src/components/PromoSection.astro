@@ -14,7 +14,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
   <div class="container">
     <div class="section-header scroll-reveal">
       <span class="eyebrow">PROMOTIONS</span>
-      <h2>限时 <span class="kw">特惠</span> 活动</h2>
+      <h2 set:html={t('promotions.title_html')} />
       <p>{t('promotions.subtitle')}</p>
     </div>
 
@@ -27,7 +27,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
           <p>{t('promotions.promo1_desc')}</p>
         </div>
         <a href={`${base}/promotions`} class="btn-arrow" style="margin-top: 24px; display: inline-flex;">
-          {lang === 'zh-CN' || lang === 'zh-TW' ? '立即参与' : 'Join Now'}
+          {t('promotions.cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
       </div>
@@ -40,7 +40,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
           <p>{t('promotions.promo2_desc')}</p>
         </div>
         <a href={`${base}/promotions`} class="btn-arrow" style="margin-top: 24px; display: inline-flex;">
-          {lang === 'zh-CN' || lang === 'zh-TW' ? '立即参与' : 'Join Now'}
+          {t('promotions.cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
       </div>

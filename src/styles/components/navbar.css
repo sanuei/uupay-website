@@ -339,9 +339,114 @@
 
 @media (max-width: 968px) {
   .nav-menu { display: none; }
-  .nav-action-link { display: none; }  /* 移动端隐藏 "登入" 文字 link */
+  .nav-action-link { display: none; }  /* 移动端隐藏 "登入" 文字 link (改到抽屉菜单里) */
   /* 保留: 註冊 CTA + 下载图标 + 语言切换器 */
   /* 桌面版 gap 是给 logo-菜单间距用的; 菜单隐藏后这个 gap 会直接加在 logo 和右侧
      操作区之间, 48px 在窄屏下太大, 会把语言切换器挤出屏幕右边 */
   .navbar .container { gap: var(--space-3); }
+}
+
+/* ========================================
+   移动端汉堡菜单按钮 + 抽屉面板
+   桌面端 (>968px) 完全不渲染, 由 .nav-menu 常驻显示导航
+   ======================================== */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--r-circle);
+  cursor: pointer;
+}
+
+.nav-burger span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--text-pri);
+  border-radius: 1px;
+  transition: transform 0.25s var(--ease-out), opacity 0.2s var(--ease-out);
+}
+
+.nav-burger.is-active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-burger.is-active span:nth-child(2) { opacity: 0; }
+.nav-burger.is-active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--nav-h));
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-sub);
+  overflow-y: auto;
+  z-index: calc(var(--z-nav) - 1);
+  padding: var(--space-5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out), visibility 0.25s;
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-menu-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu-link {
+  display: block;
+  padding: var(--space-4) var(--space-2);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-pri);
+  border-bottom: 1px solid var(--border-sub);
+}
+
+.mobile-menu-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.mobile-menu-login {
+  text-align: center;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-sec);
+  border: 1px solid var(--border-sub);
+  border-radius: var(--r-pill);
+}
+
+.mobile-menu-cta {
+  width: 100%;
+}
+
+/* 菜单展开时锁住背景滚动 */
+html.nav-open {
+  overflow: hidden;
+}
+
+@media (max-width: 968px) {
+  .nav-burger { display: flex; }
+}
+
+@media (min-width: 969px) {
+  .mobile-menu { display: none; }
 }

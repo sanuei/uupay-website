@@ -43,10 +43,10 @@ const currentYear = new Date().getFullYear();
       <div class="footer-col">
         <h4>{t('footer.company')}</h4>
         <ul class="footer-links">
-          <li><a href={`${base}/`}>{lang === 'zh-CN' || lang === 'zh-TW' ? '首页' : 'Home'}</a></li>
-          <li><a href={`${base}/promotions`}>{lang === 'zh-CN' || lang === 'zh-TW' ? '限时活动' : 'Promotions'}</a></li>
-          <li><a href={`${base}/partners`}>{lang === 'zh-CN' || lang === 'zh-TW' ? '合伙人' : 'Partners'}</a></li>
-          <li><a href={`${base}/announcements`}>{lang === 'zh-CN' || lang === 'zh-TW' ? '公告中心' : 'Announcements'}</a></li>
+          <li><a href={`${base}/`}>{t('footer.nav_home')}</a></li>
+          <li><a href={`${base}/promotions`}>{t('footer.nav_promotions')}</a></li>
+          <li><a href={`${base}/partners`}>{t('footer.nav_partners')}</a></li>
+          <li><a href={`${base}/announcements`}>{t('footer.nav_announcements')}</a></li>
         </ul>
       </div>
 
@@ -54,10 +54,10 @@ const currentYear = new Date().getFullYear();
       <div class="footer-col">
         <h4>{t('footer.support')}</h4>
         <ul class="footer-links">
-          <li><a href="https://help.uupay.com/zh-CN/" target="_blank" rel="noopener noreferrer">{lang === 'zh-CN' || lang === 'zh-TW' ? '帮助中心' : 'Help Center'}</a></li>
-          <li><a href="mailto:customerservice@uupay.com">{lang === 'zh-CN' || lang === 'zh-TW' ? '联系客服' : 'Contact Support'}</a></li>
-          <li><a href="mailto:official@uupay.com">{lang === 'zh-CN' || lang === 'zh-TW' ? '市场合作' : 'Business'}</a></li>
-          <li><a href="mailto:partner@uupay.com">{lang === 'zh-CN' || lang === 'zh-TW' ? '招募合作' : 'Agent Recruitment'}</a></li>
+          <li><a href="https://help.uupay.com/zh-CN/" target="_blank" rel="noopener noreferrer">{t('footer.help_center')}</a></li>
+          <li><a href="mailto:customerservice@uupay.com">{t('footer.contact_support')}</a></li>
+          <li><a href="mailto:official@uupay.com">{t('footer.business')}</a></li>
+          <li><a href="mailto:partner@uupay.com">{t('footer.agent_recruitment')}</a></li>
         </ul>
       </div>
 
@@ -65,8 +65,8 @@ const currentYear = new Date().getFullYear();
       <div class="footer-col">
         <h4>{t('footer.legal')}</h4>
         <ul class="footer-links">
-          <li><a href={`${base}/docs/privacy`}>{lang === 'zh-CN' || lang === 'zh-TW' ? '隐私政策' : 'Privacy Policy'}</a></li>
-          <li><a href={`${base}/docs/terms`}>{lang === 'zh-CN' || lang === 'zh-TW' ? '服务条款' : 'Terms of Service'}</a></li>
+          <li><a href={`${base}/docs/privacy`}>{t('footer.privacy_policy')}</a></li>
+          <li><a href={`${base}/docs/terms`}>{t('footer.terms_of_service')}</a></li>
         </ul>
       </div>
     </div>

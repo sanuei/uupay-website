@@ -15,7 +15,7 @@ const t = useTranslations(lang as any);
     <div class="container">
       <div class="stats-pin-header">
         <span class="eyebrow">BY THE NUMBERS</span>
-        <h2>用<span class="kw">数据</span>说话</h2>
+        <h2 set:html={t('stats.title_html')} />
       </div>
 
       <div class="stats-pin-grid">

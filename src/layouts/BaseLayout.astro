@@ -21,12 +21,30 @@ interface Props {
 }
 
 const {
-  title = "UUPAY - 让支付回归简单，让世界触手可达",
-  description = "UUPAY 是一款面向全球用户的加密货币金融卡产品，依托 Visa / Mastercard 双卡组织，实现加密资产的全球消费场景落地。",
+  title = "UUPAY - Simplify Payments, Reach the World",
+  description = "UUPAY is a next-generation crypto payment platform for global users, powered by Visa & Mastercard virtual and physical cards for real-world crypto spending.",
   lang = "en"
 } = Astro.props;
 
 const isRtl = lang === 'ar';
+
+// ===== SEO: hreflang / canonical / OG / Twitter =====
+const siteUrl = 'https://uupay.com';
+const locales = ['en', 'zh-CN', 'zh-TW', 'ja', 'ko', 'vi', 'th', 'ms', 'id', 'es', 'ar'];
+
+// 去掉当前路径开头的语言前缀 (若有), 得到语言无关的剩余路径, 用于推算各语言对应链接
+const pathname = Astro.url.pathname;
+const currentPrefix = locales.find((l) => l !== 'en' && (pathname === `/${l}` || pathname.startsWith(`/${l}/`)));
+const restPath = currentPrefix ? (pathname.slice(`/${currentPrefix}`.length) || '/') : pathname;
+const pathFor = (l: string) => `${l === 'en' ? '' : `/${l}`}${restPath}`;
+const urlFor = (l: string) => `${siteUrl}${pathFor(l)}`;
+const canonicalUrl = urlFor(lang);
+
+const ogLocaleMap: Record<string, string> = {
+  en: 'en_US', 'zh-CN': 'zh_CN', 'zh-TW': 'zh_TW', ja: 'ja_JP', ko: 'ko_KR',
+  vi: 'vi_VN', th: 'th_TH', ms: 'ms_MY', id: 'id_ID', es: 'es_ES', ar: 'ar_AR'
+};
+const ogImage = `${siteUrl}/images/logo-wordmark.png`;
 ---
 
 <!doctype html>
@@ -46,6 +64,28 @@ const isRtl = lang === 'ar';
     <meta name="theme-color" content="#050607" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- hreflang: 各语言版本互相声明,帮助搜索引擎按用户语言分发正确页面 -->
+    {locales.map((l) => (
+      <link rel="alternate" hreflang={l} href={urlFor(l)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={urlFor('en')} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UUPAY" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={ogLocaleMap[lang] || 'en_US'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -224,8 +264,8 @@ const isRtl = lang === 'ar';
           if (statsProgressBar) statsProgressBar.style.transform = 'scaleX(1)';
           statsItems.forEach((item, i) => {
             const counter = item.querySelector('.countup-val');
-            const { target, suffix } = statsTargets[i];
-            if (counter) counter.textContent = formatNumber(target) + suffix;
+            const { target } = statsTargets[i];
+            if (counter) counter.textContent = formatNumber(target);
             item.classList.add('is-active');
           });
         }
@@ -252,21 +292,21 @@ const isRtl = lang === 'ar';
             // 未到段: 保持 0
             const counter = item.querySelector('.countup-val');
             if (!counter) return;
-            const { target, suffix } = statsTargets[i];
+            const { target } = statsTargets[i];
 
             if (i < activeIdx) {
               // 已过: 直接显示终值
-              counter.textContent = formatNumber(target) + suffix;
+              counter.textContent = formatNumber(target);
             } else if (i === activeIdx) {
               // 当前: 段内 0 → 1
               const segStart = i / 3;
               const segEnd = (i + 1) / 3;
               const segProgress = (progress - segStart) / (segEnd - segStart);
               const eased = 1 - Math.pow(1 - Math.min(Math.max(segProgress, 0), 1), 3);
-              counter.textContent = formatNumber(target * eased) + suffix;
+              counter.textContent = formatNumber(target * eased);
             } else {
               // 未到: 显示 0
-              counter.textContent = '0' + suffix;
+              counter.textContent = '0';
             }
 
             // 当前激活高亮 (active 段 + 之后 0.1 范围内)

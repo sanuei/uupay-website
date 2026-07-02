@@ -10,7 +10,8 @@
     "announcements": "Anuncios",
     "login": "Iniciar sesión",
     "register": "Registrarse",
-    "download": "Descargar"
+    "download": "Descargar",
+    "menu": "Menú"
   },
   "hero": {
     "title_part1": "Tus activos digitales,",
@@ -31,7 +32,12 @@
     "card3_title": "Retiros de Fiat Grandes",
     "card3_desc": "Conexión directa con bancos autorizados. Conversión segura y conforme de criptomonedas a fiat de gran volumen.",
     "card4_title": "Chat y Transferencia",
-    "card4_desc": "Envía dinero tan fácil como enviar un mensaje. Sobres rojos, regalos y transferencias P2P sin comisiones."
+    "card4_desc": "Envía dinero tan fácil como enviar un mensaje. Sobres rojos, regalos y transferencias P2P sin comisiones.",
+    "title_html": "Libera el verdadero poder de las <span class=\"kw\">criptomonedas</span>",
+    "card1_cta": "Explorar tarjeta U",
+    "card2_cta": "Explorar eSIM",
+    "card3_cta": "Explorar retiros",
+    "card4_cta": "Explorar Chat y Transferencia"
   },
   "cardShowcase": {
     "title": "Elige tu tarjeta",
@@ -39,25 +45,33 @@
     "virtual_title": "Tarjeta virtual flexible y conveniente",
     "virtual_desc": "Emisión instantánea en 1 minuto, vinculación inmediata, soporte excelente para compras internacionales en línea y suscripciones SaaS.",
     "physical_title": "Tarjeta física negra mate premium",
-    "physical_desc": "Tarjeta Visa física de primera calidad. Retira efectivo en cajeros automáticos y paga en terminales POS en todo el mundo sin comisiones por transacciones internacionales."
+    "physical_desc": "Tarjeta Visa física de primera calidad. Retira efectivo en cajeros automáticos y paga en terminales POS en todo el mundo sin comisiones por transacciones internacionales.",
+    "title_html": "Elige tu <span class=\"kw\">tarjeta</span>"
   },
   "stats": {
     "countries": "Países y regiones cubiertos",
     "partners": "Socios globales",
-    "rewards": "Total de comisiones pagadas"
+    "rewards": "Total de comisiones pagadas",
+    "title_html": "Respaldado por los <span class=\"kw\">Datos</span>"
   },
   "esim": {
     "title": "Conéctate al mundo con eSIM",
     "subtitle": "Sin tarjeta física, sin cargos de roaming. Conéctate a internet de alta velocidad tan pronto como aterrices.",
     "desc1": "Soporte de conexión de red en más de 137 países y regiones de todo el mundo.",
     "desc2": "Soporte de pago con USDT, escanea el código QR para activar al instante.",
-    "desc3": "Múltiples paquetes de datos diseñados especialmente para nómadas digitales."
+    "desc3": "Múltiples paquetes de datos diseñados especialmente para nómadas digitales.",
+    "title_html": "Conéctate <span class=\"kw\">al mundo</span> con eSIM"
   },
   "partners": {
     "title": "Programa de socios de recomendación de UUPAY",
     "subtitle": "Recomienda a amigos para abrir tarjetas y gastar para recibir recompensas de comisión de hasta el 50%.",
     "earn": "Comenzar a ganar comisiones",
-    "apply": "Solicitar unirse a socios"
+    "apply": "Solicitar unirse a socios",
+    "title_html": "Recomienda UUPAY, gana <span class=\"kw\">50%</span> de comisión",
+    "stat1_label": "Socios de UUPAY",
+    "stat2_label": "Total de comisiones pagadas",
+    "stat3_label": "Ingreso mensual promedio",
+    "stat4_label": "Liquidación en tiempo real"
   },
   "promotions": {
     "title": "Ofertas por tiempo limitado",
@@ -65,7 +79,9 @@
     "promo1_title": "Abre tarjeta virtual por solo 1 USDT",
     "promo1_desc": "Durante el periodo de la campaña, abre la tarjeta con solo 1 USDT y recibe una recompensa de consumo de 1 USDT al instante.",
     "promo2_title": "Tarifas de recarga gratuitas",
-    "promo2_desc": "100% gratis de comisión de transacciones de depósito y recarga durante todo el periodo promocional."
+    "promo2_desc": "100% gratis de comisión de transacciones de depósito y recarga durante todo el periodo promocional.",
+    "title_html": "Ofertas <span class=\"kw\">exclusivas</span> por tiempo limitado",
+    "cta": "Participar ahora"
   },
   "download": {
     "title": "Descargar la aplicación UUPAY",
@@ -91,6 +107,34 @@
     "company": "Empresa",
     "legal": "Políticas legales",
     "support": "Soporte",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "nav_home": "Inicio",
+    "nav_promotions": "Promociones",
+    "nav_partners": "Socios",
+    "nav_announcements": "Anuncios",
+    "help_center": "Centro de ayuda",
+    "contact_support": "Contactar soporte",
+    "business": "Negocios",
+    "agent_recruitment": "Reclutamiento de agentes",
+    "privacy_policy": "Política de privacidad",
+    "terms_of_service": "Términos de servicio"
+  },
+  "meta": {
+    "title": "UUPAY - Simplifica los pagos, acerca el mundo",
+    "description": "UUPAY es una plataforma de tarjetas financieras cripto de nueva generación para usuarios globales, con tarjetas Visa y Mastercard para gastar criptomonedas en el mundo real."
+  },
+  "appShowcase": {
+    "title_html": "Experimenta <span class=\"kw\">UUPAY App</span>",
+    "subtitle": "5 funciones clave, una sola pantalla. Desplázate para ver cómo una sola app transforma tu forma de gastar criptomonedas.",
+    "slide1_title": "Panel de activos",
+    "slide1_desc": "Activos totales estimados, desglose de billetera y tarjeta, saldo de USDT y accesos rápidos en una sola pantalla.",
+    "slide2_title": "Control de Tarjeta U",
+    "slide2_desc": "Ver CVV, recargar, bloquear y fijar límites de gasto — todo en 3 segundos, gestiona tarjetas físicas y virtuales.",
+    "slide3_title": "Chat y Transferencia",
+    "slide3_desc": "Envía dinero tan fácil como un mensaje. Sobres rojos, regalos y transferencias P2P sin comisión.",
+    "slide4_title": "Gana 50% de Comisión",
+    "slide4_desc": "Recomienda y gana hasta un 50% de comisión, liquidación en tiempo real, datos totalmente transparentes.",
+    "slide5_title": "Seguridad y eSIM",
+    "slide5_desc": "Seguridad de la cuenta, configuración del sistema, compra de eSIM con un toque — cifrado de 128 bits en cada transacción."
   }
 }

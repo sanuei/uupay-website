@@ -10,7 +10,8 @@
     "announcements": "Berita",
     "login": "Log masuk",
     "register": "Daftar",
-    "download": "Muat turun"
+    "download": "Muat turun",
+    "menu": "Menu"
   },
   "hero": {
     "title_part1": "Aset Digital Anda,",
@@ -31,7 +32,12 @@
     "card3_title": "Pengeluaran Fiat Besar",
     "card3_desc": "Sambungan bank terus berlesen. Penukaran kripto kepada fiat jumlah besar yang selamat dan patuh undang-undang.",
     "card4_title": "Sembang & Bayar",
-    "card4_desc": "Hantar wang semudah menghantar mesej. Sampul merah, hadiah, dan pemindahan P2P tanpa yuran."
+    "card4_desc": "Hantar wang semudah menghantar mesej. Sampul merah, hadiah, dan pemindahan P2P tanpa yuran.",
+    "title_html": "Bebaskan Kuasa Sebenar <span class=\"kw\">Kripto</span>",
+    "card1_cta": "Terokai Kad U",
+    "card2_cta": "Terokai eSIM",
+    "card3_cta": "Terokai Pengeluaran",
+    "card4_cta": "Terokai Sembang & Bayar"
   },
   "cardShowcase": {
     "title": "Pilih Kad Anda",
@@ -39,25 +45,33 @@
     "virtual_title": "Kad Maya Fleksibel dan Selesa",
     "virtual_desc": "Pengeluaran kad segera dalam 1 minit, pautkan terus, sokongan hebat untuk beli-belah dalam talian global dan langganan SaaS.",
     "physical_title": "Kad Fizikal Hitam Pusam Premium",
-    "physical_desc": "Kad Visa fizikal premium. Keluarkan tunai di ATM dan bayar di POS di seluruh dunia tanpa yuran transaksi antarabangsa."
+    "physical_desc": "Kad Visa fizikal premium. Keluarkan tunai di ATM dan bayar di POS di seluruh dunia tanpa yuran transaksi antarabangsa.",
+    "title_html": "Pilih <span class=\"kw\">Kad</span> Anda"
   },
   "stats": {
     "countries": "Negara dan Wilayah Disokong",
     "partners": "Rakan Kongsi Global",
-    "rewards": "Jumlah Komisen Dibayar"
+    "rewards": "Jumlah Komisen Dibayar",
+    "title_html": "Dibuktikan oleh <span class=\"kw\">Data</span>"
   },
   "esim": {
     "title": "Hubungkan Dunia dengan eSIM",
     "subtitle": "Tiada kad fizikal, tiada yuran perayauan. Sambungkan internet berkelajuan tinggi sebaik sahaja anda mendarat.",
     "desc1": "Sokongan sambungan rangkaian di 137+ negara dan wilayah di seluruh dunia.",
     "desc2": "Sokongan pembayaran dengan USDT, imbas kod QR untuk aktifkan serta-merta.",
-    "desc3": "Pelbagai pakej data yang direka khas untuk Digital Nomad."
+    "desc3": "Pelbagai pakej data yang direka khas untuk Digital Nomad.",
+    "title_html": "Hubungkan <span class=\"kw\">Dunia</span> dengan eSIM"
   },
   "partners": {
     "title": "Program Rakan Kongsi Rujukan UUPAY",
     "subtitle": "Rujuk rakan untuk membuka kad dan berbelanja untuk menerima ganjaran komisen sehingga 50%.",
     "earn": "Mula Menjana Komisen",
-    "apply": "Mohon Menyertai Rakan Kongsi"
+    "apply": "Mohon Menyertai Rakan Kongsi",
+    "title_html": "Rujuk UUPAY, Perolehi <span class=\"kw\">50%</span> Komisen",
+    "stat1_label": "Rakan Kongsi UUPAY",
+    "stat2_label": "Jumlah Komisen Dibayar",
+    "stat3_label": "Purata Pendapatan Bulanan",
+    "stat4_label": "Penyelesaian Masa Nyata"
   },
   "promotions": {
     "title": "Tawaran Had Masa",
@@ -65,7 +79,9 @@
     "promo1_title": "Buka Kad Maya hanya 1 USDT",
     "promo1_desc": "Dalam tempoh kempen, buka kad dengan hanya 1 USDT dan terima ganjaran perbelanjaan 1 USDT serta-merta.",
     "promo2_title": "Percuma Yuran Tambah Nilai",
-    "promo2_desc": "Percuma 100% yuran transaksi deposit dan tambah nilai sepanjang tempoh promosi."
+    "promo2_desc": "Percuma 100% yuran transaksi deposit dan tambah nilai sepanjang tempoh promosi.",
+    "title_html": "Tawaran <span class=\"kw\">Istimewa</span> Had Masa",
+    "cta": "Sertai Sekarang"
   },
   "download": {
     "title": "Muat Turun Aplikasi UUPAY",
@@ -91,6 +107,34 @@
     "company": "Syarikat",
     "legal": "Dasar Undang-undang",
     "support": "Sokongan",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "nav_home": "Utama",
+    "nav_promotions": "Promosi",
+    "nav_partners": "Rakan Kongsi",
+    "nav_announcements": "Pengumuman",
+    "help_center": "Pusat Bantuan",
+    "contact_support": "Hubungi Sokongan",
+    "business": "Kerjasama Perniagaan",
+    "agent_recruitment": "Pengambilan Ejen",
+    "privacy_policy": "Dasar Privasi",
+    "terms_of_service": "Terma Perkhidmatan"
+  },
+  "meta": {
+    "title": "UUPAY - Permudah Pembayaran, Dekatkan Dunia",
+    "description": "UUPAY ialah platform kad kewangan kripto generasi baharu untuk pengguna global, disokong oleh kad Visa & Mastercard untuk perbelanjaan kripto dunia sebenar."
+  },
+  "appShowcase": {
+    "title_html": "Alami <span class=\"kw\">UUPAY App</span>",
+    "subtitle": "5 ciri utama dalam satu skrin. Tatal untuk melihat bagaimana satu aplikasi mengubah cara anda berbelanja kripto.",
+    "slide1_title": "Papan Pemuka Aset",
+    "slide1_desc": "Anggaran jumlah aset, pecahan aset dompet & kad, baki USDT, dan tindakan pantas dalam satu skrin.",
+    "slide2_title": "Kawalan Kad U",
+    "slide2_desc": "Papar CVV, tambah nilai, kunci kad, dan had perbelanjaan — semua dalam 3 saat, urus kad fizikal & maya bersama.",
+    "slide3_title": "Sembang & Bayar",
+    "slide3_desc": "Hantar wang semudah menghantar mesej. Sampul merah, hadiah, dan pemindahan P2P tanpa yuran.",
+    "slide4_title": "Perolehi Komisen 50%",
+    "slide4_desc": "Rujuk dan perolehi komisen sehingga 50%, penyelesaian masa nyata, data telus sepenuhnya.",
+    "slide5_title": "Keselamatan & eSIM",
+    "slide5_desc": "Keselamatan akaun, tetapan sistem, pembelian eSIM sekali ketik — penyulitan 128-bit pada setiap transaksi."
   }
 }

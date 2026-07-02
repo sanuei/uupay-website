@@ -10,7 +10,8 @@
     "announcements": "Pengumuman",
     "login": "Masuk",
     "register": "Daftar",
-    "download": "Unduh"
+    "download": "Unduh",
+    "menu": "Menu"
   },
   "hero": {
     "title_part1": "Aset Digital Anda,",
@@ -31,7 +32,12 @@
     "card3_title": "Penarikan Fiat Besar",
     "card3_desc": "Koneksi bank berlisensi langsung. Konversi kripto ke fiat volume besar yang aman dan patuh hukum.",
     "card4_title": "Obrolan & Kirim Uang",
-    "card4_desc": "Kirim uang semudah mengirim pesan. Angpao, hadiah, dan transfer P2P tanpa biaya."
+    "card4_desc": "Kirim uang semudah mengirim pesan. Angpao, hadiah, dan transfer P2P tanpa biaya.",
+    "title_html": "Bebaskan Kekuatan Sejati <span class=\"kw\">Kripto</span>",
+    "card1_cta": "Jelajahi Kartu U",
+    "card2_cta": "Jelajahi eSIM",
+    "card3_cta": "Jelajahi Penarikan",
+    "card4_cta": "Jelajahi Obrolan & Kirim Uang"
   },
   "cardShowcase": {
     "title": "Pilih Kartu Anda",
@@ -39,25 +45,33 @@
     "virtual_title": "Kartu Virtual yang Fleksibel dan Nyaman",
     "virtual_desc": "Penerbitan kartu instan dalam 1 menit, langsung tautkan, dukungan luar biasa untuk belanja online global dan langganan SaaS.",
     "physical_title": "Kartu Fisik Hitam Doff Premium",
-    "physical_desc": "Kartu Visa fisik premium. Tarik tunai di ATM dan bayar di POS di seluruh dunia tanpa biaya transaksi internasional."
+    "physical_desc": "Kartu Visa fisik premium. Tarik tunai di ATM dan bayar di POS di seluruh dunia tanpa biaya transaksi internasional.",
+    "title_html": "Pilih <span class=\"kw\">Kartu</span> Anda"
   },
   "stats": {
     "countries": "Negara dan Wilayah yang Didukung",
     "partners": "Mitra Global",
-    "rewards": "Total Komisi yang Dibayarkan"
+    "rewards": "Total Komisi yang Dibayarkan",
+    "title_html": "Dibuktikan oleh <span class=\"kw\">Data</span>"
   },
   "esim": {
     "title": "Hubungkan Dunia dengan eSIM",
     "subtitle": "Tanpa kartu fisik, tanpa biaya roaming. Hubungkan internet berkecepatan tinggi begitu Anda mendarat.",
     "desc1": "Mendukung koneksi jaringan di 137+ negara dan wilayah di seluruh dunia.",
     "desc2": "Mendukung pembayaran dengan USDT, pindai kode QR untuk aktifkan instan.",
-    "desc3": "Berbagai paket data yang dirancang khusus untuk Digital Nomad."
+    "desc3": "Berbagai paket data yang dirancang khusus untuk Digital Nomad.",
+    "title_html": "Hubungkan <span class=\"kw\">Dunia</span> dengan eSIM"
   },
   "partners": {
     "title": "Program Kemitraan Referensi UUPAY",
     "subtitle": "Rujuk teman untuk membuka kartu dan berbelanja untuk menerima hadiah komisi hingga 50%.",
     "earn": "Mulai Menghasilkan Komisi",
-    "apply": "Ajukan Bergabung dengan Mitra"
+    "apply": "Ajukan Bergabung dengan Mitra",
+    "title_html": "Rujuk UUPAY, Dapatkan Komisi <span class=\"kw\">50%</span>",
+    "stat1_label": "Mitra UUPAY",
+    "stat2_label": "Total Komisi yang Dibayarkan",
+    "stat3_label": "Rata-rata Pendapatan Bulanan",
+    "stat4_label": "Penyelesaian Real-time"
   },
   "promotions": {
     "title": "Penawaran Batas Waktu",
@@ -65,7 +79,9 @@
     "promo1_title": "Buka Kartu Virtual hanya 1 USDT",
     "promo1_desc": "Selama periode kampanye, buka kartu hanya dengan 1 USDT dan terima hadiah belanja 1 USDT instan.",
     "promo2_title": "Gratis Biaya Isi Ulang",
-    "promo2_desc": "Gratis 100% biaya transaksi deposit dan isi ulang selama periode promosi."
+    "promo2_desc": "Gratis 100% biaya transaksi deposit dan isi ulang selama periode promosi.",
+    "title_html": "Penawaran <span class=\"kw\">Spesial</span> Batas Waktu",
+    "cta": "Ikut Sekarang"
   },
   "download": {
     "title": "Unduh Aplikasi UUPAY",
@@ -91,6 +107,34 @@
     "company": "Perusahaan",
     "legal": "Kebijakan Hukum",
     "support": "Dukungan",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "nav_home": "Beranda",
+    "nav_promotions": "Promosi",
+    "nav_partners": "Mitra",
+    "nav_announcements": "Pengumuman",
+    "help_center": "Pusat Bantuan",
+    "contact_support": "Hubungi Dukungan",
+    "business": "Kerja Sama Bisnis",
+    "agent_recruitment": "Rekrutmen Agen",
+    "privacy_policy": "Kebijakan Privasi",
+    "terms_of_service": "Ketentuan Layanan"
+  },
+  "meta": {
+    "title": "UUPAY - Sederhanakan Pembayaran, Dekatkan Dunia",
+    "description": "UUPAY adalah platform kartu keuangan kripto generasi baru untuk pengguna global, didukung kartu Visa & Mastercard untuk pengeluaran kripto di dunia nyata."
+  },
+  "appShowcase": {
+    "title_html": "Rasakan <span class=\"kw\">UUPAY App</span>",
+    "subtitle": "5 fitur utama dalam satu layar. Gulir untuk melihat bagaimana satu aplikasi mengubah cara Anda berbelanja kripto.",
+    "slide1_title": "Dasbor Aset",
+    "slide1_desc": "Estimasi total aset, rincian aset dompet & kartu, saldo USDT, dan akses cepat dalam satu layar.",
+    "slide2_title": "Kontrol Kartu U",
+    "slide2_desc": "Lihat CVV, top-up, kunci kartu, dan batas belanja — semua dalam 3 detik, kelola kartu fisik & virtual sekaligus.",
+    "slide3_title": "Obrolan & Kirim Uang",
+    "slide3_desc": "Kirim uang semudah mengirim pesan. Angpao, hadiah, dan transfer P2P tanpa biaya.",
+    "slide4_title": "Komisi hingga 50%",
+    "slide4_desc": "Rujuk dan dapatkan komisi hingga 50%, penyelesaian real-time, data yang sepenuhnya transparan.",
+    "slide5_title": "Keamanan & eSIM",
+    "slide5_desc": "Keamanan akun, pengaturan sistem, pembelian eSIM sekali ketuk — enkripsi 128-bit di setiap transaksi."
   }
 }

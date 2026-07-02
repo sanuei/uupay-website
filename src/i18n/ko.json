@@ -10,7 +10,8 @@
     "announcements": "공지",
     "login": "로그인",
     "register": "가입",
-    "download": "다운로드"
+    "download": "다운로드",
+    "menu": "메뉴"
   },
   "hero": {
     "title_part1": "귀하의 디지털 자산,",
@@ -31,7 +32,12 @@
     "card3_title": "대액 인출",
     "card3_desc": "라이선스 은행 직접 연동으로 안전하고 법규를 준수하는 대용량 암호화폐-법정화폐 변환.",
     "card4_title": "채팅 송금",
-    "card4_desc": "메시지 보내듯 간편하게 송금. 홍바오(붉은 봉투), 선물 및 수수료 없는 P2P 전송 지원."
+    "card4_desc": "메시지 보내듯 간편하게 송금. 홍바오(붉은 봉투), 선물 및 수수료 없는 P2P 전송 지원.",
+    "title_html": "<span class=\"kw\">암호화폐</span>의 진정한 힘을 발휘하다",
+    "card1_cta": "U 카드 알아보기",
+    "card2_cta": "eSIM 알아보기",
+    "card3_cta": "출금 알아보기",
+    "card4_cta": "채팅 송금 알아보기"
   },
   "cardShowcase": {
     "title": "귀하만의 카드 선택",
@@ -39,25 +45,33 @@
     "virtual_title": "유연하고 편리한 가상 카드",
     "virtual_desc": "1분 내 즉시 발급. 온라인 쇼핑 및 글로벌 SaaS 구독에 이상적입니다.",
     "physical_title": "프리미엄 매트 블랙 실물 카드",
-    "physical_desc": "고급 매트 블랙 Visa 카드. 전 세계 ATM 및 POS에서 해외 거래 수수료 없이 사용하세요."
+    "physical_desc": "고급 매트 블랙 Visa 카드. 전 세계 ATM 및 POS에서 해외 거래 수수료 없이 사용하세요.",
+    "title_html": "귀하만의 <span class=\"kw\">카드</span> 선택"
   },
   "stats": {
     "countries": "지원 국가 및 지역",
     "partners": "글로벌 파트너",
-    "rewards": "누적 수수료 지급액"
+    "rewards": "누적 수수료 지급액",
+    "title_html": "<span class=\"kw\">데이터</span>가 말해줍니다"
   },
   "esim": {
     "title": "eSIM으로 세계를 연결하다",
     "subtitle": "실물 카드 없이, 로밍 요금 없이. 도착 즉시 초고속 인터넷을 즐겨보세요.",
     "desc1": "전 세계 137개국 이상의 네트워크 지원.",
     "desc2": "USDT 결제 가능, QR 코드 스캔으로 즉시 활성화.",
-    "desc3": "디지털 노마드를 위한 맞춤형 다양한 데이터 요금제."
+    "desc3": "디지털 노마드를 위한 맞춤형 다양한 데이터 요금제.",
+    "title_html": "eSIM으로 <span class=\"kw\">세계를 연결하다</span>"
   },
   "partners": {
     "title": "UUPAY 추천 파트너 프로그램",
     "subtitle": "친구에게 카드를 추천하여 개설하고 사용하면 최대 50%의 보상을 받을 수 있습니다.",
     "earn": "수수료 수익 시작",
-    "apply": "파트너 신청하기"
+    "apply": "파트너 신청하기",
+    "title_html": "UUPAY 추천하고 <span class=\"kw\">50%</span> 수수료 받기",
+    "stat1_label": "UUPAY 파트너",
+    "stat2_label": "누적 수수료 지급액",
+    "stat3_label": "파트너 평균 월 수입",
+    "stat4_label": "실시간 정산"
   },
   "promotions": {
     "title": "기간 한정 캠페인",
@@ -65,7 +79,9 @@
     "promo1_title": "1 USDT 가상 카드 발급",
     "promo1_desc": "이벤트 기간 동안 단 1 USDT로 카드를 발급하고, 1 USDT 소비금을 즉시 증정.",
     "promo2_title": "충전 수수료 완전 면제",
-    "promo2_desc": "이벤트 기간 내 모든 충전 및 이체 채널에 대해 수수료 0% 혜택 적용."
+    "promo2_desc": "이벤트 기간 내 모든 충전 및 이체 채널에 대해 수수료 0% 혜택 적용.",
+    "title_html": "기간 한정 <span class=\"kw\">캠페인</span>",
+    "cta": "지금 참여하기"
   },
   "download": {
     "title": "UUPAY 앱 다운로드",
@@ -91,6 +107,34 @@
     "company": "회사",
     "legal": "법률 정책",
     "support": "고객 지원",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "nav_home": "홈",
+    "nav_promotions": "프로모션",
+    "nav_partners": "파트너",
+    "nav_announcements": "공지사항",
+    "help_center": "고객센터",
+    "contact_support": "고객 지원 문의",
+    "business": "비즈니스 제휴",
+    "agent_recruitment": "파트너 모집",
+    "privacy_policy": "개인정보 처리방침",
+    "terms_of_service": "이용약관"
+  },
+  "meta": {
+    "title": "UUPAY - 결제를 더 간단하게, 세상을 더 가깝게",
+    "description": "UUPAY는 전 세계 사용자를 위한 암호화폐 금융 카드 서비스로, Visa 및 Mastercard와 함께 암호화폐 자산의 글로벌 결제를 실현합니다."
+  },
+  "appShowcase": {
+    "title_html": "<span class=\"kw\">UUPAY App</span> 체험하기",
+    "subtitle": "5가지 핵심 기능을 한 화면에서. 스크롤하여 하나의 앱이 암호화폐 소비 경험을 어떻게 바꾸는지 확인해보세요.",
+    "slide1_title": "자산 대시보드",
+    "slide1_desc": "예상 총자산, 지갑과 카드 자산 구분, USDT 잔액, 빠른 실행 메뉴를 한 화면에서.",
+    "slide2_title": "U 카드 관리",
+    "slide2_desc": "CVV 확인, 충전, 잠금, 사용 한도 설정까지 3초 만에 완료. 실물·가상 카드를 한 번에 관리.",
+    "slide3_title": "채팅 송금",
+    "slide3_desc": "메시지를 보내듯 간편하게 송금. 홍바오, 선물, 수수료 없는 P2P 송금까지.",
+    "slide4_title": "최대 50% 보상",
+    "slide4_desc": "추천만으로 최대 50% 수수료 획득. 실시간 정산, 완전히 투명한 데이터.",
+    "slide5_title": "보안 및 eSIM",
+    "slide5_desc": "계정 보안, 시스템 설정, eSIM 원터치 구매 — 모든 거래는 128비트 암호화로 보호."
   }
 }

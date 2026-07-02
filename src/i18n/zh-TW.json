@@ -10,7 +10,8 @@
     "announcements": "公告",
     "login": "登入",
     "register": "註冊",
-    "download": "下載"
+    "download": "下載",
+    "menu": "選單"
   },
   "hero": {
     "title_part1": "您的數字資產，",
@@ -31,7 +32,12 @@
     "card3_title": "大額出金",
     "card3_desc": "持牌銀行直連，合規出金，大額資金無憂，享受極速安全出金體驗。",
     "card4_title": "聊天即轉賬",
-    "card4_desc": "像聊天一樣發送資金，支持紅包、禮品和用戶間免手續費的同名劃轉。"
+    "card4_desc": "像聊天一樣發送資金，支持紅包、禮品和用戶間免手續費的同名劃轉。",
+    "title_html": "釋放<span class=\"kw\">加密貨幣</span>的真正力量",
+    "card1_cta": "了解 U 卡",
+    "card2_cta": "了解 eSIM",
+    "card3_cta": "了解出金",
+    "card4_cta": "了解聊天轉賬"
   },
   "cardShowcase": {
     "title": "選擇專屬您的卡片",
@@ -39,25 +45,33 @@
     "virtual_title": "靈活便捷的虛擬卡",
     "virtual_desc": "1分鐘極速開卡，即刻綁定，完美支持各類海淘消費和全球主流 SaaS 服務訂閱。",
     "physical_title": "尊貴啞光黑實體卡",
-    "physical_desc": "高級啞光黑色實體卡。在全球支持 Visa 的 ATM 和 POS 機消費，尊享無境外交易費優惠。"
+    "physical_desc": "高級啞光黑色實體卡。在全球支持 Visa 的 ATM 和 POS 機消費，尊享無境外交易費優惠。",
+    "title_html": "選擇專屬<span class=\"kw\">您的卡片</span>"
   },
   "stats": {
     "countries": "覆蓋國家與地區",
     "partners": "全球合作伙伴",
-    "rewards": "已發放佣金總額"
+    "rewards": "已發放佣金總額",
+    "title_html": "用<span class=\"kw\">數據</span>說話"
   },
   "esim": {
     "title": "使用 eSIM 連接世界",
     "subtitle": "免實體卡，免漫遊費。落地即刻聯網，隨時暢享高速網絡。",
     "desc1": "支持全球 137+ 國家和地區網絡連接。",
     "desc2": "支持 USDT 支付，掃碼秒級激活啟用。",
-    "desc3": "專為數字遊民量身打造的多樣流量套餐。"
+    "desc3": "專為數字遊民量身打造的多樣流量套餐。",
+    "title_html": "使用 eSIM <span class=\"kw\">連接世界</span>"
   },
   "partners": {
     "title": "UUPAY 推介合夥人計劃",
     "subtitle": "推薦好友開卡消費，即可獲得最高 50% 比例的返傭獎勵。",
     "earn": "開始賺取佣金",
-    "apply": "申請加入合夥人"
+    "apply": "申請加入合夥人",
+    "title_html": "推介 <span class=\"kw\">UUPAY</span> 賺取 <span class=\"kw\">50%</span> 佣金",
+    "stat1_label": "UUPAY 合夥人",
+    "stat2_label": "累計佣金發放",
+    "stat3_label": "合夥人月均收入",
+    "stat4_label": "即時結算"
   },
   "promotions": {
     "title": "限時特惠活動",
@@ -65,7 +79,9 @@
     "promo1_title": "1 USDT 開虛擬卡",
     "promo1_desc": "活動期間僅需 1 USDT 即可開卡，開卡即送 1 USDT 消費金。",
     "promo2_title": "充值手續費全免",
-    "promo2_desc": "活動期間所有充值與劃轉通道尊享 0 手續費優惠。"
+    "promo2_desc": "活動期間所有充值與劃轉通道尊享 0 手續費優惠。",
+    "title_html": "限時 <span class=\"kw\">特惠</span> 活動",
+    "cta": "立即參與"
   },
   "download": {
     "title": "下載 UUPAY App",
@@ -91,6 +107,34 @@
     "company": "公司",
     "legal": "法律政策",
     "support": "客戶支持",
-    "rights": "版權所有。"
+    "rights": "版權所有。",
+    "nav_home": "首頁",
+    "nav_promotions": "限時活動",
+    "nav_partners": "合夥人",
+    "nav_announcements": "公告中心",
+    "help_center": "幫助中心",
+    "contact_support": "聯繫客服",
+    "business": "市場合作",
+    "agent_recruitment": "招募合作",
+    "privacy_policy": "隱私政策",
+    "terms_of_service": "服務條款"
+  },
+  "meta": {
+    "title": "UUPAY - 讓支付回歸簡單，讓世界觸手可及",
+    "description": "UUPAY 是一款面向全球用戶的加密貨幣金融卡產品，依托 Visa / Mastercard 雙卡組織，實現加密資產的全球消費場景落地。"
+  },
+  "appShowcase": {
+    "title_html": "體驗 <span class=\"kw\">UUPAY App</span>",
+    "subtitle": "5 個核心功能，一屏掌握。滾動瀏覽，看完整張卡片如何改變你的加密消費體驗。",
+    "slide1_title": "資產總覽",
+    "slide1_desc": "預估總資產、錢包與卡片資產拆分、USDT 餘額、快捷入口一屏掌控。",
+    "slide2_title": "U 卡管理",
+    "slide2_desc": "CVV 查看、儲值、鎖定、消費限額，所有操作 3 秒完成，實體虛擬卡同管。",
+    "slide3_title": "聊天即轉賬",
+    "slide3_desc": "像聊天一樣發送資金，紅包、禮品、同名劃轉，0 手續費即時到帳。",
+    "slide4_title": "返傭獎勵",
+    "slide4_desc": "推薦並賺取最多 50% 佣金，即時結算，數據公開透明。",
+    "slide5_title": "安全設定",
+    "slide5_desc": "帳戶安全、系統設定、eSIM 一鍵購買，128-bit 加密守護每一筆交易。"
   }
 }

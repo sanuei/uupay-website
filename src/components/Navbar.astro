@@ -119,5 +119,56 @@ const langEnName: Record<string, string> = {
         </div>
       </div>
     </div>
+
+    <!-- 移动端菜单开关 (<968px 显示, 桌面版靠 .nav-menu 常驻显示) -->
+    <button class="nav-burger" id="nav-burger" aria-label={t('nav.menu')} aria-expanded="false" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- 移动端下拉菜单面板 -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul class="mobile-menu-list">
+      <li><a href="#products" class="mobile-menu-link">{t('nav.products')}</a></li>
+      <li><a href="#cards" class="mobile-menu-link">{t('nav.cards')}</a></li>
+      <li><a href={`${base}/partners`} class="mobile-menu-link">{t('nav.partners')}</a></li>
+      <li><a href={`${base}/promotions`} class="mobile-menu-link">{t('nav.promotions')}</a></li>
+      <li><a href={`${base}/announcements`} class="mobile-menu-link">{t('nav.announcements')}</a></li>
+    </ul>
+    <div class="mobile-menu-actions">
+      <a href="https://uupay.com/login" class="mobile-menu-login">{t('nav.login')}</a>
+      <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" class="btn btn-primary btn-large mobile-menu-cta">{t('nav.register')}</a>
+    </div>
   </div>
 </header>
+
+<script>
+  const burger = document.getElementById('nav-burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (burger && mobileMenu) {
+    const closeMenu = () => {
+      burger.classList.remove('is-active');
+      burger.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('is-open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('nav-open');
+    };
+
+    burger.addEventListener('click', () => {
+      const willOpen = !mobileMenu.classList.contains('is-open');
+      burger.classList.toggle('is-active', willOpen);
+      burger.setAttribute('aria-expanded', String(willOpen));
+      mobileMenu.classList.toggle('is-open', willOpen);
+      mobileMenu.setAttribute('aria-hidden', String(!willOpen));
+      document.documentElement.classList.toggle('nav-open', willOpen);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 968) closeMenu();
+    });
+  }
+</script>

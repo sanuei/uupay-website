@@ -10,7 +10,8 @@
     "announcements": "Thông báo",
     "login": "Đăng nhập",
     "register": "Đăng ký",
-    "download": "Tải xuống"
+    "download": "Tải xuống",
+    "menu": "Menu"
   },
   "hero": {
     "title_part1": "Tài sản kỹ thuật số của bạn,",
@@ -31,7 +32,12 @@
     "card3_title": "Rút tiền Fiat lớn",
     "card3_desc": "Kết nối trực tiếp ngân hàng được cấp phép. Chuyển đổi crypto sang fiat khối lượng lớn an toàn và tuân thủ pháp luật.",
     "card4_title": "Trò chuyện & Chuyển tiền",
-    "card4_desc": "Gửi tiền dễ dàng như gửi tin nhắn. Lì xì, quà tặng và chuyển khoản P2P không mất phí."
+    "card4_desc": "Gửi tiền dễ dàng như gửi tin nhắn. Lì xì, quà tặng và chuyển khoản P2P không mất phí.",
+    "title_html": "Giải phóng sức mạnh thực sự của <span class=\"kw\">Crypto</span>",
+    "card1_cta": "Khám phá Thẻ U",
+    "card2_cta": "Khám phá eSIM",
+    "card3_cta": "Khám phá rút tiền",
+    "card4_cta": "Khám phá Trò chuyện & Chuyển tiền"
   },
   "cardShowcase": {
     "title": "Chọn thẻ của riêng bạn",
@@ -39,25 +45,33 @@
     "virtual_title": "Thẻ ảo linh hoạt và tiện lợi",
     "virtual_desc": "Phát hành thẻ nhanh chóng trong 1 phút, liên kết tức thì, hỗ trợ tuyệt vời cho mua sắm trực tuyến toàn cầu và đăng ký SaaS.",
     "physical_title": "Thẻ vật lý đen mờ sang trọng",
-    "physical_desc": "Thẻ Visa vật lý cao cấp. Rút tiền tại ATM và thanh toán POS trên toàn cầu mà không mất phí giao dịch quốc tế."
+    "physical_desc": "Thẻ Visa vật lý cao cấp. Rút tiền tại ATM và thanh toán POS trên toàn cầu mà không mất phí giao dịch quốc tế.",
+    "title_html": "Chọn <span class=\"kw\">thẻ</span> của riêng bạn"
   },
   "stats": {
     "countries": "Quốc gia và khu vực được hỗ trợ",
     "partners": "Đối tác toàn cầu",
-    "rewards": "Tổng hoa hồng đã chi trả"
+    "rewards": "Tổng hoa hồng đã chi trả",
+    "title_html": "Minh chứng bằng <span class=\"kw\">con số</span>"
   },
   "esim": {
     "title": "Kết nối thế giới với eSIM",
     "subtitle": "Không cần thẻ vật lý, không phí chuyển vùng. Kết nối internet tốc độ cao ngay khi đáp máy bay.",
     "desc1": "Hỗ trợ kết nối mạng tại 137+ quốc gia và vùng lãnh thổ.",
     "desc2": "Hỗ trợ thanh toán bằng USDT, quét mã QR kích hoạt trong vài giây.",
-    "desc3": "Các gói cước đa dạng được thiết kế riêng cho các Digital Nomad."
+    "desc3": "Các gói cước đa dạng được thiết kế riêng cho các Digital Nomad.",
+    "title_html": "Kết nối <span class=\"kw\">thế giới</span> với eSIM"
   },
   "partners": {
     "title": "Chương trình đối tác giới thiệu UUPAY",
     "subtitle": "Giới thiệu bạn bè mở thẻ và chi tiêu để nhận phần thưởng hoa hồng lên tới 50%.",
     "earn": "Bắt đầu kiếm hoa hồng",
-    "apply": "Đăng ký tham gia đối tác"
+    "apply": "Đăng ký tham gia đối tác",
+    "title_html": "Giới thiệu UUPAY, nhận <span class=\"kw\">50%</span> hoa hồng",
+    "stat1_label": "Đối tác UUPAY",
+    "stat2_label": "Tổng hoa hồng đã chi trả",
+    "stat3_label": "Thu nhập trung bình hàng tháng",
+    "stat4_label": "Thanh toán theo thời gian thực"
   },
   "promotions": {
     "title": "Chương trình ưu đãi có hạn",
@@ -65,7 +79,9 @@
     "promo1_title": "Mở thẻ ảo chỉ với 1 USDT",
     "promo1_desc": "Trong thời gian diễn ra hoạt động, chỉ cần 1 USDT để mở thẻ và nhận ngay 1 USDT tiêu dùng.",
     "promo2_title": "Miễn phí nạp tiền",
-    "promo2_desc": "Miễn phí 100% phí giao dịch nạp tiền và chuyển tiền trong suốt thời gian khuyến mãi."
+    "promo2_desc": "Miễn phí 100% phí giao dịch nạp tiền và chuyển tiền trong suốt thời gian khuyến mãi.",
+    "title_html": "Chương trình <span class=\"kw\">ưu đãi</span> có hạn",
+    "cta": "Tham gia ngay"
   },
   "download": {
     "title": "Tải ứng dụng UUPAY",
@@ -91,6 +107,34 @@
     "company": "Công ty",
     "legal": "Chính sách pháp lý",
     "support": "Hỗ trợ",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "nav_home": "Trang chủ",
+    "nav_promotions": "Khuyến mãi",
+    "nav_partners": "Đối tác",
+    "nav_announcements": "Thông báo",
+    "help_center": "Trung tâm trợ giúp",
+    "contact_support": "Liên hệ hỗ trợ",
+    "business": "Hợp tác kinh doanh",
+    "agent_recruitment": "Tuyển đại lý",
+    "privacy_policy": "Chính sách bảo mật",
+    "terms_of_service": "Điều khoản dịch vụ"
+  },
+  "meta": {
+    "title": "UUPAY - Đơn giản hóa thanh toán, kết nối cả thế giới",
+    "description": "UUPAY là nền tảng thẻ tài chính tiền điện tử thế hệ mới dành cho người dùng toàn cầu, hỗ trợ thẻ Visa & Mastercard để chi tiêu tiền điện tử trong đời thực."
+  },
+  "appShowcase": {
+    "title_html": "Trải nghiệm <span class=\"kw\">UUPAY App</span>",
+    "subtitle": "5 tính năng cốt lõi, trọn trong một màn hình. Cuộn để xem một ứng dụng duy nhất thay đổi cách bạn chi tiêu tiền điện tử như thế nào.",
+    "slide1_title": "Tổng quan tài sản",
+    "slide1_desc": "Tổng tài sản ước tính, phân chia ví và thẻ, số dư USDT, và các thao tác nhanh trên một màn hình.",
+    "slide2_title": "Quản lý Thẻ U",
+    "slide2_desc": "Xem CVV, nạp tiền, khóa thẻ, giới hạn chi tiêu — hoàn tất trong 3 giây, quản lý cả thẻ vật lý và thẻ ảo.",
+    "slide3_title": "Trò chuyện & Chuyển tiền",
+    "slide3_desc": "Gửi tiền dễ như gửi tin nhắn. Lì xì, quà tặng và chuyển khoản P2P miễn phí.",
+    "slide4_title": "Hoa hồng đến 50%",
+    "slide4_desc": "Giới thiệu và kiếm tối đa 50% hoa hồng, thanh toán theo thời gian thực, dữ liệu minh bạch.",
+    "slide5_title": "Bảo mật & eSIM",
+    "slide5_desc": "Bảo mật tài khoản, cài đặt hệ thống, mua eSIM chỉ với một chạm — mã hóa 128-bit cho mọi giao dịch."
   }
 }

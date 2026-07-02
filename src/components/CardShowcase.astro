@@ -16,7 +16,7 @@ const t = useTranslations(lang as any);
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">CRYPTO CARD</span>
-        <h2>选择专属<span class="kw">你的卡片</span></h2>
+        <h2 set:html={t('cardShowcase.title_html')} />
         <p>{t('cardShowcase.subtitle')}</p>
       </div>
 

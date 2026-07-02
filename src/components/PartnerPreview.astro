@@ -16,19 +16,19 @@ const base = lang === 'en' ? '' : `/${lang}`;
       <div class="partner-stats">
         <div class="partner-stat">
           <div class="num">500+</div>
-          <div class="label">{lang === 'zh-CN' || lang === 'zh-TW' ? 'UUPAY 合伙人' : 'UUPAY Partners'}</div>
+          <div class="label">{t('partners.stat1_label')}</div>
         </div>
         <div class="partner-stat">
           <div class="num">$100K+</div>
-          <div class="label">{lang === 'zh-CN' || lang === 'zh-TW' ? '累计佣金发放' : 'Rewards Disbursed'}</div>
+          <div class="label">{t('partners.stat2_label')}</div>
         </div>
         <div class="partner-stat">
           <div class="num">$2,000+</div>
-          <div class="label">{lang === 'zh-CN' || lang === 'zh-TW' ? '合伙人月均收入' : 'Avg. Monthly Income'}</div>
+          <div class="label">{t('partners.stat3_label')}</div>
         </div>
         <div class="partner-stat">
           <div class="num">24/7</div>
-          <div class="label">{lang === 'zh-CN' || lang === 'zh-TW' ? '实时结算' : 'Real-time Settlement'}</div>
+          <div class="label">{t('partners.stat4_label')}</div>
         </div>
       </div>
 
@@ -37,7 +37,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
           <span style="width: 24px; height: 1px; background: var(--brand);"></span>
           PARTNER
         </span>
-        <h2>推介 <span class="kw">UUPAY</span> 赚取 <span class="kw">50%</span> 佣金</h2>
+        <h2 set:html={t('partners.title_html')} />
         <p>{t('partners.subtitle')}</p>
         <div class="partner-actions">
           <a href={`${base}/partners`} class="btn btn-primary btn-large">

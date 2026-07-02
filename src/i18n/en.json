@@ -10,7 +10,8 @@
     "announcements": "News",
     "login": "Log in",
     "register": "Sign up",
-    "download": "Download"
+    "download": "Download",
+    "menu": "Menu"
   },
   "hero": {
     "title_part1": "Your Digital Assets,",
@@ -31,7 +32,12 @@
     "card3_title": "Fiat Withdrawals",
     "card3_desc": "Direct bank transfers with licensed partners. Secure and compliant large-volume crypto-to-fiat conversions.",
     "card4_title": "Chat & Pay",
-    "card4_desc": "Send money as easily as sending a message. Red packets, gifts, and zero-fee P2P transfers."
+    "card4_desc": "Send money as easily as sending a message. Red packets, gifts, and zero-fee P2P transfers.",
+    "title_html": "Unleash the True Power of <span class=\"kw\">Crypto</span>",
+    "card1_cta": "Explore U-Card",
+    "card2_cta": "Explore eSIM",
+    "card3_cta": "Explore Withdrawals",
+    "card4_cta": "Explore Chat & Pay"
   },
   "cardShowcase": {
     "title": "Choose Your Cards",
@@ -39,25 +45,33 @@
     "virtual_title": "Flexible Virtual Card",
     "virtual_desc": "1-minute instant issuance, ready for online shopping and global SaaS subscriptions.",
     "physical_title": "Matte Black Physical Card",
-    "physical_desc": "Premium physical Visa card. Zero international transaction fees at ATMs and POS terminal transactions globally."
+    "physical_desc": "Premium physical Visa card. Zero international transaction fees at ATMs and POS terminal transactions globally.",
+    "title_html": "Choose Your <span class=\"kw\">Cards</span>"
   },
   "stats": {
     "countries": "Countries Covered",
     "partners": "Global Partners",
-    "rewards": "Rewards Disbursed"
+    "rewards": "Rewards Disbursed",
+    "title_html": "Backed by the <span class=\"kw\">Numbers</span>"
   },
   "esim": {
     "title": "Global Connectivity with eSIM",
     "subtitle": "No physical cards, no roaming fees. Stay connected wherever you land.",
     "desc1": "Supported in 137+ countries and regions.",
     "desc2": "Pay with USDT and activate instantly via QR code.",
-    "desc3": "Flexible data packages tailored for digital nomads."
+    "desc3": "Flexible data packages tailored for digital nomads.",
+    "title_html": "Global Connectivity with <span class=\"kw\">eSIM</span>"
   },
   "partners": {
     "title": "UUPAY Partner Program",
     "subtitle": "Share the platform and earn up to 50% commission for every referral.",
     "earn": "Earn Commissions",
-    "apply": "Apply to Join"
+    "apply": "Apply to Join",
+    "title_html": "Refer UUPAY, Earn <span class=\"kw\">50%</span> Commission",
+    "stat1_label": "UUPAY Partners",
+    "stat2_label": "Rewards Disbursed",
+    "stat3_label": "Avg. Monthly Income",
+    "stat4_label": "Real-time Settlement"
   },
   "promotions": {
     "title": "Limited-Time Offers",
@@ -65,7 +79,9 @@
     "promo1_title": "1 USDT Virtual Card",
     "promo1_desc": "Get a virtual card for only 1 USDT and receive 1 USDT cashback instantly.",
     "promo2_title": "Zero Top-up Fees",
-    "promo2_desc": "Enjoy zero deposit and top-up transaction fees during the promotional period."
+    "promo2_desc": "Enjoy zero deposit and top-up transaction fees during the promotional period.",
+    "title_html": "Limited-Time <span class=\"kw\">Offers</span>",
+    "cta": "Join Now"
   },
   "download": {
     "title": "Download UUPAY App",
@@ -91,6 +107,34 @@
     "company": "Company",
     "legal": "Legal",
     "support": "Support",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "nav_home": "Home",
+    "nav_promotions": "Promotions",
+    "nav_partners": "Partners",
+    "nav_announcements": "Announcements",
+    "help_center": "Help Center",
+    "contact_support": "Contact Support",
+    "business": "Business",
+    "agent_recruitment": "Agent Recruitment",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service"
+  },
+  "meta": {
+    "title": "UUPAY - Simplify Payments, Reach the World",
+    "description": "UUPAY is a next-generation crypto payment platform for global users, powered by Visa & Mastercard virtual and physical cards for real-world crypto spending."
+  },
+  "appShowcase": {
+    "title_html": "Experience <span class=\"kw\">UUPAY App</span>",
+    "subtitle": "5 core features, one screen. Scroll to see how a single app changes your crypto spending.",
+    "slide1_title": "Assets Dashboard",
+    "slide1_desc": "Estimated total assets, wallet & card split, USDT balance, and quick actions on one screen.",
+    "slide2_title": "U-Card Control",
+    "slide2_desc": "CVV reveal, top-up, freeze, and spending limits — all in 3 seconds, virtual and physical cards.",
+    "slide3_title": "Chat & Pay",
+    "slide3_desc": "Send money as easily as a message. Red packets, gifts, and zero-fee P2P transfers.",
+    "slide4_title": "Earn 50% Comm.",
+    "slide4_desc": "Refer and earn up to 50% commission, real-time settlement, fully transparent data.",
+    "slide5_title": "Security & eSIM",
+    "slide5_desc": "Account security, system settings, one-tap eSIM purchase — 128-bit encryption on every tx."
   }
 }

@@ -17,10 +17,7 @@ const t = useTranslations(lang as any);
           <span style="width: 24px; height: 1px; background: var(--brand);"></span>
           eSIM
         </span>
-        <h2>
-          {lang === 'zh-CN' || lang === 'zh-TW' ? '使用 eSIM ' : 'Global Connectivity with '}
-          <span class="kw">{lang === 'zh-CN' || lang === 'zh-TW' ? '连接世界' : 'eSIM'}</span>
-        </h2>
+        <h2 set:html={t('esim.title_html')} />
         <p>{t('esim.subtitle')}</p>
         <ul class="esim-features">
           <li><span class="check">✓</span><span>{t('esim.desc1')}</span></li>

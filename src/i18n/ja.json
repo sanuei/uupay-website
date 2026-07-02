@@ -10,7 +10,8 @@
     "announcements": "お知らせ",
     "login": "ログイン",
     "register": "登録",
-    "download": "ダウンロード"
+    "download": "ダウンロード",
+    "menu": "メニュー"
   },
   "hero": {
     "title_part1": "デジタル資産を、",
@@ -31,7 +32,12 @@
     "card3_title": "大口出金サービス",
     "card3_desc": "ライセンス銀行との直接連携により、安心・安全に大口の暗号資産から法定通貨への換金を実現。",
     "card4_title": "チャット送金",
-    "card4_desc": "メッセージを送るように簡単に送金。お年玉、ギフト、手数料無料のP2P送金をサポート。"
+    "card4_desc": "メッセージを送るように簡単に送金。お年玉、ギフト、手数料無料のP2P送金をサポート。",
+    "title_html": "<span class=\"kw\">暗号資産</span>の真の力を解き放つ",
+    "card1_cta": "Uカードを詳しく見る",
+    "card2_cta": "eSIMを詳しく見る",
+    "card3_cta": "出金を詳しく見る",
+    "card4_cta": "チャット送金を詳しく見る"
   },
   "cardShowcase": {
     "title": "あなただけのカードを選択",
@@ -39,25 +45,33 @@
     "virtual_title": "柔軟で便利な仮想カード",
     "virtual_desc": "1分で即時発行。オンラインショッピングやグローバルSaaSサブスクリプションに最適です。",
     "physical_title": "プレミアムマットブラック実体カード",
-    "physical_desc": "高級感のあるマットブラックVisaカード。世界中のATMやPOS端末での取引で海外手数料が無料に。"
+    "physical_desc": "高級感のあるマットブラックVisaカード。世界中のATMやPOS端末での取引で海外手数料が無料に。",
+    "title_html": "あなただけの<span class=\"kw\">カード</span>を選択"
   },
   "stats": {
     "countries": "カバー国・地域",
     "partners": "グローバルパートナー",
-    "rewards": "累計報酬支払額"
+    "rewards": "累計報酬支払額",
+    "title_html": "<span class=\"kw\">データ</span>が物語る"
   },
   "esim": {
     "title": "eSIMで世界とつながる",
     "subtitle": "物理カード不要、ローミング料金不要。到着後すぐに高速インターネットをご利用いただけます。",
     "desc1": "世界137カ国・地域のネットワーク接続に対応。",
     "desc2": "USDTでの支払いに対応、QRコードスキャンで即座にアクティベート。",
-    "desc3": "デジタルノマドに最適な多様なデータプラン。"
+    "desc3": "デジタルノマドに最適な多様なデータプラン。",
+    "title_html": "eSIMで<span class=\"kw\">世界とつながる</span>"
   },
   "partners": {
     "title": "UUPAYパートナープログラム",
     "subtitle": "友人を紹介してカードを開設・利用してもらうことで、最大50%の報酬を獲得できます。",
     "earn": "報酬獲得を開始",
-    "apply": "パートナー登録申請"
+    "apply": "パートナー登録申請",
+    "title_html": "UUPAYを紹介して<span class=\"kw\">50%</span>の報酬を獲得",
+    "stat1_label": "UUPAYパートナー",
+    "stat2_label": "累計報酬支払額",
+    "stat3_label": "パートナー平均月収",
+    "stat4_label": "リアルタイム決済"
   },
   "promotions": {
     "title": "期間限定キャンペーン",
@@ -65,7 +79,9 @@
     "promo1_title": "1 USDTで仮想カード発行",
     "promo1_desc": "キャンペーン期間中、わずか1 USDTでカード発行、さらに1 USDTの消費クレジットを即時プレゼント。",
     "promo2_title": "チャージ手数料無料",
-    "promo2_desc": "期間中、すべてのチャージおよび送金チャンネルで手数料が無料になります。"
+    "promo2_desc": "期間中、すべてのチャージおよび送金チャンネルで手数料が無料になります。",
+    "title_html": "期間限定<span class=\"kw\">キャンペーン</span>",
+    "cta": "今すぐ参加"
   },
   "download": {
     "title": "UUPAYアプリのダウンロード",
@@ -91,6 +107,34 @@
     "company": "会社",
     "legal": "法的ポリシー",
     "support": "サポート",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "nav_home": "ホーム",
+    "nav_promotions": "キャンペーン",
+    "nav_partners": "パートナー",
+    "nav_announcements": "お知らせ",
+    "help_center": "ヘルプセンター",
+    "contact_support": "サポートに連絡",
+    "business": "ビジネス提携",
+    "agent_recruitment": "代理店募集",
+    "privacy_policy": "プライバシーポリシー",
+    "terms_of_service": "利用規約"
+  },
+  "meta": {
+    "title": "UUPAY - 決済をシンプルに、世界をもっと身近に",
+    "description": "UUPAYは、Visa・Mastercardのカードを活用し、世界中のユーザー向けに暗号資産決済を実現する次世代の暗号資産金融カードプラットフォームです。"
+  },
+  "appShowcase": {
+    "title_html": "<span class=\"kw\">UUPAY App</span>を体験",
+    "subtitle": "5つのコア機能を1画面で。スクロールして、アプリひとつで暗号資産の使い方がどう変わるかをご覧ください。",
+    "slide1_title": "資産ダッシュボード",
+    "slide1_desc": "推定総資産、ウォレットとカードの内訳、USDT残高、クイックアクションを1画面で確認。",
+    "slide2_title": "Uカード管理",
+    "slide2_desc": "CVV表示、チャージ、ロック、利用限度額設定まで、わずか3秒で完了。実体・仮想カードを一括管理。",
+    "slide3_title": "チャット送金",
+    "slide3_desc": "メッセージを送るように送金。お年玉、ギフト、手数料無料のP2P送金に対応。",
+    "slide4_title": "最大50%報酬",
+    "slide4_desc": "紹介するだけで最大50%の報酬を獲得。リアルタイム決済、データも完全に透明。",
+    "slide5_title": "セキュリティとeSIM",
+    "slide5_desc": "アカウントセキュリティ、システム設定、eSIMのワンタップ購入 — すべての取引を128ビット暗号化で保護。"
   }
 }
