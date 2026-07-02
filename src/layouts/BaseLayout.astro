@@ -126,7 +126,7 @@ const ogImage = `${siteUrl}/images/logo-wordmark.png`;
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
 
-      document.querySelectorAll('.scroll-reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => {
+      document.querySelectorAll('.scroll-reveal').forEach((el) => {
         animObserver.observe(el);
       });
 

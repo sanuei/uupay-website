@@ -76,6 +76,17 @@
   /* Layout */
   --container-w:   1200px;
   --nav-h:         64px;
+
+  /* ===== Scroll rhythm (统一滚动节奏基准) =====
+     所有 pin(滚动钉住)区共用同一个"节拍"单位: 每完成 1 个叙事节拍,
+     用户需要滚动 --scroll-beat 的距离。pin 容器高度 = 100vh(钉住的一屏)
+     + N × --scroll-beat(N 个节拍)。这样 card/stats/app 三个区的每拍
+     速度严格一致, 不再各自随手定高度。 */
+  --scroll-beat:   70vh;
+
+  /* ===== Reveal 入场动画基准 (全站统一时长 + 曲线) ===== */
+  --dur-reveal:    0.7s;
+  --reveal-ease:   var(--ease-out);
 }
 
 /* ===== Reset ===== */

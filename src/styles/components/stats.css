@@ -7,8 +7,9 @@
   background: var(--bg-deep);
   border-top: 1px solid var(--border-sub);
   border-bottom: 1px solid var(--border-sub);
-  /* 关键: 3 屏高, 每屏一个数字段 */
-  min-height: 300vh;
+  /* pinning 时长 = 钉住的 1 屏 + 3 个节拍(3 个数字各占 1 拍)
+     每拍 = --scroll-beat, 与 card/app 严格同速 */
+  min-height: calc(100vh + 3 * var(--scroll-beat));
 }
 
 .stats-pin-sticky {

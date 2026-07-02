@@ -5,8 +5,9 @@
 .card-pin {
   position: relative;
   background: var(--bg-base);
-  /* 关键: 父容器 2 屏高,作为 pinning 的"时间" */
-  min-height: 200vh;
+  /* pinning 时长 = 钉住的 1 屏 + 1.5 个节拍(3D 卡飞入是连续动作,给一点分量感)
+     每拍 = --scroll-beat, 与 stats/app 严格同速 */
+  min-height: calc(100vh + 1.5 * var(--scroll-beat));
   overflow: visible;
 }
 

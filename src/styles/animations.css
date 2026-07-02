@@ -5,11 +5,13 @@
    2. JS 直接改 style 覆盖 CSS transition 的 bug (用 data-attribute + CSS attr 配合)
    ===================================================== */
 
-/* ===== 滚动入场 (Scroll-triggered) ===== */
+/* ===== 滚动入场 (Scroll-triggered) =====
+   全站唯一的入场动画: fade + 上移 30px。时长/曲线走 global.css 的
+   --dur-reveal / --reveal-ease, 保证所有区块入场速度完全一致。 */
 .scroll-reveal {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition: opacity var(--dur-reveal) var(--reveal-ease), transform var(--dur-reveal) var(--reveal-ease);
   will-change: opacity, transform;
 }
 
@@ -21,57 +23,6 @@
 .scroll-reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.reveal-left {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
-  will-change: opacity, transform;
-}
-
-.js .reveal-left:not(.is-visible) {
-  opacity: 0;
-  transform: translateX(-40px);
-}
-
-.reveal-left.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-right {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
-  will-change: opacity, transform;
-}
-
-.js .reveal-right:not(.is-visible) {
-  opacity: 0;
-  transform: translateX(40px);
-}
-
-.reveal-right.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-scale {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-  will-change: opacity, transform;
-}
-
-.js .reveal-scale:not(.is-visible) {
-  opacity: 0;
-  transform: scale(0.92);
-}
-
-.reveal-scale.is-visible {
-  opacity: 1;
-  transform: scale(1);
 }
 
 /* ===== Stagger delays (5 元素以内) ===== */

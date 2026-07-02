@@ -34,7 +34,8 @@
 }
 
 .app-sticky-slide {
-  min-height: 70vh;
+  /* 每段文字占 1 个节拍 = --scroll-beat, 与 card/stats 严格同速 */
+  min-height: var(--scroll-beat);
   padding: 0 0 var(--space-9) 0;
   display: flex;
   flex-direction: column;
