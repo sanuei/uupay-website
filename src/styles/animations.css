@@ -62,13 +62,6 @@
   to   { transform: scaleX(1); }
 }
 
-/* ===== 视差 (Parallax) - 元素自身 transform,不冲突 hover ===== */
-.parallax-element {
-  will-change: transform;
-  transform: translate3d(0, calc(var(--scroll-y, 0px) * var(--parallax-rate, 0)), 0);
-  transition: transform 0.05s linear;
-}
-
 /* ===== Pulse 徽章 (限时 HOT) ===== */
 @keyframes pulse-brand {
   0%, 100% { transform: scale(1); }
@@ -114,9 +107,6 @@
 
 /* 移动端禁用重型动画 */
 @media (max-width: 768px) {
-  .parallax-element {
-    transform: none !important;
-  }
   .cube-rotate {
     animation: none;
   }

@@ -7,48 +7,132 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
+
+// 两张卡: 实体黑卡 + 虚拟金卡, 横向切换
+const cards = [
+  {
+    key: 'physical',
+    img: '/images/card-black.png',
+    alt: 'UUPAY Black Physical Card',
+    w: 1280, h: 807,
+    title: t('cardShowcase.physical_title'),
+    desc: t('cardShowcase.physical_desc'),
+  },
+  {
+    key: 'virtual',
+    img: '/images/card-virtual.png',
+    alt: 'UUPAY Gold Virtual Card',
+    w: 1579, h: 996,
+    title: t('cardShowcase.virtual_title'),
+    desc: t('cardShowcase.virtual_desc'),
+  },
+];
 ---
 
-<!-- Pinning 容器: 2 屏高,内部 sticky 钉住 1 屏 -->
-<section id="cards" class="card-pin" data-card-pin-target>
-  <!-- Sticky 内部: 钉在视口里 1 屏 -->
-  <div class="card-pin-sticky">
-    <div class="container">
-      <div class="section-header">
-        <span class="eyebrow">CRYPTO CARD</span>
-        <h2 set:html={t('cardShowcase.title_html')} />
-        <p>{t('cardShowcase.subtitle')}</p>
-      </div>
+<section id="cards" class="card-switch">
+  <div class="container">
+    <div class="section-header scroll-reveal">
+      <span class="eyebrow">CRYPTO CARD</span>
+      <h2 set:html={t('cardShowcase.title_html')} />
+      <p>{t('cardShowcase.subtitle')}</p>
+    </div>
 
-      <div class="card-pin-stage scroll-reveal">
-        <!-- 卡组 -->
-        <div class="card-3d-group">
-          <!-- 黑卡(主卡, 居中, 大) - 放前面 -->
-          <div class="card-3d black">
-            <img src="/images/card-black.png" alt="UUPAY Black Physical Card" width="1280" height="807" loading="lazy" decoding="async" />
-          </div>
+    <div class="card-switch-stage scroll-reveal">
+      <!-- 上一张 -->
+      <button class="card-nav card-nav-prev" aria-label="Previous card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
 
-          <!-- 金卡(副卡, 叠在黑卡右上角, 小, 倾斜) - 放后面 -->
-          <div class="card-3d virtual">
-            <img src="/images/card-virtual.png" alt="UUPAY Gold Card" width="1579" height="996" loading="lazy" decoding="async" />
-          </div>
-
-          <!-- 卡间连线(在归位后显示) -->
-          <div class="card-connector" aria-hidden="true"></div>
-        </div>
-
-        <!-- 浮动标签(在卡组下方独立行, 不再 absolute 压卡) -->
-        <div class="card-labels">
-          <div class="card-label" data-card="black">
-            <span class="label-num">01</span>
-            <span class="label-text">{t('cardShowcase.physical_title')}</span>
-          </div>
-          <div class="card-label" data-card="virtual">
-            <span class="label-num">02</span>
-            <span class="label-text">{t('cardShowcase.virtual_title')}</span>
-          </div>
+      <!-- 轮播视口 -->
+      <div class="card-switch-viewport" id="card-switch-viewport">
+        <div class="card-switch-track" id="card-switch-track">
+          {cards.map((card, i) => (
+            <div class={`card-slide ${i === 0 ? 'is-active' : ''}`} data-idx={i}>
+              <div class="card-visual">
+                <img src={card.img} alt={card.alt} width={card.w} height={card.h} loading="lazy" decoding="async" />
+              </div>
+              <div class="card-detail">
+                <span class="card-detail-num">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{card.title}</h3>
+                <p>{card.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
+
+      <!-- 下一张 -->
+      <button class="card-nav card-nav-next" aria-label="Next card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <!-- 圆点指示器 -->
+    <div class="card-switch-dots" id="card-switch-dots" role="tablist">
+      {cards.map((_, i) => (
+        <button class={`card-dot ${i === 0 ? 'is-active' : ''}`} data-idx={i} role="tab" aria-label={`Card ${i + 1}`}></button>
+      ))}
     </div>
   </div>
 </section>
+
+<script>
+  const track = document.getElementById('card-switch-track');
+  const viewport = document.getElementById('card-switch-viewport');
+  const dotsWrap = document.getElementById('card-switch-dots');
+
+  if (track && viewport && dotsWrap) {
+    const slides = Array.from(track.querySelectorAll<HTMLElement>('.card-slide'));
+    const dots = Array.from(dotsWrap.querySelectorAll<HTMLElement>('.card-dot'));
+    const prevBtn = document.querySelector<HTMLElement>('.card-nav-prev');
+    const nextBtn = document.querySelector<HTMLElement>('.card-nav-next');
+    const count = slides.length;
+    let index = 0;
+
+    const render = () => {
+      track.style.transform = `translateX(${-index * 100}%)`;
+      slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
+      dots.forEach((d, i) => {
+        d.classList.toggle('is-active', i === index);
+        d.setAttribute('aria-selected', String(i === index));
+      });
+    };
+
+    const goTo = (i: number) => {
+      index = (i + count) % count; // 循环
+      render();
+    };
+
+    dots.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.idx))));
+    prevBtn?.addEventListener('click', () => goTo(index - 1));
+    nextBtn?.addEventListener('click', () => goTo(index + 1));
+
+    // 键盘左右切换 (视口聚焦时)
+    viewport.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goTo(index - 1);
+      if (e.key === 'ArrowRight') goTo(index + 1);
+    });
+
+    // 触屏 swipe
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
+    viewport.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      tracking = true;
+    }, { passive: true });
+    viewport.addEventListener('touchend', (e) => {
+      if (!tracking) return;
+      tracking = false;
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      // 只在横向滑动明显大于纵向时才切换, 避免和竖向滚动冲突
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+        goTo(index + (dx < 0 ? 1 : -1));
+      }
+    }, { passive: true });
+
+    render();
+  }
+</script>

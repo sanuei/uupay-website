@@ -190,116 +190,43 @@ const ogImage = `${siteUrl}/images/logo-wordmark.png`;
         updateProgress();
       }
 
-      // ============================================
-      // 3. 视差 (Parallax) - 通过 CSS 变量,不直接覆盖 transform
-      // ============================================
-      if (!prefersReducedMotion) {
-        let ticking = false;
-        const onScroll = () => {
-          if (!ticking) {
-            requestAnimationFrame(() => {
-              const y = window.scrollY;
-              document.documentElement.style.setProperty('--scroll-y', `${y}px`);
-              ticking = false;
-            });
-            ticking = true;
-          }
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-      }
-
-      // (Hero 立方体已删除 - 不再需要 mousemove tilt)
+      // (旧的全局 --scroll-y 视差已移除: 唯一消费者是卡片的 parallax-element,
+      //  卡片改为横向切换器后不再需要; eSIM 的视差走它自己的相对滚动 handler)
 
       // 实际导航栏高度 (跟 --nav-h 保持同步, 避免硬编码漂移)
       const navH = document.querySelector<HTMLElement>('.navbar')?.offsetHeight || 56;
 
       // ============================================
-      // 5. CARD Pinning - 黑卡主卡(左偏) + 金卡副卡(右倾) 滚动联动
+      // 5. eSIM "呼吸段" - 非 pin, 但地球仪跟随滚动做视差 + 缓慢转动,
+      //    让这段加高后的自由滚动区不再"一闪而过", 而是从容的过渡
       // ============================================
-      const cardPin = document.querySelector<HTMLElement>('.card-pin');
-      const cardBlack = document.querySelector<HTMLElement>('.card-3d.black');
-      const cardVirtual = document.querySelector<HTMLElement>('.card-3d.virtual');
+      const esimSection = document.querySelector<HTMLElement>('.esim');
+      const esimVisual = document.querySelector<HTMLElement>('.esim-visual');
 
-      // 归位(终态)姿态: 两卡呈"角度错落"的组合, 而不是拍平 —— 平放显得廉价, 带角度才有立体高级感
-      const REST = {
-        black:   { x: -280, ry: -14, rx: 6 },
-        virtual: { x: -40,  ry: 18,  rx: 6 },
-      };
-      // 起手(飞入前)姿态: 两卡从更远、更小、带更大角度和景深处飞入
-      const START = {
-        black:   { x: -470, ry: -34, rx: 14, scale: 0.86 },
-        virtual: { x: 110,  ry: 44,  rx: 14, scale: 0.80 },
-      };
-
-      const applyCardPose = (el: HTMLElement, x: number, ry: number, rx: number, scale: number, opacity: number) => {
-        el.style.setProperty('--translate-x', `${x}px`);
-        el.style.setProperty('--rotate-y', `${ry}deg`);
-        el.style.setProperty('--rotate-x', `${rx}deg`);
-        el.style.setProperty('--scale', `${scale}`);
-        el.style.opacity = `${opacity}`;
-      };
-
-      if (cardPin && cardBlack && cardVirtual && !enableScrollFx) {
-        // 移动端 / 减少动态效果: 直接展示归位后的角度组合终态, 不做滚动联动
-        // (移动端 CSS 已把 transform 强制 none, 这里主要服务 reduced-motion 桌面用户)
-        applyCardPose(cardBlack, REST.black.x, REST.black.ry, REST.black.rx, 1, 1);
-        applyCardPose(cardVirtual, REST.virtual.x, REST.virtual.ry, REST.virtual.rx, 1, 1);
-        cardPin.classList.add('is-pinned');
-      } else if (cardPin && cardBlack && cardVirtual) {
-        const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-
-        const onCardScroll = () => {
-          const rect = cardPin.getBoundingClientRect();
+      if (esimSection && esimVisual && enableScrollFx) {
+        const onEsimScroll = () => {
+          const rect = esimSection.getBoundingClientRect();
           const vh = window.innerHeight;
-          const totalScroll = cardPin.offsetHeight - vh;  // 可滚动距离
-          // 计算进度 0~1, 从卡片父容器顶部进入视口到完全离开
-          const scrolled = -rect.top + navH;
-          const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
-
-          // 两卡用略微不同的缓动曲线 → 飞入时有"错落组装"的生命感, 而非齐步走
-          const easedB = 1 - Math.pow(1 - progress, 3);    // 主卡: 更强的收尾
-          const easedV = 1 - Math.pow(1 - progress, 2.2);  // 副卡: 稍快到位
-          // 前 40% 行程内淡入(飞入过程中逐渐显形, 不是一开始就全亮)
-          const opacity = Math.min(1, progress / 0.4);
-
-          applyCardPose(
-            cardBlack,
-            lerp(START.black.x, REST.black.x, easedB),
-            lerp(START.black.ry, REST.black.ry, easedB),
-            lerp(START.black.rx, REST.black.rx, easedB),
-            lerp(START.black.scale, 1, easedB),
-            opacity,
-          );
-          applyCardPose(
-            cardVirtual,
-            lerp(START.virtual.x, REST.virtual.x, easedV),
-            lerp(START.virtual.ry, REST.virtual.ry, easedV),
-            lerp(START.virtual.rx, REST.virtual.rx, easedV),
-            lerp(START.virtual.scale, 1, easedV),
-            opacity,
-          );
-
-          // 快归位时才显示连线 + 标签, 作为收尾的"揭晓"时刻
-          if (progress > 0.7) {
-            cardPin.classList.add('is-pinned');
-          } else {
-            cardPin.classList.remove('is-pinned');
-          }
+          // 区块中心相对视口中心的偏移, 归一化到 -1(在下方) ~ 1(在上方)
+          const sectionCenter = rect.top + rect.height / 2;
+          const p = Math.max(-1, Math.min(1, (vh / 2 - sectionCenter) / vh));
+          // 地球仪: 轻微反向视差上移 + 跟随滚动转动
+          esimVisual.style.setProperty('--esim-parallax', `${(-p * 48).toFixed(1)}px`);
+          esimVisual.style.setProperty('--esim-scroll-rot', `${(p * 26).toFixed(1)}deg`);
         };
 
-        // 用 rAF 节流
-        let cardTicking = false;
-        const cardScrollHandler = () => {
-          if (!cardTicking) {
+        let esimTicking = false;
+        const esimScrollHandler = () => {
+          if (!esimTicking) {
             requestAnimationFrame(() => {
-              onCardScroll();
-              cardTicking = false;
+              onEsimScroll();
+              esimTicking = false;
             });
-            cardTicking = true;
+            esimTicking = true;
           }
         };
-        window.addEventListener('scroll', cardScrollHandler, { passive: true });
-        onCardScroll();  // 初始化
+        window.addEventListener('scroll', esimScrollHandler, { passive: true });
+        onEsimScroll();  // 初始化
       }
 
       // ============================================

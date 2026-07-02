@@ -1,241 +1,184 @@
 /* ========================================
-   CARD SHOWCASE v2 - Pinning 滚动钉住
-   父容器 2 屏高,内部 sticky 钉 1 屏,滚动联动 3D 旋转
+   CARD SWITCH v3 - 横向切换器 (居中大卡 + 箭头/圆点 + 移动端 swipe)
+   非 pin, 作为 Stats(pin) 前的自由滚动区, 让节奏更交替
    ======================================== */
-.card-pin {
-  position: relative;
+.card-switch {
+  padding: var(--space-9) 0;
   background: var(--bg-base);
-  /* pinning 时长 = 钉住的 1 屏 + 1.5 个节拍(3D 卡飞入是连续动作,给一点分量感)
-     每拍 = --scroll-beat, 与 stats/app 严格同速 */
-  min-height: calc(100vh + 1.5 * var(--scroll-beat));
-  overflow: visible;
+  position: relative;
+  overflow: hidden;
 }
 
-.card-pin::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--brand) 50%, transparent 100%);
-  opacity: 0.4;
-  z-index: 1;
-}
-
-.card-pin-sticky {
-  position: sticky;
-  top: var(--nav-h);
-  height: calc(100vh - var(--nav-h));
-  display: flex;
-  align-items: center;
-  justify-content: center;  /* 水平居中 */
-  /* 注意: 不能用 transform: translateZ(0) — 会破坏 sticky! */
-  will-change: transform;
-  z-index: 2;
-}
-
-.card-pin-sticky .container {
-  width: 100%;
-  max-width: var(--container-w);
-  margin: 0 auto;
-  padding: 0 var(--space-5);
-}
-
-.card-pin-sticky .section-header {
+.card-switch .section-header {
   margin-bottom: var(--space-7);
 }
 
-.card-pin-stage {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-5);  /* 卡组和标签之间的间距 */
-  perspective: 1000px;
-}
-
-/* 卡组 - 包含两卡 + 连线, relative 定位让 absolute 卡相对它算 */
-.card-3d-group {
-  position: relative;
-  width: 100%;
-  height: 320px;  /* 给卡组固定高度容纳错位 */
+/* Stage: 左右箭头 + 中间视口 */
+.card-switch-stage {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: var(--space-4);
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-/* 3D 卡片 - 基础
-   注意: 卡片 PNG 本身已烘焙真实卡片比例的圆角(四角透明),
-   所以这里不再叠加 border-radius(会把 PNG 的圆角再切一刀 → 显得过圆廉价)。
-   drop-shadow 会自动跟随 PNG 的 alpha 形状, 阴影贴合真实圆角。 */
-.card-3d {
-  position: absolute;
-  width: 360px;
-  /* 用 aspect-ratio 锁定 PNG 原始比例(1280:807≈1.586), height 自动;
-     这样任何断点下 object-fit 都不会裁掉 PNG 烘焙的圆角 */
-  aspect-ratio: 1280 / 807;
-  transform-style: preserve-3d;
-  will-change: transform, opacity;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
-  /* CSS 变量由 JS 设置, 控制旋转 + 位移 + 缩放 */
-  --rotate-y: 0deg;
-  --rotate-x: 8deg;
-  --translate-x: 0px;
-  --scale: 1;
-  /* translate(-50%, -50%) 让 top:50%/left:50% 真正居中, 再叠加 JS 驱动的位移/旋转/缩放 */
-  transform: translate(calc(-50% + var(--translate-x)), -50%) rotateY(var(--rotate-y)) rotateX(var(--rotate-x)) scale(var(--scale));
-  transition: transform 0.05s linear;
+.card-switch-viewport {
+  flex: 1;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  outline: none;
 }
 
-.card-3d img {
+.card-switch-track {
+  display: flex;
+  transition: transform 0.6s var(--ease-out);
+  will-change: transform;
+}
+
+/* 每张卡片一整屏宽: 左卡图 + 右文案 */
+.card-slide {
+  flex: 0 0 100%;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--space-8);
+  align-items: center;
+  padding: var(--space-6) var(--space-5);
+}
+
+/* 卡片视觉: 3D 倾斜 + 阴影 (PNG 自带真实圆角, 不叠 border-radius) */
+.card-visual {
+  perspective: 1200px;
+}
+
+.card-visual img {
   width: 100%;
-  height: 100%;
+  height: auto;               /* 覆盖 HTML width/height 属性的呈现提示, 让 aspect-ratio 生效 */
+  aspect-ratio: 1280 / 807;   /* 锁 PNG 比例, object-fit 不裁圆角 */
   object-fit: cover;
+  transform: rotateY(-16deg) rotateX(7deg);
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
+  transition: transform 0.6s var(--ease-out);
 }
 
-/* 黑卡(主卡) - 居中略左, 大, 轻微左旋 - 放前面 */
-.card-3d.black {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 420px;       /* 主卡大 (height 由 aspect-ratio 自动算) */
-  z-index: 3;          /* 主卡在上 */
-  --translate-x: -280px;  /* 偏左 (卡宽 420, 让两卡整体在屏幕中心) */
-  --rotate-y: -14deg;   /* 归位角度(带角度更立体) */
-  --rotate-x: 6deg;
+/* 当前卡略微转正 + 放大, 强调"选中" */
+.card-slide.is-active .card-visual img {
+  transform: rotateY(-11deg) rotateX(6deg) scale(1.03);
 }
 
-/* 金卡(副卡) - 叠在黑卡右上角, 小, 倾斜 - 放后面 */
-.card-3d.virtual {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 320px;       /* 副卡小 (height 由 aspect-ratio 自动算) */
-  z-index: 2;          /* 副卡在下 */
-  --translate-x: -40px;   /* 偏左 (与黑卡叠加, 整体居中) */
-  --rotate-y: 18deg;   /* 右倾归位角度 */
-  --rotate-x: 6deg;
-}
-
-/* 卡间连线 */
-.card-connector {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 2px;
-  background: var(--brand);
-  opacity: 0;
-  z-index: 1;
-  transition: opacity 0.4s var(--ease-out);
-}
-
-/* 浮动标签 - 在卡组下方独立行, 黑卡左 / 金卡右 */
-.card-labels {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;  /* 两端对齐 */
-  width: 100%;
-  max-width: 720px;  /* 跟卡组宽度大致对齐 */
-  z-index: 4;
-}
-
-.card-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
-}
-
-/* JS 加 .is-pinned 时显示 + 动画完成 */
-.card-pin.is-pinned .card-connector {
-  opacity: 0.5;
-}
-
-.card-pin.is-pinned .card-label {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.label-num {
+/* 文案 */
+.card-detail-num {
+  display: inline-block;
   font-size: 13px;
   font-weight: 800;
   color: var(--brand);
   letter-spacing: 0.05em;
-  padding: 3px 8px;
+  padding: 4px 10px;
   background: rgba(184, 227, 81, 0.1);
   border-radius: 6px;
+  margin-bottom: var(--space-4);
 }
 
-.label-text {
-  font-size: 14px;
-  font-weight: 700;
+.card-detail h3 {
+  font-size: var(--fs-h3);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--text-pri);
-  white-space: nowrap;
+  margin-bottom: var(--space-4);
 }
 
-/* 移动端: 取消 pinning, 取消 absolute 卡片, 直接 stack */
-@media (max-width: 968px) {
-  .card-pin {
-    min-height: auto;
-    padding: var(--space-9) 0;
+.card-detail p {
+  font-size: var(--fs-body-lg);
+  color: var(--text-sec);
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+/* 左右箭头 */
+.card-nav {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-circle);
+  border: 1px solid var(--border-sub);
+  background: var(--bg-card);
+  color: var(--text-sec);
+  cursor: pointer;
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out), background 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+
+.card-nav svg {
+  width: 22px;
+  height: 22px;
+}
+
+.card-nav:hover {
+  color: var(--brand);
+  border-color: var(--brand);
+  background: rgba(184, 227, 81, 0.06);
+  transform: scale(1.06);
+}
+
+/* 圆点指示器 */
+.card-switch-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+.card-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: width 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+
+.card-dot.is-active {
+  width: 28px;
+  background: var(--brand);
+}
+
+.card-dot:hover:not(.is-active) {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* ===== 移动端: 卡图上、文案下, 箭头收起(靠 swipe + 圆点) ===== */
+@media (max-width: 768px) {
+  .card-nav {
+    display: none;
   }
-  .card-pin-sticky {
-    position: relative;
-    top: auto;
-    height: auto;
+  .card-slide {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    text-align: center;
+    padding: var(--space-4) var(--space-3);
   }
-  .card-3d-group {
-    height: auto;
-    flex-direction: column;
-    gap: var(--space-4);
+  .card-visual img {
+    /* 移动端转正一点, 避免侧倾在窄屏显得挤 */
+    transform: rotateY(-8deg) rotateX(4deg);
   }
-  .card-3d {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none !important;
+  .card-slide.is-active .card-visual img {
+    transform: rotateY(-6deg) rotateX(3deg) scale(1.02);
   }
-  .card-3d.black {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 90%;
-    max-width: 360px;
-  }
-  .card-3d.virtual {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 70%;
-    max-width: 280px;
-  }
-  .card-connector {
-    opacity: 0.5;
-  }
-  .card-label {
-    opacity: 1;
-    transform: none;
-  }
-  .card-labels {
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-  .card-label[data-card="black"],
-  .card-label[data-card="virtual"] {
-    margin: 0;
+  .card-detail p {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card-3d {
-    transition: none !important;
+  .card-switch-track,
+  .card-visual img {
+    transition: none;
   }
 }
-

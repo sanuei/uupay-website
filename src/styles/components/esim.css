@@ -2,7 +2,12 @@
    eSIM Section
    ======================================== */
 .esim {
-  padding: var(--space-10) 0;
+  /* 加高成"呼吸段": 内容垂直居中, 上下留出滚动行程, 让这段不再一闪而过。
+     配合 JS 给地球仪的视差 + 转动, 是 Stats(pin) 与 App(pin) 之间从容的过渡。 */
+  min-height: 118vh;
+  display: flex;
+  align-items: center;
+  padding: var(--space-9) 0;
   background: var(--bg-base);
 }
 
@@ -81,6 +86,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* JS 写入的滚动视差(上下位移); 让地球仪随滚动轻微浮动 */
+  transform: translateY(var(--esim-parallax, 0px));
+  will-change: transform;
 }
 
 .esim-globe {
@@ -88,6 +96,9 @@
   max-width: 320px;
   height: auto;
   opacity: 0.85;
+  /* JS 写入的滚动转动; 内部经纬网格仍保留缓慢自转(见 .globe-grid) */
+  transform: rotate(var(--esim-scroll-rot, 0deg));
+  transition: transform 0.1s linear;
 }
 
 /* 缓慢自转的经纬网格, 呼应前后模块的滚动动感 */
@@ -128,5 +139,13 @@
 
 
 @media (max-width: 968px) {
+  /* 移动端无需"呼吸段"加高(原生滚动手感本来就好), 回到常规高度避免大片空白 */
+  .esim {
+    min-height: auto;
+    padding: var(--space-9) 0;
+  }
+  .esim-visual {
+    transform: none;  /* 移动端不做视差 */
+  }
   .esim-card { grid-template-columns: 1fr; padding: var(--space-6); }
 }
