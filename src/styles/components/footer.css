@@ -102,16 +102,12 @@
 }
 
 .footer-giant-logo {
-  margin-top: var(--space-8);
-  text-align: center;
-  font-size: clamp(72px, 17vw, 240px);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  /* 纯中性低透明度水印, 不用品牌绿(低透明度叠在近黑底上会发浑) */
-  color: rgba(255, 255, 255, 0.07);
-  white-space: nowrap;
-  overflow: hidden;
+  display: block;
+  margin: var(--space-8) auto 0;
+  width: min(92%, 1100px);
+  height: auto;
+  /* 低透明度水印(新 logo 图) */
+  opacity: 0.07;
   user-select: none;
   pointer-events: none;
 }
