@@ -168,6 +168,30 @@ button {
   color: var(--brand-ink);
 }
 
+/* ===== 自定义滚动条 (暗色系融合) ===== */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #2E2E33 transparent;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: #2E2E33;
+  border-radius: 5px;
+  border: 2px solid var(--bg-deep);
+}
+::-webkit-scrollbar-thumb:hover { background: #3E3E45; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* ===== 跨页过渡 (CSS-only View Transitions, 渐进增强) ===== */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: vt-out 0.15s ease-out both; }
+::view-transition-new(root) { animation: vt-in 0.2s ease-out both; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
 /* ===== Container ===== */
 .container {
   max-width: var(--container-w);
@@ -305,6 +329,30 @@ button {
 .btn-primary:hover {
   background: var(--brand-hi);
   transform: translateY(-2px);
+}
+
+/* 按下态: 轻微下压, 给"物理反馈" */
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.06s;
+}
+
+/* 键盘焦点环 (鼠标点击不显示) */
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+.btn:focus-visible { border-radius: var(--r-pill); }
+
+/* 按钮内箭头图标: hover 时独立前移 */
+.btn svg {
+  transition: transform 0.25s var(--ease-out);
+}
+.btn:hover svg {
+  transform: translateX(3px);
 }
 
 .btn-secondary {

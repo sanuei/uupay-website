@@ -94,6 +94,42 @@
   text-shadow: 0 4px 32px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
+/* ===== Split-text 逐行升起 (JS 拆行后生效) ===== */
+.hero-title .line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;   /* 防字母下伸部被遮罩裁掉 */
+  margin-bottom: -0.08em;
+}
+.hero-title .line-inner {
+  display: inline-block;
+  transform: translateY(112%);
+  transition: transform 0.9s var(--ease-out);
+}
+.hero-title .line-mask:nth-child(2) .line-inner { transition-delay: 0.12s; }
+.hero-title.is-in .line-inner { transform: none; }
+
+/* Hero 元素级联入场: eyebrow → (标题拆行) → 副标 → 按钮 */
+.js .hero-eyebrow,
+.js .hero-subtitle,
+.js .hero-actions {
+  opacity: 0;
+  animation: hero-up 0.8s var(--ease-out) forwards;
+}
+.js .hero-eyebrow  { animation-delay: 0.1s; }
+.js .hero-subtitle { animation-delay: 0.55s; }
+.js .hero-actions  { animation-delay: 0.7s; }
+@keyframes hero-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-eyebrow, .js .hero-subtitle, .js .hero-actions {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 .hero-subtitle {
   font-size: 15px;
   color: var(--text-sec);
