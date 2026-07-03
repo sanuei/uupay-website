@@ -1,4 +1,15 @@
 ---
+// 自托管字体 (woff2 + unicode-range 分包, 构建时打包进 _astro/)
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
+import '@fontsource/inter/900.css';
+import '@fontsource/noto-sans-sc/400.css';
+import '@fontsource/noto-sans-sc/500.css';
+import '@fontsource/noto-sans-sc/700.css';
+import '@fontsource/noto-sans-sc/900.css';
 import '../styles/global.css';
 import '../styles/animations.css';
 import '../styles/components/navbar.css';
@@ -87,14 +98,6 @@ const ogImage = `${siteUrl}/images/logo-wordmark.png`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Preload critical fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
-    />
   </head>
   <body>
     <!-- 阅读进度条 -->
@@ -329,8 +332,27 @@ const ogImage = `${siteUrl}/images/logo-wordmark.png`;
       const stickySlides = document.querySelectorAll<HTMLElement>('.app-sticky-slide');
       const stickyImgs = document.querySelectorAll<HTMLElement>('.slide-img');
 
-      // 移动端手机图不再 sticky, 也就没有"划到哪段文字换哪张图"的配对关系了 ——
-      // 不绑定 observer, 直接固定显示第一张图; 文字是否常亮交给 CSS(见 app-showcase.css)
+      // 移动端: 文字区是横向 scroll-snap 轮播, 滑到哪段就切哪张图
+      if (!isDesktop && stickySlides.length > 0) {
+        const textTrack = document.querySelector<HTMLElement>('.app-sticky-text');
+        if (textTrack) {
+          let appTicking = false;
+          const syncApp = () => {
+            const i = Math.max(0, Math.min(stickySlides.length - 1,
+              Math.round(textTrack.scrollLeft / textTrack.clientWidth)));
+            stickySlides.forEach((s, j) => s.classList.toggle('is-active', j === i));
+            stickyImgs.forEach((m, j) => m.classList.toggle('is-active', j === i));
+          };
+          textTrack.addEventListener('scroll', () => {
+            if (!appTicking) {
+              requestAnimationFrame(() => { syncApp(); appTicking = false; });
+              appTicking = true;
+            }
+          }, { passive: true });
+          syncApp();
+        }
+      }
+
       if (isDesktop && stickySlides.length > 0) {
         const stickyObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {

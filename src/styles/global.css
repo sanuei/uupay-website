@@ -4,7 +4,8 @@
    Color: 亮柠檬绿 #B8E351 + 纯黑 #050607
    ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+/* 字体已改为自托管 (@fontsource, 见 BaseLayout.astro 顶部 import) —
+   移除 Google Fonts 外链: 消除渲染阻塞的第三方请求, 大陆用户不再被墙卡住 */
 
 /* ===== CSS Variables ===== */
 :root {

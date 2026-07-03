@@ -12,7 +12,7 @@ const t = useTranslations(lang as any);
 const cards = [
   {
     key: 'physical',
-    img: '/images/card-black.png',
+    img: '/images/card-black.webp',
     alt: 'UUPAY Black Physical Card',
     w: 1280, h: 807,
     title: t('cardShowcase.physical_title'),
@@ -20,7 +20,7 @@ const cards = [
   },
   {
     key: 'virtual',
-    img: '/images/card-virtual.png',
+    img: '/images/card-virtual.webp',
     alt: 'UUPAY Gold Virtual Card',
     w: 1579, h: 996,
     title: t('cardShowcase.virtual_title'),
@@ -49,7 +49,7 @@ const cards = [
           {cards.map((card, i) => (
             <div class={`card-slide ${i === 0 ? 'is-active' : ''}`} data-idx={i}>
               <div class="card-visual">
-                <img src={card.img} alt={card.alt} width={card.w} height={card.h} loading="lazy" decoding="async" />
+                <img src={card.img} alt={card.alt} width="900" height="567" loading="lazy" decoding="async" />
               </div>
               <div class="card-detail">
                 <span class="card-detail-num">{String(i + 1).padStart(2, '0')}</span>

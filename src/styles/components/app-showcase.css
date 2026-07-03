@@ -164,29 +164,46 @@
   pointer-events: none;
 }
 
-/* 移动端 fallback: 改为 stack 布局 + 取消 sticky */
+/* 移动端: 手机图在上, 下方文字改为横向 scroll-snap 滑动, 滑到哪段换哪张图 */
 @media (max-width: 968px) {
   .app-sticky-stage {
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    gap: var(--space-5);
   }
   .app-sticky-phone {
     position: relative;
     top: auto;
-    height: 600px;
+    height: 540px;
     order: -1;  /* 手机图放上面 */
   }
+  .app-sticky-text {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* 视觉溢出提示: 两侧留缝隙暗示可滑 */
+    padding: 0 var(--space-4);
+  }
+  .app-sticky-text::-webkit-scrollbar { display: none; }
   .app-sticky-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
     min-height: auto;
-    padding: var(--space-5) 0;
-    /* 手机图不再 sticky, 没法跟"划到哪段文字换哪张图"配对了 —— 移动端文字全部常亮,
-       不再依赖 is-active(那是给桌面居中触发用的) */
+    padding: var(--space-4) var(--space-2) var(--space-5);
+    text-align: center;
+    align-items: center;
+    /* 横滑模式下当前段常亮, 非当前段淡一点 (由 JS 同步 is-active) */
+    opacity: 0.35;
+  }
+  .app-sticky-slide.is-active {
     opacity: 1;
     transform: none;
   }
-  .slide-title {
-    font-size: 32px;
-  }
+  .phone-glow { width: 300px; height: 500px; }  /* 光晕别溢出盖住下方文字 */
+  .slide-title { font-size: 30px; }
+  .slide-desc { max-width: 100%; }
+  .slide-line { margin-left: auto; margin-right: auto; }
 }
 
 /* Reduced motion 跳过所有 transition */
