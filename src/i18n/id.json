@@ -117,7 +117,8 @@
     "business": "Kerja Sama Bisnis",
     "agent_recruitment": "Rekrutmen Agen",
     "privacy_policy": "Kebijakan Privasi",
-    "terms_of_service": "Ketentuan Layanan"
+    "terms_of_service": "Ketentuan Layanan",
+    "products": "Produk"
   },
   "meta": {
     "title": "UUPAY - Sederhanakan Pembayaran, Dekatkan Dunia",
@@ -136,5 +137,15 @@
     "slide4_desc": "Rujuk dan dapatkan komisi hingga 50%, penyelesaian real-time, data yang sepenuhnya transparan.",
     "slide5_title": "Keamanan & eSIM",
     "slide5_desc": "Keamanan akun, pengaturan sistem, pembelian eSIM sekali ketuk — enkripsi 128-bit di setiap transaksi."
+  },
+  "security": {
+    "title_html": "Keamanan yang dapat <span class=\"kw\">diverifikasi</span>",
+    "subtitle": "Dana, data, penyelesaian — setiap lapisan dilindungi setingkat bank.",
+    "p1_title": "Enkripsi tingkat bank",
+    "p1_desc": "AES-256 saat disimpan dan TLS 1.3 saat transit melindungi setiap transaksi dan data KYC.",
+    "p2_title": "Penyelesaian fiat berlisensi",
+    "p2_desc": "Penarikan fiat diselesaikan eksklusif melalui lembaga keuangan berlisensi.",
+    "p3_title": "Kontrol risiko berlapis",
+    "p3_desc": "Pemantauan real-time, pengikatan perangkat, dan whitelist penarikan melindungi 24/7."
   }
 }

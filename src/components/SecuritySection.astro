@@ -1,0 +1,52 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+
+const points = [
+  {
+    title: t('security.p1_title'), desc: t('security.p1_desc'),
+    // lock
+    path: 'M7 11V7a5 5 0 0 1 10 0v4 M5 11h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1z',
+  },
+  {
+    title: t('security.p2_title'), desc: t('security.p2_desc'),
+    // landmark (bank)
+    path: 'M3 22h18 M6 18v-7 M10 18v-7 M14 18v-7 M18 18v-7 M12 2 2 8h20L12 2z',
+  },
+  {
+    title: t('security.p3_title'), desc: t('security.p3_desc'),
+    // radar / activity
+    path: 'M22 12h-4l-3 9L9 3l-3 9H2',
+  },
+];
+---
+
+<section class="security">
+  <div class="container">
+    <div class="section-header scroll-reveal">
+      <span class="eyebrow">SECURITY</span>
+      <h2 set:html={t('security.title_html')} />
+      <p>{t('security.subtitle')}</p>
+    </div>
+
+    <div class="security-grid">
+      {points.map((p) => (
+        <div class="security-card scroll-reveal stagger-item">
+          <div class="security-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d={p.path} />
+            </svg>
+          </div>
+          <h3>{p.title}</h3>
+          <p>{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

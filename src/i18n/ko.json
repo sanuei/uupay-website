@@ -117,7 +117,8 @@
     "business": "비즈니스 제휴",
     "agent_recruitment": "파트너 모집",
     "privacy_policy": "개인정보 처리방침",
-    "terms_of_service": "이용약관"
+    "terms_of_service": "이용약관",
+    "products": "프로덕트"
   },
   "meta": {
     "title": "UUPAY - 결제를 더 간단하게, 세상을 더 가깝게",
@@ -136,5 +137,15 @@
     "slide4_desc": "추천만으로 최대 50% 수수료 획득. 실시간 정산, 완전히 투명한 데이터.",
     "slide5_title": "보안 및 eSIM",
     "slide5_desc": "계정 보안, 시스템 설정, eSIM 원터치 구매 — 모든 거래는 128비트 암호화로 보호."
+  },
+  "security": {
+    "title_html": "<span class=\"kw\">검증 가능한</span> 보안",
+    "subtitle": "자금·데이터·정산, 모든 계층을 은행급으로 보호합니다.",
+    "p1_title": "은행급 암호화",
+    "p1_desc": "저장 시 AES-256, 전송 시 TLS 1.3으로 모든 거래와 KYC 정보를 암호화.",
+    "p2_title": "라이선스 기관 법정화폐 정산",
+    "p2_desc": "법정화폐 출금은 전부 라이선스 금융기관을 통해 정산됩니다.",
+    "p3_title": "다중 리스크 관리",
+    "p3_desc": "실시간 모니터링, 기기 바인딩, 출금 화이트리스트로 연중무휴 보호."
   }
 }

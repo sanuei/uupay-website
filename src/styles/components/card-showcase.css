@@ -50,6 +50,28 @@
   perspective: 1200px;
 }
 
+/* 交互倾斜层: 鼠标跟随 (JS 写 --tx/--ty), 光泽跟随 (--gx/--gy) */
+.card-tilt {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--ty, 0deg)) rotateX(var(--tx, 0deg));
+  transition: transform 0.5s var(--ease-out);
+  will-change: transform;
+}
+.card-tilt.is-tilting { transition: transform 0.08s linear; }
+
+.card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(255, 255, 255, 0.18), transparent 55%);
+  mix-blend-mode: screen;
+  transition: opacity 0.3s var(--ease-out);
+}
+.card-tilt:hover .card-glare { opacity: 1; }
+
 .card-visual img {
   width: 100%;
   height: auto;               /* 覆盖 HTML width/height 属性的呈现提示, 让 aspect-ratio 生效 */

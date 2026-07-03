@@ -117,7 +117,8 @@
     "business": "Negocios",
     "agent_recruitment": "Reclutamiento de agentes",
     "privacy_policy": "Política de privacidad",
-    "terms_of_service": "Términos de servicio"
+    "terms_of_service": "Términos de servicio",
+    "products": "Productos"
   },
   "meta": {
     "title": "UUPAY - Simplifica los pagos, acerca el mundo",
@@ -136,5 +137,15 @@
     "slide4_desc": "Recomienda y gana hasta un 50% de comisión, liquidación en tiempo real, datos totalmente transparentes.",
     "slide5_title": "Seguridad y eSIM",
     "slide5_desc": "Seguridad de la cuenta, configuración del sistema, compra de eSIM con un toque — cifrado de 128 bits en cada transacción."
+  },
+  "security": {
+    "title_html": "Seguridad que puedes <span class=\"kw\">verificar</span>",
+    "subtitle": "Fondos, datos y liquidación: cada capa con protección de nivel bancario.",
+    "p1_title": "Cifrado de nivel bancario",
+    "p1_desc": "AES-256 en reposo y TLS 1.3 en tránsito protegen cada transacción y tus datos KYC.",
+    "p2_title": "Liquidación fiat con licencia",
+    "p2_desc": "Los retiros fiat se liquidan exclusivamente a través de instituciones financieras autorizadas.",
+    "p3_title": "Control de riesgos multicapa",
+    "p3_desc": "Monitoreo en tiempo real, vinculación de dispositivos y listas blancas de retiro, 24/7."
   }
 }

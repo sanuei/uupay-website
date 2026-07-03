@@ -117,7 +117,8 @@
     "business": "Business",
     "agent_recruitment": "Agent Recruitment",
     "privacy_policy": "Privacy Policy",
-    "terms_of_service": "Terms of Service"
+    "terms_of_service": "Terms of Service",
+    "products": "Products"
   },
   "meta": {
     "title": "UUPAY - Simplify Payments, Reach the World",
@@ -136,5 +137,15 @@
     "slide4_desc": "Refer and earn up to 50% commission, real-time settlement, fully transparent data.",
     "slide5_title": "Security & eSIM",
     "slide5_desc": "Account security, system settings, one-tap eSIM purchase — 128-bit encryption on every tx."
+  },
+  "security": {
+    "title_html": "Security you can <span class=\"kw\">verify</span>",
+    "subtitle": "Bank-grade protection on every layer — funds, data, and settlement.",
+    "p1_title": "Bank-grade encryption",
+    "p1_desc": "AES-256 at rest and TLS 1.3 in transit protect every transaction and your KYC data.",
+    "p2_title": "Licensed fiat settlement",
+    "p2_desc": "Fiat withdrawals are settled exclusively through licensed financial institutions.",
+    "p3_title": "Multi-layer risk control",
+    "p3_desc": "Real-time monitoring, device binding and withdrawal whitelists guard your account 24/7."
   }
 }

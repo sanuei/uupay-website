@@ -117,7 +117,8 @@
     "business": "Hợp tác kinh doanh",
     "agent_recruitment": "Tuyển đại lý",
     "privacy_policy": "Chính sách bảo mật",
-    "terms_of_service": "Điều khoản dịch vụ"
+    "terms_of_service": "Điều khoản dịch vụ",
+    "products": "Sản phẩm"
   },
   "meta": {
     "title": "UUPAY - Đơn giản hóa thanh toán, kết nối cả thế giới",
@@ -136,5 +137,15 @@
     "slide4_desc": "Giới thiệu và kiếm tối đa 50% hoa hồng, thanh toán theo thời gian thực, dữ liệu minh bạch.",
     "slide5_title": "Bảo mật & eSIM",
     "slide5_desc": "Bảo mật tài khoản, cài đặt hệ thống, mua eSIM chỉ với một chạm — mã hóa 128-bit cho mọi giao dịch."
+  },
+  "security": {
+    "title_html": "Bảo mật có thể <span class=\"kw\">kiểm chứng</span>",
+    "subtitle": "Tiền, dữ liệu, thanh toán — mọi lớp đều được bảo vệ cấp ngân hàng.",
+    "p1_title": "Mã hóa cấp ngân hàng",
+    "p1_desc": "AES-256 khi lưu trữ và TLS 1.3 khi truyền, bảo vệ mọi giao dịch và dữ liệu KYC.",
+    "p2_title": "Thanh toán fiat qua tổ chức được cấp phép",
+    "p2_desc": "Rút tiền fiat được thanh toán độc quyền qua các tổ chức tài chính được cấp phép.",
+    "p3_title": "Kiểm soát rủi ro nhiều lớp",
+    "p3_desc": "Giám sát thời gian thực, ràng buộc thiết bị và whitelist rút tiền bảo vệ 24/7."
   }
 }

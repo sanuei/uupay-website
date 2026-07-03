@@ -117,7 +117,8 @@
     "business": "Kerjasama Perniagaan",
     "agent_recruitment": "Pengambilan Ejen",
     "privacy_policy": "Dasar Privasi",
-    "terms_of_service": "Terma Perkhidmatan"
+    "terms_of_service": "Terma Perkhidmatan",
+    "products": "Produk"
   },
   "meta": {
     "title": "UUPAY - Permudah Pembayaran, Dekatkan Dunia",
@@ -136,5 +137,15 @@
     "slide4_desc": "Rujuk dan perolehi komisen sehingga 50%, penyelesaian masa nyata, data telus sepenuhnya.",
     "slide5_title": "Keselamatan & eSIM",
     "slide5_desc": "Keselamatan akaun, tetapan sistem, pembelian eSIM sekali ketik — penyulitan 128-bit pada setiap transaksi."
+  },
+  "security": {
+    "title_html": "Keselamatan yang boleh <span class=\"kw\">disahkan</span>",
+    "subtitle": "Dana, data, penyelesaian — setiap lapisan dilindungi tahap bank.",
+    "p1_title": "Penyulitan gred bank",
+    "p1_desc": "AES-256 semasa simpanan dan TLS 1.3 semasa penghantaran melindungi setiap transaksi dan data KYC.",
+    "p2_title": "Penyelesaian fiat berlesen",
+    "p2_desc": "Pengeluaran fiat diselesaikan secara eksklusif melalui institusi kewangan berlesen.",
+    "p3_title": "Kawalan risiko berbilang lapisan",
+    "p3_desc": "Pemantauan masa nyata, ikatan peranti dan senarai putih pengeluaran melindungi 24/7."
   }
 }

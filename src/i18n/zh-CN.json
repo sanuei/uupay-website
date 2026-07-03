@@ -117,7 +117,8 @@
     "business": "市场合作",
     "agent_recruitment": "招募合作",
     "privacy_policy": "隐私政策",
-    "terms_of_service": "服务条款"
+    "terms_of_service": "服务条款",
+    "products": "产品"
   },
   "meta": {
     "title": "UUPAY - 让支付回归简单，让世界触手可达",
@@ -136,5 +137,15 @@
     "slide4_desc": "推荐并赚取最多 50% 佣金，实时结算，数据公开透明。",
     "slide5_title": "安全设置",
     "slide5_desc": "账户安全、系统设置、eSIM 一键购买，128-bit 加密守护每一笔交易。"
+  },
+  "security": {
+    "title_html": "安全，经得起<span class=\"kw\">验证</span>",
+    "subtitle": "资金、数据、结算，每一层都是银行级防护。",
+    "p1_title": "银行级加密",
+    "p1_desc": "静态数据 AES-256、传输 TLS 1.3，每笔交易与 KYC 信息全程加密。",
+    "p2_title": "持牌法币结算",
+    "p2_desc": "法币出金全部通过持牌金融机构完成结算。",
+    "p3_title": "多重风控体系",
+    "p3_desc": "实时监控、设备绑定与提现白名单，7×24 小时守护账户安全。"
   }
 }

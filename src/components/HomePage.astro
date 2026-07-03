@@ -11,6 +11,7 @@ import PartnerPreview from './PartnerPreview.astro';
 import PromoSection from './PromoSection.astro';
 import DownloadSection from './DownloadSection.astro';
 import FAQSection from './FAQSection.astro';
+import SecuritySection from './SecuritySection.astro';
 import Footer from './Footer.astro';
 import { useTranslations } from '../i18n/ui';
 
@@ -32,6 +33,7 @@ const t = useTranslations(lang as any);
   <AppShowcase lang={lang} />
   <PartnerPreview lang={lang} />
   <PromoSection lang={lang} />
+  <SecuritySection lang={lang} />
   <DownloadSection lang={lang} />
   <FAQSection lang={lang} />
   <Footer lang={lang} />

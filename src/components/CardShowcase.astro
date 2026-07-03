@@ -49,7 +49,10 @@ const cards = [
           {cards.map((card, i) => (
             <div class={`card-slide ${i === 0 ? 'is-active' : ''}`} data-idx={i}>
               <div class="card-visual">
-                <img src={card.img} alt={card.alt} width="900" height="567" loading="lazy" decoding="async" />
+                <div class="card-tilt">
+                  <img src={card.img} alt={card.alt} width="900" height="567" loading="lazy" decoding="async" />
+                  <span class="card-glare" aria-hidden="true"></span>
+                </div>
               </div>
               <div class="card-detail">
                 <span class="card-detail-num">{String(i + 1).padStart(2, '0')}</span>
@@ -134,5 +137,27 @@ const cards = [
     }, { passive: true });
 
     render();
+
+    // 3D 交互倾斜 + 光泽跟随 (仅悬停型指针设备; 触屏/reduced-motion 不启用)
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches
+        && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll<HTMLElement>('.card-tilt').forEach((el) => {
+        el.addEventListener('pointermove', (e) => {
+          const r = el.getBoundingClientRect();
+          const nx = (e.clientX - r.left) / r.width - 0.5;   // -0.5 ~ 0.5
+          const ny = (e.clientY - r.top) / r.height - 0.5;
+          el.classList.add('is-tilting');
+          el.style.setProperty('--ty', `${(nx * 12).toFixed(2)}deg`);
+          el.style.setProperty('--tx', `${(-ny * 9).toFixed(2)}deg`);
+          el.style.setProperty('--gx', `${((nx + 0.5) * 100).toFixed(1)}%`);
+          el.style.setProperty('--gy', `${((ny + 0.5) * 100).toFixed(1)}%`);
+        });
+        el.addEventListener('pointerleave', () => {
+          el.classList.remove('is-tilting');
+          el.style.setProperty('--ty', '0deg');
+          el.style.setProperty('--tx', '0deg');
+        });
+      });
+    }
   }
 </script>

@@ -6,10 +6,14 @@ import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
 import '@fontsource/inter/800.css';
 import '@fontsource/inter/900.css';
-import '@fontsource/noto-sans-sc/400.css';
-import '@fontsource/noto-sans-sc/500.css';
-import '@fontsource/noto-sans-sc/700.css';
-import '@fontsource/noto-sans-sc/900.css';
+// 中文: MiSans (小米, 免费商用, 比 Noto Sans SC 更锐利现代)
+// 注意 MiSans 用自家字重值: Regular=330/Medium=380/Semibold=520/Bold=630/Heavy=700
+// 浏览器 font-matching 会把站内 400/500/700/900 就近解析到这些档
+import 'misans/lib/Normal/MiSans-Regular.min.css';
+import 'misans/lib/Normal/MiSans-Medium.min.css';
+import 'misans/lib/Normal/MiSans-Semibold.min.css';
+import 'misans/lib/Normal/MiSans-Bold.min.css';
+import 'misans/lib/Normal/MiSans-Heavy.min.css';
 import '../styles/global.css';
 import '../styles/animations.css';
 import '../styles/components/navbar.css';
@@ -23,6 +27,7 @@ import '../styles/components/partner.css';
 import '../styles/components/promo.css';
 import '../styles/components/download.css';
 import '../styles/components/faq.css';
+import '../styles/components/security.css';
 import '../styles/components/footer.css';
 import '../styles/depth.css';  // 视觉深度系统, 必须最后导入
 

@@ -117,7 +117,8 @@
     "business": "市場合作",
     "agent_recruitment": "招募合作",
     "privacy_policy": "隱私政策",
-    "terms_of_service": "服務條款"
+    "terms_of_service": "服務條款",
+    "products": "產品"
   },
   "meta": {
     "title": "UUPAY - 讓支付回歸簡單，讓世界觸手可及",
@@ -136,5 +137,15 @@
     "slide4_desc": "推薦並賺取最多 50% 佣金，即時結算，數據公開透明。",
     "slide5_title": "安全設定",
     "slide5_desc": "帳戶安全、系統設定、eSIM 一鍵購買，128-bit 加密守護每一筆交易。"
+  },
+  "security": {
+    "title_html": "安全，經得起<span class=\"kw\">驗證</span>",
+    "subtitle": "資金、數據、結算，每一層都是銀行級防護。",
+    "p1_title": "銀行級加密",
+    "p1_desc": "靜態資料 AES-256、傳輸 TLS 1.3，每筆交易與 KYC 資訊全程加密。",
+    "p2_title": "持牌法幣結算",
+    "p2_desc": "法幣出金全部透過持牌金融機構完成結算。",
+    "p3_title": "多重風控體系",
+    "p3_desc": "即時監控、裝置綁定與提現白名單，7×24 小時守護帳戶安全。"
   }
 }
