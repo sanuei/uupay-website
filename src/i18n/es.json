@@ -14,26 +14,26 @@
     "menu": "Menú"
   },
   "hero": {
-    "title_part1": "Tus activos digitales,",
-    "title_part2": "Ahora pueden hacer más.",
-    "title_html": "Tus <span class=\"kw\">activos digitales</span>,<br>ahora pueden hacer <span class=\"kw\">más</span>.",
-    "eyebrow_text": "Infraestructura Financiera Cripto de Nueva Generación",
-    "subtitle": "La plataforma de pago criptográfico de próxima generación. Tarjetas virtuales Visa y Mastercard, eSIM global y retiros de fiat sin problemas.",
+    "title_part1": "Tu cripto,",
+    "title_part2": "ahora hace más.",
+    "title_html": "Tu <span class=\"kw\">cripto</span>,<br>ahora hace <span class=\"kw\">más</span>.",
+    "eyebrow_text": "La puerta al pago real con cripto",
+    "subtitle": "Sin necesidad de convertir primero: paga con USDT directamente con la tarjeta, compra eSIM globales y retira a tu banco, todo conforme.",
     "cta_start": "Empezar ahora",
     "cta_download": "Descargar App"
   },
   "features": {
-    "title": "Libera el verdadero poder de las criptomonedas",
-    "subtitle": "Todo lo que necesitas para gastar globalmente y gestionar activos digitales en una sola aplicación.",
+    "title": "Lleva la cripto al día a día",
+    "subtitle": "Gasto global, gestión de activos y transferencias instantáneas: todo en una sola app.",
     "card1_title": "Tarjetas Crypto",
-    "card1_desc": "Soporte para Visa y Mastercard. Gasta tus criptomonedas globalmente en millones de comercios. Emisión instantánea.",
+    "card1_desc": "La tarjeta U funciona con Visa y Mastercard: paga sin contacto en decenas de millones de comercios, lista al emitirse.",
     "card2_title": "eSIM Global",
     "card2_desc": "Conexión en más de 137 países. Compra con criptomonedas y activa al instante sin tarjetas SIM físicas.",
     "card3_title": "Retiros de Fiat Grandes",
-    "card3_desc": "Conexión directa con bancos autorizados. Conversión segura y conforme de criptomonedas a fiat de gran volumen.",
+    "card3_desc": "Conexión directa con bancos autorizados para retiros grandes y conformes: llegan rápido y con más confianza.",
     "card4_title": "Chat y Transferencia",
     "card4_desc": "Envía dinero tan fácil como enviar un mensaje. Sobres rojos, regalos y transferencias P2P sin comisiones.",
-    "title_html": "Libera el verdadero poder de las <span class=\"kw\">criptomonedas</span>",
+    "title_html": "Lleva la <span class=\"kw\">cripto</span> al día a día",
     "card1_cta": "Explorar tarjeta U",
     "card2_cta": "Explorar eSIM",
     "card3_cta": "Explorar retiros",
@@ -41,33 +41,33 @@
   },
   "cardShowcase": {
     "title": "Elige tu tarjeta",
-    "subtitle": "Física o virtual, Visa o Mastercard. Cubriendo tus diversas necesidades de gasto.",
+    "subtitle": "Física o virtual, Visa o Mastercard: elige la red y cubre todas tus formas de gastar.",
     "virtual_title": "Tarjeta virtual flexible y conveniente",
-    "virtual_desc": "Emisión instantánea en 1 minuto, vinculación inmediata, soporte excelente para compras internacionales en línea y suscripciones SaaS.",
-    "physical_title": "Tarjeta física negra mate premium",
-    "physical_desc": "Tarjeta Visa física de primera calidad. Retira efectivo en cajeros automáticos y paga en terminales POS en todo el mundo sin comisiones por transacciones internacionales.",
-    "title_html": "Elige tu <span class=\"kw\">tarjeta</span>"
+    "virtual_desc": "Emitida y lista en un minuto: vincúlala fácilmente a tiendas internacionales y suscripciones SaaS globales.",
+    "physical_title": "Tarjeta metálica negro mate",
+    "physical_desc": "Tacto metálico negro mate. Retira en cajeros Visa y paga en TPV en todo el mundo, sin comisiones por transacción internacional.",
+    "title_html": "Elige <span class=\"kw\">tu tarjeta</span>"
   },
   "stats": {
     "countries": "Países y regiones cubiertos",
     "partners": "Socios globales",
     "rewards": "Total de comisiones pagadas",
-    "title_html": "Respaldado por los <span class=\"kw\">Datos</span>"
+    "title_html": "Elegida por usuarios de <span class=\"kw\">todo el mundo</span>"
   },
   "esim": {
     "title": "Conéctate al mundo con eSIM",
     "subtitle": "Sin tarjeta física, sin cargos de roaming. Conéctate a internet de alta velocidad tan pronto como aterrices.",
-    "desc1": "Soporte de conexión de red en más de 137 países y regiones de todo el mundo.",
+    "desc1": "Una eSIM que cubre los principales destinos del mundo: conéctate en cuanto aterrizas.",
     "desc2": "Soporte de pago con USDT, escanea el código QR para activar al instante.",
     "desc3": "Múltiples paquetes de datos diseñados especialmente para nómadas digitales.",
     "title_html": "Conéctate <span class=\"kw\">al mundo</span> con eSIM"
   },
   "partners": {
-    "title": "Programa de socios de recomendación de UUPAY",
-    "subtitle": "Recomienda a amigos para abrir tarjetas y gastar para recibir recompensas de comisión de hasta el 50%.",
+    "title": "Programa de Socios de Referidos UUPAY",
+    "subtitle": "Recomienda a amigos que abran una tarjeta y gasten, y gana hasta un 50% de comisión.",
     "earn": "Comenzar a ganar comisiones",
     "apply": "Solicitar unirse a socios",
-    "title_html": "Recomienda UUPAY, gana <span class=\"kw\">50%</span> de comisión",
+    "title_html": "Recomienda <span class=\"kw\">UUPAY</span> y gana <span class=\"kw\">50%</span> de comisión",
     "stat1_label": "Socios de UUPAY",
     "stat2_label": "Total de comisiones pagadas",
     "stat3_label": "Ingreso mensual promedio",
@@ -94,16 +94,16 @@
     "title": "Preguntas frecuentes",
     "viewMore": "Ver todas las preguntas",
     "q1": "¿Qué servicios ofrece UUPAY?",
-    "a1": "UUPAY es una plataforma de pagos cripto que ofrece tarjetas virtuales y físicas Visa & Mastercard, planes de datos eSIM globales, retiros en moneda fiduciaria conformes a la normativa y transferencias cripto instantáneas al estilo chat, todo en una sola app.",
+    "a1": "UUPAY es una plataforma de pagos cripto todo en uno: tarjetas virtuales y físicas Visa & Mastercard, planes de datos eSIM globales, retiros de fiat conformes y transferencias instantáneas tan fáciles como chatear, todo en una sola app.",
     "q2": "¿Cómo abro una tarjeta virtual de UUPAY?",
     "a2": "Regístrate, completa una verificación KYC rápida y recibe tu tarjeta virtual en aproximadamente 1 minuto. Estará lista de inmediato para compras en línea y suscripciones SaaS globales.",
     "q3": "¿Con qué criptomonedas puedo recargar?",
-    "a3": "UUPAY admite USDT y otras stablecoins y criptomonedas principales para recargar tarjetas, comprar eSIM y realizar transferencias. Los depósitos suelen confirmarse en pocos minutos.",
+    "a3": "UUPAY admite USDT y otras stablecoins y criptomonedas principales para recargar tarjetas, comprar eSIM y transferir, normalmente en cuestión de minutos.",
     "q4": "¿Es UUPAY segura y confiable?",
-    "a4": "UUPAY utiliza cifrado de nivel bancario, controles de riesgo de múltiples capas y trabaja con socios financieros autorizados para la liquidación en moneda fiduciaria. Los fondos de los usuarios y los datos KYC están protegidos bajo estrictos estándares de seguridad."
+    "a4": "UUPAY usa cifrado de nivel bancario y control de riesgos multicapa, y liquida el fiat a través de instituciones financieras autorizadas: tus fondos y datos KYC están protegidos con estándares estrictos."
   },
   "footer": {
-    "desc": "Simplifica los pagos, acerca el mundo. La plataforma de tarjeta financiera criptográfica de próxima generación.",
+    "desc": "Pagos simples, el mundo a tu alcance. La puerta al pago real con cripto.",
     "company": "Empresa",
     "legal": "Políticas legales",
     "support": "Soporte",
@@ -122,11 +122,11 @@
   },
   "meta": {
     "title": "UUPAY - Simplifica los pagos, acerca el mundo",
-    "description": "UUPAY es una plataforma de tarjetas financieras cripto de nueva generación para usuarios globales, con tarjetas Visa y Mastercard para gastar criptomonedas en el mundo real."
+    "description": "UUPAY es una plataforma de pagos cripto para usuarios de todo el mundo. Con Visa / Mastercard, gasta cripto con tarjeta, compra eSIM y retira fiat en cualquier lugar."
   },
   "appShowcase": {
     "title_html": "Experimenta <span class=\"kw\">UUPAY App</span>",
-    "subtitle": "5 funciones clave, una sola pantalla. Desplázate para ver cómo una sola app transforma tu forma de gastar criptomonedas.",
+    "subtitle": "Cinco funciones clave en una pantalla. Desliza para ver cómo UUPAY transforma tu forma de gastar cripto.",
     "slide1_title": "Panel de activos",
     "slide1_desc": "Activos totales estimados, desglose de billetera y tarjeta, saldo de USDT y accesos rápidos en una sola pantalla.",
     "slide2_title": "Control de Tarjeta U",

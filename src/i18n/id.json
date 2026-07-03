@@ -14,60 +14,60 @@
     "menu": "Menu"
   },
   "hero": {
-    "title_part1": "Aset Digital Anda,",
-    "title_part2": "Kini Bisa Melakukan Lebih Banyak Hal.",
-    "title_html": "Aset <span class=\"kw\">digital</span> Anda,<br>sekarang bisa melakukan <span class=\"kw\">lebih banyak</span>.",
-    "eyebrow_text": "Infrastruktur Keuangan Kripto Generasi Baru",
-    "subtitle": "Platform pembayaran kripto generasi masa depan. Kartu virtual Visa & Mastercard, eSIM global, dan penarikan fiat yang lancar.",
+    "title_part1": "Kripto Anda,",
+    "title_part2": "kini bisa lebih banyak.",
+    "title_html": "<span class=\"kw\">Kripto</span> Anda,<br>kini bisa <span class=\"kw\">lebih banyak</span>.",
+    "eyebrow_text": "Gerbang pembayaran dunia nyata untuk kripto",
+    "subtitle": "Tak perlu dicairkan dulu — belanjakan USDT langsung lewat kartu, beli eSIM global, dan tarik ke bank, semuanya sesuai aturan.",
     "cta_start": "Mulai Sekarang",
     "cta_download": "Unduh Aplikasi"
   },
   "features": {
-    "title": "Bebaskan Kekuatan Sejati Kripto",
-    "subtitle": "Semua yang Anda butuhkan untuk belanja global dan pengelolaan aset digital dalam satu aplikasi.",
+    "title": "Jadikan kripto bagian keseharian",
+    "subtitle": "Belanja global, kelola aset, transfer instan — semua dalam satu aplikasi.",
     "card1_title": "Kartu Kripto",
-    "card1_desc": "Mendukung Visa & Mastercard. Belanjakan kripto Anda secara global di jutaan merchant. Penerbitan kartu instan.",
+    "card1_desc": "Kartu U mendukung Visa & Mastercard — tap untuk bayar di puluhan juta merchant global, siap dipakai begitu diterbitkan.",
     "card2_title": "eSIM Global",
     "card2_desc": "Koneksi di 137+ negara. Beli dengan kripto, aktifkan instan tanpa kartu SIM fisik.",
     "card3_title": "Penarikan Fiat Besar",
-    "card3_desc": "Koneksi bank berlisensi langsung. Konversi kripto ke fiat volume besar yang aman dan patuh hukum.",
+    "card3_desc": "Terhubung langsung dengan bank berlisensi untuk penarikan besar yang sesuai aturan — cepat masuk, lebih tepercaya.",
     "card4_title": "Obrolan & Kirim Uang",
     "card4_desc": "Kirim uang semudah mengirim pesan. Angpao, hadiah, dan transfer P2P tanpa biaya.",
-    "title_html": "Bebaskan Kekuatan Sejati <span class=\"kw\">Kripto</span>",
+    "title_html": "Jadikan <span class=\"kw\">kripto</span> bagian keseharian",
     "card1_cta": "Jelajahi Kartu U",
     "card2_cta": "Jelajahi eSIM",
     "card3_cta": "Jelajahi Penarikan",
     "card4_cta": "Jelajahi Obrolan & Kirim Uang"
   },
   "cardShowcase": {
-    "title": "Pilih Kartu Anda",
-    "subtitle": "Kartu fisik atau kartu virtual, Visa atau Mastercard. Memenuhi berbagai kebutuhan belanja Anda.",
+    "title": "Pilih kartu Anda",
+    "subtitle": "Fisik atau virtual, Visa atau Mastercard — pilih jaringan, penuhi setiap cara Anda berbelanja.",
     "virtual_title": "Kartu Virtual yang Fleksibel dan Nyaman",
-    "virtual_desc": "Penerbitan kartu instan dalam 1 menit, langsung tautkan, dukungan luar biasa untuk belanja online global dan langganan SaaS.",
-    "physical_title": "Kartu Fisik Hitam Doff Premium",
-    "physical_desc": "Kartu Visa fisik premium. Tarik tunai di ATM dan bayar di POS di seluruh dunia tanpa biaya transaksi internasional.",
-    "title_html": "Pilih <span class=\"kw\">Kartu</span> Anda"
+    "virtual_desc": "Terbit dan bisa dipakai dalam 1 menit — mudah ditautkan ke situs belanja luar negeri dan langganan SaaS global.",
+    "physical_title": "Kartu logam hitam doff",
+    "physical_desc": "Sentuhan logam hitam doff. Tarik tunai di ATM Visa dan bayar di POS di seluruh dunia, tanpa biaya transaksi internasional.",
+    "title_html": "Pilih <span class=\"kw\">kartu Anda</span>"
   },
   "stats": {
     "countries": "Negara dan Wilayah yang Didukung",
     "partners": "Mitra Global",
     "rewards": "Total Komisi yang Dibayarkan",
-    "title_html": "Dibuktikan oleh <span class=\"kw\">Data</span>"
+    "title_html": "Dipilih pengguna <span class=\"kw\">di seluruh dunia</span>"
   },
   "esim": {
     "title": "Hubungkan Dunia dengan eSIM",
     "subtitle": "Tanpa kartu fisik, tanpa biaya roaming. Hubungkan internet berkecepatan tinggi begitu Anda mendarat.",
-    "desc1": "Mendukung koneksi jaringan di 137+ negara dan wilayah di seluruh dunia.",
+    "desc1": "Satu eSIM mencakup destinasi utama dunia — online begitu Anda mendarat.",
     "desc2": "Mendukung pembayaran dengan USDT, pindai kode QR untuk aktifkan instan.",
     "desc3": "Berbagai paket data yang dirancang khusus untuk Digital Nomad.",
     "title_html": "Hubungkan <span class=\"kw\">Dunia</span> dengan eSIM"
   },
   "partners": {
-    "title": "Program Kemitraan Referensi UUPAY",
-    "subtitle": "Rujuk teman untuk membuka kartu dan berbelanja untuk menerima hadiah komisi hingga 50%.",
+    "title": "Program Mitra Referal UUPAY",
+    "subtitle": "Ajak teman membuka kartu dan berbelanja, dapatkan komisi hingga 50%.",
     "earn": "Mulai Menghasilkan Komisi",
     "apply": "Ajukan Bergabung dengan Mitra",
-    "title_html": "Rujuk UUPAY, Dapatkan Komisi <span class=\"kw\">50%</span>",
+    "title_html": "Ajak <span class=\"kw\">UUPAY</span>, dapatkan komisi <span class=\"kw\">50%</span>",
     "stat1_label": "Mitra UUPAY",
     "stat2_label": "Total Komisi yang Dibayarkan",
     "stat3_label": "Rata-rata Pendapatan Bulanan",
@@ -94,16 +94,16 @@
     "title": "Pertanyaan Umum",
     "viewMore": "Lihat Semua Pertanyaan",
     "q1": "Layanan apa saja yang ditawarkan UUPAY?",
-    "a1": "UUPAY adalah platform pembayaran kripto yang menyediakan kartu virtual dan fisik Visa & Mastercard, paket data eSIM global, penarikan fiat yang sesuai regulasi, serta transfer kripto instan selayaknya chatting — semua dalam satu aplikasi.",
+    "a1": "UUPAY adalah platform pembayaran kripto serba bisa: kartu virtual dan fisik Visa & Mastercard, paket data eSIM global, penarikan fiat sesuai aturan, dan transfer instan semudah chatting — semua dalam satu aplikasi.",
     "q2": "Bagaimana cara membuka kartu virtual UUPAY?",
     "a2": "Daftar, selesaikan verifikasi KYC dengan cepat, dan kartu virtual akan diterbitkan dalam waktu sekitar 1 menit. Kartu langsung siap digunakan untuk belanja online dan berlangganan layanan SaaS global.",
     "q3": "Mata uang kripto apa saja yang bisa digunakan untuk top-up?",
-    "a3": "UUPAY mendukung USDT dan stablecoin serta mata uang kripto utama lainnya untuk top-up kartu, pembelian eSIM, dan transfer. Deposit biasanya dikonfirmasi dalam hitungan menit.",
+    "a3": "UUPAY mendukung USDT dan stablecoin serta kripto utama lain untuk isi ulang kartu, pembelian eSIM, dan transfer, biasanya selesai dalam hitungan menit.",
     "q4": "Apakah UUPAY aman dan dapat dipercaya?",
-    "a4": "UUPAY menggunakan enkripsi tingkat perbankan, kontrol risiko berlapis, dan bekerja sama dengan mitra keuangan berlisensi untuk penyelesaian fiat. Dana pengguna dan data KYC dilindungi sesuai standar keamanan yang ketat."
+    "a4": "UUPAY memakai enkripsi tingkat bank dan kontrol risiko berlapis, serta menyelesaikan fiat lewat lembaga keuangan berlisensi — dana dan data KYC Anda dilindungi sesuai standar ketat."
   },
   "footer": {
-    "desc": "Sederhanakan pembayaran, dekatkan dunia. Platform kartu keuangan kripto generasi masa depan.",
+    "desc": "Pembayaran jadi sederhana, dunia dalam genggaman. Gerbang pembayaran dunia nyata untuk kripto.",
     "company": "Perusahaan",
     "legal": "Kebijakan Hukum",
     "support": "Dukungan",
@@ -122,11 +122,11 @@
   },
   "meta": {
     "title": "UUPAY - Sederhanakan Pembayaran, Dekatkan Dunia",
-    "description": "UUPAY adalah platform kartu keuangan kripto generasi baru untuk pengguna global, didukung kartu Visa & Mastercard untuk pengeluaran kripto di dunia nyata."
+    "description": "UUPAY adalah platform pembayaran kripto untuk pengguna global. Didukung Visa / Mastercard, Anda bisa belanja kripto lewat kartu, beli eSIM, dan tarik fiat di mana saja."
   },
   "appShowcase": {
     "title_html": "Rasakan <span class=\"kw\">UUPAY App</span>",
-    "subtitle": "5 fitur utama dalam satu layar. Gulir untuk melihat bagaimana satu aplikasi mengubah cara Anda berbelanja kripto.",
+    "subtitle": "Lima fitur inti dalam satu layar. Geser untuk melihat bagaimana UUPAY mengubah cara Anda berbelanja kripto.",
     "slide1_title": "Dasbor Aset",
     "slide1_desc": "Estimasi total aset, rincian aset dompet & kartu, saldo USDT, dan akses cepat dalam satu layar.",
     "slide2_title": "Kontrol Kartu U",

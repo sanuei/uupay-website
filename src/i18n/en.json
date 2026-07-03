@@ -14,60 +14,60 @@
     "menu": "Menu"
   },
   "hero": {
-    "title_part1": "Your Digital Assets,",
-    "title_part2": "Now Can Do More.",
-    "title_html": "Your <span class=\"kw\">digital assets</span>,<br>now can do <span class=\"kw\">more</span>.",
-    "eyebrow_text": "Next-Gen Crypto Finance",
-    "subtitle": "The next-generation crypto payment platform. Visa & Mastercard virtual cards, global eSIM, and seamless fiat on/off ramps.",
+    "title_part1": "Your crypto,",
+    "title_part2": "now does more.",
+    "title_html": "Your <span class=\"kw\">crypto</span>,<br>now does <span class=\"kw\">more</span>.",
+    "eyebrow_text": "The real-world gateway for crypto",
+    "subtitle": "No need to cash out first — spend USDT directly by card, buy global eSIMs, and withdraw to your bank, all in compliance.",
     "cta_start": "Get Started Now",
     "cta_download": "Download App"
   },
   "features": {
-    "title": "Unleash the Power of Crypto",
-    "subtitle": "Everything you need for global spending and digital asset management in one app.",
+    "title": "Crypto, made everyday",
+    "subtitle": "Global spending, asset management and instant transfers — all in one app.",
     "card1_title": "Crypto Cards",
-    "card1_desc": "Visa & Mastercard supported. Spend your crypto globally at millions of merchants. Instant issuance.",
+    "card1_desc": "The U-Card works with Visa & Mastercard — tap to pay at tens of millions of merchants worldwide, ready the moment it's issued.",
     "card2_title": "Global eSIM",
     "card2_desc": "Stay connected in 137+ countries. Purchase with crypto, activate instantly without physical SIMs.",
     "card3_title": "Fiat Withdrawals",
-    "card3_desc": "Direct bank transfers with licensed partners. Secure and compliant large-volume crypto-to-fiat conversions.",
+    "card3_desc": "Direct rails with licensed banks for large, compliant withdrawals — fast to arrive, easy to trust.",
     "card4_title": "Chat & Pay",
     "card4_desc": "Send money as easily as sending a message. Red packets, gifts, and zero-fee P2P transfers.",
-    "title_html": "Unleash the True Power of <span class=\"kw\">Crypto</span>",
+    "title_html": "<span class=\"kw\">Crypto</span>, made everyday",
     "card1_cta": "Explore U-Card",
     "card2_cta": "Explore eSIM",
     "card3_cta": "Explore Withdrawals",
     "card4_cta": "Explore Chat & Pay"
   },
   "cardShowcase": {
-    "title": "Choose Your Cards",
-    "subtitle": "Physical or virtual. Visa or Mastercard. We have you covered.",
+    "title": "Choose your card",
+    "subtitle": "Physical or virtual, Visa or Mastercard — pick your network, cover every way you spend.",
     "virtual_title": "Flexible Virtual Card",
-    "virtual_desc": "1-minute instant issuance, ready for online shopping and global SaaS subscriptions.",
-    "physical_title": "Matte Black Physical Card",
-    "physical_desc": "Premium physical Visa card. Zero international transaction fees at ATMs and POS terminal transactions globally.",
-    "title_html": "Choose Your <span class=\"kw\">Cards</span>"
+    "virtual_desc": "Issued and usable in one minute — bind it to overseas shopping sites and global SaaS subscriptions with ease.",
+    "physical_title": "Matte-black metal card",
+    "physical_desc": "Metal-feel matte black. Withdraw at Visa ATMs and pay at POS worldwide, with no foreign transaction fees.",
+    "title_html": "Choose <span class=\"kw\">your card</span>"
   },
   "stats": {
     "countries": "Countries Covered",
     "partners": "Global Partners",
     "rewards": "Rewards Disbursed",
-    "title_html": "Backed by the <span class=\"kw\">Numbers</span>"
+    "title_html": "Chosen by users <span class=\"kw\">worldwide</span>"
   },
   "esim": {
     "title": "Global Connectivity with eSIM",
     "subtitle": "No physical cards, no roaming fees. Stay connected wherever you land.",
-    "desc1": "Supported in 137+ countries and regions.",
+    "desc1": "One eSIM covering every major destination — get online the moment you land.",
     "desc2": "Pay with USDT and activate instantly via QR code.",
     "desc3": "Flexible data packages tailored for digital nomads.",
     "title_html": "Global Connectivity with <span class=\"kw\">eSIM</span>"
   },
   "partners": {
-    "title": "UUPAY Partner Program",
-    "subtitle": "Share the platform and earn up to 50% commission for every referral.",
+    "title": "UUPAY Referral Partner Program",
+    "subtitle": "Refer friends who open a card and spend, and earn up to 50% commission.",
     "earn": "Earn Commissions",
     "apply": "Apply to Join",
-    "title_html": "Refer UUPAY, Earn <span class=\"kw\">50%</span> Commission",
+    "title_html": "Refer <span class=\"kw\">UUPAY</span>, earn <span class=\"kw\">50%</span> commission",
     "stat1_label": "UUPAY Partners",
     "stat2_label": "Rewards Disbursed",
     "stat3_label": "Avg. Monthly Income",
@@ -94,16 +94,16 @@
     "title": "FAQ",
     "viewMore": "View All FAQs",
     "q1": "What services does UUPAY offer?",
-    "a1": "UUPAY is a crypto payment platform offering Visa & Mastercard virtual and physical cards, global eSIM data plans, compliant fiat withdrawals, and instant chat-style crypto transfers — all in one app.",
+    "a1": "UUPAY is an all-in-one crypto payment platform: Visa & Mastercard virtual and physical cards, global eSIM data plans, compliant fiat withdrawals, and chat-easy instant transfers — everything in a single app.",
     "q2": "How do I open a UUPAY virtual card?",
     "a2": "Sign up, complete quick KYC verification, and issue a virtual card in about 1 minute. It's ready for online shopping and global SaaS subscriptions immediately.",
     "q3": "Which cryptocurrencies can I top up with?",
-    "a3": "UUPAY supports USDT and other major stablecoins and cryptocurrencies for card top-ups, eSIM purchases, and transfers. Deposits are typically confirmed within minutes.",
+    "a3": "UUPAY supports USDT and other major stablecoins and cryptocurrencies for card top-ups, eSIM purchases and transfers, usually settling within minutes.",
     "q4": "Is UUPAY safe and trustworthy?",
-    "a4": "UUPAY uses bank-grade encryption, multi-layer risk controls, and works with licensed financial partners for fiat settlement. User funds and KYC data are protected under strict security standards."
+    "a4": "UUPAY uses bank-grade encryption and multi-layer risk control, and settles fiat through licensed financial institutions — your funds and KYC data are protected to strict security standards."
   },
   "footer": {
-    "desc": "Your Digital Assets Can Do More. The next-generation crypto payment platform.",
+    "desc": "Payments made simple, the world within reach. The real-world gateway for crypto.",
     "company": "Company",
     "legal": "Legal",
     "support": "Support",
@@ -122,11 +122,11 @@
   },
   "meta": {
     "title": "UUPAY - Simplify Payments, Reach the World",
-    "description": "UUPAY is a next-generation crypto payment platform for global users, powered by Visa & Mastercard virtual and physical cards for real-world crypto spending."
+    "description": "UUPAY is a crypto payment platform for users worldwide. Powered by Visa / Mastercard, it lets you spend crypto by card, buy eSIMs and withdraw fiat — anywhere."
   },
   "appShowcase": {
     "title_html": "Experience <span class=\"kw\">UUPAY App</span>",
-    "subtitle": "5 core features, one screen. Scroll to see how a single app changes your crypto spending.",
+    "subtitle": "Five core features at a glance. Swipe through and see how UUPAY reshapes the way you spend crypto.",
     "slide1_title": "Assets Dashboard",
     "slide1_desc": "Estimated total assets, wallet & card split, USDT balance, and quick actions on one screen.",
     "slide2_title": "U-Card Control",

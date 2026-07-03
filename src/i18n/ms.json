@@ -14,60 +14,60 @@
     "menu": "Menu"
   },
   "hero": {
-    "title_part1": "Aset Digital Anda,",
-    "title_part2": "Kini Boleh Melakukan Lebih Banyak Lagi.",
-    "title_html": "Aset <span class=\"kw\">digital</span> anda,<br>kini boleh melakukan <span class=\"kw\">lebih banyak</span>.",
-    "eyebrow_text": "Infrastruktur Kewangan Kripto Generasi Baharu",
-    "subtitle": "Platform pembayaran kripto generasi akan datang. Kad maya Visa & Mastercard, eSIM global, dan pengeluaran fiat yang lancar.",
+    "title_part1": "Kripto anda,",
+    "title_part2": "kini buat lebih banyak.",
+    "title_html": "<span class=\"kw\">Kripto</span> anda,<br>kini buat <span class=\"kw\">lebih banyak</span>.",
+    "eyebrow_text": "Get laluan pembayaran dunia sebenar untuk kripto",
+    "subtitle": "Tak perlu tunaikan dahulu — belanja terus guna USDT melalui kad, beli eSIM global, dan keluarkan ke bank, semuanya patuh.",
     "cta_start": "Mula Sekarang",
     "cta_download": "Muat Turun App"
   },
   "features": {
-    "title": "Bebaskan Kuasa Sebenar Kripto",
-    "subtitle": "Semua yang anda perlukan untuk perbelanjaan global dan pengurusan aset digital dalam satu aplikasi.",
+    "title": "Jadikan kripto sebahagian harian",
+    "subtitle": "Perbelanjaan global, pengurusan aset, pemindahan segera — semua dalam satu aplikasi.",
     "card1_title": "Kad Kripto",
-    "card1_desc": "Menyokong Visa & Mastercard. Belanjakan kripto anda secara global di jutaan pedagang. Pengeluaran kad segera.",
+    "card1_desc": "Kad U menyokong Visa & Mastercard — sentuh untuk bayar di puluhan juta pedagang global, sedia digunakan sebaik dikeluarkan.",
     "card2_title": "eSIM Global",
     "card2_desc": "Sambungan di 137+ negara. Beli dengan kripto dan aktifkan serta-merta tanpa kad SIM fizikal.",
     "card3_title": "Pengeluaran Fiat Besar",
-    "card3_desc": "Sambungan bank terus berlesen. Penukaran kripto kepada fiat jumlah besar yang selamat dan patuh undang-undang.",
+    "card3_desc": "Talian terus dengan bank berlesen untuk pengeluaran besar yang patuh — cepat sampai, lebih dipercayai.",
     "card4_title": "Sembang & Bayar",
     "card4_desc": "Hantar wang semudah menghantar mesej. Sampul merah, hadiah, dan pemindahan P2P tanpa yuran.",
-    "title_html": "Bebaskan Kuasa Sebenar <span class=\"kw\">Kripto</span>",
+    "title_html": "Jadikan <span class=\"kw\">kripto</span> sebahagian harian",
     "card1_cta": "Terokai Kad U",
     "card2_cta": "Terokai eSIM",
     "card3_cta": "Terokai Pengeluaran",
     "card4_cta": "Terokai Sembang & Bayar"
   },
   "cardShowcase": {
-    "title": "Pilih Kad Anda",
-    "subtitle": "Kad fizikal atau kad maya, Visa atau Mastercard. Memenuhi pelbagai keperluan perbelanjaan anda.",
+    "title": "Pilih kad anda",
+    "subtitle": "Fizikal atau maya, Visa atau Mastercard — pilih rangkaian, lengkapi setiap cara anda berbelanja.",
     "virtual_title": "Kad Maya Fleksibel dan Selesa",
-    "virtual_desc": "Pengeluaran kad segera dalam 1 minit, pautkan terus, sokongan hebat untuk beli-belah dalam talian global dan langganan SaaS.",
-    "physical_title": "Kad Fizikal Hitam Pusam Premium",
-    "physical_desc": "Kad Visa fizikal premium. Keluarkan tunai di ATM dan bayar di POS di seluruh dunia tanpa yuran transaksi antarabangsa.",
-    "title_html": "Pilih <span class=\"kw\">Kad</span> Anda"
+    "virtual_desc": "Dikeluarkan dan boleh diguna dalam 1 minit — pautkan dengan mudah ke laman beli-belah antarabangsa dan langganan SaaS global.",
+    "physical_title": "Kad logam hitam pudar",
+    "physical_desc": "Rasa logam hitam pudar. Keluarkan tunai di ATM Visa dan bayar di POS di seluruh dunia, tanpa yuran transaksi antarabangsa.",
+    "title_html": "Pilih <span class=\"kw\">kad anda</span>"
   },
   "stats": {
     "countries": "Negara dan Wilayah Disokong",
     "partners": "Rakan Kongsi Global",
     "rewards": "Jumlah Komisen Dibayar",
-    "title_html": "Dibuktikan oleh <span class=\"kw\">Data</span>"
+    "title_html": "Dipilih pengguna <span class=\"kw\">seluruh dunia</span>"
   },
   "esim": {
     "title": "Hubungkan Dunia dengan eSIM",
     "subtitle": "Tiada kad fizikal, tiada yuran perayauan. Sambungkan internet berkelajuan tinggi sebaik sahaja anda mendarat.",
-    "desc1": "Sokongan sambungan rangkaian di 137+ negara dan wilayah di seluruh dunia.",
+    "desc1": "Satu eSIM meliputi destinasi utama dunia — dalam talian sebaik mendarat.",
     "desc2": "Sokongan pembayaran dengan USDT, imbas kod QR untuk aktifkan serta-merta.",
     "desc3": "Pelbagai pakej data yang direka khas untuk Digital Nomad.",
     "title_html": "Hubungkan <span class=\"kw\">Dunia</span> dengan eSIM"
   },
   "partners": {
-    "title": "Program Rakan Kongsi Rujukan UUPAY",
-    "subtitle": "Rujuk rakan untuk membuka kad dan berbelanja untuk menerima ganjaran komisen sehingga 50%.",
+    "title": "Program Rakan Rujukan UUPAY",
+    "subtitle": "Rujuk rakan yang buka kad dan berbelanja, peroleh komisen sehingga 50%.",
     "earn": "Mula Menjana Komisen",
     "apply": "Mohon Menyertai Rakan Kongsi",
-    "title_html": "Rujuk UUPAY, Perolehi <span class=\"kw\">50%</span> Komisen",
+    "title_html": "Rujuk <span class=\"kw\">UUPAY</span>, peroleh komisen <span class=\"kw\">50%</span>",
     "stat1_label": "Rakan Kongsi UUPAY",
     "stat2_label": "Jumlah Komisen Dibayar",
     "stat3_label": "Purata Pendapatan Bulanan",
@@ -94,16 +94,16 @@
     "title": "Soalan Lazim",
     "viewMore": "Lihat Semua Soalan",
     "q1": "Apakah perkhidmatan yang ditawarkan oleh UUPAY?",
-    "a1": "UUPAY ialah platform pembayaran kripto yang menawarkan kad maya dan fizikal Visa & Mastercard, pelan data eSIM global, pengeluaran fiat yang mematuhi peraturan, serta pemindahan kripto segera seperti bersembang — semuanya dalam satu aplikasi.",
+    "a1": "UUPAY ialah platform pembayaran kripto serba lengkap: kad maya dan fizikal Visa & Mastercard, pelan data eSIM global, pengeluaran fiat yang patuh, dan pemindahan segera semudah bersembang — semua dalam satu aplikasi.",
     "q2": "Bagaimana saya membuka kad maya UUPAY?",
     "a2": "Daftar, lengkapkan pengesahan KYC dengan pantas, dan kad maya akan dikeluarkan dalam masa kira-kira 1 minit. Kad terus boleh digunakan untuk membeli-belah dalam talian dan langganan SaaS global.",
     "q3": "Mata wang kripto apakah yang boleh saya gunakan untuk tambah nilai?",
-    "a3": "UUPAY menyokong USDT dan stablecoin serta mata wang kripto utama lain untuk tambah nilai kad, pembelian eSIM dan pemindahan. Deposit biasanya disahkan dalam beberapa minit.",
+    "a3": "UUPAY menyokong USDT dan stablecoin serta kripto utama lain untuk tambah nilai kad, pembelian eSIM dan pemindahan, biasanya selesai dalam beberapa minit.",
     "q4": "Adakah UUPAY selamat dan boleh dipercayai?",
-    "a4": "UUPAY menggunakan penyulitan gred bank, kawalan risiko berbilang lapisan, dan bekerjasama dengan rakan kongsi kewangan berlesen untuk penyelesaian fiat. Dana pengguna dan data KYC dilindungi mengikut piawaian keselamatan yang ketat."
+    "a4": "UUPAY menggunakan penyulitan gred bank dan kawalan risiko berbilang lapisan, serta menyelesaikan fiat melalui institusi kewangan berlesen — dana dan data KYC anda dilindungi mengikut piawaian ketat."
   },
   "footer": {
-    "desc": "Permudah pembayaran, dekatkan dunia. Platform kad kewangan kripto generasi akan datang.",
+    "desc": "Pembayaran dipermudah, dunia dalam jangkauan. Laluan pembayaran dunia sebenar untuk kripto.",
     "company": "Syarikat",
     "legal": "Dasar Undang-undang",
     "support": "Sokongan",
@@ -122,11 +122,11 @@
   },
   "meta": {
     "title": "UUPAY - Permudah Pembayaran, Dekatkan Dunia",
-    "description": "UUPAY ialah platform kad kewangan kripto generasi baharu untuk pengguna global, disokong oleh kad Visa & Mastercard untuk perbelanjaan kripto dunia sebenar."
+    "description": "UUPAY ialah platform pembayaran kripto untuk pengguna global. Dikuasakan Visa / Mastercard, ia membolehkan anda berbelanja kripto melalui kad, beli eSIM dan keluarkan fiat di mana-mana."
   },
   "appShowcase": {
     "title_html": "Alami <span class=\"kw\">UUPAY App</span>",
-    "subtitle": "5 ciri utama dalam satu skrin. Tatal untuk melihat bagaimana satu aplikasi mengubah cara anda berbelanja kripto.",
+    "subtitle": "Lima ciri teras dalam satu skrin. Leret untuk lihat bagaimana UUPAY mengubah cara anda berbelanja kripto.",
     "slide1_title": "Papan Pemuka Aset",
     "slide1_desc": "Anggaran jumlah aset, pecahan aset dompet & kad, baki USDT, dan tindakan pantas dalam satu skrin.",
     "slide2_title": "Kawalan Kad U",

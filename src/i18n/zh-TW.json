@@ -14,60 +14,60 @@
     "menu": "選單"
   },
   "hero": {
-    "title_part1": "您的數字資產，",
+    "title_part1": "你的加密資產，",
     "title_part2": "現在可以做更多。",
-    "title_html": "你的<span class=\"kw\">數位資產</span>,<br>現在可以做<span class=\"kw\">更多</span>。",
-    "eyebrow_text": "新一代加密金融基礎設施",
-    "subtitle": "新一代數字支付解決方案。支持 Visa & Mastercard 虛擬卡與實體卡、全球 eSIM 以及合规法幣提現。",
+    "title_html": "你的<span class=\"kw\">加密資產</span>，<br>現在可以做<span class=\"kw\">更多</span>。",
+    "eyebrow_text": "加密資產的現實支付入口",
+    "subtitle": "無需先兌換成法幣——用 USDT 直接刷卡消費、購買全球 eSIM、合規出金到銀行。",
     "cta_start": "立即開始",
     "cta_download": "下載 App"
   },
   "features": {
-    "title": "釋放加密貨幣的真正力量",
-    "subtitle": "全球消費與數字資產管理所需的一切，盡在一個 App 掌握。",
+    "title": "把加密資產，用成日常",
+    "subtitle": "全球消費、資產管理、即時轉帳，一個 App 全部搞定。",
     "card1_title": "加密貨幣卡",
-    "card1_desc": "支持 Visa 與 Mastercard，在全球數千萬家商戶即刷即付，即開即用。",
+    "card1_desc": "U 卡支援 Visa 與 Mastercard，全球數千萬商戶即刷即付，即開即用。",
     "card2_title": "全球 eSIM",
     "card2_desc": "覆蓋全球 137+ 國家和地區，支持加密貨幣支付並即時激活，落地即聯網。",
     "card3_title": "大額出金",
-    "card3_desc": "持牌銀行直連，合規出金，大額資金無憂，享受極速安全出金體驗。",
+    "card3_desc": "對接持牌銀行直連通道，大額資金合規出金，到帳快、更安心。",
     "card4_title": "聊天即轉賬",
     "card4_desc": "像聊天一樣發送資金，支持紅包、禮品和用戶間免手續費的同名劃轉。",
-    "title_html": "釋放<span class=\"kw\">加密貨幣</span>的真正力量",
+    "title_html": "把<span class=\"kw\">加密資產</span>，用成日常",
     "card1_cta": "了解 U 卡",
     "card2_cta": "了解 eSIM",
     "card3_cta": "了解出金",
     "card4_cta": "了解聊天轉賬"
   },
   "cardShowcase": {
-    "title": "選擇專屬您的卡片",
-    "subtitle": "實體卡或虛擬卡，Visa 或 Mastercard。雙卡組織，滿足您的多樣消費需求。",
+    "title": "選擇專屬你的卡片",
+    "subtitle": "實體卡或虛擬卡，Visa 或 Mastercard 雙卡組織任選，覆蓋你的各種消費場景。",
     "virtual_title": "靈活便捷的虛擬卡",
-    "virtual_desc": "1分鐘極速開卡，即刻綁定，完美支持各類海淘消費和全球主流 SaaS 服務訂閱。",
-    "physical_title": "尊貴啞光黑實體卡",
-    "physical_desc": "高級啞光黑色實體卡。在全球支持 Visa 的 ATM 和 POS 機消費，尊享無境外交易費優惠。",
-    "title_html": "選擇專屬<span class=\"kw\">您的卡片</span>"
+    "virtual_desc": "1 分鐘開卡即用，輕鬆綁定各類海淘平台與全球主流 SaaS 訂閱。",
+    "physical_title": "霧面黑實體卡",
+    "physical_desc": "金屬質感霧面黑，全球 Visa ATM 取現、POS 消費通行，免收境外交易費。",
+    "title_html": "選擇專屬<span class=\"kw\">你的卡片</span>"
   },
   "stats": {
     "countries": "覆蓋國家與地區",
     "partners": "全球合作伙伴",
     "rewards": "已發放佣金總額",
-    "title_html": "用<span class=\"kw\">數據</span>說話"
+    "title_html": "被全球用戶<span class=\"kw\">選擇</span>"
   },
   "esim": {
     "title": "使用 eSIM 連接世界",
     "subtitle": "免實體卡，免漫遊費。落地即刻聯網，隨時暢享高速網絡。",
-    "desc1": "支持全球 137+ 國家和地區網絡連接。",
+    "desc1": "一張 eSIM 覆蓋全球主流目的地，落地自動連網。",
     "desc2": "支持 USDT 支付，掃碼秒級激活啟用。",
     "desc3": "專為數字遊民量身打造的多樣流量套餐。",
     "title_html": "使用 eSIM <span class=\"kw\">連接世界</span>"
   },
   "partners": {
-    "title": "UUPAY 推介合夥人計劃",
-    "subtitle": "推薦好友開卡消費，即可獲得最高 50% 比例的返傭獎勵。",
+    "title": "UUPAY 推薦合夥人計劃",
+    "subtitle": "推薦好友開卡消費，最高可享 50% 返傭。",
     "earn": "開始賺取佣金",
     "apply": "申請加入合夥人",
-    "title_html": "推介 <span class=\"kw\">UUPAY</span> 賺取 <span class=\"kw\">50%</span> 佣金",
+    "title_html": "推薦 <span class=\"kw\">UUPAY</span>，賺取 <span class=\"kw\">50%</span> 佣金",
     "stat1_label": "UUPAY 合夥人",
     "stat2_label": "累計佣金發放",
     "stat3_label": "合夥人月均收入",
@@ -94,16 +94,16 @@
     "title": "常見問題",
     "viewMore": "查看全部問題",
     "q1": "UUPAY 提供哪些服務？",
-    "a1": "UUPAY 是新一代加密貨幣支付平台，提供 Visa & Mastercard 虛擬卡與實體卡、全球 eSIM 流量套餐、合規法幣出金，以及像聊天一樣便捷的即時加密轉帳，一個 App 滿足全部需求。",
+    "a1": "UUPAY 是一站式加密支付平台，提供 Visa & Mastercard 虛擬卡與實體卡、全球 eSIM 流量套餐、合規法幣出金，以及像聊天一樣便捷的即時轉帳，一個 App 滿足全部需求。",
     "q2": "如何開通 UUPAY 虛擬卡？",
     "a2": "註冊帳號並完成快速 KYC 認證後，最快 1 分鐘即可開通虛擬卡，立即用於海淘消費和全球主流 SaaS 服務訂閱。",
     "q3": "UUPAY 支持哪些加密貨幣充值？",
-    "a3": "UUPAY 支持 USDT 等主流穩定幣和加密貨幣，用於卡片充值、eSIM 購買和轉帳，到帳通常僅需幾分鐘。",
+    "a3": "UUPAY 支援 USDT 等主流穩定幣和加密貨幣，用於卡片充值、eSIM 購買和轉帳，到帳通常僅需幾分鐘。",
     "q4": "UUPAY 安全可靠嗎？",
     "a4": "UUPAY 採用銀行級加密與多重風控體系，並與持牌金融機構合作完成法幣結算，用戶資金與 KYC 資訊均按照嚴格的安全標準進行保護。"
   },
   "footer": {
-    "desc": "讓支付回歸簡單，讓世界觸手可達。新一代加密金融卡服務平台。",
+    "desc": "讓支付回歸簡單，讓世界觸手可及。加密資產的現實支付入口。",
     "company": "公司",
     "legal": "法律政策",
     "support": "客戶支持",
@@ -122,11 +122,11 @@
   },
   "meta": {
     "title": "UUPAY - 讓支付回歸簡單，讓世界觸手可及",
-    "description": "UUPAY 是一款面向全球用戶的加密貨幣金融卡產品，依托 Visa / Mastercard 雙卡組織，實現加密資產的全球消費場景落地。"
+    "description": "UUPAY 是面向全球用戶的加密支付平台，依托 Visa / Mastercard，讓你用加密資產在全球刷卡消費、購買 eSIM、合規出金。"
   },
   "appShowcase": {
     "title_html": "體驗 <span class=\"kw\">UUPAY App</span>",
-    "subtitle": "5 個核心功能，一屏掌握。滾動瀏覽，看完整張卡片如何改變你的加密消費體驗。",
+    "subtitle": "5 個核心功能，一屏掌握。逐屏瀏覽，感受 UUPAY 如何改變你的加密消費。",
     "slide1_title": "資產總覽",
     "slide1_desc": "預估總資產、錢包與卡片資產拆分、USDT 餘額、快捷入口一屏掌控。",
     "slide2_title": "U 卡管理",
