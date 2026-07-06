@@ -16,7 +16,7 @@
   "hero": {
     "title_part1": "你的加密资产，",
     "title_part2": "现在可以做更多。",
-    "title_html": "你的<span class=\"kw\">加密资产</span>，<br>现在可以做<span class=\"kw\">更多</span>。",
+    "title_html": "你的<span class=\"kw\">加密资产</span><br>现在可以做<span class=\"kw\">更多</span>",
     "eyebrow_text": "加密资产的现实支付入口",
     "subtitle": "无需先兑换成法币——用 USDT 直接刷卡消费、购买全球 eSIM、合规出金到银行。",
     "cta_start": "立即开始",
