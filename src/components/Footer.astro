@@ -9,6 +9,10 @@ const { lang } = Astro.props;
 const t = useTranslations(lang as any);
 const base = lang === 'en' ? '' : `/${lang}`;
 const currentYear = new Date().getFullYear();
+
+// 帮助中心(Intercom)只提供这 6 种语言, 站内其余语言(ko/vi/ms/id/ar)兜底到英文
+const helpLocales = ['en', 'zh-CN', 'zh-TW', 'ja', 'th', 'es'];
+const helpUrl = `https://help.uupay.com/${helpLocales.includes(lang) ? lang : 'en'}/`;
 ---
 
 <footer class="footer">
@@ -65,7 +69,7 @@ const currentYear = new Date().getFullYear();
       <div class="footer-col">
         <h4>{t('footer.support')}</h4>
         <ul class="footer-links">
-          <li><a href="https://help.uupay.com/zh-CN/">{t('footer.help_center')}</a></li>
+          <li><a href={helpUrl}>{t('footer.help_center')}</a></li>
           <li><a href="mailto:customerservice@uupay.com">{t('footer.contact_support')}</a></li>
           <li><a href="mailto:official@uupay.com">{t('footer.business')}</a></li>
           <li><a href="mailto:partner@uupay.com">{t('footer.agent_recruitment')}</a></li>
