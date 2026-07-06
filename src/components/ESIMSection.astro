@@ -7,6 +7,16 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
+
+// 3 张横向扁卡 (图标 + 短标题 + 说明), 取代原来的带勾列表
+const feats = [
+  { title: t('esim.feat1_title'), desc: t('esim.desc1'),
+    svg: '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>' },
+  { title: t('esim.feat2_title'), desc: t('esim.desc2'),
+    svg: '<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>' },
+  { title: t('esim.feat3_title'), desc: t('esim.desc3'),
+    svg: '<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/>' },
+];
 ---
 
 <section class="esim">
@@ -19,11 +29,19 @@ const t = useTranslations(lang as any);
         </span>
         <h2 set:html={t('esim.title_html')} />
         <p>{t('esim.subtitle')}</p>
-        <ul class="esim-features">
-          <li class="scroll-reveal stagger-item"><span class="check">✓</span><span>{t('esim.desc1')}</span></li>
-          <li class="scroll-reveal stagger-item"><span class="check">✓</span><span>{t('esim.desc2')}</span></li>
-          <li class="scroll-reveal stagger-item"><span class="check">✓</span><span>{t('esim.desc3')}</span></li>
-        </ul>
+        <div class="esim-features">
+          {feats.map((f) => (
+            <div class="esim-feat scroll-reveal stagger-item">
+              <div class="esim-feat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={f.svg} />
+              </div>
+              <div class="esim-feat-body">
+                <h3>{f.title}</h3>
+                <p>{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div class="esim-visual">

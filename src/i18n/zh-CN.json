@@ -60,7 +60,10 @@
     "desc1": "一张 eSIM 覆盖全球主流目的地，落地自动连网。",
     "desc2": "支持 USDT 支付，扫码秒级激活启用。",
     "desc3": "专为数字游民量身打造的多样流量套餐。",
-    "title_html": "使用 eSIM <span class=\"kw\">连接世界</span>"
+    "title_html": "使用 eSIM <span class=\"kw\">连接世界</span>",
+    "feat1_title": "全球覆盖",
+    "feat2_title": "极速激活",
+    "feat3_title": "灵活套餐"
   },
   "partners": {
     "title": "UUPAY 推荐合伙人计划",

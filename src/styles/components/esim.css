@@ -50,34 +50,61 @@
   margin-bottom: var(--space-6);
 }
 
+/* 3 张横向扁卡: 图标在左, 标题+说明在右, 竖直堆叠。
+   刻意做成"横向扁卡", 与 Features 的竖向大卡网格区分, 不撞版式。 */
 .esim-features {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  list-style: none;
-}
-
-.esim-features li {
-  display: flex;
-  align-items: flex-start;
   gap: var(--space-3);
-  font-size: var(--fs-body);
-  color: var(--text-pri);
 }
 
-.esim-features li .check {
+.esim-feat {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--r-md);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1px solid var(--border-sub);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: border-color 0.25s var(--ease-out), background 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .esim-feat:hover {
+    border-color: var(--border-hi);
+    background: linear-gradient(180deg, rgba(184, 227, 81, 0.06) 0%, rgba(255, 255, 255, 0.015) 100%);
+    transform: translateX(4px);
+  }
+}
+
+.esim-feat-icon {
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  background: var(--brand);
-  color: var(--brand-ink);
-  border-radius: var(--r-circle);
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  font-weight: 900;
-  margin-top: 2px;
+  border-radius: var(--r-md);
+  background: rgba(184, 227, 81, 0.1);
+  color: var(--brand);
+}
+
+.esim-feat-icon svg { width: 22px; height: 22px; }
+
+.esim-feat-body h3 {
+  font-size: var(--fs-body-lg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-pri);
+  margin-bottom: 3px;
+}
+
+.esim-feat-body p {
+  font-size: var(--fs-body-sm);
+  color: var(--text-sec);
+  line-height: 1.5;
+  margin: 0;
 }
 
 .esim-visual {

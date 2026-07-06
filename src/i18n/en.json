@@ -60,7 +60,10 @@
     "desc1": "One eSIM covering every major destination — get online the moment you land.",
     "desc2": "Pay with USDT and activate instantly via QR code.",
     "desc3": "Flexible data packages tailored for digital nomads.",
-    "title_html": "Global Connectivity with <span class=\"kw\">eSIM</span>"
+    "title_html": "Global Connectivity with <span class=\"kw\">eSIM</span>",
+    "feat1_title": "Global coverage",
+    "feat2_title": "Instant activation",
+    "feat3_title": "Flexible plans"
   },
   "partners": {
     "title": "UUPAY Referral Partner Program",

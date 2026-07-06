@@ -60,7 +60,10 @@
     "desc1": "1枚のeSIMで世界の主要エリアをカバー。到着後すぐにオンライン。",
     "desc2": "USDTでの支払いに対応、QRコードスキャンで即座にアクティベート。",
     "desc3": "デジタルノマドに最適な多様なデータプラン。",
-    "title_html": "eSIMで<span class=\"kw\">世界とつながる</span>"
+    "title_html": "eSIMで<span class=\"kw\">世界とつながる</span>",
+    "feat1_title": "世界をカバー",
+    "feat2_title": "即時アクティベート",
+    "feat3_title": "柔軟なプラン"
   },
   "partners": {
     "title": "UUPAY 紹介パートナープログラム",

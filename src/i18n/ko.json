@@ -60,7 +60,10 @@
     "desc1": "eSIM 한 장으로 전 세계 주요 지역 커버, 도착 즉시 온라인.",
     "desc2": "USDT 결제 가능, QR 코드 스캔으로 즉시 활성화.",
     "desc3": "디지털 노마드를 위한 맞춤형 다양한 데이터 요금제.",
-    "title_html": "eSIM으로 <span class=\"kw\">세계를 연결하다</span>"
+    "title_html": "eSIM으로 <span class=\"kw\">세계를 연결하다</span>",
+    "feat1_title": "글로벌 커버리지",
+    "feat2_title": "즉시 활성화",
+    "feat3_title": "유연한 요금제"
   },
   "partners": {
     "title": "UUPAY 추천 파트너 프로그램",

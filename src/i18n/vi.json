@@ -60,7 +60,10 @@
     "desc1": "Một eSIM phủ sóng các điểm đến lớn trên thế giới, có mạng ngay khi bạn hạ cánh.",
     "desc2": "Hỗ trợ thanh toán bằng USDT, quét mã QR kích hoạt trong vài giây.",
     "desc3": "Các gói cước đa dạng được thiết kế riêng cho các Digital Nomad.",
-    "title_html": "Kết nối <span class=\"kw\">thế giới</span> với eSIM"
+    "title_html": "Kết nối <span class=\"kw\">thế giới</span> với eSIM",
+    "feat1_title": "Phủ sóng toàn cầu",
+    "feat2_title": "Kích hoạt tức thì",
+    "feat3_title": "Gói cước linh hoạt"
   },
   "partners": {
     "title": "Chương trình Đối tác Giới thiệu UUPAY",

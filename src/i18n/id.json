@@ -60,7 +60,10 @@
     "desc1": "Satu eSIM mencakup destinasi utama dunia — online begitu Anda mendarat.",
     "desc2": "Mendukung pembayaran dengan USDT, pindai kode QR untuk aktifkan instan.",
     "desc3": "Berbagai paket data yang dirancang khusus untuk Digital Nomad.",
-    "title_html": "Hubungkan <span class=\"kw\">Dunia</span> dengan eSIM"
+    "title_html": "Hubungkan <span class=\"kw\">Dunia</span> dengan eSIM",
+    "feat1_title": "Cakupan global",
+    "feat2_title": "Aktivasi instan",
+    "feat3_title": "Paket fleksibel"
   },
   "partners": {
     "title": "Program Mitra Referal UUPAY",

@@ -60,7 +60,10 @@
     "desc1": "Una eSIM que cubre los principales destinos del mundo: conéctate en cuanto aterrizas.",
     "desc2": "Soporte de pago con USDT, escanea el código QR para activar al instante.",
     "desc3": "Múltiples paquetes de datos diseñados especialmente para nómadas digitales.",
-    "title_html": "Conéctate <span class=\"kw\">al mundo</span> con eSIM"
+    "title_html": "Conéctate <span class=\"kw\">al mundo</span> con eSIM",
+    "feat1_title": "Cobertura global",
+    "feat2_title": "Activación instantánea",
+    "feat3_title": "Planes flexibles"
   },
   "partners": {
     "title": "Programa de Socios de Referidos UUPAY",
