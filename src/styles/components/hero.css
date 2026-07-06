@@ -137,6 +137,8 @@
   max-width: 540px;
   margin: 0 auto var(--space-6);
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
+  /* 让多行长度自动均衡, 避免最后一行只剩"行。"这类孤字 (中文避头尾) */
+  text-wrap: balance;
 }
 
 .hero-actions {
