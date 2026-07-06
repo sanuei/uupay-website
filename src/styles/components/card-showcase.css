@@ -4,7 +4,7 @@
    ======================================== */
 .card-switch {
   padding: var(--space-9) 0;
-  background: var(--bg-base);
+  background: var(--bg-deep);
   position: relative;
   overflow: hidden;
 }

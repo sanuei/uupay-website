@@ -11,7 +11,7 @@
 :root {
   /* Color Palette - 纯黑底 + 亮柠檬绿 */
   --bg-deep:       #050607;    /* 页面最深底色 */
-  --bg-base:       #0A0A0B;    /* 区块底色 */
+  --bg-base:       #0E1013;    /* 区块底色 */
   --bg-card:       #111113;    /* 卡片底色 */
   --bg-card-hi:    #18181B;    /* 卡片 hover */
 

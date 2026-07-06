@@ -2,7 +2,7 @@
    FOOTER
    ======================================== */
 .footer {
-  background: var(--bg-base);
+  background: var(--bg-deep);
   padding: var(--space-9) 0 var(--space-5);
   border-top: 1px solid var(--border-sub);
 }

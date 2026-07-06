@@ -3,7 +3,7 @@
    ======================================== */
 .features {
   padding: var(--space-10) 0;
-  background: var(--bg-deep);
+  background: var(--bg-base);
   position: relative;
 }
 

@@ -4,7 +4,7 @@
    ======================================== */
 .stats-pin {
   position: relative;
-  background: var(--bg-deep);
+  background: var(--bg-base);
   border-top: 1px solid var(--border-sub);
   border-bottom: 1px solid var(--border-sub);
   /* pinning 时长 = 钉住的 1 屏 + 3 个节拍(3 个数字各占 1 拍)
