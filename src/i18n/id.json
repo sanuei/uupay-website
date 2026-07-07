@@ -150,5 +150,9 @@
     "p2_desc": "Penarikan fiat diselesaikan eksklusif melalui lembaga keuangan berlisensi.",
     "p3_title": "Kontrol risiko berlapis",
     "p3_desc": "Pemantauan real-time, pengikatan perangkat, dan whitelist penarikan melindungi 24/7."
+  },
+  "lifestyle": {
+    "title_html": "Gunakan kripto <span class=\"kw\">setiap hari</span>",
+    "subtitle": "Dari kafe di sudut jalan hingga perjalanan lintas kota — UUPAY adalah rekening global di saku Anda."
   }
 }

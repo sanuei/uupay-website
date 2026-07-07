@@ -150,5 +150,9 @@
     "p2_desc": "Fiat withdrawals are settled exclusively through licensed financial institutions.",
     "p3_title": "Multi-layer risk control",
     "p3_desc": "Real-time monitoring, device binding and withdrawal whitelists guard your account 24/7."
+  },
+  "lifestyle": {
+    "title_html": "Put crypto <span class=\"kw\">to work</span>, every day",
+    "subtitle": "From the corner café to another continent — UUPAY is your global account, right in your pocket."
   }
 }

@@ -150,5 +150,9 @@
     "p2_desc": "Los retiros fiat se liquidan exclusivamente a través de instituciones financieras autorizadas.",
     "p3_title": "Control de riesgos multicapa",
     "p3_desc": "Monitoreo en tiempo real, vinculación de dispositivos y listas blancas de retiro, 24/7."
+  },
+  "lifestyle": {
+    "title_html": "Usa tu cripto <span class=\"kw\">cada día</span>",
+    "subtitle": "Del café de la esquina a otro continente: UUPAY es tu cuenta global, en el bolsillo."
   }
 }

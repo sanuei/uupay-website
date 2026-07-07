@@ -150,5 +150,9 @@
     "p2_desc": "Rút tiền fiat được thanh toán độc quyền qua các tổ chức tài chính được cấp phép.",
     "p3_title": "Kiểm soát rủi ro nhiều lớp",
     "p3_desc": "Giám sát thời gian thực, ràng buộc thiết bị và whitelist rút tiền bảo vệ 24/7."
+  },
+  "lifestyle": {
+    "title_html": "Dùng crypto <span class=\"kw\">mỗi ngày</span>",
+    "subtitle": "Từ quán cà phê góc phố đến chuyến đi xa — UUPAY là tài khoản toàn cầu ngay trong túi bạn."
   }
 }
