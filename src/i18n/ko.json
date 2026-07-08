@@ -29,14 +29,14 @@
     "card1_desc": "U 카드는 Visa·Mastercard를 지원하여 전 세계 수천만 가맹점에서 터치 결제, 발급 즉시 사용 가능합니다.",
     "card2_title": "글로벌 eSIM",
     "card2_desc": "전 세계 137개국 이상 커버. 암호화폐로 결제하고 즉시 활성화하여 도착 즉시 연결.",
-    "card3_title": "대액 인출",
-    "card3_desc": "라이선스 은행 직접 연동으로 대액 자금도 합법적이고 빠르게 출금, 더 안심할 수 있습니다.",
+    "card3_title": "항공·호텔 예약",
+    "card3_desc": "전 세계 항공권과 호텔을 한곳에서 예약하고 암호화폐로 바로 결제 — 언제든 떠나세요.",
     "card4_title": "채팅 송금",
     "card4_desc": "메시지 보내듯 간편하게 송금. 홍바오(붉은 봉투), 선물 및 수수료 없는 P2P 전송 지원.",
     "title_html": "<span class=\"kw\">암호자산</span>을 일상으로",
     "card1_cta": "U 카드 알아보기",
     "card2_cta": "eSIM 알아보기",
-    "card3_cta": "출금 알아보기",
+    "card3_cta": "예약 알아보기",
     "card4_cta": "채팅 송금 알아보기"
   },
   "cardShowcase": {
