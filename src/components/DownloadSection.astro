@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from '../i18n/ui';
-import { siVisa, siMastercard, siTether, siBitcoin, siEthereum, siBnbchain, siBinance } from 'simple-icons';
+import { siVisa, siMastercard, siTether, siBitcoin, siEthereum, siSolana, siBinance } from 'simple-icons';
 
 interface Props {
   lang: string;
@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang as any);
 const base = lang === 'en' ? '' : `/${lang}`;
 
-const brandLogos = [siVisa, siMastercard, siTether, siBitcoin, siEthereum, siBnbchain, siBinance];
+const brandLogos = [siVisa, siMastercard, siTether, siBitcoin, siEthereum, siSolana, siBinance];
 ---
 
 <section id="download" class="download">
@@ -73,7 +73,8 @@ const brandLogos = [siVisa, siMastercard, siTether, siBitcoin, siEthereum, siBnb
 
 <div class="brand-marquee">
   <div class="marquee-track">
-    {Array.from({ length: 2 }).map(() => (
+    <!-- 6 份拷贝: 单份内容宽度不足以铺满宽屏(2K/超宽屏), 份数太少滚动到末尾会露出空白, 循环感断裂 -->
+    {Array.from({ length: 6 }).map(() => (
       <>
         {brandLogos.map((brand) => (
           <span class="marquee-item">
