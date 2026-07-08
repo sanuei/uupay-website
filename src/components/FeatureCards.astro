@@ -8,6 +8,26 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
 const base = lang === 'en' ? '' : `/${lang}`;
+
+// 帮助中心(Intercom)只提供这 6 种语言, 站内其余语言兜底到英文 (与 Footer 帮助中心链接逻辑一致)
+const helpLocales = ['en', 'zh-CN', 'zh-TW', 'ja', 'th', 'es'];
+const helpLang = helpLocales.includes(lang) ? lang : 'en';
+const helpBase = `https://help.uupay.com/${helpLang}`;
+
+// 帮助中心分类 slug: 目前只confirmed 中/英文 slug, 其余语言(zh-TW/ja/th/es)暂沿用英文 slug
+const helpSlugs = {
+  cards: { 'zh-CN': '18455593-管理卡', en: '18455593-manage-cards' },
+  esim: { 'zh-CN': '18397238-esim', en: '18397238-esim' },
+  orders: { 'zh-CN': '18455590-管理交易订单', en: '18455590-order-management' },
+};
+
+function helpCollection(key: keyof typeof helpSlugs) {
+  const slug = helpSlugs[key][helpLang === 'zh-CN' ? 'zh-CN' : 'en'];
+  return `${helpBase}/collections/${slug}`;
+}
+
+// 机酒预定暂无对应帮助中心分类, 兜底到帮助中心首页
+const helpHome = `${helpBase}/`;
 ---
 
 <section id="products" class="features">
@@ -20,7 +40,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
 
     <div class="features-grid">
       <!-- 1. U 卡: 亮绿实底卡 -->
-      <div class="feature-card solid scroll-reveal stagger-item">
+      <a href={helpCollection('cards')} target="_blank" rel="noopener noreferrer" class="feature-card solid scroll-reveal stagger-item">
         <div>
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -34,10 +54,10 @@ const base = lang === 'en' ? '' : `/${lang}`;
           {t('features.card1_cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
-      </div>
+      </a>
 
       <!-- 2. eSIM: 暗色细描边卡 -->
-      <div class="feature-card outline scroll-reveal stagger-item">
+      <a href={helpCollection('esim')} target="_blank" rel="noopener noreferrer" class="feature-card outline scroll-reveal stagger-item">
         <div>
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -51,10 +71,10 @@ const base = lang === 'en' ? '' : `/${lang}`;
           {t('features.card2_cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
-      </div>
+      </a>
 
-      <!-- 3. 机酒预定: 亮绿实底卡 -->
-      <div class="feature-card solid scroll-reveal stagger-item">
+      <!-- 3. 机酒预定: 亮绿实底卡 (帮助中心暂无对应分类, 兜底首页) -->
+      <a href={helpHome} target="_blank" rel="noopener noreferrer" class="feature-card solid scroll-reveal stagger-item">
         <div>
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -68,10 +88,10 @@ const base = lang === 'en' ? '' : `/${lang}`;
           {t('features.card3_cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
-      </div>
+      </a>
 
       <!-- 4. 聊天转账: 暗色细描边卡 -->
-      <div class="feature-card outline scroll-reveal stagger-item">
+      <a href={helpCollection('orders')} target="_blank" rel="noopener noreferrer" class="feature-card outline scroll-reveal stagger-item">
         <div>
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -85,7 +105,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
           {t('features.card4_cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
-      </div>
+      </a>
     </div>
   </div>
 </section>
