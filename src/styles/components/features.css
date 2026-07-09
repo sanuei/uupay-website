@@ -112,6 +112,12 @@
   margin-bottom: var(--space-3);
 }
 
+/* 中文卡片标题: MiSans 的 800 会落到最重的 Heavy 档 (700=上限), 显得太粗;
+   降到 600(Bold) 更清爽, 也和区块大标题(900)拉开层次。只作用于中文页。 */
+html[lang^="zh"] .feature-card h3 {
+  font-weight: 600;
+}
+
 .feature-card p {
   font-size: var(--fs-body);
   line-height: 1.6;
