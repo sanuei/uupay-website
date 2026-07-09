@@ -28,10 +28,13 @@
   --border-sub:    rgba(255, 255, 255, 0.06);
   --border-hi:     rgba(184, 227, 81, 0.4);
 
-  /* Typography */
-  /* 拉丁走 Inter, 中文回落到阿里普惠体 3.0 (只在 zh 页加载, 其余语言跳过它用 system-ui) */
-  --font-sans:     'Inter', 'AlibabaPuHuiTi3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display:  'Inter', 'AlibabaPuHuiTi3', system-ui, sans-serif;
+  /* Typography — 大厂系统字体优先栈:
+     拉丁始终走 Inter(品牌一致); 中文按平台就近取原生字体:
+     苹果 → 苹方 PingFang(不下载, 苹果标准); Windows → 微软雅黑;
+     两者都没有(如部分 Android/旧机) → 自托管阿里普惠体 3.0 兜底。
+     苹方在前 = 苹果用户零下载, 且间距/观感即苹果标准。 */
+  --font-sans:     'Inter', 'PingFang SC', 'PingFang TC', 'AlibabaPuHuiTi3', 'Microsoft YaHei', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display:  'Inter', 'PingFang SC', 'PingFang TC', 'AlibabaPuHuiTi3', 'Microsoft YaHei', system-ui, sans-serif;
 
   /* Font Sizes (clamp for fluid typography) */
   --fs-display:    clamp(64px, 8vw, 112px);
@@ -246,12 +249,17 @@ html {
   white-space: nowrap;
 }
 
+/* zh-TW 繁体页优先用苹方繁 (苹果标准), 覆盖默认 SC-first 栈 */
+html[lang="zh-TW"] {
+  --font-sans:    'Inter', 'PingFang TC', 'PingFang SC', 'AlibabaPuHuiTi3', 'Microsoft JhengHei', system-ui, sans-serif;
+  --font-display: 'Inter', 'PingFang TC', 'PingFang SC', 'AlibabaPuHuiTi3', 'Microsoft JhengHei', system-ui, sans-serif;
+}
+
 /* ============================================================
    中文排版修正 — 只作用于 zh-* 页面
-   拉丁字体(Inter)靠负字距收紧显得利落, 但全角汉字两侧没有 side bearing,
-   -0.03~0.04em 会把方块字physically挤在一起, 是"廉价感"主因。这里把大号
-   标题的字距归零, 并给多行标题更松的行高(方块字身占满 em, <1.0 会贴行)。
-   只覆盖标题文字, 不动拉丁数字(.num)/正文/按钮。
+   参考苹方(PingFang)的密度: 全角汉字不吃拉丁式重负字距(-0.04em 会挤成一坨),
+   但完全归零又偏松。这里给大号标题一点点收紧 (-0.02em), 贴近苹果标准的紧凑感;
+   行高按方块字身放松, 避免上下贴行。只覆盖标题, 不动拉丁数字/正文/按钮。
    ============================================================ */
 html[lang^="zh"] h1,
 html[lang^="zh"] h2,
@@ -261,16 +269,16 @@ html[lang^="zh"] .heading-display,
 html[lang^="zh"] .heading-h1,
 html[lang^="zh"] .heading-h2,
 html[lang^="zh"] .section-header h2 {
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
 }
 
-/* 区块标题行高放松 (方块字身占满 em, 原 1.05 太紧) */
+/* 区块标题行高 (方块字身占满 em, 原 1.05 太紧; 参考苹方不宜过松) */
 html[lang^="zh"] h1,
 html[lang^="zh"] h2,
 html[lang^="zh"] .heading-h1,
 html[lang^="zh"] .heading-h2,
 html[lang^="zh"] .section-header h2 {
-  line-height: 1.18;
+  line-height: 1.15;
 }
 
 /* hero / display 大标题稍紧更有冲击力; .hero 前缀提高特指度, 覆盖上面的 h1 规则 */
