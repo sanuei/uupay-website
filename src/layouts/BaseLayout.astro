@@ -1,19 +1,14 @@
 ---
-// 自托管字体 (woff2 + unicode-range 分包, 构建时打包进 _astro/)
+// 拉丁: Inter (自托管, woff2 + unicode-range 分包, 构建时打包进 _astro/)
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
 import '@fontsource/inter/800.css';
 import '@fontsource/inter/900.css';
-// 中文: MiSans (小米, 免费商用, 比 Noto Sans SC 更锐利现代)
-// 注意 MiSans 用自家字重值: Regular=330/Medium=380/Semibold=520/Bold=630/Heavy=700
-// 浏览器 font-matching 会把站内 400/500/700/900 就近解析到这些档
-import 'misans/lib/Normal/MiSans-Regular.min.css';
-import 'misans/lib/Normal/MiSans-Medium.min.css';
-import 'misans/lib/Normal/MiSans-Semibold.min.css';
-import 'misans/lib/Normal/MiSans-Bold.min.css';
-import 'misans/lib/Normal/MiSans-Heavy.min.css';
+// 中文: 阿里巴巴普惠体 3.0 (免费商用, 含真 800/900 字重)
+// 自托管在 public/fonts/puhuiti/, 用 cn-font-split 做 unicode-range 分包懒加载。
+// 体积较大, 只在中文页 (zh-*) 通过 <link> 引入, 见下方 head; 其余语言用 system-ui 兜底 CJK。
 import '../styles/global.css';
 import '../styles/animations.css';
 import '../styles/components/navbar.css';
@@ -45,6 +40,8 @@ const {
 } = Astro.props;
 
 const isRtl = lang === 'ar';
+// 中文页才加载阿里普惠体 (体积大); 其余语言 CJK 交给 system-ui
+const isZh = lang.startsWith('zh');
 
 // ===== SEO: hreflang / canonical / OG / Twitter =====
 const siteUrl = 'https://uupay.com';
@@ -80,6 +77,7 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#050607" />
+    {isZh && <link rel="stylesheet" href="/fonts/puhuiti/puhuiti.css" />}
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
