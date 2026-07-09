@@ -321,6 +321,12 @@ html {
   user-select: none;
 }
 
+/* 中文按钮: MiSans 的 700 会落到最重的 Heavy 档, 显得太粗;
+   降到 600(Bold) 更清爽。只作用于中文页, 不动英文按钮设计。 */
+html[lang^="zh"] .btn {
+  font-weight: 600;
+}
+
 .btn-primary {
   background: var(--brand);
   color: var(--brand-ink);
