@@ -34,6 +34,12 @@
   color: var(--brand-ink);
 }
 
+/* .btn-arrow 默认亮绿字, 在 solid 卡(绿底)上跟背景色几乎一样, 看不清;
+   solid 卡上改用深色, 跟 feature-arrow 的 solid/outline 处理方式一致 */
+.promo-card.solid .btn-arrow {
+  color: var(--brand-ink);
+}
+
 .promo-card.outline {
   background: var(--bg-card);
   border: 1px solid var(--border-sub);

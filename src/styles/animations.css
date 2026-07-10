@@ -48,12 +48,18 @@
   will-change: transform;
 }
 
-/* 现代浏览器 (Chrome 115+, Firefox 110+) 用原生 scroll timeline 覆盖 */
+/* 现代浏览器 (Chrome 115+, Firefox 110+) 用原生 scroll timeline 覆盖
+   注意: animation-timeline: scroll() 不带参数默认取"最近的滚动容器祖先",
+   而 body 的 overflow-x: clip (见 global.css, 防止水平溢出) 在规范里也算
+   "非 visible", 会被当成滚动容器抢先命中, 但它自己并不真正滚动 → 该
+   timeline 处于 inactive 状态(currentTime 恒为 null), 动画不生效, 于是
+   静态兜底值 transform: scaleX(1) 一直生效, 进度条看起来"一开始就是满的"。
+   显式指定 scroll(root block) 直接绑定到文档根滚动容器, 跳过"最近祖先"查找。 */
 @supports (animation-timeline: scroll()) {
   .reading-progress {
     animation: grow-progress linear;
-    animation-timeline: scroll();
-    transform: scaleX(1);
+    animation-timeline: scroll(root block);
+    transform: scaleX(0);
   }
 }
 
