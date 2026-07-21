@@ -32,10 +32,10 @@ const helpHome = `${helpBase}/`;
 
 <section id="products" class="features">
   <div class="container">
-    <div class="section-header scroll-reveal">
-      <span class="eyebrow">FEATURES</span>
-      <h2 set:html={t('features.title_html')} />
-      <p>{t('features.subtitle')}</p>
+    <div class="section-header">
+      <span class="eyebrow scroll-reveal">FEATURES</span>
+      <h2 data-split set:html={t('features.title_html')} />
+      <p class="scroll-reveal">{t('features.subtitle')}</p>
     </div>
 
     <div class="features-grid">

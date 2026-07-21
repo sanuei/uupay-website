@@ -12,8 +12,8 @@ const base = lang === 'en' ? '' : `/${lang}`;
 
 <section class="partner-preview">
   <div class="container">
-    <div class="partner-box scroll-reveal">
-      <div class="partner-stats">
+    <div class="partner-box">
+      <div class="partner-stats reveal-scale">
         <div class="partner-stat">
           <div class="num">500+</div>
           <div class="label">{t('partners.stat1_label')}</div>
@@ -33,13 +33,13 @@ const base = lang === 'en' ? '' : `/${lang}`;
       </div>
 
       <div class="partner-info">
-        <span class="eyebrow" style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px;">
+        <span class="eyebrow scroll-reveal" style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px;">
           <span style="width: 24px; height: 1px; background: var(--brand);"></span>
           PARTNER
         </span>
-        <h2 set:html={t('partners.title_html')} />
-        <p>{t('partners.subtitle')}</p>
-        <div class="partner-actions">
+        <h2 data-split set:html={t('partners.title_html')} />
+        <p class="scroll-reveal">{t('partners.subtitle')}</p>
+        <div class="partner-actions scroll-reveal">
           <a href={`${base}/partners`} class="btn btn-primary btn-large">
             {t('partners.apply')}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>

@@ -13,7 +13,20 @@
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--border-sub);
   z-index: var(--z-nav);
-  transition: background 0.3s var(--ease-out);
+  transition: transform 0.35s var(--ease-out), background 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+/* 离开顶部: 底色加深 + 投影, 与内容拉开层级 */
+.navbar.is-scrolled {
+  background: rgba(5, 6, 7, 0.85);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.7);
+}
+
+/* 向下滚动自动隐藏, 向上滚动滑回 (JS 控制) */
+.navbar.is-hidden {
+  transform: translateY(-101%);
 }
 
 .navbar .container {

@@ -71,13 +71,16 @@ const t = useTranslations(lang as any);
 </section>
 
 <script>
-  // Split-text: 标题按 <br> 拆行, 每行套遮罩逐行升起 (reduced-motion 下不拆)
+  // Split-text v2: 标题按词/字拆分套遮罩, stagger 逐词升起 (Stripe 式节奏;
+  // 拉丁按词, 中日韩按字; reduced-motion 下不拆直接显示)
   const heroTitle = document.querySelector('.hero-title');
-  if (heroTitle && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    heroTitle.innerHTML = heroTitle.innerHTML
-      .split(/<br\s*\/?>/i)
-      .map((l) => `<span class="line-mask"><span class="line-inner">${l}</span></span>`)
-      .join('');
-    requestAnimationFrame(() => requestAnimationFrame(() => heroTitle.classList.add('is-in')));
+  if (heroTitle) {
+    const uuSplit = (window as any).uuSplitWords;
+    if (uuSplit && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      uuSplit(heroTitle, 0);
+      requestAnimationFrame(() => requestAnimationFrame(() => heroTitle.classList.add('is-in')));
+    } else {
+      heroTitle.classList.add('is-in');
+    }
   }
 </script>

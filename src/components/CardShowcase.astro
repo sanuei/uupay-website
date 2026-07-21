@@ -31,10 +31,10 @@ const cards = [
 
 <section id="cards" class="card-switch">
   <div class="container">
-    <div class="section-header scroll-reveal">
-      <span class="eyebrow">CRYPTO CARD</span>
-      <h2 set:html={t('cardShowcase.title_html')} />
-      <p>{t('cardShowcase.subtitle')}</p>
+    <div class="section-header">
+      <span class="eyebrow scroll-reveal">CRYPTO CARD</span>
+      <h2 data-split set:html={t('cardShowcase.title_html')} />
+      <p class="scroll-reveal">{t('cardShowcase.subtitle')}</p>
     </div>
 
     <div class="card-switch-stage scroll-reveal">

@@ -32,6 +32,65 @@
 .stagger-item:nth-child(4) { transition-delay: 300ms; }
 .stagger-item:nth-child(5) { transition-delay: 400ms; }
 
+/* ===== 分级入场系统 v3 =====
+   打破全站单一 fade+up: 标题走词级遮罩(data-split), 大媒体走 clip 揭幕,
+   数据/图标组走 scale 淡入。全部只动 transform/opacity/clip-path。 */
+
+/* --- A. 词级遮罩升起 (JS uuSplitWords 拆词; 拉丁按词, 中日韩按字) --- */
+.wmask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  /* 防字母下伸部 (g/y/p) 被遮罩裁掉 */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.winner {
+  display: inline-block;
+  transform: translateY(118%);
+  will-change: transform;
+  transition: transform 0.9s var(--ease-out);
+  transition-delay: calc(var(--wi, 0) * 65ms);
+}
+.is-in .winner,
+.is-visible .winner {
+  transform: translateY(0);
+}
+/* 拆词完成前先整体隐藏, 防止未拆的原文闪一下 (reduced-motion 不拆不藏) */
+.js:not(.rm) [data-split]:not(.split-ready) {
+  opacity: 0;
+}
+
+/* --- B. clip-path 揭幕 (大图/大卡: lifestyle, eSIM) --- */
+.js .reveal-clip {
+  transition: clip-path 1s var(--ease-out), transform 1s var(--ease-out), opacity 0.7s var(--ease-out);
+  will-change: clip-path, transform;
+}
+.js .reveal-clip:not(.is-visible) {
+  clip-path: inset(10% 5% 10% 5% round 32px);
+  transform: scale(1.03);
+  opacity: 0.4;
+}
+.js .reveal-clip.is-visible {
+  clip-path: inset(0 0 0 0 round 0);
+  transform: none;
+  opacity: 1;
+}
+
+/* --- C. 缩放淡入 (数据组/图标组) --- */
+.js .reveal-scale {
+  transition: opacity var(--dur-reveal) var(--reveal-ease), transform var(--dur-reveal) var(--ease-spring);
+  will-change: opacity, transform;
+}
+.js .reveal-scale:not(.is-visible) {
+  opacity: 0;
+  transform: scale(0.92) translateY(12px);
+}
+.js .reveal-scale.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 /* ===== 阅读进度条 (顶部 1px 亮绿) =====
    现代浏览器用 scroll-driven,旧浏览器用 JS 改 --progress 变量 */
 .reading-progress {

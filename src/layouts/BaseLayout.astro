@@ -105,6 +105,39 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- 词级拆分工具 (Hero 标题 + [data-split] 区块标题共用; 拉丁按词, 中日韩按字,
+         每个词/字包 .wmask>.winner, --wi 为 stagger 序号; 保留 .kw 等内联标签) -->
+    <script is:inline>
+      window.uuSplitWords = function (root, startIdx) {
+        var idx = startIdx || 0;
+        var TOKEN = /(\s+|[㐀-䶿一-鿿぀-ヿ가-힯])/;
+        var nodes = Array.prototype.slice.call(root.childNodes);
+        nodes.forEach(function (node) {
+          if (node.nodeType === 3) {
+            var text = node.nodeValue;
+            if (!text || !text.trim()) return;
+            var frag = document.createDocumentFragment();
+            text.split(TOKEN).forEach(function (part) {
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+              var mask = document.createElement('span');
+              mask.className = 'wmask';
+              var inner = document.createElement('span');
+              inner.className = 'winner';
+              inner.style.setProperty('--wi', String(idx++));
+              inner.textContent = part;
+              mask.appendChild(inner);
+              frag.appendChild(mask);
+            });
+            root.replaceChild(frag, node);
+          } else if (node.nodeType === 1 && node.tagName !== 'BR') {
+            idx = window.uuSplitWords(node, idx);
+          }
+        });
+        return idx;
+      };
+    </script>
+
   </head>
   <body>
     <!-- 阅读进度条 -->
@@ -113,8 +146,11 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
     <slot />
 
     <script>
-      // 给 <html> 加 .js 标记,激活滚动入场初始隐藏
+      // 给 <html> 加 .js 标记,激活滚动入场初始隐藏; .rm 标记 reduced-motion 供 CSS 降级
       document.documentElement.classList.add('js');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('rm');
+      }
     </script>
 
     <!-- 主交互逻辑 (滚动入场 + countUp + 视差 + 立方体旋转 + 截图轮播) -->
@@ -166,6 +202,24 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
       }
 
       // ============================================
+      // 统一滚动 FX 循环: 所有 scroll 联动(进度条/视差/pin/navbar)
+      // 注册进 scrollFx, 共用 1 个 scroll listener + 1 个 rAF,
+      // 不再各自监听 scroll 导致一帧内多次强制重排。
+      // ============================================
+      const scrollFx: Array<() => void> = [];
+      let fxTicking = false;
+      const runScrollFx = () => {
+        for (let i = 0; i < scrollFx.length; i++) scrollFx[i]();
+        fxTicking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!fxTicking) {
+          fxTicking = true;
+          requestAnimationFrame(runScrollFx);
+        }
+      }, { passive: true });
+
+      // ============================================
       // 1. Scroll-triggered 入场 (使用 data-anim 而非 class 列表,性能更好)
       // ============================================
       const animObserver = new IntersectionObserver((entries) => {
@@ -176,9 +230,19 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
 
-      document.querySelectorAll('.scroll-reveal').forEach((el) => {
+      document.querySelectorAll('.scroll-reveal, .reveal-clip, .reveal-scale').forEach((el) => {
         animObserver.observe(el);
       });
+
+      // 区块标题词级遮罩入场: 拆词后交给同一个 observer 触发
+      const uuSplit = (window as any).uuSplitWords;
+      if (!prefersReducedMotion && uuSplit) {
+        document.querySelectorAll<HTMLElement>('[data-split]').forEach((el) => {
+          uuSplit(el, 0);
+          el.classList.add('split-ready');
+          animObserver.observe(el);
+        });
+      }
 
       // ============================================
       // 2. 阅读进度条 (Safari fallback)
@@ -192,12 +256,51 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
         progressBar.style.setProperty('--progress', String(Math.min(progress, 1)));
       };
 
-      // 现代浏览器用 scroll-driven,旧浏览器用 JS 改 --progress
+      // 现代浏览器用 scroll-driven,旧浏览器用 JS 改 --progress (挂进统一 FX 循环)
       // 检测是否支持 scroll-driven animation
       const supportsScrollTimeline = CSS.supports?.('animation-timeline', 'scroll()');
       if (!supportsScrollTimeline) {
-        window.addEventListener('scroll', updateProgress, { passive: true });
-        updateProgress();
+        scrollFx.push(updateProgress);
+      }
+
+      // ============================================
+      // 3. Navbar 滚动状态: 离顶加深模糊底, 向下滚隐藏/向上滚滑出 (Linear 行为)
+      //    移动端菜单打开时禁止隐藏, 避免菜单失去锚点
+      // ============================================
+      const navbarEl = document.querySelector<HTMLElement>('.navbar');
+      if (navbarEl) {
+        let lastY = window.scrollY;
+        const onNavScroll = () => {
+          const y = window.scrollY;
+          navbarEl.classList.toggle('is-scrolled', y > 8);
+          if (!document.documentElement.classList.contains('nav-open')) {
+            navbarEl.classList.toggle('is-hidden', y > lastY && y > 160);
+          }
+          lastY = y;
+        };
+        scrollFx.push(onNavScroll);
+      }
+
+      // ============================================
+      // 4. Hero 视差退场: 视频缓慢放大下沉, 文案上移淡出 (仅桌面端,
+      //    让 Hero 到下一区的过渡是"溶过去"而不是"切过去")
+      // ============================================
+      const heroVideo = document.querySelector<HTMLElement>('.hero-video');
+      const heroContent = document.querySelector<HTMLElement>('.hero-content');
+      const heroScrollHint = document.querySelector<HTMLElement>('.hero-scroll');
+      if (heroVideo && heroContent && enableScrollFx) {
+        const onHeroScroll = () => {
+          const y = window.scrollY;
+          const vh = window.innerHeight;
+          if (y > vh * 1.2) return; // 离开首屏后不再计算
+          const p = Math.min(1, y / (vh * 0.85));
+          heroVideo.style.transform =
+            `translate(-50%, calc(-50% + ${(p * 56).toFixed(1)}px)) scale(${(1.15 + p * 0.18).toFixed(3)})`;
+          heroContent.style.transform = `translateY(${(-p * 64).toFixed(1)}px)`;
+          heroContent.style.opacity = String(1 - p * 0.85);
+          if (heroScrollHint) heroScrollHint.style.opacity = String(Math.max(0, 1 - p * 4));
+        };
+        scrollFx.push(onHeroScroll);
       }
 
       // (旧的全局 --scroll-y 视差已移除: 唯一消费者是卡片的 parallax-element,
@@ -224,19 +327,7 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
           esimVisual.style.setProperty('--esim-parallax', `${(-p * 48).toFixed(1)}px`);
           esimVisual.style.setProperty('--esim-scroll-rot', `${(p * 26).toFixed(1)}deg`);
         };
-
-        let esimTicking = false;
-        const esimScrollHandler = () => {
-          if (!esimTicking) {
-            requestAnimationFrame(() => {
-              onEsimScroll();
-              esimTicking = false;
-            });
-            esimTicking = true;
-          }
-        };
-        window.addEventListener('scroll', esimScrollHandler, { passive: true });
-        onEsimScroll();  // 初始化
+        scrollFx.push(onEsimScroll);
       }
 
       // ============================================
@@ -318,20 +409,12 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
         };
 
         if (!prefersReducedMotion) {
-          let statsTicking = false;
-          const statsScrollHandler = () => {
-            if (!statsTicking) {
-              requestAnimationFrame(() => {
-                onStatsScroll();
-                statsTicking = false;
-              });
-              statsTicking = true;
-            }
-          };
-          window.addEventListener('scroll', statsScrollHandler, { passive: true });
-          onStatsScroll();  // 初始化
+          scrollFx.push(onStatsScroll);
         }
       }
+
+      // 统一 FX 循环初始化 (navbar 状态 / hero 视差 / eSIM / stats 等首帧就位)
+      runScrollFx();
 
       // ============================================
       // 7. APP 截图 - Sticky 切换 (左侧文字滚到中心时切右侧图)

@@ -11,16 +11,16 @@ const t = useTranslations(lang as any);
 
 <section class="lifestyle">
   <!-- 场景大图 (占位, 替换 public/images/lifestyle-scene.webp 即可) -->
-  <div class="lifestyle-media">
+  <div class="lifestyle-media reveal-clip">
     <img src="/images/lifestyle-scene.webp" alt="" width="1600" height="740" loading="lazy" decoding="async" />
     <!-- 暗色 + 品牌绿 tint 叠加: 让任何照片都沉进黑底并统一调性 -->
     <div class="lifestyle-overlay" aria-hidden="true"></div>
   </div>
 
   <div class="container">
-    <div class="lifestyle-content scroll-reveal">
-      <h2 set:html={t('lifestyle.title_html')} />
-      <p>{t('lifestyle.subtitle')}</p>
+    <div class="lifestyle-content">
+      <h2 data-split set:html={t('lifestyle.title_html')} />
+      <p class="scroll-reveal">{t('lifestyle.subtitle')}</p>
     </div>
   </div>
 </section>

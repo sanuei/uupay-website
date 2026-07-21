@@ -12,10 +12,10 @@ const base = lang === 'en' ? '' : `/${lang}`;
 
 <section class="promos">
   <div class="container">
-    <div class="section-header scroll-reveal">
-      <span class="eyebrow">PROMOTIONS</span>
-      <h2 set:html={t('promotions.title_html')} />
-      <p>{t('promotions.subtitle')}</p>
+    <div class="section-header">
+      <span class="eyebrow scroll-reveal">PROMOTIONS</span>
+      <h2 data-split set:html={t('promotions.title_html')} />
+      <p class="scroll-reveal">{t('promotions.subtitle')}</p>
     </div>
 
     <div class="promos-grid">

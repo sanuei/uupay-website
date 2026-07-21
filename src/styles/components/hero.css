@@ -32,6 +32,21 @@
   transform: translate(-50%, -50%) scale(1.15);
   /* 视频色调微调 - 降饱和降亮度, 让品牌绿更突出 */
   filter: saturate(0.75) brightness(0.65) contrast(1.05);
+  /* JS 滚动视差改 transform, 提示合成层 */
+  will-change: transform;
+}
+
+/* Hero → 下一区 (features, --bg-base) 渐变融合带: 消除视频硬切边 */
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, var(--bg-base) 100%);
 }
 
 /* 双层遮罩: 顶到底黑色渐变 + 中心径向增强 (给居中文字阅读) */
@@ -94,20 +109,14 @@
   text-shadow: 0 4px 32px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-/* ===== Split-text 逐行升起 (JS 拆行后生效) ===== */
-.hero-title .line-mask {
-  display: block;
-  overflow: hidden;
-  padding-bottom: 0.08em;   /* 防字母下伸部被遮罩裁掉 */
-  margin-bottom: -0.08em;
+/* ===== Split-text 逐词/逐字升起 (JS 拆词后生效, .wmask/.winner 见 animations.css) =====
+   Hero 词比区块标题多一个 160ms 基础延迟, 让 eyebrow 先入场 */
+.hero-title .winner {
+  transition-delay: calc(160ms + var(--wi, 0) * 70ms);
 }
-.hero-title .line-inner {
-  display: inline-block;
-  transform: translateY(112%);
-  transition: transform 0.9s var(--ease-out);
-}
-.hero-title .line-mask:nth-child(2) .line-inner { transition-delay: 0.12s; }
-.hero-title.is-in .line-inner { transform: none; }
+/* 拆词前隐藏整个标题防闪烁; is-in 后此规则不再匹配, 自动恢复可见
+   (不能写成 .hero-title{opacity:0}+.is-in{opacity:1}: 前者特异度更高会永久压住) */
+.js:not(.rm) .hero-title:not(.is-in) { opacity: 0; }
 
 /* Hero 元素级联入场: eyebrow → (标题拆行) → 副标 → 按钮 */
 .js .hero-eyebrow,
