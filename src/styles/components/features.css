@@ -1,16 +1,53 @@
 /* ========================================
-   FEATURES Section - 2x2 混搭卡
+   FEATURES Section - Bento 网格 (1 大卡跨 2 行 + 2 小卡 + 1 宽卡)
    ======================================== */
 .features {
   padding: var(--space-10) 0;
   background: var(--bg-base);
   position: relative;
+  overflow: clip;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(216px, auto);
   gap: var(--space-5);
+}
+
+/* bento 主卡: 跨 2 行 */
+.feature-card--big {
+  grid-row: span 2;
+}
+/* bento 宽卡: 跨 2 列, 内容横排 */
+.feature-card--wide {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+.feature-card--wide .feature-arrow {
+  flex-shrink: 0;
+}
+
+/* 主卡视觉放大: 大图标 + 大标题 + 角落装饰光 */
+.feature-card--big .feature-icon {
+  width: 56px;
+  height: 56px;
+}
+.feature-card--big h3 {
+  font-size: var(--fs-h3);
+}
+.feature-card--big::after {
+  content: '';
+  position: absolute;
+  right: -70px;
+  bottom: -70px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(5, 6, 7, 0.18) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .feature-card {
@@ -144,6 +181,19 @@ html[lang^="zh"] .feature-card h3 {
 }
 
 
-@media (max-width: 968px) {
-  .features-grid { grid-template-columns: 1fr; }
+/* 中屏: bento 退成 2 列 (大卡仍跨 2 行, 宽卡跨满) */
+@media (min-width: 641px) and (max-width: 968px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature-card--wide { grid-column: span 2; }
+}
+
+/* 小屏: 全堆叠, 横排宽卡回退竖排 */
+@media (max-width: 640px) {
+  .features-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .feature-card--big { grid-row: auto; }
+  .feature-card--wide {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
 }

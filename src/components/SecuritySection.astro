@@ -27,26 +27,30 @@ const points = [
 ];
 ---
 
-<section class="security">
+<section class="security section-glow bl">
   <div class="container">
-    <div class="section-header">
-      <span class="eyebrow scroll-reveal">SECURITY</span>
-      <h2 data-split set:html={t('security.title_html')} />
-      <p class="scroll-reveal">{t('security.subtitle')}</p>
-    </div>
+    <div class="split-head">
+      <div class="section-header section-header-left split-head-sticky">
+        <span class="eyebrow scroll-reveal">SECURITY</span>
+        <h2 data-split set:html={t('security.title_html')} />
+        <p class="scroll-reveal">{t('security.subtitle')}</p>
+      </div>
 
-    <div class="security-grid">
-      {points.map((p) => (
-        <div class="security-card scroll-reveal stagger-item">
-          <div class="security-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d={p.path} />
-            </svg>
+      <div class="security-grid">
+        {points.map((p) => (
+          <div class="security-card scroll-reveal stagger-item">
+            <div class="security-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d={p.path} />
+              </svg>
+            </div>
+            <div class="security-body">
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+            </div>
           </div>
-          <h3>{p.title}</h3>
-          <p>{p.desc}</p>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
 </section>

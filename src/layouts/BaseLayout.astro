@@ -108,14 +108,23 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
     <!-- 词级拆分工具 (Hero 标题 + [data-split] 区块标题共用; 拉丁按词, 中日韩按字,
          每个词/字包 .wmask>.winner, --wi 为 stagger 序号; 保留 .kw 等内联标签) -->
     <script is:inline>
-      window.uuSplitWords = function (root, startIdx) {
-        var idx = startIdx || 0;
+      // st: 跨节点共享状态 { idx: stagger 序号, last: 上一个词的内层 span }
+      window.uuSplitWords = function (root, startIdx, st) {
+        st = st || { idx: startIdx || 0, last: null };
         var TOKEN = /(\s+|[㐀-䶿一-鿿぀-ヿ가-힯])/;
+        var LEAD_PUNCT = /^[,.;:!?%…、。，！？；：）)”’"»]+/;
         var nodes = Array.prototype.slice.call(root.childNodes);
         nodes.forEach(function (node) {
           if (node.nodeType === 3) {
             var text = node.nodeValue;
             if (!text || !text.trim()) return;
+            // 行首标点贴到上一个词尾, 防止逗号/句号自成一词掉到行首 (避头尾)
+            var lead = text.match(LEAD_PUNCT);
+            if (lead && st.last) {
+              st.last.textContent += lead[0];
+              text = text.slice(lead[0].length);
+              if (!text.trim()) { node.nodeValue = text; return; }
+            }
             var frag = document.createDocumentFragment();
             text.split(TOKEN).forEach(function (part) {
               if (!part) return;
@@ -124,17 +133,18 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
               mask.className = 'wmask';
               var inner = document.createElement('span');
               inner.className = 'winner';
-              inner.style.setProperty('--wi', String(idx++));
+              inner.style.setProperty('--wi', String(st.idx++));
               inner.textContent = part;
               mask.appendChild(inner);
               frag.appendChild(mask);
+              st.last = inner;
             });
             root.replaceChild(frag, node);
           } else if (node.nodeType === 1 && node.tagName !== 'BR') {
-            idx = window.uuSplitWords(node, idx);
+            window.uuSplitWords(node, 0, st);
           }
         });
-        return idx;
+        return st.idx;
       };
     </script>
 
