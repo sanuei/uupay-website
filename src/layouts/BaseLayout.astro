@@ -30,6 +30,7 @@ import '../styles/components/faq.css';
 import '../styles/components/lifestyle.css';
 import '../styles/components/security.css';
 import '../styles/components/footer.css';
+import '../styles/components/subpage.css';  // 子页面共享 (PageHero/公告/正文/CTA)
 import '../styles/depth.css';  // 视觉深度系统, 必须最后导入
 
 interface Props {
@@ -425,6 +426,26 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
 
       // 统一 FX 循环初始化 (navbar 状态 / hero 视差 / eSIM / stats 等首帧就位)
       runScrollFx();
+
+      // ============================================
+      // 8. 磁吸主按钮: 指针靠近时按钮轻微跟随, 离开回弹
+      //    (style.translate 与 CSS transform 是两个独立属性, 合成显示互不覆盖;
+      //     仅悬停型指针设备启用)
+      // ============================================
+      if (matchMedia('(hover: hover) and (pointer: fine)').matches && !prefersReducedMotion) {
+        document.querySelectorAll<HTMLElement>('.btn-primary').forEach((btn) => {
+          btn.classList.add('btn-magnetic');
+          btn.addEventListener('pointermove', (e) => {
+            const r = btn.getBoundingClientRect();
+            const dx = Math.max(-8, Math.min(8, (e.clientX - r.left - r.width / 2) * 0.18));
+            const dy = Math.max(-5, Math.min(5, (e.clientY - r.top - r.height / 2) * 0.28));
+            btn.style.translate = `${dx.toFixed(1)}px ${dy.toFixed(1)}px`;
+          });
+          btn.addEventListener('pointerleave', () => {
+            btn.style.translate = '0px 0px';
+          });
+        });
+      }
 
       // ============================================
       // 7. APP 截图 - Sticky 切换 (左侧文字滚到中心时切右侧图)

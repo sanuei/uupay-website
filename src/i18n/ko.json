@@ -154,5 +154,9 @@
   "lifestyle": {
     "title_html": "암호자산을 <span class=\"kw\">매일</span> 사용하세요",
     "subtitle": "동네 카페부터 해외 여행지까지, UUPAY는 주머니 속 글로벌 계좌입니다."
+  },
+  "announcements": {
+    "subtitle": "UUPAY의 최신 소식, 보안 업데이트, 새 기능을 확인하세요.",
+    "back": "공지 목록으로 돌아가기"
   }
 }

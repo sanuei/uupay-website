@@ -154,5 +154,9 @@
   "lifestyle": {
     "title_html": "Usa tu cripto <span class=\"kw\">cada día</span>",
     "subtitle": "Del café de la esquina a otro continente: UUPAY es tu cuenta global, en el bolsillo."
+  },
+  "announcements": {
+    "subtitle": "Mantente al día con las últimas noticias, actualizaciones de seguridad y funciones de UUPAY.",
+    "back": "Volver a los anuncios"
   }
 }

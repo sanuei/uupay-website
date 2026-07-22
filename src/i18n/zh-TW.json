@@ -154,5 +154,9 @@
   "lifestyle": {
     "title_html": "把加密資產，<span class=\"kw\">用在</span>每一天",
     "subtitle": "從街角的咖啡館到跨城的旅行，UUPAY 是你隨身的全球帳戶。"
+  },
+  "announcements": {
+    "subtitle": "掌握 UUPAY 的最新消息、安全更新與產品功能。",
+    "back": "返回公告列表"
   }
 }

@@ -60,3 +60,26 @@ body::after {
 }
 
 /* 噪点别盖住内容交互 (z-index 1 在 content 10 之下, 仅垫在装饰层上) */
+
+/* ===== 4. 亮绿实底卡: hover 光泽扫过 (shine sweep) ===== */
+.feature-card.solid::before,
+.promo-card.solid::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  transition: left 0.7s var(--ease-out);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (hover: hover) {
+  .feature-card.solid:hover::before,
+  .promo-card.solid:hover::before {
+    left: 130%;
+  }
+}

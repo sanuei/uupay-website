@@ -154,5 +154,9 @@
   "lifestyle": {
     "title_html": "Dùng crypto <span class=\"kw\">mỗi ngày</span>",
     "subtitle": "Từ quán cà phê góc phố đến chuyến đi xa — UUPAY là tài khoản toàn cầu ngay trong túi bạn."
+  },
+  "announcements": {
+    "subtitle": "Cập nhật tin tức mới nhất, các bản cập nhật bảo mật và tính năng từ UUPAY.",
+    "back": "Quay lại danh sách thông báo"
   }
 }

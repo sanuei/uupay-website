@@ -3,20 +3,23 @@ import { useTranslations } from '../i18n/ui';
 
 interface Props {
   lang: string;
+  hideHeader?: boolean;  // 子页面用 PageHero 展示标题时, 隐藏组件自带标题避免重复
 }
 
-const { lang } = Astro.props;
+const { lang, hideHeader = false } = Astro.props;
 const t = useTranslations(lang as any);
 const base = lang === 'en' ? '' : `/${lang}`;
 ---
 
 <section class="promos section-glow tr">
   <div class="container">
-    <div class="section-header">
-      <span class="eyebrow scroll-reveal">PROMOTIONS</span>
-      <h2 data-split set:html={t('promotions.title_html')} />
-      <p class="scroll-reveal">{t('promotions.subtitle')}</p>
-    </div>
+    {!hideHeader && (
+      <div class="section-header">
+        <span class="eyebrow scroll-reveal">PROMOTIONS</span>
+        <h2 data-split set:html={t('promotions.title_html')} />
+        <p class="scroll-reveal">{t('promotions.subtitle')}</p>
+      </div>
+    )}
 
     <div class="promos-grid">
       <div class="promo-card solid scroll-reveal stagger-item">

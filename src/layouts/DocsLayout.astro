@@ -80,7 +80,7 @@ const { frontmatter, lang } = Astro.props;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--text-secondary);
+    color: var(--text-sec);
     margin-bottom: 16px;
     font-weight: 700;
   }
@@ -94,8 +94,8 @@ const { frontmatter, lang } = Astro.props;
   .sidebar-nav a {
     display: block;
     padding: 10px 16px;
-    border-radius: var(--radius-sm);
-    color: var(--text-secondary);
+    border-radius: var(--r-sm);
+    color: var(--text-sec);
     font-size: 14px;
     transition: all 0.2s;
     border-left: 2px solid transparent;
@@ -103,13 +103,13 @@ const { frontmatter, lang } = Astro.props;
   
   .sidebar-nav a:hover {
     background: rgba(255, 255, 255, 0.03);
-    color: var(--text-primary);
+    color: var(--text-pri);
   }
   
   .sidebar-nav a.active {
-    background: rgba(57, 255, 20, 0.08);
-    color: var(--brand-primary);
-    border-left-color: var(--brand-primary);
+    background: rgba(184, 227, 81, 0.08);
+    color: var(--brand);
+    border-left-color: var(--brand);
     font-weight: 600;
   }
   
@@ -132,7 +132,7 @@ const { frontmatter, lang } = Astro.props;
   }
   
   .last-updated {
-    color: var(--text-secondary);
+    color: var(--text-sec);
     font-size: 13px;
   }
   
@@ -140,7 +140,7 @@ const { frontmatter, lang } = Astro.props;
   .markdown-body :global(h2) {
     font-size: 22px;
     margin: 48px 0 20px;
-    color: var(--text-primary);
+    color: var(--text-pri);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 8px;
     scroll-margin-top: 100px;
@@ -149,13 +149,13 @@ const { frontmatter, lang } = Astro.props;
   .markdown-body :global(h3) {
     font-size: 18px;
     margin: 32px 0 16px;
-    color: var(--text-primary);
+    color: var(--text-pri);
     scroll-margin-top: 100px;
   }
   
   .markdown-body :global(p) {
     margin-bottom: 20px;
-    color: var(--text-secondary);
+    color: var(--text-sec);
   }
 
   .markdown-body :global(ul) {
@@ -165,7 +165,7 @@ const { frontmatter, lang } = Astro.props;
 
   .markdown-body :global(li) {
     margin-bottom: 8px;
-    color: var(--text-secondary);
+    color: var(--text-sec);
   }
 
   /* Table of Contents Column */
@@ -182,14 +182,14 @@ const { frontmatter, lang } = Astro.props;
   }
 
   .toc-list :global(a) {
-    color: var(--text-secondary);
+    color: var(--text-sec);
     transition: color 0.2s;
     display: block;
     padding: 2px 0;
   }
 
   .toc-list :global(a:hover) {
-    color: var(--text-primary);
+    color: var(--text-pri);
   }
 
   .toc-list :global(.toc-h3) {
@@ -198,7 +198,7 @@ const { frontmatter, lang } = Astro.props;
   }
 
   .toc-list :global(.active-toc) {
-    color: var(--brand-primary) !important;
+    color: var(--brand) !important;
     font-weight: 600;
   }
   

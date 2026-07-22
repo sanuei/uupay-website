@@ -154,5 +154,9 @@
   "lifestyle": {
     "title_html": "Guna kripto <span class=\"kw\">setiap hari</span>",
     "subtitle": "Dari kafe di penjuru jalan hingga perjalanan jauh — UUPAY ialah akaun global dalam poket anda."
+  },
+  "announcements": {
+    "subtitle": "Ikuti berita terkini, kemas kini keselamatan dan ciri baharu daripada UUPAY.",
+    "back": "Kembali ke senarai pengumuman"
   }
 }

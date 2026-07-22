@@ -1,0 +1,20 @@
+---
+// 子页面统一页头: eyebrow + 词级入场标题 + 副标 + 可选 CTA 插槽
+// 自带固定导航的高度补偿和左上角环境光晕
+interface Props {
+  eyebrow: string;
+  title: string;        // 可含 HTML (<span class="kw">)
+  subtitle?: string;
+}
+
+const { eyebrow, title, subtitle } = Astro.props;
+---
+
+<header class="page-hero section-glow tl">
+  <div class="container">
+    <span class="eyebrow scroll-reveal">{eyebrow}</span>
+    <h1 data-split set:html={title} />
+    {subtitle && <p class="scroll-reveal">{subtitle}</p>}
+    <slot />
+  </div>
+</header>

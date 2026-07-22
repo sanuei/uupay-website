@@ -154,5 +154,9 @@
   "lifestyle": {
     "title_html": "Put crypto <span class=\"kw\">to work</span>, every day",
     "subtitle": "From the corner café to another continent — UUPAY is your global account, right in your pocket."
+  },
+  "announcements": {
+    "subtitle": "Stay updated with the latest news, security updates, and features from UUPAY.",
+    "back": "Back to Announcements"
   }
 }

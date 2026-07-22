@@ -3,9 +3,10 @@ import { useTranslations } from '../i18n/ui';
 
 interface Props {
   lang: string;
+  hideHeading?: boolean;  // 子页面用 PageHero 展示标题时, 只留数据 + CTA 按钮
 }
 
-const { lang } = Astro.props;
+const { lang, hideHeading = false } = Astro.props;
 const t = useTranslations(lang as any);
 const base = lang === 'en' ? '' : `/${lang}`;
 ---
@@ -33,12 +34,16 @@ const base = lang === 'en' ? '' : `/${lang}`;
       </div>
 
       <div class="partner-info">
-        <span class="eyebrow scroll-reveal" style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px;">
-          <span style="width: 24px; height: 1px; background: var(--brand);"></span>
-          PARTNER
-        </span>
-        <h2 data-split set:html={t('partners.title_html')} />
-        <p class="scroll-reveal">{t('partners.subtitle')}</p>
+        {!hideHeading && (
+          <>
+            <span class="eyebrow scroll-reveal" style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px;">
+              <span style="width: 24px; height: 1px; background: var(--brand);"></span>
+              PARTNER
+            </span>
+            <h2 data-split set:html={t('partners.title_html')} />
+            <p class="scroll-reveal">{t('partners.subtitle')}</p>
+          </>
+        )}
         <div class="partner-actions scroll-reveal">
           <a href={`${base}/partners`} class="btn btn-primary btn-large">
             {t('partners.apply')}

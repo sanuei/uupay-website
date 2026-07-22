@@ -154,5 +154,9 @@
   "lifestyle": {
     "title_html": "暗号資産を、<span class=\"kw\">毎日</span>使う",
     "subtitle": "街角のカフェから海外の旅先まで。UUPAYはポケットの中のグローバル口座。"
+  },
+  "announcements": {
+    "subtitle": "UUPAY の最新情報、セキュリティアップデート、新機能をお届けします。",
+    "back": "お知らせ一覧に戻る"
   }
 }

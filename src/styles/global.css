@@ -462,6 +462,36 @@ button:focus-visible {
   height: 16px;
 }
 
+/* ===== 磁吸按钮 (JS 写 style.translate, 与 transform 合成互不干扰;
+   translate 带 spring 过渡 → 按钮"追着"鼠标回弹, Stripe 式手感) ===== */
+.btn-magnetic {
+  transition: transform 0.2s var(--ease-out), translate 0.35s var(--ease-spring),
+    background 0.2s var(--ease-out), color 0.2s var(--ease-out);
+  will-change: translate;
+}
+
+/* ===== 主按钮光泽扫过 (hover 时一道高光掠过) ===== */
+.btn-primary {
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -70%;
+  width: 45%;
+  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  transition: left 0.6s var(--ease-out);
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .btn-primary:hover::before {
+    left: 130%;
+  }
+}
+
 /* ===== Divider line (1px 亮绿) ===== */
 .divider-brand {
   width: 64px;

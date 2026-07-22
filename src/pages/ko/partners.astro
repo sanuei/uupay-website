@@ -1,24 +1,31 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
+import PageHero from '../../components/PageHero.astro';
 import PartnerPreview from '../../components/PartnerPreview.astro';
 import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n/ui';
 
 const lang = 'ko';
+const t = useTranslations(lang as any);
+const formUrl = 'https://xjpc8r3322zb.jp.larksuite.com/share/base/form/shrjpxpOY6gk79yRXzrJM87cf8g';
 ---
 
 <BaseLayout lang={lang} title="Partner Program | UUPAY">
   <Navbar lang={lang} />
-  <main style="padding-top: 120px; min-height: 70vh;">
-    <PartnerPreview lang={lang} />
-    <section class="container scroll-reveal" style="padding: 80px 0; text-align: center;">
-      <h2 style="font-size: 36px; margin-bottom: 24px; font-weight: 800;">Become a UUPAY Partner</h2>
-      <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 48px; line-height: 1.6; font-size: 15px;">
-        Enjoy exclusive benefits, priority support, and direct access to banking channels. Get up to 50% commission dynamically.
-      </p>
-      <a href="https://xjpc8r3322zb.jp.larksuite.com/share/base/form/shrjpxpOY6gk79yRXzrJM87cf8g" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
-        Submit Application Form
-      </a>
+  <main>
+    <PageHero eyebrow="PARTNER PROGRAM" title={t('partners.title_html')} subtitle={t('partners.subtitle')} />
+    <PartnerPreview lang={lang} hideHeading />
+    <section class="sub-cta section-glow br">
+      <div class="container scroll-reveal">
+        <h2>{t('partners.title')}</h2>
+        <a href={formUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
+          {t('partners.apply')}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
     </section>
   </main>
   <Footer lang={lang} />
