@@ -539,6 +539,16 @@ button:focus-visible {
 /* ===== RTL support ===== */
 [dir="rtl"] .container { direction: rtl; }
 
+/* RTL 下的数字串 (500+ / $100K+ / 24/7): "+"和"$"是弱方向字符,
+   在 RTL 上下文会被重排到错误一侧; 强制按 LTR 单向渲染 */
+[dir="rtl"] .partner-stat .num,
+[dir="rtl"] .stats-pin-item .num-wrap,
+[dir="rtl"] .stats-pin-item .num,
+[dir="rtl"] .stats-pin-item .suffix {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
 /* ===== Responsive base ===== */
 @media (max-width: 768px) {
   :root {
