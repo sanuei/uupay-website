@@ -259,6 +259,17 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
           return Math.floor(n).toString();
         };
 
+        // 用最终数值预先撑开每个数字的显示宽度, 避免 countUp 过程中
+        // 位数变化 (如 92,591 → 100,000) 导致整块布局跟着抖动/位移
+        statsItems.forEach((item, i) => {
+          const counter = item.querySelector<HTMLElement>('.countup-val');
+          if (!counter) return;
+          const { target } = statsTargets[i];
+          counter.textContent = formatNumber(target);
+          counter.style.minWidth = `${Math.ceil(counter.getBoundingClientRect().width)}px`;
+          if (!prefersReducedMotion) counter.textContent = '0';
+        });
+
         if (prefersReducedMotion) {
           // 减少动态效果: 直接显示最终数值, 不做 countUp 动画
           if (statsProgressBar) statsProgressBar.style.transform = 'scaleX(1)';

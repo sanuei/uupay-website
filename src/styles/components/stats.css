@@ -95,6 +95,8 @@
   letter-spacing: -0.04em;
   color: var(--brand);
   font-variant-numeric: tabular-nums;
+  /* 宽度由 JS 按最终数值预先撑开 (min-width), 数字靠右对齐, 避免 countUp 增位时整块跟着位移 */
+  text-align: right;
 }
 
 .stats-pin-item .suffix {
