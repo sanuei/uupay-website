@@ -215,8 +215,12 @@
   .app-sticky-phone {
     position: relative;
     top: auto;
-    height: 540px;
+    height: 460px;
     order: -1;  /* 手机图放上面 */
+  }
+  /* 整体等比缩小手机模型 (transform 而非改宽高, 边框/按键/灵动岛比例自动保持) */
+  .phone-frame {
+    transform: scale(0.82);
   }
   .app-sticky-text {
     flex-direction: row;

@@ -144,11 +144,12 @@
     min-height: 360px;
   }
   .esim-globe {
+    /* 地球比容器宽(112%), auto-margin 居中在"内容比容器大"时会失效(负 margin 被钳到 0,
+       导致贴左溢右) —— 改用 left/top 50% + translate(-50%,-50%), 无论尺寸大小都能真居中 */
     position: absolute;
-    inset: 0;
-    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: min(112%, 440px);
-    right: auto;
-    bottom: auto;
   }
 }
