@@ -38,7 +38,7 @@ const helpHome = `${helpBase}/`;
       <p>{t('features.subtitle')}</p>
     </div>
 
-    <div class="features-grid">
+    <div class="features-grid" id="features-grid">
       <!-- 1. U 卡: 亮绿实底卡 -->
       <a href={helpCollection('cards')} target="_blank" rel="noopener noreferrer" class="feature-card solid scroll-reveal stagger-item">
         <div>
@@ -107,5 +107,55 @@ const helpHome = `${helpBase}/`;
         </span>
       </a>
     </div>
+
+    <!-- 移动端专属: 圆点指示器, 与横向滑动的卡片同步 -->
+    <div class="features-dots" id="features-dots">
+      {[0, 1, 2, 3].map((i) => (
+        <button class={`features-dot ${i === 0 ? 'is-active' : ''}`} data-idx={i} aria-label={`Feature ${i + 1}`}></button>
+      ))}
+    </div>
   </div>
 </section>
+
+<script>
+  // 移动端: 横向滑动的卡片 <-> 底部圆点 双向同步
+  const grid = document.getElementById('features-grid');
+  const dotsWrap = document.getElementById('features-dots');
+
+  if (grid && dotsWrap) {
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>('.feature-card'));
+    const dots = Array.from(dotsWrap.querySelectorAll<HTMLElement>('.features-dot'));
+    const isMobile = () => window.matchMedia('(max-width: 968px)').matches;
+
+    let ticking = false;
+    const sync = () => {
+      if (!isMobile() || cards.length === 0) return;
+      const target = grid.scrollLeft;
+      let nearest = 0;
+      let best = Infinity;
+      cards.forEach((c, i) => {
+        const d = Math.abs(c.offsetLeft - target);
+        if (d < best) { best = d; nearest = i; }
+      });
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === nearest));
+    };
+
+    grid.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { sync(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    dots.forEach((d) => {
+      d.addEventListener('click', () => {
+        const i = Number(d.dataset.idx);
+        const card = cards[i];
+        if (card) grid.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+      });
+    });
+
+    window.addEventListener('resize', sync);
+    sync();
+  }
+</script>

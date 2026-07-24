@@ -1,5 +1,7 @@
 /* ========================================
-   FEATURES Section - 2x2 混搭卡
+   FEATURES Section - 竖版圆角卡, 一排 4 张
+   参考: Framer "Trusted by teams" 的竖向卡片语言,
+   移动端改横向 scroll-snap 滑动 (可露出下一张卡的边角提示可滑)
    ======================================== */
 .features {
   padding: var(--section-y) 0;
@@ -9,18 +11,18 @@
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-5);
 }
 
 .feature-card {
   position: relative;
-  padding: var(--space-6);
-  border-radius: var(--r-lg);
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  border-radius: var(--r-xl);
   overflow: hidden;
   transition: transform 0.3s var(--ease-out);
   cursor: pointer;
-  min-height: 220px;
+  aspect-ratio: 3 / 4;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,6 +45,7 @@
 
 .feature-card.solid .feature-icon {
   color: var(--brand-ink);
+  background: rgba(5, 6, 7, 0.12);
 }
 
 .feature-card.solid:hover {
@@ -88,19 +91,47 @@
   animation-play-state: running;
 }
 
+/* 卡片右上角柔光, 呼应竖版卡的"海报感" */
+.feature-card::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -30%;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.feature-card.outline::after {
+  background: radial-gradient(circle, rgba(184, 227, 81, 0.14) 0%, transparent 70%);
+}
+
+.feature-card.solid::after {
+  background: radial-gradient(circle, rgba(5, 6, 7, 0.1) 0%, transparent 70%);
+}
+
+.feature-card > * {
+  position: relative;
+  z-index: 1;
+}
+
 .feature-icon {
-  width: 44px;
-  height: 44px;
-  margin-bottom: var(--space-4);
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-5);
   color: var(--brand);
+  background: rgba(184, 227, 81, 0.12);
+  border-radius: var(--r-md);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .feature-icon svg {
-  width: 100%;
-  height: 100%;
+  width: 26px;
+  height: 26px;
   stroke-width: 1.5;
 }
 
@@ -122,6 +153,11 @@ html[lang^="zh"] .feature-card h3 {
   font-size: var(--fs-body);
   line-height: 1.6;
   opacity: 0.85;
+  /* 竖版卡高度固定, 多语言文案长度不一, 截断到 4 行保持卡片整齐 */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .feature-arrow {
@@ -143,7 +179,53 @@ html[lang^="zh"] .feature-card h3 {
   color: var(--brand);
 }
 
-
+/* 移动端: 横向 scroll-snap 滑动, 露出下一张卡边角暗示可滑 */
 @media (max-width: 968px) {
-  .features-grid { grid-template-columns: 1fr; }
+  .features-grid {
+    display: flex;
+    gap: var(--space-4);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* 撑满视口宽度再内padding, 让卡片能贴到屏幕边缘、右侧露出下一张的边角 */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 4px var(--space-4) var(--space-2);
+  }
+  .features-grid::-webkit-scrollbar { display: none; }
+
+  .feature-card {
+    flex: 0 0 72%;
+    scroll-snap-align: center;
+    aspect-ratio: 3 / 4;
+    max-height: 380px;
+  }
+
+  .features-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+  }
+  .features-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border-hi);
+    opacity: 0.4;
+    border: none;
+    padding: 0;
+    transition: opacity 0.25s var(--ease-out), width 0.25s var(--ease-out);
+  }
+  .features-dot.is-active {
+    opacity: 1;
+    width: 18px;
+    border-radius: var(--r-pill);
+    background: var(--brand);
+  }
+}
+
+@media (min-width: 969px) {
+  .features-dots { display: none; }
 }
