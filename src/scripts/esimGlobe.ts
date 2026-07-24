@@ -13,7 +13,6 @@ import {
   SphereGeometry,
   Mesh,
   ShaderMaterial,
-  BackSide,
   AdditiveBlending,
   NormalBlending,
   BufferGeometry,
@@ -115,32 +114,7 @@ export async function initEsimGlobe(canvas: HTMLCanvasElement): Promise<GlobeHan
   const dots = buildLandDots(landPixels);
   globe.add(dots.points);
 
-  // ---- 3. 大气层辉光 (外层背面 fresnel, 加法混合) ----
-  const atmoMat = new ShaderMaterial({
-    uniforms: { uColor: { value: BRAND } },
-    transparent: true,
-    blending: AdditiveBlending,
-    depthWrite: false,
-    side: BackSide,
-    vertexShader: `
-      varying vec3 vN; varying vec3 vW;
-      void main(){
-        vN = normalize(mat3(modelMatrix) * normal);
-        vW = (modelMatrix * vec4(position,1.0)).xyz;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
-      }`,
-    fragmentShader: `
-      uniform vec3 uColor; varying vec3 vN; varying vec3 vW;
-      void main(){
-        vec3 v = normalize(cameraPosition - vW);
-        float f = pow(1.0 - abs(dot(vN, v)), 3.2);
-        gl_FragColor = vec4(uColor, f * 0.9);
-      }`,
-  });
-  const atmosphere = new Mesh(new SphereGeometry(1.13, 64, 64), atmoMat);
-  globe.add(atmosphere);
-
-  // ---- 4. 飞线弧 (彗星流动) ----
+  // ---- 飞线弧 (彗星流动) ----
   const arcMats: ShaderMaterial[] = [];
   ROUTES.forEach(([a, b], i) => {
     const start = latLonToVec3(CITIES[a][0], CITIES[a][1]);
