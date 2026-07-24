@@ -20,26 +20,28 @@ const base = lang === 'en' ? '' : `/${lang}`;
 
     <div class="promos-grid">
       <div class="promo-card solid scroll-reveal stagger-item">
+        <span class="promo-num" aria-hidden="true">01</span>
         <span class="promo-badge pulse">HOT</span>
-        <div>
-          <div class="promo-num">PROMO 01</div>
+        <div class="promo-body">
+          <div class="promo-eyebrow">PROMO 01</div>
           <h3>{t('promotions.promo1_title')}</h3>
           <p>{t('promotions.promo1_desc')}</p>
         </div>
-        <a href={`${base}/promotions`} class="btn-arrow" style="margin-top: 24px; display: inline-flex;">
+        <a href={`${base}/promotions`} class="promo-cta">
           {t('promotions.cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
       </div>
 
       <div class="promo-card outline scroll-reveal stagger-item">
+        <span class="promo-num" aria-hidden="true">02</span>
         <span class="promo-badge">NEW</span>
-        <div>
-          <div class="promo-num">PROMO 02</div>
+        <div class="promo-body">
+          <div class="promo-eyebrow">PROMO 02</div>
           <h3>{t('promotions.promo2_title')}</h3>
           <p>{t('promotions.promo2_desc')}</p>
         </div>
-        <a href={`${base}/promotions`} class="btn-arrow" style="margin-top: 24px; display: inline-flex;">
+        <a href={`${base}/promotions`} class="promo-cta">
           {t('promotions.cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
@@ -47,3 +49,17 @@ const base = lang === 'en' ? '' : `/${lang}`;
     </div>
   </div>
 </section>
+
+<script>
+  // 鼠标跟随聚光灯: 仅悬停型指针设备 + 非 reduced-motion, 与 CardShowcase 的 tilt 交互同一套准入条件
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches
+      && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLElement>('.promo-card').forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${((e.clientX - r.left) / r.width * 100).toFixed(1)}%`);
+        card.style.setProperty('--my', `${((e.clientY - r.top) / r.height * 100).toFixed(1)}%`);
+      });
+    });
+  }
+</script>

@@ -1,5 +1,5 @@
 /* ========================================
-   PROMO Section
+   PROMO Section — 聚光灯 hover + 巨幅水印数字 + 呼吸光环徽章
    ======================================== */
 .promos {
   padding: var(--section-y) 0;
@@ -16,43 +16,102 @@
 .promo-card {
   position: relative;
   padding: var(--space-7) var(--space-6);
-  border-radius: var(--r-lg);
+  border-radius: var(--r-xl);
   overflow: hidden;
   transition: transform 0.3s var(--ease-out);
-  min-height: 280px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  /* 聚光灯坐标默认居中, hover 时由 JS 写入实际指针位置 */
+  --mx: 50%;
+  --my: 40%;
 }
 
 .promo-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 .promo-card.solid {
-  background: var(--brand);
   color: var(--brand-ink);
 }
 
-/* .btn-arrow 默认亮绿字, 在 solid 卡(绿底)上跟背景色几乎一样, 看不清;
-   solid 卡上改用深色, 跟 feature-arrow 的 solid/outline 处理方式一致 */
-.promo-card.solid .btn-arrow {
+.promo-card.solid .btn-arrow,
+.promo-card.solid .promo-eyebrow {
   color: var(--brand-ink);
-}
-
-.promo-card.outline {
-  background: var(--bg-card);
-  border: 1px solid var(--border-sub);
 }
 
 .promo-card.outline:hover {
   border-color: var(--brand);
 }
 
+/* 细点阵纹理: 独立于 depth.css 的 background(它管底色渐变), 用 ::before 叠一层质感 */
+.promo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.05;
+}
+
+.promo-card.solid::before {
+  color: var(--brand-ink);
+}
+
+.promo-card.outline::before {
+  color: #fff;
+}
+
+/* 聚光灯: 跟随鼠标的柔光, 只有支持悬停的设备才会被 JS 写入 --mx/--my */
+.promo-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+  background: radial-gradient(480px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.14), transparent 62%);
+}
+
+.promo-card.solid::after {
+  background: radial-gradient(480px circle at var(--mx) var(--my), rgba(5, 6, 7, 0.16), transparent 62%);
+}
+
+@media (hover: hover) {
+  .promo-card:hover::after {
+    opacity: 1;
+  }
+}
+
+/* 巨幅水印数字: 卡片右上角的装饰性大号编号, 顶级 SaaS 官网常见的"设计感"手法 */
+.promo-num {
+  position: absolute;
+  top: -0.08em;
+  right: var(--space-5);
+  z-index: 0;
+  font-size: clamp(88px, 11vw, 148px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: currentColor;
+  opacity: 0.08;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.promo-card > * {
+  position: relative;
+  z-index: 1;
+}
+
 .promo-badge {
   position: absolute;
   top: var(--space-5);
-  right: var(--space-5);
+  left: var(--space-5);
   padding: 6px 14px;
   font-size: 11px;
   font-weight: 800;
@@ -72,12 +131,37 @@
   color: var(--brand-ink);
 }
 
-.promo-card .promo-num {
-  font-size: 14px;
+/* HOT 徽章的呼吸光环: 双层扩散 ping, 比单纯缩放更有"限时热度"的紧迫感 */
+.promo-badge.pulse::before,
+.promo-badge.pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid var(--brand);
+  animation: promo-ping 2.2s var(--ease-out) infinite;
+  pointer-events: none;
+}
+
+.promo-badge.pulse::after {
+  animation-delay: 1.1s;
+}
+
+@keyframes promo-ping {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+.promo-body {
+  margin-top: var(--space-6);
+}
+
+.promo-eyebrow {
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  color: var(--brand);
   margin-bottom: var(--space-3);
-  opacity: 0.7;
 }
 
 .promo-card h3 {
@@ -92,9 +176,66 @@
   font-size: var(--fs-body);
   line-height: 1.6;
   opacity: 0.85;
+  max-width: 34ch;
 }
 
+/* CTA: 从纯文字链接升级为实体小药丸按钮, 视觉分量更接近顶级站的 promo card */
+.promo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  margin-top: var(--space-5);
+  padding: 10px 20px;
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+  border-radius: var(--r-pill);
+  transition: transform 0.2s var(--ease-out), background 0.2s var(--ease-out), gap 0.2s var(--ease-out);
+}
+
+html[lang^="zh"] .promo-cta {
+  font-weight: 600;
+}
+
+.promo-cta svg {
+  transition: transform 0.25s var(--ease-out);
+}
+
+.promo-cta:hover svg {
+  transform: translateX(3px);
+}
+
+.promo-card.solid .promo-cta {
+  background: var(--brand-ink);
+  color: var(--brand);
+}
+
+.promo-card.solid .promo-cta:hover {
+  background: #000;
+}
+
+.promo-card.outline .promo-cta {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.promo-card.outline .promo-cta:hover {
+  background: var(--brand-hi);
+}
+
+.promo-card:hover .promo-cta {
+  transform: translateY(-2px);
+}
 
 @media (max-width: 968px) {
   .promos-grid { grid-template-columns: 1fr; }
+  .promo-num { font-size: 96px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-badge.pulse::before,
+  .promo-badge.pulse::after {
+    animation: none;
+    display: none;
+  }
 }
