@@ -118,50 +118,20 @@
   will-change: transform;
 }
 
+/* cobe (WebGL) 渲染的真 3D 点阵地球, 替换原来的 SVG 假透视 */
 .esim-globe {
   width: 100%;
-  max-width: 320px;
-  height: auto;
-  opacity: 0.85;
-  /* JS 写入的滚动转动; 内部经纬网格仍保留缓慢自转(见 .globe-grid) */
-  transform: rotate(var(--esim-scroll-rot, 0deg));
-  transition: transform 0.1s linear;
+  max-width: 360px;
+  aspect-ratio: 1;
+  cursor: grab;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+  touch-action: none;
+  contain: layout paint size;
 }
 
-/* 缓慢自转的经纬网格, 呼应前后模块的滚动动感 */
-.globe-grid {
-  transform-origin: 160px 160px;
-  animation: globe-spin 40s linear infinite;
-}
-
-@keyframes globe-spin {
-  to { transform: rotate(360deg); }
-}
-
-/* 轨道点错开呼吸闪烁 */
-.orbit-dot {
-  animation: orbit-pulse 3s var(--ease-in-out) infinite;
-}
-
-.orbit-dot:nth-child(1) { animation-delay: 0s; }
-.orbit-dot:nth-child(2) { animation-delay: 0.4s; }
-.orbit-dot:nth-child(3) { animation-delay: 0.8s; }
-.orbit-dot:nth-child(4) { animation-delay: 1.2s; }
-.orbit-dot:nth-child(5) { animation-delay: 1.6s; }
-.orbit-dot:nth-child(6) { animation-delay: 2s; }
-.orbit-dot:nth-child(7) { animation-delay: 2.4s; }
-.orbit-dot:nth-child(8) { animation-delay: 2.8s; }
-
-@keyframes orbit-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .globe-grid,
-  .orbit-dot {
-    animation: none;
-  }
+.esim-globe:active {
+  cursor: grabbing;
 }
 
 

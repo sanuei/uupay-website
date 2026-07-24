@@ -207,8 +207,9 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
       const navH = document.querySelector<HTMLElement>('.navbar')?.offsetHeight || 56;
 
       // ============================================
-      // 5. eSIM "呼吸段" - 非 pin, 但地球仪跟随滚动做视差 + 缓慢转动,
+      // 5. eSIM "呼吸段" - 非 pin, 但地球仪跟随滚动做视差上下浮动,
       //    让这段加高后的自由滚动区不再"一闪而过", 而是从容的过渡
+      //    (转动交给 cobe 自身的自转 + 拖拽交互, 见 ESIMSection.astro)
       // ============================================
       const esimSection = document.querySelector<HTMLElement>('.esim');
       const esimVisual = document.querySelector<HTMLElement>('.esim-visual');
@@ -220,9 +221,8 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
           // 区块中心相对视口中心的偏移, 归一化到 -1(在下方) ~ 1(在上方)
           const sectionCenter = rect.top + rect.height / 2;
           const p = Math.max(-1, Math.min(1, (vh / 2 - sectionCenter) / vh));
-          // 地球仪: 轻微反向视差上移 + 跟随滚动转动
+          // 地球仪: 轻微反向视差上移
           esimVisual.style.setProperty('--esim-parallax', `${(-p * 48).toFixed(1)}px`);
-          esimVisual.style.setProperty('--esim-scroll-rot', `${(p * 26).toFixed(1)}deg`);
         };
 
         let esimTicking = false;
