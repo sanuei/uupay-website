@@ -1,28 +1,19 @@
 /* ========================================
-   STATS v2 - Pinning 滚动钉住 + 数字 countUp
-   父容器 3 屏高,内部 sticky 钉 1 屏,3 段滚动各 countUp 一个数字
+   STATS v2 - 正常滚动 + 数字 countUp
+   滚入视口时一次性触发 3 个数字的 countUp 动画, 不钉住页面滚动
    ======================================== */
 .stats-pin {
   position: relative;
   background: var(--bg-base);
   border-top: 1px solid var(--border-sub);
   border-bottom: 1px solid var(--border-sub);
-  /* pinning 时长 = 钉住的 1 屏 + 3 个节拍(3 个数字各占 1 拍)
-     每拍 = --scroll-beat, 与 card/app 严格同速 */
-  min-height: calc(100vh + 3 * var(--scroll-beat));
+  padding: var(--space-10) 0;
 }
 
 .stats-pin-sticky {
-  position: sticky;
-  top: var(--nav-h);
-  height: calc(100vh - var(--nav-h));
   display: flex;
   align-items: center;
-  justify-content: center;  /* 水平居中 (修复 sticky 内 flex 容器子元素不居中 bug) */
-  /* 注意: 不能用 transform: translateZ(0) — 会破坏 sticky 行为! */
-  /* 用 will-change 提示浏览器创建独立 compositing layer */
-  will-change: transform;
-  z-index: 2;
+  justify-content: center;
 }
 
 .stats-pin-sticky .container {
@@ -151,30 +142,16 @@
   transition: transform 0.1s linear;
 }
 
-/* 移动端取消 pinning, 直接显示 3 个数字 */
 @media (max-width: 968px) {
   .stats-pin {
-    min-height: auto;
     padding: var(--space-9) 0;
-  }
-  .stats-pin-sticky {
-    position: relative;
-    top: auto;
-    height: auto;
   }
   .stats-pin-grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);
   }
-  .stats-pin-item {
-    opacity: 1;
-    transform: none;
-  }
   .stats-pin-item:not(:last-child)::after {
     display: none;
-  }
-  .stats-pin-item .divider {
-    width: 96px;
   }
 }
 
