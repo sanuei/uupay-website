@@ -65,6 +65,17 @@
     "feat2_title": "Instant activation",
     "feat3_title": "Flexible plans"
   },
+  "fiat": {
+    "title_html": "Cash out to <span class=\"kw\">local currency</span>",
+    "subtitle": "Convert USDT to fiat and withdraw to your bank in minutes — settled through licensed institutions.",
+    "step1_title": "Crypto balance",
+    "step1_desc": "Hold USDT and major stablecoins right in your UUPAY account.",
+    "step2_title": "Instant convert",
+    "step2_desc": "Swap to your local currency at real-time rates, with low and transparent fees.",
+    "step3_title": "Bank payout",
+    "step3_desc": "Withdraw to your bank or e-wallet, arriving as fast as the same day.",
+    "currencies_note": "Supporting 30+ fiat currencies and local bank networks worldwide."
+  },
   "partners": {
     "title": "UUPAY Referral Partner Program",
     "subtitle": "Refer friends who open a card and spend, and earn up to 50% commission.",

@@ -2,12 +2,7 @@
    eSIM Section
    ======================================== */
 .esim {
-  /* 加高成"呼吸段": 内容垂直居中, 上下留出滚动行程, 让这段不再一闪而过。
-     配合 JS 给地球仪的视差 + 转动, 是 Stats(pin) 与 App(pin) 之间从容的过渡。 */
-  min-height: 118vh;
-  display: flex;
-  align-items: center;
-  padding: var(--space-9) 0;
+  padding: var(--section-y) 0;
   background: var(--bg-deep);
 }
 
@@ -121,13 +116,13 @@
   z-index: 1;
 }
 
-/* three.js 渲染的 3D 点阵地球: 放大并锚定到卡片右下角, 溢出被卡片 overflow:hidden 裁掉,
-   形成"嵌在角落"的高级质感 */
+/* three.js 渲染的 3D 点阵地球: 锚定在右列内并向右下角轻微溢出, 溢出被卡片 overflow:hidden 裁掉,
+   形成"嵌在角落"的高级质感; 收窄尺寸避免左边缘压到左侧功能卡 */
 .esim-globe {
   position: absolute;
-  right: -22%;
-  bottom: -32%;
-  width: min(158%, 880px);
+  right: -20%;
+  bottom: -24%;
+  width: min(120%, 640px);
   aspect-ratio: 1;
   height: auto;
   cursor: grab;
@@ -143,11 +138,6 @@
 
 
 @media (max-width: 968px) {
-  /* 移动端无需"呼吸段"加高(原生滚动手感本来就好), 回到常规高度避免大片空白 */
-  .esim {
-    min-height: auto;
-    padding: var(--space-9) 0;
-  }
   .esim-card { grid-template-columns: 1fr; padding: var(--space-6); }
   /* 移动端地球回到常规居中, 不做角落溢出 */
   .esim-visual {

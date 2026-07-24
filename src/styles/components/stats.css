@@ -7,7 +7,7 @@
   background: var(--bg-base);
   border-top: 1px solid var(--border-sub);
   border-bottom: 1px solid var(--border-sub);
-  padding: var(--space-10) 0;
+  padding: var(--section-y) 0;
 }
 
 .stats-pin-sticky {
@@ -145,9 +145,6 @@
 }
 
 @media (max-width: 968px) {
-  .stats-pin {
-    padding: var(--space-9) 0;
-  }
   .stats-pin-grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);

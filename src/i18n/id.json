@@ -65,6 +65,17 @@
     "feat2_title": "Aktivasi instan",
     "feat3_title": "Paket fleksibel"
   },
+  "fiat": {
+    "title_html": "Tarik ke <span class=\"kw\">mata uang lokal</span>",
+    "subtitle": "Konversi USDT ke mata uang fiat dan tarik ke bank Anda dalam hitungan menit — diselesaikan melalui institusi berlisensi.",
+    "step1_title": "Saldo kripto",
+    "step1_desc": "Simpan USDT dan stablecoin utama langsung di akun UUPAY Anda.",
+    "step2_title": "Konversi instan",
+    "step2_desc": "Tukar ke mata uang lokal dengan kurs real-time, biaya rendah dan transparan.",
+    "step3_title": "Cair ke bank",
+    "step3_desc": "Tarik ke bank atau e-wallet, tiba secepat hari yang sama.",
+    "currencies_note": "Mendukung 30+ mata uang fiat dan jaringan bank lokal di seluruh dunia."
+  },
   "partners": {
     "title": "Program Mitra Referal UUPAY",
     "subtitle": "Ajak teman membuka kartu dan berbelanja, dapatkan komisi hingga 50%.",

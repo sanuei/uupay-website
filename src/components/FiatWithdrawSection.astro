@@ -1,0 +1,64 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+
+// 出金三步流程 (加密资产 → 一键兑换 → 银行到账)
+const steps = [
+  {
+    title: t('fiat.step1_title'), desc: t('fiat.step1_desc'),
+    // coins
+    svg: '<circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/>',
+  },
+  {
+    title: t('fiat.step2_title'), desc: t('fiat.step2_desc'),
+    // arrow-left-right (swap)
+    svg: '<path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/>',
+  },
+  {
+    title: t('fiat.step3_title'), desc: t('fiat.step3_desc'),
+    // landmark (bank)
+    svg: '<line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/>',
+  },
+];
+
+const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'HKD', 'SGD', 'AUD', 'THB', 'IDR', 'MYR'];
+---
+
+<section class="fiat">
+  <div class="container">
+    <div class="section-header scroll-reveal">
+      <span class="eyebrow">FIAT WITHDRAWAL</span>
+      <h2 set:html={t('fiat.title_html')} />
+      <p>{t('fiat.subtitle')}</p>
+    </div>
+
+    <div class="fiat-flow scroll-reveal">
+      {steps.map((s, i) => (
+        <div class="fiat-step stagger-item">
+          <div class="fiat-step-head">
+            <div class="fiat-step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg} />
+            </div>
+            <span class="fiat-step-num">{`0${i + 1}`}</span>
+          </div>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="fiat-currencies scroll-reveal">
+      <div class="fiat-chips">
+        {currencies.map((c) => <span class="fiat-chip">{c}</span>)}
+        <span class="fiat-chip fiat-chip--more">30+</span>
+      </div>
+      <p class="fiat-note">{t('fiat.currencies_note')}</p>
+    </div>
+  </div>
+</section>

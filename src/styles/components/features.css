@@ -2,7 +2,7 @@
    FEATURES Section - 2x2 混搭卡
    ======================================== */
 .features {
-  padding: var(--space-10) 0;
+  padding: var(--section-y) 0;
   background: var(--bg-base);
   position: relative;
 }

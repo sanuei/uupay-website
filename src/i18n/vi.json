@@ -65,6 +65,17 @@
     "feat2_title": "Kích hoạt tức thì",
     "feat3_title": "Gói cước linh hoạt"
   },
+  "fiat": {
+    "title_html": "Rút về <span class=\"kw\">tiền tệ nội địa</span>",
+    "subtitle": "Chuyển USDT sang tiền pháp định và rút về ngân hàng trong vài phút — thanh toán qua các tổ chức được cấp phép.",
+    "step1_title": "Số dư tiền mã hóa",
+    "step1_desc": "Giữ USDT và các stablecoin lớn ngay trong tài khoản UUPAY.",
+    "step2_title": "Đổi tức thì",
+    "step2_desc": "Đổi sang tiền tệ nội địa theo tỷ giá thời gian thực, phí thấp và minh bạch.",
+    "step3_title": "Nhận về ngân hàng",
+    "step3_desc": "Rút về ngân hàng hoặc ví điện tử, nhanh nhất trong ngày.",
+    "currencies_note": "Hỗ trợ hơn 30 loại tiền pháp định và mạng lưới ngân hàng địa phương."
+  },
   "partners": {
     "title": "Chương trình Đối tác Giới thiệu UUPAY",
     "subtitle": "Giới thiệu bạn bè mở thẻ và chi tiêu, nhận đến 50% hoa hồng.",

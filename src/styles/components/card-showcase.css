@@ -3,7 +3,7 @@
    非 pin, 作为 Stats(pin) 前的自由滚动区, 让节奏更交替
    ======================================== */
 .card-switch {
-  padding: var(--space-9) 0;
+  padding: var(--section-y) 0;
   background: var(--bg-deep);
   position: relative;
   overflow: hidden;

@@ -2,7 +2,7 @@
    FAQ Section
    ======================================== */
 .faq {
-  padding: var(--space-9) 0;
+  padding: var(--section-y) 0;
   background: var(--bg-deep);
 }
 

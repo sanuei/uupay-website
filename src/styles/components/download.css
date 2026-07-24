@@ -2,7 +2,7 @@
    DOWNLOAD Section
    ======================================== */
 .download {
-  padding: var(--space-10) 0 var(--space-8);
+  padding: var(--section-y) 0;
   background: radial-gradient(ellipse 90% 75% at 50% 100%, rgba(184, 227, 81, 0.2) 0%, #0B120A 45%, var(--bg-deep) 100%);
   text-align: center;
   position: relative;

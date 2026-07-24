@@ -2,7 +2,7 @@
    PROMO Section
    ======================================== */
 .promos {
-  padding: var(--space-10) 0;
+  padding: var(--section-y) 0;
   background: var(--bg-base);
 }
 

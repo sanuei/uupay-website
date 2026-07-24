@@ -2,7 +2,7 @@
    SECURITY — 信任区块 (3 张防护卡)
    ======================================== */
 .security {
-  padding: var(--space-9) 0;
+  padding: var(--section-y) 0;
   background: var(--bg-deep);
   border-top: 1px solid var(--border-sub);
 }

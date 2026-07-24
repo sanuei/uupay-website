@@ -3,7 +3,7 @@
    左侧 5 段文字 sticky + 右侧 1 张大图 sticky
    ======================================== */
 .app-sticky {
-  padding: var(--space-10) 0 var(--space-9);
+  padding: var(--section-y) 0;
   background: var(--bg-base);
   position: relative;
 }

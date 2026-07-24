@@ -65,6 +65,17 @@
     "feat2_title": "Pengaktifan segera",
     "feat3_title": "Pelan fleksibel"
   },
+  "fiat": {
+    "title_html": "Keluarkan ke <span class=\"kw\">mata wang tempatan</span>",
+    "subtitle": "Tukar USDT kepada mata wang fiat dan keluarkan ke bank anda dalam beberapa minit — diselesaikan melalui institusi berlesen.",
+    "step1_title": "Baki kripto",
+    "step1_desc": "Simpan USDT dan stablecoin utama terus dalam akaun UUPAY anda.",
+    "step2_title": "Tukar segera",
+    "step2_desc": "Tukar kepada mata wang tempatan pada kadar masa nyata dengan yuran rendah dan telus.",
+    "step3_title": "Masuk ke bank",
+    "step3_desc": "Keluarkan ke bank atau e-dompet, tiba sepantas hari yang sama.",
+    "currencies_note": "Menyokong 30+ mata wang fiat dan rangkaian bank tempatan di seluruh dunia."
+  },
   "partners": {
     "title": "Program Rakan Rujukan UUPAY",
     "subtitle": "Rujuk rakan yang buka kad dan berbelanja, peroleh komisen sehingga 50%.",

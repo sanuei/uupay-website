@@ -1,0 +1,135 @@
+/* ========================================
+   FIAT WITHDRAWAL — 法币出金 (3 步流程 + 币种)
+   ======================================== */
+.fiat {
+  padding: var(--section-y) 0;
+  background: var(--bg-base);
+}
+
+/* 三步流程卡 */
+.fiat-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  position: relative;
+}
+
+.fiat-step {
+  position: relative;
+  padding: var(--space-6);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border-sub);
+  background: linear-gradient(180deg, #17171A 0%, #101013 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 24px 48px -24px rgba(0, 0, 0, 0.5);
+}
+
+/* 步骤之间的箭头连接线 (指向下一步) */
+.fiat-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: calc(var(--space-6) / -2 - 5px);
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--brand);
+  border-right: 2px solid var(--brand);
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.fiat-step-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.fiat-step-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-md);
+  background: rgba(184, 227, 81, 0.1);
+  color: var(--brand);
+}
+
+.fiat-step-icon svg { width: 24px; height: 24px; }
+
+.fiat-step-num {
+  font-size: var(--fs-h4);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--brand);
+  opacity: 0.25;
+  font-variant-numeric: tabular-nums;
+}
+
+.fiat-step h3 {
+  font-size: var(--fs-h4);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-3);
+}
+
+.fiat-step p {
+  font-size: var(--fs-body);
+  color: var(--text-sec);
+  line-height: 1.65;
+}
+
+/* 币种芯片行 */
+.fiat-currencies {
+  margin-top: var(--space-7);
+  text-align: center;
+}
+
+.fiat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.fiat-chip {
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-sec);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-sub);
+  background: rgba(255, 255, 255, 0.02);
+  font-variant-numeric: tabular-nums;
+}
+
+.fiat-chip--more {
+  color: var(--brand-ink);
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.fiat-note {
+  font-size: var(--fs-body);
+  color: var(--text-sec);
+  line-height: 1.6;
+}
+
+@media (max-width: 968px) {
+  .fiat-flow {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+  }
+  /* 移动端竖排: 箭头改为指向下方, 落在两卡之间 */
+  .fiat-step:not(:last-child)::after {
+    top: auto;
+    bottom: calc(var(--space-7) / -2 - 5px);
+    right: 50%;
+    transform: translateX(50%) rotate(135deg);
+  }
+}

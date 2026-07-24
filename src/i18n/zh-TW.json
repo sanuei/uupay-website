@@ -65,6 +65,17 @@
     "feat2_title": "極速啟用",
     "feat3_title": "靈活套餐"
   },
+  "fiat": {
+    "title_html": "一鍵出金到<span class=\"kw\">當地法幣</span>",
+    "subtitle": "將 USDT 兌換成法幣，分鐘級提現到銀行帳戶——由持牌金融機構合規結算。",
+    "step1_title": "加密資產",
+    "step1_desc": "在 UUPAY 帳戶中直接持有 USDT 及主流穩定幣。",
+    "step2_title": "一鍵兌換",
+    "step2_desc": "按即時匯率兌換成當地法幣，費率低且透明。",
+    "step3_title": "銀行到帳",
+    "step3_desc": "提現到銀行卡或電子錢包，最快當日到帳。",
+    "currencies_note": "支援全球 30+ 種法幣與當地銀行網路。"
+  },
   "partners": {
     "title": "UUPAY 推薦合夥人計劃",
     "subtitle": "推薦好友開卡消費，最高可享 50% 返傭。",

@@ -54,6 +54,8 @@
   --space-8:       64px;
   --space-9:       96px;
   --space-10:      128px;
+  /* 区块统一纵向内边距: 各模块上下都用它, 保证相邻区块间距一致 (112+112=224) */
+  --section-y:     112px;
 
   /* Radius */
   --r-sm:          8px;
@@ -450,6 +452,7 @@ button:focus-visible {
   :root {
     --space-9: 64px;
     --space-10: 80px;
+    --section-y: 72px;
   }
   .container {
     padding: 0 var(--space-4);
