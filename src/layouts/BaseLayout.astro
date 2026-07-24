@@ -206,38 +206,8 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
       // 实际导航栏高度 (跟 --nav-h 保持同步, 避免硬编码漂移)
       const navH = document.querySelector<HTMLElement>('.navbar')?.offsetHeight || 56;
 
-      // ============================================
-      // 5. eSIM "呼吸段" - 非 pin, 但地球仪跟随滚动做视差上下浮动,
-      //    让这段加高后的自由滚动区不再"一闪而过", 而是从容的过渡
-      //    (转动交给 cobe 自身的自转 + 拖拽交互, 见 ESIMSection.astro)
-      // ============================================
-      const esimSection = document.querySelector<HTMLElement>('.esim');
-      const esimVisual = document.querySelector<HTMLElement>('.esim-visual');
-
-      if (esimSection && esimVisual && enableScrollFx) {
-        const onEsimScroll = () => {
-          const rect = esimSection.getBoundingClientRect();
-          const vh = window.innerHeight;
-          // 区块中心相对视口中心的偏移, 归一化到 -1(在下方) ~ 1(在上方)
-          const sectionCenter = rect.top + rect.height / 2;
-          const p = Math.max(-1, Math.min(1, (vh / 2 - sectionCenter) / vh));
-          // 地球仪: 轻微反向视差上移
-          esimVisual.style.setProperty('--esim-parallax', `${(-p * 48).toFixed(1)}px`);
-        };
-
-        let esimTicking = false;
-        const esimScrollHandler = () => {
-          if (!esimTicking) {
-            requestAnimationFrame(() => {
-              onEsimScroll();
-              esimTicking = false;
-            });
-            esimTicking = true;
-          }
-        };
-        window.addEventListener('scroll', esimScrollHandler, { passive: true });
-        onEsimScroll();  // 初始化
-      }
+      // (eSIM 地球的自转 / 浮动 / 飞线动画全部交给 three.js 自身处理,
+      //  见 src/scripts/esimGlobe.ts — 这里不再做滚动联动)
 
       // ============================================
       // 6. STATS 数字 countUp - 滚入视口即触发, 不钉住页面滚动

@@ -52,92 +52,30 @@ const feats = [
 </section>
 
 <script>
-  import createGlobe from 'cobe';
-
+  // three.js 地球较重, 滚到视口才动态 import(), 保证首屏 LCP 不受影响
   const canvas = document.getElementById('esim-globe') as HTMLCanvasElement | null;
 
   if (canvas) {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // 覆盖全球主要城市, 呼应"eSIM 全球覆盖"的营销叙事
-    const markers = [
-      { location: [22.3193, 114.1694] as [number, number], size: 0.05 }, // 香港
-      { location: [1.3521, 103.8198] as [number, number], size: 0.05 },  // 新加坡
-      { location: [35.6762, 139.6503] as [number, number], size: 0.05 }, // 东京
-      { location: [51.5072, -0.1276] as [number, number], size: 0.05 },  // 伦敦
-      { location: [40.7128, -74.006] as [number, number], size: 0.06 },  // 纽约
-      { location: [25.2048, 55.2708] as [number, number], size: 0.05 },  // 迪拜
-      { location: [-33.8688, 151.2093] as [number, number], size: 0.05 }, // 悉尼
-      { location: [-23.5505, -46.6333] as [number, number], size: 0.05 }, // 圣保罗
-      { location: [-26.2041, 28.0473] as [number, number], size: 0.04 },  // 约翰内斯堡
-      { location: [13.7563, 100.5018] as [number, number], size: 0.04 },  // 曼谷
-    ];
-
-    let width = 0;
-    let phi = 0;
-    let pointerInteracting: number | null = null;
-    let pointerInteractionMovement = 0;
-
-    const onResize = () => {
-      if (canvas) width = canvas.offsetWidth;
-    };
-    window.addEventListener('resize', onResize);
-    onResize();
-
-    let globe: ReturnType<typeof createGlobe> | null = null;
-    try {
-      globe = createGlobe(canvas, {
-        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
-        width: width * 2,
-        height: width * 2,
-        phi: 0,
-        theta: 0.32,
-        dark: 1,
-        diffuse: 1.2,
-        mapSamples: 14000,
-        mapBrightness: 5,
-        baseColor: [0.35, 0.42, 0.2],
-        markerColor: [0.722, 0.89, 0.318],
-        glowColor: [0.45, 0.55, 0.25],
-        opacity: 0.9,
-        markers,
-        onRender: (state) => {
-          if (pointerInteracting === null && !prefersReducedMotion) {
-            phi += 0.0025;
-          }
-          state.phi = phi + pointerInteractionMovement;
-          state.width = width * 2;
-          state.height = width * 2;
-        },
-      });
-
-      requestAnimationFrame(() => {
-        canvas.style.opacity = '1';
-      });
-    } catch {
-      // 极少数不支持 WebGL 的环境: 静默隐藏, 不影响其余内容
-      canvas.style.display = 'none';
-    }
-
-    // 拖拽手动转动地球
-    const pointerDown = (e: PointerEvent) => {
-      pointerInteracting = e.clientX - pointerInteractionMovement * 200;
-      canvas.style.cursor = 'grabbing';
-    };
-    const pointerUp = () => {
-      pointerInteracting = null;
-      canvas.style.cursor = 'grab';
-    };
-    const pointerMove = (e: PointerEvent) => {
-      if (pointerInteracting !== null) {
-        const delta = e.clientX - pointerInteracting;
-        pointerInteractionMovement = delta / 200;
+    let started = false;
+    const boot = async () => {
+      if (started) return;
+      started = true;
+      try {
+        const { initEsimGlobe } = await import('../scripts/esimGlobe');
+        await initEsimGlobe(canvas);
+      } catch (err) {
+        // WebGL 不可用 / 资源加载失败: 静默隐藏, 不影响其余内容
+        console.warn('[esim-globe] init failed:', err);
+        canvas.style.display = 'none';
       }
     };
 
-    canvas.addEventListener('pointerdown', pointerDown);
-    window.addEventListener('pointerup', pointerUp);
-    window.addEventListener('pointermove', pointerMove);
-    canvas.addEventListener('pointerleave', pointerUp);
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        io.disconnect();
+        boot();
+      }
+    }, { rootMargin: '200px' });
+    io.observe(canvas);
   }
 </script>

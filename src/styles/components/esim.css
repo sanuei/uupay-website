@@ -27,12 +27,19 @@
 .esim-card::before {
   content: '';
   position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(184, 227, 81, 0.12) 0%, transparent 70%);
+  top: -120px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(184, 227, 81, 0.14) 0%, transparent 70%);
   pointer-events: none;
+  z-index: 0;
+}
+
+/* 文案永远压在地球之上 */
+.esim-info {
+  position: relative;
+  z-index: 2;
 }
 
 .esim-info h2 {
@@ -107,25 +114,25 @@
   margin: 0;
 }
 
+/* 右列占位: 撑开卡片高度, 给放大的地球留出纵向空间 */
 .esim-visual {
   position: relative;
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* JS 写入的滚动视差(上下位移); 让地球仪随滚动轻微浮动 */
-  transform: translateY(var(--esim-parallax, 0px));
-  will-change: transform;
+  min-height: 440px;
+  z-index: 1;
 }
 
-/* cobe (WebGL) 渲染的真 3D 点阵地球, 替换原来的 SVG 假透视 */
+/* three.js 渲染的 3D 点阵地球: 放大并锚定到卡片右下角, 溢出被卡片 overflow:hidden 裁掉,
+   形成"嵌在角落"的高级质感 */
 .esim-globe {
-  width: 100%;
-  max-width: 360px;
+  position: absolute;
+  right: -22%;
+  bottom: -32%;
+  width: min(158%, 880px);
   aspect-ratio: 1;
+  height: auto;
   cursor: grab;
   opacity: 0;
-  transition: opacity 0.6s var(--ease-out);
+  transition: opacity 0.8s var(--ease-out);
   touch-action: none;
   contain: layout paint size;
 }
@@ -141,8 +148,17 @@
     min-height: auto;
     padding: var(--space-9) 0;
   }
-  .esim-visual {
-    transform: none;  /* 移动端不做视差 */
-  }
   .esim-card { grid-template-columns: 1fr; padding: var(--space-6); }
+  /* 移动端地球回到常规居中, 不做角落溢出 */
+  .esim-visual {
+    min-height: 360px;
+  }
+  .esim-globe {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: min(112%, 440px);
+    right: auto;
+    bottom: auto;
+  }
 }
