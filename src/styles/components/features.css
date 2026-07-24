@@ -1,7 +1,6 @@
 /* ========================================
-   FEATURES Section - 竖版圆角卡, 一排 4 张
-   参考: Framer "Trusted by teams" 的竖向卡片语言,
-   移动端改横向 scroll-snap 滑动 (可露出下一张卡的边角提示可滑)
+   FEATURES Section - 竖版圆角卡, 每卡带"可视舞台", 悬浮时图形/照片浮现并动起来
+   桌面: 一排 4 张 · 移动端: 横向 scroll-snap 滑动
    ======================================== */
 .features {
   padding: var(--section-y) 0;
@@ -17,19 +16,16 @@
 
 .feature-card {
   position: relative;
-  padding: var(--space-6) var(--space-5) var(--space-5);
   border-radius: var(--r-xl);
   overflow: hidden;
-  transition: transform 0.3s var(--ease-out);
+  transition: transform 0.35s var(--ease-out);
   cursor: pointer;
-  aspect-ratio: 3 / 4;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 /* 亮绿实底卡 */
@@ -41,11 +37,6 @@
 .feature-card.solid h3,
 .feature-card.solid p {
   color: var(--brand-ink);
-}
-
-.feature-card.solid .feature-icon {
-  color: var(--brand-ink);
-  background: rgba(5, 6, 7, 0.12);
 }
 
 .feature-card.solid:hover {
@@ -84,6 +75,7 @@
   transition: opacity 0.3s var(--ease-out);
   pointer-events: none;
   animation: conic-spin 4s linear paused;
+  z-index: 3;
 }
 
 .feature-card.outline:hover::before {
@@ -91,48 +83,32 @@
   animation-play-state: running;
 }
 
-/* 卡片右上角柔光, 呼应竖版卡的"海报感" */
-.feature-card::after {
-  content: '';
-  position: absolute;
-  top: -40%;
-  right: -30%;
-  width: 70%;
-  height: 70%;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.feature-card.outline::after {
-  background: radial-gradient(circle, rgba(184, 227, 81, 0.14) 0%, transparent 70%);
-}
-
-.feature-card.solid::after {
-  background: radial-gradient(circle, rgba(5, 6, 7, 0.1) 0%, transparent 70%);
-}
-
-.feature-card > * {
+/* ---------- 可视舞台 ---------- */
+.feature-visual {
   position: relative;
-  z-index: 1;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.feature-icon {
-  width: 56px;
-  height: 56px;
-  margin-bottom: var(--space-5);
-  color: var(--brand);
-  background: rgba(184, 227, 81, 0.12);
-  border-radius: var(--r-md);
+.feature-card.outline .feature-visual {
+  border-bottom-color: var(--border-sub);
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(184, 227, 81, 0.08), transparent 60%),
+    #0d0d10;
+}
+
+.feature-card.solid .feature-visual {
+  border-bottom-color: rgba(5, 6, 7, 0.12);
+  background: radial-gradient(120% 120% at 50% 0%, rgba(5, 6, 7, 0.12), transparent 60%);
+}
+
+/* ---------- 内容区 ---------- */
+.feature-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.feature-icon svg {
-  width: 26px;
-  height: 26px;
-  stroke-width: 1.5;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-5);
 }
 
 .feature-card h3 {
@@ -143,8 +119,6 @@
   margin-bottom: var(--space-3);
 }
 
-/* 中文卡片标题: MiSans 的 800 会落到最重的 Heavy 档 (700=上限), 显得太粗;
-   降到 600(Bold) 更清爽, 也和区块大标题(900)拉开层次。只作用于中文页。 */
 html[lang^="zh"] .feature-card h3 {
   font-weight: 600;
 }
@@ -153,9 +127,8 @@ html[lang^="zh"] .feature-card h3 {
   font-size: var(--fs-body);
   line-height: 1.6;
   opacity: 0.85;
-  /* 竖版卡高度固定, 多语言文案长度不一, 截断到 4 行保持卡片整齐 */
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -164,22 +137,282 @@ html[lang^="zh"] .feature-card h3 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: var(--space-4);
+  margin-top: auto;
+  padding-top: var(--space-4);
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-.feature-card.solid .feature-arrow {
-  color: var(--brand-ink);
+.feature-card.solid .feature-arrow { color: var(--brand-ink); }
+.feature-card.outline .feature-arrow { color: var(--brand); }
+
+.feature-arrow svg { transition: transform 0.25s var(--ease-out); }
+.feature-card:hover .feature-arrow svg { transform: translateX(3px); }
+
+/* ============================================================
+   场景 1 — 加密货币卡: 真机照片浮起 + 光泽扫过
+   ============================================================ */
+.fv-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.feature-card.outline .feature-arrow {
+.fv-card-img {
+  width: 82%;
+  height: auto;
+  border-radius: 10px;
+  transform: rotate(-9deg) translateY(6px);
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+  box-shadow: 0 18px 36px -14px rgba(0, 0, 0, 0.6);
+}
+
+.feature-card:hover .fv-card-img {
+  transform: rotate(-4deg) translateY(-6px) scale(1.05);
+  box-shadow: 0 28px 50px -16px rgba(0, 0, 0, 0.7);
+}
+
+/* 斜向光泽: 悬浮时扫过卡面 */
+.fv-card-glare {
+  position: absolute;
+  top: -60%;
+  left: -30%;
+  width: 40%;
+  height: 220%;
+  transform: rotate(18deg) translateX(-260%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  pointer-events: none;
+}
+
+.feature-card:hover .fv-card-glare {
+  animation: fv-glare 0.9s var(--ease-out) 0.15s;
+}
+
+@keyframes fv-glare {
+  from { transform: rotate(18deg) translateX(-260%); }
+  to   { transform: rotate(18deg) translateX(560%); }
+}
+
+/* ============================================================
+   场景 2 — eSIM: 信号波纹 + 定位点 (lime on dark)
+   ============================================================ */
+.fv-esim {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--brand);
 }
 
-/* 移动端: 横向 scroll-snap 滑动, 露出下一张卡边角暗示可滑 */
+.fv-esim-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.08;
+  mask-image: radial-gradient(60% 60% at 50% 50%, #000, transparent 75%);
+}
+
+.fv-esim-core {
+  position: relative;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--brand);
+  color: var(--brand-ink);
+  box-shadow: 0 0 24px rgba(184, 227, 81, 0.5);
+}
+.fv-esim-core svg { width: 22px; height: 22px; }
+
+.fv-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--brand);
+  opacity: 0;
+  transform: scale(1);
+}
+
+.fv-pin {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 10px rgba(184, 227, 81, 0.8);
+  opacity: 0.5;
+}
+.fv-pin-1 { top: 26%; left: 22%; }
+.fv-pin-2 { top: 68%; left: 28%; }
+.fv-pin-3 { top: 34%; left: 78%; }
+
+/* 波纹 + 定位点动画: 默认暂停, 悬浮/触屏时运行 */
+.fv-ring   { animation: fv-ripple 2.4s ease-out infinite paused; }
+.fv-ring:nth-of-type(2) { animation-delay: 0.8s; }
+.fv-ring:nth-of-type(3) { animation-delay: 1.6s; }
+.fv-pin    { animation: fv-blink 2s ease-in-out infinite paused; }
+.fv-pin-2  { animation-delay: 0.5s; }
+.fv-pin-3  { animation-delay: 1s; }
+
+.feature-card:hover .fv-ring,
+.feature-card:hover .fv-pin { animation-play-state: running; }
+
+@keyframes fv-ripple {
+  0%   { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 0;   transform: scale(3.4); }
+}
+@keyframes fv-blink {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 1; }
+}
+
+/* ============================================================
+   场景 3 — 机酒预定: 航线弧 + 飞机沿路径飞行 (ink on green)
+   ============================================================ */
+.fv-travel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-ink);
+}
+
+.fv-travel-svg {
+  width: 78%;
+  height: auto;
+  overflow: visible;
+}
+
+.fv-route {
+  opacity: 0.4;
+  stroke-dashoffset: 0;
+}
+
+.fv-node {
+  fill: var(--brand-ink);
+}
+
+.fv-plane {
+  fill: var(--brand-ink);
+  offset-path: path("M26 104 Q110 6 194 62");
+  offset-rotate: auto;
+  offset-distance: 0%;
+}
+
+.feature-card:hover .fv-plane {
+  animation: fv-fly 2.4s var(--ease-in-out) infinite paused;
+  animation-play-state: running;
+}
+.feature-card:hover .fv-route {
+  animation: fv-dash 1s linear infinite;
+}
+
+@keyframes fv-fly {
+  0%   { offset-distance: 0%;   opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes fv-dash {
+  to { stroke-dashoffset: -10; }
+}
+
+/* ============================================================
+   场景 4 — 聊天转账: 气泡 + 代币飞行 (lime on dark)
+   ============================================================ */
+.fv-chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fv-bubble {
+  position: absolute;
+  width: 46%;
+  max-width: 120px;
+  height: 40px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  border: 1px solid var(--border-sub);
+}
+.fv-bubble i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.4;
+}
+.fv-bubble-l {
+  top: 22%;
+  left: 8%;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-sec);
+  border-bottom-left-radius: 4px;
+}
+.fv-bubble-r {
+  bottom: 20%;
+  right: 8%;
+  background: rgba(184, 227, 81, 0.12);
+  border-color: rgba(184, 227, 81, 0.35);
+  color: var(--brand);
+  border-bottom-right-radius: 4px;
+  justify-content: flex-end;
+}
+
+/* 飞行代币: 从左气泡飞向右气泡 */
+.fv-coin {
+  position: absolute;
+  top: 50%;
+  left: 26%;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 800;
+  background: var(--brand);
+  color: var(--brand-ink);
+  box-shadow: 0 0 16px rgba(184, 227, 81, 0.6);
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.feature-card:hover .fv-coin {
+  animation: fv-send 2.2s var(--ease-in-out) infinite;
+}
+
+@keyframes fv-send {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  18%  { opacity: 1; transform: translate(0, 0) scale(1); }
+  50%  { opacity: 1; transform: translate(120%, -30%) scale(1); }
+  80%  { opacity: 1; transform: translate(230%, 30%) scale(1); }
+  92%  { opacity: 0; transform: translate(230%, 30%) scale(0.5); }
+  100% { opacity: 0; transform: translate(230%, 30%) scale(0.4); }
+}
+
+/* ---------- 移动端: 横向滑动 + 圆点 (无 hover 设备让图形常动) ---------- */
+@media (hover: none) {
+  .fv-ring, .fv-pin { animation-play-state: running; }
+  .fv-plane {
+    animation: fv-fly 2.4s var(--ease-in-out) infinite;
+  }
+  .fv-coin { animation: fv-send 2.2s var(--ease-in-out) infinite; }
+}
+
 @media (max-width: 968px) {
   .features-grid {
     display: flex;
@@ -188,7 +421,6 @@ html[lang^="zh"] .feature-card h3 {
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    /* 撑满视口宽度再内padding, 让卡片能贴到屏幕边缘、右侧露出下一张的边角 */
     width: 100vw;
     margin-left: calc(50% - 50vw);
     padding: 4px var(--space-4) var(--space-2);
@@ -196,10 +428,8 @@ html[lang^="zh"] .feature-card h3 {
   .features-grid::-webkit-scrollbar { display: none; }
 
   .feature-card {
-    flex: 0 0 72%;
+    flex: 0 0 74%;
     scroll-snap-align: center;
-    aspect-ratio: 3 / 4;
-    max-height: 380px;
   }
 
   .features-dots {
@@ -228,4 +458,10 @@ html[lang^="zh"] .feature-card h3 {
 
 @media (min-width: 969px) {
   .features-dots { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fv-ring, .fv-pin, .fv-plane, .fv-coin, .fv-route, .fv-card-glare {
+    animation: none !important;
+  }
 }
