@@ -74,7 +74,8 @@
     "step2_desc": "Đổi sang tiền tệ nội địa theo tỷ giá thời gian thực, phí thấp và minh bạch.",
     "step3_title": "Nhận về ngân hàng",
     "step3_desc": "Rút về ngân hàng hoặc ví điện tử, nhanh nhất trong ngày.",
-    "currencies_note": "Hỗ trợ hơn 30 loại tiền pháp định và mạng lưới ngân hàng địa phương."
+    "currencies_note": "Hỗ trợ hơn 30 loại tiền pháp định và mạng lưới ngân hàng địa phương.",
+    "rate_disclaimer": "Tỷ giá minh họa, chỉ để tham khảo."
   },
   "partners": {
     "title": "Chương trình Đối tác Giới thiệu UUPAY",

@@ -74,7 +74,8 @@
     "step2_desc": "실시간 환율로 현지 통화로 환전, 낮고 투명한 수수료.",
     "step3_title": "은행 입금",
     "step3_desc": "은행 계좌나 전자지갑으로 출금, 최대 당일 도착.",
-    "currencies_note": "전 세계 30개 이상의 법정화폐와 현지 은행 네트워크 지원."
+    "currencies_note": "전 세계 30개 이상의 법정화폐와 현지 은행 네트워크 지원.",
+    "rate_disclaimer": "예시 환율이며 참고용입니다."
   },
   "partners": {
     "title": "UUPAY 추천 파트너 프로그램",

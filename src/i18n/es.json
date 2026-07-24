@@ -74,7 +74,8 @@
     "step2_desc": "Cambia a tu moneda local a tipo de cambio en tiempo real, con comisiones bajas y transparentes.",
     "step3_title": "Pago al banco",
     "step3_desc": "Retira a tu banco o monedero electrónico, en tan solo el mismo día.",
-    "currencies_note": "Compatible con más de 30 monedas fiat y redes bancarias locales."
+    "currencies_note": "Compatible con más de 30 monedas fiat y redes bancarias locales.",
+    "rate_disclaimer": "Tasas de ejemplo, solo ilustrativas."
   },
   "partners": {
     "title": "Programa de Socios de Referidos UUPAY",

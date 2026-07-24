@@ -74,7 +74,8 @@
     "step2_desc": "Swap to your local currency at real-time rates, with low and transparent fees.",
     "step3_title": "Bank payout",
     "step3_desc": "Withdraw to your bank or e-wallet, arriving as fast as the same day.",
-    "currencies_note": "Supporting 30+ fiat currencies and local bank networks worldwide."
+    "currencies_note": "Supporting 30+ fiat currencies and local bank networks worldwide.",
+    "rate_disclaimer": "Example rates, for illustration only."
   },
   "partners": {
     "title": "UUPAY Referral Partner Program",

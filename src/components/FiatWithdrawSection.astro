@@ -8,26 +8,38 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
 
-// 出金三步流程 (加密资产 → 一键兑换 → 银行到账)
+// 出金三步流程 (加密资产 → 一键兑换 → 银行到账) — 引擎下方的辅助说明条
 const steps = [
   {
     title: t('fiat.step1_title'), desc: t('fiat.step1_desc'),
-    // coins
     svg: '<circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/>',
   },
   {
     title: t('fiat.step2_title'), desc: t('fiat.step2_desc'),
-    // arrow-left-right (swap)
     svg: '<path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/>',
   },
   {
     title: t('fiat.step3_title'), desc: t('fiat.step3_desc'),
-    // landmark (bank)
     svg: '<line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/>',
   },
 ];
 
-const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'HKD', 'SGD', 'AUD', 'THB', 'IDR', 'MYR'];
+// 示例汇率 (每 1 USDT ≈ 多少当地法币) — 仅用于演示"出金"效果
+const rates = [
+  { code: 'CNY', symbol: '¥',   rate: 7.24 },
+  { code: 'USD', symbol: '$',   rate: 1.00 },
+  { code: 'EUR', symbol: '€',   rate: 0.92 },
+  { code: 'GBP', symbol: '£',   rate: 0.79 },
+  { code: 'JPY', symbol: '¥',   rate: 157 },
+  { code: 'HKD', symbol: 'HK$', rate: 7.82 },
+  { code: 'SGD', symbol: 'S$',  rate: 1.35 },
+  { code: 'THB', symbol: '฿',   rate: 36.5 },
+  { code: 'IDR', symbol: 'Rp',  rate: 16300 },
+  { code: 'MYR', symbol: 'RM',  rate: 4.70 },
+];
+const SEND = 1000; // 转出 1,000 USDT
+const first = rates[0];
+const fmt = (n: number) => n.toLocaleString('en-US', { maximumFractionDigits: 0 });
 ---
 
 <section class="fiat">
@@ -38,27 +50,224 @@ const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'HKD', 'SGD', 'AUD', 'THB', 'IDR
       <p>{t('fiat.subtitle')}</p>
     </div>
 
-    <div class="fiat-flow scroll-reveal">
+    <!-- 实时兑换引擎 -->
+    <div
+      class="fiat-engine scroll-reveal"
+      id="fiat-engine"
+      data-rates={JSON.stringify(rates)}
+      data-send={SEND}
+    >
+      <canvas class="fiat-beam" id="fiat-beam" aria-hidden="true"></canvas>
+
+      <!-- 左: 你转出 -->
+      <div class="fiat-node fiat-node--send">
+        <span class="fiat-node-label">{t('fiat.step1_title')}</span>
+        <div class="fiat-amount">
+          <span class="fiat-token" aria-hidden="true">₮</span>
+          <span class="fiat-amount-main">
+            <span class="fiat-amount-num">{fmt(SEND)}</span>
+            <span class="fiat-amount-code">USDT</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 中: 转换核心 -->
+      <div class="fiat-core" aria-hidden="true">
+        <span class="fiat-core-ring"></span>
+        <span class="fiat-core-ring fiat-core-ring--2"></span>
+        <span class="fiat-core-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/>
+          </svg>
+        </span>
+      </div>
+
+      <!-- 右: 你收到 -->
+      <div class="fiat-node fiat-node--receive">
+        <span class="fiat-node-label">{t('fiat.step3_title')}</span>
+        <div class="fiat-amount">
+          <span class="fiat-token fiat-token--fiat" id="fiat-out-symbol" aria-hidden="true">{first.symbol}</span>
+          <span class="fiat-amount-main">
+            <span class="fiat-amount-num fiat-out-num" id="fiat-out-num">{fmt(SEND * first.rate)}</span>
+            <span class="fiat-amount-code" id="fiat-out-code">{first.code}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 汇率跑马灯 -->
+    <div class="fiat-ticker" aria-hidden="true">
+      <div class="fiat-ticker-track">
+        {[0, 1].map(() => (
+          <div class="fiat-ticker-group">
+            {rates.map((r) => (
+              <span class="fiat-rate">
+                <span class="fiat-rate-pair">USDT/{r.code}</span>
+                <span class="fiat-rate-val">{r.rate.toLocaleString('en-US', { maximumFractionDigits: 2 })}</span>
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- 三步辅助说明条 -->
+    <div class="fiat-steps scroll-reveal">
       {steps.map((s, i) => (
         <div class="fiat-step stagger-item">
-          <div class="fiat-step-head">
-            <div class="fiat-step-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg} />
-            </div>
-            <span class="fiat-step-num">{`0${i + 1}`}</span>
+          <div class="fiat-step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg} />
           </div>
-          <h3>{s.title}</h3>
-          <p>{s.desc}</p>
+          <div class="fiat-step-body">
+            <span class="fiat-step-num" aria-hidden="true">{`0${i + 1}`}</span>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
         </div>
       ))}
     </div>
 
-    <div class="fiat-currencies scroll-reveal">
-      <div class="fiat-chips">
-        {currencies.map((c) => <span class="fiat-chip">{c}</span>)}
-        <span class="fiat-chip fiat-chip--more">30+</span>
-      </div>
-      <p class="fiat-note">{t('fiat.currencies_note')}</p>
-    </div>
+    <p class="fiat-note">{t('fiat.currencies_note')} · {t('fiat.rate_disclaimer')}</p>
   </div>
 </section>
+
+<script>
+  const engine = document.getElementById('fiat-engine');
+  const canvas = document.getElementById('fiat-beam') as HTMLCanvasElement | null;
+  const outNum = document.getElementById('fiat-out-num');
+  const outCode = document.getElementById('fiat-out-code');
+  const outSymbol = document.getElementById('fiat-out-symbol');
+
+  if (engine && canvas && outNum && outCode && outSymbol) {
+    interface Rate { code: string; symbol: string; rate: number; }
+    const rates: Rate[] = JSON.parse(engine.dataset.rates || '[]');
+    const send = Number(engine.dataset.send || 1000);
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fmt = (n: number) => Math.round(n).toLocaleString('en-US');
+
+    // ---- 右侧法币: 轮换币种 + 数字滚动 ----
+    let idx = 0;
+    const setCurrency = (i: number, animate: boolean) => {
+      const r = rates[i];
+      const val = send * r.rate;
+      outSymbol.textContent = r.symbol;
+      outCode.textContent = r.code;
+      if (animate && !reduce) {
+        // 数字做一次快速"滚动收敛", 制造兑换成交的动感
+        const start = performance.now();
+        const dur = 620;
+        const from = Number((outNum.textContent || '0').replace(/,/g, '')) || 0;
+        const tick = (now: number) => {
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          outNum.textContent = fmt(from + (val - from) * eased);
+          if (p < 1) requestAnimationFrame(tick);
+          else outNum.textContent = fmt(val);
+        };
+        requestAnimationFrame(tick);
+        // 触发一次光束脉冲
+        pulse();
+      } else {
+        outNum.textContent = fmt(val);
+      }
+    };
+    setCurrency(0, false);
+
+    // ---- 光束粒子 (canvas) ----
+    const ctx = canvas.getContext('2d');
+    let W = 0, H = 0, dpr = 1;
+    let vertical = false;
+    const resize = () => {
+      const r = canvas.getBoundingClientRect();
+      W = r.width; H = r.height;
+      vertical = W < 520; // 窄屏: 光束改为竖向
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    // 沿光束流动的粒子 (t: 0→1 进度; s: 速度; b: 是否高亮脉冲)
+    interface P { t: number; s: number; off: number; b: boolean; }
+    const parts: P[] = [];
+    const spawn = (bright = false) => {
+      parts.push({ t: 0, s: 0.006 + Math.random() * 0.006, off: (Math.random() - 0.5) * 10, b: bright });
+    };
+    for (let i = 0; i < 14; i++) parts.push({ t: Math.random(), s: 0.006 + Math.random() * 0.006, off: (Math.random() - 0.5) * 10, b: false });
+
+    const pulse = () => { for (let i = 0; i < 6; i++) spawn(true); };
+
+    const pos = (t: number, off: number) => {
+      if (vertical) return { x: W / 2 + off, y: t * H };
+      return { x: t * W, y: H / 2 + off };
+    };
+
+    let raf = 0;
+    let running = false;
+    const draw = () => {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, W, H);
+      // 基线
+      const grad = vertical
+        ? ctx.createLinearGradient(0, 0, 0, H)
+        : ctx.createLinearGradient(0, 0, W, 0);
+      grad.addColorStop(0, 'rgba(184,227,81,0.05)');
+      grad.addColorStop(0.5, 'rgba(184,227,81,0.35)');
+      grad.addColorStop(1, 'rgba(184,227,81,0.05)');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      if (vertical) { ctx.moveTo(W / 2, 0); ctx.lineTo(W / 2, H); }
+      else { ctx.moveTo(0, H / 2); ctx.lineTo(W, H / 2); }
+      ctx.stroke();
+
+      for (let i = parts.length - 1; i >= 0; i--) {
+        const p = parts[i];
+        p.t += p.s;
+        if (p.t >= 1) {
+          if (p.b) { parts.splice(i, 1); continue; } // 脉冲粒子跑完即销毁
+          p.t = 0; p.off = (Math.random() - 0.5) * 10;
+        }
+        const { x, y } = pos(p.t, p.off);
+        const fade = Math.sin(p.t * Math.PI); // 两端淡入淡出
+        const rad = p.b ? 3.2 : 1.8;
+        ctx.beginPath();
+        ctx.arc(x, y, rad, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(201,242,100,${(p.b ? 0.95 : 0.7) * fade})`;
+        ctx.shadowColor = 'rgba(184,227,81,0.9)';
+        ctx.shadowBlur = p.b ? 14 : 7;
+        ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+      raf = requestAnimationFrame(draw);
+    };
+
+    // ---- 生命周期: 进视口才跑, 出视口/切后台暂停 ----
+    let cycle = 0;
+    const start = () => {
+      if (running || reduce) return; // 减少动态效果: 保持静态首个币种, 不跑光束也不轮换
+      running = true;
+      raf = requestAnimationFrame(draw);
+      cycle = window.setInterval(() => {
+        idx = (idx + 1) % rates.length;
+        setCurrency(idx, true);
+      }, 2600);
+    };
+    const stop = () => {
+      running = false;
+      if (raf) cancelAnimationFrame(raf), raf = 0;
+      if (cycle) clearInterval(cycle), cycle = 0;
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? start() : stop()));
+    }, { threshold: 0.15 });
+    io.observe(engine);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else if (engine.getBoundingClientRect().top < window.innerHeight) start();
+    });
+  }
+</script>

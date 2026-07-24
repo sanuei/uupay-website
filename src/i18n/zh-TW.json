@@ -74,7 +74,8 @@
     "step2_desc": "按即時匯率兌換成當地法幣，費率低且透明。",
     "step3_title": "銀行到帳",
     "step3_desc": "提現到銀行卡或電子錢包，最快當日到帳。",
-    "currencies_note": "支援全球 30+ 種法幣與當地銀行網路。"
+    "currencies_note": "支援全球 30+ 種法幣與當地銀行網路。",
+    "rate_disclaimer": "示例匯率，僅供參考。"
   },
   "partners": {
     "title": "UUPAY 推薦合夥人計劃",

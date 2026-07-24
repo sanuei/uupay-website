@@ -74,7 +74,8 @@
     "step2_desc": "Tukar ke mata uang lokal dengan kurs real-time, biaya rendah dan transparan.",
     "step3_title": "Cair ke bank",
     "step3_desc": "Tarik ke bank atau e-wallet, tiba secepat hari yang sama.",
-    "currencies_note": "Mendukung 30+ mata uang fiat dan jaringan bank lokal di seluruh dunia."
+    "currencies_note": "Mendukung 30+ mata uang fiat dan jaringan bank lokal di seluruh dunia.",
+    "rate_disclaimer": "Kurs contoh, hanya untuk ilustrasi."
   },
   "partners": {
     "title": "Program Mitra Referal UUPAY",
