@@ -13,6 +13,20 @@ const currentYear = new Date().getFullYear();
 // 帮助中心(Intercom)只提供这 6 种语言, 站内其余语言(ko/vi/ms/id/ar)兜底到英文
 const helpLocales = ['en', 'zh-CN', 'zh-TW', 'ja', 'th', 'es'];
 const helpUrl = `https://help.uupay.com/${helpLocales.includes(lang) ? lang : 'en'}/`;
+
+// Blog 语言路由: URL 维持需求约定的小写目录与末尾根斜杠,方便 SEO 爬虫直接追踪
+const blogUrls: Record<string, string> = {
+  en: 'https://uupay.com/en/blog/',
+  'zh-CN': 'https://uupay.com/zh-cn/blog/',
+  'zh-TW': 'https://uupay.com/zh-tw/blog/',
+  th: 'https://uupay.com/th/blog/',
+  ja: 'https://uupay.com/ja/blog/',
+  pt: 'https://uupay.com/pt/blog/',
+  es: 'https://uupay.com/es/blog/',
+  ko: 'https://uupay.com/ko/blog/',
+  bn: 'https://uupay.com/bn/blog/',
+};
+const blogUrl = blogUrls[lang];
 ---
 
 <footer class="footer">
@@ -69,6 +83,7 @@ const helpUrl = `https://help.uupay.com/${helpLocales.includes(lang) ? lang : 'e
       <div class="footer-col">
         <h4>{t('footer.support')}</h4>
         <ul class="footer-links">
+          <li><a href={blogUrl} target="_blank" rel="noopener noreferrer">UUPAY BLOG</a></li>
           <li><a href={helpUrl}>{t('footer.help_center')}</a></li>
           <li><a href="mailto:customerservice@uupay.com">{t('footer.contact_support')}</a></li>
           <li><a href="mailto:official@uupay.com">{t('footer.business')}</a></li>
