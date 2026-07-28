@@ -12,35 +12,52 @@ const base = lang === 'en' ? '' : `/${lang}`;
 
 <section class="promos section-lift">
   <div class="container">
-    <div class="section-head--label scroll-reveal">
-      <span class="eyebrow">PROMOTIONS</span>
+    <!-- Header: Linear 风格 2 行标题 + 右侧说明与章标 -->
+    <div class="section-head--split scroll-reveal">
       <h2 set:html={t('promotions.title_html')} />
       <p>{t('promotions.subtitle')}</p>
     </div>
 
+    <!-- 2 张精致的活动卡片 -->
     <div class="promos-grid">
+      <!-- 1. 爆款卡片: 品牌柠檬绿实底 + 1 USDT 金额大字 -->
       <div class="promo-card solid scroll-reveal stagger-item">
-        <span class="promo-num" aria-hidden="true">01</span>
-        <span class="promo-badge pulse">HOT</span>
+        <div class="promo-card-top">
+          <span class="promo-badge pulse">{t('promotions.promo1_tag')}</span>
+          <span class="promo-num" aria-hidden="true">01</span>
+        </div>
+        
         <div class="promo-body">
-          <div class="promo-eyebrow">PROMO 01</div>
+          <div class="promo-highlight">
+            <span class="val">1 USDT</span>
+            <span class="sub">VIRTUAL CARD</span>
+          </div>
           <h3>{t('promotions.promo1_title')}</h3>
           <p>{t('promotions.promo1_desc')}</p>
         </div>
+
         <a href={`${base}/promotions`} class="promo-cta">
           {t('promotions.cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
       </div>
 
+      <!-- 2. 零手续费卡片: 暗黑高质感玻璃 + 0% 零费率浮雕标志 -->
       <div class="promo-card outline scroll-reveal stagger-item">
-        <span class="promo-num" aria-hidden="true">02</span>
-        <span class="promo-badge">NEW</span>
+        <div class="promo-card-top">
+          <span class="promo-badge neon">{t('promotions.promo2_tag')}</span>
+          <span class="promo-num" aria-hidden="true">02</span>
+        </div>
+
         <div class="promo-body">
-          <div class="promo-eyebrow">PROMO 02</div>
+          <div class="promo-highlight glow-green">
+            <span class="val">0%</span>
+            <span class="sub">TOP-UP FEE</span>
+          </div>
           <h3>{t('promotions.promo2_title')}</h3>
           <p>{t('promotions.promo2_desc')}</p>
         </div>
+
         <a href={`${base}/promotions`} class="promo-cta">
           {t('promotions.cta')}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -51,7 +68,6 @@ const base = lang === 'en' ? '' : `/${lang}`;
 </section>
 
 <script>
-  // 鼠标跟随聚光灯: 仅悬停型指针设备 + 非 reduced-motion, 与 CardShowcase 的 tilt 交互同一套准入条件
   if (matchMedia('(hover: hover) and (pointer: fine)').matches
       && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll<HTMLElement>('.promo-card').forEach((card) => {

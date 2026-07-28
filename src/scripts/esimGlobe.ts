@@ -77,9 +77,9 @@ export async function initEsimGlobe(canvas: HTMLCanvasElement): Promise<GlobeHan
   renderer.setClearColor(0x000000, 0);
 
   const scene = new Scene();
-  // 相机拉远一点, 让整颗球 + 大气辉光四周都留出余量, 避免辉光被画布边缘硬裁
+  // 相机拉远 (4.8), 保证整颗球 + 高耸弧线 100% 包含在 Canvas 视口中, 绝无裁切
   const camera = new PerspectiveCamera(34, 1, 0.1, 100);
-  camera.position.set(0, 0, 4.0);
+  camera.position.set(0, 0, 4.8);
 
   // 地球组 (统一自转 + 拖拽)
   const globe = new Group();
@@ -394,7 +394,7 @@ function greatCircleArc(start: Vector3, end: Vector3): CatmullRomCurve3 {
   const pts: Vector3[] = [];
   const segs = 24;
   const dist = start.distanceTo(end);
-  const lift = 0.18 + dist * 0.22;   // 距离越远弧越高
+  const lift = 0.12 + dist * 0.16;   // 贴合地表的精致跃迁弧度
   for (let i = 0; i <= segs; i++) {
     const t = i / segs;
     const v = new Vector3().copy(start).lerp(end, t).normalize();

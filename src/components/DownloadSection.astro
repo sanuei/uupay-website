@@ -16,9 +16,7 @@ const brandLogos = [siVisa, siMastercard, siTether, siBitcoin, siEthereum, siSol
 <section id="download" class="download">
   <div class="container">
     <div class="download-box scroll-reveal">
-      <span class="eyebrow eyebrow--center">DOWNLOAD</span>
-      <h2>{t('download.title')}</h2>
-      <p>{t('download.subtitle')}</p>
+      <h2 set:html={t('download.title_html')} />
 
       <div class="download-buttons">
         <a
@@ -69,7 +67,6 @@ const brandLogos = [siVisa, siMastercard, siTether, siBitcoin, siEthereum, siSol
 
 <div class="brand-marquee">
   <div class="marquee-track">
-    <!-- 6 份拷贝: 单份内容宽度不足以铺满宽屏(2K/超宽屏), 份数太少滚动到末尾会露出空白, 循环感断裂 -->
     {Array.from({ length: 6 }).map(() => (
       <>
         {brandLogos.map((brand) => (

@@ -16,7 +16,8 @@
   border-radius: var(--r-xl);
   padding: var(--space-8);
   position: relative;
-  overflow: hidden;
+  /* 允许飞线光辉动画舒展飞出卡片边缘，不被硬切 */
+  overflow: visible;
 }
 
 .esim-card::before {
@@ -38,10 +39,10 @@
 }
 
 .esim-info h2 {
-  font-size: var(--fs-h1);
+  font-size: var(--fs-h2);
   font-weight: var(--fw-heading);
-  line-height: 1;
-  letter-spacing: -0.022em;
+  line-height: 1.1;
+  letter-spacing: var(--ls-h2);
   margin-bottom: var(--space-4);
 }
 
@@ -49,11 +50,11 @@
   font-size: var(--fs-body-lg);
   color: var(--text-sec);
   line-height: 1.6;
-  margin-bottom: var(--space-6);
+  letter-spacing: var(--ls-body);
+  margin-bottom: var(--space-8);
 }
 
-/* 3 张横向扁卡: 图标在左, 标题+说明在右, 竖直堆叠。
-   刻意做成"横向扁卡", 与 Features 的竖向大卡网格区分, 不撞版式。 */
+/* 3 张横向扁卡: 图标在左, 标题+说明在右, 竖直堆叠 */
 .esim-features {
   display: flex;
   flex-direction: column;
@@ -109,20 +110,23 @@
   margin: 0;
 }
 
-/* 右列占位: 撑开卡片高度, 给放大的地球留出纵向空间 */
+/* 右列占位: 撑开卡片高度, 居中呈现地球 */
 .esim-visual {
   position: relative;
-  min-height: 440px;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1;
 }
 
-/* three.js 渲染的 3D 点阵地球: 锚定在右列内并向右下角轻微溢出, 溢出被卡片 overflow:hidden 裁掉,
-   形成"嵌在角落"的高级质感; 收窄尺寸避免左边缘压到左侧功能卡 */
+/* three.js 渲染的 3D 点阵地球: 完美在右侧栏内垂直/水平居中, 不再贴边 */
 .esim-globe {
   position: absolute;
-  right: -20%;
-  bottom: -24%;
-  width: min(120%, 640px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(118%, 620px);
   aspect-ratio: 1;
   height: auto;
   cursor: grab;
@@ -138,18 +142,15 @@
 
 
 @media (max-width: 968px) {
-  .esim-card { grid-template-columns: 1fr; padding: var(--space-6); }
-  /* 移动端地球回到常规居中, 不做角落溢出 */
+  .esim-card {
+    grid-template-columns: 1fr;
+    padding: var(--space-6);
+    overflow: hidden; /* 移动端防截断留容错 */
+  }
   .esim-visual {
     min-height: 360px;
   }
   .esim-globe {
-    /* 地球比容器宽(112%), auto-margin 居中在"内容比容器大"时会失效(负 margin 被钳到 0,
-       导致贴左溢右) —— 改用 left/top 50% + translate(-50%,-50%), 无论尺寸大小都能真居中 */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: min(112%, 440px);
+    width: min(100%, 400px);
   }
 }

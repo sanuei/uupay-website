@@ -23,8 +23,8 @@
     "cta_download": "下載 App"
   },
   "features": {
-    "title": "把加密資產，用成日常",
-    "subtitle": "全球消費、資產管理、即時轉帳，一個 App 全部搞定。",
+    "title": "把加密資產，融進每一天的真實生活",
+    "subtitle": "全球消費、資產管理、即時轉帳，一個 App 開啟無縫加密生活。",
     "card1_title": "加密貨幣卡",
     "card1_desc": "U 卡支援 Visa 與 Mastercard，全球數千萬商戶即刷即付，即開即用。",
     "card2_title": "全球 eSIM",
@@ -33,40 +33,45 @@
     "card3_desc": "一站式預訂全球機票與飯店，加密貨幣直接支付，說走就走。",
     "card4_title": "聊天即轉賬",
     "card4_desc": "像聊天一樣發送資金，支持紅包、禮品和用戶間免手續費的同名劃轉。",
-    "title_html": "把<span class=\"kw\">加密資產</span>，用成日常",
+    "title_html": "把<span class=\"kw\">加密資產</span><br>融進每一天的真實生活",
+    "code": "PRODUCTS",
     "card1_cta": "了解 U 卡",
     "card2_cta": "了解 eSIM",
     "card3_cta": "了解機酒預訂",
     "card4_cta": "了解聊天轉賬"
   },
   "cardShowcase": {
-    "title": "選擇專屬你的卡片",
-    "subtitle": "實體卡或虛擬卡，Visa 或 Mastercard 雙卡組織任選，覆蓋你的各種消費場景。",
+    "title": "挑選屬於你的全場景加密支付卡",
+    "subtitle": "實體卡與虛擬卡雙重組合，Visa / Mastercard 渠道全量支持。",
     "virtual_title": "靈活便捷的虛擬卡",
     "virtual_desc": "1 分鐘開卡即用，輕鬆綁定各類海淘平台與全球主流 SaaS 訂閱。",
     "physical_title": "霧面黑實體卡",
     "physical_desc": "金屬質感霧面黑，全球 Visa ATM 取現、POS 消費通行，免收境外交易費。",
-    "title_html": "選擇專屬<span class=\"kw\">你的卡片</span>"
+    "title_html": "挑選屬於你的<br>全場景<span class=\"kw\">加密支付卡</span>",
+    "code": "CRYPTO CARDS"
   },
   "stats": {
     "countries": "覆蓋國家與地區",
     "partners": "全球合作伙伴",
     "rewards": "已發放佣金總額",
-    "title_html": "被全球用戶<span class=\"kw\">選擇</span>"
+    "title_html": "數以萬計用戶的<br>全球支付<span class=\"kw\">首選</span>",
+    "code": "BY THE NUMBERS"
   },
   "esim": {
-    "title": "使用 eSIM 連接世界",
+    "title": "無需實體卡，用 eSIM 即刻連接全球",
     "subtitle": "免實體卡，免漫遊費。落地即刻聯網，隨時暢享高速網絡。",
     "desc1": "一張 eSIM 覆蓋全球主流目的地，落地自動連網。",
     "desc2": "支持 USDT 支付，掃碼秒級激活啟用。",
     "desc3": "專為數字遊民量身打造的多樣流量套餐。",
-    "title_html": "使用 eSIM <span class=\"kw\">連接世界</span>",
+    "title_html": "無需實體卡<br>用 eSIM <span class=\"kw\">即刻連接全球</span>",
+    "code": "eSIM MOBILE",
     "feat1_title": "全球覆蓋",
     "feat2_title": "極速啟用",
     "feat3_title": "靈活套餐"
   },
   "fiat": {
-    "title_html": "一鍵出金到<span class=\"kw\">當地法幣</span>",
+    "title_html": "一鍵極速出金<br>直達<span class=\"kw\">當地法幣</span>",
+    "code": "FIAT EXPRESS",
     "subtitle": "將 USDT 兌換成法幣，分鐘級提現到銀行帳戶——由持牌金融機構合規結算。",
     "step1_title": "加密資產",
     "step1_desc": "在 UUPAY 帳戶中直接持有 USDT 及主流穩定幣。",
@@ -82,24 +87,40 @@
     "subtitle": "推薦好友開卡消費，最高可享 50% 返傭。",
     "earn": "開始賺取佣金",
     "apply": "申請加入合夥人",
-    "title_html": "推薦 <span class=\"kw\">UUPAY</span>，賺取 <span class=\"kw\">50%</span> 佣金",
+    "title_html": "推薦好友加入<br>分享最高 <span class=\"kw\">50% 返佣</span>",
+    "code": "PARTNERSHIP",
     "stat1_label": "UUPAY 合夥人",
     "stat2_label": "累計佣金發放",
     "stat3_label": "合夥人月均收入",
-    "stat4_label": "即時結算"
+    "stat4_label": "即時結算",
+    "form_title": "成為 UUPAY 推薦合夥人",
+    "form_desc": "尊享獨家渠道權益、優先客戶支持與直連銀行通道，最高可享 50% 階梯返傭。",
+    "form_cta": "提交合作申請表"
   },
   "promotions": {
     "title": "限時特惠活動",
-    "subtitle": "專為早期用戶準備的專屬福利。",
+    "subtitle": "專為早期用戶打造的專屬福利套餐。",
     "promo1_title": "1 USDT 開虛擬卡",
-    "promo1_desc": "活動期間僅需 1 USDT 即可開卡，開卡即送 1 USDT 消費金。",
-    "promo2_title": "充值手續費全免",
-    "promo2_desc": "活動期間所有充值與劃轉通道尊享 0 手續費優惠。",
-    "title_html": "限時 <span class=\"kw\">特惠</span> 活動",
+    "promo1_desc": "活動期間僅需 1 USDT 即可開卡，開卡即送 1 USDT 消費抵扣金。",
+    "promo1_tag": "HOT 爆款",
+    "promo2_title": "充值劃轉 0 手續費",
+    "promo2_desc": "活動期間所有充值與劃轉通道尊享 0 手續費全免優惠。",
+    "promo2_tag": "FREE 零費率",
+    "promo3_title": "邀請好友雙倍返傭",
+    "promo3_desc": "成功推薦好友開卡消費，返傭比例限時翻倍，最高尊享 50% 返傭。",
+    "promo3_tag": "DOUBLE 翻倍",
+    "title_html": "專為早期用戶打造的<br>限時<span class=\"kw\">特惠福利</span>",
+    "code": "SPECIAL OFFERS",
     "cta": "立即參與"
+  },
+  "announcements": {
+    "title": "公告中心",
+    "subtitle": "隨時獲取 UUPAY 的最新產品動態、安全更新與活動資訊。"
   },
   "download": {
     "title": "下載 UUPAY App",
+    "title_html": "隨時隨地，開啟<br><span class=\"kw\">無界加密支付</span>",
+    "code": "DOWNLOAD APP",
     "subtitle": "掃描下方二維碼或前往應用商店下載官方 App 體驗。",
     "ios": "App Store 下載",
     "android": "Google Play 下載",

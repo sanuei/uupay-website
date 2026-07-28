@@ -23,8 +23,8 @@
     "cta_download": "下载 App"
   },
   "features": {
-    "title": "把加密资产，用成日常",
-    "subtitle": "全球消费、资产管理、即时转账，一个 App 全部搞定。",
+    "title": "把加密资产，融进每一天的真实生活",
+    "subtitle": "全球消费、资产管理、即时转账，一个 App 开启无缝加密生活。",
     "card1_title": "加密货币卡",
     "card1_desc": "U 卡支持 Visa 与 Mastercard，全球数千万商户即刷即付，即开即用。",
     "card2_title": "全球 eSIM",
@@ -33,40 +33,45 @@
     "card3_desc": "一站式预订全球机票与酒店，加密货币直接支付，说走就走。",
     "card4_title": "聊天即转账",
     "card4_desc": "像聊天一样发送资金，支持红包、礼品和用户间免手续费的同名划转。",
-    "title_html": "把<span class=\"kw\">加密资产</span>，用成日常",
+    "title_html": "把<span class=\"kw\">加密资产</span><br>融进每一天的真实生活",
+    "code": "PRODUCTS",
     "card1_cta": "了解 U 卡",
     "card2_cta": "了解 eSIM",
     "card3_cta": "了解机酒预定",
     "card4_cta": "了解聊天转账"
   },
   "cardShowcase": {
-    "title": "选择专属你的卡片",
-    "subtitle": "实体卡或虚拟卡，Visa 或 Mastercard 双卡组织任选，覆盖你的各种消费场景。",
+    "title": "挑选属于你的全场景加密支付卡",
+    "subtitle": "实体卡与虚拟卡双重组合，Visa / Mastercard 渠道全量支持。",
     "virtual_title": "灵活便捷的虚拟卡",
     "virtual_desc": "1 分钟开卡即用，轻松绑定各类海淘平台与全球主流 SaaS 订阅。",
     "physical_title": "哑光黑实体卡",
     "physical_desc": "金属质感哑光黑，全球 Visa ATM 取现、POS 消费通行，免收境外交易费。",
-    "title_html": "选择专属<span class=\"kw\">你的卡片</span>"
+    "title_html": "挑选属于你的<br>全场景<span class=\"kw\">加密支付卡</span>",
+    "code": "CRYPTO CARDS"
   },
   "stats": {
     "countries": "覆盖国家与地区",
     "partners": "全球合作伙伴",
     "rewards": "已发放佣金总额",
-    "title_html": "被全球用户<span class=\"kw\">选择</span>"
+    "title_html": "数以万计用户的<br>全球支付<span class=\"kw\">首选</span>",
+    "code": "BY THE NUMBERS"
   },
   "esim": {
-    "title": "使用 eSIM 连接世界",
+    "title": "无需实体卡，用 eSIM 即刻连接全球",
     "subtitle": "免实体卡，免漫游费。落地即刻联网，随时畅享高速网络。",
     "desc1": "一张 eSIM 覆盖全球主流目的地，落地自动连网。",
     "desc2": "支持 USDT 支付，扫码秒级激活启用。",
     "desc3": "专为数字游民量身打造的多样流量套餐。",
-    "title_html": "使用 eSIM <span class=\"kw\">连接世界</span>",
+    "title_html": "无需实体卡<br>用 eSIM <span class=\"kw\">即刻连接全球</span>",
+    "code": "eSIM MOBILE",
     "feat1_title": "全球覆盖",
     "feat2_title": "极速激活",
     "feat3_title": "灵活套餐"
   },
   "fiat": {
-    "title_html": "一键出金到<span class=\"kw\">当地法币</span>",
+    "title_html": "一键极速出金<br>直达<span class=\"kw\">当地法币</span>",
+    "code": "FIAT EXPRESS",
     "subtitle": "把 USDT 兑换成法币，分钟级提现到银行账户——由持牌金融机构合规结算。",
     "step1_title": "加密资产",
     "step1_desc": "在 UUPAY 账户中直接持有 USDT 及主流稳定币。",
@@ -82,24 +87,40 @@
     "subtitle": "推荐好友开卡消费，最高可享 50% 返佣。",
     "earn": "开始赚取佣金",
     "apply": "申请加入合伙人",
-    "title_html": "推荐 <span class=\"kw\">UUPAY</span>，赚取 <span class=\"kw\">50%</span> 佣金",
+    "title_html": "推荐好友加入<br>分享最高 <span class=\"kw\">50% 返佣</span>",
+    "code": "PARTNERSHIP",
     "stat1_label": "UUPAY 合伙人",
     "stat2_label": "累计佣金发放",
     "stat3_label": "合伙人月均收入",
-    "stat4_label": "实时结算"
+    "stat4_label": "实时结算",
+    "form_title": "成为 UUPAY 推荐合伙人",
+    "form_desc": "尊享独家渠道权益、优先客户支持与直连银行通道，最高可享 50% 阶梯返佣。",
+    "form_cta": "提交合作申请表"
   },
   "promotions": {
     "title": "限时特惠活动",
-    "subtitle": "专为早期用户准备的专属福利。",
+    "subtitle": "专为早期用户打造的专属福利套餐。",
     "promo1_title": "1 USDT 开虚拟卡",
-    "promo1_desc": "活动期间仅需 1 USDT 即可开卡，开卡即送 1 USDT 消费金。",
-    "promo2_title": "充值手续费全免",
-    "promo2_desc": "活动期间所有充值与划转通道尊享 0 手续费优惠。",
-    "title_html": "限时 <span class=\"kw\">特惠</span> 活动",
+    "promo1_desc": "活动期间仅需 1 USDT 即可开卡，开卡即送 1 USDT 消费抵扣金。",
+    "promo1_tag": "HOT 爆款",
+    "promo2_title": "充值划转 0 手续费",
+    "promo2_desc": "活动期间所有充值与划转通道尊享 0 手续费全免优惠。",
+    "promo2_tag": "FREE 零费率",
+    "promo3_title": "邀请好友双倍返佣",
+    "promo3_desc": "成功推荐好友开卡消费，返佣比例限时翻倍，最高尊享 50% 返佣。",
+    "promo3_tag": "DOUBLE 翻倍",
+    "title_html": "专为早期用户打造的<br>限时<span class=\"kw\">特惠福利</span>",
+    "code": "SPECIAL OFFERS",
     "cta": "立即参与"
+  },
+  "announcements": {
+    "title": "公告中心",
+    "subtitle": "随时获取 UUPAY 的最新产品动态、安全更新与活动资讯。"
   },
   "download": {
     "title": "下载 UUPAY App",
+    "title_html": "一个 App，<br><span class=\"kw\">全球都是你的主场。</span>",
+    "code": "DOWNLOAD APP",
     "subtitle": "扫描下方二维码或前往应用商店下载官方 App 体验。",
     "ios": "App Store 下载",
     "android": "Google Play 下载",
@@ -107,6 +128,8 @@
   },
   "faq": {
     "title": "常见问题",
+    "title_html": "你关心的<br><span class=\"kw\">解答与指南</span>",
+    "code": "FAQ",
     "viewMore": "查看全部问题",
     "q1": "UUPAY 提供哪些服务？",
     "a1": "UUPAY 是一站式加密支付平台，提供 Visa & Mastercard 虚拟卡与实体卡、全球 eSIM 流量套餐、合规法币出金，以及像聊天一样便捷的即时转账，一个 App 满足全部需求。",
@@ -140,7 +163,8 @@
     "description": "UUPAY 是面向全球用户的加密支付平台，依托 Visa / Mastercard，让你用加密资产在全球刷卡消费、购买 eSIM、合规出金。"
   },
   "appShowcase": {
-    "title_html": "体验 <span class=\"kw\">UUPAY App</span>",
+    "title_html": "口袋里的全能钱包<br>掌控<span class=\"kw\">每一笔支付</span>",
+    "code": "06.0 MOBILE APP",
     "subtitle": "5 个核心功能，一屏掌握。逐屏浏览，感受 UUPAY 如何改变你的加密消费。",
     "slide1_title": "资产总览",
     "slide1_desc": "预估总资产、钱包与卡片资产拆分、USDT 余额、快捷入口一屏掌控。",
@@ -154,8 +178,9 @@
     "slide5_desc": "账户安全、系统设置、eSIM 一键购买，128-bit 加密守护每一笔交易。"
   },
   "security": {
-    "title_html": "安全，经得起<span class=\"kw\">验证</span>",
-    "subtitle": "资金、数据、结算，每一层都是银行级防护。",
+    "title_html": "从资产、数据到结算<br><span class=\"kw\">每一层都是银行级防护</span>",
+    "code": "SECURITY",
+    "subtitle": "",
     "p1_title": "银行级加密",
     "p1_desc": "静态数据 AES-256、传输 TLS 1.3，每笔交易与 KYC 信息全程加密。",
     "p2_title": "持牌法币结算",

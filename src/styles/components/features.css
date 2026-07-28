@@ -94,8 +94,8 @@
 }
 
 .feature-card.solid .feature-visual {
-  border-bottom-color: rgba(5, 6, 7, 0.12);
-  background: radial-gradient(120% 120% at 50% 0%, rgba(5, 6, 7, 0.12), transparent 60%);
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  background: radial-gradient(120% 120% at 50% 0%, rgba(0, 0, 0, 0.12), transparent 60%);
 }
 
 /* ---------- 内容区 ---------- */
