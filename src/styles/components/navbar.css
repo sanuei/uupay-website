@@ -101,7 +101,7 @@
   height: 36px !important;
   padding: 0 18px !important;
   font-size: 13px !important;
-  font-weight: 700 !important;
+  font-weight: var(--fw-strong) !important;
   border-radius: var(--r-pill) !important;
   white-space: nowrap;
   /* .btn 的 transform 过渡会让这个按钮被提升为独立合成层; 嵌在 .navbar 的
@@ -154,7 +154,7 @@
 
 .lang-code {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: 0.05em;
   color: inherit;
   min-width: 16px;
@@ -211,7 +211,7 @@
 .lang-dropdown-header {
   padding: 8px 16px 4px;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-mute);
@@ -250,7 +250,7 @@
 
 .lang-option.active {
   color: var(--brand);
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   background: rgba(184, 227, 81, 0.04);
 }
 

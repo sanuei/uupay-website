@@ -46,9 +46,9 @@
 
 .lifestyle-content h2 {
   font-size: var(--fs-h1);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-weight: var(--fw-heading);
+  line-height: 1;
+  letter-spacing: -0.022em;
   color: var(--text-pri);
   margin-bottom: var(--space-4);
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);

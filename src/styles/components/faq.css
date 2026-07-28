@@ -14,7 +14,7 @@
 
 .faq-intro h2 {
   font-size: var(--fs-h2);
-  font-weight: 900;
+  font-weight: var(--fw-heading);
   letter-spacing: -0.02em;
   margin-bottom: var(--space-5);
 }
@@ -63,7 +63,7 @@
 
 .faq-num {
   font-size: var(--fs-body);
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   color: var(--text-mute);
   flex-shrink: 0;
 }

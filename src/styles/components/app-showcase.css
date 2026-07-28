@@ -52,7 +52,7 @@
 
 .slide-eyebrow {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--brand);
@@ -61,9 +61,9 @@
 
 .slide-title {
   font-size: clamp(40px, 5vw, 64px);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-weight: var(--fw-heading);
+  line-height: 1;
+  letter-spacing: -0.022em;
   color: var(--text-pri);
   margin-bottom: var(--space-4);
 }

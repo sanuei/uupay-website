@@ -33,10 +33,10 @@
 
 .partner-stat .num {
   font-size: 36px;
-  font-weight: 900;
+  font-weight: var(--fw-heading);
   color: var(--brand);
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.022em;
 }
 
 .partner-stat .label {
@@ -47,9 +47,9 @@
 
 .partner-info h2 {
   font-size: var(--fs-h1);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-weight: var(--fw-heading);
+  line-height: 1;
+  letter-spacing: -0.022em;
   margin-bottom: var(--space-4);
 }
 

@@ -30,9 +30,9 @@
 
 .download h2 {
   font-size: var(--fs-h1);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-weight: var(--fw-heading);
+  line-height: 1;
+  letter-spacing: -0.022em;
   margin-bottom: var(--space-4);
 }
 
@@ -102,7 +102,7 @@
 
 .download-btn .label .big {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: var(--fw-strong);
 }
 
 .brand-marquee {
@@ -151,7 +151,7 @@
 
 .marquee-label {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: 0.04em;
 }
 

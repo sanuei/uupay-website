@@ -72,7 +72,7 @@
 
 .fiat-node-label {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--brand);
@@ -98,7 +98,7 @@
   justify-content: center;
   border-radius: 50%;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: var(--fw-heading);
   background: var(--brand);
   color: var(--brand-ink);
   box-shadow: 0 0 0 6px rgba(184, 227, 81, 0.12), 0 8px 20px -6px rgba(184, 227, 81, 0.5);
@@ -123,8 +123,8 @@
 
 .fiat-amount-num {
   font-size: clamp(26px, 3.4vw, 40px);
-  font-weight: 900;
-  letter-spacing: -0.03em;
+  font-weight: var(--fw-numeral);
+  letter-spacing: -0.022em;
   color: var(--text-pri);
   font-variant-numeric: tabular-nums;
 }
@@ -136,7 +136,7 @@
 
 .fiat-amount-code {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: 0.08em;
   color: var(--text-sec);
   margin-top: 4px;
@@ -232,14 +232,14 @@
 
 .fiat-rate-pair {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: 0.06em;
   color: var(--text-sec);
 }
 
 .fiat-rate-val {
   font-size: 15px;
-  font-weight: 800;
+  font-weight: var(--fw-heading);
   color: var(--brand);
   font-variant-numeric: tabular-nums;
 }
@@ -282,7 +282,7 @@
 
 .fiat-step-num {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: var(--fw-heading);
   letter-spacing: 0.1em;
   color: var(--brand);
   opacity: 0.5;
@@ -290,12 +290,10 @@
 
 .fiat-step-body h3 {
   font-size: var(--fs-body-lg);
-  font-weight: 800;
+  font-weight: var(--fw-heading);
   letter-spacing: -0.01em;
   margin: 2px 0 6px;
 }
-
-html[lang^="zh"] .fiat-step-body h3 { font-weight: 600; }
 
 .fiat-step-body p {
   font-size: var(--fs-body-sm);

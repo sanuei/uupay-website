@@ -29,8 +29,17 @@
   --border-hi:     rgba(184, 227, 81, 0.4);
 
   /* Typography */
-  --font-sans:     'Inter', 'MiSans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display:  'Inter', 'MiSans', system-ui, sans-serif;
+  --font-sans:     'Inter Variable', 'Inter', 'MiSans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display:  'Inter Variable', 'Inter', 'MiSans', system-ui, sans-serif;
+
+  /* Font Weights — 语义化字重令牌
+     参考 Linear: 全站最重只到 590, 标题一律 510。粗字重是"廉价感"的主要来源,
+     减重是提升质感最快的一步。中文见文件底部的 html[lang^="zh"] 覆盖。 */
+  --fw-body:       400;   /* 正文 */
+  --fw-medium:     500;   /* 次级强调 */
+  --fw-strong:     590;   /* 小标签 / 按钮 / 卡片小标题 */
+  --fw-heading:    510;   /* 所有标题 (Linear 招牌字重) */
+  --fw-numeral:    600;   /* 巨幅数字: 拉丁数字不受中文覆盖影响, 单独保住冲击力 */
 
   /* Font Sizes (clamp for fluid typography) */
   --fs-display:    clamp(64px, 8vw, 112px);
@@ -204,27 +213,31 @@ html {
 }
 
 /* ===== Typography helpers ===== */
+/* 标题统一规格 (对齐 Linear):
+   - 字重一律 --fw-heading, 不再逐级加粗
+   - 行高 1.0, 多行标题咬合紧密 = 密实的设计感
+   - 字距统一 -0.022em 等比, 不再按级别手写不同值 */
 .heading-display {
   font-size: var(--fs-display);
-  font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  font-weight: var(--fw-heading);
+  line-height: 1;
+  letter-spacing: -0.022em;
   color: var(--text-pri);
 }
 
 .heading-h1 {
   font-size: var(--fs-h1);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-weight: var(--fw-heading);
+  line-height: 1;
+  letter-spacing: -0.022em;
   color: var(--text-pri);
 }
 
 .heading-h2 {
   font-size: var(--fs-h2);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-weight: var(--fw-heading);
+  line-height: 1;
+  letter-spacing: -0.022em;
   color: var(--text-pri);
 }
 
@@ -275,7 +288,7 @@ html {
   align-items: center;
   gap: var(--space-2);
   font-size: var(--fs-caption);
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--brand);
@@ -293,9 +306,9 @@ html {
 
 .section-header h2 {
   font-size: var(--fs-h1);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-weight: var(--fw-heading);
+  line-height: 1;
+  letter-spacing: -0.022em;
   margin-bottom: var(--space-4);
 }
 
@@ -313,7 +326,7 @@ html {
   gap: var(--space-2);
   padding: 14px 28px;
   font-size: var(--fs-body);
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: -0.01em;
   border-radius: var(--r-pill);
   transition: transform 0.2s var(--ease-out), background 0.2s var(--ease-out), color 0.2s var(--ease-out);
@@ -321,12 +334,6 @@ html {
   position: relative;
   cursor: pointer;
   user-select: none;
-}
-
-/* 中文按钮: MiSans 的 700 会落到最重的 Heavy 档, 显得太粗;
-   降到 600(Bold) 更清爽。只作用于中文页, 不动英文按钮设计。 */
-html[lang^="zh"] .btn {
-  font-weight: 600;
 }
 
 .btn-primary {
@@ -415,7 +422,7 @@ button:focus-visible {
   gap: 6px;
   padding: 6px 14px;
   font-size: var(--fs-caption);
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: 0.05em;
   border-radius: var(--r-pill);
   background: var(--brand);
@@ -442,6 +449,17 @@ button:focus-visible {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ===== CJK 字重覆盖 =====
+   中文/日文字形笔画密度远高于拉丁字母, 同样字重下视觉更"轻"。
+   Linear 是纯英文站, 510 的标题字重不能直接照搬到中文 —— 会显得虚。
+   这里只覆盖令牌, 全站自动生效 (取代原先散落在各组件里的 4 处 zh 覆盖)。
+   注意: --fw-numeral 故意不覆盖, 因为 137/100,000 这类是拉丁数字, 不受影响。 */
+html[lang^="zh"],
+html[lang^="ja"] {
+  --fw-heading: 600;
+  --fw-strong:  600;
 }
 
 /* ===== RTL support ===== */

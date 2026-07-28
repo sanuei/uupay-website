@@ -92,7 +92,7 @@
 .card-detail-num {
   display: inline-block;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--fw-heading);
   color: var(--brand);
   letter-spacing: 0.05em;
   padding: 4px 10px;
@@ -103,7 +103,7 @@
 
 .card-detail h3 {
   font-size: var(--fs-h3);
-  font-weight: 900;
+  font-weight: var(--fw-heading);
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--text-pri);

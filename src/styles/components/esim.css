@@ -39,9 +39,9 @@
 
 .esim-info h2 {
   font-size: var(--fs-h1);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-weight: var(--fw-heading);
+  line-height: 1;
+  letter-spacing: -0.022em;
   margin-bottom: var(--space-4);
 }
 
@@ -96,7 +96,7 @@
 
 .esim-feat-body h3 {
   font-size: var(--fs-body-lg);
-  font-weight: 700;
+  font-weight: var(--fw-strong);
   letter-spacing: -0.01em;
   color: var(--text-pri);
   margin-bottom: 3px;
