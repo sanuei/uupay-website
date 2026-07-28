@@ -3,8 +3,14 @@
    ======================================== */
 .security {
   padding: var(--section-y) 0;
-  /* 底色交给 section-rhythm.css (统一 --bg-deep); 上一块 promos 是抬升光,
-     两者之间自然形成明暗过渡, 不需要 1px 硬线 */
+}
+
+.security .section-header {
+  max-width: 980px;
+}
+
+.security .section-header h2 {
+  white-space: nowrap;
 }
 
 .security-grid {
@@ -52,5 +58,6 @@
 }
 
 @media (max-width: 968px) {
+  .security .section-header h2 { white-space: normal; }
   .security-grid { grid-template-columns: 1fr; gap: var(--space-4); }
 }
