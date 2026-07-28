@@ -313,22 +313,31 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
       }
 
       if (isDesktop && stickySlides.length > 0) {
-        const stickyObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
-              const idx = (entry.target as HTMLElement).dataset.slideIdx;
-              if (idx === undefined) return;
-              const i = parseInt(idx, 10);
-              stickySlides.forEach((s, j) => s.classList.toggle('is-active', j === i));
-              stickyImgs.forEach((m, j) => m.classList.toggle('is-active', j === i));
+        let activeIdx = 0;
+        const updateActiveSlide = () => {
+          const viewportCenter = window.innerHeight / 2;
+          let minDistance = Infinity;
+          let bestIndex = activeIdx;
+
+          stickySlides.forEach((slide, j) => {
+            const rect = slide.getBoundingClientRect();
+            const slideCenter = rect.top + rect.height / 2;
+            const dist = Math.abs(slideCenter - viewportCenter);
+            if (dist < minDistance) {
+              minDistance = dist;
+              bestIndex = j;
             }
           });
-        }, {
-          threshold: [0, 0.4, 0.6],
-          rootMargin: '-20% 0px -20% 0px'
-        });
 
-        stickySlides.forEach((s) => stickyObserver.observe(s));
+          if (bestIndex !== activeIdx) {
+            activeIdx = bestIndex;
+            stickySlides.forEach((s, j) => s.classList.toggle('is-active', j === activeIdx));
+            stickyImgs.forEach((m, j) => m.classList.toggle('is-active', j === activeIdx));
+          }
+        };
+
+        window.addEventListener('scroll', updateActiveSlide, { passive: true });
+        updateActiveSlide();
       }
     </script>
   </body>
