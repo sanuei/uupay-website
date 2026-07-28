@@ -1,0 +1,93 @@
+/* =====================================================
+   Section Rhythm — 区块背景节奏
+   现代落地页做法: 全站统一一个底色, 层次靠"光"而不是交替色块。
+   取代原来 深黑/灰 硬切交替(斑马纹)的处理。
+
+   两个工具:
+   - .section-lift  柔和抬升光: 上下边缘自然淡出, 没有硬边界
+   - .section-halo  品牌锚点光晕: 顶部一团极淡的柠檬绿, 制造呼吸节奏
+   ===================================================== */
+
+/* 统一底色: 区块自身不再刷色, 让 body 的 --bg-deep 透上来 */
+.features,
+.card-switch,
+.fiat,
+.stats-pin,
+.esim,
+.app-sticky,
+.partner-preview,
+.promos,
+.security,
+.faq {
+  background: transparent;
+  position: relative;
+}
+
+/* 抬升光在内容之下 */
+.features > *,
+.card-switch > *,
+.fiat > *,
+.stats-pin > *,
+.esim > *,
+.app-sticky > *,
+.partner-preview > *,
+.promos > *,
+.security > *,
+.faq > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- 柔和抬升光 ----------
+   原来是 #0E1013 整块硬切, 现在改成中间亮、上下淡出的柔光,
+   视觉上仍然"浮起一层", 但没有可见接缝。 */
+.section-lift::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.022) 18%,
+    rgba(255, 255, 255, 0.028) 50%,
+    rgba(255, 255, 255, 0.022) 82%,
+    transparent 100%
+  );
+}
+
+/* ---------- 品牌锚点光晕 ----------
+   关键板块顶部一团极淡的柠檬绿, 滚动时形成"明→暗→明"的呼吸感。 */
+.section-halo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 92%);
+  height: 420px;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 60% 100% at 50% 0%,
+    rgba(184, 227, 81, 0.07) 0%,
+    rgba(184, 227, 81, 0.025) 38%,
+    transparent 72%
+  );
+}
+
+/* 移动端: 光晕收小, 避免在窄屏上糊成一片 */
+@media (max-width: 768px) {
+  .section-halo::after {
+    height: 300px;
+  }
+}
+
+/* 减少动态效果时保持一致的静态呈现(本身就是静态, 这里只是显式声明) */
+@media (prefers-reduced-motion: reduce) {
+  .section-lift::before,
+  .section-halo::after {
+    transition: none;
+  }
+}

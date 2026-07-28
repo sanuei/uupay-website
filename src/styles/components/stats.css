@@ -4,9 +4,8 @@
    ======================================== */
 .stats-pin {
   position: relative;
-  background: var(--bg-base);
-  border-top: 1px solid var(--border-sub);
-  border-bottom: 1px solid var(--border-sub);
+  /* 底色与分隔交给 section-rhythm.css 的 .section-lift / .section-halo,
+     不再用硬色块 + 1px 硬线 (那会形成斑马纹接缝) */
   padding: var(--section-y) 0;
 }
 

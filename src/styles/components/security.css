@@ -3,8 +3,8 @@
    ======================================== */
 .security {
   padding: var(--section-y) 0;
-  background: var(--bg-deep);
-  border-top: 1px solid var(--border-sub);
+  /* 底色交给 section-rhythm.css (统一 --bg-deep); 上一块 promos 是抬升光,
+     两者之间自然形成明暗过渡, 不需要 1px 硬线 */
 }
 
 .security-grid {
