@@ -16,7 +16,7 @@
   "hero": {
     "title_part1": "Your crypto,",
     "title_part2": "now does more.",
-    "title_html": "Your <span class=\"kw\">crypto</span>,<br>now does <span class=\"kw\">more</span>.",
+    "title_html": "Your crypto,<br>now does <span class=\"kw\">more</span>.",
     "eyebrow_text": "The real-world gateway for crypto",
     "subtitle": "Spend USDT by card, buy eSIMs, and withdraw to your bank. No need to cash out first — fully compliant.",
     "cta_start": "Get Started Now",
@@ -33,7 +33,7 @@
     "card3_desc": "Book flights and hotels worldwide in one place. Pay directly with crypto — ready to go anytime.",
     "card4_title": "Chat & Pay",
     "card4_desc": "Send money like sending a message. Red packets, gifts, and zero-fee P2P transfers.",
-    "title_html": "Bring <span class=\"kw\">crypto assets</span><br>into your everyday life",
+    "title_html": "Bring crypto assets<br>into your everyday life",
     "code": "PRODUCTS",
     "card1_cta": "Explore Crypto Cards",
     "card2_cta": "Explore eSIM",
@@ -47,14 +47,14 @@
     "virtual_desc": "Issued and ready in one minute. Bind it to overseas shopping sites and global SaaS subscriptions.",
     "physical_title": "Matte-black metal card",
     "physical_desc": "Metal-feel matte black. Withdraw at Visa ATMs and pay at POS worldwide — zero foreign transaction fees.",
-    "title_html": "Choose your card<br>for <span class=\"kw\">global scenes</span>",
+    "title_html": "Choose your card<br>for global scenes",
     "code": "CRYPTO CARDS"
   },
   "stats": {
     "countries": "Countries Covered",
     "partners": "Global Partners",
     "rewards": "Rewards Disbursed",
-    "title_html": "Trusted by users around <span class=\"kw\">the world</span>",
+    "title_html": "Trusted by users around the world",
     "code": "BY THE NUMBERS"
   },
   "esim": {
@@ -70,7 +70,7 @@
     "feat3_title": "Flexible plans"
   },
   "fiat": {
-    "title_html": "Instant fiat withdrawal<br>to <span class=\"kw\">local bank accounts</span>",
+    "title_html": "Instant fiat withdrawal<br>to local bank accounts",
     "code": "FIAT EXPRESS",
     "subtitle": "Convert USDT to fiat and withdraw to your bank in minutes — settled through licensed institutions.",
     "step1_title": "Crypto balance",
@@ -87,7 +87,7 @@
     "subtitle": "Refer friends who open a card and spend — earn up to 50% commission.",
     "earn": "Earn Commissions",
     "apply": "Apply to Join",
-    "title_html": "Invite your friends,<br>earn <span class=\"kw\">50% commission</span>",
+    "title_html": "Invite your friends,<br>earn <span class=\"kw\">50%</span> commission",
     "code": "PARTNERSHIP",
     "stat1_label": "UUPAY Partners",
     "stat2_label": "Rewards Disbursed",
@@ -109,7 +109,7 @@
     "promo3_title": "Double Referral Bonus",
     "promo3_desc": "Refer friends to issue cards and spend. Earn double rewards up to 50% payout.",
     "promo3_tag": "2X BONUS",
-    "title_html": "Exclusive limited-time<br><span class=\"kw\">offers for early users</span>",
+    "title_html": "Exclusive limited-time<br>offers for early users",
     "code": "SPECIAL OFFERS",
     "cta": "Join Now"
   },
@@ -119,7 +119,7 @@
   },
   "download": {
     "title": "Download UUPAY App",
-    "title_html": "One app.<br><span class=\"kw\">The world unlocked.</span>",
+    "title_html": "One app.<br>The world <span class=\"kw\">unlocked</span>.",
     "code": "DOWNLOAD APP",
     "subtitle": "Scan the QR code below or visit app stores to get the official app.",
     "ios": "App Store Download",
@@ -128,7 +128,7 @@
   },
   "faq": {
     "title": "FAQ",
-    "title_html": "Answers & Guides<br>for <span class=\"kw\">your questions</span>",
+    "title_html": "Answers & Guides<br>for your questions",
     "code": "FAQ",
     "viewMore": "View All FAQs",
     "q1": "What services does UUPAY offer?",
@@ -163,7 +163,7 @@
     "description": "UUPAY is a crypto payment platform for users worldwide. Spend crypto by card, buy eSIMs, and withdraw fiat — anywhere, powered by Visa and Mastercard."
   },
   "appShowcase": {
-    "title_html": "Experience <span class=\"kw\">UUPAY App</span>",
+    "title_html": "Experience UUPAY App",
     "subtitle": "Five core features at a glance. Swipe through to see UUPAY in action.",
     "slide1_title": "Assets Dashboard",
     "slide1_desc": "Estimated total assets, wallet & card split, USDT balance, and quick actions on one screen.",
@@ -177,7 +177,7 @@
     "slide5_desc": "Account security, system settings, one-tap eSIM purchase — 128-bit encryption on every transaction."
   },
   "security": {
-    "title_html": "Security built into every layer of <span class=\"kw\">your money</span>",
+    "title_html": "Security built into every layer of your money",
     "subtitle": "",
     "p1_title": "Bank-grade encryption",
     "p1_desc": "AES-256 at rest and TLS 1.3 in transit protect every transaction and your KYC data.",
@@ -187,7 +187,7 @@
     "p3_desc": "Real-time monitoring, device binding and withdrawal whitelists guard your account 24/7."
   },
   "lifestyle": {
-    "title_html": "Put crypto <span class=\"kw\">to work</span>, every day",
+    "title_html": "Put crypto to work, every day",
     "subtitle": "From the corner café to another continent — UUPAY is your global account, right in your pocket."
   }
 }

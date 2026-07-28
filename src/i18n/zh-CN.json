@@ -16,7 +16,7 @@
   "hero": {
     "title_part1": "你的加密资产，",
     "title_part2": "现在可以做更多。",
-    "title_html": "你的<span class=\"kw\">加密资产</span><br>现在可以做<span class=\"kw\">更多</span>",
+    "title_html": "你的加密资产，<br>现在可以做<span class=\"kw\">更多</span>。",
     "eyebrow_text": "加密资产的现实支付入口",
     "subtitle": "无需先兑换成法币——用 USDT 直接刷卡消费、购买全球 eSIM、合规出金到银行。",
     "cta_start": "立即开始",
@@ -33,7 +33,7 @@
     "card3_desc": "一站式预订全球机票与酒店，加密货币直接支付，说走就走。",
     "card4_title": "聊天即转账",
     "card4_desc": "像聊天一样发送资金，支持红包、礼品和用户间免手续费的同名划转。",
-    "title_html": "把<span class=\"kw\">加密资产</span><br>融进每一天的真实生活",
+    "title_html": "把加密资产，<br>融进每一天的真实生活",
     "code": "PRODUCTS",
     "card1_cta": "了解 U 卡",
     "card2_cta": "了解 eSIM",
@@ -47,14 +47,14 @@
     "virtual_desc": "1 分钟开卡即用，轻松绑定各类海淘平台与全球主流 SaaS 订阅。",
     "physical_title": "哑光黑实体卡",
     "physical_desc": "金属质感哑光黑，全球 Visa ATM 取现、POS 消费通行，免收境外交易费。",
-    "title_html": "挑选属于你的<br>全场景<span class=\"kw\">加密支付卡</span>",
+    "title_html": "挑选属于你的<br>全场景加密支付卡",
     "code": "CRYPTO CARDS"
   },
   "stats": {
     "countries": "覆盖国家与地区",
     "partners": "全球合作伙伴",
     "rewards": "已发放佣金总额",
-    "title_html": "数以万计用户的<br>全球支付<span class=\"kw\">首选</span>",
+    "title_html": "数以万计用户的<br>全球支付首选",
     "code": "BY THE NUMBERS"
   },
   "esim": {
@@ -63,14 +63,14 @@
     "desc1": "一张 eSIM 覆盖全球主流目的地，落地自动连网。",
     "desc2": "支持 USDT 支付，扫码秒级激活启用。",
     "desc3": "专为数字游民量身打造的多样流量套餐。",
-    "title_html": "无需实体卡<br>用 eSIM <span class=\"kw\">即刻连接全球</span>",
+    "title_html": "无需实体卡，<br>用 eSIM 即刻<span class=\"kw\">连接全球</span>",
     "code": "eSIM MOBILE",
     "feat1_title": "全球覆盖",
     "feat2_title": "极速激活",
     "feat3_title": "灵活套餐"
   },
   "fiat": {
-    "title_html": "一键极速出金<br>直达<span class=\"kw\">当地法币</span>",
+    "title_html": "一键极速出金，<br>直达当地法币",
     "code": "FIAT EXPRESS",
     "subtitle": "把 USDT 兑换成法币，分钟级提现到银行账户——由持牌金融机构合规结算。",
     "step1_title": "加密资产",
@@ -87,7 +87,7 @@
     "subtitle": "推荐好友开卡消费，最高可享 50% 返佣。",
     "earn": "开始赚取佣金",
     "apply": "申请加入合伙人",
-    "title_html": "推荐好友加入<br>分享最高 <span class=\"kw\">50% 返佣</span>",
+    "title_html": "推荐好友加入，<br>分享最高 <span class=\"kw\">50%</span> 返佣",
     "code": "PARTNERSHIP",
     "stat1_label": "UUPAY 合伙人",
     "stat2_label": "累计佣金发放",
@@ -109,7 +109,7 @@
     "promo3_title": "邀请好友双倍返佣",
     "promo3_desc": "成功推荐好友开卡消费，返佣比例限时翻倍，最高尊享 50% 返佣。",
     "promo3_tag": "DOUBLE 翻倍",
-    "title_html": "专为早期用户打造的<br>限时<span class=\"kw\">特惠福利</span>",
+    "title_html": "专为早期用户打造的<br>限时特惠福利",
     "code": "SPECIAL OFFERS",
     "cta": "立即参与"
   },
@@ -119,7 +119,7 @@
   },
   "download": {
     "title": "下载 UUPAY App",
-    "title_html": "一个 App，<br><span class=\"kw\">全球都是你的主场。</span>",
+    "title_html": "一个 App，<br>全球都是你的<span class=\"kw\">主场</span>。",
     "code": "DOWNLOAD APP",
     "subtitle": "扫描下方二维码或前往应用商店下载官方 App 体验。",
     "ios": "App Store 下载",
@@ -128,7 +128,7 @@
   },
   "faq": {
     "title": "常见问题",
-    "title_html": "你关心的<br><span class=\"kw\">解答与指南</span>",
+    "title_html": "你关心的<br>解答与指南",
     "code": "FAQ",
     "viewMore": "查看全部问题",
     "q1": "UUPAY 提供哪些服务？",
@@ -163,7 +163,7 @@
     "description": "UUPAY 是面向全球用户的加密支付平台，依托 Visa / Mastercard，让你用加密资产在全球刷卡消费、购买 eSIM、合规出金。"
   },
   "appShowcase": {
-    "title_html": "口袋里的全能钱包<br>掌控<span class=\"kw\">每一笔支付</span>",
+    "title_html": "口袋里的全能钱包，<br>掌控每一笔支付",
     "code": "06.0 MOBILE APP",
     "subtitle": "5 个核心功能，一屏掌握。逐屏浏览，感受 UUPAY 如何改变你的加密消费。",
     "slide1_title": "资产总览",
@@ -178,7 +178,7 @@
     "slide5_desc": "账户安全、系统设置、eSIM 一键购买，128-bit 加密守护每一笔交易。"
   },
   "security": {
-    "title_html": "从资产、数据到结算 <span class=\"kw\">每一层都是银行级防护</span>",
+    "title_html": "从资产、数据到结算，每一层都是<span class=\"kw\">银行级</span>防护",
     "code": "SECURITY",
     "subtitle": "",
     "p1_title": "银行级加密",
@@ -189,7 +189,7 @@
     "p3_desc": "实时监控、设备绑定与提现白名单，7×24 小时守护账户安全。"
   },
   "lifestyle": {
-    "title_html": "把加密资产，<span class=\"kw\">用在</span>每一天",
+    "title_html": "把加密资产，用在每一天",
     "subtitle": "从街角的咖啡馆到跨城的旅行，UUPAY 是你随身的全球账户。"
   }
 }
