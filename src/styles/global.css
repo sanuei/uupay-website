@@ -283,7 +283,10 @@ html {
   margin-right: auto;
 }
 
-.section-header .eyebrow {
+/* ===== Eyebrow (板块小标签) =====
+   独立基类, 任何板块都能直接用 class="eyebrow", 不必再写内联样式
+   (内联样式会绕过 --fw-strong 令牌, 导致减字重改不到) */
+.eyebrow {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -295,13 +298,37 @@ html {
   margin-bottom: var(--space-4);
 }
 
-.section-header .eyebrow::before,
-.section-header .eyebrow::after {
+/* 左侧短线 */
+.eyebrow::before {
   content: '';
   display: inline-block;
   width: 24px;
   height: 1px;
   background: var(--brand);
+}
+
+/* 居中版 (A 型) 两侧都有线 */
+.section-header .eyebrow::after,
+.eyebrow--center::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--brand);
+}
+
+/* 章节编号: 借鉴 Linear 的 1.1/1.2 目录感 —
+   重复的板块结构 + 系统性编号 = 秩序感, 而不是单调感 */
+.eyebrow-num {
+  font-style: normal;
+  color: var(--text-mute);
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow-num::after {
+  content: '/';
+  margin: 0 0.45em 0 0.5em;
+  opacity: 0.55;
 }
 
 .section-header h2 {
@@ -341,23 +368,7 @@ html {
 
 .section-head--split .eyebrow {
   grid-column: 1 / -1;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-strong);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--brand);
   margin-bottom: calc(var(--space-4) * -1 + var(--space-2));
-}
-
-.section-head--split .eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--brand);
 }
 
 .section-head--split h2 {
@@ -388,23 +399,7 @@ html {
 }
 
 .section-head--label .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-strong);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--brand);
   margin-bottom: var(--space-3);
-}
-
-.section-head--label .eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--brand);
 }
 
 .section-head--label h2 {

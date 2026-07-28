@@ -33,10 +33,7 @@ const base = lang === 'en' ? '' : `/${lang}`;
       </div>
 
       <div class="partner-info">
-        <span class="eyebrow" style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px;">
-          <span style="width: 24px; height: 1px; background: var(--brand);"></span>
-          PARTNER
-        </span>
+        <span class="eyebrow">PARTNER</span>
         <h2 set:html={t('partners.title_html')} />
         <p>{t('partners.subtitle')}</p>
         <div class="partner-actions">
