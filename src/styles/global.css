@@ -319,20 +319,6 @@ html {
   background: var(--brand);
 }
 
-/* 章节编号: 借鉴 Linear 的 1.1/1.2 目录感 —
-   重复的板块结构 + 系统性编号 = 秩序感, 而不是单调感 */
-.eyebrow-num {
-  font-style: normal;
-  color: var(--text-mute);
-  font-variant-numeric: tabular-nums;
-}
-
-.eyebrow-num::after {
-  content: '/';
-  margin: 0 0.45em 0 0.5em;
-  opacity: 0.55;
-}
-
 .section-header h2 {
   font-size: var(--fs-h1);
   font-weight: var(--fw-heading);

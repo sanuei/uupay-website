@@ -18,7 +18,7 @@
     "title_part2": "now does more.",
     "title_html": "Your <span class=\"kw\">crypto</span>,<br>now does <span class=\"kw\">more</span>.",
     "eyebrow_text": "The real-world gateway for crypto",
-    "subtitle": "No need to cash out first — spend USDT directly by card, buy global eSIMs, and withdraw to your bank, all in compliance.",
+    "subtitle": "Spend USDT by card, buy eSIMs, and withdraw to your bank. No need to cash out first — fully compliant.",
     "cta_start": "Get Started Now",
     "cta_download": "Download App"
   },
@@ -26,13 +26,13 @@
     "title": "Crypto, made everyday",
     "subtitle": "Global spending, asset management and instant transfers — all in one app.",
     "card1_title": "Crypto Cards",
-    "card1_desc": "The U-Card works with Visa & Mastercard — tap to pay at tens of millions of merchants worldwide, ready the moment it's issued.",
+    "card1_desc": "Works with Visa & Mastercard. Tap to pay at millions of merchants worldwide — ready the moment it's issued.",
     "card2_title": "Global eSIM",
-    "card2_desc": "Stay connected in 137+ countries. Purchase with crypto, activate instantly without physical SIMs.",
+    "card2_desc": "Stay connected in 137+ countries. Buy with crypto and activate instantly — no physical SIM.",
     "card3_title": "Flights & Hotels",
-    "card3_desc": "Book flights and hotels worldwide in one place, pay directly with crypto — ready to go anytime.",
+    "card3_desc": "Book flights and hotels worldwide in one place. Pay directly with crypto — ready to go anytime.",
     "card4_title": "Chat & Pay",
-    "card4_desc": "Send money as easily as sending a message. Red packets, gifts, and zero-fee P2P transfers.",
+    "card4_desc": "Send money like sending a message. Red packets, gifts, and zero-fee P2P transfers.",
     "title_html": "<span class=\"kw\">Crypto</span>, made everyday",
     "card1_cta": "Explore U-Card",
     "card2_cta": "Explore eSIM",
@@ -41,11 +41,11 @@
   },
   "cardShowcase": {
     "title": "Choose your card",
-    "subtitle": "Physical or virtual, Visa or Mastercard — pick your network, cover every way you spend.",
+    "subtitle": "Physical or virtual, Visa or Mastercard — pick your network, covered everywhere you spend.",
     "virtual_title": "Flexible Virtual Card",
-    "virtual_desc": "Issued and usable in one minute — bind it to overseas shopping sites and global SaaS subscriptions with ease.",
+    "virtual_desc": "Issued and ready in one minute. Bind it to overseas shopping sites and global SaaS subscriptions.",
     "physical_title": "Matte-black metal card",
-    "physical_desc": "Metal-feel matte black. Withdraw at Visa ATMs and pay at POS worldwide, with no foreign transaction fees.",
+    "physical_desc": "Metal-feel matte black. Withdraw at Visa ATMs and pay at POS worldwide — zero foreign transaction fees.",
     "title_html": "Choose <span class=\"kw\">your card</span>"
   },
   "stats": {
@@ -71,15 +71,15 @@
     "step1_title": "Crypto balance",
     "step1_desc": "Hold USDT and major stablecoins right in your UUPAY account.",
     "step2_title": "Instant convert",
-    "step2_desc": "Swap to your local currency at real-time rates, with low and transparent fees.",
+    "step2_desc": "Swap to your local currency at real-time rates — low, transparent fees.",
     "step3_title": "Bank payout",
-    "step3_desc": "Withdraw to your bank or e-wallet, arriving as fast as the same day.",
+    "step3_desc": "Withdraw to your bank or e-wallet — as fast as same-day.",
     "currencies_note": "Supporting 30+ fiat currencies and local bank networks worldwide.",
     "rate_disclaimer": "Example rates, for illustration only."
   },
   "partners": {
     "title": "UUPAY Referral Partner Program",
-    "subtitle": "Refer friends who open a card and spend, and earn up to 50% commission.",
+    "subtitle": "Refer friends who open a card and spend — earn up to 50% commission.",
     "earn": "Earn Commissions",
     "apply": "Apply to Join",
     "title_html": "Refer <span class=\"kw\">UUPAY</span>, earn <span class=\"kw\">50%</span> commission",
@@ -94,13 +94,13 @@
     "promo1_title": "1 USDT Virtual Card",
     "promo1_desc": "Get a virtual card for only 1 USDT and receive 1 USDT cashback instantly.",
     "promo2_title": "Zero Top-up Fees",
-    "promo2_desc": "Enjoy zero deposit and top-up transaction fees during the promotional period.",
+    "promo2_desc": "Zero deposit and top-up fees, for a limited time.",
     "title_html": "Limited-Time <span class=\"kw\">Offers</span>",
     "cta": "Join Now"
   },
   "download": {
     "title": "Download UUPAY App",
-    "subtitle": "Scan the QR code or choose your store to download the app and begin.",
+    "subtitle": "Scan the QR code, or pick your store to get started.",
     "ios": "App Store",
     "android": "Google Play",
     "apk": "Android APK"
@@ -109,13 +109,13 @@
     "title": "FAQ",
     "viewMore": "View All FAQs",
     "q1": "What services does UUPAY offer?",
-    "a1": "UUPAY is an all-in-one crypto payment platform: Visa & Mastercard virtual and physical cards, global eSIM data plans, compliant fiat withdrawals, and chat-easy instant transfers — everything in a single app.",
+    "a1": "UUPAY is an all-in-one crypto payment platform: Visa & Mastercard virtual and physical cards, global eSIM plans, compliant fiat withdrawals, and instant in-chat transfers — all in a single app.",
     "q2": "How do I open a UUPAY virtual card?",
-    "a2": "Sign up, complete quick KYC verification, and issue a virtual card in about 1 minute. It's ready for online shopping and global SaaS subscriptions immediately.",
+    "a2": "Sign up, complete quick KYC, and issue a virtual card in about a minute — ready for online shopping and global SaaS subscriptions right away.",
     "q3": "Which cryptocurrencies can I top up with?",
-    "a3": "UUPAY supports USDT and other major stablecoins and cryptocurrencies for card top-ups, eSIM purchases and transfers, usually settling within minutes.",
+    "a3": "UUPAY supports USDT and other major stablecoins for card top-ups, eSIM purchases, and transfers — usually settled within minutes.",
     "q4": "Is UUPAY safe and trustworthy?",
-    "a4": "UUPAY uses bank-grade encryption and multi-layer risk control, and settles fiat through licensed financial institutions — your funds and KYC data are protected to strict security standards."
+    "a4": "UUPAY uses bank-grade encryption and multi-layer risk control. Fiat settles through licensed financial institutions, keeping your funds and KYC data protected to strict security standards."
   },
   "footer": {
     "desc": "Payments made simple, the world within reach. The real-world gateway for crypto.",
@@ -137,21 +137,21 @@
   },
   "meta": {
     "title": "UUPAY - Simplify Payments, Reach the World",
-    "description": "UUPAY is a crypto payment platform for users worldwide. Powered by Visa / Mastercard, it lets you spend crypto by card, buy eSIMs and withdraw fiat — anywhere."
+    "description": "UUPAY is a crypto payment platform for users worldwide. Spend crypto by card, buy eSIMs, and withdraw fiat — anywhere, powered by Visa and Mastercard."
   },
   "appShowcase": {
     "title_html": "Experience <span class=\"kw\">UUPAY App</span>",
-    "subtitle": "Five core features at a glance. Swipe through and see how UUPAY reshapes the way you spend crypto.",
+    "subtitle": "Five core features at a glance. Swipe through to see UUPAY in action.",
     "slide1_title": "Assets Dashboard",
     "slide1_desc": "Estimated total assets, wallet & card split, USDT balance, and quick actions on one screen.",
     "slide2_title": "U-Card Control",
-    "slide2_desc": "CVV reveal, top-up, freeze, and spending limits — all in 3 seconds, virtual and physical cards.",
+    "slide2_desc": "CVV reveal, top-up, freeze, and spending limits — all in 3 seconds, on virtual or physical cards.",
     "slide3_title": "Chat & Pay",
-    "slide3_desc": "Send money as easily as a message. Red packets, gifts, and zero-fee P2P transfers.",
-    "slide4_title": "Earn 50% Comm.",
-    "slide4_desc": "Refer and earn up to 50% commission, real-time settlement, fully transparent data.",
+    "slide3_desc": "Send money like sending a message. Red packets, gifts, and zero-fee P2P transfers.",
+    "slide4_title": "Earn 50% Commission",
+    "slide4_desc": "Refer friends and earn up to 50% commission — real-time settlement, fully transparent.",
     "slide5_title": "Security & eSIM",
-    "slide5_desc": "Account security, system settings, one-tap eSIM purchase — 128-bit encryption on every tx."
+    "slide5_desc": "Account security, system settings, one-tap eSIM purchase — 128-bit encryption on every transaction."
   },
   "security": {
     "title_html": "Security you can <span class=\"kw\">verify</span>",
