@@ -126,24 +126,6 @@
   letter-spacing: 0.08em;
 }
 
-/* 底部进度条 */
-.stats-progress {
-  max-width: 480px;
-  margin: var(--space-7) auto 0;
-  height: 2px;
-  background: var(--border-sub);
-  border-radius: var(--r-pill);
-  overflow: hidden;
-}
-
-.stats-progress-bar {
-  height: 100%;
-  background: var(--brand);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.1s linear;
-}
-
 @media (max-width: 968px) {
   .stats-pin-grid {
     grid-template-columns: 1fr;

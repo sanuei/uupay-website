@@ -215,7 +215,6 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
       // ============================================
       const statsPin = document.querySelector<HTMLElement>('.stats-pin');
       const statsItems = document.querySelectorAll<HTMLElement>('.stats-pin-item');
-      const statsProgressBar = document.getElementById('stats-progress-bar');
 
       if (statsPin && statsItems.length > 0) {
         // 每个数字的目标值
@@ -243,7 +242,6 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
 
         if (prefersReducedMotion) {
           // 减少动态效果: 直接显示最终数值, 不做 countUp 动画
-          if (statsProgressBar) statsProgressBar.style.transform = 'scaleX(1)';
           statsItems.forEach((item, i) => {
             const counter = item.querySelector('.countup-val');
             const { target } = statsTargets[i];
@@ -265,10 +263,6 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
               const elapsed = now - start;
               const progress = Math.min(elapsed / COUNT_DURATION, 1);
               const eased = 1 - Math.pow(1 - progress, 3);
-
-              if (statsProgressBar) {
-                statsProgressBar.style.transform = `scaleX(${eased})`;
-              }
 
               statsItems.forEach((item, i) => {
                 const counter = item.querySelector('.countup-val');
