@@ -60,9 +60,11 @@
 }
 
 .slide-title {
-  font-size: clamp(40px, 5vw, 64px);
+  /* 曾经是 --fs-h1(40-64px), 比上方区块主标题(现为 --fs-h2)还大, 视觉层级反了。
+     降到 --fs-h3: 主标题 > 每屏切换的小标题 > 正文, 层级正确。 */
+  font-size: var(--fs-h3);
   font-weight: var(--fw-heading);
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -0.022em;
   color: var(--text-pri);
   margin-bottom: var(--space-4);
@@ -247,7 +249,6 @@
     transform: none;
   }
   .phone-glow { width: 300px; height: 500px; }  /* 光晕别溢出盖住下方文字 */
-  .slide-title { font-size: 30px; }
   .slide-desc { max-width: 100%; }
   .slide-line { margin-left: auto; margin-right: auto; }
 }
