@@ -1,6 +1,5 @@
 /* ========================================
-   APP SHOWCASE v2 - Sticky Scrolling (苹果官网风格)
-   左侧 5 段文字 sticky + 右侧 1 张大图 sticky
+   APP SHOWCASE v2 - Ultra-thin Bezel iPhone Mockup (参考极简极细边框设计)
    ======================================== */
 .app-sticky {
   padding: var(--section-y) 0;
@@ -8,8 +7,6 @@
   position: relative;
 }
 
-/* 版式改为 B 型左右对话 (见 global.css .section-head--split);
-   这里只负责把标题区收进和下方 stage 相同的容器宽度里 */
 .app-sticky-header {
   max-width: var(--container-w);
   margin: 0 auto var(--space-7);
@@ -26,7 +23,7 @@
   align-items: start;
 }
 
-/* 左侧 5 段文字 — 每段 1 屏高, 滚动到视口中心时高亮 */
+/* 左侧 5 段文字 */
 .app-sticky-text {
   display: flex;
   flex-direction: column;
@@ -34,7 +31,6 @@
 }
 
 .app-sticky-slide {
-  /* 每段文字占 1 个节拍 = --scroll-beat, 与 card/stats 严格同速 */
   min-height: var(--scroll-beat);
   padding: 0 0 var(--space-9) 0;
   display: flex;
@@ -60,8 +56,6 @@
 }
 
 .slide-title {
-  /* 曾经是 --fs-h1(40-64px), 比上方区块主标题(现为 --fs-h2)还大, 视觉层级反了。
-     降到 --fs-h3: 主标题 > 每屏切换的小标题 > 正文, 层级正确。 */
   font-size: var(--fs-h3);
   font-weight: var(--fw-heading);
   line-height: 1.1;
@@ -92,91 +86,54 @@
 /* 右侧大图 — sticky 在视口内 */
 .app-sticky-phone {
   position: sticky;
-  top: calc(var(--nav-h) + 40px);
-  height: calc(100vh - var(--nav-h) - 80px);
+  top: calc(var(--nav-h) + 20px);
+  height: calc(100vh - var(--nav-h) - 40px);
   display: flex;
   align-items: center;
   justify-content: center;
-  /* 注意: 不能用 transform: translateZ(0) — 会破坏 sticky! */
   will-change: transform;
 }
 
+/* ---- 参照参照图: 极细描边 + 放大尺寸的大号 iPhone 框架 ---- */
 .phone-frame {
   position: relative;
-  width: 264px;
-  height: 528px;
-  /* 钛金属机身: 斜向渐变 + 边缘高光, 比纯色边框更接近真机质感 */
-  background: linear-gradient(155deg, #4a4a4d 0%, #2a2a2c 8%, #1c1c1e 45%, #0a0a0b 100%);
-  border-radius: 40px;
-  padding: 8px;
-  box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
-    0 1px 0 rgba(255, 255, 255, 0.12) inset;
-  z-index: 2;
-}
-
-/* Dynamic Island: 更贴近真机比例的胶囊形 */
-.phone-frame::before {
-  content: '';
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 76px;
-  height: 20px;
+  width: 328px;
+  height: 672px;
   background: #000;
-  border-radius: 999px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
-  z-index: 10;
-}
-
-/* 侧边按键: 左侧静音键 + 音量键, 右侧电源键, 增加真机细节 */
-.phone-btn {
-  position: absolute;
-  background: linear-gradient(90deg, #0a0a0b, #2c2c2e);
-  z-index: 1;
-}
-
-.phone-btn--action {
-  left: -2px;
-  top: 78px;
-  width: 2px;
-  height: 22px;
-  border-radius: 2px 0 0 2px;
-}
-
-.phone-btn--vol-up {
-  left: -2px;
-  top: 116px;
-  width: 2px;
-  height: 32px;
-  border-radius: 2px 0 0 2px;
-}
-
-.phone-btn--vol-down {
-  left: -2px;
-  top: 154px;
-  width: 2px;
-  height: 32px;
-  border-radius: 2px 0 0 2px;
-}
-
-.phone-btn--power {
-  right: -2px;
-  top: 122px;
-  width: 2px;
-  height: 56px;
-  border-radius: 0 2px 2px 0;
+  border-radius: 48px;
+  padding: 4px;
+  /* 极细 1.5px 亮银/灰边框描边 + 大气深邃影子 */
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.28),
+    0 0 0 3px rgba(0, 0, 0, 0.9),
+    0 32px 80px -16px rgba(0, 0, 0, 0.95);
+  z-index: 2;
+  transition: transform 0.3s var(--ease-out);
 }
 
 .phone-screen {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 33px;
+  border-radius: 44px;
   overflow: hidden;
   background: #000;
+}
+
+/* 底部 iOS Home Indicator 条 (匹配参考图) */
+.phone-screen::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 4.5px;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 3px;
+  z-index: 20;
+  pointer-events: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .slide-img {
@@ -195,20 +152,20 @@
   transform: translateY(0);
 }
 
-/* iPhone 后面一圈柔光 — 跟 hero 立方体呼应 */
+/* 手机后方的高级品牌色发光氛围 */
 .phone-glow {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 320px;
-  height: 580px;
-  background: radial-gradient(ellipse, rgba(184, 227, 81, 0.15) 0%, transparent 65%);
+  width: 400px;
+  height: 720px;
+  background: radial-gradient(ellipse at center, rgba(184, 227, 81, 0.14) 0%, transparent 68%);
   z-index: 1;
   pointer-events: none;
 }
 
-/* 移动端: 手机图在上, 下方文字改为横向 scroll-snap 滑动, 滑到哪段换哪张图 */
+/* 移动端适配 */
 @media (max-width: 968px) {
   .app-sticky-stage {
     grid-template-columns: 1fr;
@@ -217,12 +174,11 @@
   .app-sticky-phone {
     position: relative;
     top: auto;
-    height: 460px;
-    order: -1;  /* 手机图放上面 */
+    height: 520px;
+    order: -1;
   }
-  /* 整体等比缩小手机模型 (transform 而非改宽高, 边框/按键/灵动岛比例自动保持) */
   .phone-frame {
-    transform: scale(0.82);
+    transform: scale(0.76);
   }
   .app-sticky-text {
     flex-direction: row;
@@ -230,7 +186,6 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    /* 视觉溢出提示: 两侧留缝隙暗示可滑 */
     padding: 0 var(--space-4);
   }
   .app-sticky-text::-webkit-scrollbar { display: none; }
@@ -241,19 +196,17 @@
     padding: var(--space-4) var(--space-2) var(--space-5);
     text-align: center;
     align-items: center;
-    /* 横滑模式下当前段常亮, 非当前段淡一点 (由 JS 同步 is-active) */
     opacity: 0.35;
   }
   .app-sticky-slide.is-active {
     opacity: 1;
     transform: none;
   }
-  .phone-glow { width: 300px; height: 500px; }  /* 光晕别溢出盖住下方文字 */
+  .phone-glow { width: 320px; height: 540px; }
   .slide-desc { max-width: 100%; }
   .slide-line { margin-left: auto; margin-right: auto; }
 }
 
-/* Reduced motion 跳过所有 transition */
 @media (prefers-reduced-motion: reduce) {
   .app-sticky-slide,
   .slide-line,
@@ -271,4 +224,3 @@
     opacity: 1;
   }
 }
-
