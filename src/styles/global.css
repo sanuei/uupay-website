@@ -12,8 +12,8 @@
   /* Color Palette - 纯黑底 (#000000) + 亮柠檬绿 (Linear / OKX 极简黑设计) */
   --bg-deep:       #000000;    /* 页面绝对纯黑底色 */
   --bg-base:       #08080A;    /* 区块底色 */
-  --bg-card:       #0D0D10;    /* 卡片底色 */
-  --bg-card-hi:    #141418;    /* 卡片 hover */
+  --bg-card:       #111114;    /* 卡片底色 (Linear: #16161a 风格) */
+  --bg-card-hi:    #18181C;    /* 卡片 hover */
 
   --brand:         #B8E351;    /* 亮柠檬绿 */
   --brand-hi:      #C9F264;    /* hover 高亮 */
@@ -25,8 +25,8 @@
   --text-mute:     #6B6B72;
   --text-disabled: #3A3A40;
 
-  --border-sub:    rgba(255, 255, 255, 0.06);
-  --border-hi:     rgba(184, 227, 81, 0.4);
+  --border-sub:    rgba(255, 255, 255, 0.09);  /* Linear 统一细线描边 */
+  --border-hi:     rgba(184, 227, 81, 0.35);
 
   /* Typography */
   --font-sans:     'Inter Variable', 'Inter', 'MiSans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -74,11 +74,11 @@
   /* 区块统一纵向内边距: 大幅对标 Linear 的充裕留白节奏 (128px ~ 160px) */
   --section-y:     clamp(128px, 14vh, 160px);
 
-  /* Radius */
-  --r-sm:          8px;
-  --r-md:          16px;
-  --r-lg:          24px;
-  --r-xl:          32px;
+  /* Radius — Linear 风格: 小圆角克制系统 */
+  --r-sm:          6px;    /* 标签、输入框、徽章 */
+  --r-md:          10px;   /* 小卡片、按钮 */
+  --r-lg:          12px;   /* 主卡片 (Linear 参考值) */
+  --r-xl:          14px;   /* 大卡片、手机壳内层外 */
   --r-pill:        9999px;
   --r-circle:      50%;
 
