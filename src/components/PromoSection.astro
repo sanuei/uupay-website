@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n/ui';
+import '../styles/components/promo.css';
 
 interface Props {
   lang: string;
@@ -7,7 +8,6 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
-const base = lang === 'en' ? '' : `/${lang}`;
 ---
 
 <section class="promos section-lift">
@@ -18,64 +18,59 @@ const base = lang === 'en' ? '' : `/${lang}`;
       <p>{t('promotions.subtitle')}</p>
     </div>
 
-    <!-- 2 张精致的活动卡片 -->
+    <!-- 2 张参照 OKX 极简 3D 高高级质感的活动卡片 -->
     <div class="promos-grid">
-      <!-- 1. 爆款卡片: 品牌柠檬绿实底 + 1 USDT 金额大字 -->
-      <div class="promo-card solid scroll-reveal stagger-item">
-        <div class="promo-card-top">
-          <span class="promo-badge pulse">{t('promotions.promo1_tag')}</span>
-          <span class="promo-num" aria-hidden="true">01</span>
-        </div>
-        
-        <div class="promo-body">
-          <div class="promo-highlight">
-            <span class="val">1 USDT</span>
-            <span class="sub">VIRTUAL CARD</span>
-          </div>
-          <h3>{t('promotions.promo1_title')}</h3>
-          <p>{t('promotions.promo1_desc')}</p>
+      <!-- 1. 1 USDT 虚拟卡特惠卡片 -->
+      <div class="promo-card okx-style scroll-reveal stagger-item">
+        <!-- 3D 极简视觉中心 (OKX 风格图标展示框) -->
+        <div class="promo-graphic-box">
+          <img src="/images/promo-card-graphic.png" alt="1 USDT Virtual Card" class="promo-graphic-img float-y" width="300" height="300" loading="lazy" decoding="async" />
+          <div class="promo-graphic-glow"></div>
         </div>
 
-        <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" target="_blank" rel="noopener noreferrer" class="promo-cta">
-          {t('promotions.cta')}
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </a>
+        <div class="promo-card-content">
+          <div class="promo-card-top">
+            <span class="promo-badge pulse">{t('promotions.promo1_tag')}</span>
+            <span class="promo-num" aria-hidden="true">01</span>
+          </div>
+
+          <div class="promo-text-group">
+            <h3>{t('promotions.promo1_title')}</h3>
+            <p>{t('promotions.promo1_desc')}</p>
+          </div>
+
+          <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" target="_blank" rel="noopener noreferrer" class="promo-cta">
+            {t('promotions.cta')}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+        </div>
       </div>
 
-      <!-- 2. 零手续费卡片: 暗黑高质感玻璃 + 0% 零费率浮雕标志 -->
-      <div class="promo-card outline scroll-reveal stagger-item">
-        <div class="promo-card-top">
-          <span class="promo-badge neon">{t('promotions.promo2_tag')}</span>
-          <span class="promo-num" aria-hidden="true">02</span>
+      <!-- 2. 零手续费卡片 -->
+      <div class="promo-card okx-style scroll-reveal stagger-item">
+        <!-- 3D 极简视觉中心 -->
+        <div class="promo-graphic-box">
+          <img src="/images/promo-fee-graphic.png" alt="Zero Top-up Fees" class="promo-graphic-img float-y" width="300" height="300" loading="lazy" decoding="async" style="animation-delay: 0.6s;" />
+          <div class="promo-graphic-glow"></div>
         </div>
 
-        <div class="promo-body">
-          <div class="promo-highlight glow-green">
-            <span class="val">0%</span>
-            <span class="sub">TOP-UP FEE</span>
+        <div class="promo-card-content">
+          <div class="promo-card-top">
+            <span class="promo-badge neon">{t('promotions.promo2_tag')}</span>
+            <span class="promo-num" aria-hidden="true">02</span>
           </div>
-          <h3>{t('promotions.promo2_title')}</h3>
-          <p>{t('promotions.promo2_desc')}</p>
-        </div>
 
-        <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" target="_blank" rel="noopener noreferrer" class="promo-cta">
-          {t('promotions.cta')}
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </a>
+          <div class="promo-text-group">
+            <h3>{t('promotions.promo2_title')}</h3>
+            <p>{t('promotions.promo2_desc')}</p>
+          </div>
+
+          <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" target="_blank" rel="noopener noreferrer" class="promo-cta">
+            {t('promotions.cta')}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  if (matchMedia('(hover: hover) and (pointer: fine)').matches
-      && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll<HTMLElement>('.promo-card').forEach((card) => {
-      card.addEventListener('pointermove', (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${((e.clientX - r.left) / r.width * 100).toFixed(1)}%`);
-        card.style.setProperty('--my', `${((e.clientY - r.top) / r.height * 100).toFixed(1)}%`);
-      });
-    });
-  }
-</script>
