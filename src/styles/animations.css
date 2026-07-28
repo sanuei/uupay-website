@@ -8,16 +8,11 @@
 /* ===== 滚动入场 (Scroll-triggered) =====
    全站唯一的入场动画: fade + 上移 30px。时长/曲线走 global.css 的
    --dur-reveal / --reveal-ease, 保证所有区块入场速度完全一致。 */
+/* 移除强制 opacity: 0 的死锁, 确保即使 JS 模块延迟或视口判断未就绪, 内容也 100% 稳定可见 */
 .scroll-reveal {
   opacity: 1;
   transform: translateY(0);
   transition: opacity var(--dur-reveal) var(--reveal-ease), transform var(--dur-reveal) var(--reveal-ease);
-  will-change: opacity, transform;
-}
-
-.js .scroll-reveal:not(.is-visible) {
-  opacity: 0;
-  transform: translateY(30px);
 }
 
 .scroll-reveal.is-visible {

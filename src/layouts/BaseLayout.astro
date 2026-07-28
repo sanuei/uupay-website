@@ -111,10 +111,7 @@ const ogImage = `${siteUrl}/images/og-cover.jpg`;
 
     <slot />
 
-    <script>
-      // 给 <html> 加 .js 标记,激活滚动入场初始隐藏
-      document.documentElement.classList.add('js');
-    </script>
+    <!-- 全站通用交互脚本 -->
 
     <!-- 主交互逻辑 (滚动入场 + countUp + 视差 + 立方体旋转 + 截图轮播) -->
     <script>

@@ -107,7 +107,7 @@
 }
 .hero-title .line-inner {
   display: inline-block;
-  transform: translateY(112%);
+  transform: none;
   transition: transform 0.9s var(--ease-out);
 }
 .hero-title .line-mask:nth-child(2) .line-inner { transition-delay: 0.12s; }
