@@ -1,5 +1,5 @@
 /* ========================================
-   FIAT WITHDRAWAL — 实时兑换引擎
+   FIAT WITHDRAWAL — 实时兑换引擎 (无冗余网格大外框，沉浸式极简高级风)
    USDT →(光束粒子流)→ 转换核心 → 轮换法币(数字滚动) + 汇率跑马灯 + 三步辅助条
    ======================================== */
 .fiat {
@@ -13,31 +13,12 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: var(--space-6);
-  padding: clamp(28px, 5vw, 56px) clamp(24px, 5vw, 64px);
-  border-radius: var(--r-xl);
-  border: 1px solid var(--border-sub);
-  background:
-    radial-gradient(120% 140% at 50% 0%, rgba(184, 227, 81, 0.08) 0%, transparent 55%),
-    linear-gradient(180deg, #17171A 0%, #0E0E11 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 40px 80px -40px rgba(0, 0, 0, 0.7);
-  overflow: hidden;
-}
-
-/* 细网格底纹 */
-.fiat-engine::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(120% 100% at 50% 50%, #000 40%, transparent 85%);
+  gap: var(--space-7);
+  padding: var(--space-6) 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
 }
 
 /* 贯穿光束 canvas: 铺满舞台, 居中横向流动 */
@@ -50,19 +31,26 @@
   pointer-events: none;
 }
 
-/* ---------- 左右两端节点卡 ---------- */
+/* ---------- 左右两端节点卡 (极简暗黑钛金质感) ---------- */
 .fiat-node {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--space-5);
-  border-radius: var(--r-lg);
-  border: 1px solid var(--border-sub);
-  background: rgba(10, 11, 13, 0.72);
-  backdrop-filter: blur(6px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 20px 40px -28px rgba(0, 0, 0, 0.7);
+  gap: var(--space-4);
+  padding: clamp(24px, 3.5vw, 36px) clamp(28px, 4vw, 44px);
+  border-radius: var(--r-xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(22, 24, 30, 0.85) 0%, rgba(12, 13, 17, 0.95) 100%);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 50px -16px rgba(0, 0, 0, 0.8);
+  transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+
+.fiat-node:hover {
+  transform: translateY(-4px);
+  border-color: rgba(184, 227, 81, 0.35);
+  box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.9), 0 0 24px rgba(184, 227, 81, 0.1);
 }
 
 .fiat-node--receive {
@@ -81,7 +69,7 @@
 .fiat-amount {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .fiat-node--receive .fiat-amount {
@@ -91,8 +79,8 @@
 /* 币种圆章 (₮ / ¥ / $ …) */
 .fiat-token {
   flex-shrink: 0;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,7 +110,7 @@
 }
 
 .fiat-amount-num {
-  font-size: clamp(26px, 3.4vw, 40px);
+  font-size: clamp(30px, 3.8vw, 44px);
   font-weight: var(--fw-numeral);
   letter-spacing: -0.022em;
   color: var(--text-pri);
@@ -197,12 +185,11 @@
 /* ---------- 汇率跑马灯 ---------- */
 .fiat-ticker {
   position: relative;
-  margin-top: var(--space-6);
+  margin-top: var(--space-7);
   overflow: hidden;
-  border-top: 1px solid var(--border-sub);
-  border-bottom: 1px solid var(--border-sub);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: var(--space-4) 0;
-  /* 两端渐隐 */
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
@@ -227,7 +214,7 @@
   gap: 8px;
   padding: 0 var(--space-6);
   white-space: nowrap;
-  border-right: 1px solid var(--border-sub);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .fiat-rate-pair {
@@ -261,7 +248,6 @@
   .fiat-engine {
     grid-template-columns: 1fr;
     gap: var(--space-5);
-    padding: var(--space-6) var(--space-5);
   }
   .fiat-node--receive {
     text-align: left;
@@ -273,7 +259,6 @@
   .fiat-node--receive .fiat-amount-main {
     align-items: flex-start;
   }
-  /* 竖排时核心放在两卡之间 */
   .fiat-core { justify-self: center; }
 }
 
