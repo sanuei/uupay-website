@@ -104,6 +104,15 @@
   font-weight: 700 !important;
   border-radius: var(--r-pill) !important;
   white-space: nowrap;
+  /* .btn 的 transform 过渡会让这个按钮被提升为独立合成层; 嵌在 .navbar 的
+     backdrop-filter 模糊层里时, Chromium 有时会把该层也一并采样进模糊通道,
+     导致按钮文字发虚(旁边普通导航文字不受影响)。提前把它钉在自己的合成层上可以避开这个问题。 */
+  transform: translateZ(0);
+}
+
+.nav-action-cta:hover {
+  /* 保留 hover 的上移位移, 同时不丢失上面的合成层提升 */
+  transform: translateY(-2px) translateZ(0);
 }
 
 /* ========================================
@@ -380,6 +389,12 @@
 
 .mobile-menu-cta {
   width: 100%;
+  /* 同 .nav-action-cta: 避免嵌在 .navbar 的 backdrop-filter 里被一并模糊采样 */
+  transform: translateZ(0);
+}
+
+.mobile-menu-cta:hover {
+  transform: translateY(-2px) translateZ(0);
 }
 
 /* 菜单展开时锁住背景滚动 */
