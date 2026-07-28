@@ -81,8 +81,10 @@ const helpHome = `${helpBase}/`;
         </div>
       </a>
 
-      <!-- 3. 机酒预定: 亮绿实底卡 + 航线飞行图形 (帮助中心暂无对应分类, 兜底首页) -->
-      <a href={helpHome} target="_blank" rel="noopener noreferrer" class="feature-card solid scroll-reveal stagger-item">
+      <!-- 3. 机酒预定: 暗色细描边卡 + 航线飞行图形 (帮助中心暂无对应分类, 兜底首页)
+           原为绿底卡, 改暗色: 整排只留第 1 张旗舰 U 卡是绿底, 成为唯一视觉焦点,
+           同时把绿色的冲击力省给 PROMO 与页尾 Download —— 稀缺才有冲击力 -->
+      <a href={helpHome} target="_blank" rel="noopener noreferrer" class="feature-card outline scroll-reveal stagger-item">
         <div class="feature-visual fv-travel" aria-hidden="true">
           <svg class="fv-travel-svg" viewBox="0 0 220 130" fill="none">
             <path class="fv-route" d="M26 104 Q110 6 194 62" stroke="currentColor" stroke-width="2" stroke-dasharray="4 6" stroke-linecap="round"/>

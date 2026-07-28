@@ -273,8 +273,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--brand-ink);
 }
+
+/* 图形颜色跟随卡片类型: 绿底卡用墨色, 暗底卡用品牌绿 */
+.feature-card.solid .fv-travel { color: var(--brand-ink); }
+.feature-card.outline .fv-travel { color: var(--brand); }
 
 .fv-travel-svg {
   width: 78%;
@@ -288,11 +291,11 @@
 }
 
 .fv-node {
-  fill: var(--brand-ink);
+  fill: currentColor;
 }
 
 .fv-plane {
-  fill: var(--brand-ink);
+  fill: currentColor;
   offset-path: path("M26 104 Q110 6 194 62");
   offset-rotate: auto;
   offset-distance: 0%;
