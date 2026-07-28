@@ -248,61 +248,8 @@
   to { transform: translateX(-50%); }
 }
 
-/* ---------- 三步辅助说明条 ---------- */
-.fiat-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-  margin-top: var(--space-7);
-}
-
-.fiat-step {
-  display: flex;
-  gap: var(--space-4);
-  align-items: flex-start;
-}
-
-.fiat-step-icon {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--r-md);
-  background: rgba(184, 227, 81, 0.1);
-  color: var(--brand);
-}
-
-.fiat-step-icon svg { width: 22px; height: 22px; }
-
-.fiat-step-body {
-  position: relative;
-}
-
-.fiat-step-num {
-  font-size: 12px;
-  font-weight: var(--fw-heading);
-  letter-spacing: 0.1em;
-  color: var(--brand);
-  opacity: 0.5;
-}
-
-.fiat-step-body h3 {
-  font-size: var(--fs-body-lg);
-  font-weight: var(--fw-heading);
-  letter-spacing: -0.01em;
-  margin: 2px 0 6px;
-}
-
-.fiat-step-body p {
-  font-size: var(--fs-body-sm);
-  color: var(--text-sec);
-  line-height: 1.55;
-}
-
 .fiat-note {
-  margin-top: var(--space-6);
+  margin-top: var(--space-7);
   text-align: center;
   font-size: var(--fs-body-sm);
   color: var(--text-sec);
@@ -328,11 +275,6 @@
   }
   /* 竖排时核心放在两卡之间 */
   .fiat-core { justify-self: center; }
-
-  .fiat-steps {
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
