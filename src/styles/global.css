@@ -318,6 +318,125 @@ html {
   line-height: 1.6;
 }
 
+/* =====================================================
+   板块标题版式原型 (Section head archetypes)
+   全站 7 个板块原先共用同一套"居中大标题+居中副标题",
+   连续重复导致节奏呆板。这里提供另外两种原型交替使用:
+
+   A 居中仪式 = .section-header (上方)  — 只留给高潮点
+   B 左右对话 = .section-head--split    — Linear 招牌: 左短标题 / 右说明段
+   C 极简标签 = .section-head--label    — 标题让位, 内容自己当主角
+   ===================================================== */
+
+/* ---------- B 左右对话 ---------- */
+.section-head--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-6) var(--space-8);
+  align-items: start;
+  margin-bottom: var(--space-8);
+  max-width: none;
+  text-align: left;
+}
+
+.section-head--split .eyebrow {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-strong);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: calc(var(--space-4) * -1 + var(--space-2));
+}
+
+.section-head--split .eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--brand);
+}
+
+.section-head--split h2 {
+  /* 比 A 型的 --fs-h1 小一档: 左右对话讲究紧凑, 不需要仪式感的巨大字号 */
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-heading);
+  line-height: 1;
+  letter-spacing: -0.022em;
+  margin-bottom: 0;
+  /* 限宽逼出 2 行断行, 形成 Linear 那种"短促陈述句"的形态 */
+  max-width: 15ch;
+}
+
+.section-head--split p {
+  font-size: var(--fs-body-lg);
+  color: var(--text-sec);
+  line-height: 1.6;
+  max-width: 48ch;
+  /* 让段落首行与标题首行视觉对齐 (标题 lh=1, 段落 lh=1.6) */
+  padding-top: 0.35em;
+}
+
+/* ---------- C 极简标签 ---------- */
+.section-head--label {
+  margin-bottom: var(--space-7);
+  max-width: none;
+  text-align: left;
+}
+
+.section-head--label .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-strong);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: var(--space-3);
+}
+
+.section-head--label .eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--brand);
+}
+
+.section-head--label h2 {
+  /* 刻意降到 h3 档: 标题退居辅助, 把注意力让给下方内容 */
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-heading);
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  margin-bottom: var(--space-3);
+  max-width: 20ch;
+}
+
+.section-head--label p {
+  font-size: var(--fs-body);
+  color: var(--text-sec);
+  line-height: 1.6;
+  max-width: 52ch;
+}
+
+@media (max-width: 860px) {
+  .section-head--split {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  .section-head--split h2 {
+    max-width: none;
+  }
+  .section-head--split p {
+    padding-top: 0;
+  }
+}
+
 /* ===== Buttons (亮绿实底胶囊 + 暗描边) ===== */
 .btn {
   display: inline-flex;

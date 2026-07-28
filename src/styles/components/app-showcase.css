@@ -8,12 +8,12 @@
   position: relative;
 }
 
+/* 版式改为 B 型左右对话 (见 global.css .section-head--split);
+   这里只负责把标题区收进和下方 stage 相同的容器宽度里 */
 .app-sticky-header {
-  text-align: center;
-  margin-bottom: var(--space-7);
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: var(--container-w);
+  margin: 0 auto var(--space-7);
+  padding: 0 var(--space-5);
 }
 
 .app-sticky-stage {
