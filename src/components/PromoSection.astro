@@ -12,65 +12,53 @@ const t = useTranslations(lang as any);
 
 <section class="promos section-lift">
   <div class="container">
-    <!-- Header: Linear 风格 2 行标题 + 右侧说明与章标 -->
     <div class="section-head--split scroll-reveal">
       <h2 set:html={t('promotions.title_html')} />
       <p>{t('promotions.subtitle')}</p>
     </div>
 
-    <!-- 2 张参照 OKX 极简 3D 高高级质感的活动卡片 -->
     <div class="promos-grid">
-      <!-- 1. 1 USDT 虚拟卡特惠卡片 -->
-      <div class="promo-card okx-style scroll-reveal stagger-item">
-        <!-- 3D 极简视觉中心 (OKX 风格图标展示框) -->
-        <div class="promo-graphic-box">
-          <img src="/images/promo-card-graphic.png" alt="1 USDT Virtual Card" class="promo-graphic-img float-y" width="300" height="300" loading="lazy" decoding="async" />
-          <div class="promo-graphic-glow"></div>
-        </div>
-
-        <div class="promo-card-content">
-          <div class="promo-card-top">
-            <span class="promo-badge pulse">{t('promotions.promo1_tag')}</span>
-            <span class="promo-num" aria-hidden="true">01</span>
+      <!-- 卡片 1: 1 USDT 虚拟卡 — 品牌绿实底 -->
+      <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" target="_blank" rel="noopener noreferrer" class="promo-card promo-card--primary scroll-reveal stagger-item">
+        <div class="promo-card__body">
+          <span class="promo-tag promo-tag--dark">{t('promotions.promo1_tag')}</span>
+          <div class="promo-hero-num">
+            <span class="promo-hero-val">1 USDT</span>
+            <span class="promo-hero-label">VIRTUAL CARD</span>
           </div>
-
-          <div class="promo-text-group">
-            <h3>{t('promotions.promo1_title')}</h3>
-            <p>{t('promotions.promo1_desc')}</p>
-          </div>
-
-          <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" target="_blank" rel="noopener noreferrer" class="promo-cta">
+          <h3 class="promo-title">{t('promotions.promo1_title')}</h3>
+          <p class="promo-desc">{t('promotions.promo1_desc')}</p>
+          <span class="promo-link">
             {t('promotions.cta')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </a>
+          </span>
         </div>
-      </div>
-
-      <!-- 2. 零手续费卡片 -->
-      <div class="promo-card okx-style scroll-reveal stagger-item">
-        <!-- 3D 极简视觉中心 -->
-        <div class="promo-graphic-box">
-          <img src="/images/promo-fee-graphic.png" alt="Zero Top-up Fees" class="promo-graphic-img float-y" width="300" height="300" loading="lazy" decoding="async" style="animation-delay: 0.6s;" />
-          <div class="promo-graphic-glow"></div>
+        <div class="promo-card__visual">
+          <img src="/images/promo-card-graphic.png" alt="" class="promo-card__img" width="300" height="300" loading="lazy" decoding="async" />
         </div>
+        <span class="promo-watermark" aria-hidden="true">01</span>
+      </a>
 
-        <div class="promo-card-content">
-          <div class="promo-card-top">
-            <span class="promo-badge neon">{t('promotions.promo2_tag')}</span>
-            <span class="promo-num" aria-hidden="true">02</span>
+      <!-- 卡片 2: 零手续费 — 暗色描边 -->
+      <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" target="_blank" rel="noopener noreferrer" class="promo-card promo-card--dark scroll-reveal stagger-item">
+        <div class="promo-card__body">
+          <span class="promo-tag promo-tag--neon">{t('promotions.promo2_tag')}</span>
+          <div class="promo-hero-num">
+            <span class="promo-hero-val promo-hero-val--glow">0%</span>
+            <span class="promo-hero-label">TOP-UP FEE</span>
           </div>
-
-          <div class="promo-text-group">
-            <h3>{t('promotions.promo2_title')}</h3>
-            <p>{t('promotions.promo2_desc')}</p>
-          </div>
-
-          <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" target="_blank" rel="noopener noreferrer" class="promo-cta">
+          <h3 class="promo-title">{t('promotions.promo2_title')}</h3>
+          <p class="promo-desc">{t('promotions.promo2_desc')}</p>
+          <span class="promo-link">
             {t('promotions.cta')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </a>
+          </span>
         </div>
-      </div>
+        <div class="promo-card__visual">
+          <img src="/images/promo-fee-graphic.png" alt="" class="promo-card__img" width="300" height="300" loading="lazy" decoding="async" />
+        </div>
+        <span class="promo-watermark" aria-hidden="true">02</span>
+      </a>
     </div>
   </div>
 </section>
