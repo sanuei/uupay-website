@@ -11,5 +11,8 @@ export default defineConfig({
       prefixDefaultLocale: false  // 英文用 /，其他用 /zh-CN/ 等
     }
   },
-  output: 'static'  // 纯静态输出
+  output: 'static',  // 纯静态输出
+  build: {
+    format: 'directory'
+  }
 });

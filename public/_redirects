@@ -1,0 +1,12 @@
+# Cloudflare Pages / Netlify Redirects Configuration
+# 确保访问不带结尾斜杠的多语言路径时自动跳转，防止 404 错误
+/zh-CN /zh-CN/ 301
+/zh-TW /zh-TW/ 301
+/ja /ja/ 301
+/ko /ko/ 301
+/vi /vi/ 301
+/th /th/ 301
+/ms /ms/ 301
+/id /id/ 301
+/es /es/ 301
+/ar /ar/ 301

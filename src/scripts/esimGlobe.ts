@@ -71,7 +71,14 @@ export async function initEsimGlobe(canvas: HTMLCanvasElement): Promise<GlobeHan
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ---- 采样 land-mask 得到海陆数据 (water=白, land=黑) ----
-  const landPixels = await loadLandMask('/images/land-mask.png');
+  let landPixels: LandData;
+  try {
+    landPixels = await loadLandMask('/images/land-mask.png');
+  } catch (e) {
+    console.warn('[esim-globe] land mask fallback:', e);
+    // 生成虚拟全黑蒙版兜底
+    landPixels = { w: 1, h: 1, data: new Uint8ClampedArray([0, 0, 0, 255]) };
+  }
 
   const renderer = new WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
   renderer.setClearColor(0x000000, 0);
