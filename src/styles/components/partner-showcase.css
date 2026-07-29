@@ -150,20 +150,20 @@
 
 /* 2. 三大核心优势 */
 .partner-advantages {
-  padding: 120px 0;
+  padding: 80px 0;
 }
 
 .section-head-center {
   text-align: center;
   max-width: 900px;
-  margin: 0 auto 68px;
+  margin: 0 auto 56px;
 }
 
 .section-head-center h2 {
   font-size: clamp(28px, 3.5vw, 44px);
   font-weight: 800;
   color: var(--text-pri);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   white-space: nowrap;
 }
 
@@ -175,20 +175,20 @@
 .advantage-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 24px;
 }
 
 .advantage-card {
   background: var(--bg-card);
   border: 1px solid var(--border-sub);
   border-radius: var(--r-lg);
-  padding: 40px 32px;
+  padding: 36px 28px;
   position: relative;
   transition: all 0.3s var(--ease-out);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 250px;
+  min-height: 240px;
 }
 
 .advantage-card:hover {
@@ -224,20 +224,20 @@
 
 /* 3. 平台全方位服务与工具 2x2 宫格 */
 .partner-services {
-  padding: 120px 0;
+  padding: 80px 0;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
+  gap: 24px;
 }
 
 .service-card {
   background: #0B0E13;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--r-lg);
-  padding: 40px;
+  padding: 36px;
   display: flex;
   align-items: flex-start;
   gap: 24px;
@@ -277,7 +277,7 @@
 
 /* 4. 数据规模量化 Blocks (黑白绿强对比) */
 .partner-stats-section {
-  padding: 120px 0;
+  padding: 80px 0;
 }
 
 .stats-grid-layout {
@@ -367,7 +367,7 @@
   opacity: 0.85;
 }
 
-/* 5. 合作步骤 3-Steps */
+/* 5. 合作步骤 3-Steps (BingX 极简线稿图文风) */
 .partner-steps {
   padding: 120px 0;
 }
@@ -375,7 +375,7 @@
 .steps-grid-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  gap: 48px;
   align-items: center;
   margin-top: 56px;
 }
@@ -383,29 +383,25 @@
 .steps-graphic-container {
   position: relative;
   width: 100%;
-  max-width: 480px;
+  max-width: 440px;
   margin: 0 auto;
-  border-radius: 0;
-  overflow: visible;
-  border: none;
-  background: transparent;
-  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  background: transparent;
+  border: none;
 }
 
 .steps-graphic-img {
   width: 100%;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(184, 227, 81, 0.15)) drop-shadow(0 30px 60px rgba(0, 0, 0, 0.9));
-  transition: transform 0.5s var(--ease-out);
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.6));
+  transition: transform 0.4s var(--ease-out);
 }
 
 .steps-graphic-container:hover .steps-graphic-img {
-  transform: scale(1.03) translateY(-4px);
+  transform: translateY(-4px) scale(1.02);
 }
 
 .steps-list {
@@ -418,14 +414,8 @@
   background: var(--bg-card);
   border: 1px solid var(--border-sub);
   border-radius: var(--r-lg);
-  padding: 28px 32px;
+  padding: 32px 24px;
   position: relative;
-  transition: all 0.3s var(--ease-out);
-}
-
-.step-card:hover {
-  border-color: rgba(184, 227, 81, 0.3);
-  transform: translateX(4px);
 }
 
 .step-badge {
@@ -451,11 +441,11 @@
 
 /* 6. 底部通栏 Banner CTA */
 .partner-cta-banner {
-  margin: 100px 0 140px;
+  margin: 60px 0 100px;
   background: linear-gradient(135deg, rgba(184, 227, 81, 0.15) 0%, rgba(184, 227, 81, 0.05) 100%);
   border: 1px solid rgba(184, 227, 81, 0.3);
   border-radius: var(--r-lg);
-  padding: 56px 64px;
+  padding: 48px 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -501,16 +491,19 @@
   .section-head-center h2 {
     white-space: normal;
   }
+
   .partner-hero-grid,
   .stats-grid-layout,
   .steps-grid-layout {
     grid-template-columns: 1fr;
   }
+
   .advantage-grid,
   .services-grid,
   .steps-wrapper {
     grid-template-columns: 1fr;
   }
+
   .partner-cta-banner {
     flex-direction: column;
     text-align: center;
