@@ -369,6 +369,12 @@ const categories = ${isZh ? `[
 
 const getAnnouncementsDetailTemplate = (lang) => {
   const importPrefix = lang === defaultLang ? '../..' : '../../..';
+  const isZh = lang === 'zh-CN' || lang === 'zh-TW';
+  const backText = isZh ? '返回公告中心' : 'Back to Announcements';
+  const submitText = isZh ? '提交安全漏洞报告' : 'Report Security Vulnerability';
+  const ctaTitle = isZh ? '发现潜在安全风险？' : 'Found a Security Vulnerability?';
+  const ctaDesc = isZh ? '欢迎通过 security@uupay.com 与我们的安全团队取得联系。' : 'Contact our security team directly via security@uupay.com';
+
   return `---
 import Layout from '${importPrefix}/layouts/BaseLayout.astro';
 import Header from '${importPrefix}/components/Navbar.astro';
@@ -390,25 +396,47 @@ const lang = '${lang}';
 
 <Layout title={\`\${post.data.title} | UUPAY\`} lang={lang}>
   <Header lang={lang} />
-  
-  <main class="article-container container animate-in" style="padding-top: 120px; min-height: 70vh;">
-    <a href={\`/\${lang === 'en' ? '' : lang + '/'}announcements\`} class="back-link">← Back to Announcements</a>
-    
-    <article class="docs-content prose" style="max-width: 800px; margin: 40px auto 0;">
-      <header class="docs-header" style="margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1)">
-        <div class="meta" style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px; font-size: 14px; color: var(--text-secondary)">
-          <span class="tag" style="background: rgba(57, 255, 20, 0.1); color: var(--brand-primary); padding: 4px 12px; border-radius: var(--radius-pill);">{post.data.type}</span>
-          <span class="date">{post.data.date.toISOString().split('T')[0]}</span>
+
+  <main class="article-container animate-in">
+    <div class="article-nav">
+      <a href={\`/\${lang === 'en' ? '' : lang + '/'}announcements\`} class="back-link-btn">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M10 12L4 8L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>${backText}</span>
+      </a>
+    </div>
+
+    <article class="article-main">
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">{post.data.type || '官方公告'}</span>
+          <span class="article-date">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M5 2V4M11 2V4M2.5 6H13.5M3.5 3.5H12.5C13.0523 3.5 13.5 3.94772 13.5 4.5V13.5C13.5 14.0523 13.0523 14.5 12.5 14.5H3.5C2.94772 14.5 2.5 14.0523 2.5 13.5V4.5C2.5 3.94772 2.94772 3.5 3.5 3.5Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            {post.data.date ? post.data.date.toISOString().split('T')[0] : '2026-07-28'}
+          </span>
+          {post.data.author && (
+            <span class="article-author">・ {post.data.author}</span>
+          )}
         </div>
-        <h1 style="font-size: 40px; line-height: 1.2;">{post.data.title}</h1>
+        <h1 class="article-title">{post.data.title}</h1>
       </header>
-      
+
       <div class="markdown-body">
         <Content />
       </div>
+
+      <div class="article-footer-cta">
+        <div class="cta-text">
+          <h4>${ctaTitle}</h4>
+          <p>${ctaDesc}</p>
+        </div>
+        <a href="mailto:security@uupay.com" class="cta-btn">
+          <span>${submitText}</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </article>
   </main>
-  
+
   <Footer lang={lang} />
 </Layout>
 `;

@@ -41,13 +41,15 @@ const partnerLink = lang === 'en' ? '/partners' : `/${lang}/partners`;
 <section id="apply-form" class="partner-form-section">
   <div class="container">
     <!-- 返回合伙人主页按钮 -->
-    <a href={partnerLink} class="pf-back-btn scroll-reveal">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="19" y1="12" x2="5" y2="12"></line>
-        <polyline points="12 19 5 12 12 5"></polyline>
-      </svg>
-      <span>{isZh ? '返回合伙人计划' : 'Back to Partner Program'}</span>
-    </a>
+    <div class="pf-back-wrapper scroll-reveal">
+      <a href={partnerLink} class="pf-back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>{isZh ? '返回合伙人计划' : 'Back to Partner Program'}</span>
+      </a>
+    </div>
 
     <div class="partner-form-card scroll-reveal">
       <!-- 头部介绍 -->
