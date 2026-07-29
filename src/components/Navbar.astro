@@ -32,8 +32,8 @@ const langEnName: Record<string, string> = {
     </a>
 
     <ul class="nav-menu">
-      <li><a href="#products" class="nav-link">{t('nav.products')}</a></li>
-      <li><a href="#cards" class="nav-link">{t('nav.cards')}</a></li>
+      <li><a href={`${base}/#products`} class="nav-link">{t('nav.products')}</a></li>
+      <li><a href={`${base}/#cards`} class="nav-link">{t('nav.cards')}</a></li>
       <li><a href={`${base}/partners`} class="nav-link">{t('nav.partners')}</a></li>
       <li><a href={`${base}/promotions`} class="nav-link">{t('nav.promotions')}</a></li>
       <li><a href={`${base}/announcements`} class="nav-link">{t('nav.announcements')}</a></li>
@@ -44,7 +44,7 @@ const langEnName: Record<string, string> = {
       <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" class="btn btn-primary nav-action-cta">{t('nav.register')}</a>
 
       <!-- 下载 App 按钮 (OKX 图标按钮) -->
-      <a href="#download" class="nav-download-btn" aria-label={t('nav.download')} title={t('nav.download')}>
+      <a href={`${base}/#download`} class="nav-download-btn" aria-label={t('nav.download')} title={t('nav.download')}>
         <svg class="nav-download-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M12 3V14M12 14L7 9M12 14L17 9M4 19H20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -113,8 +113,8 @@ const langEnName: Record<string, string> = {
   <!-- 移动端下拉菜单面板 -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <ul class="mobile-menu-list">
-      <li><a href="#products" class="mobile-menu-link">{t('nav.products')}</a></li>
-      <li><a href="#cards" class="mobile-menu-link">{t('nav.cards')}</a></li>
+      <li><a href={`${base}/#products`} class="mobile-menu-link">{t('nav.products')}</a></li>
+      <li><a href={`${base}/#cards`} class="mobile-menu-link">{t('nav.cards')}</a></li>
       <li><a href={`${base}/partners`} class="mobile-menu-link">{t('nav.partners')}</a></li>
       <li><a href={`${base}/promotions`} class="mobile-menu-link">{t('nav.promotions')}</a></li>
       <li><a href={`${base}/announcements`} class="mobile-menu-link">{t('nav.announcements')}</a></li>
