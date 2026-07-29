@@ -15,45 +15,6 @@ const currentCategoryText = isZh ? '最新公告' : 'Latest News';
 const allAnnouncements = await getCollection('announcements');
 const sorted = allAnnouncements.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const extraAnnouncements = [
-  {
-    id: "fiat-express-v2",
-    title: "UUPAY 关于更新极速法币出金 2.0 通道与银行同名到账规则的公告",
-    date: "2026-07-29",
-    category: "法币出金"
-  },
-  {
-    id: "security-update-20260722",
-    title: "UUPAY 关于网络安全漏洞协同披露政策与白帽子悬赏奖励计划的公告",
-    date: "2026-07-28",
-    category: "系统与安全"
-  },
-  {
-    id: "esim-coverage-expansion",
-    title: "UUPAY 关于全球 eSIM 流量网络扩容 40+ 国家与 5G 极速激活的公告",
-    date: "2026-07-28",
-    category: "eSIM 通信"
-  },
-  {
-    id: "partner-program-upgrade",
-    title: "UUPAY 关于延长全球推荐合伙人最高 50% 阶梯返佣活动时间的公告",
-    date: "2026-07-28",
-    category: "活动与合伙人"
-  },
-  {
-    id: "spot-usdt-card-launch",
-    title: "UUPAY Visa & Mastercard 双通道尊享金色加密实体卡全量开放申请公告",
-    date: "2026-07-27",
-    category: "卡片服务"
-  },
-  {
-    id: "system-maintenance-notice",
-    title: "UUPAY 关于例行系统升级与硬件安全模块(HSM)平滑维护完成的公告",
-    date: "2026-07-26",
-    category: "系统与安全"
-  }
-];
-
 const categories = [
   { key: "latest", name: "最新公告" },
   { key: "cards", name: "卡片服务" },
@@ -113,19 +74,7 @@ const categories = [
                 data-title={post.data.title.toLowerCase()}
               >
                 <div class="bingx-notice-title">{post.data.title}</div>
-                <div class="bingx-notice-date">{post.data.date.toISOString().split('T')[0]}</div>
-              </a>
-            ))}
-
-            {extraAnnouncements.map((item) => (
-              <a
-                href={`/${lang === 'en' ? '' : lang + '/'}announcements/${item.id}`}
-                class="bingx-notice-item"
-                data-category={item.category}
-                data-title={item.title.toLowerCase()}
-              >
-                <div class="bingx-notice-title">{item.title}</div>
-                <div class="bingx-notice-date">{item.date}</div>
+                <div class="bingx-notice-date">{post.data.date ? post.data.date.toISOString().split('T')[0] : ''}</div>
               </a>
             ))}
           </div>

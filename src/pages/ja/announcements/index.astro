@@ -15,45 +15,6 @@ const currentCategoryText = isZh ? '最新公告' : 'Latest News';
 const allAnnouncements = await getCollection('announcements');
 const sorted = allAnnouncements.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const extraAnnouncements = [
-  {
-    id: "fiat-express-v2",
-    title: "UUPAY Announcement on Fiat Express 2.0 Channels & Bank Direct Deposit Update",
-    date: "2026-07-29",
-    category: "Fiat Express"
-  },
-  {
-    id: "security-update-20260722",
-    title: "UUPAY Announcement on Security Vulnerability Disclosure & Bug Bounty Program",
-    date: "2026-07-28",
-    category: "Security & System"
-  },
-  {
-    id: "esim-coverage-expansion",
-    title: "UUPAY Announcement on Global eSIM Network Expansion 40+ Countries & 5G Access",
-    date: "2026-07-28",
-    category: "eSIM & Mobile"
-  },
-  {
-    id: "partner-program-upgrade",
-    title: "UUPAY Announcement on Extending Partner 50% Tiered Commission Reward Program",
-    date: "2026-07-28",
-    category: "Promotions & Partners"
-  },
-  {
-    id: "spot-usdt-card-launch",
-    title: "Visa & Mastercard Dual-Channel Luxury Gold Crypto Card Application Release Notice",
-    date: "2026-07-27",
-    category: "Card Services"
-  },
-  {
-    id: "system-maintenance-notice",
-    title: "UUPAY Announcement on Routine System Maintenance & HSM Module Upgrade Completion",
-    date: "2026-07-26",
-    category: "Security & System"
-  }
-];
-
 const categories = [
   { key: "latest", name: "Latest News" },
   { key: "cards", name: "Card Services" },
@@ -113,19 +74,7 @@ const categories = [
                 data-title={post.data.title.toLowerCase()}
               >
                 <div class="bingx-notice-title">{post.data.title}</div>
-                <div class="bingx-notice-date">{post.data.date.toISOString().split('T')[0]}</div>
-              </a>
-            ))}
-
-            {extraAnnouncements.map((item) => (
-              <a
-                href={`/${lang === 'en' ? '' : lang + '/'}announcements/${item.id}`}
-                class="bingx-notice-item"
-                data-category={item.category}
-                data-title={item.title.toLowerCase()}
-              >
-                <div class="bingx-notice-title">{item.title}</div>
-                <div class="bingx-notice-date">{item.date}</div>
+                <div class="bingx-notice-date">{post.data.date ? post.data.date.toISOString().split('T')[0] : ''}</div>
               </a>
             ))}
           </div>
