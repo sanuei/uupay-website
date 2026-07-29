@@ -374,7 +374,7 @@
 
 .steps-grid-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.8fr 1.2fr;
   gap: 48px;
   align-items: center;
   margin-top: 56px;
@@ -384,27 +384,30 @@
   position: relative;
   aspect-ratio: 1 / 1;
   width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
   border-radius: var(--r-lg);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #080A0E;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at center, rgba(184, 227, 81, 0.08) 0%, #080A0E 70%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: 16px;
 }
 
 .steps-graphic-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.5s var(--ease-out);
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
 }
 
 .steps-graphic-container:hover .steps-graphic-img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .steps-list {
