@@ -155,15 +155,16 @@
 
 .section-head-center {
   text-align: center;
-  max-width: 640px;
+  max-width: 900px;
   margin: 0 auto 56px;
 }
 
 .section-head-center h2 {
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: clamp(28px, 3.5vw, 44px);
   font-weight: 800;
   color: var(--text-pri);
   margin-bottom: 12px;
+  white-space: nowrap;
 }
 
 .section-head-center p {
@@ -433,9 +434,10 @@
 }
 
 .cta-banner-btn {
-  padding: 16px 36px;
-  font-size: 16px;
-  font-weight: 800;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   border-radius: var(--r-pill);
   background: var(--brand);
   color: var(--brand-ink);
@@ -455,6 +457,9 @@
 
 /* 响应式适配 */
 @media (max-width: 980px) {
+  .section-head-center h2 {
+    white-space: normal;
+  }
   .partner-hero-grid,
   .stats-grid-layout {
     grid-template-columns: 1fr;
