@@ -1,65 +1,124 @@
 /* ========================================
-   PARTNER FORM — Linear 极简科技黑表格
+   PARTNER FORM — B2B 顶级企业级表单标准
    ======================================== */
+
 .partner-form-section {
-  padding: var(--space-9) 0 var(--space-10);
+  padding: clamp(60px, 8vh, 100px) 0 clamp(80px, 10vh, 120px);
   position: relative;
 }
 
 .partner-form-card {
-  max-width: 860px;
+  max-width: 900px;
   margin: 0 auto;
   background: var(--bg-card);
   border: 1px solid var(--border-sub);
   border-radius: var(--r-lg);
-  padding: var(--space-8);
-  box-shadow: none;
+  padding: clamp(28px, 4vw, 48px);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
   position: relative;
   overflow: hidden;
 }
 
+/* 顶部微弧发光 Halo */
 .partner-form-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
-  height: 200px;
-  background: radial-gradient(ellipse at top, rgba(184, 227, 81, 0.12) 0%, transparent 70%);
+  width: 700px;
+  height: 220px;
+  background: radial-gradient(ellipse at top, rgba(184, 227, 81, 0.1) 0%, transparent 70%);
   pointer-events: none;
 }
 
+/* Header */
 .form-header {
   text-align: center;
-  margin-bottom: var(--space-8);
+  margin-bottom: clamp(32px, 5vw, 48px);
   position: relative;
   z-index: 1;
 }
 
+.form-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: var(--r-pill);
+  background: rgba(184, 227, 81, 0.08);
+  border: 1px solid rgba(184, 227, 81, 0.2);
+  color: var(--brand);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
 .form-header h2 {
-  font-size: var(--fs-h2);
-  font-weight: var(--fw-heading);
-  line-height: 1.1;
-  letter-spacing: var(--ls-h2);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: var(--text-pri);
-  margin-bottom: var(--space-3);
+  margin-bottom: 12px;
 }
 
 .form-header p {
-  font-size: var(--fs-body);
+  font-size: 15px;
   color: var(--text-sec);
   line-height: 1.6;
-  max-width: 600px;
+  max-width: 660px;
   margin: 0 auto;
 }
 
-/* 表达字段组网格 */
+/* 分块 Group Container */
+.form-section-block {
+  margin-bottom: 36px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.form-section-block:last-of-type {
+  border-bottom: none;
+  margin-bottom: 24px;
+  padding-bottom: 0;
+}
+
+/* 分块 Header */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(184, 227, 81, 0.1);
+  border: 1px solid rgba(184, 227, 81, 0.25);
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-title h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+/* 网格布局 */
 .pf-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-5);
-  margin-bottom: var(--space-6);
+  gap: 20px 24px;
 }
 
 .pf-field-full {
@@ -73,7 +132,7 @@
 }
 
 .pf-label {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-pri);
   display: flex;
@@ -92,45 +151,53 @@
   font-weight: 400;
 }
 
-/* 输入框核心样式 */
+/* 输入框高端沉浸样式 */
 .pf-input,
 .pf-select,
 .pf-textarea {
   width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--r-md);
-  padding: 14px 18px;
+  padding: 13px 16px;
   color: var(--text-pri);
-  font-size: 15px;
+  font-size: 14px;
   font-family: inherit;
-  transition: border-color 0.2s var(--ease-out), background 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+  transition: all 0.2s var(--ease-out);
   outline: none;
+}
+
+.pf-input:hover,
+.pf-select:hover,
+.pf-textarea:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .pf-input:focus,
 .pf-select:focus,
 .pf-textarea:focus {
   border-color: var(--brand);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 0 3px rgba(184, 227, 81, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 3px rgba(184, 227, 81, 0.12);
 }
 
 .pf-input::placeholder,
 .pf-textarea::placeholder {
   color: var(--text-mute);
+  opacity: 0.7;
 }
 
 .pf-textarea {
-  min-height: 110px;
+  min-height: 100px;
   resize: vertical;
 }
 
-/* 芯片多选 / 单选组 */
+/* 选项芯片组 */
 .chip-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px 10px;
   margin-top: 4px;
 }
 
@@ -149,10 +216,9 @@
 .chip-label {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--r-pill);
   font-size: 13px;
   font-weight: 500;
@@ -161,7 +227,7 @@
 }
 
 .chip-item:hover .chip-label {
-  border-color: rgba(184, 227, 81, 0.4);
+  border-color: rgba(184, 227, 81, 0.35);
   color: var(--text-pri);
 }
 
@@ -176,9 +242,10 @@
 .pf-submit-btn {
   width: 100%;
   padding: 16px 32px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   border-radius: var(--r-pill);
+  border: none;
   background: var(--brand);
   color: var(--brand-ink);
   display: inline-flex;
@@ -186,30 +253,30 @@
   justify-content: center;
   gap: 10px;
   cursor: pointer;
-  transition: transform 0.2s var(--ease-out), background 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
-  margin-top: var(--space-4);
+  transition: all 0.2s var(--ease-out);
+  margin-top: 16px;
 }
 
 .pf-submit-btn:hover {
   background: var(--brand-hi);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -10px rgba(184, 227, 81, 0.4);
+  box-shadow: 0 12px 30px -8px rgba(184, 227, 81, 0.35);
 }
 
 .pf-submit-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
-/* 成功提示组件 */
+/* 成功状态弹层 */
 .pf-success-msg {
   display: none;
   text-align: center;
-  padding: var(--space-8) var(--space-5);
+  padding: 32px 24px;
   background: rgba(184, 227, 81, 0.05);
   border: 1px solid rgba(184, 227, 81, 0.3);
   border-radius: var(--r-lg);
-  margin-top: var(--space-4);
+  margin-top: 24px;
 }
 
 .pf-success-msg.is-show {
@@ -218,17 +285,17 @@
 }
 
 .pf-success-msg svg {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   color: var(--brand);
   margin-bottom: 12px;
 }
 
 .pf-success-msg h3 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text-pri);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .pf-success-msg p {
@@ -244,6 +311,6 @@
     grid-column: span 1;
   }
   .partner-form-card {
-    padding: var(--space-5);
+    padding: 24px 18px;
   }
 }

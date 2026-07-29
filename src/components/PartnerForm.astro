@@ -8,193 +8,220 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
-
 const isZh = lang.startsWith('zh');
 
 // 国家选项
 const countries = isZh 
-  ? ['中国大陆', '香港', '澳门', '台湾', '日本', '韩国', '欧洲', '东南亚', '北美', '其他']
-  : ['Mainland China', 'Hong Kong', 'Macao', 'Taiwan', 'Japan', 'Korea', 'Europe', 'Southeast Asia', 'North America', 'Other'];
+  ? ['中国大陆', '中国香港', '中国澳门', '中国台湾', '日本', '韩国', '新加坡', '欧洲', '东南亚', '北美', '其他']
+  : ['Mainland China', 'Hong Kong', 'Macao', 'Taiwan', 'Japan', 'Korea', 'Singapore', 'Europe', 'Southeast Asia', 'North America', 'Other'];
 
 // 身份选项
 const identities = isZh
-  ? ['WEB3 从业者', 'KOL / 社群主', '支付 / 卡商 / 资金渠道', '地推 / 渠道代理', '商户资源方', '普通用户', '其他']
-  : ['Web3 Professional', 'KOL / Community Admin', 'Payment / Card Merchant', 'Agent / Channel Partner', 'Merchant Resource Provider', 'General User', 'Other'];
+  ? ['Web3 / 加密从业者', 'KOL / 社区负责人', '支付 / 卡商 / 资金渠道', '地推 / 渠道代理商', '商户 / 企业资源方', '个人交易者', '其他']
+  : ['Web3 Professional', 'KOL / Community Leader', 'Payment / Card Merchant', 'Regional Agent / Partner', 'Enterprise Resource Provider', 'Individual Trader', 'Other'];
 
 // 资源选项
 const resources = isZh
-  ? ['Telegram / Discord 社群', 'Twitter / YouTube / 小红书', '线下商户资源', '交易所 / Web3 项目资源', '地推团队', '支付 / 卡类相关经验', '暂无资源但愿意学习']
-  : ['Telegram / Discord Group', 'Twitter / YouTube / Social Media', 'Offline Merchant Network', 'Exchange / Web3 Project', 'Promoter Team', 'Payment / Card Experience', 'No resource yet (Eager to learn)'];
+  ? ['Telegram / Discord 社群', 'X (Twitter) / YouTube 频道', '线下商户与企业网络', '交易所 / Web3 项目资源', '专业地推团队', '支付 / 卡类运营经验', '暂无资源（意向探索）']
+  : ['Telegram / Discord Community', 'X (Twitter) / YouTube Channel', 'Offline Merchant Network', 'Exchange / Web3 Project', 'Field Promotion Team', 'Payment / Card Experience', 'Exploratory (No Resource Yet)'];
 
 // 规模选项
 const scales = isZh
-  ? ['100 人以下', '100 - 500', '500 - 2,000', '2,000 - 10,000', '10,000 以上', '暂无']
-  : ['Under 100', '100 - 500', '500 - 2,000', '2,000 - 10,000', 'Over 10,000', 'None'];
+  ? ['100 人以下', '100 - 500 人', '500 - 2,000 人', '2,000 - 10,000 人', '10,000 人以上', '暂无规模']
+  : ['Under 100', '100 - 500', '500 - 2,000', '2,000 - 10,000', 'Over 10,000', 'N/A'];
 
 // 了解渠道
 const channels = isZh
-  ? ['UUPAY 官方 Telegram', 'UUPAY 官方 X (Twitter)', 'UUPAY 官方网站', '渠道 & 朋友推荐', '其他']
-  : ['Official Telegram', 'Official X (Twitter)', 'Official Website', 'Friend / Channel Referral', 'Other'];
+  ? ['UUPAY 官方 Telegram 频道', 'UUPAY 官方 X (Twitter)', 'UUPAY 官方网站', '合作伙伴 / 朋友推荐', '其他渠道']
+  : ['Official Telegram', 'Official X (Twitter)', 'Official Website', 'Partner / Friend Referral', 'Other'];
 ---
 
 <section id="apply-form" class="partner-form-section">
   <div class="container">
     <div class="partner-form-card scroll-reveal">
+      <!-- 头部介绍 -->
       <div class="form-header">
-        <h2>{isZh ? 'UUPAY 全球合伙人申请表 🌍' : 'UUPAY Global Partner Application 🌍'}</h2>
+        <div class="form-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="8.5" cy="7" r="4"></circle>
+
+            <polyline points="17 11 19 13 23 9"></polyline>
+          </svg>
+          B2B PARTNERSHIP PROGRAM
+        </div>
+
+        <h2>{isZh ? 'UUPAY 全球合伙人合作申请' : 'UUPAY Global Partner Application'}</h2>
         <p>
           {isZh 
-            ? '感谢关注 UUPAY。我们正在招募地区合伙人、推广合伙人与渠道合伙人。请如实填写以下信息，我们将尽快联系您。'
-            : 'Thank you for your interest in UUPAY. We are recruiting regional, marketing, and channel partners worldwide. Please fill in the details below.'}
+            ? '感谢您对 UUPAY 的关注。我们面向全球招募区域合伙人、推广合伙人与机构渠道商。请如实填写以下评估表单，合伙人团队将在 24 小时内与您联系。'
+            : 'Thank you for your interest in UUPAY. We recruit regional, marketing, and institutional channel partners worldwide. Please complete the evaluation form below.'}
         </p>
       </div>
 
       <form id="partnerForm" class="partner-form">
-        <div class="pf-grid">
-          <!-- 1. UID -->
-          <div class="pf-group">
-            <label class="pf-label" for="uid">
-              {isZh ? '您的 UUPAY UID' : 'Your UUPAY UID'} <span class="required">*</span>
-            </label>
-            <input type="text" id="uid" name="uid" class="pf-input" placeholder={isZh ? '例如：10086' : 'e.g. 10086'} required />
+        <!-- 分块 01: 基础信息 -->
+        <div class="form-section-block">
+          <div class="section-title">
+            <span class="step-num">01</span>
+            <h3>{isZh ? '基础联系信息' : 'Basic Profile'}</h3>
           </div>
 
-          <!-- 2. 姓名/昵称 -->
-          <div class="pf-group">
-            <label class="pf-label" for="name">
-              {isZh ? '姓名 / 昵称' : 'Name / Nickname'} <span class="required">*</span>
-            </label>
-            <input type="text" id="name" name="name" class="pf-input" placeholder={isZh ? '请输入您的姓名或昵称' : 'Your full name or handle'} required />
-          </div>
+          <div class="pf-grid">
+            <div class="pf-group">
+              <label class="pf-label" for="uid">
+                {isZh ? 'UUPAY 账户 UID' : 'UUPAY Account UID'} <span class="required">*</span>
+              </label>
+              <input type="text" id="uid" name="uid" class="pf-input" placeholder={isZh ? '例如：10086' : 'e.g. 10086'} required />
+            </div>
 
-          <!-- 3. Telegram -->
-          <div class="pf-group">
-            <label class="pf-label" for="telegram">
-              {isZh ? 'Telegram 联系方式' : 'Telegram Handle / Link'} <span class="required">*</span>
-            </label>
-            <input type="text" id="telegram" name="telegram" class="pf-input" placeholder="e.g. @uupay_official or https://t.me/..." required />
-          </div>
+            <div class="pf-group">
+              <label class="pf-label" for="name">
+                {isZh ? '姓名 / 称呼' : 'Full Name / Handle'} <span class="required">*</span>
+              </label>
+              <input type="text" id="name" name="name" class="pf-input" placeholder={isZh ? '请输入您的称呼或团队名称' : 'Your name or organization'} required />
+            </div>
 
-          <!-- 4. Email -->
-          <div class="pf-group">
-            <label class="pf-label" for="email">
-              {isZh ? '电子邮箱 (Email)' : 'Email Address'} <span class="required">*</span>
-            </label>
-            <input type="email" id="email" name="email" class="pf-input" placeholder="name@example.com" required />
-          </div>
+            <div class="pf-group">
+              <label class="pf-label" for="telegram">
+                {isZh ? 'Telegram 联系账号' : 'Telegram Handle'} <span class="required">*</span>
+              </label>
+              <input type="text" id="telegram" name="telegram" class="pf-input" placeholder="e.g. @uupay_official" required />
+            </div>
 
-          <!-- 5. Twitter / X (选填) -->
-          <div class="pf-group pf-field-full">
-            <label class="pf-label" for="twitter">
-              {isZh ? 'X (Twitter) 链接' : 'X (Twitter) Link'} <span class="hint">({isZh ? '选填' : 'Optional'})</span>
-            </label>
-            <input type="text" id="twitter" name="twitter" class="pf-input" placeholder="https://x.com/your_handle" />
-          </div>
+            <div class="pf-group">
+              <label class="pf-label" for="email">
+                {isZh ? '工作电子邮箱' : 'Business Email'} <span class="required">*</span>
+              </label>
+              <input type="email" id="email" name="email" class="pf-input" placeholder="name@company.com" required />
+            </div>
 
-          <!-- 6. 国家/地区 -->
-          <div class="pf-group pf-field-full">
-            <label class="pf-label">
-              {isZh ? '您所在国家 / 地区' : 'Your Country / Region'} <span class="required">*</span>
-            </label>
-            <div class="chip-group">
-              {countries.map((c, i) => (
-                <label class="chip-item">
-                  <input type="radio" name="country" value={c} required checked={i === 0} />
-                  <span class="chip-label">{c}</span>
-                </label>
-              ))}
+            <div class="pf-group pf-field-full">
+              <label class="pf-label" for="twitter">
+                {isZh ? 'X (Twitter) 主页链接' : 'X (Twitter) Profile'} <span class="hint">({isZh ? '选填' : 'Optional'})</span>
+              </label>
+              <input type="text" id="twitter" name="twitter" class="pf-input" placeholder="https://x.com/your_handle" />
             </div>
           </div>
+        </div>
 
-          <!-- 7. 主要身份 -->
-          <div class="pf-group pf-field-full">
-            <label class="pf-label">
-              {isZh ? '您的主要身份是？' : 'Your Primary Identity'} <span class="required">*</span>
-            </label>
-            <div class="chip-group">
-              {identities.map((item) => (
-                <label class="chip-item">
-                  <input type="checkbox" name="identity" value={item} />
-                  <span class="chip-label">{item}</span>
-                </label>
-              ))}
-            </div>
+        <!-- 分块 02: 资质与优势 -->
+        <div class="form-section-block">
+          <div class="section-title">
+            <span class="step-num">02</span>
+            <h3>{isZh ? '业务背景与资源优势' : 'Capabilities & Reach'}</h3>
           </div>
 
-          <!-- 8. 拥有资源 -->
-          <div class="pf-group pf-field-full">
-            <label class="pf-label">
-              {isZh ? '您是否有以下资源？' : 'Your Resources & Advantages'} <span class="required">*</span>
-            </label>
-            <div class="chip-group">
-              {resources.map((res) => (
-                <label class="chip-item">
-                  <input type="checkbox" name="resource" value={res} />
-                  <span class="chip-label">{res}</span>
-                </label>
-              ))}
+          <div class="pf-grid">
+            <div class="pf-group pf-field-full">
+              <label class="pf-label">
+                {isZh ? '常驻国家 / 主要业务覆盖地区' : 'Primary Country / Operating Region'} <span class="required">*</span>
+              </label>
+              <div class="chip-group">
+                {countries.map((c, i) => (
+                  <label class="chip-item">
+                    <input type="radio" name="country" value={c} required checked={i === 0} />
+                    <span class="chip-label">{c}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="pf-group pf-field-full">
+              <label class="pf-label">
+                {isZh ? '您的主要行业身份' : 'Primary Identity / Role'} <span class="required">*</span>
+              </label>
+              <div class="chip-group">
+                {identities.map((item) => (
+                  <label class="chip-item">
+                    <input type="checkbox" name="identity" value={item} />
+                    <span class="chip-label">{item}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="pf-group pf-field-full">
+              <label class="pf-label">
+                {isZh ? '已具备的渠道与核心资源' : 'Core Advantages & Resources'} <span class="required">*</span>
+              </label>
+              <div class="chip-group">
+                {resources.map((res) => (
+                  <label class="chip-item">
+                    <input type="checkbox" name="resource" value={res} />
+                    <span class="chip-label">{res}</span>
+                  </label>
+                ))}
+              </div>
             </div>
           </div>
+        </div>
 
-          <!-- 9. 规模 -->
-          <div class="pf-group pf-field-full">
-            <label class="pf-label">
-              {isZh ? '您的社群或账号规模' : 'Community / Account Size'} <span class="required">*</span>
-            </label>
-            <div class="chip-group">
-              {scales.map((s, i) => (
-                <label class="chip-item">
-                  <input type="radio" name="scale" value={s} required checked={i === 0} />
-                  <span class="chip-label">{s}</span>
-                </label>
-              ))}
-            </div>
+        <!-- 分块 03: 规模与合作安排 -->
+        <div class="form-section-block">
+          <div class="section-title">
+            <span class="step-num">03</span>
+            <h3>{isZh ? '规模与合作规划' : 'Scope & Referral Plan'}</h3>
           </div>
 
-          <!-- 10. 了解渠道 -->
-          <div class="pf-group pf-field-full">
-            <label class="pf-label">
-              {isZh ? '从哪里了解到 UUPAY 合伙人招募？' : 'Where did you hear about UUPAY?'} <span class="required">*</span>
-            </label>
-            <div class="chip-group">
-              {channels.map((ch, i) => (
-                <label class="chip-item">
-                  <input type="radio" name="channel" value={ch} required checked={i === 0} />
-                  <span class="chip-label">{ch}</span>
-                </label>
-              ))}
+          <div class="pf-grid">
+            <div class="pf-group pf-field-full">
+              <label class="pf-label">
+                {isZh ? '涵盖社群或受众覆盖规模' : 'Community or Audience Scale'} <span class="required">*</span>
+              </label>
+              <div class="chip-group">
+                {scales.map((s, i) => (
+                  <label class="chip-item">
+                    <input type="radio" name="scale" value={s} required checked={i === 0} />
+                    <span class="chip-label">{s}</span>
+                  </label>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <!-- 11. 补充说明 -->
-          <div class="pf-group pf-field-full">
-            <label class="pf-label" for="notes">
-              {isZh ? '补充说明' : 'Additional Notes'} <span class="hint">({isZh ? '选填' : 'Optional'})</span>
-            </label>
-            <textarea
-              id="notes"
-              name="notes"
-              class="pf-textarea"
-              placeholder={isZh ? '如您有社群媒体链接、团队情况、合作想法等可填写...' : 'Any social media links, team profile, or partnership ideas...'}
-            ></textarea>
+            <div class="pf-group pf-field-full">
+              <label class="pf-label">
+                {isZh ? '获知 UUPAY 招募的渠道' : 'How Did You Hear About Us?'} <span class="required">*</span>
+              </label>
+              <div class="chip-group">
+                {channels.map((ch, i) => (
+                  <label class="chip-item">
+                    <input type="radio" name="channel" value={ch} required checked={i === 0} />
+                    <span class="chip-label">{ch}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="pf-group pf-field-full">
+              <label class="pf-label" for="notes">
+                {isZh ? '补充说明 / 预期合作方案' : 'Additional Proposal / Details'} <span class="hint">({isZh ? '选填' : 'Optional'})</span>
+              </label>
+              <textarea
+                id="notes"
+                name="notes"
+                class="pf-textarea"
+                placeholder={isZh ? '如您有具体的推广计划、定制返佣需求或团队背景可在此列出...' : 'Provide details regarding promotion strategies or team background...'}
+              ></textarea>
+            </div>
           </div>
         </div>
 
         <button type="submit" class="pf-submit-btn">
-          <span>{isZh ? '发送申请邮件' : 'Submit Application via Email'}</span>
+          <span>{isZh ? '提交合伙人申请' : 'Submit Partner Application'}</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </button>
 
-        <!-- 提交成功状态 -->
+        <!-- 成功回调提示 -->
         <div id="pfSuccessMsg" class="pf-success-msg">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
             <polyline points="22 4 12 14.01 9 11.01"/>
           </svg>
-          <h3>{isZh ? '申请已组装，即将调起邮件发送' : 'Application Prepared! Opening Mail App'}</h3>
-          <p>{isZh ? '若未自动打开邮件客户端，请直接发送邮件至 bd@uupay.com' : 'If mail client does not open automatically, please send details to bd@uupay.com'}</p>
+          <h3>{isZh ? '申请内容已组装，即将调起邮件发送' : 'Application Assembled! Opening Email Client'}</h3>
+          <p>{isZh ? '若未自动唤起系统邮件客户端，请直接发送信息至 bd@uupay.com' : 'If your email client does not open automatically, please email bd@uupay.com directly.'}</p>
         </div>
       </form>
     </div>
@@ -223,7 +250,6 @@ const channels = isZh
       const selectedIdentities = Array.from(form.querySelectorAll<HTMLInputElement>('input[name="identity"]:checked')).map(i => i.value);
       const selectedResources = Array.from(form.querySelectorAll<HTMLInputElement>('input[name="resource"]:checked')).map(r => r.value);
 
-      // 组装邮件内容
       const emailSubject = encodeURIComponent(`[UUPAY Partner Application] ${name} - UID: ${uid}`);
       const bodyText = 
 `UUPAY Global Partner Application Details:
@@ -231,29 +257,27 @@ const channels = isZh
 UID: ${uid}
 Name/Handle: ${name}
 Telegram: ${telegram}
-Email: ${email}
+Business Email: ${email}
 X (Twitter): ${twitter || 'N/A'}
 
 Country/Region: ${country}
 Primary Identities: ${selectedIdentities.join(', ') || 'N/A'}
 Available Resources: ${selectedResources.join(', ') || 'N/A'}
-Community/Account Size: ${scale}
+Audience Scale: ${scale}
 Source Channel: ${channel}
 
-Additional Notes:
+Proposal & Additional Notes:
 ${notes || 'N/A'}
 ----------------------------------------
-Sent via UUPAY Official Partner Form`;
+Sent via UUPAY Official Partner Form Portal`;
 
       const emailBody = encodeURIComponent(bodyText);
       const mailtoUrl = `mailto:bd@uupay.com?subject=${emailSubject}&body=${emailBody}`;
 
-      // 显示成功提示
       if (successMsg) {
         successMsg.classList.add('is-show');
       }
 
-      // 触发 mailto 发信
       setTimeout(() => {
         window.location.href = mailtoUrl;
       }, 500);
