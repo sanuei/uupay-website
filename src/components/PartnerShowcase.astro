@@ -1,0 +1,265 @@
+---
+import { useTranslations } from '../i18n/ui';
+import '../styles/components/partner-showcase.css';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+const isZh = lang.startsWith('zh');
+const applyLink = lang === 'en' ? '/partners/apply' : `/${lang}/partners/apply`;
+
+// 返佣等级预设
+const calcLevels = [
+  { level: 'Lv 1', amount: '$800', height: '35%' },
+  { level: 'Lv 2', amount: '$2,500', height: '50%' },
+  { level: 'Lv 3', amount: '$6,000', height: '65%' },
+  { level: 'Lv 4', amount: '$12,800', height: '80%' },
+  { level: 'Lv 5', amount: '$25,000', height: '100%', active: true },
+];
+---
+
+<div class="partner-showcase">
+  <div class="container">
+    <!-- 1. Hero 区域 (双栏 + 返佣估算卡片) -->
+    <section class="partner-hero">
+      <div class="partner-hero-grid">
+        <div class="partner-hero-content scroll-reveal">
+          <div class="partner-hero-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            UUPAY GLOBAL PARTNERSHIP
+          </div>
+          <h1>{isZh ? 'UUPAY 全球合伙人计划' : 'UUPAY Global Partner Program'}</h1>
+          <p class="partner-hero-desc">
+            {isZh 
+              ? '如果您是内容创作者、社群主、Web3 意见领袖或渠道商，欢迎加入 UUPAY 合作伙伴生态！享受高达 50% 阶梯返佣与每日极速结算收益。'
+              : 'Join the UUPAY Global Partner Ecosystem. Enjoy up to 50% commission rate and daily instant payout.'}
+          </p>
+          <div class="partner-hero-cta">
+            <a href={applyLink} class="cta-banner-btn">
+              <span>{isZh ? '申请加入合伙人' : 'Apply For Partner'}</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 右侧返佣计算器图表面板 -->
+        <div class="partner-calc-card scroll-reveal">
+          <div class="calc-header">
+            <div>
+              <div class="calc-title">{isZh ? '预计每月返佣收益' : 'ESTIMATED MONTHLY COMMISSION'}</div>
+              <div class="calc-amount-val" id="calcVal">$25,000 <span class="calc-amount-unit">USDT / 月</span></div>
+            </div>
+            <div class="partner-hero-tag" style="margin-bottom:0;">最高 50% 返佣</div>
+          </div>
+
+          <div class="calc-bars" id="calcBars">
+            {calcLevels.map((item) => (
+              <div class={`calc-bar-item ${item.active ? 'is-active' : ''}`} data-val={item.amount}>
+                <div class="calc-bar-fill" style={`height: ${item.height}`}></div>
+                <div class="calc-bar-label">{item.level}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 为什么加入 (三大核心优势) -->
+    <section class="partner-advantages">
+      <div class="section-head-center scroll-reveal">
+        <h2>{isZh ? '为什么选择加入 UUPAY 合伙人？' : 'Why Join UUPAY Partner Program?'}</h2>
+        <p>{isZh ? '业界极具竞争力的佣金激励与多重权益支撑，助力流量快速变现。' : 'Competitive commission incentives and multi-tier support.'}</p>
+      </div>
+
+      <div class="advantage-grid">
+        <div class="advantage-card scroll-reveal">
+          <div class="advantage-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3>{isZh ? '行业最高 50% 返佣' : 'Up to 50% Commission'}</h3>
+            <p>{isZh ? '阶梯式高额返佣奖励，推荐好友开卡与消费即可享受高比例提成。' : 'Tiered commission rewards for customer card opening and transactions.'}</p>
+          </div>
+        </div>
+
+        <div class="advantage-card scroll-reveal">
+          <div class="advantage-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <div>
+            <h3>{isZh ? '收益极速日结' : 'Daily Fast Payout'}</h3>
+            <p>{isZh ? '佣金收益自动统计与结算，随时可提取至加密钱包或银行卡。' : 'Automated daily accounting and seamless withdrawal to crypto wallet.'}</p>
+          </div>
+        </div>
+
+        <div class="advantage-card scroll-reveal">
+          <div class="advantage-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3>{isZh ? '100% 持牌与风控保障' : '100% Licensed & Secure'}</h3>
+            <p>{isZh ? '依赖持牌金融通道合规结算，保障合伙人利益与资金安全。' : 'Compliant settlement via licensed partners to guarantee funds security.'}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 全方位服务与支持 (2x2 宫格) -->
+    <section class="partner-services">
+      <div class="section-head-center scroll-reveal">
+        <h2>{isZh ? '专属服务与全方位后台支持' : 'All-Round Partner Support & Center'}</h2>
+        <p>{isZh ? '提供全套合伙人看板与专业客户经理，全方位赋能推广。' : 'Complete dashboard and dedicated key account managers.'}</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card scroll-reveal">
+          <div class="service-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3>{isZh ? '合伙人专属数据看板' : 'Partner Control Center'}</h3>
+            <p>{isZh ? '后台即时展示转化数据、卡片消费额与收益明细，公开透明。' : 'Real-time dashboard for conversion tracking and daily earning metrics.'}</p>
+          </div>
+        </div>
+
+        <div class="service-card scroll-reveal">
+          <div class="service-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 12v10H4V12"></path>
+              <path d="M22 7H2v5h20V7z"></path>
+              <path d="M12 22V7"></path>
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3>{isZh ? '定制粉丝活动福利' : 'Customized Community Perks'}</h3>
+            <p>{isZh ? '为大客户与社区量身定制 0 手续费开卡、独家抵扣金等促销权益。' : 'Exclusive 0-fee card activation and promo credits for your audience.'}</p>
+          </div>
+        </div>
+
+        <div class="service-card scroll-reveal">
+          <div class="service-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3>{isZh ? '1 对 1 专属大客户经理' : '1-on-1 Dedicated Manager'}</h3>
+            <p>{isZh ? '7×24 小时专人响应，提供定制化渠道方案与优先技术对接。' : '24/7 dedicated operational and account support.'}</p>
+          </div>
+        </div>
+
+        <div class="service-card scroll-reveal">
+          <div class="service-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+              <line x1="1" y1="10" x2="23" y2="10"></line>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3>{isZh ? '行业领先的卡片产品' : 'Industry-Leading Card Products'}</h3>
+            <p>{isZh ? '支持 Visa / Mastercard 双通道，香槟金实体卡与冰川白虚拟卡组合。' : 'Visa & Mastercard dual-channel, physical gold card and white virtual card.'}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 平台数据规模量化 (数据拼接块) -->
+    <section class="partner-stats-section">
+      <div class="stats-grid-layout">
+        <div class="stats-left-text scroll-reveal">
+          <h2>{isZh ? '全球合伙人正在与 UUPAY 一起共享收益' : 'Global Partners Are Earning With UUPAY'}</h2>
+          <p>{isZh ? '数据见证信任，覆盖全球多个国家与地区的加密支付网络。' : 'Data speaks for trust across global crypto payment network.'}</p>
+        </div>
+
+        <div class="stats-blocks scroll-reveal">
+          <div class="stat-block-card white">
+            <div class="stat-num">500+</div>
+            <div class="stat-label">{isZh ? '活跃合伙人 · 遍布 110+ 国家/地区' : 'Active Partners Across 110+ Countries'}</div>
+          </div>
+          <div class="stat-block-card dark">
+            <div class="stat-num">$50,000+</div>
+            <div class="stat-label">{isZh ? '单月最高返佣 (USDT)' : 'Top Monthly Commission'}</div>
+          </div>
+          <div class="stat-block-card brand">
+            <div class="stat-num">$1,000,000+</div>
+            <div class="stat-label">{isZh ? '累计发放佣金奖励' : 'Total Commission Paid'}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 合作步骤 Step 1 - Step 2 - Step 3 -->
+    <section class="partner-steps">
+      <div class="section-head-center scroll-reveal">
+        <h2>{isZh ? '简单 3 步，开启高额返佣之旅' : '3 Simple Steps to Start Earning'}</h2>
+        <p>{isZh ? '流程清晰快捷，轻松实现合作变现。' : 'Clear workflow to kickstart your referral journey.'}</p>
+      </div>
+
+      <div class="steps-wrapper">
+        <div class="step-card scroll-reveal">
+          <div class="step-badge">STEP 01</div>
+          <h3>{isZh ? '提交申请资料' : 'Submit Application'}</h3>
+          <p>{isZh ? '填写合伙人评估表单，24 小时内由专属团队进行资质审核与联系。' : 'Fill in the partner application form for review within 24 hours.'}</p>
+        </div>
+
+        <div class="step-card scroll-reveal">
+          <div class="step-badge">STEP 02</div>
+          <h3>{isZh ? '获取专属链接/二维码' : 'Get Exclusive Link'}</h3>
+          <p>{isZh ? '生成专属合伙人邀请链接与二维码，通过社群与社交媒体进行宣传推广。' : 'Generate custom referral links to promote across your network.'}</p>
+        </div>
+
+        <div class="step-card scroll-reveal">
+          <div class="step-badge">STEP 03</div>
+          <h3>{isZh ? '好友消费，享受日结返佣' : 'Earn Daily Commission'}</h3>
+          <p>{isZh ? '受邀用户开卡并刷卡消费，即刻按最高 50% 比例获得佣金奖励。' : 'Earn up to 50% commission whenever your invited users spend.'}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 底部 Banner 唤起跳转到专用申请页 -->
+    <div class="partner-cta-banner scroll-reveal">
+      <div class="cta-banner-content">
+        <h2>{isZh ? '马上加入，赚取高额返佣' : 'Join Now & Start Earning High Commission'}</h2>
+        <p>{isZh ? '如有商务定制需求，欢迎联系 bd@uupay.com' : 'For business inquiries, contact bd@uupay.com'}</p>
+      </div>
+      <a href={applyLink} class="cta-banner-btn">
+        <span>{isZh ? '申请加入合伙人' : 'Apply For Partner'}</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const bars = document.querySelectorAll('.calc-bar-item');
+  const valDisplay = document.getElementById('calcVal');
+
+  bars.forEach(bar => {
+    bar.addEventListener('click', () => {
+      bars.forEach(b => b.classList.remove('is-active'));
+      bar.classList.add('is-active');
+      const val = bar.getAttribute('data-val');
+      if (valDisplay && val) {
+        valDisplay.innerHTML = `${val} <span class="calc-amount-unit">USDT / 月</span>`;
+      }
+    });
+  });
+</script>

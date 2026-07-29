@@ -66,41 +66,35 @@ const lang = '${lang}';
 const getPartnersTemplate = (lang) => {
   const importPrefix = lang === defaultLang ? '..' : '../..';
   const isZh = lang === 'zh-CN' || lang === 'zh-TW';
-  const isJa = lang === 'ja';
-  const isKo = lang === 'ko';
-  const isEs = lang === 'es';
-
-  let pageTitle = "Partner Program | UUPAY";
-  let headingText = "Become a UUPAY Partner";
-  let descText = "Enjoy exclusive benefits, priority support, and direct access to banking channels. Get up to 50% commission dynamically.";
-  let btnText = "Submit Application Form";
-
-  if (isZh) {
-    pageTitle = "合伙人计划 | UUPAY";
-    headingText = "成为 UUPAY 全球合伙人";
-    descText = "享受专属权益、优先客服支持与银行直连通道，最高可享 50% 动态阶梯返佣。";
-    btnText = "提交合伙人申请表";
-  } else if (isJa) {
-    pageTitle = "パートナープログラム | UUPAY";
-    headingText = "UUPAY グローバルパートナーになる";
-    descText = "独占的な特典、優先サポート、銀行チャネルへの直接アクセスをお楽しみください。最大 50% のコミッションを獲得できます。";
-    btnText = "パートナー申請フォームを送信";
-  } else if (isKo) {
-    pageTitle = "파트너 프로그램 | UUPAY";
-    headingText = "UUPAY 글로벌 파트너 되기";
-    descText = "독점 혜택, 우선 지원 및 은행 채널 직통 액세스를 누리세요. 최대 50% 수수료를 획득할 수 있습니다.";
-    btnText = "파트너 신청서 제출";
-  } else if (isEs) {
-    pageTitle = "Programa de Socios | UUPAY";
-    headingText = "Conviértete en Socio de UUPAY";
-    descText = "Disfruta de beneficios exclusivos, soporte prioritario y acceso directo a canales bancarios. Obtén hasta un 50% de comisión.";
-    btnText = "Enviar Formulario de Solicitud";
-  }
+  const pageTitle = isZh ? "全球合伙人计划 | UUPAY" : "Global Partner Program | UUPAY";
 
   return `---
 import BaseLayout from '${importPrefix}/layouts/BaseLayout.astro';
 import Navbar from '${importPrefix}/components/Navbar.astro';
-import PartnerPreview from '${importPrefix}/components/PartnerPreview.astro';
+import PartnerShowcase from '${importPrefix}/components/PartnerShowcase.astro';
+import Footer from '${importPrefix}/components/Footer.astro';
+
+const lang = '${lang}';
+---
+
+<BaseLayout lang={lang} title="${pageTitle}">
+  <Navbar lang={lang} />
+  <main style="min-height: 70vh;">
+    <PartnerShowcase lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>
+`;
+};
+
+const getPartnerApplyTemplate = (lang) => {
+  const importPrefix = lang === defaultLang ? '../..' : '../../..';
+  const isZh = lang === 'zh-CN' || lang === 'zh-TW';
+  const pageTitle = isZh ? "合伙人申请表 | UUPAY" : "Partner Application Form | UUPAY";
+
+  return `---
+import BaseLayout from '${importPrefix}/layouts/BaseLayout.astro';
+import Navbar from '${importPrefix}/components/Navbar.astro';
 import PartnerForm from '${importPrefix}/components/PartnerForm.astro';
 import Footer from '${importPrefix}/components/Footer.astro';
 
@@ -110,7 +104,6 @@ const lang = '${lang}';
 <BaseLayout lang={lang} title="${pageTitle}">
   <Navbar lang={lang} />
   <main style="padding-top: 100px; min-height: 70vh;">
-    <PartnerPreview lang={lang} />
     <PartnerForm lang={lang} />
   </main>
   <Footer lang={lang} />
@@ -433,6 +426,13 @@ languages.forEach((lang) => {
   fs.writeFileSync(path.join(destDir, 'index.astro'), getIndexTemplate(lang), 'utf8');
   fs.writeFileSync(path.join(destDir, 'promotions.astro'), getPromotionsTemplate(lang), 'utf8');
   fs.writeFileSync(path.join(destDir, 'partners.astro'), getPartnersTemplate(lang), 'utf8');
+  
+  // Partners Apply Subpage
+  const partnersDir = path.join(destDir, 'partners');
+  if (!fs.existsSync(partnersDir)) {
+    fs.mkdirSync(partnersDir, { recursive: true });
+  }
+  fs.writeFileSync(path.join(partnersDir, 'apply.astro'), getPartnerApplyTemplate(lang), 'utf8');
   
   // Docs Pages
   const docsDir = path.join(destDir, 'docs');

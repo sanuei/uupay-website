@@ -1,18 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
-import PartnerPreview from '../../components/PartnerPreview.astro';
-import PartnerForm from '../../components/PartnerForm.astro';
+import PartnerShowcase from '../../components/PartnerShowcase.astro';
 import Footer from '../../components/Footer.astro';
 
 const lang = 'ar';
 ---
 
-<BaseLayout lang={lang} title="Partner Program | UUPAY">
+<BaseLayout lang={lang} title="Global Partner Program | UUPAY">
   <Navbar lang={lang} />
-  <main style="padding-top: 100px; min-height: 70vh;">
-    <PartnerPreview lang={lang} />
-    <PartnerForm lang={lang} />
+  <main style="min-height: 70vh;">
+    <PartnerShowcase lang={lang} />
   </main>
   <Footer lang={lang} />
 </BaseLayout>
