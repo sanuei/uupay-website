@@ -114,45 +114,39 @@ const channels = isZh
 
           <div class="pf-grid">
             <div class="pf-group pf-field-full">
-              <label class="pf-label">
+              <label class="pf-label" for="country">
                 {isZh ? '常驻国家 / 主要业务覆盖地区' : 'Primary Country / Operating Region'} <span class="required">*</span>
               </label>
-              <div class="chip-group">
-                {countries.map((c, i) => (
-                  <label class="chip-item">
-                    <input type="radio" name="country" value={c} required checked={i === 0} />
-                    <span class="chip-label">{c}</span>
-                  </label>
+              <select id="country" name="country" class="pf-select" required>
+                <option value="" disabled selected>{isZh ? '请选择常驻国家 / 地区' : 'Select Primary Country / Region'}</option>
+                {countries.map((c) => (
+                  <option value={c}>{c}</option>
                 ))}
-              </div>
+              </select>
             </div>
 
             <div class="pf-group pf-field-full">
-              <label class="pf-label">
+              <label class="pf-label" for="identity">
                 {isZh ? '您的主要行业身份' : 'Primary Identity / Role'} <span class="required">*</span>
               </label>
-              <div class="chip-group">
+              <select id="identity" name="identity" class="pf-select" required>
+                <option value="" disabled selected>{isZh ? '请选择您的主要行业身份' : 'Select Your Primary Identity'}</option>
                 {identities.map((item) => (
-                  <label class="chip-item">
-                    <input type="checkbox" name="identity" value={item} />
-                    <span class="chip-label">{item}</span>
-                  </label>
+                  <option value={item}>{item}</option>
                 ))}
-              </div>
+              </select>
             </div>
 
             <div class="pf-group pf-field-full">
-              <label class="pf-label">
+              <label class="pf-label" for="resource">
                 {isZh ? '已具备的渠道与核心资源' : 'Core Advantages & Resources'} <span class="required">*</span>
               </label>
-              <div class="chip-group">
+              <select id="resource" name="resource" class="pf-select" required>
+                <option value="" disabled selected>{isZh ? '请选择主要具备的渠道资源' : 'Select Primary Advantage / Resource'}</option>
                 {resources.map((res) => (
-                  <label class="chip-item">
-                    <input type="checkbox" name="resource" value={res} />
-                    <span class="chip-label">{res}</span>
-                  </label>
+                  <option value={res}>{res}</option>
                 ))}
-              </div>
+              </select>
             </div>
           </div>
         </div>
@@ -166,31 +160,27 @@ const channels = isZh
 
           <div class="pf-grid">
             <div class="pf-group pf-field-full">
-              <label class="pf-label">
+              <label class="pf-label" for="scale">
                 {isZh ? '涵盖社群或受众覆盖规模' : 'Community or Audience Scale'} <span class="required">*</span>
               </label>
-              <div class="chip-group">
-                {scales.map((s, i) => (
-                  <label class="chip-item">
-                    <input type="radio" name="scale" value={s} required checked={i === 0} />
-                    <span class="chip-label">{s}</span>
-                  </label>
+              <select id="scale" name="scale" class="pf-select" required>
+                <option value="" disabled selected>{isZh ? '请选择受众覆盖规模' : 'Select Audience Scale'}</option>
+                {scales.map((s) => (
+                  <option value={s}>{s}</option>
                 ))}
-              </div>
+              </select>
             </div>
 
             <div class="pf-group pf-field-full">
-              <label class="pf-label">
+              <label class="pf-label" for="channel">
                 {isZh ? '获知 UUPAY 招募的渠道' : 'How Did You Hear About Us?'} <span class="required">*</span>
               </label>
-              <div class="chip-group">
-                {channels.map((ch, i) => (
-                  <label class="chip-item">
-                    <input type="radio" name="channel" value={ch} required checked={i === 0} />
-                    <span class="chip-label">{ch}</span>
-                  </label>
+              <select id="channel" name="channel" class="pf-select" required>
+                <option value="" disabled selected>{isZh ? '请选择获知渠道' : 'Select How You Heard About Us'}</option>
+                {channels.map((ch) => (
+                  <option value={ch}>{ch}</option>
                 ))}
-              </div>
+              </select>
             </div>
 
             <div class="pf-group pf-field-full">
@@ -243,12 +233,11 @@ const channels = isZh
       const email = formData.get('email')?.toString() || '';
       const twitter = formData.get('twitter')?.toString() || '';
       const country = formData.get('country')?.toString() || '';
+      const identity = formData.get('identity')?.toString() || '';
+      const resource = formData.get('resource')?.toString() || '';
       const scale = formData.get('scale')?.toString() || '';
       const channel = formData.get('channel')?.toString() || '';
       const notes = formData.get('notes')?.toString() || '';
-
-      const selectedIdentities = Array.from(form.querySelectorAll<HTMLInputElement>('input[name="identity"]:checked')).map(i => i.value);
-      const selectedResources = Array.from(form.querySelectorAll<HTMLInputElement>('input[name="resource"]:checked')).map(r => r.value);
 
       const emailSubject = encodeURIComponent(`[UUPAY Partner Application] ${name} - UID: ${uid}`);
       const bodyText = 
@@ -261,8 +250,8 @@ Business Email: ${email}
 X (Twitter): ${twitter || 'N/A'}
 
 Country/Region: ${country}
-Primary Identities: ${selectedIdentities.join(', ') || 'N/A'}
-Available Resources: ${selectedResources.join(', ') || 'N/A'}
+Primary Identity: ${identity || 'N/A'}
+Available Resource: ${resource || 'N/A'}
 Audience Scale: ${scale}
 Source Channel: ${channel}
 
