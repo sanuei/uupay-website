@@ -4,15 +4,13 @@ import Navbar from '../components/Navbar.astro';
 import PartnerPreview from '../components/PartnerPreview.astro';
 import PartnerForm from '../components/PartnerForm.astro';
 import Footer from '../components/Footer.astro';
-import { useTranslations } from '../i18n/ui';
 
 const lang = 'en';
-const t = useTranslations(lang as any);
 ---
 
-<BaseLayout lang={lang} title={`${t('partners.form_title')} | UUPAY`}>
+<BaseLayout lang={lang} title="Partner Program | UUPAY">
   <Navbar lang={lang} />
-  <main style="padding-top: 120px; min-height: 70vh;">
+  <main style="padding-top: 100px; min-height: 70vh;">
     <PartnerPreview lang={lang} />
     <PartnerForm lang={lang} />
   </main>

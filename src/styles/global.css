@@ -7,6 +7,10 @@
 /* 字体已改为自托管 (@fontsource, 见 BaseLayout.astro 顶部 import) —
    移除 Google Fonts 外链: 消除渲染阻塞的第三方请求, 大陆用户不再被墙卡住 */
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ===== CSS Variables ===== */
 :root {
   /* Color Palette - 纯黑底 (#000000) + 亮柠檬绿 (Linear / OKX 极简黑设计) */
@@ -95,7 +99,7 @@
 
   /* Layout */
   --container-w:   1360px;
-  --nav-h:         64px;
+  --nav-h:         52px;
 
   /* ===== Scroll rhythm (统一滚动节奏基准) =====
      所有 pin(滚动钉住)区共用同一个"节拍"单位: 每完成 1 个叙事节拍,

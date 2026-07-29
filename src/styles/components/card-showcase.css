@@ -77,15 +77,15 @@
   height: auto;               /* 覆盖 HTML width/height 属性的呈现提示, 让 aspect-ratio 生效 */
   aspect-ratio: 1280 / 807;   /* 锁 PNG 比例, object-fit 不裁圆角 */
   object-fit: cover;
-  transform: rotateY(-16deg) rotateX(7deg);
+  transform: rotateY(-12deg) rotateX(6deg);
   transform-style: preserve-3d;
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
-  transition: transform 0.6s var(--ease-out);
+  transition: transform 0.5s var(--ease-out);
 }
 
-/* 当前卡略微转正 + 放大, 强调"选中" */
+/* 保持极简优雅姿态，不在切入时剧烈抖动/缩放 */
 .card-slide.is-active .card-visual img {
-  transform: rotateY(-11deg) rotateX(6deg) scale(1.03);
+  transform: rotateY(-12deg) rotateX(6deg);
 }
 
 /* 文案 */
@@ -187,10 +187,10 @@
   }
   .card-visual img {
     /* 移动端转正一点, 避免侧倾在窄屏显得挤 */
-    transform: rotateY(-8deg) rotateX(4deg);
+    transform: rotateY(-6deg) rotateX(3deg);
   }
   .card-slide.is-active .card-visual img {
-    transform: rotateY(-6deg) rotateX(3deg) scale(1.02);
+    transform: rotateY(-6deg) rotateX(3deg);
   }
   .card-detail p {
     margin-left: auto;

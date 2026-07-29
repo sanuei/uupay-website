@@ -8,20 +8,20 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
 
-// 两张卡: 实体黑卡 + 虚拟金卡, 横向切换
+// 两张卡: 尊享金色实体卡 + 极简白色虚拟卡, 横向切换
 const cards = [
   {
     key: 'physical',
-    img: '/images/card-black.webp',
-    alt: 'UUPAY Black Physical Card',
+    img: '/images/20260729-134437.png',
+    alt: 'UUPAY Gold Physical Card',
     w: 1280, h: 807,
     title: t('cardShowcase.physical_title'),
     desc: t('cardShowcase.physical_desc'),
   },
   {
     key: 'virtual',
-    img: '/images/card-virtual.webp',
-    alt: 'UUPAY Gold Virtual Card',
+    img: '/images/20260729-134429.png',
+    alt: 'UUPAY White Virtual Card',
     w: 1579, h: 996,
     title: t('cardShowcase.virtual_title'),
     desc: t('cardShowcase.virtual_desc'),
@@ -85,34 +85,117 @@ const cards = [
 
   if (track && viewport && dotsWrap) {
     const slides = Array.from(track.querySelectorAll<HTMLElement>('.card-slide'));
+    const realCount = slides.length; // 实际 2 张卡
+
+    // 1. 克隆第一张卡片并追加到末尾，实现单向无限向左推进
+    const firstClone = slides[0].cloneNode(true) as HTMLElement;
+    firstClone.classList.remove('is-active');
+    firstClone.setAttribute('data-clone', 'true');
+    track.appendChild(firstClone);
+
+    const allSlides = Array.from(track.querySelectorAll<HTMLElement>('.card-slide'));
     const dots = Array.from(dotsWrap.querySelectorAll<HTMLElement>('.card-dot'));
     const prevBtn = document.querySelector<HTMLElement>('.card-nav-prev');
     const nextBtn = document.querySelector<HTMLElement>('.card-nav-next');
-    const count = slides.length;
-    let index = 0;
 
-    const render = () => {
+    let index = 0;
+    let autoPlayTimer: any = null;
+    let isTransitioning = false;
+
+    // 渲染指定位置 (withTransition 控制是否启用平滑过度)
+    const render = (withTransition = true) => {
+      if (!withTransition) {
+        track.style.transition = 'none';
+      } else {
+        track.style.transition = 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)';
+      }
+
       track.style.transform = `translateX(${-index * 100}%)`;
-      slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
+
+      // 映射高亮的 realIndex (0 或 1)
+      const realIndex = index % realCount;
+      allSlides.forEach((s, i) => s.classList.toggle('is-active', i === index));
       dots.forEach((d, i) => {
-        d.classList.toggle('is-active', i === index);
-        d.setAttribute('aria-selected', String(i === index));
+        d.classList.toggle('is-active', i === realIndex);
+        d.setAttribute('aria-selected', String(i === realIndex));
       });
     };
 
-    const goTo = (i: number) => {
-      index = (i + count) % count; // 循环
-      render();
+    // 动画结束监听: 当滑到克隆节点 (index 2) 时，瞬间无感重置到 index 0
+    track.addEventListener('transitionend', () => {
+      isTransitioning = false;
+      if (index >= realCount) {
+        index = 0;
+        render(false); // 关闭动画无感知复位
+      }
+    });
+
+    // 始终向一个方向（单向向左）推进
+    const next = () => {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      index++;
+      render(true);
     };
 
-    dots.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.idx))));
-    prevBtn?.addEventListener('click', () => goTo(index - 1));
-    nextBtn?.addEventListener('click', () => goTo(index + 1));
+    const prev = () => {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      if (index === 0) {
+        index = realCount;
+        render(false);
+        void track.offsetHeight; // 强制 reflow 重绘
+      }
+      index--;
+      render(true);
+    };
 
-    // 键盘左右切换 (视口聚焦时)
+    const goTo = (targetRealIdx: number) => {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      index = targetRealIdx;
+      render(true);
+    };
+
+    // 4 秒单向自动轮播控制器
+    const startAutoPlay = () => {
+      stopAutoPlay();
+      autoPlayTimer = setInterval(() => {
+        next();
+      }, 4000);
+    };
+
+    const stopAutoPlay = () => {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    };
+
+    // 交互绑定 (手动点击后重置计时)
+    dots.forEach((d) => d.addEventListener('click', () => {
+      goTo(Number(d.dataset.idx));
+      startAutoPlay();
+    }));
+    prevBtn?.addEventListener('click', () => {
+      prev();
+      startAutoPlay();
+    });
+    nextBtn?.addEventListener('click', () => {
+      next();
+      startAutoPlay();
+    });
+
+    // 鼠标悬停 / 触屏接触时暂停轮播，移开后恢复
+    viewport.addEventListener('mouseenter', stopAutoPlay);
+    viewport.addEventListener('mouseleave', startAutoPlay);
+    viewport.addEventListener('touchstart', stopAutoPlay, { passive: true });
+    viewport.addEventListener('touchend', startAutoPlay, { passive: true });
+
+    // 键盘左右切换
     viewport.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') goTo(index - 1);
-      if (e.key === 'ArrowRight') goTo(index + 1);
+      if (e.key === 'ArrowLeft') { prev(); startAutoPlay(); }
+      if (e.key === 'ArrowRight') { next(); startAutoPlay(); }
     });
 
     // 触屏 swipe
@@ -129,13 +212,16 @@ const cards = [
       tracking = false;
       const dx = e.changedTouches[0].clientX - startX;
       const dy = e.changedTouches[0].clientY - startY;
-      // 只在横向滑动明显大于纵向时才切换, 避免和竖向滚动冲突
       if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.4) {
-        goTo(index + (dx < 0 ? 1 : -1));
+        if (dx < 0) next();
+        else prev();
+        startAutoPlay();
       }
     }, { passive: true });
 
-    render();
+    // 启动初始渲染与单向自动轮播
+    render(false);
+    startAutoPlay();
 
     // 3D 交互倾斜 + 光泽跟随 (仅悬停型指针设备; 触屏/reduced-motion 不启用)
     if (matchMedia('(hover: hover) and (pointer: fine)').matches

@@ -9,49 +9,19 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const base = lang === 'en' ? '' : `/${lang}`;
 
-// 当前语言显示: EN / 中 / 日 / Esp / عر
-const langShort: Record<string, string> = {
-  en: 'EN',
-  'zh-CN': '中',
-  'zh-TW': '繁',
-  ja: '日',
-  ko: '한',
-  vi: 'VN',
-  th: 'TH',
-  ms: 'MY',
-  id: 'ID',
-  es: 'ES',
-  ar: 'عر'
-};
-
-// 国旗 emoji 暂时保留,但只用在小下拉里
-const flag: Record<string, string> = {
-  en: '🇺🇸',
-  'zh-CN': '🇨🇳',
-  'zh-TW': '🇭🇰',
-  ja: '🇯🇵',
-  ko: '🇰🇷',
-  vi: '🇻🇳',
-  th: '🇹🇭',
-  ms: '🇲🇾',
-  id: '🇮🇩',
-  es: '🇪🇸',
-  ar: '🇸🇦'
-};
-
-// 语言英文名(用于下拉副标)
+// 语言英文名 (支持输入英文/中文实时搜索过滤)
 const langEnName: Record<string, string> = {
   en: 'English',
-  'zh-CN': 'Simplified Chinese',
-  'zh-TW': 'Traditional Chinese',
-  ja: 'Japanese',
-  ko: 'Korean',
-  vi: 'Vietnamese',
-  th: 'Thai',
-  ms: 'Malay',
-  id: 'Indonesian',
-  es: 'Spanish',
-  ar: 'Arabic'
+  'zh-CN': 'Simplified Chinese 简体中文',
+  'zh-TW': 'Traditional Chinese 繁體中文',
+  ja: 'Japanese 日本語',
+  ko: 'Korean 한국어',
+  vi: 'Vietnamese Tiếng Việt',
+  th: 'Thai ไทย',
+  ms: 'Malay Bahasa Melayu',
+  id: 'Indonesian Bahasa Indonesia',
+  es: 'Spanish Español',
+  ar: 'Arabic العربية'
 };
 ---
 
@@ -70,47 +40,69 @@ const langEnName: Record<string, string> = {
     </ul>
 
     <div class="nav-actions">
-      <!-- 註冊 (主 CTA, 亮绿实底) -->
+      <!-- 注册 (主 CTA) -->
       <a href="https://uupay.com/zh-cn/register?invitationCode=VJAIIG" class="btn btn-primary nav-action-cta">{t('nav.register')}</a>
 
-      <!-- 语言切换器 (Linear / Kraken 风格: globe + 2字代码 + chevron) -->
-      <div class="lang-selector">
+      <!-- 下载 App 按钮 (OKX 图标按钮) -->
+      <a href="#download" class="nav-download-btn" aria-label={t('nav.download')} title={t('nav.download')}>
+        <svg class="nav-download-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 3V14M12 14L7 9M12 14L17 9M4 19H20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <!-- 语言切换器 (参考 OKX 极简风格: 放大地球 icon, 无文字, OKX 风格白底弹窗) -->
+      <div class="lang-selector" id="lang-selector">
         <button class="lang-trigger" aria-label="Select language" aria-haspopup="true">
-          <svg class="lang-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4"/>
-            <path d="M2.5 10H17.5M10 2.5C11.5 4.5 12.5 7 12.5 10C12.5 13 11.5 15.5 10 17.5M10 2.5C8.5 4.5 7.5 7 7.5 10C7.5 13 8.5 15.5 10 17.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
-          <span class="lang-code">{langShort[lang] || 'EN'}</span>
-          <svg class="lang-chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M3.6 12H20.4M12 3C14.25 5.5 15.75 8.5 15.75 12C15.75 15.5 14.25 18.5 12 21M12 3C9.75 5.5 8.25 8.5 8.25 12C8.25 15.5 9.75 18.5 12 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </button>
+
+        <!-- 参考图 2 样式白底弹窗 -->
         <div class="lang-dropdown" role="menu" aria-label="Languages">
-          <div class="lang-dropdown-header">Language</div>
-          {Object.entries(languages).map(([code, name]) => (
-            <a
-              href={code === 'en' ? '/' : `/${code}/`}
-              class={`lang-option ${code === lang ? 'active' : ''}`}
-              role="menuitem"
-              data-lang={code}
-            >
-              <span class="lang-flag">{flag[code]}</span>
-              <span class="lang-name">
-                <span class="lang-name-native">{name}</span>
-                <span class="lang-name-en">{langEnName[code]}</span>
-              </span>
-              {code === lang && (
-                <svg class="lang-check" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8L6.5 11.5L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              )}
-            </a>
-          ))}
+          <div class="lang-dropdown-top">
+            <span class="lang-dropdown-title">语言</span>
+            <svg class="lang-info-icon" viewBox="0 0 16 16" fill="none" width="14" height="14">
+              <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M8 7.5V11M8 5.2H8.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- 搜索框 -->
+          <div class="lang-search-box">
+            <svg class="lang-search-icon" viewBox="0 0 16 16" fill="none" width="14" height="14">
+              <circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <input type="text" class="lang-search-input" id="lang-search-input" placeholder="搜索" autocomplete="off" />
+          </div>
+
+          <div class="lang-group-label">全球</div>
+
+          <div class="lang-options-list">
+            {Object.entries(languages).map(([code, name]) => (
+              <a
+                href={code === 'en' ? '/' : `/${code}/`}
+                class={`lang-option ${code === lang ? 'active' : ''}`}
+                role="menuitem"
+                data-lang={code}
+                data-search={`${name} ${langEnName[code] || ''} ${code}`.toLowerCase()}
+              >
+                <span class="lang-option-name">{name}</span>
+                {code === lang && (
+                  <svg class="lang-check" viewBox="0 0 16 16" fill="none" aria-hidden="true" width="16" height="16">
+                    <path d="M3.5 8L6.5 11L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                )}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 移动端菜单开关 (<968px 显示, 桌面版靠 .nav-menu 常驻显示) -->
+    <!-- 移动端菜单开关 -->
     <button class="nav-burger" id="nav-burger" aria-label={t('nav.menu')} aria-expanded="false" aria-controls="mobile-menu">
       <span></span>
       <span></span>
@@ -159,5 +151,42 @@ const langEnName: Record<string, string> = {
     window.addEventListener('resize', () => {
       if (window.innerWidth > 968) closeMenu();
     });
+  }
+
+  // 语言搜索过滤与滚动隔离保护
+  const searchInput = document.getElementById('lang-search-input') as HTMLInputElement | null;
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = (e.target as HTMLInputElement).value.trim().toLowerCase();
+      const options = document.querySelectorAll('.lang-option');
+      options.forEach((opt) => {
+        const searchText = opt.getAttribute('data-search') || '';
+        if (searchText.includes(query)) {
+          (opt as HTMLElement).style.display = 'flex';
+        } else {
+          (opt as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  }
+
+  // 拦截内部滚动, 防止全页触发滑动手势穿透
+  const langList = document.querySelector('.lang-options-list');
+  if (langList) {
+    langList.addEventListener('wheel', (e) => {
+      const event = e as WheelEvent;
+      const scrollTop = langList.scrollTop;
+      const scrollHeight = langList.scrollHeight;
+      const height = langList.clientHeight;
+      const delta = event.deltaY;
+
+      // 如果向上滚到底或向下滚到底, 阻止事件传播给 window 触发整页滑动
+      if (delta > 0 && scrollTop + height >= scrollHeight - 1) {
+        e.preventDefault();
+      } else if (delta < 0 && scrollTop <= 0) {
+        e.preventDefault();
+      }
+      e.stopPropagation();
+    }, { passive: false });
   }
 </script>

@@ -38,7 +38,7 @@
 }
 
 .nav-logo-img {
-  height: 22px;
+  height: 20px;
   width: auto;
   display: block;
   flex-shrink: 0;
@@ -55,8 +55,8 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  height: 36px;
-  font-size: 14px;
+  height: 30px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-sec);
   transition: color 0.2s var(--ease-out);
@@ -89,173 +89,249 @@
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-3);  /* 14px 紧凑 */
+  gap: 10px;
   flex-shrink: 0;
-  margin-left: auto;  /* logo+菜单靠左, actions 推到最右 */
+  margin-left: auto;
 }
 
-/* 註冊 - 主 CTA, 亮绿实底 */
+/* 註冊 - 主 CTA, 亮绿实底 (小巧精致胶囊) */
 .nav-action-cta {
-  /* override .btn 默认 padding (更紧凑), 用固定 height 而不是靠 padding 撑高度,
-     跟语言切换对齐到同一条基准线上 */
-  height: 36px !important;
-  padding: 0 18px !important;
-  font-size: 13px !important;
+  height: 30px !important;
+  padding: 0 14px !important;
+  font-size: 12px !important;
   font-weight: var(--fw-strong) !important;
   border-radius: var(--r-pill) !important;
   white-space: nowrap;
-  /* .btn 的 transform 过渡会让这个按钮被提升为独立合成层; 嵌在 .navbar 的
-     backdrop-filter 模糊层里时, Chromium 有时会把该层也一并采样进模糊通道,
-     导致按钮文字发虚(旁边普通导航文字不受影响)。提前把它钉在自己的合成层上可以避开这个问题。 */
   transform: translateZ(0);
 }
 
 .nav-action-cta:hover {
-  /* 保留 hover 的上移位移, 同时不丢失上面的合成层提升 */
-  transform: translateY(-2px) translateZ(0);
+  transform: translateY(-1px) translateZ(0);
+}
+
+/* 下载按钮 — OKX 极简精奢图标圈 (与语言图标对称) */
+.nav-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  color: var(--text-pri);
+  transition: all 0.2s var(--ease-out);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-download-btn:hover {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+}
+
+.nav-download-icon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
 }
 
 /* ========================================
-   Language Switcher v2 (Linear + Kraken hybrid)
+   Language Switcher — OKX 极简黑白精奢风格
    ======================================== */
 .lang-selector {
   position: relative;
 }
 
-/* Trigger: globe + 2字代码 + chevron */
+/* 1. 触发按钮: 32px 精致图标圈 */
 .lang-trigger {
   display: flex;
   align-items: center;
-  gap: 6px;
-  height: 36px;
-  padding: 0 10px 0 12px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-sec);
-  border-radius: var(--r-pill);
-  border: 1px solid var(--border-sub);
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background: transparent;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  color: var(--text-pri);
+  transition: all 0.2s var(--ease-out);
   cursor: pointer;
   user-select: none;
 }
 
 .lang-trigger:hover {
-  color: var(--text-pri);
-  border-color: var(--brand);
-  background: rgba(184, 227, 81, 0.04);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
 }
 
 .lang-icon {
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   flex-shrink: 0;
 }
 
-.lang-code {
-  font-size: 12px;
-  font-weight: var(--fw-strong);
-  letter-spacing: 0.05em;
-  color: inherit;
-  min-width: 16px;
-  text-align: center;
-}
-
-.lang-chevron {
-  width: 10px;
-  height: 10px;
-  flex-shrink: 0;
-  opacity: 0.6;
-  transition: transform 0.2s var(--ease-out);
-}
-
-.lang-selector:hover .lang-chevron,
-.lang-selector:focus-within .lang-chevron {
-  transform: rotate(180deg);
-  opacity: 1;
-}
-
-/* Dropdown: 大面板,240px 宽 */
+/* 2. 下拉弹窗: 暗黑超清精奢卡片 (完美匹配用户截图) */
+/* 2. 下拉弹窗: 暗黑超清精奢卡片 (完美匹配用户截图) */
 .lang-dropdown {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 12px);
   right: 0;
-  width: 240px;
+  width: 280px;
   max-height: 480px;
-  overflow-y: auto;
-  background: var(--bg-card);
-  border: 1px solid var(--border-sub);
-  border-radius: var(--r-md);
-  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 外框固定, 不会误滚页面 */
+  background: #141519;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 18px 16px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-8px);
-  transition: opacity 0.18s var(--ease-out), transform 0.18s var(--ease-out), visibility 0.18s;
+  transform: translateY(-10px) scale(0.98);
+  transition: opacity 0.22s var(--ease-out), transform 0.22s var(--ease-out), visibility 0.22s;
   z-index: var(--z-modal);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  scrollbar-width: thin;
-  scrollbar-color: var(--text-mute) transparent;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
 }
-
-.lang-dropdown::-webkit-scrollbar { width: 6px; }
-.lang-dropdown::-webkit-scrollbar-thumb { background: var(--text-mute); border-radius: 3px; }
-.lang-dropdown::-webkit-scrollbar-track { background: transparent; }
 
 .lang-selector:hover .lang-dropdown,
 .lang-selector:focus-within .lang-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-.lang-dropdown-header {
-  padding: 8px 16px 4px;
-  font-size: 10px;
-  font-weight: var(--fw-strong);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-mute);
+/* 下拉顶部 "语言 ⓘ" 标题 */
+.lang-dropdown-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-shrink: 0;
 }
 
-/* 单个语言项: 国旗 + native 名 + 英文副标 + 当前态 check */
+.lang-dropdown-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.lang-info-icon {
+  color: #8A8D96;
+}
+
+/* 搜索框 */
+.lang-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #202228;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.lang-search-box:focus-within {
+  background: #282A32;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.lang-search-icon {
+  color: #8A8D96;
+  flex-shrink: 0;
+}
+
+.lang-search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 500;
+  outline: none;
+}
+
+.lang-search-input::placeholder {
+  color: #8A8D96;
+}
+
+/* 分组标签: "全球" */
+.lang-group-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8A8D96;
+  margin-bottom: 8px;
+  padding-left: 4px;
+  flex-shrink: 0;
+}
+
+/* 语言列表区域: 开启独立滚动与事件隔离 */
+.lang-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 280px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  padding-right: 2px;
+}
+
+.lang-options-list::-webkit-scrollbar { width: 5px; }
+.lang-options-list::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 99px; }
+.lang-options-list::-webkit-scrollbar-track { background: transparent; }
+
+/* 语言选项: 未选中的语言项用高清晰度的白字/浅灰字 */
 .lang-option {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 16px;
+  justify-content: space-between;
+  padding: 10px 14px;
   font-size: 14px;
-  color: var(--text-sec);
-  transition: background 0.15s, color 0.15s;
-  position: relative;
+  font-weight: 500;
+  color: #E5E7EB; /* 高亮白色文字, 确保 100% 清晰可见 */
+  border-radius: 10px;
   text-decoration: none;
-}
-
-.lang-option::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 25%;
-  bottom: 25%;
-  width: 2px;
-  background: var(--brand);
-  border-radius: 0 2px 2px 0;
-  opacity: 0;
-  transition: opacity 0.15s;
+  transition: background 0.15s, color 0.15s;
 }
 
 .lang-option:hover {
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-pri);
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
 }
 
+/* 选中的语言项: 亮白底黑字卡片 (100% 对齐用户截图) */
 .lang-option.active {
-  color: var(--brand);
-  font-weight: var(--fw-strong);
-  background: rgba(184, 227, 81, 0.04);
+  font-weight: 700;
+  color: #0F1115;
+  background: #F4F5F8;
 }
 
-.lang-option.active::before {
-  opacity: 1;
+.lang-option.active .lang-check {
+  color: var(--brand);
+}
+
+.lang-check {
+  color: #8A8D96;
+  flex-shrink: 0;
 }
 
 .lang-flag {

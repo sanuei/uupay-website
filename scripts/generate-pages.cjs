@@ -65,28 +65,53 @@ const lang = '${lang}';
 
 const getPartnersTemplate = (lang) => {
   const importPrefix = lang === defaultLang ? '..' : '../..';
+  const isZh = lang === 'zh-CN' || lang === 'zh-TW';
+  const isJa = lang === 'ja';
+  const isKo = lang === 'ko';
+  const isEs = lang === 'es';
+
+  let pageTitle = "Partner Program | UUPAY";
+  let headingText = "Become a UUPAY Partner";
+  let descText = "Enjoy exclusive benefits, priority support, and direct access to banking channels. Get up to 50% commission dynamically.";
+  let btnText = "Submit Application Form";
+
+  if (isZh) {
+    pageTitle = "合伙人计划 | UUPAY";
+    headingText = "成为 UUPAY 全球合伙人";
+    descText = "享受专属权益、优先客服支持与银行直连通道，最高可享 50% 动态阶梯返佣。";
+    btnText = "提交合伙人申请表";
+  } else if (isJa) {
+    pageTitle = "パートナープログラム | UUPAY";
+    headingText = "UUPAY グローバルパートナーになる";
+    descText = "独占的な特典、優先サポート、銀行チャネルへの直接アクセスをお楽しみください。最大 50% のコミッションを獲得できます。";
+    btnText = "パートナー申請フォームを送信";
+  } else if (isKo) {
+    pageTitle = "파트너 프로그램 | UUPAY";
+    headingText = "UUPAY 글로벌 파트너 되기";
+    descText = "독점 혜택, 우선 지원 및 은행 채널 직통 액세스를 누리세요. 최대 50% 수수료를 획득할 수 있습니다.";
+    btnText = "파트너 신청서 제출";
+  } else if (isEs) {
+    pageTitle = "Programa de Socios | UUPAY";
+    headingText = "Conviértete en Socio de UUPAY";
+    descText = "Disfruta de beneficios exclusivos, soporte prioritario y acceso directo a canales bancarios. Obtén hasta un 50% de comisión.";
+    btnText = "Enviar Formulario de Solicitud";
+  }
+
   return `---
 import BaseLayout from '${importPrefix}/layouts/BaseLayout.astro';
 import Navbar from '${importPrefix}/components/Navbar.astro';
 import PartnerPreview from '${importPrefix}/components/PartnerPreview.astro';
+import PartnerForm from '${importPrefix}/components/PartnerForm.astro';
 import Footer from '${importPrefix}/components/Footer.astro';
 
 const lang = '${lang}';
 ---
 
-<BaseLayout lang={lang} title="Partner Program | UUPAY">
+<BaseLayout lang={lang} title="${pageTitle}">
   <Navbar lang={lang} />
-  <main style="padding-top: 120px; min-height: 70vh;">
+  <main style="padding-top: 100px; min-height: 70vh;">
     <PartnerPreview lang={lang} />
-    <section class="container scroll-reveal" style="padding: 80px 0; text-align: center;">
-      <h2 style="font-size: 36px; margin-bottom: 24px; font-weight: 800;">Become a UUPAY Partner</h2>
-      <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 48px; line-height: 1.6; font-size: 15px;">
-        Enjoy exclusive benefits, priority support, and direct access to banking channels. Get up to 50% commission dynamically.
-      </p>
-      <a href="https://xjpc8r3322zb.jp.larksuite.com/share/base/form/shrjpxpOY6gk79yRXzrJM87cf8g" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
-        Submit Application Form
-      </a>
-    </section>
+    <PartnerForm lang={lang} />
   </main>
   <Footer lang={lang} />
 </BaseLayout>
@@ -113,41 +138,239 @@ const lang = '${lang}';
 // Announcements templates (level 2 for defaultLang, level 3 for others)
 const getAnnouncementsIndexTemplate = (lang) => {
   const importPrefix = lang === defaultLang ? '../..' : '../../..';
+  const isZh = lang === 'zh-CN' || lang === 'zh-TW';
+
   return `---
 import Layout from '${importPrefix}/layouts/BaseLayout.astro';
 import Header from '${importPrefix}/components/Navbar.astro';
 import Footer from '${importPrefix}/components/Footer.astro';
 import { getCollection } from 'astro:content';
 
-const allAnnouncements = await getCollection('announcements');
-const sortedAnnouncements = allAnnouncements.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const lang = '${lang}';
+const isZh = lang === 'zh-CN' || lang === 'zh-TW';
+const pageTitle = isZh ? '公告中心' : 'Announcements';
+const searchPlaceholder = isZh ? '搜寻文章' : 'Search articles';
+const homeText = isZh ? 'UUPAY' : 'UUPAY';
+const helpText = isZh ? '帮助中心' : 'Help Center';
+const currentCategoryText = isZh ? '最新公告' : 'Latest News';
+
+const allAnnouncements = await getCollection('announcements');
+const sorted = allAnnouncements.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const extraAnnouncements = ${isZh ? `[
+  {
+    id: "fiat-express-v2",
+    title: "UUPAY 关于更新极速法币出金 2.0 通道与银行同名到账规则的公告",
+    date: "2026-07-29",
+    category: "法币出金"
+  },
+  {
+    id: "security-update-20260722",
+    title: "UUPAY 关于网络安全漏洞协同披露政策与白帽子悬赏奖励计划的公告",
+    date: "2026-07-28",
+    category: "系统与安全"
+  },
+  {
+    id: "esim-coverage-expansion",
+    title: "UUPAY 关于全球 eSIM 流量网络扩容 40+ 国家与 5G 极速激活的公告",
+    date: "2026-07-28",
+    category: "eSIM 通信"
+  },
+  {
+    id: "partner-program-upgrade",
+    title: "UUPAY 关于延长全球推荐合伙人最高 50% 阶梯返佣活动时间的公告",
+    date: "2026-07-28",
+    category: "活动与合伙人"
+  },
+  {
+    id: "spot-usdt-card-launch",
+    title: "UUPAY Visa & Mastercard 双通道尊享金色加密实体卡全量开放申请公告",
+    date: "2026-07-27",
+    category: "卡片服务"
+  },
+  {
+    id: "system-maintenance-notice",
+    title: "UUPAY 关于例行系统升级与硬件安全模块(HSM)平滑维护完成的公告",
+    date: "2026-07-26",
+    category: "系统与安全"
+  }
+]` : `[
+  {
+    id: "fiat-express-v2",
+    title: "UUPAY Announcement on Fiat Express 2.0 Channels & Bank Direct Deposit Update",
+    date: "2026-07-29",
+    category: "Fiat Express"
+  },
+  {
+    id: "security-update-20260722",
+    title: "UUPAY Announcement on Security Vulnerability Disclosure & Bug Bounty Program",
+    date: "2026-07-28",
+    category: "Security & System"
+  },
+  {
+    id: "esim-coverage-expansion",
+    title: "UUPAY Announcement on Global eSIM Network Expansion 40+ Countries & 5G Access",
+    date: "2026-07-28",
+    category: "eSIM & Mobile"
+  },
+  {
+    id: "partner-program-upgrade",
+    title: "UUPAY Announcement on Extending Partner 50% Tiered Commission Reward Program",
+    date: "2026-07-28",
+    category: "Promotions & Partners"
+  },
+  {
+    id: "spot-usdt-card-launch",
+    title: "Visa & Mastercard Dual-Channel Luxury Gold Crypto Card Application Release Notice",
+    date: "2026-07-27",
+    category: "Card Services"
+  },
+  {
+    id: "system-maintenance-notice",
+    title: "UUPAY Announcement on Routine System Maintenance & HSM Module Upgrade Completion",
+    date: "2026-07-26",
+    category: "Security & System"
+  }
+]`};
+
+const categories = ${isZh ? `[
+  { key: "latest", name: "最新公告" },
+  { key: "cards", name: "卡片服务" },
+  { key: "fiat", name: "法币出金" },
+  { key: "esim", name: "eSIM 通信" },
+  { key: "security", name: "系统与安全" },
+  { key: "promotions", name: "活动与合伙人" }
+]` : `[
+  { key: "latest", name: "Latest News" },
+  { key: "cards", name: "Card Services" },
+  { key: "fiat", name: "Fiat Express" },
+  { key: "esim", name: "eSIM & Mobile" },
+  { key: "security", name: "Security & System" },
+  { key: "promotions", name: "Promotions & Partners" }
+]`};
 ---
 
-<Layout title="Announcements | UUPAY" lang={lang}>
+<Layout title={\`\${pageTitle} | UUPAY\`} lang={lang}>
   <Header lang={lang} />
-  
-  <main class="announcements-container container animate-in" style="padding-top: 120px; min-height: 70vh;">
-    <header class="section-header text-center">
-      <h1 style="font-size: 48px; color: var(--brand-primary); margin-bottom: 16px;">Announcements</h1>
-      <p style="color: var(--text-secondary);">Stay updated with the latest news, security updates, and features from UUPAY.</p>
-    </header>
-    
-    <div class="list-wrapper" style="display: flex; flex-direction: column; gap: 24px;">
-      {sortedAnnouncements.map((post) => (
-        <a href={\`/\${lang === 'en' ? '' : lang + '/'}announcements/\${post.id}\`} class="announcement-card">
-          <div class="meta" style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px; font-size: 14px;">
-            <span class="tag" style="background: rgba(57, 255, 20, 0.1); color: var(--brand-primary); padding: 4px 12px; border-radius: var(--radius-pill); font-weight: 500;">{post.data.type}</span>
-            <span class="date">{post.data.date.toISOString().split('T')[0]}</span>
+
+  <main class="bingx-announcement-page">
+    <div class="container">
+      <div class="bingx-top-bar">
+        <h1>{pageTitle}</h1>
+
+        <div class="bingx-search-box">
+          <input type="text" id="bingx-search-input" placeholder={searchPlaceholder} autocomplete="off" />
+          <svg class="bingx-search-icon" viewBox="0 0 16 16" fill="none" width="16" height="16">
+            <circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="bingx-layout">
+        <aside class="bingx-sidebar" id="bingx-sidebar">
+          {categories.map((cat, index) => (
+            <button
+              class={\`bingx-menu-item \${index === 0 ? 'active' : ''}\`}
+              data-category={cat.name}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </aside>
+
+        <section class="bingx-content-main">
+          <nav class="bingx-breadcrumb" aria-label="Breadcrumb">
+            <a href={\`/\${lang === 'en' ? '' : lang + '/'}\`}>{homeText}</a>
+            <span class="bingx-breadcrumb-sep">&gt;</span>
+            <a href={\`/\${lang === 'en' ? '' : lang + '/'}announcements/\`}>{pageTitle}</a>
+            <span class="bingx-breadcrumb-sep">&gt;</span>
+            <span class="bingx-breadcrumb-current" id="breadcrumb-category">{currentCategoryText}</span>
+          </nav>
+
+          <h2 class="bingx-category-title" id="category-title">{currentCategoryText}</h2>
+
+          <div class="bingx-notice-list" id="bingx-notice-list">
+            {sorted.map((post) => (
+              <a
+                href={\`/\${lang === 'en' ? '' : lang + '/'}announcements/\${post.id}\`}
+                class="bingx-notice-item"
+                data-category={post.data.type || currentCategoryText}
+                data-title={post.data.title.toLowerCase()}
+              >
+                <div class="bingx-notice-title">{post.data.title}</div>
+                <div class="bingx-notice-date">{post.data.date.toISOString().split('T')[0]}</div>
+              </a>
+            ))}
+
+            {extraAnnouncements.map((item) => (
+              <a
+                href={\`/\${lang === 'en' ? '' : lang + '/'}announcements/\${item.id}\`}
+                class="bingx-notice-item"
+                data-category={item.category}
+                data-title={item.title.toLowerCase()}
+              >
+                <div class="bingx-notice-title">{item.title}</div>
+                <div class="bingx-notice-date">{item.date}</div>
+              </a>
+            ))}
           </div>
-          <h2>{post.data.title}</h2>
-        </a>
-      ))}
+        </section>
+      </div>
     </div>
   </main>
-  
+
   <Footer lang={lang} />
 </Layout>
+
+<script>
+  const menuButtons = document.querySelectorAll('.bingx-menu-item');
+  const noticeItems = document.querySelectorAll('.bingx-notice-item');
+  const categoryTitle = document.getElementById('category-title');
+  const breadcrumbCategory = document.getElementById('breadcrumb-category');
+  const searchInput = document.getElementById('bingx-search-input') as HTMLInputElement | null;
+
+  let currentCategory = '最新公告';
+  let searchQuery = '';
+
+  function filterNotices() {
+    noticeItems.forEach((item) => {
+      const cat = item.getAttribute('data-category') || '';
+      const title = item.getAttribute('data-title') || '';
+
+      const matchCategory = (currentCategory === '最新公告' || currentCategory === 'Latest News') || (cat === currentCategory);
+      const matchSearch = !searchQuery || title.includes(searchQuery);
+
+      if (matchCategory && matchSearch) {
+        (item as HTMLElement).style.display = 'flex';
+      } else {
+        (item as HTMLElement).style.display = 'none';
+      }
+    });
+  }
+
+  menuButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      menuButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const catName = btn.getAttribute('data-category') || '最新公告';
+      currentCategory = catName;
+
+      if (categoryTitle) categoryTitle.textContent = catName;
+      if (breadcrumbCategory) breadcrumbCategory.textContent = catName;
+
+      filterNotices();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+      filterNotices();
+    });
+  }
+</script>
 `;
 };
 

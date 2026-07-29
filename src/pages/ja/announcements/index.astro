@@ -4,32 +4,184 @@ import Header from '../../../components/Navbar.astro';
 import Footer from '../../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
-const allAnnouncements = await getCollection('announcements');
-const sortedAnnouncements = allAnnouncements.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const lang = 'ja';
+const isZh = lang === 'zh-CN' || lang === 'zh-TW';
+const pageTitle = isZh ? '公告中心' : 'Announcements';
+const searchPlaceholder = isZh ? '搜寻文章' : 'Search articles';
+const homeText = isZh ? 'UUPAY' : 'UUPAY';
+const helpText = isZh ? '帮助中心' : 'Help Center';
+const currentCategoryText = isZh ? '最新公告' : 'Latest News';
+
+const allAnnouncements = await getCollection('announcements');
+const sorted = allAnnouncements.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const extraAnnouncements = [
+  {
+    id: "fiat-express-v2",
+    title: "UUPAY Announcement on Fiat Express 2.0 Channels & Bank Direct Deposit Update",
+    date: "2026-07-29",
+    category: "Fiat Express"
+  },
+  {
+    id: "security-update-20260722",
+    title: "UUPAY Announcement on Security Vulnerability Disclosure & Bug Bounty Program",
+    date: "2026-07-28",
+    category: "Security & System"
+  },
+  {
+    id: "esim-coverage-expansion",
+    title: "UUPAY Announcement on Global eSIM Network Expansion 40+ Countries & 5G Access",
+    date: "2026-07-28",
+    category: "eSIM & Mobile"
+  },
+  {
+    id: "partner-program-upgrade",
+    title: "UUPAY Announcement on Extending Partner 50% Tiered Commission Reward Program",
+    date: "2026-07-28",
+    category: "Promotions & Partners"
+  },
+  {
+    id: "spot-usdt-card-launch",
+    title: "Visa & Mastercard Dual-Channel Luxury Gold Crypto Card Application Release Notice",
+    date: "2026-07-27",
+    category: "Card Services"
+  },
+  {
+    id: "system-maintenance-notice",
+    title: "UUPAY Announcement on Routine System Maintenance & HSM Module Upgrade Completion",
+    date: "2026-07-26",
+    category: "Security & System"
+  }
+];
+
+const categories = [
+  { key: "latest", name: "Latest News" },
+  { key: "cards", name: "Card Services" },
+  { key: "fiat", name: "Fiat Express" },
+  { key: "esim", name: "eSIM & Mobile" },
+  { key: "security", name: "Security & System" },
+  { key: "promotions", name: "Promotions & Partners" }
+];
 ---
 
-<Layout title="Announcements | UUPAY" lang={lang}>
+<Layout title={`${pageTitle} | UUPAY`} lang={lang}>
   <Header lang={lang} />
-  
-  <main class="announcements-container container animate-in" style="padding-top: 120px; min-height: 70vh;">
-    <header class="section-header text-center">
-      <h1 style="font-size: 48px; color: var(--brand-primary); margin-bottom: 16px;">Announcements</h1>
-      <p style="color: var(--text-secondary);">Stay updated with the latest news, security updates, and features from UUPAY.</p>
-    </header>
-    
-    <div class="list-wrapper" style="display: flex; flex-direction: column; gap: 24px;">
-      {sortedAnnouncements.map((post) => (
-        <a href={`/${lang === 'en' ? '' : lang + '/'}announcements/${post.id}`} class="announcement-card">
-          <div class="meta" style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px; font-size: 14px;">
-            <span class="tag" style="background: rgba(57, 255, 20, 0.1); color: var(--brand-primary); padding: 4px 12px; border-radius: var(--radius-pill); font-weight: 500;">{post.data.type}</span>
-            <span class="date">{post.data.date.toISOString().split('T')[0]}</span>
+
+  <main class="bingx-announcement-page">
+    <div class="container">
+      <div class="bingx-top-bar">
+        <h1>{pageTitle}</h1>
+
+        <div class="bingx-search-box">
+          <input type="text" id="bingx-search-input" placeholder={searchPlaceholder} autocomplete="off" />
+          <svg class="bingx-search-icon" viewBox="0 0 16 16" fill="none" width="16" height="16">
+            <circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="bingx-layout">
+        <aside class="bingx-sidebar" id="bingx-sidebar">
+          {categories.map((cat, index) => (
+            <button
+              class={`bingx-menu-item ${index === 0 ? 'active' : ''}`}
+              data-category={cat.name}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </aside>
+
+        <section class="bingx-content-main">
+          <nav class="bingx-breadcrumb" aria-label="Breadcrumb">
+            <a href={`/${lang === 'en' ? '' : lang + '/'}`}>{homeText}</a>
+            <span class="bingx-breadcrumb-sep">&gt;</span>
+            <a href={`/${lang === 'en' ? '' : lang + '/'}announcements/`}>{pageTitle}</a>
+            <span class="bingx-breadcrumb-sep">&gt;</span>
+            <span class="bingx-breadcrumb-current" id="breadcrumb-category">{currentCategoryText}</span>
+          </nav>
+
+          <h2 class="bingx-category-title" id="category-title">{currentCategoryText}</h2>
+
+          <div class="bingx-notice-list" id="bingx-notice-list">
+            {sorted.map((post) => (
+              <a
+                href={`/${lang === 'en' ? '' : lang + '/'}announcements/${post.id}`}
+                class="bingx-notice-item"
+                data-category={post.data.type || currentCategoryText}
+                data-title={post.data.title.toLowerCase()}
+              >
+                <div class="bingx-notice-title">{post.data.title}</div>
+                <div class="bingx-notice-date">{post.data.date.toISOString().split('T')[0]}</div>
+              </a>
+            ))}
+
+            {extraAnnouncements.map((item) => (
+              <a
+                href={`/${lang === 'en' ? '' : lang + '/'}announcements/${item.id}`}
+                class="bingx-notice-item"
+                data-category={item.category}
+                data-title={item.title.toLowerCase()}
+              >
+                <div class="bingx-notice-title">{item.title}</div>
+                <div class="bingx-notice-date">{item.date}</div>
+              </a>
+            ))}
           </div>
-          <h2>{post.data.title}</h2>
-        </a>
-      ))}
+        </section>
+      </div>
     </div>
   </main>
-  
+
   <Footer lang={lang} />
 </Layout>
+
+<script>
+  const menuButtons = document.querySelectorAll('.bingx-menu-item');
+  const noticeItems = document.querySelectorAll('.bingx-notice-item');
+  const categoryTitle = document.getElementById('category-title');
+  const breadcrumbCategory = document.getElementById('breadcrumb-category');
+  const searchInput = document.getElementById('bingx-search-input') as HTMLInputElement | null;
+
+  let currentCategory = '最新公告';
+  let searchQuery = '';
+
+  function filterNotices() {
+    noticeItems.forEach((item) => {
+      const cat = item.getAttribute('data-category') || '';
+      const title = item.getAttribute('data-title') || '';
+
+      const matchCategory = (currentCategory === '最新公告' || currentCategory === 'Latest News') || (cat === currentCategory);
+      const matchSearch = !searchQuery || title.includes(searchQuery);
+
+      if (matchCategory && matchSearch) {
+        (item as HTMLElement).style.display = 'flex';
+      } else {
+        (item as HTMLElement).style.display = 'none';
+      }
+    });
+  }
+
+  menuButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      menuButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const catName = btn.getAttribute('data-category') || '最新公告';
+      currentCategory = catName;
+
+      if (categoryTitle) categoryTitle.textContent = catName;
+      if (breadcrumbCategory) breadcrumbCategory.textContent = catName;
+
+      filterNotices();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+      filterNotices();
+    });
+  }
+</script>

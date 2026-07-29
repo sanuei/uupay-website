@@ -43,10 +43,10 @@
   "cardShowcase": {
     "title": "Choose your card for global scenes",
     "subtitle": "Physical or virtual, Visa or Mastercard — pick your network, covered everywhere you spend.",
-    "virtual_title": "Flexible Virtual Card",
-    "virtual_desc": "Issued and ready in one minute. Bind it to overseas shopping sites and global SaaS subscriptions.",
-    "physical_title": "Matte-black metal card",
-    "physical_desc": "Metal-feel matte black. Withdraw at Visa ATMs and pay at POS worldwide — zero foreign transaction fees.",
+    "virtual_title": "Glacier White Virtual Card",
+    "virtual_desc": "Issued and ready in one minute. Minimal white aesthetic, bind to global e-commerce and SaaS subscriptions.",
+    "physical_title": "Luxury Gold Physical Card",
+    "physical_desc": "Premium gold metallic texture. Withdraw at Visa ATMs and pay at POS worldwide with zero foreign transaction fees.",
     "title_html": "Choose your card<br>for global scenes",
     "code": "CRYPTO CARDS"
   },
