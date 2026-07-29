@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "prebuild": "node scripts/generate-pages.cjs",
+    "build": "node scripts/generate-pages.cjs && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
