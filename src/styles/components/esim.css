@@ -13,7 +13,7 @@
   align-items: center;
   background: var(--bg-card);
   border: 1px solid var(--border-sub);
-  border-radius: var(--r-xl);
+  border-radius: var(--r-lg);
   padding: var(--space-8);
   position: relative;
   /* 允许飞线光辉动画舒展飞出卡片边缘，不被硬切 */

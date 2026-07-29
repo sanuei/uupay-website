@@ -11,9 +11,9 @@
   margin: 0 auto;
   background: var(--bg-card);
   border: 1px solid var(--border-sub);
-  border-radius: var(--r-xl);
+  border-radius: var(--r-lg);
   padding: var(--space-8);
-  box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.6);
+  box-shadow: none;
   position: relative;
   overflow: hidden;
 }

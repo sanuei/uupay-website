@@ -16,7 +16,7 @@
 
 .feature-card {
   position: relative;
-  border-radius: var(--r-xl);
+  border-radius: var(--r-lg);
   overflow: hidden;
   cursor: pointer;
   display: flex;
@@ -46,7 +46,7 @@
 }
 
 .feature-card.outline:hover {
-  border-color: var(--brand);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 /* 走马灯边框 (conic-gradient) */

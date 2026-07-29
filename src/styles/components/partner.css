@@ -13,7 +13,7 @@
   align-items: center;
   background: var(--bg-card);
   border: 1px solid var(--border-sub);
-  border-radius: var(--r-xl);
+  border-radius: var(--r-lg);
   padding: var(--space-8);
 }
 

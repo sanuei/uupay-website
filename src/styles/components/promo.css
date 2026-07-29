@@ -22,7 +22,7 @@
   grid-template-columns: 1fr auto;
   align-items: end;
   padding: clamp(28px, 3vw, 40px);
-  border-radius: var(--r-xl);
+  border-radius: var(--r-lg);
   overflow: hidden;
   min-height: 380px;
   text-decoration: none;
@@ -42,13 +42,13 @@
 
 /* ---- 卡片 2: 暗色描边 ---- */
 .promo-card--dark {
-  background: linear-gradient(180deg, rgba(22, 24, 30, 0.95) 0%, rgba(12, 13, 17, 0.98) 100%);
+  background: var(--bg-card);
   color: var(--text-pri);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border-sub);
 }
 
 .promo-card--dark:hover {
-  border-color: rgba(184, 227, 81, 0.3);
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 /* ---- 文字区域 ---- */
