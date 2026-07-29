@@ -9,9 +9,6 @@
   max-width: 980px;
 }
 
-.security .section-header h2 {
-  white-space: nowrap;
-}
 
 .security-grid {
   display: grid;
