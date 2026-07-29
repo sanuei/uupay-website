@@ -205,30 +205,38 @@ const calcLevels = [
       </div>
     </section>
 
-    <!-- 5. 合作步骤 Step 1 - Step 2 - Step 3 -->
+    <!-- 5. 合作步骤 Step 1 - Step 2 - Step 3 (左图右文 3D 风格) -->
     <section class="partner-steps">
       <div class="section-head-center scroll-reveal">
         <h2>{isZh ? '简单 3 步，开启高额返佣之旅' : '3 Simple Steps to Start Earning'}</h2>
         <p>{isZh ? '流程清晰快捷，轻松实现合作变现。' : 'Clear workflow to kickstart your referral journey.'}</p>
       </div>
 
-      <div class="steps-wrapper">
-        <div class="step-card scroll-reveal">
-          <div class="step-badge">STEP 01</div>
-          <h3>{isZh ? '提交申请资料' : 'Submit Application'}</h3>
-          <p>{isZh ? '填写合伙人评估表单，24 小时内由专属团队进行资质审核与联系。' : 'Fill in the partner application form for review within 24 hours.'}</p>
+      <div class="steps-grid-layout">
+        <!-- 左侧 3D 渲染插图 -->
+        <div class="steps-graphic-container scroll-reveal">
+          <img src="/images/partner-steps-3d.png" alt="UUPAY 3D Partnership Render" class="steps-graphic-img" width="800" height="800" loading="lazy" decoding="async" />
         </div>
 
-        <div class="step-card scroll-reveal">
-          <div class="step-badge">STEP 02</div>
-          <h3>{isZh ? '获取专属链接/二维码' : 'Get Exclusive Link'}</h3>
-          <p>{isZh ? '生成专属合伙人邀请链接与二维码，通过社群与社交媒体进行宣传推广。' : 'Generate custom referral links to promote across your network.'}</p>
-        </div>
+        <!-- 右侧步骤列表 -->
+        <div class="steps-list">
+          <div class="step-card scroll-reveal">
+            <div class="step-badge">STEP 01</div>
+            <h3>{isZh ? '提交申请资料' : 'Submit Application'}</h3>
+            <p>{isZh ? '填写合伙人评估表单，24 小时内由专属团队进行资质审核与联系。' : 'Fill in the partner application form for review within 24 hours.'}</p>
+          </div>
 
-        <div class="step-card scroll-reveal">
-          <div class="step-badge">STEP 03</div>
-          <h3>{isZh ? '好友消费，享受日结返佣' : 'Earn Daily Commission'}</h3>
-          <p>{isZh ? '受邀用户开卡并刷卡消费，即刻按最高 50% 比例获得佣金奖励。' : 'Earn up to 50% commission whenever your invited users spend.'}</p>
+          <div class="step-card scroll-reveal">
+            <div class="step-badge">STEP 02</div>
+            <h3>{isZh ? '获取专属链接/二维码' : 'Get Exclusive Link'}</h3>
+            <p>{isZh ? '生成专属合伙人邀请链接与二维码，通过社群与社交媒体进行宣传推广。' : 'Generate custom referral links to promote across your network.'}</p>
+          </div>
+
+          <div class="step-card scroll-reveal">
+            <div class="step-badge">STEP 03</div>
+            <h3>{isZh ? '好友消费，享受日结返佣' : 'Earn Daily Commission'}</h3>
+            <p>{isZh ? '受邀用户开卡并刷卡消费，即刻按最高 50% 比例获得佣金奖励。' : 'Earn up to 50% commission whenever your invited users spend.'}</p>
+          </div>
         </div>
       </div>
     </section>
