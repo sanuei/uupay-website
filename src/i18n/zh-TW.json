@@ -119,7 +119,7 @@
   },
   "download": {
     "title": "下載 UUPAY App",
-    "title_html": "即刻下載體驗<br>解鎖全球<span class=\"kw\">支付</span>",
+    "title_html": "即刻<span class=\"kw\">下載體驗</span>",
     "code": "DOWNLOAD APP",
     "subtitle": "掃描下方二維碼或前往應用商店下載官方 App 體驗。",
     "ios": "App Store 下載",
