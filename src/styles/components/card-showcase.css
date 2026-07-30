@@ -116,33 +116,32 @@
   position: relative;
 }
 
-/* 默认未激活状态下的文字元素：向下偏移、高模糊、隐藏 */
+/* 默认未在舞台中心落位的文字：向下沉降、高模糊、隐藏 */
 .card-detail-num,
 .card-detail h3,
 .card-detail p {
   opacity: 0;
-  transform: translateY(26px);
-  filter: blur(4px);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(22px);
+  filter: blur(3px);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity, filter;
 }
 
-/* is-settled 由 JS 在卡片横向位移真正结束后才添加，
-   避免文字生长和卡片位移抢戏，两段动作先后分明 */
+/* 当卡片在中心落位 (.is-settled) 时：依次微步延时、顺滑升起去模糊 */
 .card-slide.is-settled .card-detail-num {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0px);
-  transition-delay: 0s;
+  transition-delay: 0.12s;
 }
 
 .card-slide.is-settled .card-detail h3 {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0px);
-  transition-delay: 0.08s;
+  transition-delay: 0.20s;
 }
 
 .card-slide.is-settled .card-detail p {

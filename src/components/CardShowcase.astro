@@ -107,19 +107,27 @@ const cards = [
 
     const TRACK_DURATION = 650; // 需与下面 transform 的过渡时长保持一致
 
-    // 让文字动画等卡片真正落位后再登场, 而不是和横向位移同时抢戏
+    // 优雅掌控文字分层动画时机：卡片平移 120ms 后文字错落升起
     const scheduleTextReveal = (withTransition: boolean) => {
       clearTimeout(settleTimer);
-      allSlides.forEach((s) => s.classList.remove('is-settled'));
+      allSlides.forEach((s, i) => {
+        if (i !== index) {
+          s.classList.remove('is-settled');
+        }
+      });
+
       const activeSlide = allSlides[index];
       if (!activeSlide) return;
+
       if (!withTransition) {
         activeSlide.classList.add('is-settled');
         return;
       }
+
+      // 卡片滑动中途（120ms），文字层级依次升起去模糊
       settleTimer = setTimeout(() => {
         activeSlide.classList.add('is-settled');
-      }, TRACK_DURATION);
+      }, 120);
     };
 
     // 重置圆点进度条: 与自动轮播的 4s 周期保持同步
