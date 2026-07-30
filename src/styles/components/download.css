@@ -30,10 +30,10 @@
 
 /* Linear 风格超大震撼标题 */
 .download h2 {
-  font-size: clamp(44px, 5.5vw, 68px);
-  font-weight: var(--fw-heading);      /* 600 SemiBold, 对齐 Linear (原 800 过重) */
-  line-height: 1.1;
-  letter-spacing: var(--ls-h1);       /* -0.032em 分层字间距 */
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: var(--fw-heading);      /* 600 SemiBold */
+  line-height: 1.35;                  /* 充足舒展的行高，彻底告别挤压贴合 */
+  letter-spacing: -0.02em;
   color: var(--text-pri);
   margin-bottom: var(--space-8);
 }
