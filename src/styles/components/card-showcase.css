@@ -10,7 +10,7 @@
 }
 
 .card-switch .section-header {
-  margin-bottom: var(--space-9);
+  margin-bottom: clamp(32px, 4vw, 44px);
 }
 
 /* Stage: 左右箭头 + 中间视口 */
