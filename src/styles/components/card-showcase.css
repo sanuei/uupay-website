@@ -22,6 +22,7 @@
   margin: 0 auto;
 }
 
+/* 视口与轨道 */
 .card-switch-viewport {
   flex: 1;
   overflow: hidden;
@@ -31,7 +32,7 @@
 
 .card-switch-track {
   display: flex;
-  transition: transform 0.6s var(--ease-out);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
@@ -45,9 +46,12 @@
   padding: var(--space-6) var(--space-5);
 }
 
-/* 卡片视觉: 3D 倾斜 + 阴影 (PNG 自带真实圆角, 不叠 border-radius) */
+/* ========================================
+   第一段动画：卡片 3D 深度浮现与透视
+   ======================================== */
 .card-visual {
   perspective: 1200px;
+  will-change: transform, opacity;
 }
 
 /* 交互倾斜层: 鼠标跟随 (JS 写 --tx/--ty), 光泽跟随 (--gx/--gy) */
@@ -72,23 +76,72 @@
 }
 .card-tilt:hover .card-glare { opacity: 1; }
 
+/* 默认未激活状态下的卡片图：缩小、侧倾、微模糊、次级透明 */
 .card-visual img {
   width: 100%;
-  height: auto;               /* 覆盖 HTML width/height 属性的呈现提示, 让 aspect-ratio 生效 */
-  aspect-ratio: 1280 / 807;   /* 锁 PNG 比例, object-fit 不裁圆角 */
+  height: auto;               /* 锁 PNG 比例, object-fit 不裁圆角 */
+  aspect-ratio: 1280 / 807;
   object-fit: cover;
-  transform: rotateY(-12deg) rotateX(6deg);
+  transform: rotateY(-22deg) rotateX(12deg) scale(0.85);
   transform-style: preserve-3d;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
-  transition: transform 0.5s var(--ease-out);
+  opacity: 0.25;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4)) blur(4px);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter;
 }
 
-/* 保持极简优雅姿态，不在切入时剧烈抖动/缩放 */
+/* 激活状态下的卡片图：3D 舒展回正、升高放大、清晰渐现 */
 .card-slide.is-active .card-visual img {
-  transform: rotateY(-12deg) rotateX(6deg);
+  transform: rotateY(-10deg) rotateX(5deg) scale(1);
+  opacity: 1;
+  filter: drop-shadow(0 30px 65px rgba(0, 0, 0, 0.65)) blur(0px);
+  transition-delay: 0.04s;
 }
 
-/* 文案 */
+/* ========================================
+   第二段动画：右侧文字错落分层升起 (Staggered Motion)
+   ======================================== */
+.card-detail {
+  position: relative;
+}
+
+/* 默认未激活状态下的文字元素：向下偏移、高模糊、隐藏 */
+.card-detail-num,
+.card-detail h3,
+.card-detail p {
+  opacity: 0;
+  transform: translateY(26px);
+  filter: blur(4px);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter;
+}
+
+/* 激活状态下：依次微步延时、顺滑升起去模糊 */
+.card-slide.is-active .card-detail-num {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+  transition-delay: 0.14s;
+}
+
+.card-slide.is-active .card-detail h3 {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+  transition-delay: 0.22s;
+}
+
+.card-slide.is-active .card-detail p {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+  transition-delay: 0.30s;
+}
+
 .card-detail-num {
   display: inline-block;
   font-size: 13px;
@@ -104,7 +157,7 @@
 .card-detail h3 {
   font-size: var(--fs-h3);
   font-weight: var(--fw-heading);
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--text-pri);
   margin-bottom: var(--space-4);
