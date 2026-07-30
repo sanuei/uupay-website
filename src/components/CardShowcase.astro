@@ -72,7 +72,9 @@ const cards = [
     <!-- 圆点指示器 -->
     <div class="card-switch-dots" id="card-switch-dots" role="tablist">
       {cards.map((_, i) => (
-        <button class={`card-dot ${i === 0 ? 'is-active' : ''}`} data-idx={i} role="tab" aria-label={`Card ${i + 1}`}></button>
+        <button class={`card-dot ${i === 0 ? 'is-active' : ''}`} data-idx={i} role="tab" aria-label={`Card ${i + 1}`}>
+          <span class="card-dot-fill" aria-hidden="true"></span>
+        </button>
       ))}
     </div>
   </div>
@@ -101,13 +103,43 @@ const cards = [
     let index = 0;
     let autoPlayTimer: any = null;
     let isTransitioning = false;
+    let settleTimer: any = null;
+
+    const TRACK_DURATION = 650; // 需与下面 transform 的过渡时长保持一致
+
+    // 让文字动画等卡片真正落位后再登场, 而不是和横向位移同时抢戏
+    const scheduleTextReveal = (withTransition: boolean) => {
+      clearTimeout(settleTimer);
+      allSlides.forEach((s) => s.classList.remove('is-settled'));
+      const activeSlide = allSlides[index];
+      if (!activeSlide) return;
+      if (!withTransition) {
+        activeSlide.classList.add('is-settled');
+        return;
+      }
+      settleTimer = setTimeout(() => {
+        activeSlide.classList.add('is-settled');
+      }, TRACK_DURATION);
+    };
+
+    // 重置圆点进度条: 与自动轮播的 4s 周期保持同步
+    const restartDotProgress = () => {
+      const activeDot = dots[index % realCount];
+      const fill = activeDot?.querySelector<HTMLElement>('.card-dot-fill');
+      if (!fill) return;
+      fill.style.animation = 'none';
+      void fill.offsetWidth; // 强制 reflow, 让动画能从头重新播放
+      fill.style.animation = '';
+    };
 
     // 渲染指定位置 (withTransition 控制是否启用平滑过度)
     const render = (withTransition = true) => {
       if (!withTransition) {
         track.style.transition = 'none';
+        track.classList.add('no-anim');
       } else {
-        track.style.transition = 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)';
+        track.classList.remove('no-anim');
+        track.style.transition = `transform ${TRACK_DURATION}ms cubic-bezier(0.16, 1, 0.3, 1)`;
       }
 
       track.style.transform = `translateX(${-index * 100}%)`;
@@ -119,10 +151,20 @@ const cards = [
         d.classList.toggle('is-active', i === realIndex);
         d.setAttribute('aria-selected', String(i === realIndex));
       });
+
+      scheduleTextReveal(withTransition);
+
+      if (!withTransition) {
+        void track.offsetHeight; // 强制 reflow
+        setTimeout(() => {
+          track.classList.remove('no-anim');
+        }, 60);
+      }
     };
 
     // 动画结束监听: 当滑到克隆节点 (index 2) 时，瞬间无感重置到 index 0
-    track.addEventListener('transitionend', () => {
+    track.addEventListener('transitionend', (e) => {
+      if (e.target !== track) return; // 确保仅响应轨道的平移完成
       isTransitioning = false;
       if (index >= realCount) {
         index = 0;
@@ -160,8 +202,11 @@ const cards = [
     // 4 秒单向自动轮播控制器
     const startAutoPlay = () => {
       stopAutoPlay();
+      dotsWrap.classList.remove('is-paused');
+      restartDotProgress();
       autoPlayTimer = setInterval(() => {
         next();
+        restartDotProgress();
       }, 4000);
     };
 
@@ -170,6 +215,7 @@ const cards = [
         clearInterval(autoPlayTimer);
         autoPlayTimer = null;
       }
+      dotsWrap.classList.add('is-paused');
     };
 
     // 交互绑定 (手动点击后重置计时)
